@@ -33901,7 +33901,7 @@
 					    location   	(1474, 250)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	435
+					    max_width  	471
 					    justify    	0
 					    label      	"")
 					icon       	"control"
@@ -33909,10 +33909,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F97DB6603D2"
-					width      	300
+					width      	157
 					height     	1195
-					icon_height 	152
-					icon_width 	145
+					icon_height 	164
+					icon_width 	157
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @1676
@@ -33945,7 +33945,7 @@
 					    location   	(2165, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	426
+					    max_width  	462
 					    justify    	0
 					    label      	"")
 					icon       	"entity"
@@ -33953,10 +33953,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F97DB600231"
-					width      	300
+					width      	154
 					height     	1195
-					icon_height 	141
-					icon_width 	142
+					icon_height 	153
+					icon_width 	154
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @1679
@@ -33982,7 +33982,7 @@
 					    location   	(2743, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	426
+					    max_width  	462
 					    justify    	0
 					    label      	"")
 					icon       	"entity"
@@ -33990,10 +33990,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F97DE9C0083"
-					width      	300
+					width      	154
 					height     	1195
-					icon_height 	141
-					icon_width 	142
+					icon_height 	153
+					icon_width 	154
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @1681
@@ -34389,6 +34389,120 @@
 				logical_models 	(list unit_reference_list
 				    (object Object "$UNNAMED$141"
 					quid       	"4F97E05A0380"
+					collaborators 	(list link_list
+					    (object Link
+						quid       	"4F9A0CE80352"
+						supplier   	"$UNNAMED$142"
+						quidu      	"4F97E06D0090"
+						messages   	(list Messages
+						    (object Message "Material Management"
+							quid       	"4F9A0CE80353"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"1"
+							ordinal    	0
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Want to insert new material"
+							quid       	"4F9A0D420127"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"2"
+							ordinal    	4
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Input information"
+							quid       	"4F9A0D570217"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"3"
+							ordinal    	6
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show error message"
+							quid       	"4F9A0D660322"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"3.1.1"
+							ordinal    	8
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Choose a material and want to update"
+							quid       	"4F9A0FE4018B"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"4"
+							ordinal    	12
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Input information"
+							quid       	"4F9A103A00EB"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5"
+							ordinal    	14
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show error message"
+							quid       	"4F9A104F0074"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"5.1.1"
+							ordinal    	16
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Asking confirmation Yes Or No"
+							quid       	"4F9A105D029A"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"5.1.2"
+							ordinal    	17
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Confirm Yes"
+							quid       	"4F9A107A00E9"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5.1.2.1"
+							ordinal    	18
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Choose a material and want to delete"
+							quid       	"4F9A110D0071"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"6"
+							ordinal    	22
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Asking confirmation Yes Or No"
+							quid       	"4F9A111F0191"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"6.1"
+							ordinal    	23
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Confirm Yes"
+							quid       	"4F9A112A02D8"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"6.1.1"
+							ordinal    	24
+							quidu      	"000000000000"
+							creation   	FALSE))))
 					class      	"Use Case View::Staff"
 					quidu      	"4F8A933600CA"
 					persistence 	"Transient"
@@ -34396,22 +34510,572 @@
 					multi      	FALSE)
 				    (object Object "$UNNAMED$142"
 					quid       	"4F97E06D0090"
+					collaborators 	(list link_list
+					    (object Link
+						quid       	"4F9A0D0200AC"
+						supplier   	"$UNNAMED$143"
+						quidu      	"4F97E0D00047"
+						messages   	(list Messages
+						    (object Message "ShowListMaterial( )"
+							quid       	"4F9A0D0200AD"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"1.1"
+							ordinal    	1
+							quidu      	"4F9A11C70332"
+							creation   	FALSE)
+						    (object Message "Show list material"
+							quid       	"4F9A0D2C0361"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"1.1.2"
+							ordinal    	3
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "InsertMaterial( )"
+							quid       	"4F9A0D8700E0"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"3.1.2"
+							ordinal    	9
+							quidu      	"4F9A11CD01EC"
+							creation   	FALSE)
+						    (object Message "Show success message"
+							quid       	"4F9A0DA30107"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"3.1.2.2"
+							ordinal    	11
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "UpdateMaterial( )"
+							quid       	"4F9A108A02CA"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5.1.2.1.1"
+							ordinal    	19
+							quidu      	"4F9A11D40113"
+							creation   	FALSE)
+						    (object Message "Show success message"
+							quid       	"4F9A109C0093"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"5.1.2.1.1.2"
+							ordinal    	21
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "DeleteMaterial( )"
+							quid       	"4F9A1132020B"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"6.1.1.1"
+							ordinal    	25
+							quidu      	"4F9A11D902A1"
+							creation   	FALSE)
+						    (object Message "Show error message"
+							quid       	"4F9A114302F8"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"6.1.1.1.2"
+							ordinal    	27
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show success message"
+							quid       	"4F9A11610031"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"6.1.1.1.3"
+							ordinal    	28
+							quidu      	"000000000000"
+							creation   	FALSE)))
+					    (object Link
+						quid       	"4F9A0D4D02AF"
+						supplier   	"$UNNAMED$142"
+						quidu      	"4F97E06D0090"
+						messages   	(list Messages
+						    (object Message "Display insert form"
+							quid       	"4F9A0D4D02B0"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"2.1"
+							ordinal    	5
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Check information"
+							quid       	"4F9A0D5F0132"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"3.1"
+							ordinal    	7
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Display update form"
+							quid       	"4F9A102F024E"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"4.1"
+							ordinal    	13
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Check information"
+							quid       	"4F9A10470032"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5.1"
+							ordinal    	15
+							quidu      	"000000000000"
+							creation   	FALSE))))
 					class      	"Logical View::View::Material Manangement Form"
 					quidu      	"4F97DF60003C"
 					persistence 	"Transient"
 					creationObj 	FALSE
 					multi      	FALSE)
-				    (object Object "$UNNAMED$143"
+				    (object Object "$UNNAMED$144"
 					quid       	"4F97E09B00E0"
 					class      	"Logical View::Model::Material Model"
 					quidu      	"4F97E08D01E2"
 					persistence 	"Transient"
 					creationObj 	FALSE
 					multi      	FALSE)
-				    (object Object "$UNNAMED$144"
+				    (object Object "$UNNAMED$143"
 					quid       	"4F97E0D00047"
+					collaborators 	(list link_list
+					    (object Link
+						quid       	"4F9A0D2100E9"
+						supplier   	"$UNNAMED$144"
+						quidu      	"4F97E09B00E0"
+						messages   	(list Messages
+						    (object Message "GetListMaterial( )"
+							quid       	"4F9A0D2100EA"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"1.1.1"
+							ordinal    	2
+							quidu      	"4F9A11CA0157"
+							creation   	FALSE)
+						    (object Message "InsertMaterial( )"
+							quid       	"4F9A0D9A02E8"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"3.1.2.1"
+							ordinal    	10
+							quidu      	"4F9A11D00049"
+							creation   	FALSE)
+						    (object Message "UpdateMaterial( )"
+							quid       	"4F9A1095000C"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5.1.2.1.1.1"
+							ordinal    	20
+							quidu      	"4F9A11D60349"
+							creation   	FALSE)
+						    (object Message "DeleteMaterial( )"
+							quid       	"4F9A113C021B"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"6.1.1.1.1"
+							ordinal    	26
+							quidu      	"4F9A11DC00AA"
+							creation   	FALSE))))
 					class      	"Logical View::Controller::Material Controller"
 					quidu      	"4F9632A900DF"
+					persistence 	"Transient"
+					creationObj 	FALSE
+					multi      	FALSE)))
+			    (object Mechanism @1702
+				logical_models 	(list unit_reference_list
+				    (object Object "$UNNAMED$145"
+					quid       	"4F9A11900279"
+					collaborators 	(list link_list
+					    (object Link
+						quid       	"4F9A2F8400DA"
+						supplier   	"$UNNAMED$146"
+						quidu      	"4F9A11AA0141"
+						messages   	(list Messages
+						    (object Message "Material Management"
+							quid       	"4F9A2F8400DB"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"1"
+							ordinal    	0
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Want to insert new bill"
+							quid       	"4F9A3020014D"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"2"
+							ordinal    	5
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Input information"
+							quid       	"4F9A30BC01B1"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"3"
+							ordinal    	7
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show error message"
+							quid       	"4F9A30CA0390"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"3.1.1"
+							ordinal    	9
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Choose a bill and want to update"
+							quid       	"4F9A312D02BA"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"4"
+							ordinal    	15
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Input information"
+							quid       	"4F9A318D039F"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5"
+							ordinal    	17
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show error message"
+							quid       	"4F9A31E903A5"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"5.1.1"
+							ordinal    	19
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Asking confirmation Yes Or No"
+							quid       	"4F9A31F7024D"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"5.1.2"
+							ordinal    	20
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Confirm Yes"
+							quid       	"4F9A320B016D"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5.1.2.1"
+							ordinal    	21
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Choose a bill and want to delete"
+							quid       	"4F9A326E00DD"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"6"
+							ordinal    	27
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Asking confirmation Yes Or No"
+							quid       	"4F9A329C0274"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"6.1"
+							ordinal    	28
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Confirm Yes"
+							quid       	"4F9A32A90164"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"6.1.1"
+							ordinal    	29
+							quidu      	"000000000000"
+							creation   	FALSE))))
+					class      	"Use Case View::Staff"
+					quidu      	"4F8A933600CA"
+					persistence 	"Transient"
+					creationObj 	FALSE
+					multi      	FALSE)
+				    (object Object "$UNNAMED$147"
+					quid       	"4F9A11A10279"
+					collaborators 	(list link_list
+					    (object Link
+						quid       	"4F9A2FD102F9"
+						supplier   	"$UNNAMED$148"
+						quidu      	"4F9A2FAE02B2"
+						messages   	(list Messages
+						    (object Message "GetRentMaterialBill()"
+							quid       	"4F9A2FD102FA"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"1.1.1"
+							ordinal    	2
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "InsertRentMaterialBill()"
+							quid       	"4F9A30F10048"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"3.1.2.1"
+							ordinal    	11
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "UpdateRentMaterialBill()"
+							quid       	"4F9A323B01C0"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5.1.2.1.1.2"
+							ordinal    	24
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "DeleteRentMaterialBill()"
+							quid       	"4F9A32DA031C"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"6.1.1.1.2"
+							ordinal    	32
+							quidu      	"000000000000"
+							creation   	FALSE)))
+					    (object Link
+						quid       	"4F9A2FEA0142"
+						supplier   	"$UNNAMED$149"
+						quidu      	"4F9A2FB20082"
+						messages   	(list Messages
+						    (object Message "GetRentMaterialBillDetails()"
+							quid       	"4F9A2FEA0143"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"1.1.2"
+							ordinal    	3
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "InsertRentMaterialBillDetails()"
+							quid       	"4F9A30FA02B7"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"3.1.2.2"
+							ordinal    	12
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "UpdateRentMaterialBillDetails()"
+							quid       	"4F9A322D001D"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5.1.2.1.1.1"
+							ordinal    	23
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "DeleteRentMaterialBillDetails()"
+							quid       	"4F9A32BD02D6"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"6.1.1.1.1"
+							ordinal    	31
+							quidu      	"000000000000"
+							creation   	FALSE))))
+					class      	"Logical View::Controller::Material Controller"
+					quidu      	"4F9632A900DF"
+					persistence 	"Transient"
+					creationObj 	FALSE
+					multi      	FALSE)
+				    (object Object "$UNNAMED$146"
+					quid       	"4F9A11AA0141"
+					collaborators 	(list link_list
+					    (object Link
+						quid       	"4F9A2F8C02B1"
+						supplier   	"$UNNAMED$147"
+						quidu      	"4F9A11A10279"
+						messages   	(list Messages
+						    (object Message "ShowListRentMaterialBill()"
+							quid       	"4F9A2F8C02B2"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"1.1"
+							ordinal    	1
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show list rent material bill"
+							quid       	"4F9A3006001B"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"1.1.3"
+							ordinal    	4
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "InsertRentMaterialBill()"
+							quid       	"4F9A30DB0340"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"3.1.2"
+							ordinal    	10
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show error message"
+							quid       	"4F9A310801B8"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"3.1.2.3"
+							ordinal    	13
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show success message"
+							quid       	"4F9A311E032E"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"3.1.2.4"
+							ordinal    	14
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "UpdateRentMaterialBill()"
+							quid       	"4F9A321A0065"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5.1.2.1.1"
+							ordinal    	22
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show error message"
+							quid       	"4F9A32440216"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"5.1.2.1.1.3"
+							ordinal    	25
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show success message"
+							quid       	"4F9A32620045"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"5.1.2.1.1.4"
+							ordinal    	26
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "DeleteRentMaterialBill()"
+							quid       	"4F9A32B302BC"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"6.1.1.1"
+							ordinal    	30
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show error message"
+							quid       	"4F9A32E700A3"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"6.1.1.1.3"
+							ordinal    	33
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Show success message"
+							quid       	"4F9A32F80313"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"ToClientFromSupplier"
+							sequence   	"6.1.1.1.4"
+							ordinal    	34
+							quidu      	"000000000000"
+							creation   	FALSE)))
+					    (object Link
+						quid       	"4F9A302B0369"
+						supplier   	"$UNNAMED$146"
+						quidu      	"4F9A11AA0141"
+						messages   	(list Messages
+						    (object Message "Display insert form"
+							quid       	"4F9A302B036A"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"2.1"
+							ordinal    	6
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Check information"
+							quid       	"4F9A30C200D3"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"3.1"
+							ordinal    	8
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Display update form"
+							quid       	"4F9A313801D5"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"4.1"
+							ordinal    	16
+							quidu      	"000000000000"
+							creation   	FALSE)
+						    (object Message "Check information"
+							quid       	"4F9A319A03CC"
+							frequency  	"Aperiodic"
+							synchronization 	"Simple"
+							dir        	"FromClientToSupplier"
+							sequence   	"5.1"
+							ordinal    	18
+							quidu      	"000000000000"
+							creation   	FALSE))))
+					class      	"Logical View::View::Material Manangement Form"
+					quidu      	"4F97DF60003C"
+					persistence 	"Transient"
+					creationObj 	FALSE
+					multi      	FALSE)
+				    (object Object "$UNNAMED$148"
+					quid       	"4F9A2FAE02B2"
+					class      	"Logical View::Model::Rent Material Bill Model"
+					quidu      	"4F96324600C8"
+					persistence 	"Transient"
+					creationObj 	FALSE
+					multi      	FALSE)
+				    (object Object "$UNNAMED$149"
+					quid       	"4F9A2FB20082"
+					class      	"Logical View::Model::Rent Material Bill Details Model"
+					quidu      	"4F9632600020"
 					persistence 	"Transient"
 					creationObj 	FALSE
 					multi      	FALSE))))
@@ -34426,7 +35090,7 @@
 				origin_x   	0
 				origin_y   	0
 				items      	(list diagram_item_list
-				    (object InterObjView "$UNNAMED$141" @1702
+				    (object InterObjView "$UNNAMED$141" @1703
 					location   	(272, 225)
 					font       	(object Font
 					    size       	10
@@ -34438,11 +35102,11 @@
 					    color      	0
 					    default_color 	TRUE)
 					label      	(object ItemLabel
-					    Parent_View 	@1702
+					    Parent_View 	@1703
 					    location   	(272, 250)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	324
+					    max_width  	360
 					    justify    	0
 					    label      	"")
 					icon       	"Actor"
@@ -34450,14 +35114,84 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F97E05A0380"
-					width      	300
-					height     	170
-					icon_height 	150
-					icon_width 	108
+					width      	120
+					height     	3415
+					icon_height 	162
+					icon_width 	120
 					icon_y_offset 	0
-					annotation 	1)
-				    (object InterObjView "$UNNAMED$142" @1703
-					location   	(1170, 225)
+					annotation 	1
+					Focus_Of_Control 	(object Focus_Of_Control "" @1704
+					    location   	(272, 369)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1705
+					    location   	(272, 789)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1706
+					    location   	(272, 1024)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1707
+					    location   	(272, 1259)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1708
+					    location   	(272, 1679)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1709
+					    location   	(272, 1914)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1710
+					    location   	(272, 2149)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	171
+					    y_coord    	81
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1711
+					    location   	(272, 2260)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	212
+					    y_coord    	122
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1712
+					    location   	(272, 2802)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	165
+					    y_coord    	75
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1713
+					    location   	(272, 2907)
+					    line_color 	3342489
+					    InterObjView 	@1703
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE))
+				    (object InterObjView "$UNNAMED$142" @1714
+					location   	(914, 225)
 					font       	(object Font
 					    size       	10
 					    face       	"Arial"
@@ -34468,8 +35202,1630 @@
 					    color      	0
 					    default_color 	TRUE)
 					label      	(object ItemLabel
-					    Parent_View 	@1703
-					    location   	(1170, 251)
+					    Parent_View 	@1714
+					    location   	(914, 251)
+					    anchor_loc 	1
+					    nlines     	2
+					    max_width  	687
+					    justify    	0
+					    label      	"")
+					icon       	"boundary"
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"4F97E06D0090"
+					width      	229
+					height     	3415
+					icon_height 	153
+					icon_width 	229
+					icon_y_offset 	0
+					annotation 	1
+					Focus_Of_Control 	(object Focus_Of_Control "" @1715
+					    location   	(914, 369)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	195
+					    y_coord    	105
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1716
+					    location   	(914, 684)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	165
+					    y_coord    	75
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1717
+					    location   	(914, 789)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1718
+					    location   	(914, 919)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	165
+					    y_coord    	75
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1719
+					    location   	(914, 1024)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1720
+					    location   	(914, 1154)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	300
+					    y_coord    	210
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1721
+					    location   	(914, 1574)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	165
+					    y_coord    	75
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1722
+					    location   	(914, 1679)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1723
+					    location   	(914, 1809)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	165
+					    y_coord    	75
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1724
+					    location   	(914, 1914)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1725
+					    location   	(914, 2044)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	398
+					    y_coord    	308
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1726
+					    location   	(914, 2382)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1727
+					    location   	(914, 2697)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	165
+					    y_coord    	75
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1728
+					    location   	(914, 2802)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	270
+					    y_coord    	180
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1729
+					    location   	(914, 3012)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1730
+					    location   	(914, 3327)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	193
+					    y_coord    	103
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1731
+					    location   	(914, 3460)
+					    line_color 	3342489
+					    InterObjView 	@1714
+					    height     	90
+					    y_coord    	0
+					    Nested     	TRUE))
+				    (object InterObjView "$UNNAMED$143" @1732
+					location   	(1706, 225)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	TRUE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object ItemLabel
+					    Parent_View 	@1732
+					    location   	(1706, 251)
+					    anchor_loc 	1
+					    nlines     	2
+					    max_width  	462
+					    justify    	0
+					    label      	"")
+					icon       	"entity"
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"4F97E0D00047"
+					width      	154
+					height     	3415
+					icon_height 	153
+					icon_width 	154
+					icon_y_offset 	0
+					annotation 	1
+					Focus_Of_Control 	(object Focus_Of_Control "" @1733
+					    location   	(1706, 474)
+					    line_color 	3342489
+					    InterObjView 	@1732
+					    height     	300
+					    y_coord    	210
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1734
+					    location   	(1706, 1364)
+					    line_color 	3342489
+					    InterObjView 	@1732
+					    height     	300
+					    y_coord    	210
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1735
+					    location   	(1706, 2487)
+					    line_color 	3342489
+					    InterObjView 	@1732
+					    height     	300
+					    y_coord    	210
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1736
+					    location   	(1706, 3117)
+					    line_color 	3342489
+					    InterObjView 	@1732
+					    height     	433
+					    y_coord    	343
+					    Nested     	FALSE))
+				    (object InterObjView "$UNNAMED$144" @1737
+					location   	(2405, 225)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	TRUE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object ItemLabel
+					    Parent_View 	@1737
+					    location   	(2405, 251)
+					    anchor_loc 	1
+					    nlines     	2
+					    max_width  	462
+					    justify    	0
+					    label      	"")
+					icon       	"entity"
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"4F97E09B00E0"
+					width      	154
+					height     	3415
+					icon_height 	153
+					icon_width 	154
+					icon_y_offset 	0
+					annotation 	1
+					Focus_Of_Control 	(object Focus_Of_Control "" @1738
+					    location   	(2405, 579)
+					    line_color 	3342489
+					    InterObjView 	@1737
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1739
+					    location   	(2405, 1469)
+					    line_color 	3342489
+					    InterObjView 	@1737
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1740
+					    location   	(2405, 2592)
+					    line_color 	3342489
+					    InterObjView 	@1737
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1741
+					    location   	(2405, 3222)
+					    line_color 	3342489
+					    InterObjView 	@1737
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE))
+				    (object InterMessView "Material Management" @1742
+					location   	(0, 369)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1743
+					    Parent_View 	@1742
+					    location   	(592, 325)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0CE80353"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	441
+					    justify    	0
+					    label      	"Material Management"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1703
+					supplier   	@1714
+					Focus_Src  	@1704
+					Focus_Entry 	@1715
+					origin     	(287, 369)
+					terminus   	(898, 369)
+					ordinal    	0)
+				    (object InterMessView "ShowListMaterial( )" @1744
+					location   	(0, 474)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1745
+					    Parent_View 	@1744
+					    location   	(1309, 430)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D0200AD"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	407
+					    justify    	0
+					    label      	"ShowListMaterial( )"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1732
+					Focus_Src  	@1715
+					Focus_Entry 	@1733
+					origin     	(929, 474)
+					terminus   	(1690, 474)
+					ordinal    	1)
+				    (object InterMessView "GetListMaterial( )" @1746
+					location   	(0, 579)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1747
+					    Parent_View 	@1746
+					    location   	(2055, 537)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D2100EA"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	373
+					    justify    	0
+					    label      	"GetListMaterial( )"
+					    pctDist    	0.500000
+					    height     	43
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1732
+					supplier   	@1737
+					Focus_Src  	@1733
+					Focus_Entry 	@1738
+					origin     	(1721, 579)
+					terminus   	(2389, 579)
+					ordinal    	2)
+				    (object InterMessView "Show list material" @1748
+					location   	(0, 684)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1749
+					    Parent_View 	@1748
+					    location   	(1310, 640)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D2C0361"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	375
+					    justify    	0
+					    label      	"Show list material"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1732
+					supplier   	@1714
+					Focus_Src  	@1733
+					Focus_Entry 	@1716
+					origin     	(1690, 684)
+					terminus   	(930, 684)
+					ordinal    	3)
+				    (object InterMessView "Want to insert new material" @1750
+					location   	(0, 789)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1751
+					    Parent_View 	@1750
+					    location   	(592, 745)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D420127"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	550
+					    justify    	0
+					    label      	"Want to insert new material"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1703
+					supplier   	@1714
+					Focus_Src  	@1705
+					Focus_Entry 	@1717
+					origin     	(287, 789)
+					terminus   	(898, 789)
+					ordinal    	4)
+				    (object SelfMessView "Display insert form" @1752
+					location   	(0, 894)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1753
+					    Parent_View 	@1752
+					    location   	(1005, 850)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D4D02B0"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	388
+					    justify    	0
+					    label      	"Display insert form"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1714
+					Focus_Src  	@1717
+					Focus_Entry 	@1718
+					origin     	(930, 894)
+					terminus   	(1080, 894)
+					ordinal    	5)
+				    (object InterMessView "Input information" @1754
+					location   	(0, 1024)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1755
+					    Parent_View 	@1754
+					    location   	(592, 980)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D570217"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	352
+					    justify    	0
+					    label      	"Input information"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1703
+					supplier   	@1714
+					Focus_Src  	@1706
+					Focus_Entry 	@1719
+					origin     	(287, 1024)
+					terminus   	(898, 1024)
+					ordinal    	6)
+				    (object SelfMessView "Check information" @1756
+					location   	(0, 1129)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1757
+					    Parent_View 	@1756
+					    location   	(1005, 1085)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D5F0132"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	375
+					    justify    	0
+					    label      	"Check information"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1714
+					Focus_Src  	@1719
+					Focus_Entry 	@1720
+					origin     	(930, 1129)
+					terminus   	(1080, 1129)
+					ordinal    	7)
+				    (object InterMessView "Show error message" @1758
+					location   	(0, 1259)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1759
+					    Parent_View 	@1758
+					    location   	(593, 1215)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D660322"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	430
+					    justify    	0
+					    label      	"Show error message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1703
+					Focus_Src  	@1720
+					Focus_Entry 	@1707
+					origin     	(898, 1259)
+					terminus   	(288, 1259)
+					ordinal    	8)
+				    (object Label @1760
+					location   	(366, 1269)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	488
+					justify    	1
+					label      	
+|Information is not valid
+|
+					)
+				    (object InterMessView "InsertMaterial( )" @1761
+					location   	(0, 1364)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1762
+					    Parent_View 	@1761
+					    location   	(1309, 1320)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D8700E0"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	363
+					    justify    	0
+					    label      	"InsertMaterial( )"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1732
+					Focus_Src  	@1720
+					Focus_Entry 	@1734
+					origin     	(929, 1364)
+					terminus   	(1690, 1364)
+					ordinal    	9)
+				    (object Label @1763
+					location   	(1072, 1382)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	600
+					justify    	1
+					label      	
+|Information is valid
+|
+					)
+				    (object InterMessView "InsertMaterial( )" @1764
+					location   	(0, 1469)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1765
+					    Parent_View 	@1764
+					    location   	(2055, 1425)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0D9A02E8"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	360
+					    justify    	0
+					    label      	"InsertMaterial( )"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1732
+					supplier   	@1737
+					Focus_Src  	@1734
+					Focus_Entry 	@1739
+					origin     	(1721, 1469)
+					terminus   	(2389, 1469)
+					ordinal    	10)
+				    (object InterMessView "Show success message" @1766
+					location   	(0, 1574)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1767
+					    Parent_View 	@1766
+					    location   	(1310, 1530)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0DA30107"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	516
+					    justify    	0
+					    label      	"Show success message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1732
+					supplier   	@1714
+					Focus_Src  	@1734
+					Focus_Entry 	@1721
+					origin     	(1690, 1574)
+					terminus   	(930, 1574)
+					ordinal    	11)
+				    (object InterMessView "Choose a material and want to update" @1768
+					location   	(0, 1679)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1769
+					    Parent_View 	@1768
+					    location   	(592, 1635)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A0FE4018B"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	760
+					    justify    	0
+					    label      	"Choose a material and want to update"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1703
+					supplier   	@1714
+					Focus_Src  	@1708
+					Focus_Entry 	@1722
+					origin     	(287, 1679)
+					terminus   	(898, 1679)
+					ordinal    	12)
+				    (object SelfMessView "Display update form" @1770
+					location   	(0, 1784)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1771
+					    Parent_View 	@1770
+					    location   	(1005, 1740)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A102F024E"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	431
+					    justify    	0
+					    label      	"Display update form"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1714
+					Focus_Src  	@1722
+					Focus_Entry 	@1723
+					origin     	(930, 1784)
+					terminus   	(1080, 1784)
+					ordinal    	13)
+				    (object InterMessView "Input information" @1772
+					location   	(0, 1914)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1773
+					    Parent_View 	@1772
+					    location   	(592, 1870)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A103A00EB"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	369
+					    justify    	0
+					    label      	"Input information"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1703
+					supplier   	@1714
+					Focus_Src  	@1709
+					Focus_Entry 	@1724
+					origin     	(287, 1914)
+					terminus   	(898, 1914)
+					ordinal    	14)
+				    (object SelfMessView "Check information" @1774
+					location   	(0, 2019)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1775
+					    Parent_View 	@1774
+					    location   	(1005, 1975)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A10470032"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	397
+					    justify    	0
+					    label      	"Check information"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1714
+					Focus_Src  	@1724
+					Focus_Entry 	@1725
+					origin     	(930, 2019)
+					terminus   	(1080, 2019)
+					ordinal    	15)
+				    (object InterMessView "Show error message" @1776
+					location   	(0, 2149)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1777
+					    Parent_View 	@1776
+					    location   	(593, 2105)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A104F0074"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	444
+					    justify    	0
+					    label      	"Show error message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1703
+					Focus_Src  	@1725
+					Focus_Entry 	@1710
+					origin     	(898, 2149)
+					terminus   	(288, 2149)
+					ordinal    	16)
+				    (object Label @1778
+					location   	(388, 2152)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	600
+					justify    	1
+					label      	
+|Information is not valid
+|
+					)
+				    (object InterMessView "Asking confirmation Yes Or No" @1779
+					location   	(0, 2260)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1780
+					    Parent_View 	@1779
+					    location   	(593, 2216)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A105D029A"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	625
+					    justify    	0
+					    label      	"Asking confirmation Yes Or No"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1703
+					Focus_Src  	@1725
+					Focus_Entry 	@1711
+					origin     	(898, 2260)
+					terminus   	(288, 2260)
+					ordinal    	17)
+				    (object Label @1781
+					location   	(353, 2267)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	600
+					justify    	1
+					label      	
+|Information is valid
+|
+					)
+				    (object InterMessView "Confirm Yes" @1782
+					location   	(0, 2382)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1783
+					    Parent_View 	@1782
+					    location   	(592, 2338)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A107A00E9"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	288
+					    justify    	0
+					    label      	"Confirm Yes"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1703
+					supplier   	@1714
+					Focus_Src  	@1711
+					Focus_Entry 	@1726
+					origin     	(287, 2382)
+					terminus   	(898, 2382)
+					ordinal    	18)
+				    (object InterMessView "UpdateMaterial( )" @1784
+					location   	(0, 2487)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1785
+					    Parent_View 	@1784
+					    location   	(1309, 2443)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A108A02CA"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	391
+					    justify    	0
+					    label      	"UpdateMaterial( )"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1732
+					Focus_Src  	@1726
+					Focus_Entry 	@1735
+					origin     	(929, 2487)
+					terminus   	(1690, 2487)
+					ordinal    	19)
+				    (object InterMessView "UpdateMaterial( )" @1786
+					location   	(0, 2592)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1787
+					    Parent_View 	@1786
+					    location   	(2055, 2548)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A1095000C"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	391
+					    justify    	0
+					    label      	"UpdateMaterial( )"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1732
+					supplier   	@1737
+					Focus_Src  	@1735
+					Focus_Entry 	@1740
+					origin     	(1721, 2592)
+					terminus   	(2389, 2592)
+					ordinal    	20)
+				    (object InterMessView "Show success message" @1788
+					location   	(0, 2697)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1789
+					    Parent_View 	@1788
+					    location   	(1310, 2653)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A109C0093"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	516
+					    justify    	0
+					    label      	"Show success message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1732
+					supplier   	@1714
+					Focus_Src  	@1735
+					Focus_Entry 	@1727
+					origin     	(1690, 2697)
+					terminus   	(930, 2697)
+					ordinal    	21)
+				    (object InterMessView "Choose a material and want to delete" @1790
+					location   	(0, 2802)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1791
+					    Parent_View 	@1790
+					    location   	(592, 2758)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A110D0071"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	747
+					    justify    	0
+					    label      	"Choose a material and want to delete"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1703
+					supplier   	@1714
+					Focus_Src  	@1712
+					Focus_Entry 	@1728
+					origin     	(287, 2802)
+					terminus   	(898, 2802)
+					ordinal    	22)
+				    (object InterMessView "Asking confirmation Yes Or No" @1792
+					location   	(0, 2907)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1793
+					    Parent_View 	@1792
+					    location   	(593, 2863)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A111F0191"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	625
+					    justify    	0
+					    label      	"Asking confirmation Yes Or No"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1703
+					Focus_Src  	@1728
+					Focus_Entry 	@1713
+					origin     	(898, 2907)
+					terminus   	(288, 2907)
+					ordinal    	23)
+				    (object InterMessView "Confirm Yes" @1794
+					location   	(0, 3012)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1795
+					    Parent_View 	@1794
+					    location   	(592, 2968)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A112A02D8"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	288
+					    justify    	0
+					    label      	"Confirm Yes"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1703
+					supplier   	@1714
+					Focus_Src  	@1713
+					Focus_Entry 	@1729
+					origin     	(287, 3012)
+					terminus   	(898, 3012)
+					ordinal    	24)
+				    (object InterMessView "DeleteMaterial( )" @1796
+					location   	(0, 3117)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1797
+					    Parent_View 	@1796
+					    location   	(1309, 3073)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A1132020B"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	379
+					    justify    	0
+					    label      	"DeleteMaterial( )"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1714
+					supplier   	@1732
+					Focus_Src  	@1729
+					Focus_Entry 	@1736
+					origin     	(929, 3117)
+					terminus   	(1690, 3117)
+					ordinal    	25)
+				    (object InterMessView "DeleteMaterial( )" @1798
+					location   	(0, 3222)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1799
+					    Parent_View 	@1798
+					    location   	(2055, 3178)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A113C021B"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	379
+					    justify    	0
+					    label      	"DeleteMaterial( )"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1732
+					supplier   	@1737
+					Focus_Src  	@1736
+					Focus_Entry 	@1741
+					origin     	(1721, 3222)
+					terminus   	(2389, 3222)
+					ordinal    	26)
+				    (object InterMessView "Show error message" @1800
+					location   	(0, 3327)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1801
+					    Parent_View 	@1800
+					    location   	(1310, 3283)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A114302F8"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	444
+					    justify    	0
+					    label      	"Show error message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1732
+					supplier   	@1714
+					Focus_Src  	@1736
+					Focus_Entry 	@1730
+					origin     	(1690, 3327)
+					terminus   	(930, 3327)
+					ordinal    	27)
+				    (object Label @1802
+					location   	(1135, 3333)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	319
+					justify    	1
+					label      	"Material is using")
+				    (object InterMessView "Show success message" @1803
+					location   	(0, 3460)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1804
+					    Parent_View 	@1803
+					    location   	(1310, 3416)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A11610031"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	516
+					    justify    	0
+					    label      	"Show success message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1732
+					supplier   	@1714
+					Focus_Src  	@1736
+					Focus_Entry 	@1731
+					origin     	(1690, 3460)
+					terminus   	(930, 3460)
+					ordinal    	28)))
+			    (object InteractionDiagram "Material Management (Part 2)"
+				mechanism_ref 	@1702
+				quid       	"4F9A117E0022"
+				title      	"Material Management (Part 2)"
+				zoom       	100
+				max_height 	28350
+				max_width  	21600
+				origin_x   	0
+				origin_y   	0
+				items      	(list diagram_item_list
+				    (object InterObjView "$UNNAMED$145" @1805
+					location   	(180, 225)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	TRUE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object ItemLabel
+					    Parent_View 	@1805
+					    location   	(180, 250)
+					    anchor_loc 	1
+					    nlines     	2
+					    max_width  	116
+					    justify    	0
+					    label      	"")
+					icon       	"Actor"
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"4F9A11900279"
+					width      	128
+					height     	4057
+					icon_height 	162
+					icon_width 	120
+					icon_y_offset 	0
+					annotation 	1
+					Focus_Of_Control 	(object Focus_Of_Control "" @1806
+					    location   	(180, 356)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1807
+					    location   	(180, 881)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1808
+					    location   	(180, 1116)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1809
+					    location   	(180, 1351)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1810
+					    location   	(180, 2004)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1811
+					    location   	(180, 2239)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1812
+					    location   	(180, 2474)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	174
+					    y_coord    	84
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1813
+					    location   	(180, 2588)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	210
+					    y_coord    	120
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1814
+					    location   	(180, 3351)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	165
+					    y_coord    	75
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1815
+					    location   	(180, 3456)
+					    line_color 	3342489
+					    InterObjView 	@1805
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE))
+				    (object InterObjView "$UNNAMED$146" @1816
+					location   	(866, 225)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	TRUE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object ItemLabel
+					    Parent_View 	@1816
+					    location   	(866, 251)
 					    anchor_loc 	1
 					    nlines     	2
 					    max_width  	651
@@ -34479,15 +36835,148 @@
 					icon_style 	"Icon"
 					line_color 	3342489
 					fill_color 	13434879
-					quidu      	"4F97E06D0090"
+					quidu      	"4F9A11AA0141"
 					width      	300
-					height     	170
+					height     	4057
 					icon_height 	141
 					icon_width 	217
 					icon_y_offset 	0
-					annotation 	1)
-				    (object InterObjView "$UNNAMED$144" @1704
-					location   	(2021, 225)
+					annotation 	1
+					Focus_Of_Control 	(object Focus_Of_Control "" @1817
+					    location   	(866, 356)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	195
+					    y_coord    	105
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1818
+					    location   	(866, 776)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	165
+					    y_coord    	75
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1819
+					    location   	(866, 881)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1820
+					    location   	(866, 1011)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	165
+					    y_coord    	75
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1821
+					    location   	(866, 1116)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1822
+					    location   	(866, 1246)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	300
+					    y_coord    	210
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1823
+					    location   	(866, 1771)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	188
+					    y_coord    	98
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1824
+					    location   	(866, 1899)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	165
+					    y_coord    	75
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1825
+					    location   	(866, 2004)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1826
+					    location   	(866, 2134)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	165
+					    y_coord    	75
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1827
+					    location   	(866, 2239)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1828
+					    location   	(866, 2369)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	399
+					    y_coord    	309
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1829
+					    location   	(866, 2708)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1830
+					    location   	(866, 3128)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	178
+					    y_coord    	88
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1831
+					    location   	(866, 3246)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	165
+					    y_coord    	75
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1832
+					    location   	(866, 3351)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	270
+					    y_coord    	180
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1833
+					    location   	(866, 3561)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	195
+					    y_coord    	105
+					    Nested     	TRUE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1834
+					    location   	(866, 3981)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	181
+					    y_coord    	91
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1835
+					    location   	(866, 4102)
+					    line_color 	3342489
+					    InterObjView 	@1816
+					    height     	90
+					    y_coord    	0
+					    Nested     	TRUE))
+				    (object InterObjView "$UNNAMED$147" @1836
+					location   	(1577, 225)
 					font       	(object Font
 					    size       	10
 					    face       	"Arial"
@@ -34498,8 +36987,8 @@
 					    color      	0
 					    default_color 	TRUE)
 					label      	(object ItemLabel
-					    Parent_View 	@1704
-					    location   	(2021, 251)
+					    Parent_View 	@1836
+					    location   	(1577, 251)
 					    anchor_loc 	1
 					    nlines     	2
 					    max_width  	426
@@ -34509,15 +36998,43 @@
 					icon_style 	"Icon"
 					line_color 	3342489
 					fill_color 	13434879
-					quidu      	"4F97E0D00047"
+					quidu      	"4F9A11A10279"
 					width      	300
-					height     	170
+					height     	4057
 					icon_height 	141
 					icon_width 	142
 					icon_y_offset 	0
-					annotation 	1)
-				    (object InterObjView "$UNNAMED$143" @1705
-					location   	(2749, 225)
+					annotation 	1
+					Focus_Of_Control 	(object Focus_Of_Control "" @1837
+					    location   	(1577, 461)
+					    line_color 	3342489
+					    InterObjView 	@1836
+					    height     	405
+					    y_coord    	315
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1838
+					    location   	(1577, 1456)
+					    line_color 	3342489
+					    InterObjView 	@1836
+					    height     	533
+					    y_coord    	443
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1839
+					    location   	(1577, 2813)
+					    line_color 	3342489
+					    InterObjView 	@1836
+					    height     	523
+					    y_coord    	433
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1840
+					    location   	(1577, 3666)
+					    line_color 	3342489
+					    InterObjView 	@1836
+					    height     	526
+					    y_coord    	436
+					    Nested     	FALSE))
+				    (object InterObjView "$UNNAMED$148" @1841
+					location   	(2205, 227)
 					font       	(object Font
 					    size       	10
 					    face       	"Arial"
@@ -34528,8 +37045,8 @@
 					    color      	0
 					    default_color 	TRUE)
 					label      	(object ItemLabel
-					    Parent_View 	@1705
-					    location   	(2749, 251)
+					    Parent_View 	@1841
+					    location   	(2205, 253)
 					    anchor_loc 	1
 					    nlines     	2
 					    max_width  	426
@@ -34539,13 +37056,1601 @@
 					icon_style 	"Icon"
 					line_color 	3342489
 					fill_color 	13434879
-					quidu      	"4F97E09B00E0"
+					quidu      	"4F9A2FAE02B2"
 					width      	300
-					height     	170
+					height     	4055
 					icon_height 	141
 					icon_width 	142
 					icon_y_offset 	0
-					annotation 	1))))))
+					annotation 	1
+					Focus_Of_Control 	(object Focus_Of_Control "" @1842
+					    location   	(2205, 566)
+					    line_color 	3342489
+					    InterObjView 	@1841
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1843
+					    location   	(2205, 1561)
+					    line_color 	3342489
+					    InterObjView 	@1841
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1844
+					    location   	(2205, 3023)
+					    line_color 	3342489
+					    InterObjView 	@1841
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1845
+					    location   	(2205, 3876)
+					    line_color 	3342489
+					    InterObjView 	@1841
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE))
+				    (object InterObjView "$UNNAMED$149" @1846
+					location   	(2785, 225)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	TRUE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object ItemLabel
+					    Parent_View 	@1846
+					    location   	(2785, 251)
+					    anchor_loc 	1
+					    nlines     	2
+					    max_width  	426
+					    justify    	0
+					    label      	"")
+					icon       	"entity"
+					icon_style 	"Icon"
+					line_color 	3342489
+					fill_color 	13434879
+					quidu      	"4F9A2FB20082"
+					width      	300
+					height     	4057
+					icon_height 	141
+					icon_width 	142
+					icon_y_offset 	0
+					annotation 	1
+					Focus_Of_Control 	(object Focus_Of_Control "" @1847
+					    location   	(2785, 671)
+					    line_color 	3342489
+					    InterObjView 	@1846
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1848
+					    location   	(2785, 1666)
+					    line_color 	3342489
+					    InterObjView 	@1846
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1849
+					    location   	(2785, 2918)
+					    line_color 	3342489
+					    InterObjView 	@1846
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE)
+					Focus_Of_Control 	(object Focus_Of_Control "" @1850
+					    location   	(2785, 3771)
+					    line_color 	3342489
+					    InterObjView 	@1846
+					    height     	90
+					    y_coord    	0
+					    Nested     	FALSE))
+				    (object InterMessView "Material Management" @1851
+					location   	(0, 356)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1852
+					    Parent_View 	@1851
+					    location   	(522, 312)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A2F8400DB"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	441
+					    justify    	0
+					    label      	"Material Management"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1805
+					supplier   	@1816
+					Focus_Src  	@1806
+					Focus_Entry 	@1817
+					origin     	(195, 356)
+					terminus   	(850, 356)
+					ordinal    	0)
+				    (object InterMessView "ShowListRentMaterialBill()" @1853
+					location   	(0, 461)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1854
+					    Parent_View 	@1853
+					    location   	(1221, 417)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A2F8C02B2"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	535
+					    justify    	0
+					    label      	"ShowListRentMaterialBill()"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1836
+					Focus_Src  	@1817
+					Focus_Entry 	@1837
+					origin     	(881, 461)
+					terminus   	(1561, 461)
+					ordinal    	1)
+				    (object InterMessView "GetRentMaterialBill()" @1855
+					location   	(0, 566)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1856
+					    Parent_View 	@1855
+					    location   	(1890, 523)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A2FD102FA"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	425
+					    justify    	0
+					    label      	"GetRentMaterialBill()"
+					    pctDist    	0.499266
+					    height     	44
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1841
+					Focus_Src  	@1837
+					Focus_Entry 	@1842
+					origin     	(1592, 566)
+					terminus   	(2189, 566)
+					ordinal    	2)
+				    (object InterMessView "GetRentMaterialBillDetails()" @1857
+					location   	(0, 671)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1858
+					    Parent_View 	@1857
+					    location   	(2174, 714)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A2FEA0143"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	550
+					    justify    	0
+					    label      	"GetRentMaterialBillDetails()"
+					    pctDist    	0.495021
+					    height     	43
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1846
+					Focus_Src  	@1837
+					Focus_Entry 	@1847
+					origin     	(1592, 671)
+					terminus   	(2769, 671)
+					ordinal    	3)
+				    (object InterMessView "Show list rent material bill" @1859
+					location   	(0, 776)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1860
+					    Parent_View 	@1859
+					    location   	(1222, 732)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A3006001B"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	516
+					    justify    	0
+					    label      	"Show list rent material bill"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1816
+					Focus_Src  	@1837
+					Focus_Entry 	@1818
+					origin     	(1561, 776)
+					terminus   	(882, 776)
+					ordinal    	4)
+				    (object InterMessView "Want to insert new bill" @1861
+					location   	(0, 881)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1862
+					    Parent_View 	@1861
+					    location   	(522, 837)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A3020014D"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	456
+					    justify    	0
+					    label      	"Want to insert new bill"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1805
+					supplier   	@1816
+					Focus_Src  	@1807
+					Focus_Entry 	@1819
+					origin     	(195, 881)
+					terminus   	(850, 881)
+					ordinal    	5)
+				    (object SelfMessView "Display insert form" @1863
+					location   	(0, 986)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1864
+					    Parent_View 	@1863
+					    location   	(957, 942)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A302B036A"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	388
+					    justify    	0
+					    label      	"Display insert form"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1816
+					Focus_Src  	@1819
+					Focus_Entry 	@1820
+					origin     	(882, 986)
+					terminus   	(1032, 986)
+					ordinal    	6)
+				    (object InterMessView "Input information" @1865
+					location   	(0, 1116)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1866
+					    Parent_View 	@1865
+					    location   	(522, 1072)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A30BC01B1"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	352
+					    justify    	0
+					    label      	"Input information"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1805
+					supplier   	@1816
+					Focus_Src  	@1808
+					Focus_Entry 	@1821
+					origin     	(195, 1116)
+					terminus   	(850, 1116)
+					ordinal    	7)
+				    (object SelfMessView "Check information" @1867
+					location   	(0, 1221)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1868
+					    Parent_View 	@1867
+					    location   	(957, 1177)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A30C200D3"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	375
+					    justify    	0
+					    label      	"Check information"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1816
+					Focus_Src  	@1821
+					Focus_Entry 	@1822
+					origin     	(882, 1221)
+					terminus   	(1032, 1221)
+					ordinal    	8)
+				    (object InterMessView "Show error message" @1869
+					location   	(0, 1351)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1870
+					    Parent_View 	@1869
+					    location   	(523, 1307)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A30CA0390"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	444
+					    justify    	0
+					    label      	"Show error message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1805
+					Focus_Src  	@1822
+					Focus_Entry 	@1809
+					origin     	(850, 1351)
+					terminus   	(196, 1351)
+					ordinal    	9)
+				    (object Label @1871
+					location   	(313, 1359)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	600
+					justify    	1
+					label      	
+|Information is not valid
+|
+					)
+				    (object InterMessView "InsertRentMaterialBill()" @1872
+					location   	(0, 1456)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1873
+					    Parent_View 	@1872
+					    location   	(1221, 1412)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A30DB0340"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	479
+					    justify    	0
+					    label      	"InsertRentMaterialBill()"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1836
+					Focus_Src  	@1822
+					Focus_Entry 	@1838
+					origin     	(881, 1456)
+					terminus   	(1561, 1456)
+					ordinal    	10)
+				    (object InterMessView "InsertRentMaterialBill()" @1874
+					location   	(0, 1561)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1875
+					    Parent_View 	@1874
+					    location   	(1890, 1517)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A30F10048"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	482
+					    justify    	0
+					    label      	"InsertRentMaterialBill()"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1841
+					Focus_Src  	@1838
+					Focus_Entry 	@1843
+					origin     	(1592, 1561)
+					terminus   	(2189, 1561)
+					ordinal    	11)
+				    (object InterMessView "InsertRentMaterialBillDetails()" @1876
+					location   	(0, 1666)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1877
+					    Parent_View 	@1876
+					    location   	(2180, 1697)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A30FA02B7"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	607
+					    justify    	0
+					    label      	"InsertRentMaterialBillDetails()"
+					    pctDist    	0.500425
+					    height     	31
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1846
+					Focus_Src  	@1838
+					Focus_Entry 	@1848
+					origin     	(1592, 1666)
+					terminus   	(2769, 1666)
+					ordinal    	12)
+				    (object InterMessView "Show error message" @1878
+					location   	(0, 1771)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1879
+					    Parent_View 	@1878
+					    location   	(1222, 1727)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A310801B8"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	444
+					    justify    	0
+					    label      	"Show error message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1816
+					Focus_Src  	@1838
+					Focus_Entry 	@1823
+					origin     	(1561, 1771)
+					terminus   	(882, 1771)
+					ordinal    	13)
+				    (object Label @1880
+					location   	(1012, 1780)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	600
+					justify    	1
+					label      	
+|Patient had rent material bill
+|
+					)
+				    (object InterMessView "Show success message" @1881
+					location   	(0, 1899)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1882
+					    Parent_View 	@1881
+					    location   	(1222, 1855)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A311E032E"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	516
+					    justify    	0
+					    label      	"Show success message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1816
+					Focus_Src  	@1838
+					Focus_Entry 	@1824
+					origin     	(1561, 1899)
+					terminus   	(882, 1899)
+					ordinal    	14)
+				    (object InterMessView "Choose a bill and want to update" @1883
+					location   	(0, 2004)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1884
+					    Parent_View 	@1883
+					    location   	(522, 1960)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A312D02BA"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	666
+					    justify    	0
+					    label      	"Choose a bill and want to update"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1805
+					supplier   	@1816
+					Focus_Src  	@1810
+					Focus_Entry 	@1825
+					origin     	(195, 2004)
+					terminus   	(850, 2004)
+					ordinal    	15)
+				    (object SelfMessView "Display update form" @1885
+					location   	(0, 2109)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1886
+					    Parent_View 	@1885
+					    location   	(957, 2065)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A313801D5"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	432
+					    justify    	0
+					    label      	"Display update form"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1816
+					Focus_Src  	@1825
+					Focus_Entry 	@1826
+					origin     	(882, 2109)
+					terminus   	(1032, 2109)
+					ordinal    	16)
+				    (object InterMessView "Input information" @1887
+					location   	(0, 2239)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1888
+					    Parent_View 	@1887
+					    location   	(522, 2195)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A318D039F"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	369
+					    justify    	0
+					    label      	"Input information"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1805
+					supplier   	@1816
+					Focus_Src  	@1811
+					Focus_Entry 	@1827
+					origin     	(195, 2239)
+					terminus   	(850, 2239)
+					ordinal    	17)
+				    (object SelfMessView "Check information" @1889
+					location   	(0, 2344)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1890
+					    Parent_View 	@1889
+					    location   	(957, 2300)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A319A03CC"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	397
+					    justify    	0
+					    label      	"Check information"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1816
+					Focus_Src  	@1827
+					Focus_Entry 	@1828
+					origin     	(882, 2344)
+					terminus   	(1032, 2344)
+					ordinal    	18)
+				    (object InterMessView "Show error message" @1891
+					location   	(0, 2474)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1892
+					    Parent_View 	@1891
+					    location   	(523, 2430)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A31E903A5"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	437
+					    justify    	0
+					    label      	"Show error message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1805
+					Focus_Src  	@1828
+					Focus_Entry 	@1812
+					origin     	(850, 2474)
+					terminus   	(196, 2474)
+					ordinal    	19)
+				    (object Label @1893
+					location   	(284, 2480)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	600
+					justify    	1
+					label      	
+|Information is not valid
+|
+					)
+				    (object InterMessView "Asking confirmation Yes Or No" @1894
+					location   	(0, 2588)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1895
+					    Parent_View 	@1894
+					    location   	(523, 2544)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A31F7024D"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	616
+					    justify    	0
+					    label      	"Asking confirmation Yes Or No"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1805
+					Focus_Src  	@1828
+					Focus_Entry 	@1813
+					origin     	(850, 2588)
+					terminus   	(196, 2588)
+					ordinal    	20)
+				    (object Label @1896
+					location   	(284, 2593)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	600
+					justify    	1
+					label      	"Information is valid")
+				    (object InterMessView "Confirm Yes" @1897
+					location   	(0, 2708)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1898
+					    Parent_View 	@1897
+					    location   	(522, 2664)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A320B016D"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	284
+					    justify    	0
+					    label      	"Confirm Yes"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1805
+					supplier   	@1816
+					Focus_Src  	@1813
+					Focus_Entry 	@1829
+					origin     	(195, 2708)
+					terminus   	(850, 2708)
+					ordinal    	21)
+				    (object InterMessView "UpdateRentMaterialBill()" @1899
+					location   	(0, 2813)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1900
+					    Parent_View 	@1899
+					    location   	(1221, 2769)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A321A0065"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	500
+					    justify    	0
+					    label      	"UpdateRentMaterialBill()"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1836
+					Focus_Src  	@1829
+					Focus_Entry 	@1839
+					origin     	(881, 2813)
+					terminus   	(1561, 2813)
+					ordinal    	22)
+				    (object InterMessView "UpdateRentMaterialBillDetails()" @1901
+					location   	(0, 2918)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1902
+					    Parent_View 	@1901
+					    location   	(2180, 2874)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A322D001D"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	625
+					    justify    	0
+					    label      	"UpdateRentMaterialBillDetails()"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1846
+					Focus_Src  	@1839
+					Focus_Entry 	@1849
+					origin     	(1592, 2918)
+					terminus   	(2769, 2918)
+					ordinal    	23)
+				    (object InterMessView "UpdateRentMaterialBill()" @1903
+					location   	(0, 3023)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1904
+					    Parent_View 	@1903
+					    location   	(1890, 2979)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A323B01C0"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	500
+					    justify    	0
+					    label      	"UpdateRentMaterialBill()"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1841
+					Focus_Src  	@1839
+					Focus_Entry 	@1844
+					origin     	(1592, 3023)
+					terminus   	(2189, 3023)
+					ordinal    	24)
+				    (object InterMessView "Show error message" @1905
+					location   	(0, 3128)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1906
+					    Parent_View 	@1905
+					    location   	(1222, 3084)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A32440216"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	437
+					    justify    	0
+					    label      	"Show error message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1816
+					Focus_Src  	@1839
+					Focus_Entry 	@1830
+					origin     	(1561, 3128)
+					terminus   	(882, 3128)
+					ordinal    	25)
+				    (object Label @1907
+					location   	(1000, 3140)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	457
+					justify    	1
+					label      	"Patient was discharged")
+				    (object InterMessView "Show success message" @1908
+					location   	(0, 3246)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1909
+					    Parent_View 	@1908
+					    location   	(1222, 3203)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A32620045"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	512
+					    justify    	0
+					    label      	"Show success message"
+					    pctDist    	0.500736
+					    height     	44
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1816
+					Focus_Src  	@1839
+					Focus_Entry 	@1831
+					origin     	(1561, 3246)
+					terminus   	(882, 3246)
+					ordinal    	26)
+				    (object InterMessView "Choose a bill and want to delete" @1910
+					location   	(0, 3351)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1911
+					    Parent_View 	@1910
+					    location   	(522, 3307)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A326E00DD"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	641
+					    justify    	0
+					    label      	"Choose a bill and want to delete"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1805
+					supplier   	@1816
+					Focus_Src  	@1814
+					Focus_Entry 	@1832
+					origin     	(195, 3351)
+					terminus   	(850, 3351)
+					ordinal    	27)
+				    (object InterMessView "Asking confirmation Yes Or No" @1912
+					location   	(0, 3456)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1913
+					    Parent_View 	@1912
+					    location   	(523, 3412)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A329C0274"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	616
+					    justify    	0
+					    label      	"Asking confirmation Yes Or No"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1805
+					Focus_Src  	@1832
+					Focus_Entry 	@1815
+					origin     	(850, 3456)
+					terminus   	(196, 3456)
+					ordinal    	28)
+				    (object InterMessView "Confirm Yes" @1914
+					location   	(0, 3561)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1915
+					    Parent_View 	@1914
+					    location   	(522, 3517)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A32A90164"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	284
+					    justify    	0
+					    label      	"Confirm Yes"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1805
+					supplier   	@1816
+					Focus_Src  	@1815
+					Focus_Entry 	@1833
+					origin     	(195, 3561)
+					terminus   	(850, 3561)
+					ordinal    	29)
+				    (object InterMessView "DeleteRentMaterialBill()" @1916
+					location   	(0, 3666)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1917
+					    Parent_View 	@1916
+					    location   	(1221, 3622)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A32B302BC"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	487
+					    justify    	0
+					    label      	"DeleteRentMaterialBill()"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1816
+					supplier   	@1836
+					Focus_Src  	@1833
+					Focus_Entry 	@1840
+					origin     	(881, 3666)
+					terminus   	(1561, 3666)
+					ordinal    	30)
+				    (object InterMessView "DeleteRentMaterialBillDetails()" @1918
+					location   	(0, 3771)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1919
+					    Parent_View 	@1918
+					    location   	(2180, 3727)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A32BD02D6"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	612
+					    justify    	0
+					    label      	"DeleteRentMaterialBillDetails()"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1846
+					Focus_Src  	@1840
+					Focus_Entry 	@1850
+					origin     	(1592, 3771)
+					terminus   	(2769, 3771)
+					ordinal    	31)
+				    (object InterMessView "DeleteRentMaterialBill()" @1920
+					location   	(0, 3876)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1921
+					    Parent_View 	@1920
+					    location   	(1890, 3832)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A32DA031C"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	487
+					    justify    	0
+					    label      	"DeleteRentMaterialBill()"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	0)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1841
+					Focus_Src  	@1840
+					Focus_Entry 	@1845
+					origin     	(1592, 3876)
+					terminus   	(2189, 3876)
+					ordinal    	32)
+				    (object InterMessView "Show error message" @1922
+					location   	(0, 3981)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1923
+					    Parent_View 	@1922
+					    location   	(1222, 3937)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A32E700A3"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	437
+					    justify    	0
+					    label      	"Show error message"
+					    pctDist    	0.500000
+					    height     	45
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1816
+					Focus_Src  	@1840
+					Focus_Entry 	@1834
+					origin     	(1561, 3981)
+					terminus   	(882, 3981)
+					ordinal    	33)
+				    (object Label @1924
+					location   	(978, 3991)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					nlines     	1
+					max_width  	600
+					justify    	1
+					label      	
+|Patient was dischared
+|
+					)
+				    (object InterMessView "Show success message" @1925
+					location   	(0, 4102)
+					font       	(object Font
+					    size       	10
+					    face       	"Arial"
+					    bold       	FALSE
+					    italics    	FALSE
+					    underline  	FALSE
+					    strike     	FALSE
+					    color      	0
+					    default_color 	TRUE)
+					label      	(object SegLabel @1926
+					    Parent_View 	@1925
+					    location   	(1222, 4059)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    quidu      	"4F9A32F80313"
+					    anchor_loc 	1
+					    nlines     	1
+					    max_width  	512
+					    justify    	0
+					    label      	"Show success message"
+					    pctDist    	0.500736
+					    height     	44
+					    orientation 	1)
+					line_color 	3342489
+					client     	@1836
+					supplier   	@1816
+					Focus_Src  	@1840
+					Focus_Entry 	@1835
+					origin     	(1561, 4102)
+					terminus   	(882, 4102)
+					ordinal    	34))))))
 		logical_presentations 	(list unit_reference_list))
 	    (object Class_Category "View"
 		quid       	"4F955A430246"
@@ -35042,7 +39147,28 @@
 				uid        	0)))
 		    (object Class_Utility "Material Model"
 			quid       	"4F97E08D01E2"
-			stereotype 	"entity"))
+			stereotype 	"entity"
+			operations 	(list Operations
+			    (object Operation "GetListMaterial"
+				quid       	"4F9A11CA0157"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "InsertMaterial"
+				quid       	"4F9A11D00049"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "UpdateMaterial"
+				quid       	"4F9A11D60349"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "DeleteMaterial"
+				quid       	"4F9A11DC00AA"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0))))
 		logical_presentations 	(list unit_reference_list))
 	    (object Class_Category "Controller"
 		quid       	"4F955A53009C"
@@ -35111,7 +39237,28 @@
 			stereotype 	"control")
 		    (object Class_Utility "Material Controller"
 			quid       	"4F9632A900DF"
-			stereotype 	"entity")
+			stereotype 	"entity"
+			operations 	(list Operations
+			    (object Operation "ShowListMaterial"
+				quid       	"4F9A11C70332"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "InsertMaterial"
+				quid       	"4F9A11CD01EC"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "UpdateMaterial"
+				quid       	"4F9A11D40113"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "DeleteMaterial"
+				quid       	"4F9A11D902A1"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)))
 		    (object Class_Utility "Discharged Certificate Controller"
 			quid       	"4F965880016A"
 			stereotype 	"control"
