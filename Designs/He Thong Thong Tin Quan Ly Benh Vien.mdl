@@ -13633,7 +13633,7 @@
 					    quidu      	"4F965DEF0137"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	290
+					    max_width  	291
 					    justify    	0
 					    label      	"InsertBill( )"
 					    pctDist    	0.499839
@@ -13673,7 +13673,7 @@
 					    quidu      	"4F965DFB01C8"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	437
+					    max_width  	438
 					    justify    	0
 					    label      	"InsertBillDetails( )"
 					    pctDist    	0.500000
@@ -13713,7 +13713,7 @@
 					    quidu      	"4F965F0B019D"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	654
+					    max_width  	655
 					    justify    	0
 					    label      	"GetPatientUnpaidBillDetails( )"
 					    pctDist    	0.500000
@@ -13953,7 +13953,7 @@
 					    quidu      	"4F965FEC010C"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	448
+					    max_width  	449
 					    justify    	0
 					    label      	"ChangeDCState( )"
 					    pctDist    	0.500000
@@ -14047,11 +14047,6 @@
 					origin     	(983, 2799)
 					terminus   	(5396, 2799)
 					ordinal    	21)))))
-		    (object Class_Category "Back up and restore"
-			quid       	"4F96112A01D3"
-			exportControl 	"Public"
-			logical_models 	(list unit_reference_list)
-			logical_presentations 	(list unit_reference_list))
 		    (object Class_Category "Decentralization Management"
 			quid       	"4F96614B00D2"
 			exportControl 	"Public"
@@ -21270,7 +21265,7 @@
 					    quidu      	"4F96765F00C3"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	625
+					    max_width  	626
 					    justify    	0
 					    label      	"Display insert new disease form"
 					    pctDist    	0.500000
@@ -21786,7 +21781,7 @@
 					    quidu      	"4F9677E10108"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	625
+					    max_width  	626
 					    justify    	0
 					    label      	"Asking confirmation Yes Or No"
 					    pctDist    	0.500000
@@ -22044,7 +22039,7 @@
 					    quidu      	"4F96785F0057"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	625
+					    max_width  	626
 					    justify    	0
 					    label      	"Asking confirmation Yes Or No"
 					    pctDist    	0.500000
@@ -22730,7 +22725,7 @@
 				zoom       	100
 				max_height 	28350
 				max_width  	21600
-				origin_x   	632
+				origin_x   	631
 				origin_y   	3807
 				items      	(list diagram_item_list
 				    (object InterObjView "$UNNAMED$113" @1061
@@ -26276,7 +26271,7 @@
 					    quidu      	"4F97C58500D8"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	779
+					    max_width  	781
 					    justify    	0
 					    label      	"Choose a heath file and want to update"
 					    pctDist    	0.500000
@@ -27881,7 +27876,7 @@
 					    quidu      	"4F97C96B015A"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	507
+					    max_width  	510
 					    justify    	0
 					    label      	"GetResidentPatientList( )"
 					    pctDist    	0.500000
@@ -29097,7 +29092,7 @@
 					    quidu      	"4F97CCC2027B"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	512
+					    max_width  	516
 					    justify    	0
 					    label      	"Show success message"
 					    pctDist    	0.500000
@@ -30355,7 +30350,7 @@
 					    quidu      	"4F97CF34000F"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	684
+					    max_width  	685
 					    justify    	0
 					    label      	"Choose a bed and want to update"
 					    pctDist    	0.500000
@@ -34367,7 +34362,7 @@
 					    quidu      	"4F97DEBA01B2"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	441
+					    max_width  	450
 					    justify    	0
 					    label      	"Send list staff function"
 					    pctDist    	0.500000
@@ -35997,7 +35992,7 @@
 					    quidu      	"4F9A0FE4018B"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	760
+					    max_width  	763
 					    justify    	0
 					    label      	"Choose a material and want to update"
 					    pctDist    	0.500000
@@ -39778,7 +39773,7 @@
 					    quidu      	"4F9A452B0082"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	459
+					    max_width  	460
 					    justify    	0
 					    label      	"Medicine Management"
 					    pctDist    	0.500000
@@ -42683,7 +42678,7 @@
 					    quidu      	"4F9A51DC01B4"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	653
+					    max_width  	654
 					    justify    	0
 					    label      	"Choose a bill and want to delete"
 					    pctDist    	0.500000
@@ -46680,7 +46675,7 @@
 					    quidu      	"4F9A5FFE025F"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	625
+					    max_width  	626
 					    justify    	0
 					    label      	"Asking confirmation Yes Or No"
 					    pctDist    	0.500000
@@ -46720,7 +46715,7 @@
 					    quidu      	"4F9A600C0117"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	284
+					    max_width  	285
 					    justify    	0
 					    label      	"Confirm Yes"
 					    pctDist    	0.500000
@@ -47116,7 +47111,7 @@
 					    quidu      	"4F9A609D033F"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	625
+					    max_width  	626
 					    justify    	0
 					    label      	"Asking confirmation Yes Or No"
 					    pctDist    	0.500000
@@ -50763,7 +50758,7 @@
 					    quidu      	"4F9CC74C02A3"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	428
+					    max_width  	429
 					    justify    	0
 					    label      	"Service Management"
 					    pctDist    	0.500000
@@ -56264,7 +56259,7 @@
 					    location   	(180, 250)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	324
+					    max_width  	360
 					    justify    	0
 					    label      	"")
 					icon       	"Actor"
@@ -56272,10 +56267,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9E9E91025B"
-					width      	300
+					width      	120
 					height     	3898
-					icon_height 	150
-					icon_width 	108
+					icon_height 	162
+					icon_width 	120
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @2838
@@ -56364,7 +56359,7 @@
 					    location   	(780, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	651
+					    max_width  	687
 					    justify    	0
 					    label      	"")
 					icon       	"boundary"
@@ -56372,10 +56367,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9E9EAB0344"
-					width      	300
+					width      	229
 					height     	3898
-					icon_height 	141
-					icon_width 	217
+					icon_height 	153
+					icon_width 	229
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @2849
@@ -56520,7 +56515,7 @@
 					    location   	(1401, 250)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	435
+					    max_width  	471
 					    justify    	0
 					    label      	"")
 					icon       	"control"
@@ -56528,10 +56523,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9E9EAF033A"
-					width      	300
+					width      	157
 					height     	3898
-					icon_height 	152
-					icon_width 	145
+					icon_height 	164
+					icon_width 	157
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @2868
@@ -56578,7 +56573,7 @@
 					    location   	(2011, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	426
+					    max_width  	462
 					    justify    	0
 					    label      	"")
 					icon       	"entity"
@@ -56586,10 +56581,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9E9EBE014B"
-					width      	300
+					width      	154
 					height     	3898
-					icon_height 	141
-					icon_width 	142
+					icon_height 	153
+					icon_width 	154
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @2873
@@ -56636,7 +56631,7 @@
 					    location   	(2592, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	426
+					    max_width  	462
 					    justify    	0
 					    label      	"")
 					icon       	"entity"
@@ -56644,10 +56639,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9E9EBB02B3"
-					width      	300
+					width      	154
 					height     	3898
-					icon_height 	141
-					icon_width 	142
+					icon_height 	153
+					icon_width 	154
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @2878
@@ -57207,7 +57202,7 @@
 					    default_color 	TRUE)
 					label      	(object SegLabel @2909
 					    Parent_View 	@2908
-					    location   	(2011, 1669)
+					    location   	(2010, 1669)
 					    font       	(object Font
 						size       	10
 						face       	"Arial"
@@ -57305,7 +57300,7 @@
 					    default_color 	TRUE)
 					label      	(object SegLabel @2914
 					    Parent_View 	@2913
-					    location   	(1091, 1812)
+					    location   	(1092, 1812)
 					    font       	(object Font
 						size       	10
 						face       	"Arial"
@@ -57358,7 +57353,7 @@
 					    quidu      	"4F9EA1250175"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	757
+					    max_width  	760
 					    justify    	0
 					    label      	"Choose a surgical and want to update"
 					    pctDist    	0.500000
@@ -58137,7 +58132,7 @@
 					    default_color 	TRUE)
 					label      	(object SegLabel @2956
 					    Parent_View 	@2955
-					    location   	(1091, 3899)
+					    location   	(1092, 3899)
 					    font       	(object Font
 						size       	10
 						face       	"Arial"
@@ -58641,7 +58636,7 @@
 					    location   	(180, 250)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	324
+					    max_width  	360
 					    justify    	0
 					    label      	"")
 					icon       	"Actor"
@@ -58649,10 +58644,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EA8740132"
-					width      	300
+					width      	120
 					height     	4628
-					icon_height 	150
-					icon_width 	108
+					icon_height 	162
+					icon_width 	120
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @2959
@@ -58755,7 +58750,7 @@
 					    location   	(734, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	651
+					    max_width  	687
 					    justify    	0
 					    label      	"")
 					icon       	"boundary"
@@ -58763,10 +58758,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EA88C0018"
-					width      	300
+					width      	229
 					height     	4628
-					icon_height 	141
-					icon_width 	217
+					icon_height 	153
+					icon_width 	229
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @2972
@@ -58939,7 +58934,7 @@
 					    location   	(1257, 250)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	435
+					    max_width  	471
 					    justify    	0
 					    label      	"")
 					icon       	"control"
@@ -58947,10 +58942,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EA8780332"
-					width      	300
+					width      	157
 					height     	4628
-					icon_height 	152
-					icon_width 	145
+					icon_height 	164
+					icon_width 	157
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @2995
@@ -59004,7 +58999,7 @@
 					    location   	(1842, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	422
+					    max_width  	462
 					    justify    	0
 					    label      	"")
 					icon       	"entity"
@@ -59012,7 +59007,7 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EA87E00A2"
-					width      	434
+					width      	154
 					height     	4628
 					icon_height 	153
 					icon_width 	154
@@ -59069,7 +59064,7 @@
 					    location   	(2269, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	426
+					    max_width  	462
 					    justify    	0
 					    label      	"")
 					icon       	"entity"
@@ -59077,10 +59072,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EA8820279"
-					width      	300
+					width      	154
 					height     	4628
-					icon_height 	141
-					icon_width 	142
+					icon_height 	153
+					icon_width 	154
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @3007
@@ -59113,7 +59108,7 @@
 					    location   	(2728, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	426
+					    max_width  	462
 					    justify    	0
 					    label      	"")
 					icon       	"entity"
@@ -59121,10 +59116,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EA885005A"
-					width      	300
+					width      	154
 					height     	4628
-					icon_height 	141
-					icon_width 	142
+					icon_height 	153
+					icon_width 	154
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @3010
@@ -59768,7 +59763,7 @@
 					    default_color 	TRUE)
 					label      	(object SegLabel @3044
 					    Parent_View 	@3043
-					    location   	(995, 1794)
+					    location   	(996, 1794)
 					    font       	(object Font
 						size       	10
 						face       	"Arial"
@@ -59808,7 +59803,7 @@
 					    default_color 	TRUE)
 					label      	(object SegLabel @3046
 					    Parent_View 	@3045
-					    location   	(455, 1900)
+					    location   	(456, 1900)
 					    font       	(object Font
 						size       	10
 						face       	"Arial"
@@ -60939,14 +60934,14 @@
 						supplier   	"$UNNAMED$199"
 						quidu      	"4F9EB6760127"
 						messages   	(list Messages
-						    (object Message "ShowListWard()"
+						    (object Message "ShowListWard( )"
 							quid       	"4F9EB7AB00CE"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
 							dir        	"FromClientToSupplier"
 							sequence   	"1.1"
 							ordinal    	1
-							quidu      	"000000000000"
+							quidu      	"4F9FA415011E"
 							creation   	FALSE)
 						    (object Message "Show list ward"
 							quid       	"4F9EB7BC03B4"
@@ -60957,14 +60952,14 @@
 							ordinal    	3
 							quidu      	"000000000000"
 							creation   	FALSE)
-						    (object Message "InsertWard()"
+						    (object Message "InsertWard( )"
 							quid       	"4F9EB8EC0312"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
 							dir        	"FromClientToSupplier"
 							sequence   	"3.1.2"
 							ordinal    	9
-							quidu      	"000000000000"
+							quidu      	"4F9FA41F009E"
 							creation   	FALSE)
 						    (object Message "Show success message"
 							quid       	"4F9EB8FE026B"
@@ -60975,14 +60970,14 @@
 							ordinal    	11
 							quidu      	"000000000000"
 							creation   	FALSE)
-						    (object Message "UpdateWard()"
+						    (object Message "UpdateWard( )"
 							quid       	"4F9EB9DB0301"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
 							dir        	"FromClientToSupplier"
 							sequence   	"6.1.1"
 							ordinal    	19
-							quidu      	"000000000000"
+							quidu      	"4F9FA424031E"
 							creation   	FALSE)
 						    (object Message "Show success message"
 							quid       	"4F9EBA7402E0"
@@ -60993,14 +60988,14 @@
 							ordinal    	21
 							quidu      	"000000000000"
 							creation   	FALSE)
-						    (object Message "DeleteWard()"
+						    (object Message "DeleteWard( )"
 							quid       	"4F9EBA980292"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
 							dir        	"FromClientToSupplier"
 							sequence   	"7.1.1.1"
 							ordinal    	25
-							quidu      	"000000000000"
+							quidu      	"4F9FA429031E"
 							creation   	FALSE)
 						    (object Message "Show error message"
 							quid       	"4F9EBAA400CF"
@@ -61074,41 +61069,41 @@
 						supplier   	"$UNNAMED$200"
 						quidu      	"4F9EB6800179"
 						messages   	(list Messages
-						    (object Message "GetListWard()"
+						    (object Message "GetListWard( )"
 							quid       	"4F9EB7B500ED"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
 							dir        	"FromClientToSupplier"
 							sequence   	"1.1.1"
 							ordinal    	2
-							quidu      	"000000000000"
+							quidu      	"4F9FA41C0057"
 							creation   	FALSE)
-						    (object Message "InsertWard()"
+						    (object Message "InsertWard( )"
 							quid       	"4F9EB8F502A3"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
 							dir        	"FromClientToSupplier"
 							sequence   	"3.1.2.1"
 							ordinal    	10
-							quidu      	"000000000000"
+							quidu      	"4F9FA421014E"
 							creation   	FALSE)
-						    (object Message "UpdateWard()"
+						    (object Message "UpdateWard( )"
 							quid       	"4F9EB9E30392"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
 							dir        	"FromClientToSupplier"
 							sequence   	"6.1.1.1"
 							ordinal    	20
-							quidu      	"000000000000"
+							quidu      	"4F9FA42700EE"
 							creation   	FALSE)
-						    (object Message "DeleteWard()"
+						    (object Message "DeleteWard( )"
 							quid       	"4F9EBA9E025F"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
 							dir        	"FromClientToSupplier"
 							sequence   	"7.1.1.1.1"
 							ordinal    	26
-							quidu      	"000000000000"
+							quidu      	"4F9FA42C006F"
 							creation   	FALSE))))
 					class      	"Logical View::Controller::Ward Controller"
 					quidu      	"4F9EB5C402D2"
@@ -61270,7 +61265,7 @@
 					    location   	(244, 250)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	324
+					    max_width  	360
 					    justify    	0
 					    label      	"")
 					icon       	"Actor"
@@ -61278,10 +61273,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EB6890090"
-					width      	300
+					width      	120
 					height     	3323
-					icon_height 	150
-					icon_width 	108
+					icon_height 	162
+					icon_width 	120
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @3104
@@ -61370,7 +61365,7 @@
 					    location   	(777, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	651
+					    max_width  	687
 					    justify    	0
 					    label      	"")
 					icon       	"boundary"
@@ -61378,10 +61373,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EB67002AA"
-					width      	300
+					width      	229
 					height     	3323
-					icon_height 	141
-					icon_width 	217
+					icon_height 	153
+					icon_width 	229
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @3115
@@ -61526,7 +61521,7 @@
 					    location   	(1397, 250)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	435
+					    max_width  	471
 					    justify    	0
 					    label      	"")
 					icon       	"control"
@@ -61534,10 +61529,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EB6760127"
-					width      	300
+					width      	157
 					height     	3323
-					icon_height 	152
-					icon_width 	145
+					icon_height 	164
+					icon_width 	157
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @3134
@@ -61584,7 +61579,7 @@
 					    location   	(2041, 251)
 					    anchor_loc 	1
 					    nlines     	2
-					    max_width  	426
+					    max_width  	462
 					    justify    	0
 					    label      	"")
 					icon       	"entity"
@@ -61592,10 +61587,10 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EB6800179"
-					width      	300
+					width      	154
 					height     	3323
-					icon_height 	141
-					icon_width 	142
+					icon_height 	153
+					icon_width 	154
 					icon_y_offset 	0
 					annotation 	1
 					Focus_Of_Control 	(object Focus_Of_Control "" @3139
@@ -61666,7 +61661,7 @@
 					origin     	(259, 306)
 					terminus   	(761, 306)
 					ordinal    	0)
-				    (object InterMessView "ShowListWard()" @3145
+				    (object InterMessView "ShowListWard( )" @3145
 					location   	(0, 411)
 					font       	(object Font
 					    size       	10
@@ -61692,9 +61687,9 @@
 					    quidu      	"4F9EB7AB00CE"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	338
+					    max_width  	354
 					    justify    	0
-					    label      	"ShowListWard()"
+					    label      	"ShowListWard( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -61706,7 +61701,7 @@
 					origin     	(792, 411)
 					terminus   	(1381, 411)
 					ordinal    	1)
-				    (object InterMessView "GetListWard()" @3147
+				    (object InterMessView "GetListWard( )" @3147
 					location   	(0, 516)
 					font       	(object Font
 					    size       	10
@@ -61732,9 +61727,9 @@
 					    quidu      	"4F9EB7B500ED"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	303
+					    max_width  	319
 					    justify    	0
-					    label      	"GetListWard()"
+					    label      	"GetListWard( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -62004,7 +61999,7 @@
 |Information is not valid
 |
 					)
-				    (object InterMessView "InsertWard()" @3162
+				    (object InterMessView "InsertWard( )" @3162
 					location   	(0, 1301)
 					font       	(object Font
 					    size       	10
@@ -62030,9 +62025,9 @@
 					    quidu      	"4F9EB8EC0312"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	294
+					    max_width  	310
 					    justify    	0
-					    label      	"InsertWard()"
+					    label      	"InsertWard( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -62044,7 +62039,7 @@
 					origin     	(792, 1301)
 					terminus   	(1381, 1301)
 					ordinal    	9)
-				    (object InterMessView "InsertWard()" @3164
+				    (object InterMessView "InsertWard( )" @3164
 					location   	(0, 1406)
 					font       	(object Font
 					    size       	10
@@ -62070,9 +62065,9 @@
 					    quidu      	"4F9EB8F502A3"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	291
+					    max_width  	307
 					    justify    	0
-					    label      	"InsertWard()"
+					    label      	"InsertWard( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -62455,7 +62450,7 @@
 					origin     	(259, 2296)
 					terminus   	(761, 2296)
 					ordinal    	18)
-				    (object InterMessView "UpdateWard()" @3185
+				    (object InterMessView "UpdateWard( )" @3185
 					location   	(0, 2401)
 					font       	(object Font
 					    size       	10
@@ -62481,9 +62476,9 @@
 					    quidu      	"4F9EB9DB0301"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	322
+					    max_width  	338
 					    justify    	0
-					    label      	"UpdateWard()"
+					    label      	"UpdateWard( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -62495,7 +62490,7 @@
 					origin     	(792, 2401)
 					terminus   	(1381, 2401)
 					ordinal    	19)
-				    (object InterMessView "UpdateWard()" @3187
+				    (object InterMessView "UpdateWard( )" @3187
 					location   	(0, 2506)
 					font       	(object Font
 					    size       	10
@@ -62521,9 +62516,9 @@
 					    quidu      	"4F9EB9E30392"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	322
+					    max_width  	338
 					    justify    	0
-					    label      	"UpdateWard()"
+					    label      	"UpdateWard( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -62695,7 +62690,7 @@
 					origin     	(259, 2926)
 					terminus   	(761, 2926)
 					ordinal    	24)
-				    (object InterMessView "DeleteWard()" @3197
+				    (object InterMessView "DeleteWard( )" @3197
 					location   	(0, 3031)
 					font       	(object Font
 					    size       	10
@@ -62721,9 +62716,9 @@
 					    quidu      	"4F9EBA980292"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	310
+					    max_width  	325
 					    justify    	0
-					    label      	"DeleteWard()"
+					    label      	"DeleteWard( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -62735,7 +62730,7 @@
 					origin     	(792, 3031)
 					terminus   	(1381, 3031)
 					ordinal    	25)
-				    (object InterMessView "DeleteWard()" @3199
+				    (object InterMessView "DeleteWard( )" @3199
 					location   	(0, 3136)
 					font       	(object Font
 					    size       	10
@@ -62761,9 +62756,9 @@
 					    quidu      	"4F9EBA9E025F"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	310
+					    max_width  	325
 					    justify    	0
-					    label      	"DeleteWard()"
+					    label      	"DeleteWard( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -62859,7 +62854,7 @@
 					    quidu      	"4F9EBAF4003F"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	512
+					    max_width  	516
 					    justify    	0
 					    label      	"Show success message"
 					    pctDist    	0.500000
@@ -63784,7 +63779,28 @@
 				uid        	0)))
 		    (object Class_Utility "Ward Model"
 			quid       	"4F9EB5B30324"
-			stereotype 	"entity"))
+			stereotype 	"entity"
+			operations 	(list Operations
+			    (object Operation "GetListWard"
+				quid       	"4F9FA41C0057"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "InsertWard"
+				quid       	"4F9FA421014E"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "UpdateWard"
+				quid       	"4F9FA42700EE"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "DeleteWard"
+				quid       	"4F9FA42C006F"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0))))
 		logical_presentations 	(list unit_reference_list))
 	    (object Class_Category "Controller"
 		quid       	"4F955A53009C"
@@ -64349,7 +64365,28 @@
 				uid        	0)))
 		    (object Class_Utility "Ward Controller"
 			quid       	"4F9EB5C402D2"
-			stereotype 	"control"))
+			stereotype 	"control"
+			operations 	(list Operations
+			    (object Operation "ShowListWard"
+				quid       	"4F9FA415011E"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "InsertWard"
+				quid       	"4F9FA41F009E"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "UpdateWard"
+				quid       	"4F9FA424031E"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "DeleteWard"
+				quid       	"4F9FA429031E"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0))))
 		logical_presentations 	(list unit_reference_list)))
 	logical_presentations 	(list unit_reference_list
 	    (object ClassDiagram "Main"
