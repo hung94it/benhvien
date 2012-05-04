@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital", "Hospital\Hospital.csproj", "{E3CAD6B9-3195-43A2-A6B3-E8E1F19B91C7}"
 EndProject
-Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "ModelingProject1", "ModelingProject1\ModelingProject1.modelproj", "{3B29295D-678D-4330-9AE1-DAD5EEA3170C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,16 +23,6 @@ Global
 		{E3CAD6B9-3195-43A2-A6B3-E8E1F19B91C7}.Release|Mixed Platforms.Build.0 = Release|x86
 		{E3CAD6B9-3195-43A2-A6B3-E8E1F19B91C7}.Release|x86.ActiveCfg = Release|x86
 		{E3CAD6B9-3195-43A2-A6B3-E8E1F19B91C7}.Release|x86.Build.0 = Release|x86
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{3B29295D-678D-4330-9AE1-DAD5EEA3170C}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
