@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Hospital.View
 {
-    public partial class MainForm : Form
+    public partial class FormHealthFile : Form
     {
-        public MainForm()
+        public FormHealthFile()
         {
             InitializeComponent();
         }

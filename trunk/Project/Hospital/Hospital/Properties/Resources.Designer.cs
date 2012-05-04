@@ -59,12 +59,5 @@ namespace Hospital.Properties {
                 resourceCulture = value;
             }
         }
-        
-        internal static System.Drawing.Icon Red {
-            get {
-                object obj = ResourceManager.GetObject("Red", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
     }
 }

@@ -6,6 +6,8 @@ D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\GenerateResource
 D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.exe
 D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.pdb
-D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.LoginForm.resources
-D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.MainForm.resources
-D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.Form1.resources
+D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormLogin.resources
+D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormMain.resources
+D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\bin\Debug\Hospital.exe.config
+D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormPatientDetail.resources
+D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormStaffDetail.resources

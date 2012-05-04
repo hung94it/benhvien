@@ -9,11 +9,18 @@ using System.Windows.Forms;
 
 namespace Hospital.View
 {
-    public partial class LoginForm : Form
+    public partial class FormLogin : Form
     {
-        public LoginForm()
+        public FormLogin()
         {
             InitializeComponent();
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            FormMain mainForm = new FormMain();
+            mainForm.Show();
+            //this.Visible = false;
         }
     }
 }
