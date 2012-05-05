@@ -11,3 +11,4 @@ D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.Fo
 D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\bin\Debug\Hospital.exe.config
 D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormPatientDetail.resources
 D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormStaffDetail.resources
+D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormHealthFile.resources
