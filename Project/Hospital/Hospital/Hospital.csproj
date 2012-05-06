@@ -109,6 +109,12 @@
     <Compile Include="View\FormStaffDetail.Designer.cs">
       <DependentUpon>FormStaffDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\testconnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\testconnection.Designer.cs">
+      <DependentUpon>testconnection.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -133,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormStaffDetail.resx">
       <DependentUpon>FormStaffDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\testconnection.resx">
+      <DependentUpon>testconnection.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\Settings.settings">

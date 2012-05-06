@@ -56,7 +56,7 @@ namespace Hospital.Model
         {
             Assignment assign = new Assignment();
 
-            return assign
+            return assign;
         }
     }
 }
