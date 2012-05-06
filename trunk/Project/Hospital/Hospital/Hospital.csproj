@@ -61,6 +61,15 @@
     <Compile Include="Model\ExaminationCertificate.cs" />
     <Compile Include="Model\Function.cs" />
     <Compile Include="Model\HeathFile.cs" />
+    <Compile Include="Model\HeathMonitoringNote.cs" />
+    <Compile Include="Model\HIC.cs" />
+    <Compile Include="Model\HospitalBed.cs" />
+    <Compile Include="Model\HospitalizationCertificate.cs" />
+    <Compile Include="Model\Major.cs" />
+    <Compile Include="Model\Material.cs" />
+    <Compile Include="Model\Medicine.cs" />
+    <Compile Include="Model\MedicineBillDetail.cs" />
+    <Compile Include="Model\Patient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
