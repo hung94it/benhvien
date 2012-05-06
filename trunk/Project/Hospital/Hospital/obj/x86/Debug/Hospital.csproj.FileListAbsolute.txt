@@ -15,3 +15,4 @@ D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.Fo
 D:\Dai hoc\Hoc ki 8\Do An HTTT\benhvien\Project\Hospital\Hospital\bin\Debug\Hospital.exe.config
 D:\Dai hoc\Hoc ki 8\Do An HTTT\benhvien\Project\Hospital\Hospital\obj\x86\Debug\Hospital.exe
 D:\Dai hoc\Hoc ki 8\Do An HTTT\benhvien\Project\Hospital\Hospital\obj\x86\Debug\Hospital.pdb
+D:\Work\HTTT\Do an HTTT\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.testconnection.resources

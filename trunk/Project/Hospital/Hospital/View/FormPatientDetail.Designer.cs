@@ -37,13 +37,15 @@
             this.labelBirthday = new DevComponents.DotNetBar.LabelX();
             this.dateBirthday = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelIdentityCard = new DevComponents.DotNetBar.LabelX();
-            this.comboTreeGender = new DevComponents.DotNetBar.Controls.ComboTree();
-            this.node1 = new DevComponents.AdvTree.Node();
-            this.node2 = new DevComponents.AdvTree.Node();
             this.labelGender = new DevComponents.DotNetBar.LabelX();
             this.labelAddress = new DevComponents.DotNetBar.LabelX();
             this.textBoxAddress = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.textBoxIdentityCard = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelPatientID = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxState = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelState = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxGender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             // 
             this.buttonOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonOk.Location = new System.Drawing.Point(166, 246);
+            this.buttonOk.Location = new System.Drawing.Point(166, 294);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -62,7 +64,7 @@
             // 
             this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonClose.Location = new System.Drawing.Point(247, 246);
+            this.buttonClose.Location = new System.Drawing.Point(247, 294);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -75,7 +77,7 @@
             // 
             // 
             this.labelFirstName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelFirstName.Location = new System.Drawing.Point(12, 12);
+            this.labelFirstName.Location = new System.Drawing.Point(12, 38);
             this.labelFirstName.Name = "labelFirstName";
             this.labelFirstName.Size = new System.Drawing.Size(75, 23);
             this.labelFirstName.TabIndex = 2;
@@ -88,7 +90,7 @@
             // 
             this.textBoxFirstName.Border.Class = "TextBoxBorder";
             this.textBoxFirstName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxFirstName.Location = new System.Drawing.Point(93, 15);
+            this.textBoxFirstName.Location = new System.Drawing.Point(93, 41);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(229, 20);
             this.textBoxFirstName.TabIndex = 3;
@@ -100,7 +102,7 @@
             // 
             this.textBoxLastName.Border.Class = "TextBoxBorder";
             this.textBoxLastName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxLastName.Location = new System.Drawing.Point(93, 41);
+            this.textBoxLastName.Location = new System.Drawing.Point(93, 67);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(229, 20);
             this.textBoxLastName.TabIndex = 5;
@@ -111,7 +113,7 @@
             // 
             // 
             this.labelLastName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelLastName.Location = new System.Drawing.Point(12, 41);
+            this.labelLastName.Location = new System.Drawing.Point(12, 64);
             this.labelLastName.Name = "labelLastName";
             this.labelLastName.Size = new System.Drawing.Size(75, 23);
             this.labelLastName.TabIndex = 4;
@@ -123,7 +125,7 @@
             // 
             // 
             this.labelBirthday.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelBirthday.Location = new System.Drawing.Point(12, 93);
+            this.labelBirthday.Location = new System.Drawing.Point(12, 142);
             this.labelBirthday.Name = "labelBirthday";
             this.labelBirthday.Size = new System.Drawing.Size(75, 23);
             this.labelBirthday.TabIndex = 6;
@@ -139,7 +141,7 @@
             this.dateBirthday.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dateBirthday.ButtonDropDown.Visible = true;
             this.dateBirthday.IsPopupCalendarOpen = false;
-            this.dateBirthday.Location = new System.Drawing.Point(93, 93);
+            this.dateBirthday.Location = new System.Drawing.Point(93, 145);
             // 
             // 
             // 
@@ -183,39 +185,11 @@
             // 
             // 
             this.labelIdentityCard.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelIdentityCard.Location = new System.Drawing.Point(12, 67);
+            this.labelIdentityCard.Location = new System.Drawing.Point(12, 116);
             this.labelIdentityCard.Name = "labelIdentityCard";
             this.labelIdentityCard.Size = new System.Drawing.Size(75, 23);
             this.labelIdentityCard.TabIndex = 9;
             this.labelIdentityCard.Text = "CMND:";
-            // 
-            // comboTreeGender
-            // 
-            this.comboTreeGender.BackColor = System.Drawing.SystemColors.Window;
-            // 
-            // 
-            // 
-            this.comboTreeGender.BackgroundStyle.Class = "TextBoxBorder";
-            this.comboTreeGender.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.comboTreeGender.ButtonDropDown.Visible = true;
-            this.comboTreeGender.Location = new System.Drawing.Point(93, 119);
-            this.comboTreeGender.Name = "comboTreeGender";
-            this.comboTreeGender.Nodes.AddRange(new DevComponents.AdvTree.Node[] {
-            this.node1,
-            this.node2});
-            this.comboTreeGender.Size = new System.Drawing.Size(112, 23);
-            this.comboTreeGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboTreeGender.TabIndex = 10;
-            // 
-            // node1
-            // 
-            this.node1.Name = "node1";
-            this.node1.Text = "Nam";
-            // 
-            // node2
-            // 
-            this.node2.Name = "node2";
-            this.node2.Text = "Nữ";
             // 
             // labelGender
             // 
@@ -223,7 +197,7 @@
             // 
             // 
             this.labelGender.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelGender.Location = new System.Drawing.Point(12, 122);
+            this.labelGender.Location = new System.Drawing.Point(12, 168);
             this.labelGender.Name = "labelGender";
             this.labelGender.Size = new System.Drawing.Size(75, 23);
             this.labelGender.TabIndex = 12;
@@ -235,7 +209,7 @@
             // 
             // 
             this.labelAddress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelAddress.Location = new System.Drawing.Point(12, 152);
+            this.labelAddress.Location = new System.Drawing.Point(12, 194);
             this.labelAddress.Name = "labelAddress";
             this.labelAddress.Size = new System.Drawing.Size(75, 23);
             this.labelAddress.TabIndex = 13;
@@ -248,7 +222,7 @@
             // 
             this.textBoxAddress.Border.Class = "TextBoxBorder";
             this.textBoxAddress.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxAddress.Location = new System.Drawing.Point(93, 149);
+            this.textBoxAddress.Location = new System.Drawing.Point(93, 197);
             this.textBoxAddress.Multiline = true;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(229, 91);
@@ -261,21 +235,85 @@
             // 
             this.textBoxIdentityCard.Border.Class = "TextBoxBorder";
             this.textBoxIdentityCard.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxIdentityCard.Location = new System.Drawing.Point(93, 68);
+            this.textBoxIdentityCard.Location = new System.Drawing.Point(93, 119);
             this.textBoxIdentityCard.Name = "textBoxIdentityCard";
             this.textBoxIdentityCard.Size = new System.Drawing.Size(229, 20);
             this.textBoxIdentityCard.TabIndex = 15;
+            // 
+            // textBoxX1
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Location = new System.Drawing.Point(93, 15);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.Size = new System.Drawing.Size(229, 20);
+            this.textBoxX1.TabIndex = 17;
+            // 
+            // labelPatientID
+            // 
+            // 
+            // 
+            // 
+            this.labelPatientID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelPatientID.Location = new System.Drawing.Point(12, 12);
+            this.labelPatientID.Name = "labelPatientID";
+            this.labelPatientID.Size = new System.Drawing.Size(75, 23);
+            this.labelPatientID.TabIndex = 16;
+            this.labelPatientID.Text = "Mã bệnh nhân:";
+            // 
+            // comboBoxState
+            // 
+            this.comboBoxState.DisplayMember = "Text";
+            this.comboBoxState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxState.FormattingEnabled = true;
+            this.comboBoxState.ItemHeight = 14;
+            this.comboBoxState.Location = new System.Drawing.Point(93, 93);
+            this.comboBoxState.Name = "comboBoxState";
+            this.comboBoxState.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxState.TabIndex = 18;
+            // 
+            // labelState
+            // 
+            // 
+            // 
+            // 
+            this.labelState.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelState.Location = new System.Drawing.Point(12, 90);
+            this.labelState.Name = "labelState";
+            this.labelState.Size = new System.Drawing.Size(75, 23);
+            this.labelState.TabIndex = 19;
+            this.labelState.Text = "Trạng thái:";
+            // 
+            // comboBoxGender
+            // 
+            this.comboBoxGender.DisplayMember = "Text";
+            this.comboBoxGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxGender.FormattingEnabled = true;
+            this.comboBoxGender.ItemHeight = 14;
+            this.comboBoxGender.Location = new System.Drawing.Point(93, 171);
+            this.comboBoxGender.Name = "comboBoxGender";
+            this.comboBoxGender.Size = new System.Drawing.Size(121, 20);
+            this.comboBoxGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxGender.TabIndex = 20;
             // 
             // FormPatientDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 279);
+            this.ClientSize = new System.Drawing.Size(334, 333);
+            this.Controls.Add(this.comboBoxGender);
+            this.Controls.Add(this.labelState);
+            this.Controls.Add(this.comboBoxState);
+            this.Controls.Add(this.textBoxX1);
+            this.Controls.Add(this.labelPatientID);
             this.Controls.Add(this.textBoxIdentityCard);
             this.Controls.Add(this.textBoxAddress);
             this.Controls.Add(this.labelAddress);
             this.Controls.Add(this.labelGender);
-            this.Controls.Add(this.comboTreeGender);
             this.Controls.Add(this.labelIdentityCard);
             this.Controls.Add(this.dateBirthday);
             this.Controls.Add(this.labelBirthday);
@@ -303,12 +341,14 @@
         private DevComponents.DotNetBar.LabelX labelBirthday;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dateBirthday;
         private DevComponents.DotNetBar.LabelX labelIdentityCard;
-        private DevComponents.DotNetBar.Controls.ComboTree comboTreeGender;
         private DevComponents.DotNetBar.LabelX labelGender;
-        private DevComponents.AdvTree.Node node1;
-        private DevComponents.AdvTree.Node node2;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxAddress;
         private DevComponents.DotNetBar.LabelX labelAddress;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxIdentityCard;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.LabelX labelPatientID;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxState;
+        private DevComponents.DotNetBar.LabelX labelState;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxGender;
     }
 }
