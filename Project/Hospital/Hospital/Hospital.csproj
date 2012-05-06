@@ -49,6 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Assignment.cs" />
+    <Compile Include="Model\AssignmentDetail.cs" />
+    <Compile Include="Model\Bill.cs" />
+    <Compile Include="Model\BillType.cs" />
+    <Compile Include="Model\Decentralization.cs" />
+    <Compile Include="Model\DecentralizationDetail.cs" />
+    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\DischargeCertificate.cs" />
+    <Compile Include="Model\Disease.cs" />
+    <Compile Include="Model\ExaminationCertificate.cs" />
+    <Compile Include="Model\Function.cs" />
+    <Compile Include="Model\HeathFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
