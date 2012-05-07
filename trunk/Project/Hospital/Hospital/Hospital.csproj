@@ -70,6 +70,15 @@
     <Compile Include="Model\Medicine.cs" />
     <Compile Include="Model\MedicineBillDetail.cs" />
     <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\PrescriptionDetail.cs" />
+    <Compile Include="Model\Prescription.cs" />
+    <Compile Include="Model\RentMaterialBillDetail.cs" />
+    <Compile Include="Model\Service.cs" />
+    <Compile Include="Model\ServiceBillDetail.cs" />
+    <Compile Include="Model\Staff.cs" />
+    <Compile Include="Model\Surgical.cs" />
+    <Compile Include="Model\SurgicalDetail.cs" />
+    <Compile Include="Model\TestCertificate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />

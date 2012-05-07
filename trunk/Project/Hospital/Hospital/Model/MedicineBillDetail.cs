@@ -51,7 +51,7 @@ namespace Hospital.Model
         {
             List<MedicineBillDetail> lstMBD = new List<MedicineBillDetail>();
 
-            return lstMBD;s
+            return lstMBD;
         }
     }
 }
