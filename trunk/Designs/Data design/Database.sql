@@ -46,7 +46,7 @@ go
 /* Table: BILL                                                  */
 /*==============================================================*/
 create table BILL (
-   BILLID               numeric(8)          not null,
+   BILLID               numeric(8)    identity(10000000,1)      not null,
    BILLTYPEID           numeric(3)           null,
    PATIENTID            numeric(8)           null,
    STAFFID              numeric(8)           null,
@@ -56,13 +56,7 @@ create table BILL (
    constraint PK_BILL primary key nonclustered (BILLID)
 )
 go
-CREATE SEQUENCE SEQBILL
-    AS INT
-    START WITH 10000000
-    INCREMENT BY 1
-    MINVALUE 0
-    NO MAXVALUE
-go
+
 /*==============================================================*/
 /* Index: RELATIONSHIP_14_FK                                    */
 /*==============================================================*/
@@ -442,13 +436,7 @@ create table PRESCRIPTION (
    constraint PK_PRESCRIPTION primary key nonclustered (PRESCRIPTIONID)
 )
 go
-CREATE SEQUENCE SEQPRES
-    AS INT
-    START WITH 10000000
-    INCREMENT BY 1
-    MINVALUE 0
-    NO MAXVALUE
-go
+
 /*==============================================================*/
 /* Index: RELATIONSHIP_20_FK                                    */
 /*==============================================================*/
@@ -613,13 +601,7 @@ create table SURGICAL (
    constraint PK_SURGICAL primary key nonclustered (SURGICALID)
 )
 go
-CREATE SEQUENCE SEQSURGICAL
-    AS INT
-    START WITH 10000000
-    INCREMENT BY 1
-    MINVALUE 0
-    NO MAXVALUE
-go
+
 /*==============================================================*/
 /* Index: RELATIONSHIP_38_FK                                    */
 /*==============================================================*/
@@ -665,13 +647,7 @@ create table TESTCERTIFICATE (
    constraint PK_TESTCERTIFICATE primary key nonclustered (TCID)
 )
 go
-CREATE SEQUENCE SEQTEST
-    AS INT
-    START WITH 10000000
-    INCREMENT BY 1
-    MINVALUE 0
-    NO MAXVALUE
-go
+
 /*==============================================================*/
 /* Index: RELATIONSHIP_41_FK                                    */
 /*==============================================================*/
