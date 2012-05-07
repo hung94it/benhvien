@@ -89,6 +89,7 @@
             this.Name = "testconnection";
             this.Text = "testconnection";
             this.Load += new System.EventHandler(this.testconnection_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.testconnection_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.ResumeLayout(false);
 
