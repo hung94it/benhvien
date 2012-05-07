@@ -20378,7 +20378,7 @@
 						supplier   	"$UNNAMED$171"
 						quidu      	"4F966E260279"
 						messages   	(list Messages
-						    (object Message "ShowListDC( )"
+						    (object Message "GetListDC( )"
 							quid       	"4F966F670260"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
@@ -20637,6 +20637,23 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F965880016A"
+					compartment 	(object Compartment
+					    Parent_View 	@938
+					    location   	(1381, 453)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    icon_style 	"Icon"
+					    anchor     	2
+					    nlines     	6
+					    max_width  	0
+					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -21238,7 +21255,7 @@
 					origin     	(195, 368)
 					terminus   	(908, 368)
 					ordinal    	0)
-				    (object InterMessView "ShowListDC( )" @992
+				    (object InterMessView "GetListDC( )" @992
 					location   	(0, 473)
 					font       	(object Font
 					    size       	10
@@ -21264,9 +21281,9 @@
 					    quidu      	"4F966F670260"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	319
+					    max_width  	10
 					    justify    	0
-					    label      	"ShowListDC( )"
+					    label      	"GetListDC( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -22617,7 +22634,7 @@
 						supplier   	"$UNNAMED$184"
 						quidu      	"4F9672220063"
 						messages   	(list Messages
-						    (object Message "ShowListDisease( )"
+						    (object Message "GetListDisease( )"
 							quid       	"4F9675DC033B"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
@@ -22867,6 +22884,23 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9671F30014"
+					compartment 	(object Compartment
+					    Parent_View 	@1055
+					    location   	(1412, 425)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    icon_style 	"Icon"
+					    anchor     	2
+					    nlines     	6
+					    max_width  	0
+					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -23461,7 +23495,7 @@
 					origin     	(212, 341)
 					terminus   	(891, 341)
 					ordinal    	0)
-				    (object InterMessView "ShowListDisease( )" @1108
+				    (object InterMessView "GetListDisease( )" @1108
 					location   	(0, 446)
 					font       	(object Font
 					    size       	10
@@ -23487,9 +23521,9 @@
 					    quidu      	"4F9675DC033B"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	404
+					    max_width  	10
 					    justify    	0
-					    label      	"ShowListDisease( )"
+					    label      	"GetListDisease( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -24890,7 +24924,7 @@
 						supplier   	"$UNNAMED$203"
 						quidu      	"4F96C51501F4"
 						messages   	(list Messages
-						    (object Message "ShowListEC( )"
+						    (object Message "GetListEC( )"
 							quid       	"4F96DF6C03AC"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
@@ -25325,6 +25359,23 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F96C48E0095"
+					compartment 	(object Compartment
+					    Parent_View 	@1172
+					    location   	(1497, 409)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    icon_style 	"Icon"
+					    anchor     	2
+					    nlines     	7
+					    max_width  	0
+					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -26176,7 +26227,7 @@
 					origin     	(206, 359)
 					terminus   	(751, 359)
 					ordinal    	0)
-				    (object InterMessView "ShowListEC( )" @1250
+				    (object InterMessView "GetListEC( )" @1250
 					location   	(0, 464)
 					font       	(object Font
 					    size       	10
@@ -26202,9 +26253,9 @@
 					    quidu      	"4F96DF6C03AC"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	319
+					    max_width  	10
 					    justify    	0
-					    label      	"ShowListEC( )"
+					    label      	"GetListEC( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -75065,7 +75116,7 @@
 			quid       	"4F965880016A"
 			stereotype 	"control"
 			operations 	(list Operations
-			    (object Operation "ShowListDC"
+			    (object Operation "GetListDC"
 				quid       	"4F966F88018F"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
@@ -75082,6 +75133,11 @@
 				uid        	0)
 			    (object Operation "UpdateDC"
 				quid       	"4F97CD8A0184"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "GetDC"
+				quid       	"4FA7F05B007A"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
 				uid        	0)))
@@ -75138,7 +75194,7 @@
 			quid       	"4F9671F30014"
 			stereotype 	"control"
 			operations 	(list Operations
-			    (object Operation "ShowListDisease"
+			    (object Operation "GetListDisease"
 				quid       	"4F9675E400CC"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
@@ -75157,12 +75213,17 @@
 				quid       	"4F97CDA10373"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "GetDisease"
+				quid       	"4FA7F104037D"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
 				uid        	0)))
 		    (object Class_Utility "Examination Certificate Controller"
 			quid       	"4F96C48E0095"
 			stereotype 	"control"
 			operations 	(list Operations
-			    (object Operation "ShowListEC"
+			    (object Operation "GetListEC"
 				quid       	"4F96DF9900A4"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
@@ -75184,6 +75245,11 @@
 				uid        	0)
 			    (object Operation "UpdateECResult"
 				quid       	"4F96E31B020E"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "GetEC"
+				quid       	"4FA7F1800120"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
 				uid        	0)))
