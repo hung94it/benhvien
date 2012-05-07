@@ -140,23 +140,6 @@ namespace Hospital.Model
             }
         }
 
-        public Boolean ChangePatientState()
-        {
-            return true;
-        }
-
-        public Boolean ChargeDeposit()
-        {
-            return true;
-        }
-
-        public List<Patient> GetResidentPatientList()
-        {
-            List<Patient> lstPatient = new List<Patient>();
-
-            return lstPatient;
-        }
-
         //Get list patient
         public static List<Patient> GetListPatient()
         {
@@ -231,5 +214,23 @@ namespace Hospital.Model
             }
             return tempPatient;
         }
+
+        public Boolean ChangePatientState()
+        {
+            return true;
+        }
+
+        public Boolean ChargeDeposit()
+        {
+            return true;
+        }
+
+        public List<Patient> GetResidentPatientList()
+        {
+            List<Patient> lstPatient = new List<Patient>();
+
+            return lstPatient;
+        }
+
     }
 }
