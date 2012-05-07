@@ -53,10 +53,14 @@
     <Compile Include="Controller\BillController.cs" />
     <Compile Include="Controller\DecentralizationController.cs" />
     <Compile Include="Controller\DepartmentController.cs" />
+    <Compile Include="Controller\DischargeCertificateController.cs" />
+    <Compile Include="Controller\DiseaseController.cs" />
+    <Compile Include="Controller\ExaminationCertificate.cs" />
     <Compile Include="Model\Assignment.cs" />
     <Compile Include="Model\AssignmentDetail.cs" />
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\BillType.cs" />
+    <Compile Include="Model\DbConnect.cs" />
     <Compile Include="Model\Decentralization.cs" />
     <Compile Include="Model\DecentralizationDetail.cs" />
     <Compile Include="Model\Department.cs" />
