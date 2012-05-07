@@ -6,17 +6,17 @@ using System.Data;
 
 namespace Hospital.Model
 {
-    class MedicineBillDetail
+    class PrescriptionDetail
     {
         private int medicineID;
-        private int billID;
+        private int prescriptionID;
         private int quantity;
-        private int price;
+        private String instruction;
 
-        public int Price
+        public String Instruction
         {
-            get { return price; }
-            set { price = value; }
+            get { return instruction; }
+            set { instruction = value; }
         }
 
         public int Quantity
@@ -25,10 +25,10 @@ namespace Hospital.Model
             set { quantity = value; }
         }
 
-        public int BillID
+        public int PrescriptionID
         {
-            get { return billID; }
-            set { billID = value; }
+            get { return prescriptionID; }
+            set { prescriptionID = value; }
         }
 
         public int MedicineID
@@ -36,23 +36,25 @@ namespace Hospital.Model
             get { return medicineID; }
             set { medicineID = value; }
         }
-        public Boolean InsertBillDetail()
+        public Boolean InsertPrescriptionDetail()
         {
             return true;
         }
-        public Boolean UpdateBillDetail()
+        public Boolean UpdatePrescriptionDetail()
         {
             return true;
         }
-        public Boolean DeleteBillDetail()
+        public Boolean DeletePrescriptionDetail()
         {
             return true;
         }
-        public DataTable GetMedicineBillDetail()
+        public DataTable GetListPrescriptionDetail()
         {
-            DataTable dtMBD = new DataTable();
+            DataTable dtPD = new DataTable();
 
-            return dtMBD;
+            return dtPD;
+
         }
+        
     }
 }

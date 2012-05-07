@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace Hospital.Model
 {
@@ -67,11 +68,11 @@ namespace Hospital.Model
         {
             return true;
         }
-        public List<HeathMonitoringNote> GetListHN()
+        public DataTable GetListHN()
         {
-            List<HeathMonitoringNote> lstHN = new List<HeathMonitoringNote>();
+            DataTable dtHN = new DataTable();
 
-            return lstHN;
+            return dtHN;
         }
         public HeathMonitoringNote GetHN()
         {

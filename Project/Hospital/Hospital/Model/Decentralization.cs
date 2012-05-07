@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace Hospital.Model
 {
@@ -32,11 +33,11 @@ namespace Hospital.Model
         {
             return true;
         }
-        public List<Decentralization> GetListDecentralization()
+        public DataTable GetListDecentralization()
         {
-            List<Decentralization> lstDecent = new List<Decentralization>();
+            DataTable dtDecent = new DataTable();
 
-            return lstDecent;
+            return dtDecent;
         }
         public Decentralization GetDecentralization()
         {

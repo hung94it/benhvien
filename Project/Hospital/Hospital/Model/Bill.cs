@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace Hospital.Model
 {
@@ -69,29 +70,29 @@ namespace Hospital.Model
         {
             return true;
         }
-        public List<Bill> GetListRentMaterialBill()
+        public DataTable GetListRentMaterialBill()
         {
-            List<Bill> lstBill=new List<Bill>();
+            DataTable dtBill=new DataTable();
 
-            return lstBill;
+            return dtBill;
         }
-        public List<Bill> GetListMedicineBill()
+        public DataTable GetListMedicineBill()
         {
-            List<Bill> lstBill = new List<Bill>();
+            DataTable dtBill = new DataTable();
 
-            return lstBill;
+            return dtBill;
         }
-        public List<Bill> GetServiceBill()
+        public DataTable GetServiceBill()
         {
-            List<Bill> lstBill = new List<Bill>();
+            DataTable dtBill = new DataTable();
 
-            return lstBill;
+            return dtBill;
         }
-        public List<Bill> GetListBill()
+        public DataTable GetListBill()
         {
-            List<Bill> lstBill = new List<Bill>();
+            DataTable dtBill = new DataTable();
 
-            return lstBill;
+            return dtBill;
         }
         public void Billing()
         { 

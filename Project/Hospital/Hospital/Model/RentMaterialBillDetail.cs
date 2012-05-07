@@ -6,10 +6,10 @@ using System.Data;
 
 namespace Hospital.Model
 {
-    class MedicineBillDetail
+    class RentMaterialBillDetail
     {
-        private int medicineID;
         private int billID;
+        private int materialID;
         private int quantity;
         private int price;
 
@@ -25,34 +25,35 @@ namespace Hospital.Model
             set { quantity = value; }
         }
 
+        public int MaterialID
+        {
+            get { return materialID; }
+            set { materialID = value; }
+        }
+
         public int BillID
         {
             get { return billID; }
             set { billID = value; }
         }
+        public Boolean InsertRentMaterialBillDetail()
+        {
+            return true;
+        }
+        public Boolean UpdateRentMaterialBillDetail()
+        {
+            return true;
+        }
+        public Boolean DeleteRentMaterialBillDetail()
+        {
+            return true;
+        }
+        public DataTable GetListRentMaterialBillDetail()
+        {
+            DataTable dtRMBD = new DataTable();
 
-        public int MedicineID
-        {
-            get { return medicineID; }
-            set { medicineID = value; }
-        }
-        public Boolean InsertBillDetail()
-        {
-            return true;
-        }
-        public Boolean UpdateBillDetail()
-        {
-            return true;
-        }
-        public Boolean DeleteBillDetail()
-        {
-            return true;
-        }
-        public DataTable GetMedicineBillDetail()
-        {
-            DataTable dtMBD = new DataTable();
+            return dtRMBD;
 
-            return dtMBD;
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace Hospital.Model
 {
@@ -27,11 +28,11 @@ namespace Hospital.Model
 
             return newDepartment;
         }
-        public List<Department> GetListDepartment()
+        public DataTable GetListDepartment()
         {
-            List<Department> lstDepartment = new List<Department>();
+            DataTable dtDepartment = new DataTable();
 
-            return lstDepartment;
+            return dtDepartment;
         }
     }
 }
