@@ -38,6 +38,7 @@
     <Reference Include="DevComponents.DotNetBar2, Version=10.5.0.2, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.Instrumentation, Version=10.5.0.2, Culture=neutral, PublicKeyToken=f90dc37c26666a67" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -82,6 +83,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="TestModel.cs" />
     <Compile Include="View\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
