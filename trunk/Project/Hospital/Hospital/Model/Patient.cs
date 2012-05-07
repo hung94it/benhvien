@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+<<<<<<< .mine
+using System.Data;
+=======
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+>>>>>>> .r51
 
 namespace Hospital.Model
 {
@@ -224,13 +228,34 @@ namespace Hospital.Model
         {
             return true;
         }
+<<<<<<< .mine
+        public DataTable GetResidentPatientList()
+=======
 
         public List<Patient> GetResidentPatientList()
+>>>>>>> .r51
         {
-            List<Patient> lstPatient = new List<Patient>();
+            DataTable dtPatient = new DataTable();
 
-            return lstPatient;
+            return dtPatient;
         }
+<<<<<<< .mine
+        public DataTable GetListPatient()
+        {
+            DataTable dtPatient = new DataTable();
+=======
+>>>>>>> .r51
 
+<<<<<<< .mine
+            return dtPatient;
+        }
+        public Patient GetPatient()
+        {
+            Patient newPatient = new Patient();
+
+            return newPatient;
+        }
+=======
+>>>>>>> .r51
     }
 }
