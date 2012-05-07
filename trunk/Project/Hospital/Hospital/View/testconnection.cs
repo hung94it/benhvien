@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Configuration;
-using Hospital;
+using Hospital.Model;
 
 namespace Hospital.View
 {
@@ -19,36 +19,43 @@ namespace Hospital.View
             InitializeComponent();
         }
 
-        private void dataGridViewX1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        private void dataGridViewX1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
 
         private void testconnection_Load(object sender, EventArgs e)
         {
-            //dataGridViewX1.DataSource = LoadData();
-        }
-
-        private DataTable LoadData()
-        {
-            string sqlConnectString = ConfigurationManager.ConnectionStrings[
-                "eHospital"].ConnectionString;
-
-            string sqlSelect = @"SELECT * FROM PATIENT";
-
-            // Retrieve and return a DataTable containing details about the TOP 50 contact
-            SqlDataAdapter da = new SqlDataAdapter(sqlSelect, sqlConnectString);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-
-            return dt;
+            
         }
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            Patient pa = new Patient();
-            pa = pa.GetPatient();
-            textBoxX1.Text = pa.PatientID.ToString() + " " +  pa.FirstName ;
+            Patient p = new Patient(10000002, "test2", "test2", new DateTime(1990,1,2), 0, 100000002, "qwer", "qwer", 23454363, 0);
+            
+            try
+            {
+                //Patient pa = Patient.GetPatient(10000000);
+                //textBoxX1.Text = pa.PatientID.ToString() + " " + pa.FirstName;
+                //Patient.InsertPatient(p);
+                //Patient.DeletePatient(10000003);
+                Patient.UpdatePatient(p);
+                dataGridViewX1.DataSource = Patient.GetListPatient();
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void testconnection_Paint(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                dataGridViewX1.DataSource = Patient.GetListPatient();
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
         }
 
     }
