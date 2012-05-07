@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace Hospital.Model
 {
@@ -21,11 +22,11 @@ namespace Hospital.Model
             get { return majorID; }
             set { majorID = value; }
         }
-        public List<Major> GetListMajor()
+        public DataTable GetListMajor()
         {
-            List<Major> lstMajor = new List<Major>();
+            DataTable dtMajor = new DataTable();
 
-            return lstMajor;
+            return dtMajor;
         }
         public Major GetMajor()
         {

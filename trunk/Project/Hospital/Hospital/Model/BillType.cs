@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace Hospital.Model
 {
@@ -27,11 +28,11 @@ namespace Hospital.Model
 
             return billType;
         }
-        public List<BillType> GetListBillType()
+        public DataTable GetListBillType()
         {
-            List<BillType> lstBillType = new List<BillType>();
+            DataTable dtBillType = new DataTable();
 
-            return lstBillType;
+            return dtBillType;
         }
     }
 }

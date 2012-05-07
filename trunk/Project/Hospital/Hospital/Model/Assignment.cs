@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace Hospital.Model
 {
@@ -46,11 +47,11 @@ namespace Hospital.Model
         {
             return false;
         }
-        public List<Assignment> GetListAssignment()
+        public DataTable GetListAssignment()
         {
-            List<Assignment> lstAssignment = new List<Assignment>();
+            DataTable dtAssignment = new DataTable();
 
-            return lstAssignment;
+            return dtAssignment;
         }
         public Assignment GetAssignment(int assignID)
         {

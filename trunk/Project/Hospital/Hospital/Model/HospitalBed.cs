@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace Hospital.Model
 {
@@ -44,11 +45,11 @@ namespace Hospital.Model
         {
             return true;
         }
-        public List<HospitalBed> GetListHospitalBed()
+        public DataTable GetListHospitalBed()
         {
-            List<HospitalBed> lstHB = new List<HospitalBed>();
+            DataTable dtHB = new DataTable();
 
-            return lstHB;
+            return dtHB;
         }
         public HospitalBed GetHospitalBed()
         {

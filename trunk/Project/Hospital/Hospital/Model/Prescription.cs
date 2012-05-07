@@ -6,67 +6,61 @@ using System.Data;
 
 namespace Hospital.Model
 {
-    class DischargeCertificate
+    class Prescription
     {
-        private int dCID;
+        private int prescriptionID;
         private int staffID;
         private int patientID;
         private DateTime date;
-        private int state;
-
-        public int State
-        {
-            get { return state; }
-            set { state = value; }
-        }
 
         public DateTime Date
         {
             get { return date; }
             set { date = value; }
         }
+
         public int PatientID
         {
             get { return patientID; }
             set { patientID = value; }
         }
+
         public int StaffID
         {
             get { return staffID; }
             set { staffID = value; }
         }
-        public int DCID
+        public int PrescriptionID
         {
-            get { return dCID; }
-            set { dCID = value; }
+            get { return prescriptionID; }
+            set { prescriptionID = value; }
         }
-        public Boolean InsertDC()
+        public Boolean InsertPrescription()
         {
             return true;
         }
-        public Boolean UpdateDC()
+        public Boolean UpdatePrescription()
         {
             return true;
         }
-        public Boolean DeleteDC()
+        public Boolean DeletePrescription()
         {
             return true;
         }
-        public DataTable GetListDC()
+        public DataTable GetListPrescription()
         {
-            DataTable dtDC = new DataTable();
+            DataTable dtP = new DataTable();
 
-            return dtDC;
-        }
-        public DischargeCertificate GetDC()
-        {
-            DischargeCertificate dC = new DischargeCertificate();
+            return dtP;
 
-            return dC;
         }
-        public Boolean ChangeDCState()
+        public Prescription GetPrescription()
         {
-            return true;
+            Prescription newPrescription = new Prescription();
+
+            return newPrescription;
         }
+
+
     }
 }

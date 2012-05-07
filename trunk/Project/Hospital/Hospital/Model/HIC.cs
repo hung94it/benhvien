@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data;
 
 namespace Hospital.Model
 {
@@ -33,11 +34,11 @@ namespace Hospital.Model
             get { return hICID; }
             set { hICID = value; }
         }
-        public List<HIC> GetHIC()
+        public DataTable GetHIC()
         {
-            List<HIC> lstHIC = new List<HIC>();
+            DataTable dtHIC = new DataTable();
 
-            return lstHIC;
+            return dtHIC;
         }
         public Boolean CheckHIC()
         {
