@@ -28,16 +28,19 @@ namespace Hospital.View
 
         private void buttonX1_Click(object sender, EventArgs e)
         {
-            Patient p = new Patient(10000002, "test2", "test3", new DateTime(1990,1,2), 0, 100000002, "qwer", "qwer", 23454363, 0);
-            
+            //Patient p = new Patient(10000002, "test2", "test3", new DateTime(1990,1,2), 0, 100000002, "qwer", "qwer", 23454363, 0);
+            Major temp = new Major(103, "test3");
             try
             {
                 //Patient pa = Patient.GetPatient(10000000);
                 //textBoxX1.Text = pa.PatientID.ToString() + " " + pa.FirstName;
                 //Patient.InsertPatient(p);
                 //Patient.DeletePatient(10000003);
-                Patient.UpdatePatient(p);
-                dataGridViewX1.DataSource = Patient.GetListPatient();
+                //Patient.UpdatePatient(p);
+                //Major.InsertMajor(temp);
+                //Major.DeleteMajor(104);
+                Major.UpdateMajor(temp);
+                dataGridViewX1.DataSource = Major.GetListMajor();
             }
             catch (SqlException exception)
             {
@@ -49,7 +52,7 @@ namespace Hospital.View
         {
             try
             {
-                dataGridViewX1.DataSource = Patient.GetListPatient();
+                dataGridViewX1.DataSource = Major.GetListMajor();
             }
             catch (SqlException exception)
             {

@@ -3,35 +3,71 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
+using Hospital.Functional;
 
 namespace Hospital.Model
 {
     class Major
     {
-        private int majorID;
-        private int majorName;
+        public int MajorID { get; set; }
+        public string MajorName { get; set; }
 
-        public int MajorName
+        //private static Major tempMajor;
+
+        public Major() { }
+
+        public Major(int majorID, string majorName)
         {
-            get { return majorName; }
-            set { majorName = value; }
+            MajorID = majorID;
+            MajorName = majorName;
         }
 
-        public int MajorID
+        public static int InsertMajor(Major major)
         {
-            get { return majorID; }
-            set { majorID = value; }
+            string sqlInsert = @"INSERT INTO MAJOR(MAJORNAME)
+                                VALUES (@MajorName)";
+            SqlParameter[] sqlParameters = {new SqlParameter("@MajorName", major.MajorName)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
-        public DataTable GetListMajor()
-        {
-            DataTable dtMajor = new DataTable();
 
-            return dtMajor;
-        }
-        public Major GetMajor()
+        public static int UpdateMajor(Major major)
         {
+            string sqlUpdate = @"UPDATE MAJOR
+                                SET MAJORNAME = @MajorName
+                                WHERE (MAJORID = @MajorID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@MajorID", major.MajorID),
+                                           new SqlParameter("@MajorName", major.MajorName)};
+            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
+        }
+
+        public static int DeleteMajor(int majorID)
+        {
+            string sqlDelete = @"DELETE FROM MAJOR
+                                WHERE (MAJORID = @MajorID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@MajorID", majorID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
+        }
+
+        public static DataTable GetListMajor()
+        {
+            string sqlSelect = @"SELECT MAJORID, MAJORNAME
+                                FROM MAJOR";
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            return dataTable;
+        }
+
+        public Major GetMajor(int majorID)
+        {
+            int tempInterger;
             Major newMajor = new Major();
-
+            string sqlSelect = @"SELECT MAJORID, MAJORNAME
+                                FROM MAJOR
+                                WHERE (MAJORID = @MajorID)";
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            int.TryParse(dataTable.Rows[0][0].ToString(),out tempInterger);
+            newMajor.MajorID = tempInterger;
+            newMajor.MajorName = dataTable.Rows[0][1].ToString();
             return newMajor;
         }
     }
