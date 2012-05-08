@@ -69,6 +69,7 @@
     <Compile Include="Controller\StaffController.cs" />
     <Compile Include="Controller\SurgicalController.cs" />
     <Compile Include="Controller\TestController.cs" />
+    <Compile Include="Functional\SqlResult.cs" />
     <Compile Include="Model\Assignment.cs" />
     <Compile Include="Model\AssignmentDetail.cs" />
     <Compile Include="Model\Bill.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="View\testconnection.Designer.cs">
       <DependentUpon>testconnection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\TestModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
