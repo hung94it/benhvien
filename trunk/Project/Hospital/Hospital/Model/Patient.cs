@@ -84,15 +84,22 @@ namespace Hospital.Model
         public static Boolean UpdatePatient(Patient patient)
         {
             string sqlConnectString = ConfigurationManager.ConnectionStrings["eHospital"].ConnectionString;
-            string sqlInsert = @"UPDATE PATIENT
+            //using parameter OK
+            string sqlUpdate = @"UPDATE PATIENT
                                 SET FIRSTNAME = @FirstName, LASTNAME = @LastName, BIRTHDAY = @BirthDay, GENDER = @Gender,
                                     ICN = @Icn, PROFESSION = @Profession, ADDRESS = @Address, DEPOSIT = @Deposit, STATE = @State
                                 WHERE (PATIENTID = @PatientID)";
+            ////using string concat OK
+            //string sqlUpdate = "UPDATE PATIENT SET FIRSTNAME ='" + patient.FirstName + "', LASTNAME ='" + patient.LastName +
+            //    "', BIRTHDAY ='" + patient.BirthDay.ToShortDateString() + "', GENDER =" + patient.Gender + ",ICN =" + patient.ICN + 
+            //    ", PROFESSION = '" + patient.Profession + "', ADDRESS ='" + patient.Address + "', DEPOSIT =" + patient.Deposit + ", STATE =" + patient.State +
+            //    "WHERE (PATIENTID =" + patient.PatientID + ")";
             try
             {
                 using (SqlConnection connection = new SqlConnection(sqlConnectString))
                 {
-                    SqlCommand command = new SqlCommand(sqlInsert, connection);
+                    SqlCommand command = new SqlCommand(sqlUpdate, connection);
+                    ////using parameters
                     command.Parameters.Add("@PatientID", SqlDbType.Decimal).Value = patient.PatientID;
                     command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = patient.FirstName;
                     command.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = patient.LastName;
@@ -120,13 +127,13 @@ namespace Hospital.Model
         public static Boolean DeletePatient(decimal patientID)
         {
             string sqlConnectString = ConfigurationManager.ConnectionStrings["eHospital"].ConnectionString;
-            string sqlInsert = @"DELETE FROM PATIENT
+            string sqlDelete = @"DELETE FROM PATIENT
                                 WHERE (PATIENTID = @PatientID)";
             try
             {
                 using (SqlConnection connection = new SqlConnection(sqlConnectString))
                 {
-                    SqlCommand command = new SqlCommand(sqlInsert, connection);
+                    SqlCommand command = new SqlCommand(sqlDelete, connection);
                     command.Parameters.Add("@PatientID", SqlDbType.Decimal).Value = patientID;
                     connection.Open();
                     if (command.ExecuteNonQuery() == 0)
@@ -189,7 +196,6 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT 
                                 WHERE PATIENTID = @PatientID";
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(sqlConnectString))
