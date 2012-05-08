@@ -10,18 +10,7 @@ namespace Hospital.Controller
 {
     class DischargeCertificateController
     {
-        public DataTable GetListDC()
-        {
-            DataTable dtDC = new DataTable();
-
-            return dtDC;
-        }
-        public DataTable GetDC()
-        {
-            DataTable newDC = new DataTable();
-
-            return newDC;
-        }
+        
         public Boolean InsertDC(DischargeCertificate newDC)
         {
             return true;

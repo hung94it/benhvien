@@ -3,29 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hospital.Model;
-using System.Data;
 
 namespace Hospital.Controller
 {
-    class BillController
+    class HospitalizationCertificateController
     {
-        public void Bill(int patientID)
-        { 
-            
-        }
-        public Boolean InsertBill(Bill newBill)
+        
+        public Boolean InsertHC(HospitalizationCertificate newHC)
         {
             return true;
         }
-        public Boolean UpdateBill(Bill newBill)
+        public Boolean UpdateHC(HospitalizationCertificate newHC)
         {
             return true;
         }
-        public Boolean DeleteBill(Bill newBill)
+        public Boolean DeleteHC(HospitalizationCertificate newHC)
         {
             return true;
         }
-        public Boolean ConfirmBill(Bill newBill)
+        public Boolean ConfirmHC(HospitalizationCertificate newHC)
         {
             return true;
         }

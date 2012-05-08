@@ -9,27 +9,16 @@ namespace Hospital.Controller
 {
     class DepartmentController
     {
-        public DataTable GetListFunction()
-        {
-            DataTable dtF = new DataTable();
-
-            return dtF;
-        }
-        public DataTable GetFunction()
-        {
-            DataTable newFunction = new DataTable();
-
-            return newFunction;
-        }
-        public Boolean InsertFunction(Function newFunction)
+        
+        public Boolean InsertDepartment(Department newDepartment)
         {
             return true;
         }
-        public Boolean UpdateFunction(Function newFunction)
+        public Boolean UpdateDepartment(Department newDepartment)
         {
             return true;
         }
-        public Boolean DeleteFunction(Function newFunction)
+        public Boolean DeleteDepartment(Department newDepartment)
         {
             return true;
         }

@@ -9,18 +9,7 @@ namespace Hospital.Controller
 {
     class DiseaseController
     {
-        public DataTable GetListDisease()
-        {
-            DataTable dtDisease = new DataTable();
-
-            return dtDisease;
-        }
-        public DataTable GetDisease()
-        {
-            DataTable newDisease = new DataTable();
-
-            return newDisease;
-        }
+        
         public Boolean InsertDisease(Disease newDisease)
         {
             return true;
