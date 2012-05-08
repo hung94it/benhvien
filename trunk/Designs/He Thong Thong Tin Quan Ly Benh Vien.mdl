@@ -10274,23 +10274,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F95FF6D0085"
-					compartment 	(object Compartment
-					    Parent_View 	@413
-					    location   	(1613, 884)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	7
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -13249,23 +13232,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9632600020"
-					compartment 	(object Compartment
-					    Parent_View 	@566
-					    location   	(2089, 728)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	9
-					    max_width  	616
-					    justify    	0)
 					height     	154
 					annotation 	8
 					autoResize 	TRUE)
@@ -13296,23 +13262,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F95FFBE0305"
-					compartment 	(object Compartment
-					    Parent_View 	@567
-					    location   	(1534, 464)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	6
-					    max_width  	372
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -13382,23 +13331,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F95FF9400ED"
-					compartment 	(object Compartment
-					    Parent_View 	@571
-					    location   	(1717, 1316)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	9
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -15997,23 +15929,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9661C10201"
-					compartment 	(object Compartment
-					    Parent_View 	@678
-					    location   	(1339, 575)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	10
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -16337,23 +16252,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9661C10201"
-					compartment 	(object Compartment
-					    Parent_View 	@697
-					    location   	(1406, 453)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	10
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -20637,23 +20535,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F965880016A"
-					compartment 	(object Compartment
-					    Parent_View 	@938
-					    location   	(1381, 453)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	6
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -22884,23 +22765,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9671F30014"
-					compartment 	(object Compartment
-					    Parent_View 	@1055
-					    location   	(1412, 425)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	6
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -25359,23 +25223,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F96C48E0095"
-					compartment 	(object Compartment
-					    Parent_View 	@1172
-					    location   	(1497, 409)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	7
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -28208,7 +28055,7 @@
 						supplier   	"$UNNAMED$218"
 						quidu      	"4F96E4C70203"
 						messages   	(list Messages
-						    (object Message "ShowListHeathFile( )"
+						    (object Message "GetListHeathFile( )"
 							quid       	"4F97C3B9020D"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
@@ -28476,6 +28323,23 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F96E43C009D"
+					compartment 	(object Compartment
+					    Parent_View 	@1344
+					    location   	(1468, 365)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    icon_style 	"Icon"
+					    anchor     	2
+					    nlines     	6
+					    max_width  	0
+					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -29084,7 +28948,7 @@
 					origin     	(265, 331)
 					terminus   	(829, 331)
 					ordinal    	0)
-				    (object InterMessView "ShowListHeathFile( )" @1399
+				    (object InterMessView "GetListHeathFile( )" @1399
 					location   	(0, 436)
 					font       	(object Font
 					    size       	10
@@ -29110,9 +28974,9 @@
 					    quidu      	"4F97C3B9020D"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	429
+					    max_width  	10
 					    justify    	0
-					    label      	"ShowListHeathFile( )"
+					    label      	"GetListHeathFile( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -30529,7 +30393,7 @@
 						supplier   	"$UNNAMED$234"
 						quidu      	"4F97C7F600EC"
 						messages   	(list Messages
-						    (object Message "ShowListHMNote( )"
+						    (object Message "GetListHMNote( )"
 							quid       	"4F97C94C028A"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
@@ -30848,6 +30712,23 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F97C75B01EE"
+					compartment 	(object Compartment
+					    Parent_View 	@1467
+					    location   	(1674, 440)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    icon_style 	"Icon"
+					    anchor     	2
+					    nlines     	6
+					    max_width  	0
+					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -31539,7 +31420,7 @@
 					origin     	(224, 383)
 					terminus   	(946, 383)
 					ordinal    	0)
-				    (object InterMessView "ShowListHMNote( )" @1528
+				    (object InterMessView "GetListHMNote( )" @1528
 					location   	(0, 488)
 					font       	(object Font
 					    size       	10
@@ -31565,9 +31446,9 @@
 					    quidu      	"4F97C94C028A"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	404
+					    max_width  	10
 					    justify    	0
-					    label      	"ShowListHMNote( )"
+					    label      	"GetListHMNote( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -33055,7 +32936,7 @@
 						supplier   	"$UNNAMED$248"
 						quidu      	"4F97CE630101"
 						messages   	(list Messages
-						    (object Message "ShowListHospitalBed( )"
+						    (object Message "GetListHospitalBed( )"
 							quid       	"4F97CEA30162"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
@@ -33256,6 +33137,23 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F97CE1101B2"
+					compartment 	(object Compartment
+					    Parent_View 	@1596
+					    location   	(1381, 343)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    icon_style 	"Icon"
+					    anchor     	2
+					    nlines     	6
+					    max_width  	0
+					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -33864,7 +33762,7 @@
 					origin     	(195, 353)
 					terminus   	(829, 353)
 					ordinal    	0)
-				    (object InterMessView "ShowListHospitalBed( )" @1651
+				    (object InterMessView "GetListHospitalBed( )" @1651
 					location   	(0, 458)
 					font       	(object Font
 					    size       	10
@@ -33890,9 +33788,9 @@
 					    quidu      	"4F97CEA30162"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	482
+					    max_width  	10
 					    justify    	0
-					    label      	"ShowListHospitalBed( )"
+					    label      	"GetListHospitalBed( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -35115,7 +35013,7 @@
 						supplier   	"$UNNAMED$260"
 						quidu      	"4F97D3E10266"
 						messages   	(list Messages
-						    (object Message "ShowListHC( )"
+						    (object Message "GetListHC( )"
 							quid       	"4F97D4840306"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
@@ -35686,6 +35584,23 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F97D32102A1"
+					compartment 	(object Compartment
+					    Parent_View 	@1719
+					    location   	(1665, 475)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    icon_style 	"Icon"
+					    anchor     	2
+					    nlines     	7
+					    max_width  	0
+					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -36289,7 +36204,7 @@
 					origin     	(195, 368)
 					terminus   	(948, 368)
 					ordinal    	0)
-				    (object InterMessView "ShowListHC( )" @1779
+				    (object InterMessView "GetListHC( )" @1779
 					location   	(0, 473)
 					font       	(object Font
 					    size       	10
@@ -36315,9 +36230,9 @@
 					    quidu      	"4F97D4840306"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	319
+					    max_width  	10
 					    justify    	0
-					    label      	"ShowListHC( )"
+					    label      	"GetListHC( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -39212,7 +39127,7 @@
 						supplier   	"$UNNAMED$295"
 						quidu      	"4F97E0D00047"
 						messages   	(list Messages
-						    (object Message "ShowListMaterial( )"
+						    (object Message "GetListMaterial( )"
 							quid       	"4F9A0D0200AD"
 							frequency  	"Aperiodic"
 							synchronization 	"Simple"
@@ -39940,6 +39855,23 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9632A900DF"
+					compartment 	(object Compartment
+					    Parent_View 	@1921
+					    location   	(1686, 529)
+					    font       	(object Font
+						size       	10
+						face       	"Arial"
+						bold       	FALSE
+						italics    	FALSE
+						underline  	FALSE
+						strike     	FALSE
+						color      	0
+						default_color 	TRUE)
+					    icon_style 	"Icon"
+					    anchor     	2
+					    nlines     	6
+					    max_width  	0
+					    justify    	0)
 					height     	154
 					annotation 	8
 					autoResize 	TRUE)
@@ -40145,23 +40077,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F95FF9400ED"
-					compartment 	(object Compartment
-					    Parent_View 	@1931
-					    location   	(1748, 509)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	9
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -40926,7 +40841,7 @@
 					origin     	(287, 369)
 					terminus   	(898, 369)
 					ordinal    	0)
-				    (object InterMessView "ShowListMaterial( )" @1992
+				    (object InterMessView "GetListMaterial( )" @1992
 					location   	(0, 474)
 					font       	(object Font
 					    size       	10
@@ -40952,9 +40867,9 @@
 					    quidu      	"4F9A0D0200AD"
 					    anchor_loc 	1
 					    nlines     	1
-					    max_width  	407
+					    max_width  	10
 					    justify    	0
-					    label      	"ShowListMaterial( )"
+					    label      	"GetListMaterial( )"
 					    pctDist    	0.500000
 					    height     	45
 					    orientation 	0)
@@ -45225,23 +45140,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F95FF9400ED"
-					compartment 	(object Compartment
-					    Parent_View 	@2193
-					    location   	(1377, 425)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	9
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -58079,23 +57977,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F95FF9400ED"
-					compartment 	(object Compartment
-					    Parent_View 	@2861
-					    location   	(1682, 442)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	9
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -71588,23 +71469,6 @@
 					line_color 	3342489
 					fill_color 	13434879
 					quidu      	"4F9EB5C402D2"
-					compartment 	(object Compartment
-					    Parent_View 	@3578
-					    location   	(1412, 453)
-					    font       	(object Font
-						size       	10
-						face       	"Arial"
-						bold       	FALSE
-						italics    	FALSE
-						underline  	FALSE
-						strike     	FALSE
-						color      	0
-						default_color 	TRUE)
-					    icon_style 	"Icon"
-					    anchor     	2
-					    nlines     	6
-					    max_width  	0
-					    justify    	0)
 					width      	158
 					annotation 	8
 					autoResize 	TRUE)
@@ -75257,7 +75121,7 @@
 			quid       	"4F96E43C009D"
 			stereotype 	"control"
 			operations 	(list Operations
-			    (object Operation "ShowListHeathFile"
+			    (object Operation "GetListHeathFile"
 				quid       	"4F97C4070044"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
@@ -75276,12 +75140,17 @@
 				quid       	"4F97C6E60188"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "GetHeathFile"
+				quid       	"4FA8825D01CA"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
 				uid        	0)))
 		    (object Class_Utility "Heath Monitoring Note Controller"
 			quid       	"4F97C75B01EE"
 			stereotype 	"control"
 			operations 	(list Operations
-			    (object Operation "ShowListHMNote"
+			    (object Operation "GetListHMNote"
 				quid       	"4F97C971003B"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
@@ -75300,12 +75169,17 @@
 				quid       	"4F97CC0F019E"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "GetHMNote"
+				quid       	"4FA883AA02AD"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
 				uid        	0)))
 		    (object Class_Utility "Hospital Bed Controller"
 			quid       	"4F97CE1101B2"
 			stereotype 	"control"
 			operations 	(list Operations
-			    (object Operation "ShowListHospitalBed"
+			    (object Operation "GetListHospitalBed"
 				quid       	"4F97D0DF015E"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
@@ -75324,12 +75198,17 @@
 				quid       	"4F97D0F00135"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "GetHospitalBed"
+				quid       	"4FA885B001AA"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
 				uid        	0)))
 		    (object Class_Utility "Hospitalization Certificate Controller"
 			quid       	"4F97D32102A1"
 			stereotype 	"control"
 			operations 	(list Operations
-			    (object Operation "ShowListHC"
+			    (object Operation "GetListHC"
 				quid       	"4F97DC300391"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
@@ -75353,12 +75232,17 @@
 				quid       	"4F97DC4B03D9"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "GetHC"
+				quid       	"4FA886B0023E"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
 				uid        	0)))
 		    (object Class_Utility "Material Controller"
 			quid       	"4F9632A900DF"
 			stereotype 	"entity"
 			operations 	(list Operations
-			    (object Operation "ShowListMaterial"
+			    (object Operation "GetListMaterial"
 				quid       	"4F9A11C70332"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
@@ -75375,6 +75259,11 @@
 				uid        	0)
 			    (object Operation "DeleteMaterial"
 				quid       	"4F9A11D902A1"
+				concurrency 	"Sequential"
+				opExportControl 	"Public"
+				uid        	0)
+			    (object Operation "GetMaterial"
+				quid       	"4FA887B000D5"
 				concurrency 	"Sequential"
 				opExportControl 	"Public"
 				uid        	0)))
