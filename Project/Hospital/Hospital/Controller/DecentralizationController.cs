@@ -9,24 +9,7 @@ namespace Hospital.Controller
 {
     class DecentralizationController
     {
-        public DataTable GetListDecentralization()
-        {
-            DataTable dtD = new DataTable();
-
-            return dtD;
-        }
-        public DataTable GetListDecentralizationDetail(int assignID)
-        {
-            DataTable dtDD = new DataTable();
-
-            return dtDD;
-        }
-        public DataTable GetDecentralization()
-        {
-            DataTable newDecentralization = new DataTable();
-
-            return newDecentralization;
-        }
+        
         public Boolean InsertDecentralization(DecentralizationController newDecentralization)
         {
             return true;
@@ -39,15 +22,15 @@ namespace Hospital.Controller
         {
             return true;
         }
-        public DataTable GetListFunction()
+        public List<Function> GetListFunction()
         {
-            DataTable dtF = new DataTable();
+            List<Function> lstF = new List<Function>();
 
-            return dtF;
+            return lstF;
         }
-        public DataTable GetFunction()
+        public Function GetFunction()
         {
-            DataTable newFunction = new DataTable();
+            Function newFunction = new Function();
 
             return newFunction;
         }

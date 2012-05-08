@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hospital.Model;
-using System.Data;
-
 namespace Hospital.Controller
 {
-    class AssignmentController
+    class ServiceController
     {
-
-        public Boolean InsertAssignment(Assignment newAssignment)
+        public Boolean InsertService(Service newService)
         {
             return true;
         }
-        public Boolean UpdateAssignment(Assignment newAssignment)
+        public Boolean UpdateService(Service newService)
         {
             return true;
         }
-        public Boolean DeleteAssignment(Assignment newAssignment)
+        public Boolean DeleteService(Service newService)
         {
             return true;
         }

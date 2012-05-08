@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hospital.Model;
-using System.Data;
-
 namespace Hospital.Controller
 {
-    class AssignmentController
+    class TestController
     {
-
-        public Boolean InsertAssignment(Assignment newAssignment)
+        public Boolean InsertTC(TestCertificate newTC)
         {
             return true;
         }
-        public Boolean UpdateAssignment(Assignment newAssignment)
+        public Boolean UpdateTC(TestCertificate newTC)
         {
             return true;
         }
-        public Boolean DeleteAssignment(Assignment newAssignment)
+        public Boolean DeleteTC(TestCertificate newTC)
+        {
+            return true;
+        }
+        public Boolean ConfirmTC(TestCertificate newTC)
         {
             return true;
         }
