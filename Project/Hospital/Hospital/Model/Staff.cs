@@ -8,92 +8,19 @@ namespace Hospital.Model
 {
     class Staff
     {
-        private int staffID;
-        private int departmentID;
-        private int majorID;
-        private int decentralizationID;
-        private String password;
-        private String firstName;
-        private String lastName;
-        private DateTime birthDay;
-        private int gender;
-        private int iCN;
-        private String andress;
-        private int state;
-        public String Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-       
-
-        public int State
-        {
-            get { return state; }
-            set { state = value; }
-        }
-
-        public String Andress
-        {
-            get { return andress; }
-            set { andress = value; }
-        }
-
-        public int ICN
-        {
-            get { return iCN; }
-            set { iCN = value; }
-        }
-
-        public int Gender
-        {
-            get { return gender; }
-            set { gender = value; }
-        }
-
-        public DateTime BirthDay
-        {
-            get { return birthDay; }
-            set { birthDay = value; }
-        }
-
-        public String LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
-        }
-
-        public String FirstName
-        {
-            get { return firstName; }
-            set { firstName = value; }
-        }
-
-
-
-        public int DecentralizationID
-        {
-            get { return decentralizationID; }
-            set { decentralizationID = value; }
-        }
-
-        public int MajorID
-        {
-            get { return majorID; }
-            set { majorID = value; }
-        }
-
-        public int DepartmentID
-        {
-            get { return departmentID; }
-            set { departmentID = value; }
-        }
-
-        public int StaffID
-        {
-            get { return staffID; }
-            set { staffID = value; }
-        }
+        public int StaffID { get; set; }
+        public int DepartmentID { get; set; }
+        public int MajorID { get; set; }
+        public int DecentralizationID { get; set; }
+        public String Password { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public DateTime BirthDay { get; set; }
+        public int Gender { get; set; }
+        public int ICN { get; set; }
+        public String Address { get; set; }
+        public int State { get; set; }
+        
         public Boolean InsertStaff()
         {
             return true;
