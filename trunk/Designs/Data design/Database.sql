@@ -41,6 +41,7 @@ create index RELATIONSHIP_34_FK on ASSIGNMENTDETAIL (
 STAFFID ASC
 )
 go
+go
 
 /*==============================================================*/
 /* Table: BILL                                                  */
@@ -100,13 +101,8 @@ create table DECENTRALIZATION (
    constraint PK_DECENTRALIZATION primary key nonclustered (DECENTRALIZATIONID)
 )
 go
-CREATE SEQUENCE SEQDECENT
-    AS INT
-    START WITH 100
-    INCREMENT BY 1
-    MINVALUE 0
-    NO MAXVALUE
-go
+
+
 /*==============================================================*/
 /* Table: DECENTRALIZATIONDETAIL                                */
 /*==============================================================*/
