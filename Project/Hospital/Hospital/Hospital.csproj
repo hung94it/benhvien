@@ -68,6 +68,7 @@
     <Compile Include="Controller\ServiceController.cs" />
     <Compile Include="Controller\StaffController.cs" />
     <Compile Include="Controller\SurgicalController.cs" />
+    <Compile Include="Controller\TestController.cs" />
     <Compile Include="Model\Assignment.cs" />
     <Compile Include="Model\AssignmentDetail.cs" />
     <Compile Include="Model\Bill.cs" />
