@@ -23,8 +23,9 @@ namespace Hospital.View
             Patient newPatient = new Patient();
             newPatient.FirstName = textBoxFirstName.Text;
             newPatient.LastName = textBoxLastName.Text;
-            //newPatient.BirthDay = new DateTime(dateBirthday.Text);
-            //newPatient.
+            newPatient.BirthDay = dateBirthday.Value;
+            //newPatient.ICN = Convert.ToDecimal(textBoxIdentityCard.Text);
+            MessageBox.Show(dateBirthday.Value.ToString());
 
 
         }

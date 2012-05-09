@@ -130,7 +130,7 @@
             // 
             // 
             this.labelBirthday.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelBirthday.Location = new System.Drawing.Point(12, 90);
+            this.labelBirthday.Location = new System.Drawing.Point(12, 116);
             this.labelBirthday.Name = "labelBirthday";
             this.labelBirthday.Size = new System.Drawing.Size(75, 23);
             this.labelBirthday.TabIndex = 6;
@@ -146,7 +146,7 @@
             this.dateBirthday.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dateBirthday.ButtonDropDown.Visible = true;
             this.dateBirthday.IsPopupCalendarOpen = false;
-            this.dateBirthday.Location = new System.Drawing.Point(93, 93);
+            this.dateBirthday.Location = new System.Drawing.Point(93, 119);
             // 
             // 
             // 
@@ -190,7 +190,7 @@
             // 
             // 
             this.labelIdentityCard.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelIdentityCard.Location = new System.Drawing.Point(12, 142);
+            this.labelIdentityCard.Location = new System.Drawing.Point(12, 90);
             this.labelIdentityCard.Name = "labelIdentityCard";
             this.labelIdentityCard.Size = new System.Drawing.Size(75, 23);
             this.labelIdentityCard.TabIndex = 9;
@@ -202,7 +202,7 @@
             // 
             // 
             this.labelGender.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelGender.Location = new System.Drawing.Point(12, 116);
+            this.labelGender.Location = new System.Drawing.Point(12, 142);
             this.labelGender.Name = "labelGender";
             this.labelGender.Size = new System.Drawing.Size(75, 23);
             this.labelGender.TabIndex = 12;
@@ -240,7 +240,7 @@
             // 
             this.textBoxIdentityCard.Border.Class = "TextBoxBorder";
             this.textBoxIdentityCard.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxIdentityCard.Location = new System.Drawing.Point(93, 145);
+            this.textBoxIdentityCard.Location = new System.Drawing.Point(93, 93);
             this.textBoxIdentityCard.Name = "textBoxIdentityCard";
             this.textBoxIdentityCard.Size = new System.Drawing.Size(348, 20);
             this.textBoxIdentityCard.TabIndex = 15;
@@ -299,7 +299,7 @@
             this.comboBoxGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxGender.FormattingEnabled = true;
             this.comboBoxGender.ItemHeight = 14;
-            this.comboBoxGender.Location = new System.Drawing.Point(93, 119);
+            this.comboBoxGender.Location = new System.Drawing.Point(93, 145);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(240, 20);
             this.comboBoxGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;

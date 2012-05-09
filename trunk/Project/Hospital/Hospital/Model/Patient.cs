@@ -95,7 +95,7 @@ namespace Hospital.Model
         //Get list patient
         public static DataTable GetListPatient()
         {
-            string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE
+            string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT";
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
             dataTable.Columns[0].ColumnName = "Mã bệnh nhân";

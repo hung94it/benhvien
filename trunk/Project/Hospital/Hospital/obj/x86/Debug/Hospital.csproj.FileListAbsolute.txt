@@ -58,3 +58,4 @@ D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Ho
 D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.testconnection.resources
 D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.Form1.resources
