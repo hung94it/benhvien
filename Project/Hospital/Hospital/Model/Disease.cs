@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
 using Hospital.Functional;
 
 namespace Hospital.Model
@@ -12,43 +13,59 @@ namespace Hospital.Model
         public int DiseaseID { get; set; }
         public String DiseaseName { get; set; }
         public String Symptom { get; set; }
-       
+
         public Disease() { }
 
-        public Disease(int diseaseID,String diseaseName,String symptom)
+        public Disease(int diseaseID, String diseaseName, String symptom)
         {
             this.DiseaseID = diseaseID;
             this.DiseaseName = diseaseName;
             this.Symptom = symptom;
         }
 
-        public Boolean InsertDisease()
+        public static int InsertDisease(Disease newDisease)
         {
-            return true;
+            String sqlInsert = @"INSERT INTO DISEASE(DISEASENAME)
+                                VALUES        (@DISEASENAME,@SYMPTOM)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@DISEASENAME", newDisease.DiseaseName),
+                                           new SqlParameter("@SYMPTOM",newDisease.Symptom)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
-        public Boolean UpdateDisease()
+        public static int UpdateDisease(Disease updateDisease)
         {
-            return true;
+            string sqlUpdate = @"UPDATE DISEASE
+                                SET DISEASENAME = @DISEASENAME,SYMPTOM=@SYMPTOM
+                                WHERE (DISEASEID =@DISEASEeID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@DISEASEID", updateDisease.DiseaseID),
+                                           new SqlParameter("@DISEASENAME", updateDisease.DiseaseName),
+                                           new SqlParameter("@SYMPTOM", updateDisease.Symptom)};
+            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
-        public Boolean DeleteDisease()
+        public static int DeleteDisease(Disease deleteDisease)
         {
-            return true;
+            string sqlDelete = @"DELETE FROM DISEASE
+                                WHERE (DISEASEID = @DISEASEID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@DISEASEID", deleteDisease.DiseaseID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-        public DataTable GetListDisease()
+        public static DataTable GetListDisease()
         {
             DataTable dtDisease = new DataTable();
-            string sqlSelect = @"SELECT *
+            string sqlSelect = @"SELECT DISEASEID,DISEASENAME,SYMPTOM
                                 FROM DISEASE";
             dtDisease = SqlResult.ExecuteQuery(sqlSelect);
+            dtDisease.Columns[0].ColumnName = "Mã bệnh";
+            dtDisease.Columns[1].ColumnName = "Tên bệnh";
+            dtDisease.Columns[2].ColumnName = "Triệu chứng";
             return dtDisease;
         }
-        public Disease GetDisease(int diseaseID)
+        public static Disease GetDisease(int diseaseID)
         {
             int tempInterger;
-            Disease newDisease=new Disease();
-            string sqlSelect = @"SELECT MAJORID, MAJORNAME
-                                FROM MAJOR
-                                WHERE (MAJORID = @MajorID)";
+            Disease newDisease = new Disease();
+            string sqlSelect = @"SELECT DISEASEID, DISEASENAME
+                                FROM DISEASE
+                                WHERE (DISEASEID = @DISEASEID)";
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
             int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
             newDisease.DiseaseID = tempInterger;
