@@ -34,21 +34,21 @@ namespace Hospital.Model
                                            new SqlParameter("@DEPARTMENTNAME", updateDepartment.DepartmentName)};
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
-        public static int DeleteDepartment(Department deleteDepartment)
+        public static int DeleteDepartment(int departmentID)
         {
             string sqlDelete = @"DELETE FROM DEPARTMENT
                                 WHERE (DEPARTMENTID = @DEPARTMENTID)";
-            SqlParameter[] sqlParameters = { new SqlParameter("@DEPARTMENTID", deleteDepartment.DepartmentID) };
+            SqlParameter[] sqlParameters = { new SqlParameter("@DEPARTMENTID", departmentID) };
             return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-        public static Department GetDepartment()
+        public static Department GetDepartment(int departmentID)
         {
             Department newDepartment = new Department();
             int tempInterger;
             string sqlSelect = @"SELECT        DEPARTMENTID, DEPARTMENTNAME
                                 FROM            DEPARTMENT
                                 WHERE           (DEPARTMENTID=@DEPARTMENTID)";
-            SqlParameter[] sqlParameters = { new SqlParameter("@DEPARTMENTID", newDepartment.DepartmentID) };
+            SqlParameter[] sqlParameters = { new SqlParameter("@DEPARTMENTID", departmentID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
             int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
             newDepartment.DepartmentID = tempInterger;
