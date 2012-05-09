@@ -5,13 +5,14 @@ using System.Text;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using Hospital.Functional;
 
 namespace Hospital.Model
 {
     class Patient
     {
         //Properties of Hospital class
-        public decimal PatientID { get; set; }
+        public int PatientID { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
         public DateTime BirthDay { get; set; }
@@ -22,14 +23,13 @@ namespace Hospital.Model
         public decimal Deposit { get; set; }
         public int State { get; set; }
 
-        //This static instance is used to store patient temporary for this class's static method
         private static Patient tempPatient;
 
         //Default constructor
         public Patient() { }
 
         //Constructor set all properties
-        public Patient(decimal patientID, string firstName, string lastName, DateTime birthDay,
+        public Patient(int patientID, string firstName, string lastName, DateTime birthDay,
             int gender, decimal iCN, string profession, string address, decimal deposit, int state)
         {
             PatientID = patientID;
@@ -45,180 +45,70 @@ namespace Hospital.Model
         }
 
         //Insert new patient
-        public static Boolean InsertPatient(Patient patient)
+        public static int InsertPatient(Patient patient)
         {
-            string sqlConnectString = ConfigurationManager.ConnectionStrings["eHospital"].ConnectionString;
             string sqlInsert = @"INSERT INTO PATIENT
                                 (FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE)
                                 VALUES 
                                 (@FirstName, @LastName, @BirthDay, @Gender, @ICN, @Profession, @Address, @Deposit, @State)";
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(sqlConnectString))
-                {
-                    SqlCommand command = new SqlCommand(sqlInsert, connection);
-                    command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = patient.FirstName;
-                    command.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = patient.LastName;
-                    command.Parameters.Add("@BirthDay", SqlDbType.DateTime).Value = patient.BirthDay;
-                    command.Parameters.Add("@Gender", SqlDbType.Int).Value = patient.Gender;
-                    command.Parameters.Add("@ICN", SqlDbType.Decimal).Value = patient.ICN;
-                    command.Parameters.Add("@Profession", SqlDbType.NVarChar).Value = patient.Profession;
-                    command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = patient.Address;
-                    command.Parameters.Add("@Deposit", SqlDbType.Money).Value = patient.Deposit;
-                    command.Parameters.Add("@State", SqlDbType.Int).Value = patient.State;
-                    connection.Open();
-                    if (command.ExecuteNonQuery() == 0)
-                        return false;
-                    else
-                        return true;
-
-                }
-            }
-            catch (SqlException e)
-            {
-                throw e;
-            }
+            SqlParameter[] sqlParameters = { new SqlParameter("@FirstName", patient.FirstName),
+                                           new SqlParameter("@LastName", patient.LastName),
+                                           new SqlParameter("@BirthDay", patient.BirthDay),
+                                           new SqlParameter("@Gender", patient.Gender),
+                                           new SqlParameter("@ICN", patient.ICN),
+                                           new SqlParameter("@Profession", patient.Profession),
+                                           new SqlParameter("@Address", patient.Address),
+                                           new SqlParameter("@Deposit", patient.Deposit),
+                                           new SqlParameter("@State", patient.State)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
 
         //Update patien by patientid
-        public static Boolean UpdatePatient(Patient patient)
+        public static int UpdatePatient(Patient patient)
         {
-            string sqlConnectString = ConfigurationManager.ConnectionStrings["eHospital"].ConnectionString;
-            //using parameter OK
             string sqlUpdate = @"UPDATE PATIENT
                                 SET FIRSTNAME = @FirstName, LASTNAME = @LastName, BIRTHDAY = @BirthDay, GENDER = @Gender,
-                                    ICN = @Icn, PROFESSION = @Profession, ADDRESS = @Address, DEPOSIT = @Deposit, STATE = @State
+                                    ICN = @ICN, PROFESSION = @Profession, ADDRESS = @Address, DEPOSIT = @Deposit, STATE = @State
                                 WHERE (PATIENTID = @PatientID)";
-            ////using string concat OK
-            //string sqlUpdate = "UPDATE PATIENT SET FIRSTNAME ='" + patient.FirstName + "', LASTNAME ='" + patient.LastName +
-            //    "', BIRTHDAY ='" + patient.BirthDay.ToShortDateString() + "', GENDER =" + patient.Gender + ",ICN =" + patient.ICN + 
-            //    ", PROFESSION = '" + patient.Profession + "', ADDRESS ='" + patient.Address + "', DEPOSIT =" + patient.Deposit + ", STATE =" + patient.State +
-            //    "WHERE (PATIENTID =" + patient.PatientID + ")";
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(sqlConnectString))
-                {
-                    SqlCommand command = new SqlCommand(sqlUpdate, connection);
-                    ////using parameters
-                    command.Parameters.Add("@PatientID", SqlDbType.Decimal).Value = patient.PatientID;
-                    command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = patient.FirstName;
-                    command.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = patient.LastName;
-                    command.Parameters.Add("@BirthDay", SqlDbType.DateTime).Value = patient.BirthDay;
-                    command.Parameters.Add("@Gender", SqlDbType.Int).Value = patient.Gender;
-                    command.Parameters.Add("@ICN", SqlDbType.Decimal).Value = patient.ICN;
-                    command.Parameters.Add("@Profession", SqlDbType.NVarChar).Value = patient.Profession;
-                    command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = patient.Address;
-                    command.Parameters.Add("@Deposit", SqlDbType.Money).Value = patient.Deposit;
-                    command.Parameters.Add("@State", SqlDbType.Int).Value = patient.State;
-                    connection.Open();
-                    if (command.ExecuteNonQuery() == 0)
-                        return false;
-                    else
-                        return true;
-                }
-            }
-            catch (SqlException e)
-            {
-                throw e;
-            }
+            SqlParameter[] sqlParameters = { new SqlParameter("@PatientID", patient.PatientID), 
+                                           new SqlParameter("@FirstName", patient.FirstName),
+                                           new SqlParameter("@LastName", patient.LastName),
+                                           new SqlParameter("@BirthDay", patient.BirthDay),
+                                           new SqlParameter("@Gender", patient.Gender),
+                                           new SqlParameter("@ICN", patient.ICN),
+                                           new SqlParameter("@Profession", patient.Profession),
+                                           new SqlParameter("@Address", patient.Address),
+                                           new SqlParameter("@Deposit", patient.Deposit),
+                                           new SqlParameter("@State", patient.State)};
+            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
 
         //Delete patient by patientid
-        public static Boolean DeletePatient(decimal patientID)
+        public static int DeletePatient(int patientID)
         {
-            string sqlConnectString = ConfigurationManager.ConnectionStrings["eHospital"].ConnectionString;
             string sqlDelete = @"DELETE FROM PATIENT
                                 WHERE (PATIENTID = @PatientID)";
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(sqlConnectString))
-                {
-                    SqlCommand command = new SqlCommand(sqlDelete, connection);
-                    command.Parameters.Add("@PatientID", SqlDbType.Decimal).Value = patientID;
-                    connection.Open();
-                    if (command.ExecuteNonQuery() == 0)
-                        return false;
-                    else
-                        return true;
-                }
-            }
-            catch (SqlException e)
-            {
-                throw e;
-            }
+            SqlParameter[] sqlParameters = { new SqlParameter("@PatientID", patientID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
 
         //Get list patient
-        public static List<Patient> GetListPatient()
+        public static DataTable GetListPatient()
         {
-            List<Patient> lstPatient = new List<Patient>();
-            //Get connectiong string from app.config
-            string sqlConnectString = ConfigurationManager.ConnectionStrings["eHospital"].ConnectionString;
-            //Prepare query string
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE
                                 FROM PATIENT";
-
-            try
-            {
-                //Using connection pooling and close connection after finished 
-                using (SqlConnection connection = new SqlConnection(sqlConnectString))
-                {
-                    //Create new command with connection string and query string
-                    SqlCommand command = new SqlCommand(sqlSelect, connection);
-                    connection.Open();
-                    //Excute command and close datareader after finished
-                    using (SqlDataReader dr = command.ExecuteReader())
-                    {
-                        //Read all records
-                        while (dr.Read())
-                        {
-                            //Create new Patient instance and store it in this class's static field patient
-                            tempPatient = new Patient(dr.GetDecimal(0), dr.GetString(1), dr.GetString(2),
-                                dr.GetDateTime(3), dr.GetInt32(4), dr.GetDecimal(5), dr.GetString(6), dr.GetString(7),
-                                dr.GetDecimal(8), dr.GetInt32(9));
-                            //Add patient to List<Patient>
-                            lstPatient.Add(tempPatient);
-                        }
-                    }
-                }
-            }
-            catch (SqlException e)
-            {
-                throw e;
-            }
-            return lstPatient;
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            dataTable.Columns[0].ColumnName = "Mã bệnh nhân";
+            return dataTable;
         }
 
         //Get patient by patientid
         public static Patient GetPatient(decimal patientID)
         {
-            string sqlConnectString = ConfigurationManager.ConnectionStrings["eHospital"].ConnectionString;
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT 
                                 WHERE PATIENTID = @PatientID";
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(sqlConnectString))
-                {
-                    SqlCommand command = new SqlCommand(sqlSelect, connection);
-                    //Add parameter with its sqldbType and set its value
-                    command.Parameters.Add("@PatientID", SqlDbType.Decimal).Value = patientID;
-                    connection.Open();
-                    using (SqlDataReader dr = command.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            tempPatient = new Patient(dr.GetDecimal(0), dr.GetString(1), dr.GetString(2),
-                                dr.GetDateTime(3), dr.GetInt32(4), dr.GetDecimal(5), dr.GetString(6), dr.GetString(7),
-                                dr.GetDecimal(8), dr.GetInt32(9));
-                        }
-                    }
-                }
-            }
-            catch (SqlException e)
-            {
-                throw e;
-            }
+          
             return tempPatient;
         }
 
@@ -238,6 +128,5 @@ namespace Hospital.Model
 
             return lstPatient;
         }
-
     }
 }
