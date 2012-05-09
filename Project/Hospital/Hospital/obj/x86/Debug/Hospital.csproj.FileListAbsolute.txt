@@ -43,3 +43,18 @@ D:\Dai hoc\Hoc ki 8\benhvien\Project\Hospital\Hospital\obj\x86\Debug\GenerateRes
 D:\Dai hoc\Hoc ki 8\benhvien\Project\Hospital\Hospital\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\Dai hoc\Hoc ki 8\benhvien\Project\Hospital\Hospital\bin\Debug\Hospital.exe
 D:\Dai hoc\Hoc ki 8\benhvien\Project\Hospital\Hospital\bin\Debug\Hospital.pdb
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\bin\Debug\Hospital.exe.config
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.exe
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.pdb
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\bin\Debug\Hospital.exe
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\bin\Debug\Hospital.pdb
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.Properties.Resources.resources
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormHealthFile.resources
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormMain.resources
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormLogin.resources
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormPatientDetail.resources
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.FormStaffDetail.resources
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\Hospital.View.testconnection.resources
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Work\HTTT\Do an he thong thong tin\Project\Hospital\Hospital\obj\x86\Debug\GenerateResource.write.1.tlog
