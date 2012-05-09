@@ -41,11 +41,11 @@ namespace Hospital.Model
                                            new SqlParameter("@SYMPTOM", updateDisease.Symptom)};
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
-        public static int DeleteDisease(Disease deleteDisease)
+        public static int DeleteDisease(int diseaseID)
         {
             string sqlDelete = @"DELETE FROM DISEASE
                                 WHERE (DISEASEID = @DISEASEID)";
-            SqlParameter[] sqlParameters = { new SqlParameter("@DISEASEID", deleteDisease.DiseaseID) };
+            SqlParameter[] sqlParameters = { new SqlParameter("@DISEASEID", diseaseID) };
             return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
         public static DataTable GetListDisease()
@@ -66,6 +66,7 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT DISEASEID, DISEASENAME
                                 FROM DISEASE
                                 WHERE (DISEASEID = @DISEASEID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@DISEASEID", diseaseID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
             int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
             newDisease.DiseaseID = tempInterger;

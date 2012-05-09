@@ -3,42 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-
+using System.Data.SqlClient;
+using Hospital.Functional;
 namespace Hospital.Model
 {
     class Medicine
     {
-        private int medicineID;
-        private String medicineName;
-        private int quantity;
-        private int price;
+        private int MedicineID { get; set; }
+        public String MedicineName { get; set; }
+        public int Quantity { get; set; }
+        public int Price { get; set; }
 
-        public int Price
+        public Medicine() { }
+        public Medicine(int medicineID, String medicineName, int quantity, int price)
         {
-            get { return price; }
-            set { price = value; }
+            this.MedicineID = medicineID;
+            this.MedicineName = medicineName;
+            this.Quantity = quantity;
+            this.Price = price;
         }
-
-        public int Quantity
+        public static int InsertMedicine(Medicine newMedicine)
         {
-            get { return quantity; }
-            set { quantity = value; }
-        }
-
-        public String MedicineName
-        {
-            get { return medicineName; }
-            set { medicineName = value; }
-        }
-
-        public int MedicineID
-        {
-            get { return medicineID; }
-            set { medicineID = value; }
-        }
-        public Boolean InsertMedicine()
-        {
-            return true;
+            String sqlInsert = @"INSERT INTO MEDICINE(MEDICINENAME, QUANTITY, PRICE)
+                                VALUES        (@MEDICINENAME,@QUANTITY,@PRICE)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINENAME", newMedicine.MedicineName),
+                                            new SqlParameter("@QUANTITY", newMedicine.Quantity),
+                                           new SqlParameter("@PRICE",newMedicine.Price)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
         public Boolean UpdateMedicine()
         {
@@ -48,16 +39,32 @@ namespace Hospital.Model
         {
             return true;
         }
-        public DataTable GetListMedicine()
+        public static DataTable GetListMedicine()
         {
             DataTable dtM = new DataTable();
-
+            string sqlSelect = @"SELECT        MEDICINEID, MEDICINENAME, QUANTITY, PRICE
+                                FROM            MEDICINE";
+            dtM = SqlResult.ExecuteQuery(sqlSelect);
+            dtM.Columns[0].ColumnName = "Mã thuốc";
+            dtM.Columns[1].ColumnName = "Tên thuốc";
+            dtM.Columns[2].ColumnName = "Số lượng";
+            dtM.Columns[3].ColumnName = "Đơn giá";
             return dtM;
         }
-        public Medicine GetMedicine()
+        public Medicine GetMedicine(int medicineID)
         {
             Medicine newMedicine = new Medicine();
-
+            int tempInterger;
+            string sqlSelect = @"SELECT        MEDICINENAME, QUANTITY, PRICE
+                                FROM            MEDICINE
+                                WHERE        MEDICINE=@MEDICINEID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", medicineID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+            newMedicine.MedicineID = tempInterger;
+            newMedicine.MedicineName = dataTable.Rows[0][1].ToString();
+            newMedicine.Quantity = int.Parse(dataTable.Rows[0][2].ToString());
+            newMedicine.Price = int.Parse(dataTable.Rows[0][3].ToString());
             return newMedicine;
         }
     }
