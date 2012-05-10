@@ -31,13 +31,23 @@ namespace Hospital.Model
                                            new SqlParameter("@PRICE",newMedicine.Price)};
             return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
-        public Boolean UpdateMedicine()
+        public static int UpdateMedicine(Medicine updateMedicine)
         {
-            return true;
+            string sqlUpdate = @"UPDATE       MEDICINE
+                                SET                MEDICINENAME =@MEDICINENAME, QUANTITY =@QUANTITY, PRICE =@PRICE
+                                WHERE         MEDICINEID=@MEDICINEID ";
+            SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", updateMedicine.MedicineID),
+                                            new SqlParameter("@MEDICINENAME", updateMedicine.MedicineName),
+                                           new SqlParameter("@QUANTITY", updateMedicine.Quantity),
+                                           new SqlParameter("@PRICE", updateMedicine.Price)};
+            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
-        public Boolean DeleteMedicne()
+        public static int DeleteMedicne(int medicineID)
         {
-            return true;
+            string sqlDelete = @"DELETE FROM MEDICINE
+                                WHERE        (MEDICINEID = @MEDICINEID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", medicineID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
         public static DataTable GetListMedicine()
         {
@@ -59,7 +69,7 @@ namespace Hospital.Model
                                 FROM            MEDICINE
                                 WHERE        MEDICINE=@MEDICINEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", medicineID) };
-            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
             newMedicine.MedicineID = tempInterger;
             newMedicine.MedicineName = dataTable.Rows[0][1].ToString();

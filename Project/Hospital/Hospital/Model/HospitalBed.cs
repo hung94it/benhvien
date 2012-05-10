@@ -84,7 +84,7 @@ namespace Hospital.Model
                                 FROM            HOSPITALBED
                                 WHERE          (PATIENT=@PATIENT)";
             SqlParameter[] sqlParameters = { new SqlParameter("@PATIENT", int.Parse(patient)) };
-            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
             hB.BedID = tempInterger;
             hB.Patient = int.Parse(dataTable.Rows[0][1].ToString());
