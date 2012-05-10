@@ -3,38 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
+using Hospital.Functional;
 
 namespace Hospital.Model
 {
     class MedicineBillDetail
     {
-        private int medicineID;
-        private int billID;
-        private int quantity;
-        private int price;
-
-        public int Price
+        public int MedicineID { get; set; }
+        public int BillID { get; set; }
+        public int Quantity { get; set; }
+        public int Price { get; set; }
+        public MedicineBillDetail() { }
+        public MedicineBillDetail(int billID, int medicineID, int quantity, int price)
         {
-            get { return price; }
-            set { price = value; }
-        }
-
-        public int Quantity
-        {
-            get { return quantity; }
-            set { quantity = value; }
-        }
-
-        public int BillID
-        {
-            get { return billID; }
-            set { billID = value; }
-        }
-
-        public int MedicineID
-        {
-            get { return medicineID; }
-            set { medicineID = value; }
+            this.BillID = billID;
+            this.MedicineID = medicineID;
+            this.Quantity = quantity;
+            this.Price = price;
         }
         public Boolean InsertBillDetail()
         {
@@ -48,10 +34,18 @@ namespace Hospital.Model
         {
             return true;
         }
-        public DataTable GetMedicineBillDetail()
+        public static DataTable GetListMedicineBillDetail(int billID)
         {
             DataTable dtMBD = new DataTable();
-
+            string sqlSelect = @"SELECT        BILLID, MEDICINEID, QUANTITY, PRICE
+                                FROM            MEDICINEBILLDETAIL
+                                WHERE        BILLID=@BILLID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", billID) };
+            dtMBD = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            dtMBD.Columns[0].ColumnName = "Mã hóa đơn";
+            dtMBD.Columns[1].ColumnName = "Mã thuốc";
+            dtMBD.Columns[2].ColumnName = "Số lượng";
+            dtMBD.Columns[3].ColumnName = "Đơn giá";
             return dtMBD;
         }
     }

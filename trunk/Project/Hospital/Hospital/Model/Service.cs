@@ -3,56 +3,73 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
+using Hospital.Functional;
 
 namespace Hospital.Model
 {
     class Service
     {
-        private int serviceID;
-        private String serviceName;
-        private int price;
+        public int ServiceID { get; set; }
+        public String ServiceName { get; set; }
+        public int Price { get; set; }
 
-        public String ServiceName
+        public Service() { }
+        public Service(int serviceID, String serviceName, int price)
         {
-            get { return serviceName; }
-            set { serviceName = value; }
+            this.ServiceID = serviceID;
+            this.ServiceName = serviceName;
+            this.Price = price;
         }
-        
-        public int Price
+        public static int InsertService(Service newService)
         {
-            get { return price; }
-            set { price = value; }
+            String sqlInsert = @"INSERT INTO SERVICE(SERVICENAME, PRICE)
+                                VALUES        (@SERVICENAME,@PRICE)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@SERVICENAME", newService.ServiceName),
+                                           new SqlParameter("@PRICE",newService.Price)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
-
-
-
-        public int ServiceID
+        public static int UpdateService(Service updateService)
         {
-            get { return serviceID; }
-            set { serviceID = value; }
+            string sqlUpdate = @"UPDATE       SERVICE
+                                SET                SERVICENAME = @SERVICENAME, PRICE = @PRICE
+                                WHERE         SERVICEID=@SERVICEID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@SERVICEID", updateService.ServiceID),
+                                            new SqlParameter("@SERVICENAME", updateService.ServiceName),
+                                           new SqlParameter("@PRICE", updateService.Price)};
+            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
-        public Boolean InsertService()
+        public static int DeleteService(int serviceID)
         {
-            return true;
+            string sqlDelete = @"DELETE     FROM SERVICE
+                                WHERE        (SERVICEID = @SERVICEID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@SERVICEID", serviceID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-        public Boolean UpdateService()
-        {
-            return true;
-        }
-        public Boolean DeleteService()
-        {
-            return true;
-        }
-        public DataTable GetListService()
+        public static DataTable GetListService()
         {
             DataTable dtS = new DataTable();
-
+            string sqlSelect = @"SELECT        SERVICEID, SERVICENAME, PRICE
+                                FROM            SERVICE";
+            dtS = SqlResult.ExecuteQuery(sqlSelect);
+            dtS.Columns[0].ColumnName = "Mã dịch vụ";
+            dtS.Columns[1].ColumnName = "Tên dịch vụ";
+            dtS.Columns[2].ColumnName = "Đơn giá";
             return dtS;
         }
-        public Service GetService()
+        public static Service GetService(int serviceID)
         {
             Service newService = new Service();
-
+            int tempInterger;
+            string sqlSelect = @"SELECT        SERVICEID, SERVICENAME, PRICE
+                                FROM            SERVICE
+                                WHERE        SERVICEID=@SERVICEID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", serviceID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
+            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+            newService.ServiceID = tempInterger;
+            newService.ServiceName = dataTable.Rows[0][1].ToString();
+            newService.Price = int.Parse(dataTable.Rows[0][2].ToString());
             return newService;
         }
     }

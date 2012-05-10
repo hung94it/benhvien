@@ -3,36 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
+using Hospital.Functional;
 
 namespace Hospital.Model
 {
     class BillType
     {
-        private int billTypeID;
-        private String typeName;
-        private Bill a;
+        public int BillTypeID { get; set; }
+        public String TypeName { get; set; }
 
-        public String TypeName
+        public BillType() { }
+        public BillType(int billTypeID, String typeName)
         {
-            get { return typeName; }
-            set { typeName = value; }
+            this.BillTypeID = billTypeID;
+            this.TypeName = typeName;
         }
-        public int BillTypeID
-        {
-            get { return billTypeID; }
-            set { billTypeID = value; }
-        }
-        public BillType GetBillType()
+        public static BillType GetBillType(int billTypeID)
         {
             BillType billType = new BillType();
-
+            int tempInterger;
+            string sqlSelect = @"SELECT        BILLTYPEID, TYPENAME
+                                FROM            BILLTYPE
+                                WHERE        BILLTYPEID=@BILLTYPEID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@BILLTYPEID", billTypeID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
+            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+            billType.BillTypeID = tempInterger;
+            billType.TypeName = dataTable.Rows[0][1].ToString();
             return billType;
         }
-        public DataTable GetListBillType()
+        public static DataTable GetListBillType()
         {
-            DataTable dtBillType = new DataTable();
-
-            return dtBillType;
+            DataTable dtB = new DataTable();
+            string sqlSelect = @"SELECT        BILLTYPEID, TYPENAME
+                                FROM            BILLTYPE";
+            dtB = SqlResult.ExecuteQuery(sqlSelect);
+            dtB.Columns[0].ColumnName = "Mã loại hóa đơn";
+            dtB.Columns[1].ColumnName = "Tên loại hóa đơn";
+            return dtB;
         }
     }
 }

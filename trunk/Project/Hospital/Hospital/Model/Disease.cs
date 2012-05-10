@@ -67,7 +67,7 @@ namespace Hospital.Model
                                 FROM DISEASE
                                 WHERE (DISEASEID = @DISEASEID)";
             SqlParameter[] sqlParameters = { new SqlParameter("@DISEASEID", diseaseID) };
-            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
             newDisease.DiseaseID = tempInterger;
             newDisease.DiseaseName = dataTable.Rows[0][1].ToString();

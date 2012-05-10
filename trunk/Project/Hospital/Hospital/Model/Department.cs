@@ -49,7 +49,7 @@ namespace Hospital.Model
                                 FROM            DEPARTMENT
                                 WHERE           (DEPARTMENTID=@DEPARTMENTID)";
             SqlParameter[] sqlParameters = { new SqlParameter("@DEPARTMENTID", departmentID) };
-            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
             newDepartment.DepartmentID = tempInterger;
             newDepartment.DepartmentName= dataTable.Rows[0][1].ToString();
