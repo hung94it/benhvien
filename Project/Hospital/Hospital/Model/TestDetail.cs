@@ -3,33 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-
+using System.Data.SqlClient;
+using Hospital.Functional;
 namespace Hospital.Model
 {
     class TestDetail
     {
-        private int testTypeID;
-        private int tCID;
-        private int result;
+        public int TestTypeID;
+        public int TCID;
+        public int Result;
 
-        public int Result
+        public TestDetail() { }
+        public TestDetail(int testTypeID, int tcID, String result)
         {
-            get { return result; }
-            set { result = value; }
+            this.TestTypeID = testTypeID;
+            this.TCID = tcID;
+            this.Result = result;
         }
-
-        public int TCID
-        {
-            get { return tCID; }
-            set { tCID = value; }
-        }
-
-        public int TestTypeID
-        {
-            get { return testTypeID; }
-            set { testTypeID = value; }
-        }
-
         public Boolean InsertTestDetail()
         {
             return true;
