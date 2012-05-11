@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Hospital.Model;
 
 namespace Hospital.View
 {
@@ -14,12 +15,6 @@ namespace Hospital.View
         public FormMain()
         {
             InitializeComponent();
-        }
-
-        private void buttonPatientAdd_Click(object sender, EventArgs e)
-        {
-            FormPatientDetail patientDetailForm = new FormPatientDetail();
-            patientDetailForm.Show();
         }
 
         private void buttonAbout_Click(object sender, EventArgs e)
@@ -32,5 +27,8 @@ namespace Hospital.View
         {
             this.Close();
         }
+
+
+
     }
 }

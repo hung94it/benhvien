@@ -50,6 +50,8 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.textBoxProfession = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelProfession = new DevComponents.DotNetBar.LabelX();
+            this.comboItemMale = new DevComponents.Editors.ComboItem();
+            this.comboItemFemale = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +77,7 @@
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonClose.TabIndex = 1;
             this.buttonClose.Text = "Đóng";
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // labelFirstName
             // 
@@ -299,11 +302,15 @@
             this.comboBoxGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxGender.FormattingEnabled = true;
             this.comboBoxGender.ItemHeight = 14;
+            this.comboBoxGender.Items.AddRange(new object[] {
+            this.comboItemMale,
+            this.comboItemFemale});
             this.comboBoxGender.Location = new System.Drawing.Point(93, 145);
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(240, 20);
             this.comboBoxGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxGender.TabIndex = 20;
+            this.comboBoxGender.Text = "Nam";
             // 
             // textBoxDeposit
             // 
@@ -352,6 +359,14 @@
             this.labelProfession.Size = new System.Drawing.Size(75, 23);
             this.labelProfession.TabIndex = 23;
             this.labelProfession.Text = "Nghề nghiệp:";
+            // 
+            // comboItemMale
+            // 
+            this.comboItemMale.Text = "Nam";
+            // 
+            // comboItemFemale
+            // 
+            this.comboItemFemale.Text = "Nữ";
             // 
             // FormPatientDetail
             // 
@@ -411,5 +426,7 @@
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxProfession;
         private DevComponents.DotNetBar.LabelX labelProfession;
+        private DevComponents.Editors.ComboItem comboItemMale;
+        private DevComponents.Editors.ComboItem comboItemFemale;
     }
 }

@@ -23,7 +23,8 @@ namespace Hospital.View
             try
             {
                 int i = 0;
-                dataGridViewX1.DataSource = MedicineBillDetail.GetListMedicineBillDetail(i);
+                //dataGridViewX1.DataSource = MedicineBillDetail.GetListMedicineBillDetail(i);
+                dataGridViewX1.DataSource = Patient.GetListPatient();
             }
             catch (SqlException exception)
             {
