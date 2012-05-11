@@ -11,7 +11,7 @@ namespace Hospital.Model
     {
         public int TestTypeID;
         public int TCID;
-        public int Result;
+        public string Result;
 
         public TestDetail() { }
         public TestDetail(int testTypeID, int tcID, String result)

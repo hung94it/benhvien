@@ -9,8 +9,13 @@ using Hospital.Functional;
 
 namespace Hospital.Model
 {
-    class Patient
+    public class Patient
     {
+        public const int GENDER_MALE = 0;
+        public const int GENDER_FEMALE = 1;
+        public static DataTable patientTable;
+        //private static Patient tempPatient;
+
         //Properties of Hospital class
         public int PatientID { get; set; }
         public String FirstName { get; set; }
@@ -22,8 +27,6 @@ namespace Hospital.Model
         public String Address { get; set; }
         public decimal Deposit { get; set; }
         public int State { get; set; }
-
-        private static Patient tempPatient;
 
         //Default constructor
         public Patient() { }
@@ -95,21 +98,52 @@ namespace Hospital.Model
         //Get list patient
         public static DataTable GetListPatient()
         {
+            //if (patientTable == null)
+            //{
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT";
-            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
-            dataTable.Columns[0].ColumnName = "Mã bệnh nhân";
-            return dataTable;
+            patientTable = SqlResult.ExecuteQuery(sqlSelect);
+            //patientTable.Columns["GENDER"].Expression = "'Nam'";
+
+            patientTable.Columns[0].ColumnName = "Mã bệnh nhân";
+            patientTable.Columns[1].ColumnName = "Tên";
+            patientTable.Columns[2].ColumnName = "Họ";
+            patientTable.Columns[3].ColumnName = "Ngày sinh";
+            patientTable.Columns[4].ColumnName = "Giới tính";
+            patientTable.Columns[5].ColumnName = "CMND";
+            patientTable.Columns[6].ColumnName = "Nghề nghiệp";
+            patientTable.Columns[7].ColumnName = "Địa chỉ";
+            patientTable.Columns[8].ColumnName = "Tiền đặt cọc";
+            patientTable.Columns[9].ColumnName = "Trạng thái";
+            //}
+            
+            return patientTable;
         }
 
         //Get patient by patientid
-        public static Patient GetPatient(decimal patientID)
+        public static Patient GetPatient(int patientID)
         {
+            DataTable patientDataTable;
+            Patient newPatient;
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT 
                                 WHERE PATIENTID = @PatientID";
-          
-            return tempPatient;
+            SqlParameter[] sqlParameters = { new SqlParameter("@PatientID", patientID) };
+            patientDataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            newPatient = new Patient();
+            if (patientDataTable.Rows.Count > 0)
+            {
+                newPatient.PatientID = Convert.ToInt32(patientDataTable.Rows[0]["PATIENTID"].ToString());
+                newPatient.FirstName = (string)patientDataTable.Rows[0]["FIRSTNAME"];
+                newPatient.LastName = (string)patientDataTable.Rows[0]["LASTNAME"];
+                newPatient.BirthDay = (DateTime)patientDataTable.Rows[0]["BIRTHDAY"];
+                newPatient.Gender = (int)patientDataTable.Rows[0]["GENDER"];
+                newPatient.ICN = (decimal)patientDataTable.Rows[0]["ICN"];
+                newPatient.Profession = (string)patientDataTable.Rows[0]["PROFESSION"];
+                newPatient.Address = (string)patientDataTable.Rows[0]["ADDRESS"];
+                newPatient.Deposit = (decimal)patientDataTable.Rows[0]["DEPOSIT"];
+            }
+            return newPatient;
         }
 
         public Boolean ChangePatientState()
