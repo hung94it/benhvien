@@ -22,17 +22,34 @@ namespace Hospital.Model
             this.Quantity = quantity;
             this.Price = price;
         }
-        public Boolean InsertBillDetail()
+        public static int InsertMedicineBillDetail(MedicineBillDetail newMBD)
         {
-            return true;
+            String sqlInsert = @"INSERT INTO MEDICINEBILLDETAIL(BILLID, MEDICINEID, QUANTITY, PRICE)
+                                VALUES        (@BILLID,@MEDICINEID,@QUANTITY,@PRICE)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", newMBD.BillID),
+                                            new SqlParameter("@MEDICINEID", newMBD.MedicineID),
+                                            new SqlParameter("@QUANTITY", newMBD.Quantity),
+                                           new SqlParameter("@PRICE",newMBD.Price)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
         public Boolean UpdateBillDetail()
         {
             return true;
         }
-        public Boolean DeleteBillDetail()
+        public static int DeleteMedicineBillDetail(int billID, int medicineID)
         {
-            return true;
+            string sqlDelete = @"DELETE FROM MEDICINEBILLDETAIL
+                                WHERE BILLID=@BILLID AND MEDICINEID=@MEDICINEID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", billID),
+                                           new SqlParameter("@MEDICINEID", medicineID)};
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
+        }
+        public static int DeleteMedicineBillDetail(int billID)
+        {
+            string sqlDelete = @"DELETE FROM MEDICINEBILLDETAIL
+                                WHERE BILLID=@BILLID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", billID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
         public static DataTable GetListMedicineBillDetail(int billID)
         {
