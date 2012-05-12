@@ -96,28 +96,34 @@ namespace Hospital.Model
         }
 
         //Get list patient
-        public static DataTable GetListPatient()
+        public static DataView GetListPatient()
         {
-            //if (patientTable == null)
-            //{
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT";
-            patientTable = SqlResult.ExecuteQuery(sqlSelect);
-            //patientTable.Columns["GENDER"].Expression = "'Nam'";
+            patientTable = SqlResult.ExecuteQuery(sqlSelect);            
 
-            patientTable.Columns[0].ColumnName = "Mã bệnh nhân";
-            patientTable.Columns[1].ColumnName = "Tên";
-            patientTable.Columns[2].ColumnName = "Họ";
-            patientTable.Columns[3].ColumnName = "Ngày sinh";
-            patientTable.Columns[4].ColumnName = "Giới tính";
-            patientTable.Columns[5].ColumnName = "CMND";
-            patientTable.Columns[6].ColumnName = "Nghề nghiệp";
-            patientTable.Columns[7].ColumnName = "Địa chỉ";
-            patientTable.Columns[8].ColumnName = "Tiền đặt cọc";
-            patientTable.Columns[9].ColumnName = "Trạng thái";
-            //}
+            //patientTable.Columns[0].ColumnName = "Mã bệnh nhân";
+            //patientTable.Columns[1].ColumnName = "Tên";
+            //patientTable.Columns[2].ColumnName = "Họ";
+            //patientTable.Columns[3].ColumnName = "Ngày sinh";
+            //patientTable.Columns[4].ColumnName = "Giới tính";
+            //patientTable.Columns[5].ColumnName = "CMND";
+            //patientTable.Columns[6].ColumnName = "Nghề nghiệp";
+            //patientTable.Columns[7].ColumnName = "Địa chỉ";
+            //patientTable.Columns[8].ColumnName = "Tiền đặt cọc";
+            //patientTable.Columns[9].ColumnName = "Trạng thái";
+
+            patientTable.Columns.Add("Mã bệnh nhân", typeof(string), "[PATIENTID]");
+            patientTable.Columns.Add("Họ tên", typeof(string), "[LASTNAME] + ' ' + [FIRSTNAME]");
+            patientTable.Columns.Add("CMND", typeof(string), "[ICN]");
+            patientTable.Columns.Add("Giới tính", typeof(string), "IIF([GENDER] = 0, 'Nam', 'Nữ')");
+            patientTable.Columns.Add("Ngày sinh", typeof(string), "[BIRTHDAY]");
+            patientTable.Columns.Add("Nghề nghiệp", typeof(string), "PROFESSION");
+            patientTable.Columns.Add("Địa chỉ", typeof(string), "[ADDRESS]");
+            patientTable.Columns.Add("Tiền đặt cọc", typeof(string), "[DEPOSIT]");
             
-            return patientTable;
+            return patientTable.DefaultView;
+            //return patientTable;
         }
 
         //Get patient by patientid
@@ -141,7 +147,7 @@ namespace Hospital.Model
                 newPatient.ICN = (decimal)patientDataTable.Rows[0]["ICN"];
                 newPatient.Profession = (string)patientDataTable.Rows[0]["PROFESSION"];
                 newPatient.Address = (string)patientDataTable.Rows[0]["ADDRESS"];
-                newPatient.Deposit = (decimal)patientDataTable.Rows[0]["DEPOSIT"];
+                newPatient.Deposit = (decimal)patientDataTable.Rows[0]["DEPOSIT"];                
             }
             return newPatient;
         }
