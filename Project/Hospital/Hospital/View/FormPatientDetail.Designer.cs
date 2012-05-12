@@ -46,12 +46,12 @@
             this.comboBoxState = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelState = new DevComponents.DotNetBar.LabelX();
             this.comboBoxGender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItemMale = new DevComponents.Editors.ComboItem();
+            this.comboItemFemale = new DevComponents.Editors.ComboItem();
             this.textBoxDeposit = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.textBoxProfession = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelProfession = new DevComponents.DotNetBar.LabelX();
-            this.comboItemMale = new DevComponents.Editors.ComboItem();
-            this.comboItemFemale = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.SuspendLayout();
             // 
@@ -186,6 +186,7 @@
             this.dateBirthday.Size = new System.Drawing.Size(348, 20);
             this.dateBirthday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dateBirthday.TabIndex = 8;
+            this.dateBirthday.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // labelIdentityCard
             // 
@@ -312,6 +313,14 @@
             this.comboBoxGender.TabIndex = 20;
             this.comboBoxGender.Text = "Nam";
             // 
+            // comboItemMale
+            // 
+            this.comboItemMale.Text = "Nam";
+            // 
+            // comboItemFemale
+            // 
+            this.comboItemFemale.Text = "Nữ";
+            // 
             // textBoxDeposit
             // 
             // 
@@ -359,14 +368,6 @@
             this.labelProfession.Size = new System.Drawing.Size(75, 23);
             this.labelProfession.TabIndex = 23;
             this.labelProfession.Text = "Nghề nghiệp:";
-            // 
-            // comboItemMale
-            // 
-            this.comboItemMale.Text = "Nam";
-            // 
-            // comboItemFemale
-            // 
-            this.comboItemFemale.Text = "Nữ";
             // 
             // FormPatientDetail
             // 

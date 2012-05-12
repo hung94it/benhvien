@@ -55,7 +55,7 @@
             this.buttonAbout = new DevComponents.DotNetBar.ButtonItem();
             this.tabMain = new DevComponents.DotNetBar.SuperTabControl();
             this.tabPanelPatient = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.buttonPatientSearch = new DevComponents.DotNetBar.ButtonX();
+            this.buttonPatientSearchDelete = new DevComponents.DotNetBar.ButtonX();
             this.labelPatientSearch = new DevComponents.DotNetBar.LabelX();
             this.textBoxPatientSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.buttonPatientMaterial = new DevComponents.DotNetBar.ButtonX();
@@ -335,7 +335,7 @@
             // tabPanelPatient
             // 
             this.tabPanelPatient.CanvasColor = System.Drawing.Color.Transparent;
-            this.tabPanelPatient.Controls.Add(this.buttonPatientSearch);
+            this.tabPanelPatient.Controls.Add(this.buttonPatientSearchDelete);
             this.tabPanelPatient.Controls.Add(this.labelPatientSearch);
             this.tabPanelPatient.Controls.Add(this.textBoxPatientSearch);
             this.tabPanelPatient.Controls.Add(this.buttonPatientMaterial);
@@ -350,8 +350,8 @@
             this.tabPanelPatient.Location = new System.Drawing.Point(230, 0);
             this.tabPanelPatient.Name = "tabPanelPatient";
             superTabLinearGradientColorTable1.Colors = new System.Drawing.Color[] {
-        System.Drawing.Color.PowderBlue,
-        System.Drawing.Color.MediumSpringGreen};
+        System.Drawing.Color.AliceBlue,
+        System.Drawing.Color.AliceBlue};
             superTabPanelItemColorTable1.Background = superTabLinearGradientColorTable1;
             superTabPanelItemColorTable1.InnerBorder = System.Drawing.Color.Transparent;
             superTabPanelItemColorTable1.OuterBorder = System.Drawing.Color.Transparent;
@@ -361,16 +361,17 @@
             this.tabPanelPatient.TabIndex = 0;
             this.tabPanelPatient.TabItem = this.tabItemPatient;
             // 
-            // buttonPatientSearch
+            // buttonPatientSearchDelete
             // 
-            this.buttonPatientSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonPatientSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonPatientSearch.Location = new System.Drawing.Point(369, 19);
-            this.buttonPatientSearch.Name = "buttonPatientSearch";
-            this.buttonPatientSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonPatientSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonPatientSearch.TabIndex = 16;
-            this.buttonPatientSearch.Text = "Tìm";
+            this.buttonPatientSearchDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonPatientSearchDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonPatientSearchDelete.Location = new System.Drawing.Point(369, 22);
+            this.buttonPatientSearchDelete.Name = "buttonPatientSearchDelete";
+            this.buttonPatientSearchDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonPatientSearchDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonPatientSearchDelete.TabIndex = 16;
+            this.buttonPatientSearchDelete.Text = "Xóa tìm kiếm";
+            this.buttonPatientSearchDelete.Click += new System.EventHandler(this.buttonPatientSearchDelete_Click);
             // 
             // labelPatientSearch
             // 
@@ -396,6 +397,7 @@
             this.textBoxPatientSearch.Name = "textBoxPatientSearch";
             this.textBoxPatientSearch.Size = new System.Drawing.Size(274, 20);
             this.textBoxPatientSearch.TabIndex = 14;
+            this.textBoxPatientSearch.TextChanged += new System.EventHandler(this.textBoxPatientSearch_TextChanged);
             // 
             // buttonPatientMaterial
             // 
@@ -461,6 +463,7 @@
             this.dataViewPatient.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataViewPatient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewPatient.Location = new System.Drawing.Point(0, 57);
+            this.dataViewPatient.MultiSelect = false;
             this.dataViewPatient.Name = "dataViewPatient";
             this.dataViewPatient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataViewPatient.Size = new System.Drawing.Size(561, 473);
@@ -1968,6 +1971,6 @@
         private DevComponents.DotNetBar.SuperTabControlPanel superTabControlPanel1;
         private DevComponents.DotNetBar.SuperTabItem superTabItem1;
         private DevComponents.DotNetBar.LabelX labelPatientSearch;
-        private DevComponents.DotNetBar.ButtonX buttonPatientSearch;
+        private DevComponents.DotNetBar.ButtonX buttonPatientSearchDelete;
     }
 }

@@ -6,48 +6,61 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 using Hospital.Model;
 
 namespace Hospital.View
 {
     public partial class FormPatientDetail : Form
     {
-        public Patient TempPatient { get; set; }
-        public string Action { get; set; }
+        public Patient PatientDetail { get; set; }
+        public string UserAction { get; set; }
 
-        public FormPatientDetail()
+        private FormPatientDetail()
         {
             InitializeComponent();
         }
 
+        public FormPatientDetail(string userAction, Patient patient)
+        {
+            InitializeComponent();
+            this.PatientDetail = patient;
+            this.UserAction = userAction;
+
+            if ("edit".Equals(userAction))
+                setPatientDetail(patient);
+        }
+
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if ("add".Equals(this.Action))
-            {
-                TempPatient = new Patient();
-            }
-
-            TempPatient.FirstName = textBoxFirstName.Text;
-            TempPatient.LastName = textBoxLastName.Text;
-            TempPatient.BirthDay = dateBirthday.Value;
+            PatientDetail.FirstName = textBoxFirstName.Text;
+            PatientDetail.LastName = textBoxLastName.Text;
+            PatientDetail.BirthDay = dateBirthday.Value;
             if (textBoxIdentityCard.Text != "")
-                TempPatient.ICN = Convert.ToDecimal(textBoxIdentityCard.Text);
-            else TempPatient.ICN = 0;
+                PatientDetail.ICN = Convert.ToDecimal(textBoxIdentityCard.Text);
+            else PatientDetail.ICN = 0;
             if (comboBoxGender.Text == "Nam")
-                TempPatient.Gender = Patient.GENDER_MALE;
-            else TempPatient.Gender = Patient.GENDER_FEMALE;
-            TempPatient.Profession = textBoxProfession.Text;
-            TempPatient.Address = textBoxAddress.Text;
+                PatientDetail.Gender = Patient.GENDER_MALE;
+            else PatientDetail.Gender = Patient.GENDER_FEMALE;
+            PatientDetail.Profession = textBoxProfession.Text;
+            PatientDetail.Address = textBoxAddress.Text;
             if (textBoxDeposit.Text != "")
-                TempPatient.Deposit = Convert.ToDecimal(textBoxDeposit.Text);
+                PatientDetail.Deposit = Convert.ToDecimal(textBoxDeposit.Text);
 
-            if ("add".Equals(this.Action))
+            try
             {
-                Patient.InsertPatient(TempPatient);
+                if ("add".Equals(this.UserAction))
+                {
+                    Patient.InsertPatient(PatientDetail);
+                }
+                else if ("edit".Equals(this.UserAction))
+                {
+                    Patient.UpdatePatient(PatientDetail);
+                }
             }
-            else if ("edit".Equals(this.Action))
+            catch (SqlException exception)
             {
-                Patient.UpdatePatient(TempPatient);
+                MessageBox.Show(exception.Message);
             }
 
             this.Close();
@@ -60,7 +73,7 @@ namespace Hospital.View
 
         public void setPatientDetail(Patient patient)
         {
-            this.TempPatient = patient;
+            this.PatientDetail = patient;
 
             textBoxPatientID.Text = patient.PatientID.ToString();
             textBoxFirstName.Text = patient.FirstName;
