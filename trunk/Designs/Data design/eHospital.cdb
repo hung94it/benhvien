@@ -2023,7 +2023,7 @@ EntityComment 0 Arial,8,N</a:FontList>
 <o:EntitySymbol Id="o120">
 <a:CreationDate>1335854404</a:CreationDate>
 <a:ModificationDate>1336215276</a:ModificationDate>
-<a:Rect>((-32120,-43448), (-17572,-38603))</a:Rect>
+<a:Rect>((-35789,-43448), (-13903,-38603))</a:Rect>
 <a:LineColor>11184640</a:LineColor>
 <a:FillColor>16777136</a:FillColor>
 <a:ShadowColor>12632256</a:ShadowColor>
@@ -5094,10 +5094,9 @@ EntityComment 0 Arial,8,N</a:FontList>
 <a:Code>DISEASEID</a:Code>
 <a:CreationDate>1335854465</a:CreationDate>
 <a:Creator>NguyenVanLam</a:Creator>
-<a:ModificationDate>1335854465</a:ModificationDate>
+<a:ModificationDate>1336273262</a:ModificationDate>
 <a:Modifier>NguyenVanLam</a:Modifier>
-<a:DataType>N3</a:DataType>
-<a:Length>3</a:Length>
+<a:DataType>I</a:DataType>
 </o:DataItem>
 <o:DataItem Id="o185">
 <a:ObjectID>D15F76B5-5BF1-4BED-9BEA-8C9A1FC28171</a:ObjectID>
@@ -5105,9 +5104,9 @@ EntityComment 0 Arial,8,N</a:FontList>
 <a:Code>DISEASENAME</a:Code>
 <a:CreationDate>1335854465</a:CreationDate>
 <a:Creator>NguyenVanLam</a:Creator>
-<a:ModificationDate>1335854465</a:ModificationDate>
+<a:ModificationDate>1336271910</a:ModificationDate>
 <a:Modifier>NguyenVanLam</a:Modifier>
-<a:DataType>TXT100</a:DataType>
+<a:DataType>LVA100</a:DataType>
 <a:Length>100</a:Length>
 </o:DataItem>
 <o:DataItem Id="o187">
@@ -5116,9 +5115,9 @@ EntityComment 0 Arial,8,N</a:FontList>
 <a:Code>SYMPTOM</a:Code>
 <a:CreationDate>1335854465</a:CreationDate>
 <a:Creator>NguyenVanLam</a:Creator>
-<a:ModificationDate>1335854465</a:ModificationDate>
+<a:ModificationDate>1336271919</a:ModificationDate>
 <a:Modifier>NguyenVanLam</a:Modifier>
-<a:DataType>TXT1000</a:DataType>
+<a:DataType>LVA1000</a:DataType>
 <a:Length>1000</a:Length>
 </o:DataItem>
 <o:DataItem Id="o190">
