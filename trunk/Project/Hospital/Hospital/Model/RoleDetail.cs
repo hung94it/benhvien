@@ -6,7 +6,7 @@ using System.Data;
 
 namespace Hospital.Model
 {
-    class DecentralizationDetail
+    class RoleDetail
     {
         private int decentID;
         private int functionID;

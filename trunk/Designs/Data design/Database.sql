@@ -93,21 +93,21 @@ create table BILLTYPE (
 go
 
 /*==============================================================*/
-/* Table: DECENTRALIZATION                                      */
+/* Table: ROLE                                      */
 /*==============================================================*/
-create table DECENTRALIZATION (
-   DECENTRALIZATIONID   numeric(3)     identity(100,1)      not null,
-   DECENTRALIZATIONNAME nvarchar(100)         null,
-   constraint PK_DECENTRALIZATION primary key nonclustered (DECENTRALIZATIONID)
+create table ROLE (
+   ROLEID   numeric(3)     identity(100,1)      not null,
+   ROLENAME nvarchar(100)         null,
+   constraint PK_ROLE primary key nonclustered (ROLEID)
 )
 go
 
 
 /*==============================================================*/
-/* Table: DECENTRALIZATIONDETAIL                                */
+/* Table: ROLEDETAIL                                */
 /*==============================================================*/
-create table DECENTRALIZATIONDETAIL (
-   DECENTRALIZATIONID   numeric(3)           not null,
+create table ROLEDETAIL (
+   ROLEID   numeric(3)           not null,
    FUNCTIONID           numeric(3)           not null
 )
 go
@@ -115,15 +115,15 @@ go
 /*==============================================================*/
 /* Index: RELATIONSHIP_3_FK                                     */
 /*==============================================================*/
-create index RELATIONSHIP_3_FK on DECENTRALIZATIONDETAIL (
-DECENTRALIZATIONID ASC
+create index RELATIONSHIP_3_FK on ROLEDETAIL (
+ROLEID ASC
 )
 go
 
 /*==============================================================*/
 /* Index: RELATIONSHIP_4_FK                                     */
 /*==============================================================*/
-create index RELATIONSHIP_4_FK on DECENTRALIZATIONDETAIL (
+create index RELATIONSHIP_4_FK on ROLEDETAIL (
 FUNCTIONID ASC
 )
 go
@@ -211,7 +211,7 @@ go
 /*==============================================================*/
 /* Table: "FUNCTION"                                            */
 /*==============================================================*/
-create table "FUNCTION" (
+create table DETAILFUNCTION (
    FUNCTIONID           numeric(3)      identity(100,1)     not null,
    FUNCTIONNAME         nvarchar(100)         null,
    BUTTON               nvarchar(50)          null,
@@ -548,7 +548,7 @@ create table STAFF (
    STAFFID              numeric(8)      identity(10000000,1)     not null,
    DEPARTMENTID         numeric(3)           null,
    MAJORID              numeric(3)           null,
-   DECENTRALIZATIONID   numeric(3)           null,
+   ROLEID   numeric(3)           null,
    PASSWORD             char(100)            null,
    FIRSTNAME            nvarchar(100)         null,
    LASTNAME             nvarchar(100)         null,
@@ -581,7 +581,7 @@ go
 /* Index: RELATIONSHIP_28_FK                                    */
 /*==============================================================*/
 create index RELATIONSHIP_28_FK on STAFF (
-DECENTRALIZATIONID ASC
+ROLEID ASC
 )
 go
 
@@ -726,14 +726,14 @@ alter table BILL
       references BILLTYPE (BILLTYPEID)
 go
 
-alter table DECENTRALIZATIONDETAIL
-   add constraint FK_DECENTRA_RELATIONS_DECENTRA foreign key (DECENTRALIZATIONID)
-      references DECENTRALIZATION (DECENTRALIZATIONID)
+alter table ROLEDETAIL
+   add constraint FK_ROLEDETAIL_RELATIONS_ROLE foreign key (ROLEID)
+      references ROLE (ROLEID)
 go
 
-alter table DECENTRALIZATIONDETAIL
-   add constraint FK_DECENTRA_RELATIONS_FUNCTION foreign key (FUNCTIONID)
-      references "FUNCTION" (FUNCTIONID)
+alter table ROLEDETAIL
+   add constraint FK_ROLEDETAIL_RELATIONS_ROLEFUNCTION foreign key (FUNCTIONID)
+      references ROLEFUNCTION (FUNCTIONID)
 go
 
 alter table DISCHARGEDCERTIFICATE
@@ -847,8 +847,8 @@ alter table STAFF
 go
 
 alter table STAFF
-   add constraint FK_STAFF_RELATIONS_DECENTRA foreign key (DECENTRALIZATIONID)
-      references DECENTRALIZATION (DECENTRALIZATIONID)
+   add constraint FK_STAFF_RELATIONS_ROLE foreign key (ROLEID)
+      references ROLE (ROLEID)
 go
 
 alter table SURGICAL
