@@ -3,68 +3,85 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.SqlClient;
+using Hospital.Functional;
 
 namespace Hospital.Model
 {
     class Surgical
     {
-        private int surgicalID;
-        private int patientID;
-        private DateTime date;
-        private String description;
-        private int state;
+        public int SurgicalID { get; set; }
+        public int PatientID { get; set; }
+        public DateTime Date { get; set; }
+        public String Description { get; set; }
+        public int State { get; set; }
 
-        public int State
+        public Surgical() { }
+        public Surgical(int surgicalID, int patientID, DateTime date, String description, int state)
         {
-            get { return state; }
-            set { state = value; }
+            this.SurgicalID = surgicalID;
+            this.PatientID = patientID;
+            this.Date = date;
+            this.Description = description;
+            this.State = state;
         }
-
-        public String Description
+        public static int InsertSurgical(Surgical newSurgical)
         {
-            get { return description; }
-            set { description = value; }
+            String sqlInsert = @"INSERT INTO SURGICAL(SURGICALID, PATIENTID, DATE, DESCRIPTION, STATE)
+                                VALUES        (@SURGICALID,@PATIENTID,@DATE,@DESCRIPTION,@STATE)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@SURGICALID", newSurgical.SurgicalID),
+                                            new SqlParameter("@PATIENTID", newSurgical.PatientID),
+                                            new SqlParameter("@DATE", newSurgical.Date),
+                                            new SqlParameter("@DESCRIPTION", newSurgical.Description ),
+                                           new SqlParameter("@STATE",newSurgical.State)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
-
-        public DateTime Date
+        public static int UpdateSurgical(Surgical updateSurgical)
         {
-            get { return date; }
-            set { date = value; }
+            string sqlUpdate = @"UPDATE       SURGICAL
+                                SET                DATE =@DATE, DESCRIPTION =@DESCRIPTION, STATE =@STATE
+                                WHERE         SURGICALID=@SURGICALID ";
+            SqlParameter[] sqlParameters = { new SqlParameter("@SURGICALID", updateSurgical.SurgicalID),
+                                            new SqlParameter("@DATE", updateSurgical.State),
+                                           new SqlParameter("@DESCRIPTION", updateSurgical.Description),
+                                           new SqlParameter("@STATE", updateSurgical.State)};
+            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
-
-        public int PatientID
+        public static int DeleteSurgical(int surgicalID)
         {
-            get { return patientID; }
-            set { patientID = value; }
+            string sqlDelete = @"DELETE FROM SURGICAL
+                                WHERE        (SURGICALID=@SURGICALID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@SURGICALID", surgicalID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-
-        public int SurgicalID
-        {
-            get { return surgicalID; }
-            set { surgicalID = value; }
-        }
-        public Boolean InsertSurgical()
-        {
-            return true;
-        }
-        public Boolean UpdateSurgical()
-        {
-            return true;
-        }
-        public Boolean DeleteSurgical()
-        {
-            return true;
-        }
-        public DataTable GetListSurgical()
+        public static DataTable GetListSurgical()
         {
             DataTable dtS = new DataTable();
-
+            string sqlSelect = @"SELECT        SURGICALID, PATIENTID, DATE, DESCRIPTION, STATE
+                                FROM            SURGICAL";
+            dtS = SqlResult.ExecuteQuery(sqlSelect);
+            dtS.Columns[0].ColumnName = "Mã ca phẩu thuật";
+            dtS.Columns[1].ColumnName = "Mã bệnh nhân";
+            dtS.Columns[2].ColumnName = "Ngày thực hiện";
+            dtS.Columns[3].ColumnName = "Mô tả";
+            dtS.Columns[4].ColumnName = "Trạng thái";
             return dtS;
         }
-        public Surgical GetSurgical()
+        public static Surgical GetSurgical(int surgicalID)
         {
             Surgical newSurgical = new Surgical();
-
+            int tempInterger;
+            string sqlSelect = @"SELECT        SURGICALID, PATIENTID, DATE, DESCRIPTION, STATE
+                                FROM            SURGICAL
+                                WHERE        SURGICALID=@SURGICALID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@SURGICALID", surgicalID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+            newSurgical.SurgicalID = tempInterger;
+            newSurgical.PatientID = int.Parse(dataTable.Rows[0][1].ToString());
+            newSurgical.Date = DateTime.Parse((dataTable.Rows[0][2].ToString()));
+            newSurgical.Description = dataTable.Rows[0][3].ToString();
+            newSurgical.State = int.Parse(dataTable.Rows[0][4].ToString());
             return newSurgical;
         }
     }

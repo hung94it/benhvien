@@ -67,7 +67,7 @@ namespace Hospital.Model
             int tempInterger;
             string sqlSelect = @"SELECT        MEDICINENAME, QUANTITY, PRICE
                                 FROM            MEDICINE
-                                WHERE        MEDICINE=@MEDICINEID";
+                                WHERE        MEDICINEID=@MEDICINEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", medicineID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
