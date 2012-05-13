@@ -94,13 +94,13 @@
     <Compile Include="Model\Bill.cs" />
     <Compile Include="Model\BillType.cs" />
     <Compile Include="Model\DbConnect.cs" />
-    <Compile Include="Model\Decentralization.cs" />
-    <Compile Include="Model\DecentralizationDetail.cs" />
+    <Compile Include="Model\Role.cs" />
+    <Compile Include="Model\RoleDetail.cs" />
     <Compile Include="Model\Department.cs" />
     <Compile Include="Model\DischargeCertificate.cs" />
     <Compile Include="Model\Disease.cs" />
     <Compile Include="Model\ExaminationCertificate.cs" />
-    <Compile Include="Model\Function.cs" />
+    <Compile Include="Model\RoleFunction.cs" />
     <Compile Include="Model\HeathFile.cs" />
     <Compile Include="Model\HeathMonitoringNote.cs" />
     <Compile Include="Model\HIC.cs" />
