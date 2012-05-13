@@ -66,10 +66,13 @@ namespace Hospital.Model
                                 WHERE        SERVICEID=@SERVICEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", serviceID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            newService.ServiceID = tempInterger;
-            newService.ServiceName = dataTable.Rows[0][1].ToString();
-            newService.Price = int.Parse(dataTable.Rows[0][2].ToString());
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newService.ServiceID = tempInterger;
+                newService.ServiceName = dataTable.Rows[0][1].ToString();
+                newService.Price = int.Parse(dataTable.Rows[0][2].ToString());
+            }
             return newService;
         }
     }

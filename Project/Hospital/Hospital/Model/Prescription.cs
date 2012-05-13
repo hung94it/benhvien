@@ -71,11 +71,14 @@ namespace Hospital.Model
                                 WHERE        PRESCRIPTIONID=@PRESCRIPTIONID";
             SqlParameter[] sqlParameters = { new SqlParameter("@PRESCRIPTIONID", pID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            newPrescription.PrescriptionID = tempInterger;
-            newPrescription.StaffID = int.Parse(dataTable.Rows[0][1].ToString());
-            newPrescription.PatientID = int.Parse(dataTable.Rows[0][2].ToString());
-            newPrescription.Date = DateTime.Parse(dataTable.Rows[0][3].ToString());
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newPrescription.PrescriptionID = tempInterger;
+                newPrescription.StaffID = int.Parse(dataTable.Rows[0][1].ToString());
+                newPrescription.PatientID = int.Parse(dataTable.Rows[0][2].ToString());
+                newPrescription.Date = DateTime.Parse(dataTable.Rows[0][3].ToString());
+            }
             return newPrescription;
         }
 

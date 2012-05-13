@@ -74,12 +74,15 @@ namespace Hospital.Model
                                 WHERE        TCID=@STCID";
             SqlParameter[] sqlParameters = { new SqlParameter("@TCID", tCID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            newTC.TCID = tempInterger;
-            newTC.PatientID = int.Parse(dataTable.Rows[0][1].ToString());
-            newTC.StafID = int.Parse(dataTable.Rows[0][2].ToString());
-            newTC.Date = DateTime.Parse((dataTable.Rows[0][3].ToString()));
-            newTC.State = int.Parse(dataTable.Rows[0][4].ToString());
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newTC.TCID = tempInterger;
+                newTC.PatientID = int.Parse(dataTable.Rows[0][1].ToString());
+                newTC.StafID = int.Parse(dataTable.Rows[0][2].ToString());
+                newTC.Date = DateTime.Parse((dataTable.Rows[0][3].ToString()));
+                newTC.State = int.Parse(dataTable.Rows[0][4].ToString());
+            }
             return newTC;
         }
     }

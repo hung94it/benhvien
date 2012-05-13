@@ -60,9 +60,12 @@ namespace Hospital.Model
                                 WHERE (ROLEID = @ROLEID)";
             SqlParameter[] sqlParameters = { new SqlParameter("@ROLEID", roleID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            newRole.RoleID = tempInterger;
-            newRole.RoleName = dataTable.Rows[0][1].ToString();
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newRole.RoleID = tempInterger;
+                newRole.RoleName = dataTable.Rows[0][1].ToString();
+            }
             return newRole;
         }
     }

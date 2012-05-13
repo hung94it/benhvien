@@ -76,12 +76,15 @@ namespace Hospital.Model
                                 WHERE        SURGICALID=@SURGICALID";
             SqlParameter[] sqlParameters = { new SqlParameter("@SURGICALID", surgicalID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            newSurgical.SurgicalID = tempInterger;
-            newSurgical.PatientID = int.Parse(dataTable.Rows[0][1].ToString());
-            newSurgical.Date = DateTime.Parse((dataTable.Rows[0][2].ToString()));
-            newSurgical.Description = dataTable.Rows[0][3].ToString();
-            newSurgical.State = int.Parse(dataTable.Rows[0][4].ToString());
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newSurgical.SurgicalID = tempInterger;
+                newSurgical.PatientID = int.Parse(dataTable.Rows[0][1].ToString());
+                newSurgical.Date = DateTime.Parse((dataTable.Rows[0][2].ToString()));
+                newSurgical.Description = dataTable.Rows[0][3].ToString();
+                newSurgical.State = int.Parse(dataTable.Rows[0][4].ToString());
+            }
             return newSurgical;
         }
     }

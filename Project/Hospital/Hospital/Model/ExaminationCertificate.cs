@@ -3,76 +3,91 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-
+using System.Data.SqlClient;
+using Hospital.Functional;
 namespace Hospital.Model
 {
     class ExaminationCertificate
     {
-        private int eCID;
-        private int patientID;
-        private int staffID;
-        private DateTime date;
-        private String result;
-        private int state;
+        public int ECID { get; set; }
+        public int PatientID { get; set; }
+        public int StaffID { get; set; }
+        public DateTime Date { get; set; }
+        public String Result { get; set; }
+        public int State { get; set; }
 
-        public int State
+        public ExaminationCertificate() { }
+        public ExaminationCertificate(int eCID, int patientID, int staffID, DateTime date, String result, int state)
         {
-            get { return state; }
-            set { state = value; }
+            this.ECID = eCID;
+            this.PatientID = patientID;
+            this.StaffID = staffID;
+            this.Date = date;
+            this.Result = result;
+            this.State = state;
         }
-
-        public String Result
+        public static int InsertEC(ExaminationCertificate newEC)
         {
-            get { return result; }
-            set { result = value; }
+            String sqlInsert = @"INSERT INTO EXAMINATIONCERTIFICATE(PATIENTID, STAFFID, DATE, RESULT, STATE)
+                                VALUES        (@PATIENTID,@STAFFID,@DATE,@RESULT,@STATE)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", newEC.PatientID),
+                                            new SqlParameter("@STAFFID", newEC.StaffID),
+                                            new SqlParameter("@DATE", newEC.Date),
+                                            new SqlParameter("@RESULT", newEC.Result),
+                                           new SqlParameter("@STATE",newEC.State)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
-
-        public DateTime Date
+        public static int UpdateEC(ExaminationCertificate updateEC)
         {
-            get { return date; }
-            set { date = value; }
+            string sqlUpdate = @"UPDATE       EXAMINATIONCERTIFICATE
+                                SET                PATIENTID =@PATIENTID, STAFFID =@STAFFID, DATE =@DATE, RESULT =@RESULT, STATE =@STATE
+                                WHERE         ECID=@ECID ";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", updateEC.PatientID ),
+                                            new SqlParameter("@STAFFID", updateEC.StaffID),
+                                           new SqlParameter("@DATE",updateEC.Date),
+                                           new SqlParameter("@RESULT", updateEC.Result),
+                                           new SqlParameter("STATE", updateEC.State)};
+            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
-
-        public int StaffID
+        public static int DeleteEC(int eCID)
         {
-            get { return staffID; }
-            set { staffID = value; }
+            string sqlDelete = @"DELETE FROM EXAMINATIONCERTIFICATE
+                                WHERE        (ECID=@ECID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@ECID", eCID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-
-        public int PatientID
-        {
-            get { return patientID; }
-            set { patientID = value; }
-        }
-
-        public int ECID
-        {
-            get { return eCID; }
-            set { eCID = value; }
-        }
-        public Boolean InsertEC()
-        {
-            return true;
-        }
-        public Boolean UpdateEC()
-        {
-            return true;
-        }
-        public Boolean DeleteEC()
-        {
-            return true;
-        }
-        public DataTable GetListEC()
+        public static DataTable GetListEC()
         {
             DataTable dtEC = new DataTable();
-
+            string sqlSelect = @"SELECT        ECID, PATIENTID, STAFFID, DATE, RESULT, STATE
+                                FROM            EXAMINATIONCERTIFICATE";
+            dtEC = SqlResult.ExecuteQuery(sqlSelect);
+            dtEC.Columns[0].ColumnName = "Mã phiếu khám bệnh";
+            dtEC.Columns[1].ColumnName = "Mã bệnh nhân";
+            dtEC.Columns[2].ColumnName = "Mã nhân viên khám";
+            dtEC.Columns[3].ColumnName = "Ngày lập";
+            dtEC.Columns[4].ColumnName = "Kết quả";
+            dtEC.Columns[5].ColumnName = "Trạng thái";
             return dtEC;
         }
-        public ExaminationCertificate GetEC()
+        public static ExaminationCertificate GetEC(int eCID)
         {
-            ExaminationCertificate eC = new ExaminationCertificate();
-
-            return eC;
+            ExaminationCertificate newEC = new ExaminationCertificate();
+            string sqlSelect = @"SELECT        ECID, PATIENTID, STAFFID, DATE, RESULT, STATE
+                                FROM            EXAMINATIONCERTIFICATE
+                                WHERE        ECID=@ECID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@ECID", eCID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if (dataTable.Rows.Count > 0)
+            {
+                newEC.ECID = (int)dataTable.Rows[0][0];
+                newEC.PatientID = (int)dataTable.Rows[0][1];
+                newEC.StaffID = (int)dataTable.Rows[0][2];
+                newEC.Date = (DateTime)dataTable.Rows[0][3];
+                newEC.Result = (String)dataTable.Rows[0][4];
+                newEC.State = (int)dataTable.Rows[0][5];
+            }
+            return newEC;
         }
     }
 }
