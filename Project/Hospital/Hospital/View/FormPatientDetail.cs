@@ -60,7 +60,7 @@ namespace Hospital.View
             }
             catch (SqlException exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             this.Close();

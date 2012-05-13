@@ -71,7 +71,6 @@
   <ItemGroup>
     <Compile Include="Controller\AssignmentController.cs" />
     <Compile Include="Controller\BillController.cs" />
-    <Compile Include="Controller\DecentralizationController.cs" />
     <Compile Include="Controller\DepartmentController.cs" />
     <Compile Include="Controller\DischargeCertificateController.cs" />
     <Compile Include="Controller\DiseaseController.cs" />

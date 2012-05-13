@@ -63,7 +63,7 @@
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonOk.TabIndex = 0;
+            this.buttonOk.TabIndex = 9;
             this.buttonOk.Text = "Đồng ý";
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
@@ -75,7 +75,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonClose.TabIndex = 1;
+            this.buttonClose.TabIndex = 10;
             this.buttonClose.Text = "Đóng";
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -88,7 +88,7 @@
             this.labelFirstName.Location = new System.Drawing.Point(12, 38);
             this.labelFirstName.Name = "labelFirstName";
             this.labelFirstName.Size = new System.Drawing.Size(75, 23);
-            this.labelFirstName.TabIndex = 2;
+            this.labelFirstName.TabIndex = 12;
             this.labelFirstName.Text = "Tên:";
             // 
             // textBoxFirstName
@@ -101,7 +101,7 @@
             this.textBoxFirstName.Location = new System.Drawing.Point(93, 41);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(348, 20);
-            this.textBoxFirstName.TabIndex = 3;
+            this.textBoxFirstName.TabIndex = 0;
             // 
             // textBoxLastName
             // 
@@ -113,7 +113,7 @@
             this.textBoxLastName.Location = new System.Drawing.Point(93, 67);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(348, 20);
-            this.textBoxLastName.TabIndex = 5;
+            this.textBoxLastName.TabIndex = 1;
             // 
             // labelLastName
             // 
@@ -124,7 +124,7 @@
             this.labelLastName.Location = new System.Drawing.Point(12, 64);
             this.labelLastName.Name = "labelLastName";
             this.labelLastName.Size = new System.Drawing.Size(75, 23);
-            this.labelLastName.TabIndex = 4;
+            this.labelLastName.TabIndex = 13;
             this.labelLastName.Text = "Họ:";
             // 
             // labelBirthday
@@ -136,7 +136,7 @@
             this.labelBirthday.Location = new System.Drawing.Point(12, 116);
             this.labelBirthday.Name = "labelBirthday";
             this.labelBirthday.Size = new System.Drawing.Size(75, 23);
-            this.labelBirthday.TabIndex = 6;
+            this.labelBirthday.TabIndex = 15;
             this.labelBirthday.Text = "Ngày sinh:";
             // 
             // dateBirthday
@@ -185,7 +185,7 @@
             this.dateBirthday.Name = "dateBirthday";
             this.dateBirthday.Size = new System.Drawing.Size(348, 20);
             this.dateBirthday.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateBirthday.TabIndex = 8;
+            this.dateBirthday.TabIndex = 3;
             this.dateBirthday.Value = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
             // 
             // labelIdentityCard
@@ -197,7 +197,7 @@
             this.labelIdentityCard.Location = new System.Drawing.Point(12, 90);
             this.labelIdentityCard.Name = "labelIdentityCard";
             this.labelIdentityCard.Size = new System.Drawing.Size(75, 23);
-            this.labelIdentityCard.TabIndex = 9;
+            this.labelIdentityCard.TabIndex = 14;
             this.labelIdentityCard.Text = "CMND:";
             // 
             // labelGender
@@ -209,7 +209,7 @@
             this.labelGender.Location = new System.Drawing.Point(12, 142);
             this.labelGender.Name = "labelGender";
             this.labelGender.Size = new System.Drawing.Size(75, 23);
-            this.labelGender.TabIndex = 12;
+            this.labelGender.TabIndex = 16;
             this.labelGender.Text = "Giới tính:";
             // 
             // labelAddress
@@ -221,7 +221,7 @@
             this.labelAddress.Location = new System.Drawing.Point(12, 194);
             this.labelAddress.Name = "labelAddress";
             this.labelAddress.Size = new System.Drawing.Size(75, 23);
-            this.labelAddress.TabIndex = 13;
+            this.labelAddress.TabIndex = 18;
             this.labelAddress.Text = "Địa chỉ:";
             // 
             // textBoxAddress
@@ -235,7 +235,7 @@
             this.textBoxAddress.Multiline = true;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(348, 91);
-            this.textBoxAddress.TabIndex = 14;
+            this.textBoxAddress.TabIndex = 6;
             // 
             // textBoxIdentityCard
             // 
@@ -247,7 +247,7 @@
             this.textBoxIdentityCard.Location = new System.Drawing.Point(93, 93);
             this.textBoxIdentityCard.Name = "textBoxIdentityCard";
             this.textBoxIdentityCard.Size = new System.Drawing.Size(348, 20);
-            this.textBoxIdentityCard.TabIndex = 15;
+            this.textBoxIdentityCard.TabIndex = 2;
             // 
             // textBoxPatientID
             // 
@@ -258,8 +258,9 @@
             this.textBoxPatientID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxPatientID.Location = new System.Drawing.Point(93, 15);
             this.textBoxPatientID.Name = "textBoxPatientID";
+            this.textBoxPatientID.ReadOnly = true;
             this.textBoxPatientID.Size = new System.Drawing.Size(348, 20);
-            this.textBoxPatientID.TabIndex = 17;
+            this.textBoxPatientID.TabIndex = 21;
             // 
             // labelPatientID
             // 
@@ -270,7 +271,7 @@
             this.labelPatientID.Location = new System.Drawing.Point(12, 12);
             this.labelPatientID.Name = "labelPatientID";
             this.labelPatientID.Size = new System.Drawing.Size(75, 23);
-            this.labelPatientID.TabIndex = 16;
+            this.labelPatientID.TabIndex = 11;
             this.labelPatientID.Text = "Mã bệnh nhân:";
             // 
             // comboBoxState
@@ -283,7 +284,7 @@
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(240, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxState.TabIndex = 18;
+            this.comboBoxState.TabIndex = 8;
             // 
             // labelState
             // 
@@ -294,13 +295,14 @@
             this.labelState.Location = new System.Drawing.Point(12, 317);
             this.labelState.Name = "labelState";
             this.labelState.Size = new System.Drawing.Size(75, 23);
-            this.labelState.TabIndex = 19;
+            this.labelState.TabIndex = 20;
             this.labelState.Text = "Trạng thái:";
             // 
             // comboBoxGender
             // 
             this.comboBoxGender.DisplayMember = "Text";
             this.comboBoxGender.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxGender.FormattingEnabled = true;
             this.comboBoxGender.ItemHeight = 14;
             this.comboBoxGender.Items.AddRange(new object[] {
@@ -310,8 +312,7 @@
             this.comboBoxGender.Name = "comboBoxGender";
             this.comboBoxGender.Size = new System.Drawing.Size(240, 20);
             this.comboBoxGender.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxGender.TabIndex = 20;
-            this.comboBoxGender.Text = "Nam";
+            this.comboBoxGender.TabIndex = 4;
             // 
             // comboItemMale
             // 
@@ -331,7 +332,7 @@
             this.textBoxDeposit.Location = new System.Drawing.Point(93, 294);
             this.textBoxDeposit.Name = "textBoxDeposit";
             this.textBoxDeposit.Size = new System.Drawing.Size(348, 20);
-            this.textBoxDeposit.TabIndex = 22;
+            this.textBoxDeposit.TabIndex = 7;
             // 
             // labelX1
             // 
@@ -342,7 +343,7 @@
             this.labelX1.Location = new System.Drawing.Point(12, 291);
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(75, 23);
-            this.labelX1.TabIndex = 21;
+            this.labelX1.TabIndex = 19;
             this.labelX1.Text = "Tiền đặc cọc:";
             // 
             // textBoxProfession
@@ -355,7 +356,7 @@
             this.textBoxProfession.Location = new System.Drawing.Point(93, 171);
             this.textBoxProfession.Name = "textBoxProfession";
             this.textBoxProfession.Size = new System.Drawing.Size(348, 20);
-            this.textBoxProfession.TabIndex = 24;
+            this.textBoxProfession.TabIndex = 5;
             // 
             // labelProfession
             // 
@@ -366,7 +367,7 @@
             this.labelProfession.Location = new System.Drawing.Point(12, 168);
             this.labelProfession.Name = "labelProfession";
             this.labelProfession.Size = new System.Drawing.Size(75, 23);
-            this.labelProfession.TabIndex = 23;
+            this.labelProfession.TabIndex = 17;
             this.labelProfession.Text = "Nghề nghiệp:";
             // 
             // FormPatientDetail
