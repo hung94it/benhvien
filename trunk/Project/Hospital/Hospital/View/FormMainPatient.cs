@@ -11,16 +11,10 @@ namespace Hospital.View
 {
     public partial class FormMain
     {
-        private void tabItemPatient_GotFocus(object sender, EventArgs e)
-        { }
-
         private void tabItemPatient_Click(object sender, EventArgs e)
         {
             refreshDataViewPatient();
         }
-
-        private void dataViewPatient_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        { }
 
         private void buttonPatientAdd_Click(object sender, EventArgs e)
         {
@@ -40,9 +34,18 @@ namespace Hospital.View
         private void buttonPatientDelete_Click(object sender, EventArgs e)
         {
             int patientID;
-            if (int.TryParse(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString(), out patientID))
-                Patient.DeletePatient(patientID);
-            else MessageBox.Show("Chọn bệnh nhân để xóa!");
+
+            try
+            {
+                if (MessageBox.Show("Bạn có muốn xóa bệnh nhân này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) 
+                    == DialogResult.Yes)
+                if (int.TryParse(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString(), out patientID))
+                    Patient.DeletePatient(patientID);
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+            }        
             refreshDataViewPatient();
         }        
 
@@ -55,6 +58,12 @@ namespace Hospital.View
         private void textBoxPatientSearch_TextChanged(object sender, EventArgs e)
         {
             searchPatient();
+        }
+
+        private void textBoxPatientSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                searchPatient();
         }
 
         private void searchPatient()
@@ -83,7 +92,7 @@ namespace Hospital.View
             }
             catch (SqlException exception)
             {
-                MessageBox.Show(exception.Message);
+                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
