@@ -83,10 +83,24 @@ namespace Hospital.Model
             dtHN.Columns[6].ColumnName = "Tình trạng bệnh nhân";
             return dtHN;
         }
-        public HeathMonitoringNote GetHN()
+        public static HeathMonitoringNote GetHN(int hNID)
         {
             HeathMonitoringNote hN = new HeathMonitoringNote();
-
+            string sqlSelect = @"SELECT        HNID, PATIENTID, STAFFID, DATE, WEIGHT, BLOODPRESSURE, PATIENTSTATE
+                                FROM            HEATHMONITORINGNOTE
+                                WHERE        HNID=@HNID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@HNID", hNID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if (dataTable.Rows.Count > 0)
+            {
+                hN.HNID = (int)dataTable.Rows[0][0];
+                hN.PatientID = (int)dataTable.Rows[0][1];
+                hN.StaffID = (int)dataTable.Rows[0][2];
+                hN.Date = (DateTime)dataTable.Rows[0][3];
+                hN.Weight = (String)dataTable.Rows[0][4];
+                hN.BloodPressure = (String)dataTable.Rows[0][5];
+                hN.PatientState = (String)dataTable.Rows[0][6];
+            }
             return hN;
         }
     }

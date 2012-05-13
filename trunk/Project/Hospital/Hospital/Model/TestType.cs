@@ -40,9 +40,12 @@ namespace Hospital.Model
                                 WHERE         TESTTYPEID=@TESTTYPEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@TESTTYPEID", testTypeID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            newTestType.TestTypeID = tempInterger;
-            newTestType.TestName = dataTable.Rows[0][1].ToString();
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newTestType.TestTypeID = tempInterger;
+                newTestType.TestName = dataTable.Rows[0][1].ToString();
+            }
             return newTestType;
         }
     }

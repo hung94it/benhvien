@@ -28,9 +28,12 @@ namespace Hospital.Model
                                 WHERE        BILLTYPEID=@BILLTYPEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@BILLTYPEID", billTypeID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            billType.BillTypeID = tempInterger;
-            billType.TypeName = dataTable.Rows[0][1].ToString();
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                billType.BillTypeID = tempInterger;
+                billType.TypeName = dataTable.Rows[0][1].ToString();
+            }
             return billType;
         }
         public static DataTable GetListBillType()

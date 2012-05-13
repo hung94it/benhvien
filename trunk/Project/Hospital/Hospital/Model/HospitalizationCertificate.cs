@@ -3,83 +3,91 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-
+using System.Data.SqlClient;
+using Hospital.Functional;
 namespace Hospital.Model
 {
     class HospitalizationCertificate
     {
-        private int hCID;
-        private int patientID;
-        private int staffID;
-        private String reason;
-        private DateTime date;
-        private int state;
+        public int HCID { get; set; }
+        public int PatientID { get; set; }
+        public int StaffID { get; set; }
+        public String Reason { get; set; }
+        public DateTime Date { get; set; }
+        public int State { get; set; }
 
-        public int State
+        public HospitalizationCertificate() { }
+        public HospitalizationCertificate(int hCID, int patientID, int staffID, String reason, DateTime date, int state)
         {
-            get { return state; }
-            set { state = value; }
+            this.HCID = hCID;
+            this.PatientID = patientID;
+            this.StaffID = staffID;
+            this.Reason = reason;
+            this.Date = date;
+            this.State = state;
         }
-
-        public DateTime Date
+        public static int InsertHC(HospitalizationCertificate newHC)
         {
-            get { return date; }
-            set { date = value; }
+            String sqlInsert = @"INSERT INTO HOSPITALIZATIONCERTIFICATE(PATIENTID, STAFFID, REASON, DATE, STATE)
+                                VALUES        (@PATIENTID,@STAFFID,@REASON,@DATE,@STATE)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", newHC.PatientID),
+                                            new SqlParameter("@STAFFID", newHC.StaffID),
+                                            new SqlParameter("@REASON", newHC.Reason),
+                                            new SqlParameter("@DATE", newHC.Date),
+                                            new SqlParameter("@STATE", newHC.State)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
-
-        public String Reason
+        public static int UpdateHC(HospitalizationCertificate updateHC)
         {
-            get { return reason; }
-            set { reason = value; }
+            string sqlUpdate = @"UPDATE       HOSPITALIZATIONCERTIFICATE
+                                SET                PATIENTID =@PATIENTID, STAFFID =@STAFFID, REASON =@REASON, DATE =@DATE, STATE =@STATE
+                                WHERE         HCID=@HCID ";
+            SqlParameter[] sqlParameters = { new SqlParameter("@HCID", updateHC.HCID ),
+                                            new SqlParameter("@PATIENTID", updateHC.PatientID),
+                                           new SqlParameter("@STAFFID", updateHC.StaffID),
+                                           new SqlParameter("@REASON", updateHC.Reason),
+                                           new SqlParameter("@DATE", updateHC.Date),
+                                           new SqlParameter("@STATE", updateHC.State)};
+            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
-
-        public int StaffID
+        public static int DeleteHC(int hCID)
         {
-            get { return staffID; }
-            set { staffID = value; }
+            string sqlDelete = @"DELETE FROM HOSPITALIZATIONCERTIFICATE
+                                WHERE        (HCID=@HCID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@HCID", hCID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-
-        public int PatientID
-        {
-            get { return patientID; }
-            set { patientID = value; }
-        }
-
-        public int HCID
-        {
-            get { return hCID; }
-            set { hCID = value; }
-        }
-        public Boolean InsertHC()
-        {
-            return true;
-        }
-        public Boolean UpdateHC()
-        {
-            return true;
-        }
-        public Boolean DeleteHC()
-        {
-            return true;
-        }
-        public Boolean ConfirmHC()
-        {
-            return true;
-        }
-        public Boolean ChangeHCState()
-        {
-            return true;
-        }
-        public DataTable GetListHC()
+        public static DataTable GetListHC()
         {
             DataTable dtHC = new DataTable();
-
+            string sqlSelect = @"SELECT        HCID, PATIENTID, STAFFID, REASON, DATE, STATE
+                                FROM            HOSPITALIZATIONCERTIFICATE";
+            dtHC = SqlResult.ExecuteQuery(sqlSelect);
+            dtHC.Columns[0].ColumnName = "Mã giấy xuất viện";
+            dtHC.Columns[1].ColumnName = "Mã bệnh nhân";
+            dtHC.Columns[2].ColumnName = "Mã nhân viên";
+            dtHC.Columns[3].ColumnName = "Lý do nhập viện";
+            dtHC.Columns[4].ColumnName = "Ngày lập";
+            dtHC.Columns[5].ColumnName = "Trạng thái";
             return dtHC;
         }
-        public HospitalizationCertificate GetHC()
+        public static HospitalizationCertificate GetHC(int hCID)
         {
             HospitalizationCertificate hC = new HospitalizationCertificate();
-
+            string sqlSelect = @"SELECT        HCID, PATIENTID, STAFFID, REASON, DATE, STATE
+                                FROM            HOSPITALIZATIONCERTIFICATE
+                                WHERE        HCID=@HCID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@HCID", hCID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if (dataTable.Rows.Count > 0)
+            {
+                hC.HCID = (int)dataTable.Rows[0][0];
+                hC.PatientID = (int)dataTable.Rows[0][1];
+                hC.StaffID = (int)dataTable.Rows[0][2];
+                hC.Reason = (String)dataTable.Rows[0][3];
+                hC.Date = (DateTime)dataTable.Rows[0][4];
+                hC.State = (int)dataTable.Rows[0][5];
+            }
             return hC;
         }
     }

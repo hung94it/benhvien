@@ -85,10 +85,13 @@ namespace Hospital.Model
                                 WHERE          (PATIENT=@PATIENT)";
             SqlParameter[] sqlParameters = { new SqlParameter("@PATIENT", int.Parse(patient)) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            hB.BedID = tempInterger;
-            hB.Patient = int.Parse(dataTable.Rows[0][1].ToString());
-            hB.State = int.Parse(dataTable.Rows[0][2].ToString());
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                hB.BedID = tempInterger;
+                hB.Patient = int.Parse(dataTable.Rows[0][1].ToString());
+                hB.State = int.Parse(dataTable.Rows[0][2].ToString());
+            }
             return hB;
         }
     }

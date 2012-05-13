@@ -74,10 +74,24 @@ namespace Hospital.Model
             dtHeathFile.Columns[6].ColumnName = "Hướng điều trị";
             return dtHeathFile;
         }
-        public static HeathFile GetHeathFile()
+        public static HeathFile GetHeathFile(int heathFileID)
         {
             HeathFile hF = new HeathFile();
-
+            string sqlSelect = @"SELECT        HEATHFILEID, PATIENTID, DATE, PATIENTSTATE, PREHISTORY, DISEASE, TREATMENT
+                                FROM            HEATHFILE
+                                WHERE        HEATHFILEID=@HEATHFILEID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@HEATHFILEID",heathFileID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if(dataTable.Rows.Count >0)
+            {
+                hF.HeathFileID = (int)dataTable.Rows[0][0];
+                hF.PatientID = (int)dataTable.Rows[0][1];
+                hF.Date = (DateTime)dataTable.Rows[0][2];
+                hF.PatientState =(String)dataTable.Rows[0][3];
+                hF.PreHistory = (String)dataTable.Rows[0][4];
+                hF.Disease = (String)dataTable.Rows[0][5];
+                hF.Treament = (String)dataTable.Rows[0][6];
+            }
             return hF;
         }
     }

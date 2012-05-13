@@ -66,10 +66,13 @@ namespace Hospital.Model
                                 WHERE        FUNCTIONID=@FUNCTIONID";
             SqlParameter[] sqlParameters = { new SqlParameter("@FUNCTIONID", functionID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            newFunction.FunctionID = tempInterger;
-            newFunction.FucntionName = dataTable.Rows[0][1].ToString();
-            newFunction.Button = dataTable.Rows[0][2].ToString();
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newFunction.FunctionID = tempInterger;
+                newFunction.FucntionName = dataTable.Rows[0][1].ToString();
+                newFunction.Button = dataTable.Rows[0][2].ToString();
+            }
             return newFunction;
         }
     }

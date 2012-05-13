@@ -57,17 +57,21 @@ namespace Hospital.Model
             return dataTable;
         }
 
-        public Major GetMajor(int majorID)
+        public static Major GetMajor(int majorID)
         {
             int tempInterger;
             Major newMajor = new Major();
             string sqlSelect = @"SELECT MAJORID, MAJORNAME
                                 FROM MAJOR
-                                WHERE (MAJORID = @MajorID)";
-            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
-            int.TryParse(dataTable.Rows[0][0].ToString(),out tempInterger);
-            newMajor.MajorID = tempInterger;
-            newMajor.MajorName = dataTable.Rows[0][1].ToString();
+                                WHERE (MAJORID = @MAJORID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@MAJORID", majorID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newMajor.MajorID = tempInterger;
+                newMajor.MajorName = dataTable.Rows[0][1].ToString();
+            }
             return newMajor;
         }
     }

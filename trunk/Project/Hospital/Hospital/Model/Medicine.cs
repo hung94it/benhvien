@@ -70,11 +70,14 @@ namespace Hospital.Model
                                 WHERE        MEDICINEID=@MEDICINEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", medicineID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            newMedicine.MedicineID = tempInterger;
-            newMedicine.MedicineName = dataTable.Rows[0][1].ToString();
-            newMedicine.Quantity = int.Parse(dataTable.Rows[0][2].ToString());
-            newMedicine.Price = int.Parse(dataTable.Rows[0][3].ToString());
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newMedicine.MedicineID = tempInterger;
+                newMedicine.MedicineName = dataTable.Rows[0][1].ToString();
+                newMedicine.Quantity = int.Parse(dataTable.Rows[0][2].ToString());
+                newMedicine.Price = int.Parse(dataTable.Rows[0][3].ToString());
+            }
             return newMedicine;
         }
     }

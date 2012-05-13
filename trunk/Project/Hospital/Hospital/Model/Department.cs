@@ -50,9 +50,12 @@ namespace Hospital.Model
                                 WHERE           (DEPARTMENTID=@DEPARTMENTID)";
             SqlParameter[] sqlParameters = { new SqlParameter("@DEPARTMENTID", departmentID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
-            int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-            newDepartment.DepartmentID = tempInterger;
-            newDepartment.DepartmentName= dataTable.Rows[0][1].ToString();
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newDepartment.DepartmentID = tempInterger;
+                newDepartment.DepartmentName = dataTable.Rows[0][1].ToString();
+            }
             return newDepartment;
         }
         public static DataTable GetListDepartment()
