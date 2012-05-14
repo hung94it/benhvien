@@ -28,5 +28,10 @@ namespace Hospital.View
             this.Close();
         }
 
+        private void tabItemRole_Click(object sender, EventArgs e)
+        {
+            dataViewRole.DataSource = Role.GetListRole();
+        }
+
     }
 }

@@ -3,47 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-
+using System.Data.SqlClient;
+using Hospital.Functional;
 namespace Hospital.Model
 {
     class AssignmentDetail
     {
-        private int patientID;
-        private int assignID;
-        private int staffID;
+        public int PatientID { get; set; }
+        public int AssignID { get; set; }
+        public int StaffID { get; set; }
 
-        public int StaffID
-        {
-            get { return staffID; }
-            set { staffID = value; }
-        }
-        public int AssignID
-        {
-            get { return assignID; }
-            set { assignID = value; }
-        }
-        public int PatientID
-        {
-            get { return patientID; }
-            set { patientID = value; }
-        }
 
-        public Boolean InsertAssignmentDetails()
+        public static int  InsertAssignmentDetails(AssignmentDetail newAD)
         {
-            return true;
+            String sqlInsert = @"INSERT INTO ASSIGNMENTDETAIL(ASSIGNID, PATIENTID, STAFFID)
+                                VALUES        (@ASSIGNID,@PATIENTID,@STAFFID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@ASSIGNID", newAD.AssignID),
+                                            new SqlParameter("@PATIENTID", newAD.PatientID),
+                                            new SqlParameter("@STAFFID", newAD.StaffID)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
-        public Boolean UpdateAssignmentDetails()
+        public static int DeleteAssignmentDetails(AssignmentDetail deleteAD)
         {
-            return true;
+            string sqlDelete = @"DELETE FROM ASSIGNMENTDETAIL
+                                WHERE        (ASSIGNID=@ASSIGNID AND PATIENTID=@PATIENTID AND STAFFID=@STAFFID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@ASSIGNID", deleteAD.AssignID),
+                                               new SqlParameter("@PATIENTID", deleteAD.PatientID),
+                                                 new SqlParameter("@STAFFID", deleteAD.StaffID)};
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-        public Boolean DeleteAssignmentDetails()
+        public static int DeleteAssignmentDetails(int assignmentID)
         {
-            return true;
+            string sqlDelete = @"DELETE FROM ASSIGNMENTDETAIL
+                                WHERE        (ASSIGNID=@ASSIGNID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@ASSIGNID", assignmentID)};
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-        public DataTable GetListAssignmentDetails()
+        public static DataTable GetListAssignmentDetails(int assignmentID)
         {
             DataTable dtAD = new DataTable();
-
+            string sqlSelect = @"SELECT        ASSIGNID, PATIENTID, STAFFID
+                                FROM            ASSIGNMENTDETAIL
+                                WHERE        (ASSIGNID=@ASSIGNID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@ASSIGNID", assignmentID) };
+            dtAD = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
+            dtAD.Columns[0].ColumnName = "Mã phân công";
+            dtAD.Columns[1].ColumnName = "Mã bệnh nhân";
+            dtAD.Columns[2].ColumnName = "Mã nhân viên";
             return dtAD;
         }
     }
