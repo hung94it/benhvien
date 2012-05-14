@@ -163,6 +163,12 @@
     <Compile Include="View\FormPatientDetail.Designer.cs">
       <DependentUpon>FormPatientDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormRoleDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormRoleDetail.Designer.cs">
+      <DependentUpon>FormRoleDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormStaffDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormPatientDetail.resx">
       <DependentUpon>FormPatientDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormRoleDetail.resx">
+      <DependentUpon>FormRoleDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormStaffDetail.resx">
       <DependentUpon>FormStaffDetail.cs</DependentUpon>

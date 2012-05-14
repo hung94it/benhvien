@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using Hospital.Functional;
 namespace Hospital.Model
 {
-    class Role
+    public class Role
     {
         public int RoleID { get; set; }
         public String RoleName { get; set; }
@@ -18,7 +18,7 @@ namespace Hospital.Model
             this.RoleID = roleID;
             this.RoleName = roleName;
         }
-        public static int Insertrole(Role newRole)
+        public static int InsertRole(Role newRole)
         {
             String sqlInsert = @"INSERT INTO Role (RoleNAME)
                                 VALUES        (@RoleNAME)";
