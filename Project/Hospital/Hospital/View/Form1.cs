@@ -23,8 +23,9 @@ namespace Hospital.View
             try
             {
                 int i = 0;
+                
                 //dataGridViewX1.DataSource = MedicineBillDetail.GetListMedicineBillDetail(i);
-                dataGridViewX1.DataSource = Patient.GetListPatient();
+                dataGridViewX1.DataSource = DischargeCertificate.GetListDC();
             }
             catch (SqlException exception)
             {
@@ -39,10 +40,10 @@ namespace Hospital.View
                 //Patient p = new Patient(10000002, "test2", "test3", new DateTime(1990, 1, 2), 0, 100000002, "qwer", "qwer", 23454363, 0);
                 ////Patient.InsertPatient(p);
                 //Patient.DeletePatient(10000010);
-                Service newService = new Service(101, "Truyền máu", 100000);
-                Service.DeleteService(102);
+                RoleFunction rF = new RoleFunction(101, "Thêm bệnh nhân", "btnInsertPatient");
+                RoleFunction.DeleteFunction(101);
                 int i = 0;
-                dataGridViewX1.DataSource = RentMaterialBillDetail.GetListRentMaterialBillDetail(i);
+                dataGridViewX1.DataSource = RoleFunction.GetListFunction();
             }
             catch (SqlException exception)
             {

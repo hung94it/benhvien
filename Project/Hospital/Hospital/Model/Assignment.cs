@@ -3,60 +3,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-
+using System.Data.SqlClient;
+using Hospital.Functional;
 namespace Hospital.Model
 {
     class Assignment
     {
-        private int assignID;
-        private DateTime date;
-        private DateTime dischargeDate;
-        private DateTime hospitalizateDate;
+        public int AssignID { get; set; }
+        public DateTime Date { get; set; }
+        public DateTime DischargedDate { get; set; }
+        public DateTime HospitalizateDate { get; set; }
 
-        public DateTime HospitalizateDate
+        public Assignment() { }
+        public Assignment(int assignID, DateTime date, DateTime dischargedDate, DateTime hospitalizateDate)
         {
-            get { return hospitalizateDate; }
-            set { hospitalizateDate = value; }
+            this.AssignID = assignID;
+            this.Date = date;
+            this.DischargedDate = dischargedDate;
+            this.HospitalizateDate = hospitalizateDate;
         }
-        public DateTime DischargeDate
+        public static int InsertAssignment(Assignment newAssignmet)
         {
-            get { return dischargeDate; }
-            set { dischargeDate = value; }
+            String sqlInsert = @"INSERT INTO ASSIGNMENT (DATE, DISCHARGEDDATE, HOPITALIZATEDATE)
+                                VALUES        (@DATE,@DISCHARGEDDATE,@HOPITALIZATEDATE)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@DATE", newAssignmet.Date),
+                                            new SqlParameter("@DISCHARGEDDATE", newAssignmet.DischargedDate),
+                                            new SqlParameter("@HOPITALIZATEDATE", newAssignmet.HospitalizateDate)};
+            return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
-        
-        public DateTime Date
+        public static int UpdateAssignment(Assignment updateAssignment)
         {
-            get { return date; }
-            set { date = value; }
-        }       
-        public int AssignID
-        {
-            get { return assignID; }
-            set { assignID = value; }
+            string sqlUpdate = @"UPDATE       ASSIGNMENT
+                                SET                DATE =@DATE, DISCHARGEDDATE =@DISCHARGEDDATE, HOPITALIZATEDATE =@HOPITALIZATEDATE
+                                WHERE         ASSIGNID =@ASSIGNID  ";
+            SqlParameter[] sqlParameters = { new SqlParameter("@ASSIGNID", updateAssignment.AssignID ),
+                                            new SqlParameter("@DATE", updateAssignment.Date),
+                                            new SqlParameter("@DISCHARGEDDATE", updateAssignment.DischargedDate),
+                                           new SqlParameter("@HOPITALIZATEDATE",updateAssignment.HospitalizateDate)};
+            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
-
-        public Boolean InsertAssignment()
+        public static int DeleteAssignment(int assignmentID)
         {
-            return true;
+            string sqlDelete = @"DELETE FROM ASSIGNMENT
+                                WHERE        (ASSIGNID=@ASSIGNID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@ASSIGNID", assignmentID) };
+            return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-        public Boolean UpdateAssignment()
-        {
-            return true;
-        }
-        public Boolean DeleteAssignment()
-        {
-            return false;
-        }
-        public DataTable GetListAssignment()
+        public static DataTable GetListAssignment()
         {
             DataTable dtAssignment = new DataTable();
-
+            string sqlSelect = @"SELECT        ASSIGNID, DATE, DISCHARGEDDATE, HOPITALIZATEDATE
+                                FROM            ASSIGNMENT";
+            dtAssignment = SqlResult.ExecuteQuery(sqlSelect);
+            dtAssignment.Columns[0].ColumnName = "Mã phân công";
+            dtAssignment.Columns[1].ColumnName = "Ngày lập";
+            dtAssignment.Columns[2].ColumnName = "Ngày xuất viện";
+            dtAssignment.Columns[3].ColumnName = "Ngày nhập viện";
             return dtAssignment;
         }
-        public Assignment GetAssignment(int assignID)
+        public static Assignment GetAssignment(int assignID)
         {
             Assignment assign = new Assignment();
-
+            string sqlSelect = @"SELECT        ASSIGNID, DATE, DISCHARGEDDATE, HOPITALIZATEDATE
+                                FROM            ASSIGNMENT
+                                WHERE        ASSIGNID=@ASSIGNID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@ASSIGNID", assignID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if (dataTable.Rows.Count > 0)
+            {
+                assign.AssignID = (int)dataTable.Rows[0][0];
+                assign.Date = (DateTime)dataTable.Rows[0][1];
+                assign.DischargedDate = (DateTime)dataTable.Rows[0][2];
+                assign.HospitalizateDate = (DateTime)dataTable.Rows[0][3];
+            }
             return assign;
         }
     }
