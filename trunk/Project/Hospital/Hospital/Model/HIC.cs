@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using Hospital.Functional;
 namespace Hospital.Model
 {
-    class HIC
+    public class HIC
     {
         public int HICID { get; set; }
         public int PatientID { get; set; }

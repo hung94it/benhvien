@@ -8,7 +8,7 @@ using Hospital.Functional;
 
 namespace Hospital.Model
 {
-    class TestCertificate
+    public class TestCertificate
     {
         public int TCID { get; set; }
         public int PatientID { get; set; }

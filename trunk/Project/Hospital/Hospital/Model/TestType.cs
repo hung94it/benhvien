@@ -9,7 +9,7 @@ using Hospital.Functional;
 
 namespace Hospital.Model
 {
-    class TestType
+    public class TestType
     {
         public int TestTypeID{ get; set; }
         public String TestName { get; set; }

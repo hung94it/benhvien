@@ -8,7 +8,7 @@ using Hospital.Functional;
 
 namespace Hospital.Model
 {
-    class Major
+    public class Major
     {
         public int MajorID { get; set; }
         public string MajorName { get; set; }

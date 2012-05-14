@@ -7,7 +7,7 @@ using Hospital.Functional;
 using System.Data.SqlClient;
 namespace Hospital.Model
 {
-    class Department
+    public class Department
     {
         public int DepartmentID { get; set; }
         public String DepartmentName { get; set; }

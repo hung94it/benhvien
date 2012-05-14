@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using Hospital.Functional;
 namespace Hospital.Model
 {
-    class RoleDetail
+    public class RoleDetail
     {
         public int RoleID { get; set; }
         public int FunctionID { get; set; }
@@ -36,7 +36,7 @@ namespace Hospital.Model
         }
         public static int DeleteRoleDetail(int roleID)
         {
-            string sqlDelete = @"UPDATE       ROLEDETAIL
+            string sqlDelete = @"DELETE FROM       ROLEDETAIL
                                 WHERE ROLEID=@ROLEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@ROLEID", roleID)};
             return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
@@ -44,13 +44,13 @@ namespace Hospital.Model
         public static DataTable GetListStaffFunction(int roleID)
         {
             DataTable dtRoleDetail = new DataTable();
-            string sqlSelect = @"SELECT        ROLEID, FUNCTIONID
-                                FROM            ROLEDETAIL
-                                WHERE        ROLEID=@ROLEID";
+            string sqlSelect = @"SELECT        ROLEFUNCTION.FUNCTIONID, ROLEFUNCTION.FUNCTIONNAME
+                                FROM            ROLEDETAIL INNER JOIN ROLEFUNCTION ON ROLEDETAIL.FUNCTIONID = ROLEFUNCTION.FUNCTIONID
+                                WHERE        ROLEDETAIL.ROLEID=@ROLEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@ROLEID", roleID) };
             dtRoleDetail = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
-            dtRoleDetail.Columns[0].ColumnName = "Mã phân quyền";
-            dtRoleDetail.Columns[1].ColumnName = "Mã chức năng";
+            dtRoleDetail.Columns[0].ColumnName = "Mã chức năng";
+            dtRoleDetail.Columns[1].ColumnName = "Tên chức năng";
             return dtRoleDetail;
         }
     }

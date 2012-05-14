@@ -8,7 +8,7 @@ using Hospital.Functional;
 
 namespace Hospital.Model
 {
-    class Service
+    public class Service
     {
         public int ServiceID { get; set; }
         public String ServiceName { get; set; }

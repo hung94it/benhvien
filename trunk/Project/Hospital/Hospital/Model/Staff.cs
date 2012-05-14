@@ -8,7 +8,7 @@ using Hospital.Functional;
 
 namespace Hospital.Model
 {
-    class Staff
+    public class Staff
     {
         public const int GENDER_MALE = 0;
         public const int GENDER_FEMALE = 1;
