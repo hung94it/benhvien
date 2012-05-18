@@ -32,21 +32,5 @@ namespace Hospital.View
         {
             dataViewRole.DataSource = Role.GetListRole();
         }
-
-        private void buttonPatientSearchDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPatientSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPatientSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
     }
 }

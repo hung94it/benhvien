@@ -13,8 +13,8 @@ namespace Hospital.View
 {
     public partial class FormPatientDetail : Form
     {
-        public Patient PatientDetail { get; set; }
-        public string UserAction { get; set; }
+        private Patient PatientDetail { get; set; }
+        private string UserAction { get; set; }
 
         private FormPatientDetail()
         {
@@ -26,9 +26,12 @@ namespace Hospital.View
             InitializeComponent();
             this.PatientDetail = patient;
             this.UserAction = userAction;
+            comboBoxGender.SelectedIndex = 0;
 
             if ("edit".Equals(userAction))
+            {
                 setPatientDetail(patient);
+            }
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
@@ -37,15 +40,21 @@ namespace Hospital.View
             PatientDetail.LastName = textBoxLastName.Text;
             PatientDetail.BirthDay = dateBirthday.Value;
             if (textBoxIdentityCard.Text != "")
+            {
                 PatientDetail.ICN = Convert.ToDecimal(textBoxIdentityCard.Text);
+            }
             else PatientDetail.ICN = 0;
             if (comboBoxGender.Text == "Nam")
+            {
                 PatientDetail.Gender = Patient.GENDER_MALE;
+            }
             else PatientDetail.Gender = Patient.GENDER_FEMALE;
             PatientDetail.Profession = textBoxProfession.Text;
             PatientDetail.Address = textBoxAddress.Text;
             if (textBoxDeposit.Text != "")
+            {
                 PatientDetail.Deposit = Convert.ToDecimal(textBoxDeposit.Text);
+            }
 
             try
             {
@@ -81,8 +90,13 @@ namespace Hospital.View
             dateBirthday.Value = patient.BirthDay;
             textBoxIdentityCard.Text = patient.ICN.ToString();
             if (patient.ICN == 0)
+            {
                 comboBoxGender.Text = "Nam";
-            else comboBoxGender.Text = "Nữ";
+            }
+            else
+            {
+                comboBoxGender.Text = "Nữ";
+            }
             textBoxProfession.Text = patient.Profession;
             textBoxAddress.Text = patient.Address;
         }
