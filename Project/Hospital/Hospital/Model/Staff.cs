@@ -97,7 +97,7 @@ namespace Hospital.Model
 
         public static DataView GetListStaff()
         {
-            string sqlSelect = @"SELECT STAFF.STAFFID, DEPARTMENT.DEPARTMENTNAME, MAJOR.MAJORNAME, ROLE.ROLENAME STAFF.PASSWORD
+            string sqlSelect = @"SELECT STAFF.STAFFID, DEPARTMENT.DEPARTMENTNAME, MAJOR.MAJORNAME, ROLE.ROLENAME, STAFF.PASSWORD
                                     , STAFF.FIRSTNAME, STAFF.LASTNAME, STAFF.BIRTHDAY, STAFF.GENDER, STAFF.ICN, STAFF.ADDRESS, STAFF.STATE
                                 FROM STAFF INNER JOIN
                                     DEPARTMENT ON STAFF.DEPARTMENTID = DEPARTMENT.DEPARTMENTID INNER JOIN
@@ -116,7 +116,7 @@ namespace Hospital.Model
             return staffTable.DefaultView;
         }
 
-        public Staff GetPStaff()
+        public static Staff GetStaff(int staffID)
         {
             Staff newStaff = new Staff();
 

@@ -37,10 +37,14 @@ namespace Hospital.View
 
             try
             {
-                if (MessageBox.Show("Bạn có muốn xóa bệnh nhân này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) 
+                if (MessageBox.Show("Bạn có muốn xóa bệnh nhân này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                     == DialogResult.Yes)
-                if (int.TryParse(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString(), out patientID))
-                    Patient.DeletePatient(patientID);
+                {
+                    if (int.TryParse(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString(), out patientID))
+                    {
+                        Patient.DeletePatient(patientID);
+                    }
+                }
             }
             catch (SqlException exception)
             {
@@ -63,7 +67,9 @@ namespace Hospital.View
         private void textBoxPatientSearch_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 searchPatient();
+            }
         }
 
         private void searchPatient()
@@ -76,7 +82,9 @@ namespace Hospital.View
                                                                 + "OR [CMND] LIKE '*" + textBoxPatientSearch.Text.Trim() + "*'";
             }
             else
+            {
                 ((DataView)dataViewPatient.DataSource).RowFilter = "";
+            }
         }
 
         private void refreshDataViewPatient()
