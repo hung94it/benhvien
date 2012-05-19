@@ -13,29 +13,39 @@ namespace Hospital.View
 {
     public partial class FormPatientDetail : Form
     {
+        // Property to store patientdetail and useraction
         private Patient PatientDetail { get; set; }
         private string UserAction { get; set; }
 
+        // Cannot call default constructor
         private FormPatientDetail()
         {
             InitializeComponent();
         }
 
+        //Constructor with useraction and patientdetail
         public FormPatientDetail(string userAction, Patient patient)
         {
             InitializeComponent();
+            
+            // Set useraction and patientdetail
             this.PatientDetail = patient;
             this.UserAction = userAction;
+
+            // Set useraction and staff
             comboBoxGender.SelectedIndex = 0;
 
+            // If useraction is edit then set patientdetail to patientdetail form
             if ("edit".Equals(userAction))
             {
                 setPatientDetail(patient);
             }
         }
 
+        // Handle event ok button click
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            // Set PatientDetail property with value in patientdetail form
             PatientDetail.FirstName = textBoxFirstName.Text;
             PatientDetail.LastName = textBoxLastName.Text;
             PatientDetail.BirthDay = dateBirthday.Value;
@@ -56,12 +66,14 @@ namespace Hospital.View
                 PatientDetail.Deposit = Convert.ToDecimal(textBoxDeposit.Text);
             }
 
+            // Process useraction
             try
             {
+                // If useraction is add then insert to database else update
                 if ("add".Equals(this.UserAction))
                 {
                     Patient.InsertPatient(PatientDetail);
-                }
+                } 
                 else if ("edit".Equals(this.UserAction))
                 {
                     Patient.UpdatePatient(PatientDetail);
@@ -72,14 +84,17 @@ namespace Hospital.View
                 MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            // After process then close this form
             this.Close();
         }
 
+        // Close this form when click close button
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Set value in patientdetail form with PatienDetail 
         public void setPatientDetail(Patient patient)
         {
             this.PatientDetail = patient;

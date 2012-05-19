@@ -64,8 +64,8 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT DEPARTMENTID, DEPARTMENTNAME
                                  FROM DEPARTMENT";
             dtDepartment = SqlResult.ExecuteQuery(sqlSelect);
-            dtDepartment.Columns[0].ColumnName = "Mã khoa";
-            dtDepartment.Columns[1].ColumnName = "Tên khoa";
+            //dtDepartment.Columns[0].ColumnName = "Mã khoa";
+            //dtDepartment.Columns[1].ColumnName = "Tên khoa";
             return dtDepartment;
         }
     }

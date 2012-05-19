@@ -29,25 +29,28 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ribbonBarMain = new DevComponents.DotNetBar.RibbonBar();
@@ -55,6 +58,25 @@
             this.buttonAccount = new DevComponents.DotNetBar.ButtonItem();
             this.buttonAbout = new DevComponents.DotNetBar.ButtonItem();
             this.tabMain = new DevComponents.DotNetBar.SuperTabControl();
+            this.tabPanelPatient = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.buttonPatientSearchDelete = new DevComponents.DotNetBar.ButtonX();
+            this.labelPatientSearch = new DevComponents.DotNetBar.LabelX();
+            this.textBoxPatientSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.buttonPatientMaterial = new DevComponents.DotNetBar.ButtonX();
+            this.buttonPatientSurgery = new DevComponents.DotNetBar.ButtonX();
+            this.buttonPatientTest = new DevComponents.DotNetBar.ButtonX();
+            this.buttonPatientExamination = new DevComponents.DotNetBar.ButtonX();
+            this.dataViewPatient = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.buttonPatientAdd = new DevComponents.DotNetBar.ButtonX();
+            this.buttonPatientEdit = new DevComponents.DotNetBar.ButtonX();
+            this.buttonPatientDelete = new DevComponents.DotNetBar.ButtonX();
+            this.tabItemPatient = new DevComponents.DotNetBar.SuperTabItem();
+            this.tabPanelRole = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.dataViewRole = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.buttonRoleAdd = new DevComponents.DotNetBar.ButtonX();
+            this.buttonRoleEdit = new DevComponents.DotNetBar.ButtonX();
+            this.buttonRoleDelete = new DevComponents.DotNetBar.ButtonX();
+            this.tabItemRole = new DevComponents.DotNetBar.SuperTabItem();
             this.tabPanelStaff = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.buttonStaffDeleteSearch = new DevComponents.DotNetBar.ButtonX();
             this.labelStaffSearch = new DevComponents.DotNetBar.LabelX();
@@ -77,31 +99,12 @@
             this.buttonMajorEdit = new DevComponents.DotNetBar.ButtonX();
             this.buttonMajorDelete = new DevComponents.DotNetBar.ButtonX();
             this.tabItemDeptMajor = new DevComponents.DotNetBar.SuperTabItem();
-            this.tabPanelPatient = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.buttonPatientSearchDelete = new DevComponents.DotNetBar.ButtonX();
-            this.labelPatientSearch = new DevComponents.DotNetBar.LabelX();
-            this.textBoxPatientSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.buttonPatientMaterial = new DevComponents.DotNetBar.ButtonX();
-            this.buttonPatientSurgery = new DevComponents.DotNetBar.ButtonX();
-            this.buttonPatientTest = new DevComponents.DotNetBar.ButtonX();
-            this.buttonPatientExamination = new DevComponents.DotNetBar.ButtonX();
-            this.dataViewPatient = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.buttonPatientAdd = new DevComponents.DotNetBar.ButtonX();
-            this.buttonPatientEdit = new DevComponents.DotNetBar.ButtonX();
-            this.buttonPatientDelete = new DevComponents.DotNetBar.ButtonX();
-            this.tabItemPatient = new DevComponents.DotNetBar.SuperTabItem();
             this.tabPanelAssignment = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.dataViewAssignment = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.buttonAssignmentAdd = new DevComponents.DotNetBar.ButtonX();
             this.buttonAssignmentEdit = new DevComponents.DotNetBar.ButtonX();
             this.buttonAssignmentDelete = new DevComponents.DotNetBar.ButtonX();
             this.tabItemAssignment = new DevComponents.DotNetBar.SuperTabItem();
-            this.tabPanelRole = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.dataViewRole = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.buttonRoleAdd = new DevComponents.DotNetBar.ButtonX();
-            this.buttonRoleEdit = new DevComponents.DotNetBar.ButtonX();
-            this.buttonRoleDelete = new DevComponents.DotNetBar.ButtonX();
-            this.tabItemRole = new DevComponents.DotNetBar.SuperTabItem();
             this.tabPanelTest = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.dataViewTest = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.buttonTestAdd = new DevComponents.DotNetBar.ButtonX();
@@ -176,6 +179,10 @@
             this.tabItemPrescpition = new DevComponents.DotNetBar.SuperTabItem();
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).BeginInit();
             this.tabMain.SuspendLayout();
+            this.tabPanelPatient.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewPatient)).BeginInit();
+            this.tabPanelRole.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewRole)).BeginInit();
             this.tabPanelStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewStaff)).BeginInit();
             this.tabPanelDeptMajor.SuspendLayout();
@@ -185,12 +192,8 @@
             this.splitContainerDeptMajor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewDepartment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewMajor)).BeginInit();
-            this.tabPanelPatient.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewPatient)).BeginInit();
             this.tabPanelAssignment.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewAssignment)).BeginInit();
-            this.tabPanelRole.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewRole)).BeginInit();
             this.tabPanelTest.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewTest)).BeginInit();
             this.tabPanelSurgery.SuspendLayout();
@@ -295,21 +298,21 @@
             this.tabMain.ControlBox.SubItems.AddRange(new DevComponents.DotNetBar.BaseItem[] {
             this.tabMain.ControlBox.MenuBox,
             this.tabMain.ControlBox.CloseBox});
-            this.tabMain.Controls.Add(this.tabPanelPatient);
-            this.tabMain.Controls.Add(this.tabPanelRole);
-            this.tabMain.Controls.Add(this.tabPanelStaff);
             this.tabMain.Controls.Add(this.tabPanelDeptMajor);
-            this.tabMain.Controls.Add(this.tabPanelAssignment);
-            this.tabMain.Controls.Add(this.tabPanelTest);
-            this.tabMain.Controls.Add(this.tabPanelSurgery);
-            this.tabMain.Controls.Add(this.tabPanelExamanation);
             this.tabMain.Controls.Add(this.tabPanelBill);
+            this.tabMain.Controls.Add(this.tabPanelMaterial);
+            this.tabMain.Controls.Add(this.tabPanelPatient);
+            this.tabMain.Controls.Add(this.tabPanelExamanation);
+            this.tabMain.Controls.Add(this.tabPanelAssignment);
             this.tabMain.Controls.Add(this.tabPanelDisease);
             this.tabMain.Controls.Add(this.tabPanelHealthFile);
-            this.tabMain.Controls.Add(this.tabPanelMaterial);
+            this.tabMain.Controls.Add(this.tabPanelRole);
+            this.tabMain.Controls.Add(this.tabPanelMonitor);
+            this.tabMain.Controls.Add(this.tabPanelStaff);
+            this.tabMain.Controls.Add(this.tabPanelTest);
+            this.tabMain.Controls.Add(this.tabPanelSurgery);
             this.tabMain.Controls.Add(this.tabPanelBed);
             this.tabMain.Controls.Add(this.tabPanelService);
-            this.tabMain.Controls.Add(this.tabPanelMonitor);
             this.tabMain.Controls.Add(this.tabPanelMedicine);
             this.tabMain.Controls.Add(this.tabPanelPrescpition);
             this.tabMain.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -344,316 +347,6 @@
             this.tabMain.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.Office2010BackstageBlue;
             this.tabMain.Text = "Khám Bệnh";
             // 
-            // tabPanelStaff
-            // 
-            this.tabPanelStaff.Controls.Add(this.buttonStaffDeleteSearch);
-            this.tabPanelStaff.Controls.Add(this.labelStaffSearch);
-            this.tabPanelStaff.Controls.Add(this.textBoxStaffSearch);
-            this.tabPanelStaff.Controls.Add(this.dataViewStaff);
-            this.tabPanelStaff.Controls.Add(this.buttonStaffAdd);
-            this.tabPanelStaff.Controls.Add(this.buttonStaffEdit);
-            this.tabPanelStaff.Controls.Add(this.buttonStaffDelete);
-            this.tabPanelStaff.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPanelStaff.Location = new System.Drawing.Point(230, 0);
-            this.tabPanelStaff.Name = "tabPanelStaff";
-            this.tabPanelStaff.Size = new System.Drawing.Size(654, 571);
-            this.tabPanelStaff.TabIndex = 0;
-            this.tabPanelStaff.TabItem = this.tabItemStaff;
-            // 
-            // buttonStaffDeleteSearch
-            // 
-            this.buttonStaffDeleteSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonStaffDeleteSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonStaffDeleteSearch.Location = new System.Drawing.Point(525, 15);
-            this.buttonStaffDeleteSearch.Name = "buttonStaffDeleteSearch";
-            this.buttonStaffDeleteSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonStaffDeleteSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonStaffDeleteSearch.TabIndex = 35;
-            this.buttonStaffDeleteSearch.Text = "Xóa tìm kiếm";
-            this.buttonStaffDeleteSearch.Click += new System.EventHandler(this.buttonStaffDeleteSearch_Click);
-            // 
-            // labelStaffSearch
-            // 
-            this.labelStaffSearch.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelStaffSearch.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelStaffSearch.Location = new System.Drawing.Point(20, 15);
-            this.labelStaffSearch.Name = "labelStaffSearch";
-            this.labelStaffSearch.Size = new System.Drawing.Size(60, 23);
-            this.labelStaffSearch.TabIndex = 34;
-            this.labelStaffSearch.Text = "Tìm kiếm:";
-            // 
-            // textBoxStaffSearch
-            // 
-            // 
-            // 
-            // 
-            this.textBoxStaffSearch.Border.Class = "TextBoxBorder";
-            this.textBoxStaffSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxStaffSearch.Location = new System.Drawing.Point(86, 18);
-            this.textBoxStaffSearch.Name = "textBoxStaffSearch";
-            this.textBoxStaffSearch.Size = new System.Drawing.Size(433, 20);
-            this.textBoxStaffSearch.TabIndex = 33;
-            this.textBoxStaffSearch.TextChanged += new System.EventHandler(this.textBoxStaffSearch_TextChanged);
-            this.textBoxStaffSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStaffSearch_KeyDown);
-            // 
-            // dataViewStaff
-            // 
-            this.dataViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewStaff.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataViewStaff.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataViewStaff.Location = new System.Drawing.Point(0, 50);
-            this.dataViewStaff.Name = "dataViewStaff";
-            this.dataViewStaff.Size = new System.Drawing.Size(654, 466);
-            this.dataViewStaff.TabIndex = 32;
-            // 
-            // buttonStaffAdd
-            // 
-            this.buttonStaffAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonStaffAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStaffAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonStaffAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonStaffAdd.Image")));
-            this.buttonStaffAdd.Location = new System.Drawing.Point(567, 536);
-            this.buttonStaffAdd.Name = "buttonStaffAdd";
-            this.buttonStaffAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonStaffAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonStaffAdd.TabIndex = 31;
-            this.buttonStaffAdd.Text = "Thêm mới";
-            this.buttonStaffAdd.Click += new System.EventHandler(this.buttonStaffAdd_Click);
-            // 
-            // buttonStaffEdit
-            // 
-            this.buttonStaffEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonStaffEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStaffEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonStaffEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonStaffEdit.Image")));
-            this.buttonStaffEdit.Location = new System.Drawing.Point(486, 536);
-            this.buttonStaffEdit.Name = "buttonStaffEdit";
-            this.buttonStaffEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonStaffEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonStaffEdit.TabIndex = 30;
-            this.buttonStaffEdit.Text = "Thay đổi";
-            this.buttonStaffEdit.Click += new System.EventHandler(this.buttonStaffEdit_Click);
-            // 
-            // buttonStaffDelete
-            // 
-            this.buttonStaffDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonStaffDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonStaffDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonStaffDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonStaffDelete.Image")));
-            this.buttonStaffDelete.Location = new System.Drawing.Point(405, 536);
-            this.buttonStaffDelete.Name = "buttonStaffDelete";
-            this.buttonStaffDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonStaffDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonStaffDelete.TabIndex = 29;
-            this.buttonStaffDelete.Text = "Xóa";
-            this.buttonStaffDelete.Click += new System.EventHandler(this.buttonStaffDelete_Click);
-            // 
-            // tabItemStaff
-            // 
-            this.tabItemStaff.AttachedControl = this.tabPanelStaff;
-            this.tabItemStaff.GlobalItem = false;
-            this.tabItemStaff.Image = ((System.Drawing.Image)(resources.GetObject("tabItemStaff.Image")));
-            this.tabItemStaff.Name = "tabItemStaff";
-            this.tabItemStaff.Text = "Nhân viên";
-            this.tabItemStaff.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.tabItemStaff.Click += new System.EventHandler(this.tabItemStaff_Click);
-            // 
-            // tabPanelDeptMajor
-            // 
-            this.tabPanelDeptMajor.Controls.Add(this.splitContainerDeptMajor);
-            this.tabPanelDeptMajor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPanelDeptMajor.Location = new System.Drawing.Point(230, 0);
-            this.tabPanelDeptMajor.Name = "tabPanelDeptMajor";
-            this.tabPanelDeptMajor.Size = new System.Drawing.Size(654, 571);
-            this.tabPanelDeptMajor.TabIndex = 0;
-            this.tabPanelDeptMajor.TabItem = this.tabItemDeptMajor;
-            // 
-            // splitContainerDeptMajor
-            // 
-            this.splitContainerDeptMajor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerDeptMajor.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerDeptMajor.Name = "splitContainerDeptMajor";
-            // 
-            // splitContainerDeptMajor.Panel1
-            // 
-            this.splitContainerDeptMajor.Panel1.Controls.Add(this.labelDepartment);
-            this.splitContainerDeptMajor.Panel1.Controls.Add(this.dataViewDepartment);
-            this.splitContainerDeptMajor.Panel1.Controls.Add(this.buttonDepartmentAdd);
-            this.splitContainerDeptMajor.Panel1.Controls.Add(this.buttonDepartmentEdit);
-            this.splitContainerDeptMajor.Panel1.Controls.Add(this.buttonDepartmentDelete);
-            // 
-            // splitContainerDeptMajor.Panel2
-            // 
-            this.splitContainerDeptMajor.Panel2.Controls.Add(this.labelMajor);
-            this.splitContainerDeptMajor.Panel2.Controls.Add(this.dataViewMajor);
-            this.splitContainerDeptMajor.Panel2.Controls.Add(this.buttonMajorAdd);
-            this.splitContainerDeptMajor.Panel2.Controls.Add(this.buttonMajorEdit);
-            this.splitContainerDeptMajor.Panel2.Controls.Add(this.buttonMajorDelete);
-            this.splitContainerDeptMajor.Size = new System.Drawing.Size(654, 571);
-            this.splitContainerDeptMajor.SplitterDistance = 326;
-            this.splitContainerDeptMajor.TabIndex = 17;
-            // 
-            // labelDepartment
-            // 
-            // 
-            // 
-            // 
-            this.labelDepartment.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelDepartment.Location = new System.Drawing.Point(20, 6);
-            this.labelDepartment.Name = "labelDepartment";
-            this.labelDepartment.Size = new System.Drawing.Size(103, 23);
-            this.labelDepartment.TabIndex = 17;
-            this.labelDepartment.Text = "Danh sách khoa:";
-            // 
-            // dataViewDepartment
-            // 
-            this.dataViewDepartment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataViewDepartment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewDepartment.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataViewDepartment.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataViewDepartment.Location = new System.Drawing.Point(0, 35);
-            this.dataViewDepartment.Name = "dataViewDepartment";
-            this.dataViewDepartment.Size = new System.Drawing.Size(326, 481);
-            this.dataViewDepartment.TabIndex = 16;
-            // 
-            // buttonDepartmentAdd
-            // 
-            this.buttonDepartmentAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonDepartmentAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDepartmentAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonDepartmentAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonDepartmentAdd.Image")));
-            this.buttonDepartmentAdd.Location = new System.Drawing.Point(236, 536);
-            this.buttonDepartmentAdd.Name = "buttonDepartmentAdd";
-            this.buttonDepartmentAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonDepartmentAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonDepartmentAdd.TabIndex = 15;
-            this.buttonDepartmentAdd.Text = "Thêm mới";
-            // 
-            // buttonDepartmentEdit
-            // 
-            this.buttonDepartmentEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonDepartmentEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDepartmentEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonDepartmentEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonDepartmentEdit.Image")));
-            this.buttonDepartmentEdit.Location = new System.Drawing.Point(155, 536);
-            this.buttonDepartmentEdit.Name = "buttonDepartmentEdit";
-            this.buttonDepartmentEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonDepartmentEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonDepartmentEdit.TabIndex = 14;
-            this.buttonDepartmentEdit.Text = "Thay đổi";
-            // 
-            // buttonDepartmentDelete
-            // 
-            this.buttonDepartmentDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonDepartmentDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDepartmentDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonDepartmentDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonDepartmentDelete.Image")));
-            this.buttonDepartmentDelete.Location = new System.Drawing.Point(74, 536);
-            this.buttonDepartmentDelete.Name = "buttonDepartmentDelete";
-            this.buttonDepartmentDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonDepartmentDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonDepartmentDelete.TabIndex = 13;
-            this.buttonDepartmentDelete.Text = "Xóa";
-            // 
-            // labelMajor
-            // 
-            // 
-            // 
-            // 
-            this.labelMajor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelMajor.Location = new System.Drawing.Point(20, 6);
-            this.labelMajor.Name = "labelMajor";
-            this.labelMajor.Size = new System.Drawing.Size(183, 23);
-            this.labelMajor.TabIndex = 21;
-            this.labelMajor.Text = "Danh sách chuyên ngành:";
-            // 
-            // dataViewMajor
-            // 
-            this.dataViewMajor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataViewMajor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewMajor.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataViewMajor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataViewMajor.Location = new System.Drawing.Point(-4, 35);
-            this.dataViewMajor.Name = "dataViewMajor";
-            this.dataViewMajor.Size = new System.Drawing.Size(331, 481);
-            this.dataViewMajor.TabIndex = 20;
-            // 
-            // buttonMajorAdd
-            // 
-            this.buttonMajorAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonMajorAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMajorAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonMajorAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonMajorAdd.Image")));
-            this.buttonMajorAdd.Location = new System.Drawing.Point(237, 536);
-            this.buttonMajorAdd.Name = "buttonMajorAdd";
-            this.buttonMajorAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonMajorAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonMajorAdd.TabIndex = 19;
-            this.buttonMajorAdd.Text = "Thêm mới";
-            // 
-            // buttonMajorEdit
-            // 
-            this.buttonMajorEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonMajorEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMajorEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonMajorEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonMajorEdit.Image")));
-            this.buttonMajorEdit.Location = new System.Drawing.Point(156, 536);
-            this.buttonMajorEdit.Name = "buttonMajorEdit";
-            this.buttonMajorEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonMajorEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonMajorEdit.TabIndex = 18;
-            this.buttonMajorEdit.Text = "Thay đổi";
-            // 
-            // buttonMajorDelete
-            // 
-            this.buttonMajorDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonMajorDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMajorDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonMajorDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonMajorDelete.Image")));
-            this.buttonMajorDelete.Location = new System.Drawing.Point(75, 536);
-            this.buttonMajorDelete.Name = "buttonMajorDelete";
-            this.buttonMajorDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonMajorDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonMajorDelete.TabIndex = 17;
-            this.buttonMajorDelete.Text = "Xóa";
-            // 
-            // tabItemDeptMajor
-            // 
-            this.tabItemDeptMajor.AttachedControl = this.tabPanelDeptMajor;
-            this.tabItemDeptMajor.GlobalItem = false;
-            this.tabItemDeptMajor.Image = ((System.Drawing.Image)(resources.GetObject("tabItemDeptMajor.Image")));
-            this.tabItemDeptMajor.Name = "tabItemDeptMajor";
-            this.tabItemDeptMajor.Text = "Khoa / CN";
-            this.tabItemDeptMajor.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            // 
             // tabPanelPatient
             // 
             this.tabPanelPatient.CanvasColor = System.Drawing.Color.Transparent;
@@ -672,7 +365,7 @@
             this.tabPanelPatient.Location = new System.Drawing.Point(230, 0);
             this.tabPanelPatient.Name = "tabPanelPatient";
             superTabLinearGradientColorTable1.Colors = new System.Drawing.Color[] {
-        System.Drawing.Color.AliceBlue,
+        System.Drawing.Color.SkyBlue,
         System.Drawing.Color.AliceBlue};
             superTabPanelItemColorTable1.Background = superTabLinearGradientColorTable1;
             superTabPanelItemColorTable1.InnerBorder = System.Drawing.Color.Transparent;
@@ -776,14 +469,14 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dataViewPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewPatient.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewPatient.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataViewPatient.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewPatient.Location = new System.Drawing.Point(0, 50);
             this.dataViewPatient.MultiSelect = false;
@@ -844,85 +537,6 @@
             this.tabItemPatient.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
             this.tabItemPatient.Click += new System.EventHandler(this.tabItemPatient_Click);
             // 
-            // tabPanelAssignment
-            // 
-            this.tabPanelAssignment.Controls.Add(this.dataViewAssignment);
-            this.tabPanelAssignment.Controls.Add(this.buttonAssignmentAdd);
-            this.tabPanelAssignment.Controls.Add(this.buttonAssignmentEdit);
-            this.tabPanelAssignment.Controls.Add(this.buttonAssignmentDelete);
-            this.tabPanelAssignment.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPanelAssignment.Location = new System.Drawing.Point(230, 0);
-            this.tabPanelAssignment.Name = "tabPanelAssignment";
-            this.tabPanelAssignment.Size = new System.Drawing.Size(654, 571);
-            this.tabPanelAssignment.TabIndex = 0;
-            this.tabPanelAssignment.TabItem = this.tabItemAssignment;
-            // 
-            // dataViewAssignment
-            // 
-            this.dataViewAssignment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewAssignment.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataViewAssignment.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataViewAssignment.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataViewAssignment.Location = new System.Drawing.Point(0, 0);
-            this.dataViewAssignment.Name = "dataViewAssignment";
-            this.dataViewAssignment.Size = new System.Drawing.Size(654, 516);
-            this.dataViewAssignment.TabIndex = 12;
-            // 
-            // buttonAssignmentAdd
-            // 
-            this.buttonAssignmentAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonAssignmentAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAssignmentAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonAssignmentAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonAssignmentAdd.Image")));
-            this.buttonAssignmentAdd.Location = new System.Drawing.Point(567, 536);
-            this.buttonAssignmentAdd.Name = "buttonAssignmentAdd";
-            this.buttonAssignmentAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonAssignmentAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonAssignmentAdd.TabIndex = 11;
-            this.buttonAssignmentAdd.Text = "Thêm mới";
-            // 
-            // buttonAssignmentEdit
-            // 
-            this.buttonAssignmentEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonAssignmentEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAssignmentEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonAssignmentEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonAssignmentEdit.Image")));
-            this.buttonAssignmentEdit.Location = new System.Drawing.Point(486, 536);
-            this.buttonAssignmentEdit.Name = "buttonAssignmentEdit";
-            this.buttonAssignmentEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonAssignmentEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonAssignmentEdit.TabIndex = 10;
-            this.buttonAssignmentEdit.Text = "Thay đổi";
-            // 
-            // buttonAssignmentDelete
-            // 
-            this.buttonAssignmentDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonAssignmentDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAssignmentDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonAssignmentDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonAssignmentDelete.Image")));
-            this.buttonAssignmentDelete.Location = new System.Drawing.Point(405, 536);
-            this.buttonAssignmentDelete.Name = "buttonAssignmentDelete";
-            this.buttonAssignmentDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonAssignmentDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonAssignmentDelete.TabIndex = 9;
-            this.buttonAssignmentDelete.Text = "Xóa";
-            // 
-            // tabItemAssignment
-            // 
-            this.tabItemAssignment.AttachedControl = this.tabPanelAssignment;
-            this.tabItemAssignment.GlobalItem = false;
-            this.tabItemAssignment.Image = ((System.Drawing.Image)(resources.GetObject("tabItemAssignment.Image")));
-            this.tabItemAssignment.Name = "tabItemAssignment";
-            this.tabItemAssignment.Text = "Lịch trực";
-            this.tabItemAssignment.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            // 
             // tabPanelRole
             // 
             this.tabPanelRole.CanvasColor = System.Drawing.Color.LightGray;
@@ -943,14 +557,14 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dataViewRole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewRole.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewRole.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataViewRole.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewRole.Location = new System.Drawing.Point(0, 0);
             this.dataViewRole.MultiSelect = false;
@@ -1008,6 +622,402 @@
             this.tabItemRole.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
             this.tabItemRole.Click += new System.EventHandler(this.tabItemRole_Click);
             // 
+            // tabPanelStaff
+            // 
+            this.tabPanelStaff.Controls.Add(this.buttonStaffDeleteSearch);
+            this.tabPanelStaff.Controls.Add(this.labelStaffSearch);
+            this.tabPanelStaff.Controls.Add(this.textBoxStaffSearch);
+            this.tabPanelStaff.Controls.Add(this.dataViewStaff);
+            this.tabPanelStaff.Controls.Add(this.buttonStaffAdd);
+            this.tabPanelStaff.Controls.Add(this.buttonStaffEdit);
+            this.tabPanelStaff.Controls.Add(this.buttonStaffDelete);
+            this.tabPanelStaff.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabPanelStaff.Location = new System.Drawing.Point(230, 0);
+            this.tabPanelStaff.Name = "tabPanelStaff";
+            superTabLinearGradientColorTable2.Colors = new System.Drawing.Color[] {
+        System.Drawing.Color.SkyBlue,
+        System.Drawing.Color.AliceBlue};
+            superTabPanelItemColorTable2.Background = superTabLinearGradientColorTable2;
+            superTabPanelColorTable2.Default = superTabPanelItemColorTable2;
+            this.tabPanelStaff.PanelColor = superTabPanelColorTable2;
+            this.tabPanelStaff.Size = new System.Drawing.Size(654, 571);
+            this.tabPanelStaff.TabIndex = 0;
+            this.tabPanelStaff.TabItem = this.tabItemStaff;
+            // 
+            // buttonStaffDeleteSearch
+            // 
+            this.buttonStaffDeleteSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonStaffDeleteSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonStaffDeleteSearch.Location = new System.Drawing.Point(525, 15);
+            this.buttonStaffDeleteSearch.Name = "buttonStaffDeleteSearch";
+            this.buttonStaffDeleteSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonStaffDeleteSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonStaffDeleteSearch.TabIndex = 35;
+            this.buttonStaffDeleteSearch.Text = "Xóa tìm kiếm";
+            this.buttonStaffDeleteSearch.Click += new System.EventHandler(this.buttonStaffDeleteSearch_Click);
+            // 
+            // labelStaffSearch
+            // 
+            this.labelStaffSearch.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelStaffSearch.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelStaffSearch.Location = new System.Drawing.Point(20, 15);
+            this.labelStaffSearch.Name = "labelStaffSearch";
+            this.labelStaffSearch.Size = new System.Drawing.Size(60, 23);
+            this.labelStaffSearch.TabIndex = 34;
+            this.labelStaffSearch.Text = "Tìm kiếm:";
+            // 
+            // textBoxStaffSearch
+            // 
+            // 
+            // 
+            // 
+            this.textBoxStaffSearch.Border.Class = "TextBoxBorder";
+            this.textBoxStaffSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxStaffSearch.Location = new System.Drawing.Point(86, 18);
+            this.textBoxStaffSearch.Name = "textBoxStaffSearch";
+            this.textBoxStaffSearch.Size = new System.Drawing.Size(433, 20);
+            this.textBoxStaffSearch.TabIndex = 33;
+            this.textBoxStaffSearch.TextChanged += new System.EventHandler(this.textBoxStaffSearch_TextChanged);
+            this.textBoxStaffSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxStaffSearch_KeyDown);
+            // 
+            // dataViewStaff
+            // 
+            this.dataViewStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewStaff.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dataViewStaff.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataViewStaff.Location = new System.Drawing.Point(0, 50);
+            this.dataViewStaff.Name = "dataViewStaff";
+            this.dataViewStaff.Size = new System.Drawing.Size(654, 466);
+            this.dataViewStaff.TabIndex = 32;
+            // 
+            // buttonStaffAdd
+            // 
+            this.buttonStaffAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonStaffAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonStaffAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonStaffAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonStaffAdd.Image")));
+            this.buttonStaffAdd.Location = new System.Drawing.Point(567, 536);
+            this.buttonStaffAdd.Name = "buttonStaffAdd";
+            this.buttonStaffAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonStaffAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonStaffAdd.TabIndex = 31;
+            this.buttonStaffAdd.Text = "Thêm mới";
+            this.buttonStaffAdd.Click += new System.EventHandler(this.buttonStaffAdd_Click);
+            // 
+            // buttonStaffEdit
+            // 
+            this.buttonStaffEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonStaffEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonStaffEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonStaffEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonStaffEdit.Image")));
+            this.buttonStaffEdit.Location = new System.Drawing.Point(486, 536);
+            this.buttonStaffEdit.Name = "buttonStaffEdit";
+            this.buttonStaffEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonStaffEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonStaffEdit.TabIndex = 30;
+            this.buttonStaffEdit.Text = "Thay đổi";
+            this.buttonStaffEdit.Click += new System.EventHandler(this.buttonStaffEdit_Click);
+            // 
+            // buttonStaffDelete
+            // 
+            this.buttonStaffDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonStaffDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonStaffDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonStaffDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonStaffDelete.Image")));
+            this.buttonStaffDelete.Location = new System.Drawing.Point(405, 536);
+            this.buttonStaffDelete.Name = "buttonStaffDelete";
+            this.buttonStaffDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonStaffDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonStaffDelete.TabIndex = 29;
+            this.buttonStaffDelete.Text = "Xóa";
+            this.buttonStaffDelete.Click += new System.EventHandler(this.buttonStaffDelete_Click);
+            // 
+            // tabItemStaff
+            // 
+            this.tabItemStaff.AttachedControl = this.tabPanelStaff;
+            this.tabItemStaff.GlobalItem = false;
+            this.tabItemStaff.Image = ((System.Drawing.Image)(resources.GetObject("tabItemStaff.Image")));
+            this.tabItemStaff.Name = "tabItemStaff";
+            this.tabItemStaff.Text = "Nhân viên";
+            this.tabItemStaff.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.tabItemStaff.Click += new System.EventHandler(this.tabItemStaff_Click);
+            // 
+            // tabPanelDeptMajor
+            // 
+            this.tabPanelDeptMajor.Controls.Add(this.splitContainerDeptMajor);
+            this.tabPanelDeptMajor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabPanelDeptMajor.Location = new System.Drawing.Point(230, 0);
+            this.tabPanelDeptMajor.Name = "tabPanelDeptMajor";
+            this.tabPanelDeptMajor.Size = new System.Drawing.Size(654, 571);
+            this.tabPanelDeptMajor.TabIndex = 0;
+            this.tabPanelDeptMajor.TabItem = this.tabItemDeptMajor;
+            // 
+            // splitContainerDeptMajor
+            // 
+            this.splitContainerDeptMajor.BackColor = System.Drawing.Color.AliceBlue;
+            this.splitContainerDeptMajor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerDeptMajor.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerDeptMajor.Name = "splitContainerDeptMajor";
+            // 
+            // splitContainerDeptMajor.Panel1
+            // 
+            this.splitContainerDeptMajor.Panel1.Controls.Add(this.labelDepartment);
+            this.splitContainerDeptMajor.Panel1.Controls.Add(this.dataViewDepartment);
+            this.splitContainerDeptMajor.Panel1.Controls.Add(this.buttonDepartmentAdd);
+            this.splitContainerDeptMajor.Panel1.Controls.Add(this.buttonDepartmentEdit);
+            this.splitContainerDeptMajor.Panel1.Controls.Add(this.buttonDepartmentDelete);
+            // 
+            // splitContainerDeptMajor.Panel2
+            // 
+            this.splitContainerDeptMajor.Panel2.Controls.Add(this.labelMajor);
+            this.splitContainerDeptMajor.Panel2.Controls.Add(this.dataViewMajor);
+            this.splitContainerDeptMajor.Panel2.Controls.Add(this.buttonMajorAdd);
+            this.splitContainerDeptMajor.Panel2.Controls.Add(this.buttonMajorEdit);
+            this.splitContainerDeptMajor.Panel2.Controls.Add(this.buttonMajorDelete);
+            this.splitContainerDeptMajor.Size = new System.Drawing.Size(654, 571);
+            this.splitContainerDeptMajor.SplitterDistance = 326;
+            this.splitContainerDeptMajor.TabIndex = 17;
+            // 
+            // labelDepartment
+            // 
+            // 
+            // 
+            // 
+            this.labelDepartment.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelDepartment.Location = new System.Drawing.Point(20, 6);
+            this.labelDepartment.Name = "labelDepartment";
+            this.labelDepartment.Size = new System.Drawing.Size(103, 23);
+            this.labelDepartment.TabIndex = 17;
+            this.labelDepartment.Text = "Danh sách khoa:";
+            // 
+            // dataViewDepartment
+            // 
+            this.dataViewDepartment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataViewDepartment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewDepartment.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataViewDepartment.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataViewDepartment.Location = new System.Drawing.Point(0, 35);
+            this.dataViewDepartment.Name = "dataViewDepartment";
+            this.dataViewDepartment.Size = new System.Drawing.Size(326, 481);
+            this.dataViewDepartment.TabIndex = 16;
+            // 
+            // buttonDepartmentAdd
+            // 
+            this.buttonDepartmentAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonDepartmentAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDepartmentAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonDepartmentAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonDepartmentAdd.Image")));
+            this.buttonDepartmentAdd.Location = new System.Drawing.Point(236, 536);
+            this.buttonDepartmentAdd.Name = "buttonDepartmentAdd";
+            this.buttonDepartmentAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonDepartmentAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonDepartmentAdd.TabIndex = 15;
+            this.buttonDepartmentAdd.Text = "Thêm mới";
+            // 
+            // buttonDepartmentEdit
+            // 
+            this.buttonDepartmentEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonDepartmentEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDepartmentEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonDepartmentEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonDepartmentEdit.Image")));
+            this.buttonDepartmentEdit.Location = new System.Drawing.Point(155, 536);
+            this.buttonDepartmentEdit.Name = "buttonDepartmentEdit";
+            this.buttonDepartmentEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonDepartmentEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonDepartmentEdit.TabIndex = 14;
+            this.buttonDepartmentEdit.Text = "Thay đổi";
+            // 
+            // buttonDepartmentDelete
+            // 
+            this.buttonDepartmentDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonDepartmentDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDepartmentDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonDepartmentDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonDepartmentDelete.Image")));
+            this.buttonDepartmentDelete.Location = new System.Drawing.Point(74, 536);
+            this.buttonDepartmentDelete.Name = "buttonDepartmentDelete";
+            this.buttonDepartmentDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDepartmentDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonDepartmentDelete.TabIndex = 13;
+            this.buttonDepartmentDelete.Text = "Xóa";
+            // 
+            // labelMajor
+            // 
+            // 
+            // 
+            // 
+            this.labelMajor.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelMajor.Location = new System.Drawing.Point(20, 6);
+            this.labelMajor.Name = "labelMajor";
+            this.labelMajor.Size = new System.Drawing.Size(183, 23);
+            this.labelMajor.TabIndex = 21;
+            this.labelMajor.Text = "Danh sách chuyên ngành:";
+            // 
+            // dataViewMajor
+            // 
+            this.dataViewMajor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataViewMajor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewMajor.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataViewMajor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataViewMajor.Location = new System.Drawing.Point(-4, 35);
+            this.dataViewMajor.Name = "dataViewMajor";
+            this.dataViewMajor.Size = new System.Drawing.Size(331, 481);
+            this.dataViewMajor.TabIndex = 20;
+            // 
+            // buttonMajorAdd
+            // 
+            this.buttonMajorAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonMajorAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMajorAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonMajorAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonMajorAdd.Image")));
+            this.buttonMajorAdd.Location = new System.Drawing.Point(237, 536);
+            this.buttonMajorAdd.Name = "buttonMajorAdd";
+            this.buttonMajorAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonMajorAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonMajorAdd.TabIndex = 19;
+            this.buttonMajorAdd.Text = "Thêm mới";
+            // 
+            // buttonMajorEdit
+            // 
+            this.buttonMajorEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonMajorEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMajorEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonMajorEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonMajorEdit.Image")));
+            this.buttonMajorEdit.Location = new System.Drawing.Point(156, 536);
+            this.buttonMajorEdit.Name = "buttonMajorEdit";
+            this.buttonMajorEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonMajorEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonMajorEdit.TabIndex = 18;
+            this.buttonMajorEdit.Text = "Thay đổi";
+            // 
+            // buttonMajorDelete
+            // 
+            this.buttonMajorDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonMajorDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonMajorDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonMajorDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonMajorDelete.Image")));
+            this.buttonMajorDelete.Location = new System.Drawing.Point(75, 536);
+            this.buttonMajorDelete.Name = "buttonMajorDelete";
+            this.buttonMajorDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonMajorDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonMajorDelete.TabIndex = 17;
+            this.buttonMajorDelete.Text = "Xóa";
+            // 
+            // tabItemDeptMajor
+            // 
+            this.tabItemDeptMajor.AttachedControl = this.tabPanelDeptMajor;
+            this.tabItemDeptMajor.GlobalItem = false;
+            this.tabItemDeptMajor.Image = ((System.Drawing.Image)(resources.GetObject("tabItemDeptMajor.Image")));
+            this.tabItemDeptMajor.Name = "tabItemDeptMajor";
+            this.tabItemDeptMajor.Text = "Khoa / CN";
+            this.tabItemDeptMajor.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            // 
+            // tabPanelAssignment
+            // 
+            this.tabPanelAssignment.Controls.Add(this.dataViewAssignment);
+            this.tabPanelAssignment.Controls.Add(this.buttonAssignmentAdd);
+            this.tabPanelAssignment.Controls.Add(this.buttonAssignmentEdit);
+            this.tabPanelAssignment.Controls.Add(this.buttonAssignmentDelete);
+            this.tabPanelAssignment.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabPanelAssignment.Location = new System.Drawing.Point(230, 0);
+            this.tabPanelAssignment.Name = "tabPanelAssignment";
+            this.tabPanelAssignment.Size = new System.Drawing.Size(654, 571);
+            this.tabPanelAssignment.TabIndex = 0;
+            this.tabPanelAssignment.TabItem = this.tabItemAssignment;
+            // 
+            // dataViewAssignment
+            // 
+            this.dataViewAssignment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewAssignment.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataViewAssignment.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataViewAssignment.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataViewAssignment.Location = new System.Drawing.Point(0, 0);
+            this.dataViewAssignment.Name = "dataViewAssignment";
+            this.dataViewAssignment.Size = new System.Drawing.Size(654, 516);
+            this.dataViewAssignment.TabIndex = 12;
+            // 
+            // buttonAssignmentAdd
+            // 
+            this.buttonAssignmentAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonAssignmentAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAssignmentAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonAssignmentAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonAssignmentAdd.Image")));
+            this.buttonAssignmentAdd.Location = new System.Drawing.Point(567, 536);
+            this.buttonAssignmentAdd.Name = "buttonAssignmentAdd";
+            this.buttonAssignmentAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAssignmentAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonAssignmentAdd.TabIndex = 11;
+            this.buttonAssignmentAdd.Text = "Thêm mới";
+            // 
+            // buttonAssignmentEdit
+            // 
+            this.buttonAssignmentEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonAssignmentEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAssignmentEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonAssignmentEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonAssignmentEdit.Image")));
+            this.buttonAssignmentEdit.Location = new System.Drawing.Point(486, 536);
+            this.buttonAssignmentEdit.Name = "buttonAssignmentEdit";
+            this.buttonAssignmentEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonAssignmentEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonAssignmentEdit.TabIndex = 10;
+            this.buttonAssignmentEdit.Text = "Thay đổi";
+            // 
+            // buttonAssignmentDelete
+            // 
+            this.buttonAssignmentDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonAssignmentDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAssignmentDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonAssignmentDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonAssignmentDelete.Image")));
+            this.buttonAssignmentDelete.Location = new System.Drawing.Point(405, 536);
+            this.buttonAssignmentDelete.Name = "buttonAssignmentDelete";
+            this.buttonAssignmentDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonAssignmentDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonAssignmentDelete.TabIndex = 9;
+            this.buttonAssignmentDelete.Text = "Xóa";
+            // 
+            // tabItemAssignment
+            // 
+            this.tabItemAssignment.AttachedControl = this.tabPanelAssignment;
+            this.tabItemAssignment.GlobalItem = false;
+            this.tabItemAssignment.Image = ((System.Drawing.Image)(resources.GetObject("tabItemAssignment.Image")));
+            this.tabItemAssignment.Name = "tabItemAssignment";
+            this.tabItemAssignment.Text = "Lịch trực";
+            this.tabItemAssignment.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            // 
             // tabPanelTest
             // 
             this.tabPanelTest.Controls.Add(this.dataViewTest);
@@ -1024,14 +1034,14 @@
             // dataViewTest
             // 
             this.dataViewTest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewTest.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewTest.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataViewTest.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewTest.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewTest.Location = new System.Drawing.Point(0, 0);
@@ -1103,14 +1113,14 @@
             // dataViewSurgery
             // 
             this.dataViewSurgery.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewSurgery.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewSurgery.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataViewSurgery.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewSurgery.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewSurgery.Location = new System.Drawing.Point(0, 0);
@@ -1182,14 +1192,14 @@
             // dataViewExamination
             // 
             this.dataViewExamination.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewExamination.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewExamination.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataViewExamination.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewExamination.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewExamination.Location = new System.Drawing.Point(0, 0);
@@ -1261,14 +1271,14 @@
             // dataViewBill
             // 
             this.dataViewBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewBill.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewBill.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataViewBill.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewBill.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewBill.Location = new System.Drawing.Point(0, 0);
@@ -1340,14 +1350,14 @@
             // dataViewDisease
             // 
             this.dataViewDisease.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewDisease.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewDisease.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataViewDisease.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewDisease.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewDisease.Location = new System.Drawing.Point(0, 0);
@@ -1419,14 +1429,14 @@
             // dataViewHealthFile
             // 
             this.dataViewHealthFile.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewHealthFile.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewHealthFile.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataViewHealthFile.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewHealthFile.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewHealthFile.Location = new System.Drawing.Point(0, 0);
@@ -1498,14 +1508,14 @@
             // dataViewMaterial
             // 
             this.dataViewMaterial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewMaterial.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewMaterial.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataViewMaterial.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewMaterial.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewMaterial.Location = new System.Drawing.Point(0, 0);
@@ -1577,14 +1587,14 @@
             // dataViewBed
             // 
             this.dataViewBed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewBed.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewBed.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataViewBed.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewBed.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewBed.Location = new System.Drawing.Point(0, 0);
@@ -1656,14 +1666,14 @@
             // dataViewService
             // 
             this.dataViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewService.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewService.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataViewService.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewService.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewService.Location = new System.Drawing.Point(0, 0);
@@ -1735,14 +1745,14 @@
             // dataViewMonitor
             // 
             this.dataViewMonitor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewMonitor.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewMonitor.DefaultCellStyle = dataGridViewCellStyle11;
             this.dataViewMonitor.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataViewMonitor.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewMonitor.Location = new System.Drawing.Point(0, 0);
@@ -1968,6 +1978,10 @@
             this.Text = "eHospital";
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).EndInit();
             this.tabMain.ResumeLayout(false);
+            this.tabPanelPatient.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewPatient)).EndInit();
+            this.tabPanelRole.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewRole)).EndInit();
             this.tabPanelStaff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewStaff)).EndInit();
             this.tabPanelDeptMajor.ResumeLayout(false);
@@ -1977,12 +1991,8 @@
             this.splitContainerDeptMajor.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewDepartment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewMajor)).EndInit();
-            this.tabPanelPatient.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewPatient)).EndInit();
             this.tabPanelAssignment.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewAssignment)).EndInit();
-            this.tabPanelRole.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewRole)).EndInit();
             this.tabPanelTest.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewTest)).EndInit();
             this.tabPanelSurgery.ResumeLayout(false);

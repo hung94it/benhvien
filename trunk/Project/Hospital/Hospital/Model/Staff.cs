@@ -49,8 +49,10 @@ namespace Hospital.Model
         public static int InsertStaff(Staff staff)
         {
             string sqlInsert = @"INSERT INTO STAFF
-                         (DEPARTMENTID, MAJORID, ROLEID, PASSWORD, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, ADDRESS, STATE)
-                         (@DepartmentID, @MajorID, @RoleID, @Password, @FirstName, @LastName, @BirthDay, @Gender, @ICN, @Address, @State)";
+                                (DEPARTMENTID, MAJORID, ROLEID, PASSWORD, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, ADDRESS, STATE)
+                                VALUES
+                                (@DepartmentID, @MajorID, @RoleID, @Password, @FirstName, @LastName, @BirthDay, @Gender, @ICN
+                                    , @Address, @State)";
             SqlParameter[] sqlParameters = {   new SqlParameter("@DepartmentID", staff.DepartmentID),
                                            new SqlParameter("@MajorID", staff.MajorID),
                                            new SqlParameter("@RoleID", staff.RoleID),
@@ -95,7 +97,7 @@ namespace Hospital.Model
             return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
 
-        public static DataView GetListStaff()
+        public static DataTable GetListStaff()
         {
             string sqlSelect = @"SELECT STAFF.STAFFID, DEPARTMENT.DEPARTMENTNAME, MAJOR.MAJORNAME, ROLE.ROLENAME, STAFF.PASSWORD
                                     , STAFF.FIRSTNAME, STAFF.LASTNAME, STAFF.BIRTHDAY, STAFF.GENDER, STAFF.ICN, STAFF.ADDRESS, STAFF.STATE
@@ -106,14 +108,7 @@ namespace Hospital.Model
 
             staffTable = SqlResult.ExecuteQuery(sqlSelect);
 
-            staffTable.Columns.Add("Mã nhân viên", typeof(string), "[STAFFID]");
-            staffTable.Columns.Add("Họ tên", typeof(string), "[LASTNAME] + ' ' + [FIRSTNAME]");
-            staffTable.Columns.Add("CMND", typeof(string), "[ICN]");
-            staffTable.Columns.Add("Giới tính", typeof(string), "IIF([GENDER] = 0, 'Nam', 'Nữ')");
-            staffTable.Columns.Add("Ngày sinh", typeof(DateTime), "[BIRTHDAY]");
-            staffTable.Columns.Add("Địa chỉ", typeof(string), "[ADDRESS]");
-
-            return staffTable.DefaultView;
+            return staffTable;
         }
 
         public static Staff GetStaff(int staffID)
