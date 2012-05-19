@@ -136,11 +136,29 @@
     <Compile Include="View\FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormDepartmentDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDepartmentDetail.Designer.cs">
+      <DependentUpon>FormDepartmentDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormDiseaseDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDiseaseDetail.Designer.cs">
+      <DependentUpon>FormDiseaseDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormHealthFile.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormHealthFile.Designer.cs">
       <DependentUpon>FormHealthFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormHostpitalBedDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormHostpitalBedDetail.Designer.cs">
+      <DependentUpon>FormHostpitalBedDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormMain.cs">
       <SubType>Form</SubType>
@@ -160,6 +178,18 @@
     <Compile Include="View\FormMainStaff.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FormMaterialDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMaterialDetail.Designer.cs">
+      <DependentUpon>FormMaterialDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormMedicineDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMedicineDetail.Designer.cs">
+      <DependentUpon>FormMedicineDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormPatientDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +201,18 @@
     </Compile>
     <Compile Include="View\FormRoleDetail.Designer.cs">
       <DependentUpon>FormRoleDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormRoleFunctionDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormRoleFunctionDetail.Designer.cs">
+      <DependentUpon>FormRoleFunctionDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormServiceDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormServiceDetail.Designer.cs">
+      <DependentUpon>FormServiceDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormStaffDetail.cs">
       <SubType>Form</SubType>
@@ -191,8 +233,17 @@
     <EmbeddedResource Include="View\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormDepartmentDetail.resx">
+      <DependentUpon>FormDepartmentDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormDiseaseDetail.resx">
+      <DependentUpon>FormDiseaseDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormHealthFile.resx">
       <DependentUpon>FormHealthFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormHostpitalBedDetail.resx">
+      <DependentUpon>FormHostpitalBedDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
@@ -200,11 +251,23 @@
     <EmbeddedResource Include="View\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormMaterialDetail.resx">
+      <DependentUpon>FormMaterialDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormMedicineDetail.resx">
+      <DependentUpon>FormMedicineDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormPatientDetail.resx">
       <DependentUpon>FormPatientDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormRoleDetail.resx">
       <DependentUpon>FormRoleDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormRoleFunctionDetail.resx">
+      <DependentUpon>FormRoleFunctionDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormServiceDetail.resx">
+      <DependentUpon>FormServiceDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormStaffDetail.resx">
       <DependentUpon>FormStaffDetail.cs</DependentUpon>
