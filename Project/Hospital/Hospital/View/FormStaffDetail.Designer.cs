@@ -58,6 +58,8 @@
             this.labelPasswordCheck = new DevComponents.DotNetBar.LabelX();
             this.groupPanelAccout = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.groupPanelInformation = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.labelRole = new DevComponents.DotNetBar.LabelX();
+            this.comboBoxRole = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.groupPanelAccout.SuspendLayout();
             this.groupPanelInformation.SuspendLayout();
@@ -94,7 +96,7 @@
             // 
             // 
             this.labelState.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelState.Location = new System.Drawing.Point(23, 282);
+            this.labelState.Location = new System.Drawing.Point(23, 311);
             this.labelState.Name = "labelState";
             this.labelState.Size = new System.Drawing.Size(75, 23);
             this.labelState.TabIndex = 42;
@@ -106,7 +108,7 @@
             this.comboBoxState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxState.FormattingEnabled = true;
             this.comboBoxState.ItemHeight = 14;
-            this.comboBoxState.Location = new System.Drawing.Point(104, 285);
+            this.comboBoxState.Location = new System.Drawing.Point(104, 311);
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(240, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -319,7 +321,7 @@
             // 
             this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonClose.Location = new System.Drawing.Point(382, 321);
+            this.buttonClose.Location = new System.Drawing.Point(377, 344);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -331,12 +333,13 @@
             // 
             this.buttonOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonOk.Location = new System.Drawing.Point(290, 321);
+            this.buttonOk.Location = new System.Drawing.Point(296, 344);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonOk.TabIndex = 31;
             this.buttonOk.Text = "Đồng ý";
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // labelDepartment
             // 
@@ -488,6 +491,8 @@
             // 
             this.groupPanelInformation.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanelInformation.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanelInformation.Controls.Add(this.labelRole);
+            this.groupPanelInformation.Controls.Add(this.comboBoxRole);
             this.groupPanelInformation.Controls.Add(this.labelFirstName);
             this.groupPanelInformation.Controls.Add(this.buttonOk);
             this.groupPanelInformation.Controls.Add(this.labelMajor);
@@ -510,7 +515,7 @@
             this.groupPanelInformation.Controls.Add(this.labelAddress);
             this.groupPanelInformation.Location = new System.Drawing.Point(12, 143);
             this.groupPanelInformation.Name = "groupPanelInformation";
-            this.groupPanelInformation.Size = new System.Drawing.Size(477, 373);
+            this.groupPanelInformation.Size = new System.Drawing.Size(477, 391);
             // 
             // 
             // 
@@ -542,12 +547,38 @@
             this.groupPanelInformation.TabIndex = 53;
             this.groupPanelInformation.Text = "Thông tin nhân viên";
             // 
+            // labelRole
+            // 
+            this.labelRole.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelRole.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelRole.Location = new System.Drawing.Point(23, 282);
+            this.labelRole.Name = "labelRole";
+            this.labelRole.Size = new System.Drawing.Size(75, 23);
+            this.labelRole.TabIndex = 49;
+            this.labelRole.Text = "Quyền:";
+            // 
+            // comboBoxRole
+            // 
+            this.comboBoxRole.DisplayMember = "Text";
+            this.comboBoxRole.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.ItemHeight = 14;
+            this.comboBoxRole.Location = new System.Drawing.Point(104, 285);
+            this.comboBoxRole.Name = "comboBoxRole";
+            this.comboBoxRole.Size = new System.Drawing.Size(240, 20);
+            this.comboBoxRole.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxRole.TabIndex = 48;
+            // 
             // FormStaffDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(500, 528);
+            this.ClientSize = new System.Drawing.Size(500, 546);
+            this.ControlBox = false;
             this.Controls.Add(this.groupPanelInformation);
             this.Controls.Add(this.groupPanelAccout);
             this.Name = "FormStaffDetail";
@@ -591,6 +622,8 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxPasswordCheck;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanelAccout;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanelInformation;
+        private DevComponents.DotNetBar.LabelX labelRole;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxRole;
 
     }
 }

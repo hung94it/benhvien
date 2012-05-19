@@ -47,8 +47,8 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        ROLEID, ROLENAME
                                 FROM            ROLE";
             dtRole = SqlResult.ExecuteQuery(sqlSelect);
-            dtRole.Columns[0].ColumnName = "Mã phân quyền";
-            dtRole.Columns[1].ColumnName = "Tên phân quyền";
+            //dtRole.Columns[0].ColumnName = "Mã phân quyền";
+            //dtRole.Columns[1].ColumnName = "Tên phân quyền";
             return dtRole;
         }
         public static Role GetRole(int roleID)

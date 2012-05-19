@@ -16,7 +16,7 @@ namespace Hospital.Model
         public static DataTable patientTable;
         //private static Patient tempPatient;
 
-        //Properties of Hospital class
+        // Properties of Hospital class
         public int PatientID { get; set; }
         public String FirstName { get; set; }
         public String LastName { get; set; }
@@ -28,10 +28,10 @@ namespace Hospital.Model
         public decimal Deposit { get; set; }
         public int State { get; set; }
 
-        //Default constructor
+        // Default constructor
         public Patient() { }
 
-        //Constructor set all properties
+        // Constructor set all properties
         public Patient(int patientID, string firstName, string lastName, DateTime birthDay,
             int gender, decimal iCN, string profession, string address, decimal deposit, int state)
         {
@@ -47,7 +47,7 @@ namespace Hospital.Model
             State = state;
         }
 
-        //Insert new patient
+        // Insert new patient
         public static int InsertPatient(Patient patient)
         {
             string sqlInsert = @"INSERT INTO PATIENT
@@ -66,7 +66,7 @@ namespace Hospital.Model
             return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
 
-        //Update patien by patientid
+        // Update patien by patientid
         public static int UpdatePatient(Patient patient)
         {
             string sqlUpdate = @"UPDATE PATIENT
@@ -86,7 +86,7 @@ namespace Hospital.Model
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
 
-        //Delete patient by patientid
+        // Delete patient by patientid
         public static int DeletePatient(int patientID)
         {
             string sqlDelete = @"DELETE FROM PATIENT
@@ -95,26 +95,17 @@ namespace Hospital.Model
             return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
 
-        //Get list patient
-        public static DataView GetListPatient()
+        // Get list patient
+        public static DataTable GetListPatient()
         {
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT";
-            patientTable = SqlResult.ExecuteQuery(sqlSelect);            
+            patientTable = SqlResult.ExecuteQuery(sqlSelect);
 
-            patientTable.Columns.Add("Mã bệnh nhân", typeof(string), "[PATIENTID]");
-            patientTable.Columns.Add("Họ tên", typeof(string), "[LASTNAME] + ' ' + [FIRSTNAME]");
-            patientTable.Columns.Add("CMND", typeof(string), "[ICN]");
-            patientTable.Columns.Add("Giới tính", typeof(string), "IIF([GENDER] = 0, 'Nam', 'Nữ')");
-            patientTable.Columns.Add("Ngày sinh", typeof(DateTime), "[BIRTHDAY]");
-            patientTable.Columns.Add("Nghề nghiệp", typeof(string), "PROFESSION");
-            patientTable.Columns.Add("Địa chỉ", typeof(string), "[ADDRESS]");
-            patientTable.Columns.Add("Tiền đặt cọc", typeof(string), "[DEPOSIT]");
-            
-            return patientTable.DefaultView;
+            return patientTable;
         }
 
-        //Get patient by patientid
+        // Get patient by patientid
         public static Patient GetPatient(int patientID)
         {
             DataTable patientDataTable;
@@ -128,6 +119,7 @@ namespace Hospital.Model
 
             newPatient = new Patient();
 
+            // If select query have row then set to new patient
             if (patientDataTable.Rows.Count > 0)
             {
                 newPatient.PatientID = Convert.ToInt32(patientDataTable.Rows[0]["PATIENTID"].ToString());
