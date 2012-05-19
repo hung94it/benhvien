@@ -12,10 +12,10 @@ namespace Hospital.Model
         public int MaterialID { get; set; }
         public String MaterialName { get; set; }
         public int Quantity { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         public Material() { }
-        public Material(int materialID, String materialName, int quantity, int price)
+        public Material(int materialID, String materialName, int quantity, decimal price)
         {
             this.MaterialID = materialID;
             this.MaterialName = materialName;
@@ -65,9 +65,9 @@ namespace Hospital.Model
         {
             Material newMaterial = new Material();
             int tempInterger;
-            string sqlSelect = @"SELECT        MATERIALNAME, QUANTITY, PRICE
+            string sqlSelect = @"SELECT        MATERIALID,MATERIALNAME, QUANTITY, PRICE
                                 FROM            MATERIAL
-                                WHERE        MATERIAID=@MATERIALID";
+                                WHERE        MATERIALID=@MATERIALID";
             SqlParameter[] sqlParameters = { new SqlParameter("@MATERIALID", materialID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             if (dataTable.Rows.Count > 0)
@@ -76,7 +76,7 @@ namespace Hospital.Model
                 newMaterial.MaterialID = tempInterger;
                 newMaterial.MaterialName = dataTable.Rows[0][1].ToString();
                 newMaterial.Quantity = int.Parse(dataTable.Rows[0][2].ToString());
-                newMaterial.Price = int.Parse(dataTable.Rows[0][3].ToString());
+                newMaterial.Price = (decimal)dataTable.Rows[0][3];
             }
             return newMaterial;
         }

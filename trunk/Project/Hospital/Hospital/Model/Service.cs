@@ -12,10 +12,10 @@ namespace Hospital.Model
     {
         public int ServiceID { get; set; }
         public String ServiceName { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         public Service() { }
-        public Service(int serviceID, String serviceName, int price)
+        public Service(int serviceID, String serviceName, decimal price)
         {
             this.ServiceID = serviceID;
             this.ServiceName = serviceName;
@@ -64,14 +64,14 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        SERVICEID, SERVICENAME, PRICE
                                 FROM            SERVICE
                                 WHERE        SERVICEID=@SERVICEID";
-            SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", serviceID) };
+            SqlParameter[] sqlParameters = { new SqlParameter("@SERVICEID", serviceID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
                 int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
                 newService.ServiceID = tempInterger;
                 newService.ServiceName = dataTable.Rows[0][1].ToString();
-                newService.Price = int.Parse(dataTable.Rows[0][2].ToString());
+                newService.Price = (decimal)dataTable.Rows[0][2];
             }
             return newService;
         }

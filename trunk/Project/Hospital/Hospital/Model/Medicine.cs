@@ -9,13 +9,13 @@ namespace Hospital.Model
 {
     public class Medicine
     {
-        private int MedicineID { get; set; }
+        public int MedicineID { get; set; }
         public String MedicineName { get; set; }
         public int Quantity { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         public Medicine() { }
-        public Medicine(int medicineID, String medicineName, int quantity, int price)
+        public Medicine(int medicineID, String medicineName, int quantity, decimal price)
         {
             this.MedicineID = medicineID;
             this.MedicineName = medicineName;
@@ -61,11 +61,11 @@ namespace Hospital.Model
             dtM.Columns[3].ColumnName = "Đơn giá";
             return dtM;
         }
-        public Medicine GetMedicine(int medicineID)
+        public static Medicine GetMedicine(int medicineID)
         {
             Medicine newMedicine = new Medicine();
             int tempInterger;
-            string sqlSelect = @"SELECT        MEDICINENAME, QUANTITY, PRICE
+            string sqlSelect = @"SELECT        MEDICINEID,MEDICINENAME, QUANTITY, PRICE
                                 FROM            MEDICINE
                                 WHERE        MEDICINEID=@MEDICINEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@MEDICINEID", medicineID) };
@@ -76,7 +76,7 @@ namespace Hospital.Model
                 newMedicine.MedicineID = tempInterger;
                 newMedicine.MedicineName = dataTable.Rows[0][1].ToString();
                 newMedicine.Quantity = int.Parse(dataTable.Rows[0][2].ToString());
-                newMedicine.Price = int.Parse(dataTable.Rows[0][3].ToString());
+                newMedicine.Price = (decimal)dataTable.Rows[0][3];
             }
             return newMedicine;
         }

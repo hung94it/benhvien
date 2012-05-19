@@ -25,7 +25,7 @@ namespace Hospital.Model
 
         public static int InsertDisease(Disease newDisease)
         {
-            String sqlInsert = @"INSERT INTO DISEASE(DISEASENAME)
+            String sqlInsert = @"INSERT INTO DISEASE(DISEASENAME,SYMPTOM)
                                 VALUES        (@DISEASENAME,@SYMPTOM)";
             SqlParameter[] sqlParameters = { new SqlParameter("@DISEASENAME", newDisease.DiseaseName),
                                            new SqlParameter("@SYMPTOM",newDisease.Symptom)};
@@ -35,7 +35,7 @@ namespace Hospital.Model
         {
             string sqlUpdate = @"UPDATE DISEASE
                                 SET DISEASENAME = @DISEASENAME,SYMPTOM=@SYMPTOM
-                                WHERE (DISEASEID =@DISEASEeID)";
+                                WHERE (DISEASEID =@DISEASEID)";
             SqlParameter[] sqlParameters = { new SqlParameter("@DISEASEID", updateDisease.DiseaseID),
                                            new SqlParameter("@DISEASENAME", updateDisease.DiseaseName),
                                            new SqlParameter("@SYMPTOM", updateDisease.Symptom)};
@@ -63,7 +63,7 @@ namespace Hospital.Model
         {
             int tempInterger;
             Disease newDisease = new Disease();
-            string sqlSelect = @"SELECT DISEASEID, DISEASENAME
+            string sqlSelect = @"SELECT DISEASEID, DISEASENAME,SYMPTOM
                                 FROM DISEASE
                                 WHERE (DISEASEID = @DISEASEID)";
             SqlParameter[] sqlParameters = { new SqlParameter("@DISEASEID", diseaseID) };

@@ -65,11 +65,11 @@ namespace Hospital.Model
         {
             HospitalBed hB = new HospitalBed();
             int tempInterger;
-            string sqlSelect = @"SELECT        PATIENT, STATE, BEDID
+            string sqlSelect = @"SELECT        BEDID,PATIENT, STATE
                                 FROM            HOSPITALBED
                                 WHERE          (BEDID=@BEDID)";
             SqlParameter[] sqlParameters = { new SqlParameter("@BEDID", bedID) };
-            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
             hB.BedID = tempInterger;
             hB.Patient = int.Parse(dataTable.Rows[0][1].ToString());
