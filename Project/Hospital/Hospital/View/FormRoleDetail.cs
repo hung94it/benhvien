@@ -109,7 +109,7 @@ namespace Hospital.View
             }
             else
             {
-                MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             this.Close();
         }

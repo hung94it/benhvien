@@ -136,6 +136,12 @@
     <Compile Include="View\FormAbout.Designer.cs">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormAssignDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormAssignDetail.Designer.cs">
+      <DependentUpon>FormAssignDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormDepartmentDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,12 @@
     </Compile>
     <Compile Include="View\FormDiseaseDetail.Designer.cs">
       <DependentUpon>FormDiseaseDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormHCDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormHCDetail.Designer.cs">
+      <DependentUpon>FormHCDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FormHealthFile.cs">
       <SubType>Form</SubType>
@@ -233,11 +245,17 @@
     <EmbeddedResource Include="View\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormAssignDetail.resx">
+      <DependentUpon>FormAssignDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormDepartmentDetail.resx">
       <DependentUpon>FormDepartmentDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormDiseaseDetail.resx">
       <DependentUpon>FormDiseaseDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormHCDetail.resx">
+      <DependentUpon>FormHCDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormHealthFile.resx">
       <DependentUpon>FormHealthFile.cs</DependentUpon>

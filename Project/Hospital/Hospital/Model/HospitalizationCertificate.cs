@@ -81,14 +81,26 @@ namespace Hospital.Model
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
-                hC.HCID = (int)dataTable.Rows[0][0];
-                hC.PatientID = (int)dataTable.Rows[0][1];
-                hC.StaffID = (int)dataTable.Rows[0][2];
+                hC.HCID = Convert.ToInt32(dataTable.Rows[0][0]);
+                hC.PatientID = Convert.ToInt32(dataTable.Rows[0][1]);
+                hC.StaffID = Convert.ToInt32(dataTable.Rows[0][2]);
                 hC.Reason = (String)dataTable.Rows[0][3];
                 hC.Date = (DateTime)dataTable.Rows[0][4];
                 hC.State = (int)dataTable.Rows[0][5];
             }
             return hC;
+        }
+        public static Boolean IsPatientHadHC(int patientID)
+        {
+            DataTable dtHC = new DataTable();
+            string sqlSelect = @"SELECT        HCID, PATIENTID, STAFFID, REASON, DATE, STATE
+                                FROM            HOSPITALIZATIONCERTIFICATE
+                                WHERE        PATIENTID=@PATIENTID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", patientID) };
+            dtHC = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
+            if (dtHC.Rows.Count > 0)
+                return true;
+            return false;
         }
     }
 }
