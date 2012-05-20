@@ -104,7 +104,14 @@ namespace Hospital.Model
 
             return patientTable;
         }
+        public static DataTable GetListPatientID()
+        {
+            string sqlSelect = @"SELECT PATIENTID
+                                FROM PATIENT";
+            patientTable = SqlResult.ExecuteQuery(sqlSelect);
 
+            return patientTable;
+        }
         // Get patient by patientid
         public static Patient GetPatient(int patientID)
         {
@@ -134,7 +141,18 @@ namespace Hospital.Model
             }
             return newPatient;
         }
-
+        public static Boolean IsPatientExist(int patientID)
+        {
+            DataTable dtPatient = new DataTable();
+            string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
+                                FROM PATIENT 
+                                WHERE PATIENTID = @PatientID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PatientID", patientID) };
+            dtPatient = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if (dtPatient.Rows.Count > 0)
+                return true;
+            return false;
+        }
         public Boolean ChangePatientState()
         {
             return true;
