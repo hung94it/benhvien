@@ -25,12 +25,15 @@ namespace Hospital.View
 
             try
             {
+                // Check if username is number only
                 if (int.TryParse(textBoxUsername.Text, out staffID))
                 {
                     loginStaff = Staff.GetStaff(staffID);
 
+                    // Check if username and password is valid
                     if ((loginStaff.StaffID != 0) && (loginStaff.Password.Trim().Equals(textBoxPassword.Text)))
                     {
+                        // Show FormMain and hide FormLogin
                         FormMain mainForm = new FormMain(loginStaff);
                         mainForm.FormClosed += new FormClosedEventHandler(FormLogin_FormClosed);
                         mainForm.Show();
@@ -54,6 +57,7 @@ namespace Hospital.View
             }
         }
 
+        // Show FormLogin if FormMain close
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Show();
