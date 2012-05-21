@@ -54,14 +54,14 @@ namespace Hospital.View
                 PatientDetail.ICN = Convert.ToDecimal(textBoxIdentityCard.Text);
             }
             else PatientDetail.ICN = 0;
-            if (comboBoxGender.Text == "Nam")
+            if (comboBoxGender.SelectedItem.ToString() == "Nam")
             {
                 PatientDetail.Gender = Patient.GENDER_MALE;
             }
             else PatientDetail.Gender = Patient.GENDER_FEMALE;
             PatientDetail.Profession = textBoxProfession.Text;
             PatientDetail.Address = textBoxAddress.Text;
-            if (textBoxDeposit.Text != "")
+            if (!"".Equals(textBoxDeposit.Text))
             {
                 PatientDetail.Deposit = Convert.ToDecimal(textBoxDeposit.Text);
             }

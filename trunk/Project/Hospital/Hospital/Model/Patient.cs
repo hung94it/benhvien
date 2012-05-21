@@ -54,6 +54,7 @@ namespace Hospital.Model
                                 (FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE)
                                 VALUES 
                                 (@FirstName, @LastName, @BirthDay, @Gender, @ICN, @Profession, @Address, @Deposit, @State)";
+
             SqlParameter[] sqlParameters = { new SqlParameter("@FirstName", patient.FirstName),
                                            new SqlParameter("@LastName", patient.LastName),
                                            new SqlParameter("@BirthDay", patient.BirthDay),
@@ -63,6 +64,7 @@ namespace Hospital.Model
                                            new SqlParameter("@Address", patient.Address),
                                            new SqlParameter("@Deposit", patient.Deposit),
                                            new SqlParameter("@State", patient.State)};
+
             return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
 
@@ -73,6 +75,7 @@ namespace Hospital.Model
                                 SET FIRSTNAME = @FirstName, LASTNAME = @LastName, BIRTHDAY = @BirthDay, GENDER = @Gender,
                                     ICN = @ICN, PROFESSION = @Profession, ADDRESS = @Address, DEPOSIT = @Deposit, STATE = @State
                                 WHERE (PATIENTID = @PatientID)";
+
             SqlParameter[] sqlParameters = { new SqlParameter("@PatientID", patient.PatientID), 
                                            new SqlParameter("@FirstName", patient.FirstName),
                                            new SqlParameter("@LastName", patient.LastName),
@@ -83,6 +86,7 @@ namespace Hospital.Model
                                            new SqlParameter("@Address", patient.Address),
                                            new SqlParameter("@Deposit", patient.Deposit),
                                            new SqlParameter("@State", patient.State)};
+
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
 
@@ -91,7 +95,9 @@ namespace Hospital.Model
         {
             string sqlDelete = @"DELETE FROM PATIENT
                                 WHERE (PATIENTID = @PatientID)";
+
             SqlParameter[] sqlParameters = { new SqlParameter("@PatientID", patientID) };
+
             return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
 
@@ -100,6 +106,7 @@ namespace Hospital.Model
         {
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT";
+
             patientTable = SqlResult.ExecuteQuery(sqlSelect);
 
             return patientTable;
@@ -108,6 +115,7 @@ namespace Hospital.Model
         {
             string sqlSelect = @"SELECT PATIENTID
                                 FROM PATIENT";
+
             patientTable = SqlResult.ExecuteQuery(sqlSelect);
 
             return patientTable;
@@ -116,15 +124,15 @@ namespace Hospital.Model
         public static Patient GetPatient(int patientID)
         {
             DataTable patientDataTable;
-            Patient newPatient;
+            Patient newPatient = new Patient();
+
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT 
                                 WHERE PATIENTID = @PatientID";
+
             SqlParameter[] sqlParameters = { new SqlParameter("@PatientID", patientID) };
 
-            patientDataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
-
-            newPatient = new Patient();
+            patientDataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);            
 
             // If select query have row then set to new patient
             if (patientDataTable.Rows.Count > 0)
@@ -139,16 +147,21 @@ namespace Hospital.Model
                 newPatient.Address = (string)patientDataTable.Rows[0]["ADDRESS"];
                 newPatient.Deposit = (decimal)patientDataTable.Rows[0]["DEPOSIT"];                
             }
+
             return newPatient;
         }
         public static Boolean IsPatientExist(int patientID)
         {
             DataTable dtPatient = new DataTable();
+
             string sqlSelect = @"SELECT PATIENTID, FIRSTNAME, LASTNAME, BIRTHDAY, GENDER, ICN, PROFESSION, ADDRESS, DEPOSIT, STATE 
                                 FROM PATIENT 
                                 WHERE PATIENTID = @PatientID";
+
             SqlParameter[] sqlParameters = { new SqlParameter("@PatientID", patientID) };
+
             dtPatient = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+
             if (dtPatient.Rows.Count > 0)
                 return true;
             return false;

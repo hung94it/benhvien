@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStaffDetail));
             this.comboBoxGender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItemMale = new DevComponents.Editors.ComboItem();
             this.comboItemFemale = new DevComponents.Editors.ComboItem();
@@ -60,9 +62,13 @@
             this.groupPanelInformation = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.labelRole = new DevComponents.DotNetBar.LabelX();
             this.comboBoxRole = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.groupPanelAccout.SuspendLayout();
             this.groupPanelInformation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxGender
@@ -572,6 +578,22 @@
             this.comboBoxRole.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxRole.TabIndex = 48;
             // 
+            // superValidator1
+            // 
+            this.superValidator1.ContainerControl = this;
+            this.superValidator1.ErrorProvider = this.errorProvider1;
+            this.superValidator1.Highlighter = this.highlighter1;
+            this.superValidator1.ValidationType = DevComponents.DotNetBar.Validator.eValidationType.ValidatingEventPerControl;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            // 
             // FormStaffDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -586,6 +608,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).EndInit();
             this.groupPanelAccout.ResumeLayout(false);
             this.groupPanelInformation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -624,6 +647,9 @@
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanelInformation;
         private DevComponents.DotNetBar.LabelX labelRole;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxRole;
+        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
 
     }
 }

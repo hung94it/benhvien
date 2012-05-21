@@ -12,9 +12,17 @@ namespace Hospital.View
 {
     public partial class FormMain : Form
     {
+        private Staff loginStaff { get; set; }
+
         public FormMain()
         {
             InitializeComponent();
+        }
+
+        public FormMain(Staff staff)
+        {
+            InitializeComponent();
+            loginStaff = staff;
         }
 
         private void buttonAbout_Click(object sender, EventArgs e)
