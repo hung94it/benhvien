@@ -117,6 +117,7 @@ namespace Hospital.View
                 // Add Vietnamese column's name
                 staffTable.Columns.Add("Mã nhân viên", typeof(string), "[STAFFID]");
                 staffTable.Columns.Add("Họ tên", typeof(string), "[LASTNAME] + ' ' + [FIRSTNAME]");
+                staffTable.Columns.Add("Quyền", typeof(string), "[ROLENAME]");
                 staffTable.Columns.Add("Khoa", typeof(string), "[DEPARTMENTNAME]");
                 staffTable.Columns.Add("Chuyên ngành", typeof(string), "[MAJORNAME]");
                 staffTable.Columns.Add("CMND", typeof(string), "[ICN]");

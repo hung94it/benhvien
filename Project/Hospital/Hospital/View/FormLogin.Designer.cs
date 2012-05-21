@@ -28,14 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.groupPanelLogin = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonLogin = new DevComponents.DotNetBar.ButtonX();
             this.labelPassword = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX2 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxPassword = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelUsername = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.reflectionLabel1 = new DevComponents.DotNetBar.Controls.ReflectionLabel();
+            this.textBoxUsername = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.reflectionLabelHospital = new DevComponents.DotNetBar.Controls.ReflectionLabel();
+            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tài khoản");
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập password");
             this.groupPanelLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanelLogin
@@ -46,9 +54,9 @@
             this.groupPanelLogin.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanelLogin.Controls.Add(this.buttonLogin);
             this.groupPanelLogin.Controls.Add(this.labelPassword);
-            this.groupPanelLogin.Controls.Add(this.textBoxX2);
+            this.groupPanelLogin.Controls.Add(this.textBoxPassword);
             this.groupPanelLogin.Controls.Add(this.labelUsername);
-            this.groupPanelLogin.Controls.Add(this.textBoxX1);
+            this.groupPanelLogin.Controls.Add(this.textBoxUsername);
             this.groupPanelLogin.Location = new System.Drawing.Point(12, 156);
             this.groupPanelLogin.Name = "groupPanelLogin";
             this.groupPanelLogin.Size = new System.Drawing.Size(310, 136);
@@ -109,19 +117,21 @@
             this.labelPassword.TabIndex = 3;
             this.labelPassword.Text = "Mật khẩu:";
             // 
-            // textBoxX2
+            // textBoxPassword
             // 
-            this.textBoxX2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBoxPassword.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.textBoxX2.Border.Class = "TextBoxBorder";
-            this.textBoxX2.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX2.Location = new System.Drawing.Point(84, 48);
-            this.textBoxX2.Name = "textBoxX2";
-            this.textBoxX2.Size = new System.Drawing.Size(217, 20);
-            this.textBoxX2.TabIndex = 2;
+            this.textBoxPassword.Border.Class = "TextBoxBorder";
+            this.textBoxPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxPassword.Location = new System.Drawing.Point(84, 48);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '*';
+            this.textBoxPassword.Size = new System.Drawing.Size(194, 20);
+            this.textBoxPassword.TabIndex = 2;
+            this.superValidator1.SetValidator1(this.textBoxPassword, this.requiredFieldValidator2);
             // 
             // labelUsername
             // 
@@ -136,44 +146,72 @@
             this.labelUsername.TabIndex = 1;
             this.labelUsername.Text = "Tài khoản:";
             // 
-            // textBoxX1
+            // textBoxUsername
             // 
-            this.textBoxX1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBoxUsername.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // 
             // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(84, 21);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(217, 20);
-            this.textBoxX1.TabIndex = 0;
+            this.textBoxUsername.Border.Class = "TextBoxBorder";
+            this.textBoxUsername.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxUsername.Location = new System.Drawing.Point(84, 21);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(194, 20);
+            this.textBoxUsername.TabIndex = 0;
+            this.superValidator1.SetValidator1(this.textBoxUsername, this.requiredFieldValidator1);
             // 
-            // reflectionLabel1
+            // reflectionLabelHospital
             // 
             // 
             // 
             // 
-            this.reflectionLabel1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.reflectionLabel1.Font = new System.Drawing.Font("Freestyle Script", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reflectionLabel1.Location = new System.Drawing.Point(45, 12);
-            this.reflectionLabel1.Name = "reflectionLabel1";
-            this.reflectionLabel1.Size = new System.Drawing.Size(248, 114);
-            this.reflectionLabel1.TabIndex = 2;
-            this.reflectionLabel1.Text = "     <font size=\"+20\">e<font color=\"#B02B2C\"><i>Hospital</i></font></font>";
+            this.reflectionLabelHospital.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.reflectionLabelHospital.Font = new System.Drawing.Font("Freestyle Script", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reflectionLabelHospital.Location = new System.Drawing.Point(45, 12);
+            this.reflectionLabelHospital.Name = "reflectionLabelHospital";
+            this.reflectionLabelHospital.Size = new System.Drawing.Size(248, 114);
+            this.reflectionLabelHospital.TabIndex = 2;
+            this.reflectionLabelHospital.Text = "     <font size=\"+20\">e<font color=\"#B02B2C\"><i>Hospital</i></font></font>";
+            // 
+            // superValidator1
+            // 
+            this.superValidator1.ContainerControl = this;
+            this.superValidator1.ErrorProvider = this.errorProvider1;
+            this.superValidator1.Highlighter = this.highlighter1;
+            this.superValidator1.ValidationType = DevComponents.DotNetBar.Validator.eValidationType.ValidatingEventPerControl;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập tài khoản";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Nhập password";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 312);
-            this.Controls.Add(this.reflectionLabel1);
+            this.Controls.Add(this.reflectionLabelHospital);
             this.Controls.Add(this.groupPanelLogin);
             this.MinimumSize = new System.Drawing.Size(350, 350);
             this.Name = "FormLogin";
             this.Text = "eHospital";
             this.groupPanelLogin.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -182,10 +220,15 @@
 
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanelLogin;
         private DevComponents.DotNetBar.LabelX labelUsername;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxUsername;
         private DevComponents.DotNetBar.LabelX labelPassword;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxX2;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPassword;
         private DevComponents.DotNetBar.ButtonX buttonLogin;
-        private DevComponents.DotNetBar.Controls.ReflectionLabel reflectionLabel1;
+        private DevComponents.DotNetBar.Controls.ReflectionLabel reflectionLabelHospital;
+        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
     }
 }

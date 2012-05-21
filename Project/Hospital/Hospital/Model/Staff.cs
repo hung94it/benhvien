@@ -18,13 +18,13 @@ namespace Hospital.Model
         public int RoleID { get; set; }
         public int MajorID { get; set; }
         public int DepartmentID { get; set; }
-        public String Password { get; set; }
-        public String FirstName { get; set; }
-        public String LastName { get; set; }
+        public string Password { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public DateTime BirthDay { get; set; }
         public int Gender { get; set; }
         public decimal ICN { get; set; }
-        public String Address { get; set; }
+        public string Address { get; set; }
         public int State { get; set; }
 
         public Staff() { }
@@ -53,6 +53,7 @@ namespace Hospital.Model
                                 VALUES
                                 (@DepartmentID, @MajorID, @RoleID, @Password, @FirstName, @LastName, @BirthDay, @Gender, @ICN
                                     , @Address, @State)";
+
             SqlParameter[] sqlParameters = {   new SqlParameter("@DepartmentID", staff.DepartmentID),
                                            new SqlParameter("@MajorID", staff.MajorID),
                                            new SqlParameter("@RoleID", staff.RoleID),
@@ -64,6 +65,7 @@ namespace Hospital.Model
                                            new SqlParameter("@ICN", staff.ICN),
                                            new SqlParameter("@Address", staff.Address),
                                            new SqlParameter("@State", staff.State)};
+
             return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
 
@@ -73,7 +75,8 @@ namespace Hospital.Model
                                 SET DEPARTMENTID = @DepartmentID, MAJORID = @MajorID, ROLEID = @RoleID, PASSWORD = @Password
                                                  , FIRSTNAME = @FirstName, LASTNAME = @LastName, BIRTHDAY = @BirthDay, GENDER = @Gender
                                                  , ICN = @ICN, ADDRESS = @Address, STATE = @State
-                                WHERE (PATIENTID = @PatientID)";
+                                WHERE (STAFFID = @StaffID)";
+
             SqlParameter[] sqlParameters = { new SqlParameter("StaffID", staff.StaffID),
                                            new SqlParameter("@DepartmentID", staff.DepartmentID),
                                            new SqlParameter("@MajorID", staff.MajorID),
@@ -86,6 +89,7 @@ namespace Hospital.Model
                                            new SqlParameter("@ICN", staff.ICN),
                                            new SqlParameter("@Address", staff.Address),
                                            new SqlParameter("@State", staff.State)};
+
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
 
@@ -93,7 +97,9 @@ namespace Hospital.Model
         {
             string sqlDelete = @"DELETE FROM STAFF
                                 WHERE (STAFFID = @StaffID)";
+
             SqlParameter[] sqlParameters = { new SqlParameter("@StaffID", staffID) };
+
             return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
 
@@ -114,7 +120,30 @@ namespace Hospital.Model
         public static Staff GetStaff(int staffID)
         {
             Staff newStaff = new Staff();
+            DataTable staffDataTable;
+            string sqlSelect = @"SELECT STAFFID, DEPARTMENTID, MAJORID, ROLEID, PASSWORD, FIRSTNAME, LASTNAME, BIRTHDAY,
+                                        GENDER, ICN, ADDRESS, STATE
+                                FROM STAFF
+                                WHERE (STAFFID = @StaffID)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@StaffID", staffID) };
 
+            staffDataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+
+            if (staffDataTable.Rows.Count > 0)
+            {
+                newStaff.StaffID = Convert.ToInt32(staffDataTable.Rows[0]["STAFFID"].ToString());
+                newStaff.DepartmentID = Convert.ToInt32(staffDataTable.Rows[0]["DEPARTMENTID"].ToString());
+                newStaff.MajorID = Convert.ToInt32(staffDataTable.Rows[0]["MAJORID"].ToString());
+                newStaff.RoleID = Convert.ToInt32(staffDataTable.Rows[0]["ROLEID"].ToString());
+                newStaff.Password = (string)staffDataTable.Rows[0]["PASSWORD"];
+                newStaff.FirstName = (string)staffDataTable.Rows[0]["FIRSTNAME"];
+                newStaff.LastName = (string)staffDataTable.Rows[0]["LASTNAME"];
+                newStaff.BirthDay = (DateTime)staffDataTable.Rows[0]["BIRTHDAY"];
+                newStaff.Gender = (int)staffDataTable.Rows[0]["GENDER"];
+                newStaff.ICN = (decimal)staffDataTable.Rows[0]["ICN"];
+                newStaff.Address = (string)staffDataTable.Rows[0]["ADDRESS"];                
+            }
+            
             return newStaff;
         }
         public Boolean LogIn()

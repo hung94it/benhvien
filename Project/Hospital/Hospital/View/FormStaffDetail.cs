@@ -70,7 +70,7 @@ namespace Hospital.View
             if (textBoxIdentityCard.Text != "")
                 StaffDetail.ICN = Convert.ToDecimal(textBoxIdentityCard.Text);
             else StaffDetail.ICN = 0;
-            if (comboBoxGender.Text == "Nam")
+            if ("Nam".Equals(comboBoxGender.SelectedItem.ToString()))
                 StaffDetail.Gender = Patient.GENDER_MALE;
             else StaffDetail.Gender = Patient.GENDER_FEMALE;
             StaffDetail.Address = textBoxAddress.Text;
@@ -107,7 +107,6 @@ namespace Hospital.View
         public void setStaffDetail(Staff staff)
         {
             this.StaffDetail = staff;
-
             textBoxStaffID.Text = staff.StaffID.ToString();
             textBoxFirstName.Text = staff.FirstName;
             textBoxLastName.Text = staff.LastName;
@@ -117,6 +116,9 @@ namespace Hospital.View
                 comboBoxGender.Text = "Nam";
             else comboBoxGender.Text = "Nữ";            
             textBoxAddress.Text = staff.Address;
+            comboBoxDepartment.SelectedValue = (object)staff.DepartmentID;
+            comboBoxMajor.SelectedValue = (object)staff.MajorID;
+            comboBoxRole.SelectedValue = (object)staff.RoleID;
         }
     }
 }
