@@ -28,78 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxHospitalBedID = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelHospitalBedID = new DevComponents.DotNetBar.LabelX();
-            this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelPatientID = new DevComponents.DotNetBar.LabelX();
-            this.labelState = new DevComponents.DotNetBar.LabelX();
+            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.buttonClose = new DevComponents.DotNetBar.ButtonX();
+            this.buttonOk = new DevComponents.DotNetBar.ButtonX();
             this.comboBoxState = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItemMale = new DevComponents.Editors.ComboItem();
             this.comboItemFemale = new DevComponents.Editors.ComboItem();
-            this.buttonClose = new DevComponents.DotNetBar.ButtonX();
-            this.buttonOk = new DevComponents.DotNetBar.ButtonX();
+            this.textBoxHospitalBedID = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelHospitalBedID = new DevComponents.DotNetBar.LabelX();
+            this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelState = new DevComponents.DotNetBar.LabelX();
+            this.labelPatientID = new DevComponents.DotNetBar.LabelX();
+            this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBoxHospitalBedID
+            // groupPanel1
+            // 
+            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.buttonClose);
+            this.groupPanel1.Controls.Add(this.buttonOk);
+            this.groupPanel1.Controls.Add(this.comboBoxState);
+            this.groupPanel1.Controls.Add(this.textBoxHospitalBedID);
+            this.groupPanel1.Controls.Add(this.labelHospitalBedID);
+            this.groupPanel1.Controls.Add(this.textBoxPatientID);
+            this.groupPanel1.Controls.Add(this.labelState);
+            this.groupPanel1.Controls.Add(this.labelPatientID);
+            this.groupPanel1.Location = new System.Drawing.Point(12, 4);
+            this.groupPanel1.Name = "groupPanel1";
+            this.groupPanel1.Size = new System.Drawing.Size(405, 135);
             // 
             // 
             // 
-            // 
-            this.textBoxHospitalBedID.Border.Class = "TextBoxBorder";
-            this.textBoxHospitalBedID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxHospitalBedID.Location = new System.Drawing.Point(109, 12);
-            this.textBoxHospitalBedID.Name = "textBoxHospitalBedID";
-            this.textBoxHospitalBedID.ReadOnly = true;
-            this.textBoxHospitalBedID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxHospitalBedID.TabIndex = 33;
-            // 
-            // labelHospitalBedID
-            // 
-            // 
-            // 
-            // 
-            this.labelHospitalBedID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelHospitalBedID.Location = new System.Drawing.Point(11, 9);
-            this.labelHospitalBedID.Name = "labelHospitalBedID";
-            this.labelHospitalBedID.Size = new System.Drawing.Size(92, 23);
-            this.labelHospitalBedID.TabIndex = 31;
-            this.labelHospitalBedID.Text = "Mã giường bệnh";
-            // 
-            // textBoxPatientID
+            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel1.Style.BackColorGradientAngle = 90;
+            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderBottomWidth = 1;
+            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderLeftWidth = 1;
+            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderRightWidth = 1;
+            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderTopWidth = 1;
+            this.groupPanel1.Style.CornerDiameter = 4;
+            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
             // 
             // 
             // 
-            // 
-            this.textBoxPatientID.Border.Class = "TextBoxBorder";
-            this.textBoxPatientID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxPatientID.Location = new System.Drawing.Point(109, 38);
-            this.textBoxPatientID.Name = "textBoxPatientID";
-            this.textBoxPatientID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPatientID.TabIndex = 30;
-            // 
-            // labelPatientID
+            this.groupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             // 
             // 
             // 
+            this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel1.TabIndex = 0;
+            this.groupPanel1.Text = "Giường bệnh";
             // 
-            this.labelPatientID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelPatientID.Location = new System.Drawing.Point(11, 35);
-            this.labelPatientID.Name = "labelPatientID";
-            this.labelPatientID.Size = new System.Drawing.Size(92, 23);
-            this.labelPatientID.TabIndex = 32;
-            this.labelPatientID.Text = "Mã bệnh nhân";
+            // buttonClose
             // 
-            // labelState
+            this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonClose.Location = new System.Drawing.Point(316, 88);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonClose.TabIndex = 37;
+            this.buttonClose.Text = "Đóng";
             // 
+            // buttonOk
             // 
-            // 
-            // 
-            this.labelState.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelState.Location = new System.Drawing.Point(11, 64);
-            this.labelState.Name = "labelState";
-            this.labelState.Size = new System.Drawing.Size(92, 23);
-            this.labelState.TabIndex = 32;
-            this.labelState.Text = "Trạng thái";
+            this.buttonOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonOk.Location = new System.Drawing.Point(224, 88);
+            this.buttonOk.Name = "buttonOk";
+            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonOk.TabIndex = 36;
+            this.buttonOk.Text = "Đồng ý";
             // 
             // comboBoxState
             // 
@@ -111,11 +120,11 @@
             this.comboBoxState.Items.AddRange(new object[] {
             this.comboItemMale,
             this.comboItemFemale});
-            this.comboBoxState.Location = new System.Drawing.Point(109, 64);
+            this.comboBoxState.Location = new System.Drawing.Point(101, 58);
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(119, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxState.TabIndex = 34;
+            this.comboBoxState.TabIndex = 35;
             // 
             // comboItemMale
             // 
@@ -125,60 +134,96 @@
             // 
             this.comboItemFemale.Text = "Có bệnh nhân";
             // 
-            // buttonClose
+            // textBoxHospitalBedID
             // 
-            this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonClose.Location = new System.Drawing.Point(324, 94);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonClose.TabIndex = 36;
-            this.buttonClose.Text = "Đóng";
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // buttonOk
             // 
-            this.buttonOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonOk.Location = new System.Drawing.Point(232, 94);
-            this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonOk.TabIndex = 35;
-            this.buttonOk.Text = "Đồng ý";
-            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
+            // 
+            this.textBoxHospitalBedID.Border.Class = "TextBoxBorder";
+            this.textBoxHospitalBedID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxHospitalBedID.Location = new System.Drawing.Point(101, 6);
+            this.textBoxHospitalBedID.Name = "textBoxHospitalBedID";
+            this.textBoxHospitalBedID.ReadOnly = true;
+            this.textBoxHospitalBedID.Size = new System.Drawing.Size(293, 20);
+            this.textBoxHospitalBedID.TabIndex = 33;
+            // 
+            // labelHospitalBedID
+            // 
+            this.labelHospitalBedID.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelHospitalBedID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelHospitalBedID.Location = new System.Drawing.Point(3, 3);
+            this.labelHospitalBedID.Name = "labelHospitalBedID";
+            this.labelHospitalBedID.Size = new System.Drawing.Size(92, 23);
+            this.labelHospitalBedID.TabIndex = 38;
+            this.labelHospitalBedID.Text = "Mã giường bệnh";
+            // 
+            // textBoxPatientID
+            // 
+            // 
+            // 
+            // 
+            this.textBoxPatientID.Border.Class = "TextBoxBorder";
+            this.textBoxPatientID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxPatientID.Location = new System.Drawing.Point(101, 32);
+            this.textBoxPatientID.Name = "textBoxPatientID";
+            this.textBoxPatientID.Size = new System.Drawing.Size(293, 20);
+            this.textBoxPatientID.TabIndex = 34;
+            // 
+            // labelState
+            // 
+            this.labelState.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelState.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelState.Location = new System.Drawing.Point(3, 58);
+            this.labelState.Name = "labelState";
+            this.labelState.Size = new System.Drawing.Size(92, 23);
+            this.labelState.TabIndex = 40;
+            this.labelState.Text = "Trạng thái";
+            // 
+            // labelPatientID
+            // 
+            this.labelPatientID.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelPatientID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelPatientID.Location = new System.Drawing.Point(3, 29);
+            this.labelPatientID.Name = "labelPatientID";
+            this.labelPatientID.Size = new System.Drawing.Size(92, 23);
+            this.labelPatientID.TabIndex = 39;
+            this.labelPatientID.Text = "Mã bệnh nhân";
             // 
             // FormHostpitalBedDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 120);
-            this.Controls.Add(this.buttonClose);
-            this.Controls.Add(this.buttonOk);
-            this.Controls.Add(this.comboBoxState);
-            this.Controls.Add(this.textBoxHospitalBedID);
-            this.Controls.Add(this.labelHospitalBedID);
-            this.Controls.Add(this.textBoxPatientID);
-            this.Controls.Add(this.labelState);
-            this.Controls.Add(this.labelPatientID);
+            this.ClientSize = new System.Drawing.Size(430, 144);
+            this.Controls.Add(this.groupPanel1);
             this.Name = "FormHostpitalBedDetail";
-            this.Text = "FormHostpitalBedDetail";
+            this.Text = "Thông tin giường";
+            this.groupPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxHospitalBedID;
-        private DevComponents.DotNetBar.LabelX labelHospitalBedID;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientID;
-        private DevComponents.DotNetBar.LabelX labelPatientID;
-        private DevComponents.DotNetBar.LabelX labelState;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
+        private DevComponents.DotNetBar.ButtonX buttonClose;
+        private DevComponents.DotNetBar.ButtonX buttonOk;
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxState;
         private DevComponents.Editors.ComboItem comboItemMale;
         private DevComponents.Editors.ComboItem comboItemFemale;
-        private DevComponents.DotNetBar.ButtonX buttonClose;
-        private DevComponents.DotNetBar.ButtonX buttonOk;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxHospitalBedID;
+        private DevComponents.DotNetBar.LabelX labelHospitalBedID;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientID;
+        private DevComponents.DotNetBar.LabelX labelState;
+        private DevComponents.DotNetBar.LabelX labelPatientID;
+
     }
 }

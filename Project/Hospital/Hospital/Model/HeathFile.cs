@@ -45,7 +45,8 @@ namespace Hospital.Model
             string sqlUpdate = @"UPDATE       HEATHFILE
                                 SET           DATE =@DATE, PATIENTSTATE =@PATIENTSTATE, PREHISTORY =@PREHISTORY, DISEASE =@DISEASE, TREATMENT =@TREATMENT
                                 WHERE         HEATHFILEID=@HEATHFILEID ";
-            SqlParameter[] sqlParameters = { new SqlParameter("@DATE", updateHF.Date ),
+            SqlParameter[] sqlParameters = { new SqlParameter("@HEATHFILEID", updateHF.HeathFileID ),
+                                               new SqlParameter("@DATE", updateHF.Date ),
                                             new SqlParameter("@PATIENTSTATE", updateHF.PatientState),
                                            new SqlParameter("@PREHISTORY",updateHF.PreHistory ),
                                            new SqlParameter("@DISEASE", updateHF.Disease),
@@ -84,8 +85,8 @@ namespace Hospital.Model
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             if(dataTable.Rows.Count >0)
             {
-                hF.HeathFileID = (int)dataTable.Rows[0][0];
-                hF.PatientID = (int)dataTable.Rows[0][1];
+                hF.HeathFileID = Convert.ToInt32(dataTable.Rows[0][0]);
+                hF.PatientID = Convert.ToInt32(dataTable.Rows[0][1]);
                 hF.Date = (DateTime)dataTable.Rows[0][2];
                 hF.PatientState =(String)dataTable.Rows[0][3];
                 hF.PreHistory = (String)dataTable.Rows[0][4];
@@ -93,6 +94,17 @@ namespace Hospital.Model
                 hF.Treament = (String)dataTable.Rows[0][6];
             }
             return hF;
+        }
+        public static Boolean DidPatientHaveHF(int patientID)
+        {
+            string sqlSelect = @"SELECT        HEATHFILEID, PATIENTID, DATE, PATIENTSTATE, PREHISTORY, DISEASE, TREATMENT
+                                FROM            HEATHFILE
+                                WHERE        PATIENTID=@PATIENTID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", patientID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if (dataTable.Rows.Count > 0)
+                return true;
+            return false;
         }
     }
 }

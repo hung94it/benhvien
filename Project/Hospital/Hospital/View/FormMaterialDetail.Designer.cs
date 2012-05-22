@@ -51,7 +51,7 @@
             this.textBoxMaterialID.Name = "textBoxMaterialID";
             this.textBoxMaterialID.ReadOnly = true;
             this.textBoxMaterialID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxMaterialID.TabIndex = 33;
+            this.textBoxMaterialID.TabIndex = 0;
             // 
             // labelMaterialID
             // 
@@ -75,7 +75,7 @@
             this.textBoxMaterialName.Location = new System.Drawing.Point(109, 38);
             this.textBoxMaterialName.Name = "textBoxMaterialName";
             this.textBoxMaterialName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxMaterialName.TabIndex = 30;
+            this.textBoxMaterialName.TabIndex = 1;
             // 
             // labelMaterialName
             // 
@@ -111,7 +111,7 @@
             this.textBoxPrice.Location = new System.Drawing.Point(109, 90);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPrice.TabIndex = 30;
+            this.textBoxPrice.TabIndex = 3;
             // 
             // labelQuantity
             // 
@@ -135,7 +135,7 @@
             this.textBoxQuantity.Location = new System.Drawing.Point(109, 64);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(293, 20);
-            this.textBoxQuantity.TabIndex = 33;
+            this.textBoxQuantity.TabIndex = 2;
             // 
             // buttonClose
             // 
@@ -145,7 +145,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonClose.TabIndex = 35;
+            this.buttonClose.TabIndex = 5;
             this.buttonClose.Text = "Đóng";
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -157,7 +157,7 @@
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonOk.TabIndex = 34;
+            this.buttonOk.TabIndex = 4;
             this.buttonOk.Text = "Đồng ý";
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 

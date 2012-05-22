@@ -93,9 +93,9 @@ namespace Hospital.Model
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
-                hN.HNID = (int)dataTable.Rows[0][0];
-                hN.PatientID = (int)dataTable.Rows[0][1];
-                hN.StaffID = (int)dataTable.Rows[0][2];
+                hN.HNID = Convert.ToInt32(dataTable.Rows[0][0]);
+                hN.PatientID = Convert.ToInt32(dataTable.Rows[0][1]);
+                hN.StaffID = Convert.ToInt32(dataTable.Rows[0][2]);
                 hN.Date = (DateTime)dataTable.Rows[0][3];
                 hN.Weight = (String)dataTable.Rows[0][4];
                 hN.BloodPressure = (String)dataTable.Rows[0][5];

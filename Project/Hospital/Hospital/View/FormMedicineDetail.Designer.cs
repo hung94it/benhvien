@@ -48,7 +48,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonClose.TabIndex = 45;
+            this.buttonClose.TabIndex = 5;
             this.buttonClose.Text = "Đóng";
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -60,7 +60,7 @@
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonOk.TabIndex = 44;
+            this.buttonOk.TabIndex = 4;
             this.buttonOk.Text = "Đồng ý";
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
@@ -74,7 +74,7 @@
             this.textBoxQuantity.Location = new System.Drawing.Point(64, 64);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(293, 20);
-            this.textBoxQuantity.TabIndex = 42;
+            this.textBoxQuantity.TabIndex = 2;
             // 
             // labelQuantity
             // 
@@ -99,7 +99,7 @@
             this.textBoxMedicineID.Name = "textBoxMedicineID";
             this.textBoxMedicineID.ReadOnly = true;
             this.textBoxMedicineID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxMedicineID.TabIndex = 43;
+            this.textBoxMedicineID.TabIndex = 0;
             // 
             // textBoxPrice
             // 
@@ -111,7 +111,7 @@
             this.textBoxPrice.Location = new System.Drawing.Point(64, 90);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPrice.TabIndex = 37;
+            this.textBoxPrice.TabIndex = 3;
             // 
             // labelMedicineID
             // 
@@ -147,7 +147,7 @@
             this.textBoxMedicineName.Location = new System.Drawing.Point(64, 38);
             this.textBoxMedicineName.Name = "textBoxMedicineName";
             this.textBoxMedicineName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxMedicineName.TabIndex = 36;
+            this.textBoxMedicineName.TabIndex = 1;
             // 
             // labelMedicineName
             // 

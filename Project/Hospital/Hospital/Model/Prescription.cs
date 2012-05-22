@@ -62,10 +62,9 @@ namespace Hospital.Model
             return dtP;
 
         }
-        public Prescription GetPrescription(int pID)
+        public static Prescription GetPrescription(int pID)
         {
             Prescription newPrescription = new Prescription();
-            int tempInterger;
             string sqlSelect = @"SELECT        PRESCRIPTIONID, STAFFID, PATIENTID, DATE
                                 FROM            PRESCRIPTION
                                 WHERE        PRESCRIPTIONID=@PRESCRIPTIONID";
@@ -73,15 +72,20 @@ namespace Hospital.Model
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
-                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-                newPrescription.PrescriptionID = tempInterger;
-                newPrescription.StaffID = int.Parse(dataTable.Rows[0][1].ToString());
-                newPrescription.PatientID = int.Parse(dataTable.Rows[0][2].ToString());
+                newPrescription.PrescriptionID = Convert.ToInt32(dataTable.Rows[0][0]);
+                newPrescription.StaffID = Convert.ToInt32(dataTable.Rows[0][1]);
+                newPrescription.PatientID = Convert.ToInt32(dataTable.Rows[0][2]);
                 newPrescription.Date = DateTime.Parse(dataTable.Rows[0][3].ToString());
             }
             return newPrescription;
         }
-
+        public static int GetPrescriptionInsertedID()
+        {
+            DataTable dt = new DataTable();
+            string sqlSelect = @"SELECT MAX(PRESCRIPTION.PRESCRIPTIONID) as lastID from PRESCRIPTION";
+            dt = SqlResult.ExecuteQuery(sqlSelect);
+            return Convert.ToInt32(dt.Rows[0][0]);
+        }
 
     }
 }

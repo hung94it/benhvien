@@ -46,7 +46,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonClose.TabIndex = 55;
+            this.buttonClose.TabIndex = 4;
             this.buttonClose.Text = "Đóng";
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -58,7 +58,7 @@
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonOk.TabIndex = 54;
+            this.buttonOk.TabIndex = 3;
             this.buttonOk.Text = "Đồng ý";
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
@@ -73,7 +73,7 @@
             this.textBoxServiceID.Name = "textBoxServiceID";
             this.textBoxServiceID.ReadOnly = true;
             this.textBoxServiceID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxServiceID.TabIndex = 53;
+            this.textBoxServiceID.TabIndex = 0;
             // 
             // textBoxPrice
             // 
@@ -85,7 +85,7 @@
             this.textBoxPrice.Location = new System.Drawing.Point(72, 64);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPrice.TabIndex = 47;
+            this.textBoxPrice.TabIndex = 2;
             // 
             // labelServiceID
             // 
@@ -121,7 +121,7 @@
             this.textBoxServiceName.Location = new System.Drawing.Point(72, 38);
             this.textBoxServiceName.Name = "textBoxServiceName";
             this.textBoxServiceName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxServiceName.TabIndex = 46;
+            this.textBoxServiceName.TabIndex = 1;
             // 
             // labelServiceName
             // 

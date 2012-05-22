@@ -34,6 +34,8 @@
             this.labelDepartmentName = new DevComponents.DotNetBar.LabelX();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
+            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBoxDepartmentID
@@ -43,19 +45,20 @@
             // 
             this.textBoxDepartmentID.Border.Class = "TextBoxBorder";
             this.textBoxDepartmentID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDepartmentID.Location = new System.Drawing.Point(104, 12);
+            this.textBoxDepartmentID.Location = new System.Drawing.Point(107, 5);
             this.textBoxDepartmentID.Name = "textBoxDepartmentID";
             this.textBoxDepartmentID.ReadOnly = true;
             this.textBoxDepartmentID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxDepartmentID.TabIndex = 29;
+            this.textBoxDepartmentID.TabIndex = 0;
             // 
             // labelDepartmentID
             // 
+            this.labelDepartmentID.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelDepartmentID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelDepartmentID.Location = new System.Drawing.Point(6, 9);
+            this.labelDepartmentID.Location = new System.Drawing.Point(9, 2);
             this.labelDepartmentID.Name = "labelDepartmentID";
             this.labelDepartmentID.Size = new System.Drawing.Size(92, 23);
             this.labelDepartmentID.TabIndex = 27;
@@ -68,18 +71,19 @@
             // 
             this.textBoxDepartmentName.Border.Class = "TextBoxBorder";
             this.textBoxDepartmentName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxDepartmentName.Location = new System.Drawing.Point(104, 38);
+            this.textBoxDepartmentName.Location = new System.Drawing.Point(107, 31);
             this.textBoxDepartmentName.Name = "textBoxDepartmentName";
             this.textBoxDepartmentName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxDepartmentName.TabIndex = 26;
+            this.textBoxDepartmentName.TabIndex = 1;
             // 
             // labelDepartmentName
             // 
+            this.labelDepartmentName.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelDepartmentName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelDepartmentName.Location = new System.Drawing.Point(6, 35);
+            this.labelDepartmentName.Location = new System.Drawing.Point(9, 28);
             this.labelDepartmentName.Name = "labelDepartmentName";
             this.labelDepartmentName.Size = new System.Drawing.Size(92, 23);
             this.labelDepartmentName.TabIndex = 28;
@@ -89,11 +93,11 @@
             // 
             this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonClose.Location = new System.Drawing.Point(316, 64);
+            this.buttonClose.Location = new System.Drawing.Point(325, 57);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonClose.TabIndex = 31;
+            this.buttonClose.TabIndex = 3;
             this.buttonClose.Text = "Đóng";
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -101,27 +105,67 @@
             // 
             this.buttonOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonOk.Location = new System.Drawing.Point(224, 64);
+            this.buttonOk.Location = new System.Drawing.Point(233, 57);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonOk.TabIndex = 30;
+            this.buttonOk.TabIndex = 2;
             this.buttonOk.Text = "Đồng ý";
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
+            // 
+            // groupPanel1
+            // 
+            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.textBoxDepartmentName);
+            this.groupPanel1.Controls.Add(this.buttonClose);
+            this.groupPanel1.Controls.Add(this.labelDepartmentName);
+            this.groupPanel1.Controls.Add(this.buttonOk);
+            this.groupPanel1.Controls.Add(this.labelDepartmentID);
+            this.groupPanel1.Controls.Add(this.textBoxDepartmentID);
+            this.groupPanel1.Location = new System.Drawing.Point(12, 5);
+            this.groupPanel1.Name = "groupPanel1";
+            this.groupPanel1.Size = new System.Drawing.Size(415, 107);
+            // 
+            // 
+            // 
+            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel1.Style.BackColorGradientAngle = 90;
+            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderBottomWidth = 1;
+            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderLeftWidth = 1;
+            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderRightWidth = 1;
+            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderTopWidth = 1;
+            this.groupPanel1.Style.CornerDiameter = 4;
+            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel1.TabIndex = 29;
+            this.groupPanel1.Text = "Phòng ban";
             // 
             // FormDepartmentDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 91);
-            this.Controls.Add(this.buttonClose);
-            this.Controls.Add(this.buttonOk);
-            this.Controls.Add(this.textBoxDepartmentID);
-            this.Controls.Add(this.labelDepartmentID);
-            this.Controls.Add(this.textBoxDepartmentName);
-            this.Controls.Add(this.labelDepartmentName);
+            this.ClientSize = new System.Drawing.Size(434, 120);
+            this.Controls.Add(this.groupPanel1);
             this.Name = "FormDepartmentDetail";
-            this.Text = "FormDepartmentDetail";
+            this.Text = "Thông tin phòng ban";
+            this.groupPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -134,5 +178,6 @@
         private DevComponents.DotNetBar.LabelX labelDepartmentName;
         private DevComponents.DotNetBar.ButtonX buttonClose;
         private DevComponents.DotNetBar.ButtonX buttonOk;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
     }
 }
