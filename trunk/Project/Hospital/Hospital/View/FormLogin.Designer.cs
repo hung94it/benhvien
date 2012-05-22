@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.groupPanelLogin = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.buttonClose = new DevComponents.DotNetBar.ButtonX();
             this.buttonLogin = new DevComponents.DotNetBar.ButtonX();
             this.labelPassword = new DevComponents.DotNetBar.LabelX();
             this.textBoxPassword = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -38,10 +39,10 @@
             this.textBoxUsername = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.reflectionLabelHospital = new DevComponents.DotNetBar.Controls.ReflectionLabel();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập password");
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tài khoản");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tài khoản");
-            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập password");
             this.groupPanelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +53,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanelLogin.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanelLogin.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanelLogin.Controls.Add(this.buttonClose);
             this.groupPanelLogin.Controls.Add(this.buttonLogin);
             this.groupPanelLogin.Controls.Add(this.labelPassword);
             this.groupPanelLogin.Controls.Add(this.textBoxPassword);
@@ -90,6 +92,19 @@
             this.groupPanelLogin.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanelLogin.TabIndex = 1;
             this.groupPanelLogin.Text = "Đăng nhập";
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonClose.Location = new System.Drawing.Point(145, 89);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonClose.TabIndex = 5;
+            this.buttonClose.Text = "Thoát";
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonLogin
             // 
@@ -132,6 +147,7 @@
             this.textBoxPassword.Size = new System.Drawing.Size(194, 20);
             this.textBoxPassword.TabIndex = 2;
             this.superValidator1.SetValidator1(this.textBoxPassword, this.requiredFieldValidator2);
+            this.textBoxPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPassword_KeyDown);
             // 
             // labelUsername
             // 
@@ -179,7 +195,16 @@
             this.superValidator1.ContainerControl = this;
             this.superValidator1.ErrorProvider = this.errorProvider1;
             this.superValidator1.Highlighter = this.highlighter1;
-            this.superValidator1.ValidationType = DevComponents.DotNetBar.Validator.eValidationType.ValidatingEventPerControl;
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Nhập password";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập tài khoản";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
             // errorProvider1
             // 
@@ -189,16 +214,6 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
-            // 
-            // requiredFieldValidator1
-            // 
-            this.requiredFieldValidator1.ErrorMessage = "Nhập tài khoản";
-            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
-            // requiredFieldValidator2
-            // 
-            this.requiredFieldValidator2.ErrorMessage = "Nhập password";
-            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
             // FormLogin
             // 
@@ -230,5 +245,6 @@
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
+        private DevComponents.DotNetBar.ButtonX buttonClose;
     }
 }

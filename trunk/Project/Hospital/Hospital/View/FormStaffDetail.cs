@@ -50,7 +50,7 @@ namespace Hospital.View
             comboBoxRole.DisplayMember = "ROLENAME";
 
             // If useraction is edit then set staffdetail to staffdetail form
-            if ("edit".Equals(userAction)) 
+            if ("edit".Equals(userAction))
             {
                 setStaffDetail(staff);
             }
@@ -59,6 +59,14 @@ namespace Hospital.View
         // Handle event ok button click
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            decimal tempDecimal;
+
+            // If fields is not validated then do nothing
+            if (!superValidator1.Validate())
+            {
+                return;
+            }
+
             // Set StaffDetail property with value in staffdetail form            
             StaffDetail.DepartmentID = Convert.ToInt32(comboBoxDepartment.SelectedValue.ToString());
             StaffDetail.MajorID = Convert.ToInt32(comboBoxMajor.SelectedValue.ToString());
@@ -67,12 +75,21 @@ namespace Hospital.View
             StaffDetail.FirstName = textBoxFirstName.Text;
             StaffDetail.LastName = textBoxLastName.Text;
             StaffDetail.BirthDay = dateBirthday.Value;
-            if (textBoxIdentityCard.Text != "")
+
+            if (Decimal.TryParse(textBoxIdentityCard.Text, out tempDecimal))
+            {
                 StaffDetail.ICN = Convert.ToDecimal(textBoxIdentityCard.Text);
-            else StaffDetail.ICN = 0;
+            }
+
             if ("Nam".Equals(comboBoxGender.SelectedItem.ToString()))
-                StaffDetail.Gender = Patient.GENDER_MALE;
-            else StaffDetail.Gender = Patient.GENDER_FEMALE;
+            {
+                StaffDetail.Gender = Staff.GENDER_MALE;
+            }
+            else
+            {
+                StaffDetail.Gender = Staff.GENDER_FEMALE;
+            }
+
             StaffDetail.Address = textBoxAddress.Text;
 
             // Process useraction
@@ -112,9 +129,16 @@ namespace Hospital.View
             textBoxLastName.Text = staff.LastName;
             dateBirthday.Value = staff.BirthDay;
             textBoxIdentityCard.Text = staff.ICN.ToString();
+
             if (staff.ICN == 0)
+            {
                 comboBoxGender.Text = "Nam";
-            else comboBoxGender.Text = "Nữ";            
+            }
+            else
+            {
+                comboBoxGender.Text = "Nữ";
+            }
+
             textBoxAddress.Text = staff.Address;
             comboBoxDepartment.SelectedValue = (object)staff.DepartmentID;
             comboBoxMajor.SelectedValue = (object)staff.MajorID;

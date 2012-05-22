@@ -18,10 +18,35 @@ namespace Hospital.View
             InitializeComponent();
         }
 
+        // Click buttonlogin event
         private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            Login();
+        }
+
+        // Show FormLogin if FormMain close
+        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.Show();
+        }
+
+        // Click buttonclose event
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        // Check fields are validated and login to main form
+        private void Login()
         {
             int staffID;
             Staff loginStaff;
+
+            // If fields are not validated then do nothing
+            if (!superValidator1.Validate())
+            {
+                return;
+            }
 
             try
             {
@@ -48,8 +73,6 @@ namespace Hospital.View
                 {
                     MessageBox.Show("Tài khoản không hợp lệ", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
-
             }
             catch (SqlException exception)
             {
@@ -57,10 +80,13 @@ namespace Hospital.View
             }
         }
 
-        // Show FormLogin if FormMain close
-        private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
+        // Press Enter key in textBoxPassword event
+        private void textBoxPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            this.Show();
+            if (e.KeyCode == Keys.Enter)
+            {
+                Login();
+            }
         }
     }
 }
