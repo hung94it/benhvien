@@ -54,5 +54,28 @@ namespace Hospital.Functional
                 sqlDataAdapter.Fill(dataTable);
                 return dataTable;
         }
+
+        //Execute scalar command without parameters
+        public static object ExecuteScalar(string commandString)
+        {
+            using (SqlConnection connection = new SqlConnection(sqlConnectString))
+            {
+                SqlCommand command = new SqlCommand(commandString, connection);
+                connection.Open();
+                return command.ExecuteScalar();
+            }
+        }
+
+        //Execute scalar command with parameters
+        public static object ExecuteScalar(string commandString, SqlParameter[] sqlParametes)
+        {
+            using (SqlConnection connection = new SqlConnection(sqlConnectString))
+            {
+                SqlCommand command = new SqlCommand(commandString, connection);
+                command.Parameters.AddRange(sqlParametes);
+                connection.Open();
+                return command.ExecuteScalar();
+            }
+        }
     }
 }
