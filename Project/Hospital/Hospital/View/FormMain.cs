@@ -40,5 +40,7 @@ namespace Hospital.View
         {
             dataViewRole.DataSource = Role.GetListRole();
         }
+
+
     }
 }

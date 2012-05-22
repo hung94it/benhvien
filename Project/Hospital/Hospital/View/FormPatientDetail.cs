@@ -45,22 +45,36 @@ namespace Hospital.View
         // Handle event ok button click
         private void buttonOk_Click(object sender, EventArgs e)
         {
+            decimal tempDecimal;
+
+            // If fields is not validated then do nothing
+            if (!superValidator1.Validate())
+            {
+                return;
+            }
+
             // Set PatientDetail property with value in patientdetail form
             PatientDetail.FirstName = textBoxFirstName.Text;
             PatientDetail.LastName = textBoxLastName.Text;
             PatientDetail.BirthDay = dateBirthday.Value;
-            if (textBoxIdentityCard.Text != "")
+
+            if (Decimal.TryParse(textBoxIdentityCard.Text, out tempDecimal))
             {
                 PatientDetail.ICN = Convert.ToDecimal(textBoxIdentityCard.Text);
             }
-            else PatientDetail.ICN = 0;
-            if (comboBoxGender.SelectedItem.ToString() == "Nam")
+
+            if ("Nam".Equals(comboBoxGender.SelectedItem.ToString()))
             {
                 PatientDetail.Gender = Patient.GENDER_MALE;
             }
-            else PatientDetail.Gender = Patient.GENDER_FEMALE;
+            else
+            {
+                PatientDetail.Gender = Patient.GENDER_FEMALE;
+            }
+
             PatientDetail.Profession = textBoxProfession.Text;
             PatientDetail.Address = textBoxAddress.Text;
+
             if (!"".Equals(textBoxDeposit.Text))
             {
                 PatientDetail.Deposit = Convert.ToDecimal(textBoxDeposit.Text);

@@ -65,6 +65,9 @@
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.compareValidator1 = new DevComponents.DotNetBar.Validator.CompareValidator();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Phải điền tên");
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Phải điền họ");
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.groupPanelAccout.SuspendLayout();
             this.groupPanelInformation.SuspendLayout();
@@ -284,6 +287,7 @@
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(348, 20);
             this.textBoxLastName.TabIndex = 23;
+            this.superValidator1.SetValidator1(this.textBoxLastName, this.requiredFieldValidator2);
             // 
             // labelLastName
             // 
@@ -309,6 +313,7 @@
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(348, 20);
             this.textBoxFirstName.TabIndex = 22;
+            this.superValidator1.SetValidator1(this.textBoxFirstName, this.requiredFieldValidator1);
             // 
             // labelFirstName
             // 
@@ -435,6 +440,7 @@
             this.textBoxPasswordCheck.PasswordChar = '*';
             this.textBoxPasswordCheck.Size = new System.Drawing.Size(348, 20);
             this.textBoxPasswordCheck.TabIndex = 50;
+            this.superValidator1.SetValidator1(this.textBoxPasswordCheck, this.compareValidator1);
             // 
             // labelPasswordCheck
             // 
@@ -583,7 +589,6 @@
             this.superValidator1.ContainerControl = this;
             this.superValidator1.ErrorProvider = this.errorProvider1;
             this.superValidator1.Highlighter = this.highlighter1;
-            this.superValidator1.ValidationType = DevComponents.DotNetBar.Validator.eValidationType.ValidatingEventPerControl;
             // 
             // errorProvider1
             // 
@@ -593,6 +598,22 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
+            // 
+            // compareValidator1
+            // 
+            this.compareValidator1.ControlToCompare = this.textBoxPassword;
+            this.compareValidator1.ErrorMessage = "Mật khẩu phải trùng";
+            this.compareValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Phải điền tên";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Phải điền họ";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
             // FormStaffDetail
             // 
@@ -650,6 +671,9 @@
         private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
+        private DevComponents.DotNetBar.Validator.CompareValidator compareValidator1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
 
     }
 }
