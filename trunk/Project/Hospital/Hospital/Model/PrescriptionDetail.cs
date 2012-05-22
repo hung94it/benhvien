@@ -26,7 +26,7 @@ namespace Hospital.Model
         public static int InsertPrescriptionDetail(PrescriptionDetail newPD)
         {
             String sqlInsert = @"INSERT INTO PRESCRIPTIONDETAIL(PRESCRIPTIONID, MEDICINEID, QUANTITY, INSTRUCTION)
-                                VALUES        (@PRESCRIPTIONID,@MEDICINEID,@QUANTITY,@)";
+                                VALUES        (@PRESCRIPTIONID,@MEDICINEID,@QUANTITY,@INSTRUCTION)";
             SqlParameter[] sqlParameters = { new SqlParameter("@PRESCRIPTIONID", newPD.PrescriptionID),
                                             new SqlParameter("@MEDICINEID", newPD.MedicineID),
                                             new SqlParameter("@QUANTITY", newPD.Quantity),
@@ -65,7 +65,6 @@ namespace Hospital.Model
             dtPD.Columns[2].ColumnName = "Số lượng";
             dtPD.Columns[3].ColumnName = "Hướng dẫn";
             return dtPD;
-
         }
         
     }

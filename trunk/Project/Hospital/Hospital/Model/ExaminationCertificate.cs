@@ -40,10 +40,9 @@ namespace Hospital.Model
         public static int UpdateEC(ExaminationCertificate updateEC)
         {
             string sqlUpdate = @"UPDATE       EXAMINATIONCERTIFICATE
-                                SET                PATIENTID =@PATIENTID, STAFFID =@STAFFID, DATE =@DATE, RESULT =@RESULT, STATE =@STATE
+                                SET                DATE =@DATE, RESULT =@RESULT, STATE =@STATE
                                 WHERE         ECID=@ECID ";
-            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", updateEC.PatientID ),
-                                            new SqlParameter("@STAFFID", updateEC.StaffID),
+            SqlParameter[] sqlParameters = { new SqlParameter("@ECID", updateEC.ECID ),
                                            new SqlParameter("@DATE",updateEC.Date),
                                            new SqlParameter("@RESULT", updateEC.Result),
                                            new SqlParameter("STATE", updateEC.State)};
@@ -80,9 +79,9 @@ namespace Hospital.Model
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
-                newEC.ECID = (int)dataTable.Rows[0][0];
-                newEC.PatientID = (int)dataTable.Rows[0][1];
-                newEC.StaffID = (int)dataTable.Rows[0][2];
+                newEC.ECID = Convert.ToInt32(dataTable.Rows[0][0]);
+                newEC.PatientID = Convert.ToInt32(dataTable.Rows[0][0]);
+                newEC.StaffID = Convert.ToInt32(dataTable.Rows[0][0]);
                 newEC.Date = (DateTime)dataTable.Rows[0][3];
                 newEC.Result = (String)dataTable.Rows[0][4];
                 newEC.State = (int)dataTable.Rows[0][5];

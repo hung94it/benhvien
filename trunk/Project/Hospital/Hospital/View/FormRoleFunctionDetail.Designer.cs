@@ -49,7 +49,7 @@
             this.textBoxFunctionID.Name = "textBoxFunctionID";
             this.textBoxFunctionID.ReadOnly = true;
             this.textBoxFunctionID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxFunctionID.TabIndex = 29;
+            this.textBoxFunctionID.TabIndex = 0;
             // 
             // labelFunctionID
             // 
@@ -73,7 +73,7 @@
             this.textBoxFunctionName.Location = new System.Drawing.Point(93, 38);
             this.textBoxFunctionName.Name = "textBoxFunctionName";
             this.textBoxFunctionName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxFunctionName.TabIndex = 26;
+            this.textBoxFunctionName.TabIndex = 1;
             // 
             // labelFunctionName
             // 
@@ -109,7 +109,7 @@
             this.textBoxButton.Location = new System.Drawing.Point(93, 64);
             this.textBoxButton.Name = "textBoxButton";
             this.textBoxButton.Size = new System.Drawing.Size(293, 20);
-            this.textBoxButton.TabIndex = 26;
+            this.textBoxButton.TabIndex = 2;
             // 
             // buttonClose
             // 
@@ -119,7 +119,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonClose.TabIndex = 31;
+            this.buttonClose.TabIndex = 4;
             this.buttonClose.Text = "Đóng";
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -131,7 +131,7 @@
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonOk.TabIndex = 30;
+            this.buttonOk.TabIndex = 3;
             this.buttonOk.Text = "Đồng ý";
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 

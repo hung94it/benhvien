@@ -19,6 +19,7 @@ namespace Hospital.View
         public FormRoleDetail()
         {
             InitializeComponent();
+            
         }
         public FormRoleDetail(Role roledetail, String usertAction)
         {

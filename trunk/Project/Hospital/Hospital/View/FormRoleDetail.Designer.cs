@@ -55,7 +55,7 @@
             this.textBoxRoleID.Name = "textBoxRoleID";
             this.textBoxRoleID.ReadOnly = true;
             this.textBoxRoleID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxRoleID.TabIndex = 25;
+            this.textBoxRoleID.TabIndex = 0;
             // 
             // labelRoleID
             // 
@@ -79,7 +79,7 @@
             this.textBoxRoleName.Location = new System.Drawing.Point(103, 38);
             this.textBoxRoleName.Name = "textBoxRoleName";
             this.textBoxRoleName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxRoleName.TabIndex = 22;
+            this.textBoxRoleName.TabIndex = 1;
             // 
             // labelRoleName
             // 
@@ -143,7 +143,7 @@
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonClose.TabIndex = 28;
+            this.buttonClose.TabIndex = 3;
             this.buttonClose.Text = "Đóng";
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
@@ -155,7 +155,7 @@
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonOk.TabIndex = 27;
+            this.buttonOk.TabIndex = 2;
             this.buttonOk.Text = "Đồng ý";
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
