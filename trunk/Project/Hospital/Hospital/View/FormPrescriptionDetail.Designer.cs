@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrescriptionDetail));
             this.textBoxPrescriptionID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelRoleID = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -55,10 +57,17 @@
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.textBoxAddQuantity = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
+            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập hướng dẫn sử dụng thuốc");
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhấp số lượng thuốc");
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             ((System.ComponentModel.ISupportInitialize)(this.dateCreate)).BeginInit();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
             this.groupPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxPrescriptionID
@@ -213,9 +222,9 @@
             this.groupPanel1.Controls.Add(this.textBoxPatientID);
             this.groupPanel1.Controls.Add(this.textBoxStaffID);
             this.groupPanel1.Controls.Add(this.labelX2);
-            this.groupPanel1.Location = new System.Drawing.Point(12, 12);
+            this.groupPanel1.Location = new System.Drawing.Point(12, 2);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(386, 133);
+            this.groupPanel1.Size = new System.Drawing.Size(406, 133);
             // 
             // 
             // 
@@ -258,9 +267,9 @@
             this.groupPanel2.Controls.Add(this.labelAddress);
             this.groupPanel2.Controls.Add(this.labelFirstName);
             this.groupPanel2.Controls.Add(this.textBoxInputQuantity);
-            this.groupPanel2.Location = new System.Drawing.Point(12, 147);
+            this.groupPanel2.Location = new System.Drawing.Point(12, 137);
             this.groupPanel2.Name = "groupPanel2";
-            this.groupPanel2.Size = new System.Drawing.Size(386, 150);
+            this.groupPanel2.Size = new System.Drawing.Size(406, 150);
             // 
             // 
             // 
@@ -316,6 +325,7 @@
             this.textBoxInputInstruction.Name = "textBoxInputInstruction";
             this.textBoxInputInstruction.Size = new System.Drawing.Size(279, 50);
             this.textBoxInputInstruction.TabIndex = 2;
+            this.superValidator1.SetValidator1(this.textBoxInputInstruction, this.requiredFieldValidator2);
             // 
             // labelState
             // 
@@ -382,6 +392,8 @@
             this.textBoxInputQuantity.Name = "textBoxInputQuantity";
             this.textBoxInputQuantity.Size = new System.Drawing.Size(62, 20);
             this.textBoxInputQuantity.TabIndex = 1;
+            this.superValidator1.SetValidator1(this.textBoxInputQuantity, this.requiredFieldValidator1);
+            this.superValidator1.SetValidator2(this.textBoxInputQuantity, this.regularExpressionValidator1);
             // 
             // buttonRemove
             // 
@@ -454,9 +466,9 @@
             this.groupPanel3.Controls.Add(this.labelX5);
             this.groupPanel3.Controls.Add(this.textBoxAddQuantity);
             this.groupPanel3.Controls.Add(this.labelX4);
-            this.groupPanel3.Location = new System.Drawing.Point(12, 299);
+            this.groupPanel3.Location = new System.Drawing.Point(12, 289);
             this.groupPanel3.Name = "groupPanel3";
-            this.groupPanel3.Size = new System.Drawing.Size(386, 186);
+            this.groupPanel3.Size = new System.Drawing.Size(406, 186);
             // 
             // 
             // 
@@ -541,11 +553,42 @@
             this.labelX4.TabIndex = 52;
             this.labelX4.Text = "Số lượng cần kê";
             // 
+            // superValidator1
+            // 
+            this.superValidator1.ContainerControl = this;
+            this.superValidator1.ErrorProvider = this.errorProvider1;
+            this.superValidator1.Highlighter = this.highlighter1;
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Nhập hướng dẫn sử dụng thuốc";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhấp số lượng thuốc";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.ErrorMessage = "Nhập số lượng thuốc";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = null;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            // 
             // FormPrescriptionDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(409, 489);
+            this.ClientSize = new System.Drawing.Size(432, 480);
             this.Controls.Add(this.groupPanel3);
             this.Controls.Add(this.groupPanel2);
             this.Controls.Add(this.groupPanel1);
@@ -555,6 +598,7 @@
             this.groupPanel1.ResumeLayout(false);
             this.groupPanel2.ResumeLayout(false);
             this.groupPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -588,5 +632,11 @@
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxAddInstruction;
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.DotNetBar.LabelX labelX4;
+        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
     }
 }
