@@ -96,32 +96,42 @@ namespace Hospital.View
 
         private void buttonInsert_Click(object sender, EventArgs e)
         {
+            if (!superValidator1.Validate())
+                return;
             if (listMedicine.Count > 0)
             {
-                if (textBoxInputQuantity.Text != "" && textBoxInputInstruction.Text != "")
-                {
-                    int selectedIndex = comboBoxMedicine.SelectedIndex;
-                    if (int.Parse(textBoxInputQuantity.Text) > listMedicine[selectedIndex].Quantity)
-                        MessageBox.Show("Số lượng thuốc không đáp ứng đủ nhu cầu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    else
-                    {
-                        PrescriptionDetail newPD = new PrescriptionDetail(listMedicine[selectedIndex].MedicineID, 0, int.Parse(textBoxInputQuantity.Text), textBoxInputInstruction.Text);
-                        if (DidPrescriptionHaveMedicine(newPD.MedicineID))
-                            MessageBox.Show("Thuốc đã có trong toa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        else
-                        {
-                            listDP.Add(newPD);
-                            listSelectedMedicine.Items.Add(listMedicine[selectedIndex].MedicineName);
-                            listSelectedMedicine.SelectedIndex = listSelectedMedicine.Items.Count -1;
-                            textBoxInputInstruction.Text = "";
-                            textBoxInputQuantity.Text = "";
-                        }
-                    }
-                }
+                
+                int selectedIndex = comboBoxMedicine.SelectedIndex;
+                if (int.Parse(textBoxInputQuantity.Text) > listMedicine[selectedIndex].Quantity)
+                    MessageBox.Show("Số lượng thuốc không đáp ứng đủ nhu cầu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
-                    MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    PrescriptionDetail newPD = new PrescriptionDetail(listMedicine[selectedIndex].MedicineID, 0, int.Parse(textBoxInputQuantity.Text), textBoxInputInstruction.Text);
+                    if (DidPrescriptionHaveMedicine(newPD.MedicineID))
+                    {
+                        for (int i = 0; i < listDP.Count; i++)
+                        {
+                            if (newPD.MedicineID == listDP[i].MedicineID)
+                            {
+                                listDP[i].Instruction = textBoxInputInstruction.Text;
+                                listDP[i].Quantity = int.Parse(textBoxInputQuantity.Text);
+                                listSelectedMedicine_SelectedIndexChanged(sender, e);
+                                textBoxInputInstruction.Text = "";
+                                textBoxInputQuantity.Text = "";
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        listDP.Add(newPD);
+                        listSelectedMedicine.Items.Add(listMedicine[selectedIndex].MedicineName);
+                        listSelectedMedicine.SelectedIndex = listSelectedMedicine.Items.Count - 1;
+                        textBoxInputInstruction.Text = "";
+                        textBoxInputQuantity.Text = "";
+                    }
                 }
+                             
             }
         }
         private void buttonRemove_Click(object sender, EventArgs e)
@@ -156,7 +166,8 @@ namespace Hospital.View
         }
 
         private void buttonOk_Click(object sender, EventArgs e)
-        {            
+        {
+            
             try 
             {
                 Prescription newPrescription = new Prescription();

@@ -68,5 +68,11 @@ namespace Hospital.Model
             }
             return newRole;
         }
+        public static int GetCurrentIdentity()
+        {
+            string sqlSelect = @"SELECT IDENT_CURRENT('ROLE')  as currIdent";
+            object ob = SqlResult.ExecuteScalar(sqlSelect);
+            return Convert.ToInt16(ob);
+        }
     }
 }

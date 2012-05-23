@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
             this.textBoxQuantity = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -38,31 +39,78 @@
             this.labelPrice = new DevComponents.DotNetBar.LabelX();
             this.textBoxMedicineName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelMedicineName = new DevComponents.DotNetBar.LabelX();
+            this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // groupPanel1
+            // 
+            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanel1.Controls.Add(this.buttonClose);
+            this.groupPanel1.Controls.Add(this.buttonOk);
+            this.groupPanel1.Controls.Add(this.textBoxQuantity);
+            this.groupPanel1.Controls.Add(this.labelQuantity);
+            this.groupPanel1.Controls.Add(this.textBoxMedicineID);
+            this.groupPanel1.Controls.Add(this.textBoxPrice);
+            this.groupPanel1.Controls.Add(this.labelMedicineID);
+            this.groupPanel1.Controls.Add(this.labelPrice);
+            this.groupPanel1.Controls.Add(this.textBoxMedicineName);
+            this.groupPanel1.Controls.Add(this.labelMedicineName);
+            this.groupPanel1.Location = new System.Drawing.Point(12, 2);
+            this.groupPanel1.Name = "groupPanel1";
+            this.groupPanel1.Size = new System.Drawing.Size(369, 155);
+            // 
+            // 
+            // 
+            this.groupPanel1.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanel1.Style.BackColorGradientAngle = 90;
+            this.groupPanel1.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanel1.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderBottomWidth = 1;
+            this.groupPanel1.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanel1.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderLeftWidth = 1;
+            this.groupPanel1.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderRightWidth = 1;
+            this.groupPanel1.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanel1.Style.BorderTopWidth = 1;
+            this.groupPanel1.Style.CornerDiameter = 4;
+            this.groupPanel1.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanel1.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanel1.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanel1.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanel1.TabIndex = 0;
+            this.groupPanel1.Text = "Thuốc";
             // 
             // buttonClose
             // 
             this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonClose.Location = new System.Drawing.Point(281, 116);
+            this.buttonClose.Location = new System.Drawing.Point(280, 107);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonClose.TabIndex = 5;
+            this.buttonClose.TabIndex = 47;
             this.buttonClose.Text = "Đóng";
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonOk
             // 
             this.buttonOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonOk.Location = new System.Drawing.Point(189, 116);
+            this.buttonOk.Location = new System.Drawing.Point(188, 107);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonOk.TabIndex = 4;
+            this.buttonOk.TabIndex = 46;
             this.buttonOk.Text = "Đồng ý";
-            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // textBoxQuantity
             // 
@@ -71,21 +119,22 @@
             // 
             this.textBoxQuantity.Border.Class = "TextBoxBorder";
             this.textBoxQuantity.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxQuantity.Location = new System.Drawing.Point(64, 64);
+            this.textBoxQuantity.Location = new System.Drawing.Point(63, 55);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(293, 20);
-            this.textBoxQuantity.TabIndex = 2;
+            this.textBoxQuantity.TabIndex = 44;
             // 
             // labelQuantity
             // 
+            this.labelQuantity.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelQuantity.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelQuantity.Location = new System.Drawing.Point(8, 61);
+            this.labelQuantity.Location = new System.Drawing.Point(7, 52);
             this.labelQuantity.Name = "labelQuantity";
             this.labelQuantity.Size = new System.Drawing.Size(92, 23);
-            this.labelQuantity.TabIndex = 38;
+            this.labelQuantity.TabIndex = 48;
             this.labelQuantity.Text = "Số lượng";
             // 
             // textBoxMedicineID
@@ -95,11 +144,11 @@
             // 
             this.textBoxMedicineID.Border.Class = "TextBoxBorder";
             this.textBoxMedicineID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxMedicineID.Location = new System.Drawing.Point(64, 12);
+            this.textBoxMedicineID.Location = new System.Drawing.Point(63, 3);
             this.textBoxMedicineID.Name = "textBoxMedicineID";
             this.textBoxMedicineID.ReadOnly = true;
             this.textBoxMedicineID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxMedicineID.TabIndex = 0;
+            this.textBoxMedicineID.TabIndex = 42;
             // 
             // textBoxPrice
             // 
@@ -108,33 +157,35 @@
             // 
             this.textBoxPrice.Border.Class = "TextBoxBorder";
             this.textBoxPrice.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxPrice.Location = new System.Drawing.Point(64, 90);
+            this.textBoxPrice.Location = new System.Drawing.Point(63, 81);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPrice.TabIndex = 3;
+            this.textBoxPrice.TabIndex = 45;
             // 
             // labelMedicineID
             // 
+            this.labelMedicineID.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelMedicineID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelMedicineID.Location = new System.Drawing.Point(8, 9);
+            this.labelMedicineID.Location = new System.Drawing.Point(7, 0);
             this.labelMedicineID.Name = "labelMedicineID";
             this.labelMedicineID.Size = new System.Drawing.Size(92, 23);
-            this.labelMedicineID.TabIndex = 39;
+            this.labelMedicineID.TabIndex = 49;
             this.labelMedicineID.Text = "Mã thuốc";
             // 
             // labelPrice
             // 
+            this.labelPrice.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelPrice.Location = new System.Drawing.Point(8, 87);
+            this.labelPrice.Location = new System.Drawing.Point(7, 78);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(92, 23);
-            this.labelPrice.TabIndex = 41;
+            this.labelPrice.TabIndex = 51;
             this.labelPrice.Text = "Đơn giá";
             // 
             // textBoxMedicineName
@@ -144,46 +195,40 @@
             // 
             this.textBoxMedicineName.Border.Class = "TextBoxBorder";
             this.textBoxMedicineName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxMedicineName.Location = new System.Drawing.Point(64, 38);
+            this.textBoxMedicineName.Location = new System.Drawing.Point(63, 29);
             this.textBoxMedicineName.Name = "textBoxMedicineName";
             this.textBoxMedicineName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxMedicineName.TabIndex = 1;
+            this.textBoxMedicineName.TabIndex = 43;
             // 
             // labelMedicineName
             // 
+            this.labelMedicineName.BackColor = System.Drawing.Color.Transparent;
             // 
             // 
             // 
             this.labelMedicineName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelMedicineName.Location = new System.Drawing.Point(8, 35);
+            this.labelMedicineName.Location = new System.Drawing.Point(7, 26);
             this.labelMedicineName.Name = "labelMedicineName";
             this.labelMedicineName.Size = new System.Drawing.Size(92, 23);
-            this.labelMedicineName.TabIndex = 40;
+            this.labelMedicineName.TabIndex = 50;
             this.labelMedicineName.Text = "Tên thuốc";
             // 
             // FormMedicineDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(367, 146);
-            this.Controls.Add(this.buttonClose);
-            this.Controls.Add(this.buttonOk);
-            this.Controls.Add(this.textBoxQuantity);
-            this.Controls.Add(this.labelQuantity);
-            this.Controls.Add(this.textBoxMedicineID);
-            this.Controls.Add(this.textBoxPrice);
-            this.Controls.Add(this.labelMedicineID);
-            this.Controls.Add(this.labelPrice);
-            this.Controls.Add(this.textBoxMedicineName);
-            this.Controls.Add(this.labelMedicineName);
+            this.ClientSize = new System.Drawing.Size(391, 163);
+            this.Controls.Add(this.groupPanel1);
             this.Name = "FormMedicineDetail";
-            this.Text = "FormMedicineDetail";
+            this.Text = "Thông tin thuốc";
+            this.groupPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.ButtonX buttonClose;
         private DevComponents.DotNetBar.ButtonX buttonOk;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxQuantity;
@@ -194,5 +239,6 @@
         private DevComponents.DotNetBar.LabelX labelPrice;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxMedicineName;
         private DevComponents.DotNetBar.LabelX labelMedicineName;
+
     }
 }
