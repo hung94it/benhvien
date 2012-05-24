@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMedicineDetail));
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
@@ -39,7 +41,14 @@
             this.labelPrice = new DevComponents.DotNetBar.LabelX();
             this.textBoxMedicineName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelMedicineName = new DevComponents.DotNetBar.LabelX();
+            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên thuốc");
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập số lượng");
+            this.requiredFieldValidator3 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập đơn giá");
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel1
@@ -58,7 +67,7 @@
             this.groupPanel1.Controls.Add(this.labelMedicineName);
             this.groupPanel1.Location = new System.Drawing.Point(12, 2);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(369, 155);
+            this.groupPanel1.Size = new System.Drawing.Size(381, 155);
             // 
             // 
             // 
@@ -100,6 +109,7 @@
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonClose.TabIndex = 47;
             this.buttonClose.Text = "Đóng";
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonOk
             // 
@@ -111,6 +121,7 @@
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonOk.TabIndex = 46;
             this.buttonOk.Text = "Đồng ý";
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // textBoxQuantity
             // 
@@ -123,6 +134,7 @@
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(293, 20);
             this.textBoxQuantity.TabIndex = 44;
+            this.superValidator1.SetValidator1(this.textBoxQuantity, this.requiredFieldValidator2);
             // 
             // labelQuantity
             // 
@@ -161,6 +173,7 @@
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
             this.textBoxPrice.TabIndex = 45;
+            this.superValidator1.SetValidator1(this.textBoxPrice, this.requiredFieldValidator3);
             // 
             // labelMedicineID
             // 
@@ -199,6 +212,7 @@
             this.textBoxMedicineName.Name = "textBoxMedicineName";
             this.textBoxMedicineName.Size = new System.Drawing.Size(293, 20);
             this.textBoxMedicineName.TabIndex = 43;
+            this.superValidator1.SetValidator1(this.textBoxMedicineName, this.requiredFieldValidator1);
             // 
             // labelMedicineName
             // 
@@ -213,15 +227,46 @@
             this.labelMedicineName.TabIndex = 50;
             this.labelMedicineName.Text = "Tên thuốc";
             // 
+            // superValidator1
+            // 
+            this.superValidator1.ContainerControl = this;
+            this.superValidator1.ErrorProvider = this.errorProvider1;
+            this.superValidator1.Highlighter = this.highlighter1;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập tên thuốc";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Nhập số lượng";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator3
+            // 
+            this.requiredFieldValidator3.ErrorMessage = "Nhập đơn giá";
+            this.requiredFieldValidator3.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
             // FormMedicineDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(391, 163);
+            this.ClientSize = new System.Drawing.Size(404, 163);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FormMedicineDetail";
             this.Text = "Thông tin thuốc";
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,6 +284,12 @@
         private DevComponents.DotNetBar.LabelX labelPrice;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxMedicineName;
         private DevComponents.DotNetBar.LabelX labelMedicineName;
+        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator3;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
 
     }
 }

@@ -42,8 +42,8 @@ namespace Hospital.View
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (textBoxMaterialName.Text != "" && textBoxQuantity.Text!="" && textBoxPrice.Text!="")
-            {
+            if (!superValidator1.Validate())
+                return;
                 try
                 {
                     if (UserAction == "edit")
@@ -51,8 +51,13 @@ namespace Hospital.View
                         MaterialDetail.MaterialName = textBoxMaterialName.Text;
                         MaterialDetail.Quantity = int.Parse(textBoxQuantity.Text);
                         MaterialDetail.Price = decimal.Parse(textBoxPrice.Text);
-                        if (Material.UpdateMaterial(MaterialDetail) > 0)
-                            MessageBox.Show("Cập nhập vật tư thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin vật tư", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            if (Material.UpdateMaterial(MaterialDetail) > 0)
+                                MessageBox.Show("Cập nhập thông tin vật tư thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        }
+                        
                     }
                     else
                     {
@@ -65,12 +70,10 @@ namespace Hospital.View
                 {
                     MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
             this.Close();
         }
+
+        
     }
 }

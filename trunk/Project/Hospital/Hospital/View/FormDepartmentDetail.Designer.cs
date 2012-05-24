@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDepartmentDetail));
             this.textBoxDepartmentID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelDepartmentID = new DevComponents.DotNetBar.LabelX();
             this.textBoxDepartmentName = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -35,7 +37,12 @@
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên phòng ban");
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxDepartmentID
@@ -75,6 +82,7 @@
             this.textBoxDepartmentName.Name = "textBoxDepartmentName";
             this.textBoxDepartmentName.Size = new System.Drawing.Size(293, 20);
             this.textBoxDepartmentName.TabIndex = 1;
+            this.superValidator1.SetValidator1(this.textBoxDepartmentName, this.requiredFieldValidator1);
             // 
             // labelDepartmentName
             // 
@@ -125,7 +133,7 @@
             this.groupPanel1.Controls.Add(this.textBoxDepartmentID);
             this.groupPanel1.Location = new System.Drawing.Point(12, 5);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(415, 107);
+            this.groupPanel1.Size = new System.Drawing.Size(424, 107);
             // 
             // 
             // 
@@ -157,15 +165,36 @@
             this.groupPanel1.TabIndex = 29;
             this.groupPanel1.Text = "Phòng ban";
             // 
+            // superValidator1
+            // 
+            this.superValidator1.ContainerControl = this;
+            this.superValidator1.ErrorProvider = this.errorProvider1;
+            this.superValidator1.Highlighter = this.highlighter1;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập tên phòng ban";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
             // FormDepartmentDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 120);
+            this.ClientSize = new System.Drawing.Size(447, 120);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FormDepartmentDetail";
             this.Text = "Thông tin phòng ban";
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -179,5 +208,9 @@
         private DevComponents.DotNetBar.ButtonX buttonClose;
         private DevComponents.DotNetBar.ButtonX buttonOk;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
+        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
     }
 }

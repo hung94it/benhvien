@@ -52,9 +52,9 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        SERVICEID, SERVICENAME, PRICE
                                 FROM            SERVICE";
             dtS = SqlResult.ExecuteQuery(sqlSelect);
-            dtS.Columns[0].ColumnName = "Mã dịch vụ";
-            dtS.Columns[1].ColumnName = "Tên dịch vụ";
-            dtS.Columns[2].ColumnName = "Đơn giá";
+            //dtS.Columns[0].ColumnName = "Mã dịch vụ";
+            //dtS.Columns[1].ColumnName = "Tên dịch vụ";
+            //dtS.Columns[2].ColumnName = "Đơn giá";
             return dtS;
         }
         public static Service GetService(int serviceID)

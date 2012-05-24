@@ -40,33 +40,34 @@ namespace Hospital.View
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (textBoxServiceName.Text != "" && textBoxPrice.Text != "")
+            if (!superValidator1.Validate())
+                return;
+            try
             {
-                try
+                if (UserAction == "edit")
                 {
-                    if (UserAction == "edit")
+                    ServiceDetail.ServiceName = textBoxServiceName.Text;
+                    ServiceDetail.Price = decimal.Parse(textBoxPrice.Text);
+                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin dịch vụ", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        ServiceDetail.ServiceName = textBoxServiceName.Text;
-                        ServiceDetail.Price = decimal.Parse(textBoxPrice.Text);
                         if (Service.UpdateService(ServiceDetail) > 0)
-                            MessageBox.Show("Cập nhập thông tin dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Cập nhập dịch vụ thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
-                    else
-                    {
-                        Service newService = new Service(0, textBoxServiceName.Text, decimal.Parse(textBoxPrice.Text));
-                        if (Service.InsertService(newService) > 0)
-                            MessageBox.Show("Thêm dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    }
+
                 }
-                catch (SqlException exception)
+                else
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Service newService = new Service(0, textBoxServiceName.Text, decimal.Parse(textBoxPrice.Text));
+                    if (Service.InsertService(newService) > 0)
+                        MessageBox.Show("Thêm dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
             }
-            else
+            catch (SqlException exception)
             {
-                MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             this.Close();
         }
     }

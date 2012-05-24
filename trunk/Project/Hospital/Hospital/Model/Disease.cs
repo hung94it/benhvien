@@ -54,9 +54,9 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT DISEASEID,DISEASENAME,SYMPTOM
                                 FROM DISEASE";
             dtDisease = SqlResult.ExecuteQuery(sqlSelect);
-            dtDisease.Columns[0].ColumnName = "Mã bệnh";
-            dtDisease.Columns[1].ColumnName = "Tên bệnh";
-            dtDisease.Columns[2].ColumnName = "Triệu chứng";
+            //dtDisease.Columns[0].ColumnName = "Mã bệnh";
+            //dtDisease.Columns[1].ColumnName = "Tên bệnh";
+            //dtDisease.Columns[2].ColumnName = "Triệu chứng";
             return dtDisease;
         }
         public static Disease GetDisease(int diseaseID)
