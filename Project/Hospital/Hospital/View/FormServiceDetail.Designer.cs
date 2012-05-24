@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormServiceDetail));
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
@@ -37,7 +39,13 @@
             this.labelPrice = new DevComponents.DotNetBar.LabelX();
             this.textBoxServiceName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelServiceName = new DevComponents.DotNetBar.LabelX();
+            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập đơn giá");
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên dịch vụ");
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel1
@@ -54,7 +62,7 @@
             this.groupPanel1.Controls.Add(this.labelServiceName);
             this.groupPanel1.Location = new System.Drawing.Point(12, 1);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(371, 130);
+            this.groupPanel1.Size = new System.Drawing.Size(384, 130);
             // 
             // 
             // 
@@ -96,6 +104,7 @@
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonClose.TabIndex = 56;
             this.buttonClose.Text = "Đóng";
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonOk
             // 
@@ -107,6 +116,7 @@
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonOk.TabIndex = 55;
             this.buttonOk.Text = "Đồng ý";
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // textBoxServiceID
             // 
@@ -132,6 +142,7 @@
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
             this.textBoxPrice.TabIndex = 54;
+            this.superValidator1.SetValidator1(this.textBoxPrice, this.requiredFieldValidator2);
             // 
             // labelServiceID
             // 
@@ -170,6 +181,7 @@
             this.textBoxServiceName.Name = "textBoxServiceName";
             this.textBoxServiceName.Size = new System.Drawing.Size(293, 20);
             this.textBoxServiceName.TabIndex = 53;
+            this.superValidator1.SetValidator1(this.textBoxServiceName, this.requiredFieldValidator1);
             // 
             // labelServiceName
             // 
@@ -184,15 +196,41 @@
             this.labelServiceName.TabIndex = 58;
             this.labelServiceName.Text = "Tên dịch vụ";
             // 
+            // superValidator1
+            // 
+            this.superValidator1.ContainerControl = this;
+            this.superValidator1.ErrorProvider = this.errorProvider1;
+            this.superValidator1.Highlighter = this.highlighter1;
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Nhập đơn giá";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập tên dịch vụ";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            // 
             // FormServiceDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(395, 136);
+            this.ClientSize = new System.Drawing.Size(407, 136);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FormServiceDetail";
             this.Text = "Thông tin dịch vụ";
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -208,6 +246,11 @@
         private DevComponents.DotNetBar.LabelX labelPrice;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxServiceName;
         private DevComponents.DotNetBar.LabelX labelServiceName;
+        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
 
     }
 }

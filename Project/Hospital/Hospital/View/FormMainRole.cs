@@ -37,9 +37,9 @@ namespace Hospital.View
                         MessageBox.Show("Xóa phân quyền thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 catch (SqlException exception)
-            {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                {
+                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
             refreshDataViewRole();
@@ -55,7 +55,7 @@ namespace Hospital.View
             refreshDataViewRole();
             refreshDataViewRoleDetail();
         }
-        //Refresh datagridview in Patient tab
+        //Refresh datagridview in role tab
         private void refreshDataViewRole()
         {
             try
@@ -77,6 +77,7 @@ namespace Hospital.View
                 }
 
                 //Add auto complete datasource to textbox
+                textBoxRoleSearch.AutoCompleteCustomSource.Clear();
                 for (int i = 0; i < roleTable.Rows.Count; i++)
                 {
                     String strRoleName = roleTable.Rows[i][1].ToString();

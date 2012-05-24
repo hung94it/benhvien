@@ -40,8 +40,8 @@ namespace Hospital.View
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (textBoxDepartmentName.Text != "")
-            {
+            if (!superValidator1.Validate())
+                return;
                 try
                 {
                     if (UserAction == "edit")
@@ -61,11 +61,7 @@ namespace Hospital.View
                 {
                     MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            
             this.Close();
         }
     }

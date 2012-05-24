@@ -55,10 +55,10 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        MEDICINEID, MEDICINENAME, QUANTITY, PRICE
                                 FROM            MEDICINE";
             dtM = SqlResult.ExecuteQuery(sqlSelect);
-            dtM.Columns[0].ColumnName = "Mã thuốc";
-            dtM.Columns[1].ColumnName = "Tên thuốc";
-            dtM.Columns[2].ColumnName = "Số lượng";
-            dtM.Columns[3].ColumnName = "Đơn giá";
+            //dtM.Columns[0].ColumnName = "Mã thuốc";
+            //dtM.Columns[1].ColumnName = "Tên thuốc";
+            //dtM.Columns[2].ColumnName = "Số lượng";
+            //dtM.Columns[3].ColumnName = "Đơn giá";
             return dtM;
         }
         public static Medicine GetMedicine(int medicineID)

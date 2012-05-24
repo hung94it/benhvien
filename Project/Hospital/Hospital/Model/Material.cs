@@ -55,10 +55,10 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        MATERIALID, MATERIALNAME, QUANTITY, PRICE
                                 FROM            MATERIAL";
             dtM = SqlResult.ExecuteQuery(sqlSelect);
-            dtM.Columns[0].ColumnName = "Mã vật tư";
-            dtM.Columns[1].ColumnName = "Tên vật tư";
-            dtM.Columns[2].ColumnName = "Số lượng";
-            dtM.Columns[3].ColumnName = "Đơn giá";
+            //dtM.Columns[0].ColumnName = "Mã vật tư";
+            //dtM.Columns[1].ColumnName = "Tên vật tư";
+            //dtM.Columns[2].ColumnName = "Số lượng";
+            //dtM.Columns[3].ColumnName = "Đơn giá";
             return dtM;
         }
         public static Material GetMaterial(int materialID)
