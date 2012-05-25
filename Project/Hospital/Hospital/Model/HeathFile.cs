@@ -66,13 +66,13 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        HEATHFILEID, PATIENTID, DATE, PATIENTSTATE, PREHISTORY, DISEASE, TREATMENT
                                 FROM            HEATHFILE";
             dtHeathFile = SqlResult.ExecuteQuery(sqlSelect);
-            dtHeathFile.Columns[0].ColumnName = "Mã bệnh án";
-            dtHeathFile.Columns[1].ColumnName = "Mã bệnh nhân";
-            dtHeathFile.Columns[2].ColumnName = "Ngày lập";
-            dtHeathFile.Columns[3].ColumnName = "Tình trạng bệnh nhân";
-            dtHeathFile.Columns[4].ColumnName = "Tiền sử bệnh lý";
-            dtHeathFile.Columns[5].ColumnName = "Các bệnh mắc phải";
-            dtHeathFile.Columns[6].ColumnName = "Hướng điều trị";
+            //dtHeathFile.Columns[0].ColumnName = "Mã bệnh án";
+            //dtHeathFile.Columns[1].ColumnName = "Mã bệnh nhân";
+            //dtHeathFile.Columns[2].ColumnName = "Ngày lập";
+            //dtHeathFile.Columns[3].ColumnName = "Tình trạng bệnh nhân";
+            //dtHeathFile.Columns[4].ColumnName = "Tiền sử bệnh lý";
+            //dtHeathFile.Columns[5].ColumnName = "Các bệnh mắc phải";
+            //dtHeathFile.Columns[6].ColumnName = "Hướng điều trị";
             return dtHeathFile;
         }
         public static HeathFile GetHeathFile(int heathFileID)

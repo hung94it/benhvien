@@ -36,8 +36,6 @@ namespace Hospital.View
             InitializeComponent();
             textBoxStaffID.Text = staffID.ToString();
             textBoxPatientID.Text = patientID.ToString();
-            textBoxPatientID.ReadOnly = true;
-            SetAutoComplete();
         }
         //This constructor for update in Heath Note Management
         public FormHNDetail(HeathMonitoringNote hnDetail, String userAction)
@@ -52,8 +50,6 @@ namespace Hospital.View
             textBoxPatientState.Text = hnDetail.PatientState;
             textBoxBloodPressure.Text = hnDetail.BloodPressure;
             textBoxWeight.Text = hnDetail.Weight;
-
-            SetAutoComplete();
         }
 
         private void SetAutoComplete()
@@ -71,8 +67,8 @@ namespace Hospital.View
 
         private void buttonOk_Click(object sender, System.EventArgs e)
         {
-            if (textBoxPatientID.Text != "" && textBoxBloodPressure.Text != "" && textBoxPatientState.Text != "" && textBoxWeight.Text != "")
-            {
+            if(!superValidator1.Validate())
+            return;
                 if (Patient.IsPatientExist(int.Parse(textBoxPatientID.Text)))
                 {
                     try
@@ -87,8 +83,13 @@ namespace Hospital.View
                             newHN.Weight = textBoxWeight.Text;
                             newHN.BloodPressure = textBoxBloodPressure.Text;
                             newHN.Date = dateCreate.Value;
-                            if(HeathMonitoringNote.UpdateHN(newHN)>0)
-                                MessageBox.Show("Cập nhập thông tin phiếu theo dõi sức khỏe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin phiếu theo dõi sức khỏe", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                if (HeathMonitoringNote.UpdateHN(newHN) > 0)
+                                    MessageBox.Show("Cập nhập thông tin phiếu theo dõi sức khỏe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            }
+                            
                         }
                         else
                         {
@@ -108,11 +109,7 @@ namespace Hospital.View
                     {
                         MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Bệnh nhân không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                
                 this.Close();
             }
             else

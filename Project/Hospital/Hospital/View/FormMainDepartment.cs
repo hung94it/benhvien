@@ -20,21 +20,21 @@ namespace Hospital.View
         private void buttonDepartmentDelete_Click(object sender, EventArgs e)
         {
             int departmentID = Convert.ToInt16(dataViewDepartment.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phòng ban này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phòng khoa này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
                 try
                 {
                     if (Department.DeleteDepartment(departmentID) > 0)
-                        MessageBox.Show("Xóa phòng ban thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show("Xóa phòng khoa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 catch
                 {
-                    MessageBox.Show("phòng ban đã hoặc đang có người công tác", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("phòng khoa đã hoặc đang có người công tác", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
-            refreshDataViewMaterial();
+            refreshDataViewDepartment();
         }
 
         private void buttonDepartmentEdit_Click(object sender, EventArgs e)

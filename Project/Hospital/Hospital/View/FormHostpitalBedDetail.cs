@@ -41,30 +41,27 @@ namespace Hospital.View
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (textBoxPatientID.Text != "")
-            {
+            if (!superValidator1.Validate())
+                return;
                 HBDetail.Patient = int.Parse(textBoxPatientID.Text);
                 String str = comboBoxState.Items[comboBoxState.SelectedIndex].ToString();
-                if (str.Equals("Trống"))
-                    HBDetail.State = 0;
+                HBDetail.State = 1;
+                if (Patient.IsPatientExist(HBDetail.Patient))
+                {
+                    try
+                    {
+                        if (HospitalBed.UpdateHospitalBed(HBDetail) > 0)
+                            MessageBox.Show("Nhận giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch (SqlException exception)
+                    {
+                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
                 else
-                    HBDetail.State = 1;
-               
-                try
                 {
-                    if (HospitalBed.UpdateHospitalBed(HBDetail) > 0)
-                        MessageBox.Show("Cập nhập giường bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    MessageBox.Show("Bệnh nhân không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                catch (SqlException exception)
-                {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-   
-            }
-            else
-            {
-                MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
             this.Close();
         }
     }

@@ -35,24 +35,23 @@ namespace Hospital.View
         {
             this.Close();
         }
+        //For add feature
         private void SetHFDetail(int patientID)
         {
             textBoxPatientID.Text = patientID.ToString();
-            textBoxPatientID.ReadOnly = true;
             dateCreate.Enabled = false;
             dateCreate.Value = DateTime.Now;
         }
+        //For edit feature
         private void SetHFDetail(HeathFile hfDetail)
         {
             textBoxHFID.Text = hfDetail.HeathFileID.ToString();
             textBoxPatientID.Text = hfDetail.PatientID.ToString();
-            textBoxPatientID.ReadOnly = true;
             dateCreate.Value = hfDetail.Date;
             textBoxPatientState.Text = hfDetail.PatientState;
             textBoxPrehistory.Text = hfDetail.PreHistory;
             textBoxDisease.Text = hfDetail.PreHistory;
             textBoxTreatment.Text = hfDetail.Treament;
-            SetAutoComplete();
         }
         private void SetAutoComplete()
         {
@@ -65,8 +64,8 @@ namespace Hospital.View
 
         private void buttonOk_Click(object sender, System.EventArgs e)
         {
-            if (textBoxPatientState.Text != "" && textBoxPrehistory.Text != "" && textBoxDisease.Text != "" && textBoxTreatment.Text != "")
-            {
+            if (!superValidator1.Validate())
+                return;
                 if (Patient.IsPatientExist(int.Parse(textBoxPatientID.Text)))
                 {
                     try
@@ -81,8 +80,13 @@ namespace Hospital.View
                             newHF.Disease = textBoxDisease.Text;
                             newHF.Treament = textBoxTreatment.Text;
                             newHF.Date = dateCreate.Value;
-                            if (HeathFile.UpdateHeathFile(newHF) > 0)
-                                MessageBox.Show("Cập nhập thông tin bệnh án thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin bệnh án", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                if (HeathFile.UpdateHeathFile(newHF) > 0)
+                                    MessageBox.Show("Cập nhập thông tin bệnh án thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            }
+                            
                         }
                         else
                         {
@@ -114,11 +118,7 @@ namespace Hospital.View
                 {
                     MessageBox.Show("Bệnh nhân không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            }
-            else
-            {
-                MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            
             this.Close();
         }
     }
