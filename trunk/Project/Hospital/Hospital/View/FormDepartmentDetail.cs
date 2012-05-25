@@ -47,14 +47,19 @@ namespace Hospital.View
                     if (UserAction == "edit")
                     {
                         DepartmentDetail.DepartmentName = textBoxDepartmentName.Text;
-                        if (Department.UpdateDepartment(DepartmentDetail) > 0)
-                            MessageBox.Show("Cập nhập phòng ban thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin phòng khoa", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            if (Department.UpdateDepartment(DepartmentDetail) > 0)
+                                MessageBox.Show("Cập nhập thông tin phòng khoa thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        }
+                        
                     }
                     else
                     {
                         Department newDepartment = new Department(0, textBoxDepartmentName.Text);
                         if (Department.InsertDepartment(newDepartment) > 0)
-                            MessageBox.Show("Thêm phòng ban thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Thêm phòng khoa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
                 }
                 catch (SqlException exception)

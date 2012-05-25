@@ -211,6 +211,18 @@
     <Compile Include="View\FormMainDisease.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FormMainHC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMainHeathFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMainHeathNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMainHospitalBed.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FormMainMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +235,7 @@
     <Compile Include="View\FormMainPatient.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FormMainPrescription.cs" />
     <Compile Include="View\FormMainRole.cs">
       <SubType>Form</SubType>
     </Compile>

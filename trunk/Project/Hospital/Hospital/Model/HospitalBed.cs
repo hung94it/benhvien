@@ -56,9 +56,9 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        BEDID,PATIENT, STATE
                                 FROM            HOSPITALBED";
             dtHB = SqlResult.ExecuteQuery(sqlSelect);
-            dtHB.Columns[0].ColumnName = "Mã giường bệnh";
-            dtHB.Columns[1].ColumnName = "Mã bệnh nhân";
-            dtHB.Columns[2].ColumnName = "Trạng thái";
+            //dtHB.Columns[0].ColumnName = "Mã giường bệnh";
+            //dtHB.Columns[1].ColumnName = "Mã bệnh nhân";
+            //dtHB.Columns[2].ColumnName = "Trạng thái";
             return dtHB;
         }
         public static HospitalBed GetHospitalBed(int bedID)

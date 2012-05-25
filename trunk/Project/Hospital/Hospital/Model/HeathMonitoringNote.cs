@@ -57,22 +57,22 @@ namespace Hospital.Model
                                 ";
 
             dtHN = SqlResult.ExecuteQuery(sqlSelect);
-            dtHN.Columns[0].ColumnName = "Mã phiếu theo dõi sức khỏe";
-            dtHN.Columns[1].ColumnName = "Mã bệnh nhân";
-            dtHN.Columns[2].ColumnName = "Mã nhân viên";
-            dtHN.Columns[3].ColumnName = "Ngày lập";
-            dtHN.Columns[4].ColumnName = "Cân nặng";
-            dtHN.Columns[5].ColumnName = "Huyết áp";
-            dtHN.Columns[6].ColumnName = "Tình trạng bệnh nhân";
+            //dtHN.Columns[0].ColumnName = "Mã phiếu theo dõi sức khỏe";
+            //dtHN.Columns[1].ColumnName = "Mã bệnh nhân";
+            //dtHN.Columns[2].ColumnName = "Mã nhân viên";
+            //dtHN.Columns[3].ColumnName = "Ngày lập";
+            //dtHN.Columns[4].ColumnName = "Cân nặng";
+            //dtHN.Columns[5].ColumnName = "Huyết áp";
+            //dtHN.Columns[6].ColumnName = "Tình trạng bệnh nhân";
             return dtHN;
         }
-        public static DataTable GetListHN(int hNID)
+        public static DataTable GetListHN(int patientID)
         {
             DataTable dtHN = new DataTable();
             string sqlSelect = @"SELECT        HNID, PATIENTID, STAFFID, DATE, WEIGHT, BLOODPRESSURE, PATIENTSTATE
                                 FROM            HEATHMONITORINGNOTE
-                                WHERE        HNID=@HNID";
-            SqlParameter[] sqlParameters = { new SqlParameter("@HNID", hNID) };
+                                WHERE        PATIENTID=@PATIENTID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", patientID) };
             dtHN = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             dtHN.Columns[0].ColumnName = "Mã phiếu theo dõi sức khỏe";
             dtHN.Columns[1].ColumnName = "Mã bệnh nhân";

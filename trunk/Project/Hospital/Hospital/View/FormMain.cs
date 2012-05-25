@@ -36,31 +36,22 @@ namespace Hospital.View
             this.Close();
         }
 
-       
+        private void buttonDeleteHeathNoteSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxHeathNoteSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxHeathNoteSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
 
         
-
-        
-
-        
-
-       
-
-       
-        
-
-        
-        
-
-        
-
-        
-
-       
-
-        
-
-        
-
-    }
+   
+     }
 }
