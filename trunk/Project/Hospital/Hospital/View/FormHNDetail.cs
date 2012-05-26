@@ -36,6 +36,8 @@ namespace Hospital.View
             InitializeComponent();
             textBoxStaffID.Text = staffID.ToString();
             textBoxPatientID.Text = patientID.ToString();
+            dateCreate.Value = DateTime.Now;
+            dateCreate.Enabled = false;
         }
         //This constructor for update in Heath Note Management
         public FormHNDetail(HeathMonitoringNote hnDetail, String userAction)

@@ -38,7 +38,22 @@ namespace Hospital.View
 
         private void buttonHealthFileDelete_Click(object sender, EventArgs e)
         {
+            int heathFileID = Convert.ToInt32(dataViewHeathFile.SelectedRows[0].Cells[0].Value);
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa bệnh án này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                try
+                {
+                    if (HeathFile.DeleteHeathFile(heathFileID) > 0)
+                        MessageBox.Show("Xóa bệnh án thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                }
+                catch
+                {
+                    MessageBox.Show("Không thể xóa bệnh án này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
 
+            refreshDataViewHeathFile();
         }
 
         private void buttonHealthFileEdit_Click(object sender, EventArgs e)
