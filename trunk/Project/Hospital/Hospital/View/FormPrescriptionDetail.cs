@@ -189,6 +189,7 @@ namespace Hospital.View
                                 newPD.PrescriptionID = Convert.ToInt32(textBoxPrescriptionID.Text);
                                 PrescriptionDetail.InsertPrescriptionDetail(newPD);
                             }
+                            listDP.Clear();
                             MessageBox.Show("Cập nhập thông tin toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                         }
                     }
