@@ -20,20 +20,35 @@ namespace Hospital.View
         {
             InitializeComponent();
         }
+        public FormECDetail(int staffID, int patientID)
+        {
+            InitializeComponent();
+            textBoxPatientID.Text = patientID.ToString();
+            textBoxStaffID.Text = staffID.ToString();
+            dateCreate.Value = DateTime.Now;
+            comboBoxState.SelectedIndex = 0;
+            textBoxResult.Text = "Không có";
+            this.UserAction = "add";
+
+            textBoxResult.ReadOnly = true;
+            comboBoxState.Enabled = false;
+            dateCreate.Enabled = false;
+        }
         public FormECDetail(ExaminationCertificate ecDetail, String userAction)
         {
             InitializeComponent();
             this.ECDetail = ecDetail;
             this.UserAction = userAction;
-            if (this.UserAction == "edit")
-                SetECDetail(ecDetail);
-            else
-            {
-                SetECDetail(ecDetail);
-                dateCreate.Enabled = false;
-                comboBoxState.Enabled = false;
-            }
+            SetECDetail(ecDetail);
         }
+        public FormECDetail(ExaminationCertificate ecDetail, String userAction,int staffID)
+        {
+            InitializeComponent();
+            this.ECDetail = ecDetail;
+            this.UserAction = userAction;
+            SetECDetail(ecDetail,staffID);
+        }
+        //This method is for update
         private void SetECDetail(ExaminationCertificate ecDetail)
         {
             textBoxECID.Text = ecDetail.ECID.ToString();;
@@ -41,7 +56,22 @@ namespace Hospital.View
             textBoxStaffID.Text = ecDetail.StaffID.ToString();
             dateCreate.Value = ecDetail.Date;
             textBoxResult.Text = ecDetail.Result;
+            textBoxResult.Enabled = false;
+            comboBoxState.Enabled = false;
             comboBoxState.SelectedIndex = ecDetail.State;
+        }
+        //This method is for update result
+        private void SetECDetail(ExaminationCertificate ecDetail,int staffID)
+        {
+            textBoxECID.Text = ecDetail.ECID.ToString(); ;
+            textBoxPatientID.Text = ecDetail.PatientID.ToString();
+            textBoxStaffID.Text = staffID.ToString(); ;
+            dateCreate.Value = ecDetail.Date;
+            textBoxResult.Text = ecDetail.Result;
+            comboBoxState.SelectedIndex = ecDetail.State;
+
+            dateCreate.Enabled = false;
+            comboBoxState.Enabled = false;
         }
         private void buttonClose_Click(object sender, System.EventArgs e)
         {
@@ -52,48 +82,58 @@ namespace Hospital.View
         {
             try
             {
-                
-                if (textBoxResult.Text != "")
-                {
-                    if (UserAction.Equals("edit"))
+
+                if (!superValidator1.Validate())
+                    return;
+                    if (this.UserAction.Equals("edit"))
                     {
                         ExaminationCertificate newEC = new ExaminationCertificate();
                         newEC = this.ECDetail;
                         newEC.Result = textBoxResult.Text;
                         newEC.State = comboBoxState.SelectedIndex;
                         newEC.Date = dateCreate.Value;
-                        if (newEC.State == 1 && comboBoxState.SelectedIndex != 1)
+                        DialogResult dialogResult = MessageBox.Show("Bạn có cập nhập thông tin phiếu khám bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (dialogResult == DialogResult.Yes)
                         {
                             if (ExaminationCertificate.UpdateEC(newEC) > 0)
                                 MessageBox.Show("Cập nhập thông tin phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                         }
-                        else
-                        {
-                            MessageBox.Show("Không được phép cập nhập trạng thái khi phiếu đã được xác nhận", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
                         
+                        
+                        
+                    }
+                    else if (this.UserAction == "updateResult")
+                    {
+                        ExaminationCertificate newEC = new ExaminationCertificate();
+                        newEC.ECID = Convert.ToInt32(textBoxECID.Text);
+                        newEC.PatientID = Convert.ToInt32(textBoxPatientID.Text);
+                        newEC.StaffID = Convert.ToInt32(textBoxStaffID.Text);
+                        newEC.State = 1;
+                        newEC.Date = dateCreate.Value;
+                        newEC.Result = textBoxResult.Text;
+                        if (ExaminationCertificate.UpdateEC(newEC) > 0)
+                            MessageBox.Show("Cập nhập kết quả khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
                     else
                     {
                         ExaminationCertificate newEC = new ExaminationCertificate();
-                        newEC = this.ECDetail;
+                        newEC.ECID = 0;
+                        newEC.PatientID = Convert.ToInt32(textBoxPatientID.Text);
+                        newEC.StaffID = Convert.ToInt32(textBoxStaffID.Text);
+                        newEC.State = comboBoxState.SelectedIndex;
+                        newEC.Date = dateCreate.Value;
                         newEC.Result = textBoxResult.Text;
-                        newEC.State = 1;
-                        if(ExaminationCertificate.UpdateEC(newEC)>0)
-                            MessageBox.Show("Cập nhập kết quả khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        if (ExaminationCertificate.InsertEC(newEC) > 0)
+                            MessageBox.Show("Thêm phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);   
-                }
+                
                 
             }
             catch (SqlException exception)
             {
                 MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+            this.Close();
         }
     }
 }

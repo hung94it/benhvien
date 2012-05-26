@@ -67,7 +67,6 @@ namespace Hospital.View
             textBoxPatientID.ReadOnly = true;
             comboBoxState.Enabled = false;
             comboBoxState.SelectedIndex = 0;
-            //Need a function to get current user
             textBoxStaffID.Text = 10000000.ToString();
 
             dateHospitalizate.Enabled = false;

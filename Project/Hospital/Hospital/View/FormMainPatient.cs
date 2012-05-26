@@ -141,5 +141,43 @@ namespace Hospital.View
                 MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Add a new Prescription
+        private void Prescription_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+            //Current user
+            int staffID = 10000000;
+            
+            FormPrescriptionDetail formPD = new FormPrescriptionDetail(staffID,patientID);
+            formPD.ShowDialog();
+        }
+        //Add a new heath file
+        private void buttonHealthFile_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+
+            FormHFDetail formHFD = new FormHFDetail(patientID);
+            formHFD.ShowDialog();
+        }
+        //Add a new heath note
+        private void buttonHealthMonitor_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+            //Current user
+            int staffID = 10000000;
+
+            FormHNDetail formHND = new FormHNDetail(staffID, patientID);
+            formHND.ShowDialog();
+        }
+        //Add a new examination certificate
+        private void buttonPatientExamination_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+            //Current user
+            int staffID = 10000000;
+
+            FormECDetail formECD = new FormECDetail(staffID, patientID);
+            formECD.ShowDialog();
+        }
     }
 }

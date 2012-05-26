@@ -20,27 +20,61 @@ namespace Hospital.View
 
         private void textBoxExaminationSearch_TextChanged(object sender, EventArgs e)
         {
-
+            searchExamination();
         }
 
         private void textBoxExaminationSearch_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Enter)
+            {
+                searchExamination();
+            }
         }
 
         private void buttonDeleteExaminationSearch_Click(object sender, EventArgs e)
         {
-
+            textBoxExaminationSearch.Text = "";
+            searchExamination();
         }
 
         private void buttonExaminationDelete_Click(object sender, EventArgs e)
         {
-
+            int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu khám bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if(ExaminationCertificate.GetEC(ecID).State != 1)
+                {
+                    if (ExaminationCertificate.DeleteEC(ecID) > 0)
+                        MessageBox.Show("Xóa phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa phiếu khám bệnh này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            refreshDataViewExamination();
         }
 
         private void buttonExaminationEdit_Click(object sender, EventArgs e)
         {
+            int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
+            ExaminationCertificate updateEC = ExaminationCertificate.GetEC(ecID);
+            FormECDetail formECD = new FormECDetail(updateEC, "edit");
+            formECD.ShowDialog();
 
+            refreshDataViewExamination();
+        }
+        private void buttonUpdateResult_Click(object sender, EventArgs e)
+        {
+            int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
+            ExaminationCertificate updateEC = ExaminationCertificate.GetEC(ecID);
+            //Current user
+            int staffID = 10000000;
+            FormECDetail formECD = new FormECDetail(updateEC, "updateResult", staffID);
+            formECD.ShowDialog();
+
+            refreshDataViewExamination();
         }
         //Refresh datagridview in Examination tab
         private void refreshDataViewExamination()
@@ -52,8 +86,8 @@ namespace Hospital.View
 
                 // Add Vietnamese column's name
                 examinationTable.Columns.Add("Mã phiếu khám bệnh", typeof(string), "[ECID]");
-                examinationTable.Columns.Add("Mã bệnh nhân", typeof(DateTime), "[PATIENTID]");
-                examinationTable.Columns.Add("Mã nhân viên", typeof(DateTime), "[STAFFID]");
+                examinationTable.Columns.Add("Mã bệnh nhân", typeof(string), "[PATIENTID]");
+                examinationTable.Columns.Add("Mã nhân viên", typeof(string), "[STAFFID]");
                 examinationTable.Columns.Add("Ngày lập", typeof(DateTime), "[DATE]");
                 examinationTable.Columns.Add("Kết quả", typeof(string), "[RESULT]");
                 examinationTable.Columns.Add("Trạng thái", typeof(string), "IIF([STATE] = 0, 'Chưa xác nhận', 'Đã xác nhận')");
@@ -70,6 +104,23 @@ namespace Hospital.View
             catch (SqlException exception)
             {
                 MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        //Search in datagridview
+        private void searchExamination()
+        {
+            // Not search it search string is empty
+            if (textBoxExaminationSearch.Text != "")
+            {
+                // Search with RowFilter
+                ((DataView)dataViewExamination.DataSource).RowFilter = "[Mã phiếu khám bệnh] LIKE '*" + textBoxExaminationSearch.Text.Trim() + "*'"
+                                                                + "OR [Mã bệnh nhân] LIKE '*" + textBoxExaminationSearch.Text.Trim() + "*'"
+                                                                + "OR [Mã nhân viên] LIKE '*" + textBoxExaminationSearch.Text.Trim() + "*'"
+                                                                + "OR [Trạng thái] LIKE '*" + textBoxExaminationSearch.Text.Trim() + "*'";
+            }
+            else
+            {
+                ((DataView)dataViewExamination.DataSource).RowFilter = "";
             }
         }
     }
