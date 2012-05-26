@@ -55,10 +55,10 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        PRESCRIPTIONID, STAFFID, PATIENTID, DATE
                                 FROM            PRESCRIPTION";
             dtP = SqlResult.ExecuteQuery(sqlSelect);
-            dtP.Columns[0].ColumnName = "Mã đơn thuốc";
-            dtP.Columns[1].ColumnName = "Mã nhân viên";
-            dtP.Columns[2].ColumnName = "Mã bệnh nhân";
-            dtP.Columns[3].ColumnName = "Ngày lập";
+            //dtP.Columns[0].ColumnName = "Mã đơn thuốc";
+            //dtP.Columns[1].ColumnName = "Mã nhân viên";
+            //dtP.Columns[2].ColumnName = "Mã bệnh nhân";
+            //dtP.Columns[3].ColumnName = "Ngày lập";
             return dtP;
 
         }

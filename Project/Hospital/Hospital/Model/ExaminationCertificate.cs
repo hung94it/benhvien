@@ -61,12 +61,12 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        ECID, PATIENTID, STAFFID, DATE, RESULT, STATE
                                 FROM            EXAMINATIONCERTIFICATE";
             dtEC = SqlResult.ExecuteQuery(sqlSelect);
-            dtEC.Columns[0].ColumnName = "Mã phiếu khám bệnh";
-            dtEC.Columns[1].ColumnName = "Mã bệnh nhân";
-            dtEC.Columns[2].ColumnName = "Mã nhân viên khám";
-            dtEC.Columns[3].ColumnName = "Ngày lập";
-            dtEC.Columns[4].ColumnName = "Kết quả";
-            dtEC.Columns[5].ColumnName = "Trạng thái";
+            //dtEC.Columns[0].ColumnName = "Mã phiếu khám bệnh";
+            //dtEC.Columns[1].ColumnName = "Mã bệnh nhân";
+            //dtEC.Columns[2].ColumnName = "Mã nhân viên khám";
+            //dtEC.Columns[3].ColumnName = "Ngày lập";
+            //dtEC.Columns[4].ColumnName = "Kết quả";
+            //dtEC.Columns[5].ColumnName = "Trạng thái";
             return dtEC;
         }
         public static ExaminationCertificate GetEC(int eCID)
