@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      Microsoft SQL Server 2005                    */
-/* Created on:     5/13/2012 9:15:03 PM                         */
+/* Created on:     5/26/2012 10:04:56 AM                        */
 /*==============================================================*/
 
 
@@ -181,9 +181,9 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('ROLEDETAIL') and o.name = 'FK_ROLEDETA_RELATIONS_ROLEFUNC')
+   where r.fkeyid = object_id('ROLEDETAIL') and o.name = 'FK_ROLEDETA_RELATIONS_FUNCTION')
 alter table ROLEDETAIL
-   drop constraint FK_ROLEDETA_RELATIONS_ROLEFUNC
+   drop constraint FK_ROLEDETA_RELATIONS_FUNCTION
 go
 
 if exists (select 1
@@ -209,16 +209,16 @@ go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('STAFF') and o.name = 'FK_STAFF_RELATIONS_MAJOR')
+   where r.fkeyid = object_id('STAFF') and o.name = 'FK_STAFF_RELATIONS_ROLE')
 alter table STAFF
-   drop constraint FK_STAFF_RELATIONS_MAJOR
+   drop constraint FK_STAFF_RELATIONS_ROLE
 go
 
 if exists (select 1
    from sys.sysreferences r join sys.sysobjects o on (o.id = r.constid and o.type = 'F')
-   where r.fkeyid = object_id('STAFF') and o.name = 'FK_STAFF_RELATIONS_ROLE')
+   where r.fkeyid = object_id('STAFF') and o.name = 'FK_STAFF_RELATIONS_MAJOR')
 alter table STAFF
-   drop constraint FK_STAFF_RELATIONS_ROLE
+   drop constraint FK_STAFF_RELATIONS_MAJOR
 go
 
 if exists (select 1
@@ -414,6 +414,13 @@ if exists (select 1
            where  id = object_id('EXAMINATIONCERTIFICATE')
             and   type = 'U')
    drop table EXAMINATIONCERTIFICATE
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('"FUNCTION"')
+            and   type = 'U')
+   drop table "FUNCTION"
 go
 
 if exists (select 1
@@ -667,13 +674,6 @@ go
 
 if exists (select 1
             from  sysobjects
-           where  id = object_id('ROLEFUNCTION')
-            and   type = 'U')
-   drop table ROLEFUNCTION
-go
-
-if exists (select 1
-            from  sysobjects
            where  id = object_id('SERVICE')
             and   type = 'U')
    drop table SERVICE
@@ -707,19 +707,19 @@ go
 if exists (select 1
             from  sysindexes
            where  id    = object_id('STAFF')
-            and   name  = 'RELATIONSHIP_28_FK'
+            and   name  = 'RELATIONSHIP_50_FK'
             and   indid > 0
             and   indid < 255)
-   drop index STAFF.RELATIONSHIP_28_FK
+   drop index STAFF.RELATIONSHIP_50_FK
 go
 
 if exists (select 1
             from  sysindexes
            where  id    = object_id('STAFF')
-            and   name  = 'RELATIONSHIP_27_FK'
+            and   name  = 'RELATIONSHIP_28_FK'
             and   indid > 0
             and   indid < 255)
-   drop index STAFF.RELATIONSHIP_27_FK
+   drop index STAFF.RELATIONSHIP_28_FK
 go
 
 if exists (select 1
@@ -1012,6 +1012,17 @@ STAFFID ASC
 go
 
 /*==============================================================*/
+/* Table: "FUNCTION"                                            */
+/*==============================================================*/
+create table "FUNCTION" (
+   FUNCTIONID           numeric(3)           not null,
+   FUNCTIONNAME         varchar(100)         null,
+   "FUNCTION"           varchar(50)          null,
+   constraint PK_FUNCTION primary key nonclustered (FUNCTIONID)
+)
+go
+
+/*==============================================================*/
 /* Table: HEATHFILE                                             */
 /*==============================================================*/
 create table HEATHFILE (
@@ -1141,7 +1152,7 @@ go
 /*==============================================================*/
 create table MATERIAL (
    MATERIALID           numeric(3)           not null,
-   MATERIALNAME         text                 null,
+   MATERIALNAME         varchar(100)         null,
    QUANTITY             int                  null,
    PRICE                money                null,
    constraint PK_MATERIAL primary key nonclustered (MATERIALID)
@@ -1302,7 +1313,7 @@ go
 /*==============================================================*/
 create table ROLEDETAIL (
    ROLEID               numeric(3)           not null,
-   ROLEFUNCTIONID       numeric(3)           not null
+   FUNCTIONID           numeric(3)           not null
 )
 go
 
@@ -1318,18 +1329,7 @@ go
 /* Index: RELATIONSHIP_4_FK                                     */
 /*==============================================================*/
 create index RELATIONSHIP_4_FK on ROLEDETAIL (
-ROLEFUNCTIONID ASC
-)
-go
-
-/*==============================================================*/
-/* Table: ROLEFUNCTION                                          */
-/*==============================================================*/
-create table ROLEFUNCTION (
-   ROLEFUNCTIONID       numeric(3)           not null,
-   ROLEFUNCTIONNAME     varchar(100)         null,
-   "FUNCTION"           varchar(50)          null,
-   constraint PK_ROLEFUNCTION primary key nonclustered (ROLEFUNCTIONID)
+FUNCTIONID ASC
 )
 go
 
@@ -1376,8 +1376,8 @@ go
 /*==============================================================*/
 create table STAFF (
    STAFFID              numeric(8)           not null,
-   DEPARTMENTID         numeric(3)           null,
    MAJORID              numeric(3)           null,
+   DEPARTMENTID         numeric(3)           null,
    ROLEID               numeric(3)           null,
    PASSWORD             char(100)            null,
    FIRSTNAME            varchar(100)         null,
@@ -1400,18 +1400,18 @@ DEPARTMENTID ASC
 go
 
 /*==============================================================*/
-/* Index: RELATIONSHIP_27_FK                                    */
-/*==============================================================*/
-create index RELATIONSHIP_27_FK on STAFF (
-MAJORID ASC
-)
-go
-
-/*==============================================================*/
 /* Index: RELATIONSHIP_28_FK                                    */
 /*==============================================================*/
 create index RELATIONSHIP_28_FK on STAFF (
 ROLEID ASC
+)
+go
+
+/*==============================================================*/
+/* Index: RELATIONSHIP_50_FK                                    */
+/*==============================================================*/
+create index RELATIONSHIP_50_FK on STAFF (
+MAJORID ASC
 )
 go
 
@@ -1652,8 +1652,8 @@ alter table ROLEDETAIL
 go
 
 alter table ROLEDETAIL
-   add constraint FK_ROLEDETA_RELATIONS_ROLEFUNC foreign key (ROLEFUNCTIONID)
-      references ROLEFUNCTION (ROLEFUNCTIONID)
+   add constraint FK_ROLEDETA_RELATIONS_FUNCTION foreign key (FUNCTIONID)
+      references "FUNCTION" (FUNCTIONID)
 go
 
 alter table SERVICEBILLDETAIL
@@ -1672,13 +1672,13 @@ alter table STAFF
 go
 
 alter table STAFF
-   add constraint FK_STAFF_RELATIONS_MAJOR foreign key (MAJORID)
-      references MAJOR (MAJORID)
+   add constraint FK_STAFF_RELATIONS_ROLE foreign key (ROLEID)
+      references ROLE (ROLEID)
 go
 
 alter table STAFF
-   add constraint FK_STAFF_RELATIONS_ROLE foreign key (ROLEID)
-      references ROLE (ROLEID)
+   add constraint FK_STAFF_RELATIONS_MAJOR foreign key (MAJORID)
+      references MAJOR (MAJORID)
 go
 
 alter table SURGICAL
