@@ -61,9 +61,9 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataGridViewX1.Location = new System.Drawing.Point(0, 110);
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 49);
             this.dataGridViewX1.Name = "dataGridViewX1";
-            this.dataGridViewX1.Size = new System.Drawing.Size(431, 238);
+            this.dataGridViewX1.Size = new System.Drawing.Size(431, 299);
             this.dataGridViewX1.TabIndex = 0;
             // 
             // dataGridViewX2
@@ -113,7 +113,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 662);
+            this.splitContainer1.Size = new System.Drawing.Size(884, 684);
             this.splitContainer1.SplitterDistance = 446;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -131,15 +131,15 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dataGridViewX3);
-            this.splitContainer2.Size = new System.Drawing.Size(434, 662);
-            this.splitContainer2.SplitterDistance = 296;
+            this.splitContainer2.Size = new System.Drawing.Size(434, 684);
+            this.splitContainer2.SplitterDistance = 305;
             this.splitContainer2.TabIndex = 0;
             // 
             // FormBillDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 662);
+            this.ClientSize = new System.Drawing.Size(884, 684);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(900, 700);
