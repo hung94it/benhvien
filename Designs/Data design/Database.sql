@@ -211,7 +211,7 @@ go
 /*==============================================================*/
 /* Table: "FUNCTION"                                            */
 /*==============================================================*/
-create table DETAILFUNCTION (
+create table ROLEFUNCTION (
    FUNCTIONID           numeric(3)      identity(100,1)     not null,
    FUNCTIONNAME         nvarchar(100)         null,
    BUTTON               nvarchar(50)          null,
