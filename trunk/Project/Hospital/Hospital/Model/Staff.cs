@@ -13,6 +13,7 @@ namespace Hospital.Model
         public const int GENDER_MALE = 0;
         public const int GENDER_FEMALE = 1;
         public static DataTable staffTable;
+        //private static bool isDataChanged = false;
 
         public int StaffID { get; set; }
         public int RoleID { get; set; }
@@ -65,6 +66,8 @@ namespace Hospital.Model
                                            new SqlParameter("@ICN", staff.ICN),
                                            new SqlParameter("@Address", staff.Address),
                                            new SqlParameter("@State", staff.State)};
+
+
 
             return SqlResult.ExecuteNonQuery(sqlInsert, sqlParameters);
         }
