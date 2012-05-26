@@ -46,6 +46,9 @@ namespace Hospital.View
                 case "Thuốc":
                     refreshDataViewMedicine();
                     break;
+                case "Nhân viên":
+                    refreshDataViewStaff();
+                    break;
             }
         }
       
