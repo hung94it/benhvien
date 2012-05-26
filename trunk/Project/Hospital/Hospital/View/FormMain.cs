@@ -35,6 +35,19 @@ namespace Hospital.View
         {
             this.Close();
         }
+
+        private void tabMain_SelectedTabChanged(object sender, DevComponents.DotNetBar.SuperTabStripSelectedTabChangedEventArgs e)
+        {
+            switch((sender as DevComponents.DotNetBar.SuperTabControl).SelectedTab.Text)
+            {
+                case "Bệnh nhân":
+                    refreshDataViewPatient();
+                    break;
+                case "Thuốc":
+                    refreshDataViewMedicine();
+                    break;
+            }
+        }
       
                          
    
