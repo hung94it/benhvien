@@ -63,12 +63,12 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        HCID, PATIENTID, STAFFID, REASON, DATE, STATE
                                 FROM            HOSPITALIZATIONCERTIFICATE";
             dtHC = SqlResult.ExecuteQuery(sqlSelect);
-            dtHC.Columns[0].ColumnName = "Mã giấy xuất viện";
-            dtHC.Columns[1].ColumnName = "Mã bệnh nhân";
-            dtHC.Columns[2].ColumnName = "Mã nhân viên";
-            dtHC.Columns[3].ColumnName = "Lý do nhập viện";
-            dtHC.Columns[4].ColumnName = "Ngày lập";
-            dtHC.Columns[5].ColumnName = "Trạng thái";
+            //dtHC.Columns[0].ColumnName = "Mã giấy xuất viện";
+            //dtHC.Columns[1].ColumnName = "Mã bệnh nhân";
+            //dtHC.Columns[2].ColumnName = "Mã nhân viên";
+            //dtHC.Columns[3].ColumnName = "Lý do nhập viện";
+            //dtHC.Columns[4].ColumnName = "Ngày lập";
+            //dtHC.Columns[5].ColumnName = "Trạng thái";
             return dtHC;
         }
         public static HospitalizationCertificate GetHC(int hCID)

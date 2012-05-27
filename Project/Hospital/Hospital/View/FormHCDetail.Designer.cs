@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHCDetail));
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
@@ -45,8 +47,14 @@
             this.labelHCID = new DevComponents.DotNetBar.LabelX();
             this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelRoleName = new DevComponents.DotNetBar.LabelX();
+            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập lý do");
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập lý do");
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateHospitalizate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel1
@@ -69,7 +77,7 @@
             this.groupPanel1.Controls.Add(this.labelRoleName);
             this.groupPanel1.Location = new System.Drawing.Point(12, 4);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(428, 281);
+            this.groupPanel1.Size = new System.Drawing.Size(453, 281);
             // 
             // 
             // 
@@ -111,6 +119,7 @@
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonOk.TabIndex = 60;
             this.buttonOk.Text = "Đồng ý";
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // buttonClose
             // 
@@ -122,6 +131,7 @@
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonClose.TabIndex = 61;
             this.buttonClose.Text = "Đóng";
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // labelState
             // 
@@ -234,6 +244,7 @@
             this.textBoxReason.Name = "textBoxReason";
             this.textBoxReason.Size = new System.Drawing.Size(293, 91);
             this.textBoxReason.TabIndex = 57;
+            this.superValidator1.SetValidator1(this.textBoxReason, this.requiredFieldValidator2);
             // 
             // labelAddress
             // 
@@ -273,6 +284,7 @@
             this.labelX1.Size = new System.Drawing.Size(92, 23);
             this.labelX1.TabIndex = 62;
             this.labelX1.Text = "Mã nhân viên lập";
+            this.superValidator1.SetValidator1(this.labelX1, this.requiredFieldValidator1);
             // 
             // textBoxHCID
             // 
@@ -311,6 +323,7 @@
             this.textBoxPatientID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxPatientID.Location = new System.Drawing.Point(125, 58);
             this.textBoxPatientID.Name = "textBoxPatientID";
+            this.textBoxPatientID.ReadOnly = true;
             this.textBoxPatientID.Size = new System.Drawing.Size(293, 20);
             this.textBoxPatientID.TabIndex = 56;
             // 
@@ -327,16 +340,42 @@
             this.labelRoleName.TabIndex = 64;
             this.labelRoleName.Text = "Mã bệnh nhân";
             // 
+            // superValidator1
+            // 
+            this.superValidator1.ContainerControl = this;
+            this.superValidator1.ErrorProvider = this.errorProvider1;
+            this.superValidator1.Highlighter = this.highlighter1;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập lý do";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Nhập lý do";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
             // FormHCDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 295);
+            this.ClientSize = new System.Drawing.Size(477, 295);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FormHCDetail";
             this.Text = "Thông tin giấy nhập viện";
             this.groupPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dateHospitalizate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -360,6 +399,11 @@
         private DevComponents.DotNetBar.LabelX labelHCID;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientID;
         private DevComponents.DotNetBar.LabelX labelRoleName;
+        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
 
     }
 }
