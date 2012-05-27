@@ -22,10 +22,10 @@ namespace Hospital.View
             SetHCDetail();
         }
         //This constructor uses for insert HC in PatientManagement
-        public FormHCDetail(int patientID)
+        public FormHCDetail(int staffID,int patientID)
         {
             InitializeComponent();
-            SetHCDetail(patientID);
+            SetHCDetail(staffID,patientID);
         }
         public FormHCDetail(HospitalizationCertificate hcDetail, String userAction)
         {
@@ -55,24 +55,23 @@ namespace Hospital.View
             textBoxHCID.Text = hcDetail.HCID.ToString();
             textBoxStaffID.Text = hcDetail.StaffID.ToString();
             textBoxPatientID.Text = hcDetail.PatientID.ToString();
-            textBoxPatientID.ReadOnly = true;
+
             textBoxReason.Text = hcDetail.Reason;
             dateHospitalizate.Value = hcDetail.Date;
             comboBoxState.SelectedIndex = hcDetail.State;
+            comboBoxState.Enabled = false;
 
         }
-        private void SetHCDetail(int patientID)
+        private void SetHCDetail(int staffID, int patientID)
         {
             textBoxPatientID.Text = patientID.ToString();
-            textBoxPatientID.ReadOnly = true;
+            textBoxStaffID.Text = staffID.ToString();
             comboBoxState.Enabled = false;
             comboBoxState.SelectedIndex = 0;
-            textBoxStaffID.Text = 10000000.ToString();
 
             dateHospitalizate.Enabled = false;
             dateHospitalizate.Text = DateTime.Now.ToShortDateString();
 
-            SetAutoComplete();
         }
         private void SetAutoComplete()
         {
@@ -84,58 +83,45 @@ namespace Hospital.View
         }
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (textBoxPatientID.Text != "" && textBoxReason.Text != "")
+            if (!superValidator1.Validate())
+                return;
+            try
             {
-                if (Patient.IsPatientExist(int.Parse(textBoxPatientID.Text)))
+                if (UserAction == "edit")
                 {
-                    try
-                    {
-                        if (UserAction == "edit")
-                        {
-                            HospitalizationCertificate newHC = new HospitalizationCertificate();
-                            newHC.HCID = int.Parse(textBoxHCID.Text);
-                            newHC.PatientID = int.Parse(textBoxPatientID.Text);
-                            newHC.StaffID = int.Parse(textBoxStaffID.Text);
-                            newHC.Reason = textBoxReason.Text;
-                            newHC.State = (int)comboBoxState.SelectedIndex;
-                            newHC.Date = dateHospitalizate.Value;
-                            if (HospitalizationCertificate.UpdateHC(newHC) > 0)
-                                MessageBox.Show("Cập nhập thông tin giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
-                        }
-                        else
-                        {
-                            if (HospitalizationCertificate.IsPatientHadHC(int.Parse(textBoxPatientID.Text)))
-                            {
-                                MessageBox.Show("Bệnh nhân đã có giấy nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
-                            else
-                            {
-                                HospitalizationCertificate newHC = new HospitalizationCertificate();
-                                newHC.HCID = 0;
-                                newHC.PatientID = int.Parse(textBoxPatientID.Text);
-                                newHC.StaffID = int.Parse(textBoxStaffID.Text);
-                                newHC.Reason = textBoxReason.Text;
-                                newHC.State = 0;
-                                newHC.Date = dateHospitalizate.Value;
-                                if (HospitalizationCertificate.InsertHC(newHC) > 0)
-                                    MessageBox.Show("Thêm giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
-                            }
-                        } 
-                    }
-                    catch (SqlException exception)
-                    {
-                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    
+                    HospitalizationCertificate newHC = new HospitalizationCertificate();
+                    newHC.HCID = int.Parse(textBoxHCID.Text);
+                    newHC.PatientID = int.Parse(textBoxPatientID.Text);
+                    newHC.StaffID = int.Parse(textBoxStaffID.Text);
+                    newHC.Reason = textBoxReason.Text;
+                    newHC.State = (int)comboBoxState.SelectedIndex;
+                    newHC.Date = dateHospitalizate.Value;
+                    if (HospitalizationCertificate.UpdateHC(newHC) > 0)
+                        MessageBox.Show("Cập nhập thông tin giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
                 else
                 {
-                    MessageBox.Show("Bệnh nhân không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                    if (HospitalizationCertificate.IsPatientHadHC(int.Parse(textBoxPatientID.Text)))
+                    {
+                        MessageBox.Show("Bệnh nhân đã có giấy nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        HospitalizationCertificate newHC = new HospitalizationCertificate();
+                        newHC.HCID = 0;
+                        newHC.PatientID = int.Parse(textBoxPatientID.Text);
+                        newHC.StaffID = int.Parse(textBoxStaffID.Text);
+                        newHC.Reason = textBoxReason.Text;
+                        newHC.State = 0;
+                        newHC.Date = dateHospitalizate.Value;
+                        if (HospitalizationCertificate.InsertHC(newHC) > 0)
+                            MessageBox.Show("Thêm giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                } 
             }
-            else
+            catch (SqlException exception)
             {
-                MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close();
         }

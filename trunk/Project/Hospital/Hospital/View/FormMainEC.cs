@@ -76,6 +76,7 @@ namespace Hospital.View
 
             refreshDataViewExamination();
         }
+      
         //Refresh datagridview in Examination tab
         private void refreshDataViewExamination()
         {

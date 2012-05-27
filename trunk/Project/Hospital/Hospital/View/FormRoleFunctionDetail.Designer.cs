@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRoleFunctionDetail));
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
@@ -37,7 +39,13 @@
             this.labelFunctionButton = new DevComponents.DotNetBar.LabelX();
             this.textBoxFunctionName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelFunctionName = new DevComponents.DotNetBar.LabelX();
+            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên chức năng");
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập nút");
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel1
@@ -54,7 +62,7 @@
             this.groupPanel1.Controls.Add(this.labelFunctionName);
             this.groupPanel1.Location = new System.Drawing.Point(12, 2);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(395, 132);
+            this.groupPanel1.Size = new System.Drawing.Size(416, 132);
             // 
             // 
             // 
@@ -96,6 +104,7 @@
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonClose.TabIndex = 33;
             this.buttonClose.Text = "Đóng";
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonOk
             // 
@@ -107,6 +116,7 @@
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonOk.TabIndex = 32;
             this.buttonOk.Text = "Đồng ý";
+            this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // textBoxFunctionID
             // 
@@ -145,6 +155,7 @@
             this.textBoxButton.Name = "textBoxButton";
             this.textBoxButton.Size = new System.Drawing.Size(293, 20);
             this.textBoxButton.TabIndex = 31;
+            this.superValidator1.SetValidator1(this.textBoxButton, this.requiredFieldValidator2);
             // 
             // labelFunctionButton
             // 
@@ -170,6 +181,7 @@
             this.textBoxFunctionName.Name = "textBoxFunctionName";
             this.textBoxFunctionName.Size = new System.Drawing.Size(293, 20);
             this.textBoxFunctionName.TabIndex = 30;
+            this.superValidator1.SetValidator1(this.textBoxFunctionName, this.requiredFieldValidator1);
             // 
             // labelFunctionName
             // 
@@ -184,15 +196,41 @@
             this.labelFunctionName.TabIndex = 35;
             this.labelFunctionName.Text = "Tên chức năng";
             // 
+            // superValidator1
+            // 
+            this.superValidator1.ContainerControl = this;
+            this.superValidator1.ErrorProvider = this.errorProvider1;
+            this.superValidator1.Highlighter = this.highlighter1;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập tên chức năng";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Nhập nút";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
             // FormRoleFunctionDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 140);
+            this.ClientSize = new System.Drawing.Size(440, 139);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FormRoleFunctionDetail";
             this.Text = "Thông tin chức năng";
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -208,6 +246,11 @@
         private DevComponents.DotNetBar.LabelX labelFunctionButton;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxFunctionName;
         private DevComponents.DotNetBar.LabelX labelFunctionName;
+        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
 
     }
 }

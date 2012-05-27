@@ -41,33 +41,34 @@ namespace Hospital.View
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            if (textBoxFunctionName.Text != "" && textBoxButton.Text != "")
+            if (!superValidator1.Validate())
+                return;
+            try
             {
-                try
+                if (UserAction == "edit")
                 {
-                    if (UserAction == "edit")
+                    Function.FucntionName = textBoxFunctionName.Text;
+                    Function.Button = textBoxButton.Text;
+                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin chức năng này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        Function.FucntionName = textBoxFunctionName.Text;
-                        Function.Button = textBoxButton.Text;
                         if (RoleFunction.UpdateFunction(Function) > 0)
-                            MessageBox.Show("Cập nhập phân quyền thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Cập nhập chức năng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
-                    else
-                    {
-                        RoleFunction newFunction = new RoleFunction(0, textBoxFunctionName.Text, textBoxButton.Text);
-                        if (RoleFunction.InsertFunction(newFunction) > 0)
-                            MessageBox.Show("Thêm bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    }
+                    
                 }
-                catch (SqlException exception)
+                else
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    RoleFunction newFunction = new RoleFunction(0, textBoxFunctionName.Text, textBoxButton.Text);
+                    if (RoleFunction.InsertFunction(newFunction) > 0)
+                        MessageBox.Show("Thêm chức năng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                 }
             }
-            else
+            catch (SqlException exception)
             {
-                MessageBox.Show("Thiếu thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
             this.Close();
         }
     }

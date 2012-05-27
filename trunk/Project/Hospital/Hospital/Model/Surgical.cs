@@ -27,10 +27,9 @@ namespace Hospital.Model
         }
         public static int InsertSurgical(Surgical newSurgical)
         {
-            String sqlInsert = @"INSERT INTO SURGICAL(SURGICALID, PATIENTID, DATE, DESCRIPTION, STATE)
-                                VALUES        (@SURGICALID,@PATIENTID,@DATE,@DESCRIPTION,@STATE)";
-            SqlParameter[] sqlParameters = { new SqlParameter("@SURGICALID", newSurgical.SurgicalID),
-                                            new SqlParameter("@PATIENTID", newSurgical.PatientID),
+            String sqlInsert = @"INSERT INTO SURGICAL(PATIENTID, DATE, DESCRIPTION, STATE)
+                                VALUES        (@PATIENTID,@DATE,@DESCRIPTION,@STATE)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", newSurgical.PatientID),
                                             new SqlParameter("@DATE", newSurgical.Date),
                                             new SqlParameter("@DESCRIPTION", newSurgical.Description ),
                                            new SqlParameter("@STATE",newSurgical.State)};
@@ -60,11 +59,11 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        SURGICALID, PATIENTID, DATE, DESCRIPTION, STATE
                                 FROM            SURGICAL";
             dtS = SqlResult.ExecuteQuery(sqlSelect);
-            dtS.Columns[0].ColumnName = "Mã ca phẩu thuật";
-            dtS.Columns[1].ColumnName = "Mã bệnh nhân";
-            dtS.Columns[2].ColumnName = "Ngày thực hiện";
-            dtS.Columns[3].ColumnName = "Mô tả";
-            dtS.Columns[4].ColumnName = "Trạng thái";
+            //dtS.Columns[0].ColumnName = "Mã ca phẩu thuật";
+            //dtS.Columns[1].ColumnName = "Mã bệnh nhân";
+            //dtS.Columns[2].ColumnName = "Ngày thực hiện";
+            //dtS.Columns[3].ColumnName = "Mô tả";
+            //dtS.Columns[4].ColumnName = "Trạng thái";
             return dtS;
         }
         public static Surgical GetSurgical(int surgicalID)
@@ -86,6 +85,12 @@ namespace Hospital.Model
                 newSurgical.State = int.Parse(dataTable.Rows[0][4].ToString());
             }
             return newSurgical;
+        }
+        public static int GetCurrentIdentity()
+        {
+            string sqlSelect = @"SELECT IDENT_CURRENT('SURGICAL')  as currIdent";
+            object ob = SqlResult.ExecuteScalar(sqlSelect);
+            return Convert.ToInt32(ob);
         }
     }
 }

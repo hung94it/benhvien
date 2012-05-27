@@ -244,10 +244,16 @@
     <Compile Include="View\FormMainRole.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FormMainRoleFunction.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FormMainService.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormMainStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMainSurgical.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormMaterialDetail.cs">

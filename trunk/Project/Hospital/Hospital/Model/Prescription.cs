@@ -81,10 +81,9 @@ namespace Hospital.Model
         }
         public static int GetPrescriptionInsertedID()
         {
-            DataTable dt = new DataTable();
-            string sqlSelect = @"SELECT MAX(PRESCRIPTION.PRESCRIPTIONID) as lastID from PRESCRIPTION";
-            dt = SqlResult.ExecuteQuery(sqlSelect);
-            return Convert.ToInt32(dt.Rows[0][0]);
+            string sqlSelect = @"SELECT IDENT_CURRENT('PRESCRIPTION')  as currIdent";
+            object ob = SqlResult.ExecuteScalar(sqlSelect);
+            return Convert.ToInt16(ob);
         }
 
     }

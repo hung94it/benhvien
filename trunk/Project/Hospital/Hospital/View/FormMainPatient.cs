@@ -179,5 +179,24 @@ namespace Hospital.View
             FormECDetail formECD = new FormECDetail(staffID, patientID);
             formECD.ShowDialog();
         }
+        //Add a new hostpitalization certificate
+        private void buttonHospitalizationCert_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+            //Current user
+            int staffID = 10000000;
+
+            FormHCDetail formHCD = new FormHCDetail(staffID, patientID);
+            formHCD.ShowDialog();
+
+        }
+        //Add a new surgical
+        private void buttonPatientSurgery_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+
+            FormSurgicalDetail formSD = new FormSurgicalDetail(patientID);
+            formSD.ShowDialog();
+        }
     }
 }
