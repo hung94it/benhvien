@@ -26,6 +26,13 @@ namespace Hospital.View
             InitializeComponent();
             SetSDForInsert(patientID);
         }
+        public FormSurgicalDetail(Surgical sDetail, String userAction)
+        {
+            InitializeComponent();
+            this.surgicalDetail = sDetail;
+            this.UserAction = userAction;
+            SetSDForUpdate(sDetail);
+        }
         private void SetSDForInsert(int patientID)
         {
             textBoxPatientID.Text = patientID.ToString();
@@ -43,7 +50,37 @@ namespace Hospital.View
             }
             listBoxSystemStaff.SelectedIndex = 0;
         }
+        private void SetSDForUpdate(Surgical sDetail)
+        {
+            textBoxPatientID.Text = sDetail.PatientID.ToString();
+            textBoxSurgicalID.Text = sDetail.SurgicalID.ToString();
+            dateCreate.Value = sDetail.Date;
+            textBoxDescription.Text = sDetail.Description;
+            comboBoxState.SelectedIndex = sDetail.State;
 
+            DataTable dtStaff = Staff.GetListStaff();
+            for (int i = 0; i < dtStaff.Rows.Count; i++)
+            {
+                String staffName = dtStaff.Rows[i][6].ToString() + " " + dtStaff.Rows[i][5].ToString();
+                Staff newStaff = Staff.GetStaff(Convert.ToInt32(dtStaff.Rows[i][0]));
+                listStaff.Add(newStaff);
+                listBoxSystemStaff.Items.Add(staffName);
+            }
+            listBoxSystemStaff.SelectedIndex = 0;
+
+            DataTable dtSD = SurgicalDetail.GetListSurgicalDetail(sDetail.SurgicalID);
+            for (int i = 0; i < dtSD.Rows.Count; i++)
+            {
+                String staffName = dtSD.Rows[i][2].ToString() + " " + dtSD.Rows[i][3].ToString();
+                SurgicalDetail newSD = new SurgicalDetail();
+                newSD.SurgicalID = Convert.ToInt32(dtSD.Rows[i][0]);
+                newSD.StaffID = Convert.ToInt32(dtSD.Rows[i][1]);
+                listSD.Add(newSD);
+                listBoxCurrentStaff.Items.Add(staffName);
+            }
+            if (listBoxCurrentStaff.Items.Count > 0)
+                listBoxCurrentStaff.SelectedIndex = 0;
+        }
         private void buttonRemoveFunction_Click(object sender, EventArgs e)
         {
             if (listBoxCurrentStaff.SelectedIndex != -1)
@@ -93,17 +130,33 @@ namespace Hospital.View
             {
                 try
                 {
+                    Surgical newSurgical = new Surgical();
+                    newSurgical.PatientID = Convert.ToInt32(textBoxPatientID.Text);
+                    newSurgical.Date = dateCreate.Value;
+                    newSurgical.State = comboBoxState.SelectedIndex;
+                    newSurgical.Description = textBoxDescription.Text;
                     if (this.UserAction == "edit")
                     {
-
+                        newSurgical.SurgicalID = Convert.ToInt32(textBoxSurgicalID.Text);
+                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin ca phẩu thuật này không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        if (dialogResult == DialogResult.OK)
+                        {
+                            if (Surgical.UpdateSurgical(newSurgical) > 0)
+                            {
+                                SurgicalDetail.DeleteSurgicalDetail(newSurgical.SurgicalID);
+                                for (int i = 0; i < listSD.Count; i++)
+                                {
+                                    SurgicalDetail newSD = listSD[i];
+                                    newSD.SurgicalID = newSurgical.SurgicalID;
+                                    SurgicalDetail.InsertSurgicalDetail(newSD);
+                                }
+                                listSD.Clear();
+                                MessageBox.Show("Cập nhập thông tin ca phẩu thuật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            }
+                        }
                     }
                     else
                     {
-                        Surgical newSurgical = new Surgical();
-                        newSurgical.PatientID = Convert.ToInt32(textBoxPatientID.Text);
-                        newSurgical.Date = dateCreate.Value;
-                        newSurgical.State = comboBoxState.SelectedIndex;
-                        newSurgical.Description = textBoxDescription.Text;
                         if (Surgical.InsertSurgical(newSurgical) > 0)
                         {
                             int curSurgicalID = Surgical.GetCurrentIdentity();
@@ -120,10 +173,7 @@ namespace Hospital.View
                 {
                     MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                listBoxCurrentStaff.Items.Clear();
-                listBoxSystemStaff.Items.Clear();
                 listSD.Clear();
-                listStaff.Clear();
                 this.Close();
             }
             else

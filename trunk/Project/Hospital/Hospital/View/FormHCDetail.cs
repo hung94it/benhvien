@@ -55,7 +55,6 @@ namespace Hospital.View
             textBoxHCID.Text = hcDetail.HCID.ToString();
             textBoxStaffID.Text = hcDetail.StaffID.ToString();
             textBoxPatientID.Text = hcDetail.PatientID.ToString();
-
             textBoxReason.Text = hcDetail.Reason;
             dateHospitalizate.Value = hcDetail.Date;
             comboBoxState.SelectedIndex = hcDetail.State;

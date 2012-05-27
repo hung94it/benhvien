@@ -190,6 +190,24 @@ namespace Hospital.View
             formHCD.ShowDialog();
 
         }
+        //Add a new discharged certificate
+        private void buttonDischargeCert_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+            //Current user
+            int staffID = 10000000;
+
+            if (HospitalizationCertificate.IsPatientHadHC(patientID))
+            {
+                FormDCDetail formDCD = new FormDCDetail(staffID, patientID);
+                formDCD.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Bệnh nhân chưa nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         //Add a new surgical
         private void buttonPatientSurgery_Click(object sender, EventArgs e)
         {

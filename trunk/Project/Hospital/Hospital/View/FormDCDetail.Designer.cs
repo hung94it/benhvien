@@ -1,6 +1,6 @@
 ﻿namespace Hospital.View
 {
-    partial class FormHCDetail
+    partial class FormDCDetail
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHCDetail));
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
@@ -38,23 +36,15 @@
             this.comboItemNo = new DevComponents.Editors.ComboItem();
             this.comboItemYes = new DevComponents.Editors.ComboItem();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
-            this.dateHospitalizate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
-            this.textBoxReason = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelAddress = new DevComponents.DotNetBar.LabelX();
+            this.dateDischarge = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.textBoxStaffID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxHCID = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxDCID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelHCID = new DevComponents.DotNetBar.LabelX();
             this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelRoleName = new DevComponents.DotNetBar.LabelX();
-            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
-            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập lý do");
-            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập lý do");
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.groupPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dateHospitalizate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDischarge)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel1
@@ -66,18 +56,16 @@
             this.groupPanel1.Controls.Add(this.labelState);
             this.groupPanel1.Controls.Add(this.comboBoxState);
             this.groupPanel1.Controls.Add(this.labelX2);
-            this.groupPanel1.Controls.Add(this.dateHospitalizate);
-            this.groupPanel1.Controls.Add(this.textBoxReason);
-            this.groupPanel1.Controls.Add(this.labelAddress);
+            this.groupPanel1.Controls.Add(this.dateDischarge);
             this.groupPanel1.Controls.Add(this.textBoxStaffID);
             this.groupPanel1.Controls.Add(this.labelX1);
-            this.groupPanel1.Controls.Add(this.textBoxHCID);
+            this.groupPanel1.Controls.Add(this.textBoxDCID);
             this.groupPanel1.Controls.Add(this.labelHCID);
             this.groupPanel1.Controls.Add(this.textBoxPatientID);
             this.groupPanel1.Controls.Add(this.labelRoleName);
-            this.groupPanel1.Location = new System.Drawing.Point(12, 4);
+            this.groupPanel1.Location = new System.Drawing.Point(12, 3);
             this.groupPanel1.Name = "groupPanel1";
-            this.groupPanel1.Size = new System.Drawing.Size(453, 281);
+            this.groupPanel1.Size = new System.Drawing.Size(453, 185);
             // 
             // 
             // 
@@ -106,14 +94,14 @@
             // 
             // 
             this.groupPanel1.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.groupPanel1.TabIndex = 0;
-            this.groupPanel1.Text = "Giấy nhập viện";
+            this.groupPanel1.TabIndex = 1;
+            this.groupPanel1.Text = "Giấy xuất viện";
             // 
             // buttonOk
             // 
             this.buttonOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonOk.Location = new System.Drawing.Point(251, 232);
+            this.buttonOk.Location = new System.Drawing.Point(251, 135);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -125,7 +113,7 @@
             // 
             this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonClose.Location = new System.Drawing.Point(343, 232);
+            this.buttonClose.Location = new System.Drawing.Point(343, 135);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -140,7 +128,7 @@
             // 
             // 
             this.labelState.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelState.Location = new System.Drawing.Point(3, 204);
+            this.labelState.Location = new System.Drawing.Point(3, 107);
             this.labelState.Name = "labelState";
             this.labelState.Size = new System.Drawing.Size(75, 23);
             this.labelState.TabIndex = 67;
@@ -156,7 +144,7 @@
             this.comboBoxState.Items.AddRange(new object[] {
             this.comboItemNo,
             this.comboItemYes});
-            this.comboBoxState.Location = new System.Drawing.Point(125, 207);
+            this.comboBoxState.Location = new System.Drawing.Point(125, 110);
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(127, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -177,87 +165,60 @@
             // 
             // 
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(3, 178);
+            this.labelX2.Location = new System.Drawing.Point(3, 81);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(121, 23);
             this.labelX2.TabIndex = 66;
-            this.labelX2.Text = "Ngày nhập viện";
+            this.labelX2.Text = "Ngày xuất viện";
             // 
-            // dateHospitalizate
-            // 
-            // 
-            // 
-            // 
-            this.dateHospitalizate.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dateHospitalizate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateHospitalizate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dateHospitalizate.ButtonDropDown.Visible = true;
-            this.dateHospitalizate.IsPopupCalendarOpen = false;
-            this.dateHospitalizate.Location = new System.Drawing.Point(125, 181);
-            // 
-            // 
-            // 
-            this.dateHospitalizate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dateHospitalizate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateHospitalizate.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.dateHospitalizate.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.dateHospitalizate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dateHospitalizate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateHospitalizate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dateHospitalizate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dateHospitalizate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dateHospitalizate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dateHospitalizate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateHospitalizate.MonthCalendar.DisplayMonth = new System.DateTime(2012, 5, 1, 0, 0, 0, 0);
-            this.dateHospitalizate.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.dateHospitalizate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dateHospitalizate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dateHospitalizate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateHospitalizate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dateHospitalizate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateHospitalizate.MonthCalendar.TodayButtonVisible = true;
-            this.dateHospitalizate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.dateHospitalizate.Name = "dateHospitalizate";
-            this.dateHospitalizate.Size = new System.Drawing.Size(293, 20);
-            this.dateHospitalizate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateHospitalizate.TabIndex = 58;
-            this.dateHospitalizate.Value = new System.DateTime(2012, 5, 20, 0, 0, 0, 0);
-            // 
-            // textBoxReason
+            // dateDischarge
             // 
             // 
             // 
             // 
-            this.textBoxReason.Border.Class = "TextBoxBorder";
-            this.textBoxReason.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxReason.Location = new System.Drawing.Point(125, 84);
-            this.textBoxReason.Multiline = true;
-            this.textBoxReason.Name = "textBoxReason";
-            this.textBoxReason.Size = new System.Drawing.Size(293, 91);
-            this.textBoxReason.TabIndex = 57;
-            this.superValidator1.SetValidator1(this.textBoxReason, this.requiredFieldValidator2);
-            // 
-            // labelAddress
-            // 
-            this.labelAddress.BackColor = System.Drawing.Color.Transparent;
+            this.dateDischarge.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dateDischarge.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateDischarge.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dateDischarge.ButtonDropDown.Visible = true;
+            this.dateDischarge.IsPopupCalendarOpen = false;
+            this.dateDischarge.Location = new System.Drawing.Point(125, 84);
             // 
             // 
             // 
-            this.labelAddress.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelAddress.Location = new System.Drawing.Point(3, 81);
-            this.labelAddress.Name = "labelAddress";
-            this.labelAddress.Size = new System.Drawing.Size(50, 23);
-            this.labelAddress.TabIndex = 65;
-            this.labelAddress.Text = "Lý do";
+            this.dateDischarge.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dateDischarge.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateDischarge.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.dateDischarge.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dateDischarge.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dateDischarge.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dateDischarge.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dateDischarge.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dateDischarge.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dateDischarge.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dateDischarge.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateDischarge.MonthCalendar.DisplayMonth = new System.DateTime(2012, 5, 1, 0, 0, 0, 0);
+            this.dateDischarge.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dateDischarge.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dateDischarge.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dateDischarge.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dateDischarge.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dateDischarge.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateDischarge.MonthCalendar.TodayButtonVisible = true;
+            this.dateDischarge.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dateDischarge.Name = "dateDischarge";
+            this.dateDischarge.Size = new System.Drawing.Size(293, 20);
+            this.dateDischarge.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dateDischarge.TabIndex = 58;
+            this.dateDischarge.Value = new System.DateTime(2012, 5, 20, 0, 0, 0, 0);
             // 
             // textBoxStaffID
             // 
@@ -284,20 +245,19 @@
             this.labelX1.Size = new System.Drawing.Size(92, 23);
             this.labelX1.TabIndex = 62;
             this.labelX1.Text = "Mã nhân viên lập";
-            this.superValidator1.SetValidator1(this.labelX1, this.requiredFieldValidator1);
             // 
-            // textBoxHCID
-            // 
+            // textBoxDCID
             // 
             // 
             // 
-            this.textBoxHCID.Border.Class = "TextBoxBorder";
-            this.textBoxHCID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxHCID.Location = new System.Drawing.Point(125, 6);
-            this.textBoxHCID.Name = "textBoxHCID";
-            this.textBoxHCID.ReadOnly = true;
-            this.textBoxHCID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxHCID.TabIndex = 54;
+            // 
+            this.textBoxDCID.Border.Class = "TextBoxBorder";
+            this.textBoxDCID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxDCID.Location = new System.Drawing.Point(125, 6);
+            this.textBoxDCID.Name = "textBoxDCID";
+            this.textBoxDCID.ReadOnly = true;
+            this.textBoxDCID.Size = new System.Drawing.Size(293, 20);
+            this.textBoxDCID.TabIndex = 54;
             // 
             // labelHCID
             // 
@@ -310,7 +270,7 @@
             this.labelHCID.Name = "labelHCID";
             this.labelHCID.Size = new System.Drawing.Size(92, 23);
             this.labelHCID.TabIndex = 63;
-            this.labelHCID.Text = "Mã giấy nhập viện";
+            this.labelHCID.Text = "Mã giấy xuất viện";
             // 
             // textBoxPatientID
             // 
@@ -340,42 +300,16 @@
             this.labelRoleName.TabIndex = 64;
             this.labelRoleName.Text = "Mã bệnh nhân";
             // 
-            // superValidator1
-            // 
-            this.superValidator1.ContainerControl = this;
-            this.superValidator1.ErrorProvider = this.errorProvider1;
-            this.superValidator1.Highlighter = this.highlighter1;
-            // 
-            // requiredFieldValidator2
-            // 
-            this.requiredFieldValidator2.ErrorMessage = "Nhập lý do";
-            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
-            // requiredFieldValidator1
-            // 
-            this.requiredFieldValidator1.ErrorMessage = "Nhập lý do";
-            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
-            // 
-            // highlighter1
-            // 
-            this.highlighter1.ContainerControl = this;
-            // 
-            // FormHCDetail
+            // FormDCDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 292);
+            this.ClientSize = new System.Drawing.Size(477, 196);
             this.Controls.Add(this.groupPanel1);
-            this.Name = "FormHCDetail";
-            this.Text = "Thông tin giấy nhập viện";
+            this.Name = "FormDCDetail";
+            this.Text = "Thông tin giấy xuất viện";
             this.groupPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dateHospitalizate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dateDischarge)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -390,20 +324,12 @@
         private DevComponents.Editors.ComboItem comboItemNo;
         private DevComponents.Editors.ComboItem comboItemYes;
         private DevComponents.DotNetBar.LabelX labelX2;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateHospitalizate;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxReason;
-        private DevComponents.DotNetBar.LabelX labelAddress;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateDischarge;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxStaffID;
         private DevComponents.DotNetBar.LabelX labelX1;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxHCID;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxDCID;
         private DevComponents.DotNetBar.LabelX labelHCID;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientID;
         private DevComponents.DotNetBar.LabelX labelRoleName;
-        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
-        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
-        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
-        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
-
     }
 }

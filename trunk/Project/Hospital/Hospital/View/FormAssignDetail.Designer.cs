@@ -35,13 +35,13 @@
             this.buttonInsertFunction = new DevComponents.DotNetBar.ButtonX();
             this.buttonRemoveFunction = new DevComponents.DotNetBar.ButtonX();
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
-            this.listBoxSystemFunction = new System.Windows.Forms.ListBox();
-            this.listBoxCurrentFunction = new System.Windows.Forms.ListBox();
-            this.textBoxRoleID = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.listBoxSystemStaff = new System.Windows.Forms.ListBox();
+            this.listBoxCurrentStaff = new System.Windows.Forms.ListBox();
+            this.textBoxAssignID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelRoleID = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxRoleName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelRoleName = new DevComponents.DotNetBar.LabelX();
@@ -60,13 +60,13 @@
             this.groupPanel1.Controls.Add(this.buttonInsertFunction);
             this.groupPanel1.Controls.Add(this.buttonRemoveFunction);
             this.groupPanel1.Controls.Add(this.buttonOk);
-            this.groupPanel1.Controls.Add(this.listBoxSystemFunction);
-            this.groupPanel1.Controls.Add(this.listBoxCurrentFunction);
-            this.groupPanel1.Controls.Add(this.textBoxRoleID);
+            this.groupPanel1.Controls.Add(this.listBoxSystemStaff);
+            this.groupPanel1.Controls.Add(this.listBoxCurrentStaff);
+            this.groupPanel1.Controls.Add(this.textBoxAssignID);
             this.groupPanel1.Controls.Add(this.labelRoleID);
             this.groupPanel1.Controls.Add(this.labelX2);
             this.groupPanel1.Controls.Add(this.labelX4);
-            this.groupPanel1.Controls.Add(this.textBoxRoleName);
+            this.groupPanel1.Controls.Add(this.textBoxPatientID);
             this.groupPanel1.Controls.Add(this.labelX3);
             this.groupPanel1.Controls.Add(this.labelX1);
             this.groupPanel1.Controls.Add(this.labelRoleName);
@@ -238,36 +238,36 @@
             this.buttonOk.TabIndex = 54;
             this.buttonOk.Text = "Đồng ý";
             // 
-            // listBoxSystemFunction
+            // listBoxSystemStaff
             // 
-            this.listBoxSystemFunction.Enabled = false;
-            this.listBoxSystemFunction.FormattingEnabled = true;
-            this.listBoxSystemFunction.Location = new System.Drawing.Point(224, 156);
-            this.listBoxSystemFunction.Name = "listBoxSystemFunction";
-            this.listBoxSystemFunction.Size = new System.Drawing.Size(170, 212);
-            this.listBoxSystemFunction.TabIndex = 50;
+            this.listBoxSystemStaff.Enabled = false;
+            this.listBoxSystemStaff.FormattingEnabled = true;
+            this.listBoxSystemStaff.Location = new System.Drawing.Point(224, 156);
+            this.listBoxSystemStaff.Name = "listBoxSystemStaff";
+            this.listBoxSystemStaff.Size = new System.Drawing.Size(170, 212);
+            this.listBoxSystemStaff.TabIndex = 50;
             // 
-            // listBoxCurrentFunction
+            // listBoxCurrentStaff
             // 
-            this.listBoxCurrentFunction.Enabled = false;
-            this.listBoxCurrentFunction.FormattingEnabled = true;
-            this.listBoxCurrentFunction.Location = new System.Drawing.Point(3, 156);
-            this.listBoxCurrentFunction.Name = "listBoxCurrentFunction";
-            this.listBoxCurrentFunction.Size = new System.Drawing.Size(165, 212);
-            this.listBoxCurrentFunction.TabIndex = 51;
+            this.listBoxCurrentStaff.Enabled = false;
+            this.listBoxCurrentStaff.FormattingEnabled = true;
+            this.listBoxCurrentStaff.Location = new System.Drawing.Point(3, 156);
+            this.listBoxCurrentStaff.Name = "listBoxCurrentStaff";
+            this.listBoxCurrentStaff.Size = new System.Drawing.Size(165, 212);
+            this.listBoxCurrentStaff.TabIndex = 51;
             // 
-            // textBoxRoleID
-            // 
-            // 
+            // textBoxAssignID
             // 
             // 
-            this.textBoxRoleID.Border.Class = "TextBoxBorder";
-            this.textBoxRoleID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxRoleID.Location = new System.Drawing.Point(101, 6);
-            this.textBoxRoleID.Name = "textBoxRoleID";
-            this.textBoxRoleID.ReadOnly = true;
-            this.textBoxRoleID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxRoleID.TabIndex = 49;
+            // 
+            // 
+            this.textBoxAssignID.Border.Class = "TextBoxBorder";
+            this.textBoxAssignID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxAssignID.Location = new System.Drawing.Point(101, 6);
+            this.textBoxAssignID.Name = "textBoxAssignID";
+            this.textBoxAssignID.ReadOnly = true;
+            this.textBoxAssignID.Size = new System.Drawing.Size(293, 20);
+            this.textBoxAssignID.TabIndex = 49;
             // 
             // labelRoleID
             // 
@@ -308,18 +308,18 @@
             this.labelX4.TabIndex = 46;
             this.labelX4.Text = "Ngày xuất viện";
             // 
-            // textBoxRoleName
+            // textBoxPatientID
             // 
             // 
             // 
             // 
-            this.textBoxRoleName.Border.Class = "TextBoxBorder";
-            this.textBoxRoleName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxRoleName.Location = new System.Drawing.Point(101, 32);
-            this.textBoxRoleName.Name = "textBoxRoleName";
-            this.textBoxRoleName.ReadOnly = true;
-            this.textBoxRoleName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxRoleName.TabIndex = 42;
+            this.textBoxPatientID.Border.Class = "TextBoxBorder";
+            this.textBoxPatientID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxPatientID.Location = new System.Drawing.Point(101, 32);
+            this.textBoxPatientID.Name = "textBoxPatientID";
+            this.textBoxPatientID.ReadOnly = true;
+            this.textBoxPatientID.Size = new System.Drawing.Size(293, 20);
+            this.textBoxPatientID.TabIndex = 42;
             // 
             // labelX3
             // 
@@ -384,13 +384,13 @@
         private DevComponents.DotNetBar.ButtonX buttonInsertFunction;
         private DevComponents.DotNetBar.ButtonX buttonRemoveFunction;
         private DevComponents.DotNetBar.ButtonX buttonOk;
-        private System.Windows.Forms.ListBox listBoxSystemFunction;
-        private System.Windows.Forms.ListBox listBoxCurrentFunction;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxRoleID;
+        private System.Windows.Forms.ListBox listBoxSystemStaff;
+        private System.Windows.Forms.ListBox listBoxCurrentStaff;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxAssignID;
         private DevComponents.DotNetBar.LabelX labelRoleID;
         private DevComponents.DotNetBar.LabelX labelX2;
         private DevComponents.DotNetBar.LabelX labelX4;
-        private DevComponents.DotNetBar.Controls.TextBoxX textBoxRoleName;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientID;
         private DevComponents.DotNetBar.LabelX labelX3;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.LabelX labelRoleName;
