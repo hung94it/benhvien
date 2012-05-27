@@ -148,6 +148,12 @@
     <Compile Include="View\FormBillDetail.Designer.cs">
       <DependentUpon>FormBillDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormDCDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormDCDetail.Designer.cs">
+      <DependentUpon>FormDCDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormDepartmentDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,7 +208,11 @@
     <Compile Include="View\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormMainAssignment.cs" />
     <Compile Include="View\FormMainBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMainDC.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\FormMainDepartment.cs">
@@ -328,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormBillDetail.resx">
       <DependentUpon>FormBillDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormDCDetail.resx">
+      <DependentUpon>FormDCDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormDepartmentDetail.resx">
       <DependentUpon>FormDepartmentDetail.cs</DependentUpon>

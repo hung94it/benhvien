@@ -41,7 +41,7 @@ namespace Hospital.Model
                                 SET                DATE =@DATE, DESCRIPTION =@DESCRIPTION, STATE =@STATE
                                 WHERE         SURGICALID=@SURGICALID ";
             SqlParameter[] sqlParameters = { new SqlParameter("@SURGICALID", updateSurgical.SurgicalID),
-                                            new SqlParameter("@DATE", updateSurgical.State),
+                                            new SqlParameter("@DATE", updateSurgical.Date),
                                            new SqlParameter("@DESCRIPTION", updateSurgical.Description),
                                            new SqlParameter("@STATE", updateSurgical.State)};
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);

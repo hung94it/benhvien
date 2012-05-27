@@ -34,12 +34,11 @@ namespace Hospital.Model
         public static int UpdateAssignment(Assignment updateAssignment)
         {
             string sqlUpdate = @"UPDATE       ASSIGNMENT
-                                SET                DATE =@DATE, DISCHARGEDDATE =@DISCHARGEDDATE, HOPITALIZATEDATE =@HOPITALIZATEDATE
+                                SET                DATE =@DATE, DISCHARGEDDATE =@DISCHARGEDDATE
                                 WHERE         ASSIGNID =@ASSIGNID  ";
             SqlParameter[] sqlParameters = { new SqlParameter("@ASSIGNID", updateAssignment.AssignID ),
                                             new SqlParameter("@DATE", updateAssignment.Date),
-                                            new SqlParameter("@DISCHARGEDDATE", updateAssignment.DischargedDate),
-                                           new SqlParameter("@HOPITALIZATEDATE",updateAssignment.HospitalizateDate)};
+                                            new SqlParameter("@DISCHARGEDDATE", updateAssignment.DischargedDate)};
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
         public static int DeleteAssignment(int assignmentID)
@@ -55,10 +54,10 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        ASSIGNID, DATE, DISCHARGEDDATE, HOPITALIZATEDATE
                                 FROM            ASSIGNMENT";
             dtAssignment = SqlResult.ExecuteQuery(sqlSelect);
-            dtAssignment.Columns[0].ColumnName = "Mã phân công";
-            dtAssignment.Columns[1].ColumnName = "Ngày lập";
-            dtAssignment.Columns[2].ColumnName = "Ngày xuất viện";
-            dtAssignment.Columns[3].ColumnName = "Ngày nhập viện";
+            //dtAssignment.Columns[0].ColumnName = "Mã phân công";
+            //dtAssignment.Columns[1].ColumnName = "Ngày lập";
+            //dtAssignment.Columns[2].ColumnName = "Ngày xuất viện";
+            //dtAssignment.Columns[3].ColumnName = "Ngày nhập viện";
             return dtAssignment;
         }
         public static Assignment GetAssignment(int assignID)

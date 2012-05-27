@@ -42,14 +42,16 @@ namespace Hospital.Model
         public static DataTable GetListAssignmentDetails(int assignmentID)
         {
             DataTable dtAD = new DataTable();
-            string sqlSelect = @"SELECT        ASSIGNID, PATIENTID, STAFFID
-                                FROM            ASSIGNMENTDETAIL
-                                WHERE        (ASSIGNID=@ASSIGNID)";
+            string sqlSelect = @"SELECT        ASSIGNMENTDETAIL.ASSIGNID, ASSIGNMENTDETAIL.PATIENTID, ASSIGNMENTDETAIL.STAFFID, STAFF.LASTNAME, STAFF.FIRSTNAME
+                                FROM            ASSIGNMENTDETAIL INNER JOIN STAFF ON ASSIGNMENTDETAIL.STAFFID = STAFF.STAFFID
+                                WHERE        (ASSIGNMENTDETAIL.ASSIGNID=@ASSIGNID)";
             SqlParameter[] sqlParameters = { new SqlParameter("@ASSIGNID", assignmentID) };
             dtAD = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             dtAD.Columns[0].ColumnName = "Mã phân công";
             dtAD.Columns[1].ColumnName = "Mã bệnh nhân";
             dtAD.Columns[2].ColumnName = "Mã nhân viên";
+            dtAD.Columns[3].ColumnName = "Họ nhân viên";
+            dtAD.Columns[4].ColumnName = "Tên nhân viên";
             return dtAD;
         }
     }

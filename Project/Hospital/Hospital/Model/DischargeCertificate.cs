@@ -51,11 +51,11 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        DCID, STAFFID, PATIENTID, DATE, STATE
                                 FROM            DISCHARGEDCERTIFICATE";
             dtEC = SqlResult.ExecuteQuery(sqlSelect);
-            dtEC.Columns[0].ColumnName = "Mã giấy xuất viện";
-            dtEC.Columns[1].ColumnName = "Mã nhân viên";
-            dtEC.Columns[2].ColumnName = "Mã bệnh nhân";
-            dtEC.Columns[3].ColumnName = "Ngày lập";
-            dtEC.Columns[4].ColumnName = "Trạng thái";
+            //dtEC.Columns[0].ColumnName = "Mã giấy xuất viện";
+            //dtEC.Columns[1].ColumnName = "Mã nhân viên";
+            //dtEC.Columns[2].ColumnName = "Mã bệnh nhân";
+            //dtEC.Columns[3].ColumnName = "Ngày lập";
+            //dtEC.Columns[4].ColumnName = "Trạng thái";
             return dtEC;
         }
         public static DischargeCertificate GetDC(int dCID)
@@ -68,13 +68,25 @@ namespace Hospital.Model
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
-                dC.DCID = (int)dataTable.Rows[0][0];
-                dC.StaffID = (int)dataTable.Rows[0][1];
-                dC.PatientID = (int)dataTable.Rows[0][2];
+                dC.DCID = Convert.ToInt32(dataTable.Rows[0][0]);
+                dC.StaffID = Convert.ToInt32(dataTable.Rows[0][1]);
+                dC.PatientID = Convert.ToInt32(dataTable.Rows[0][2]);
                 dC.Date = (DateTime)dataTable.Rows[0][3];
                 dC.State = (int)dataTable.Rows[0][4];
             }
             return dC;
+        }
+        public static Boolean IsPatientHadDC(int patientID)
+        {
+            DataTable dtDC = new DataTable();
+            string sqlSelect = @"SELECT        DCID, STAFFID, PATIENTID, DATE, STATE
+                                FROM            DISCHARGEDCERTIFICATE
+                                WHERE        PATIENTID=@PATIENTID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", patientID) };
+            dtDC = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if (dtDC.Rows.Count > 0)
+                return true;
+            return false;
         }
     }
 }

@@ -48,13 +48,15 @@ namespace Hospital.Model
         public static DataTable GetListSurgicalDetail(int surgicalID)
         {
             DataTable dtSD = new DataTable();
-            string sqlSelect = @"SELECT        STAFF.STAFFID, SURGICALDETAIL.SURGICALID, STAFF.FIRSTNAME, STAFF.LASTNAME
+            string sqlSelect = @"SELECT        SURGICALDETAIL.SURGICALID, STAFF.STAFFID,  STAFF.LASTNAME, STAFF.FIRSTNAME
                                 FROM            STAFF INNER JOIN SURGICALDETAIL ON STAFF.STAFFID = SURGICALDETAIL.STAFFID
                                 WHERE        SURGICALDETAIL.SURGICALID=@SURGICALID";
             SqlParameter[] sqlParameters = { new SqlParameter("@SURGICALID", surgicalID) };
             dtSD = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
-            //dtSD.Columns[0].ColumnName = "Mã ca phẩu thuật";
-            //dtSD.Columns[1].ColumnName = "Mã nhân viên";
+            dtSD.Columns[0].ColumnName = "Mã ca phẩu thuật";
+            dtSD.Columns[1].ColumnName = "Mã nhân viên";
+            dtSD.Columns[2].ColumnName = "Họ";
+            dtSD.Columns[3].ColumnName = "Tên";
             return dtSD;
         }
     }
