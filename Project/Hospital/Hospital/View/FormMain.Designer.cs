@@ -829,7 +829,6 @@
             this.tabItemPatient.Name = "tabItemPatient";
             this.tabItemPatient.Text = "Bệnh nhân";
             this.tabItemPatient.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.tabItemPatient.Click += new System.EventHandler(this.tabItemPatient_Click);
             // 
             // tabPanelDischarged
             // 
@@ -2964,7 +2963,6 @@
             this.tabItemStaff.Name = "tabItemStaff";
             this.tabItemStaff.Text = "Nhân viên";
             this.tabItemStaff.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.tabItemStaff.Click += new System.EventHandler(this.tabItemStaff_Click);
             // 
             // tabPanelDisease
             // 

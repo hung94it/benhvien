@@ -20,6 +20,8 @@ namespace Hospital.View
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'ehospitalTestDataSet.PATIENT' table. You can move, or remove it, as needed.
+            this.pATIENTTableAdapter.Fill(this.ehospitalTestDataSet.PATIENT);
             try
             {
                 int i = 0;
@@ -31,6 +33,7 @@ namespace Hospital.View
             {
                 MessageBox.Show(exception.Message);
             }
+            this.reportViewer1.RefreshReport();
         }
 
         private void buttonX1_Click(object sender, EventArgs e)

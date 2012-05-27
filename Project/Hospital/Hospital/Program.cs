@@ -19,9 +19,14 @@ namespace Hospital
             //Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException); 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new FormLogin());
+
+            // Test login
             Staff loginStaff = Staff.GetStaff(10000001);
+            // Main form here
             Application.Run(new FormMain(loginStaff));
+
+            // Test
+            //Application.Run(new FormBillDetail("insert", new Bill()));
         }
 
         //static void Application_ThreadException(

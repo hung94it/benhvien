@@ -49,6 +49,9 @@ namespace Hospital.View
                 case "Nhân viên":
                     refreshDataViewStaff();
                     break;
+                case "Hóa đơn":
+                    refreshDataViewBill();
+                    break;
             }
         }
 

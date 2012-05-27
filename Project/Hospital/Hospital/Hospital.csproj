@@ -56,9 +56,13 @@
     <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=10.5.0.2, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.DotNetBar2, Version=10.5.0.2, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.Instrumentation, Version=10.5.0.2, Culture=neutral, PublicKeyToken=f90dc37c26666a67" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -87,6 +91,11 @@
     <Compile Include="Controller\StaffController.cs" />
     <Compile Include="Controller\SurgicalController.cs" />
     <Compile Include="Controller\TestController.cs" />
+    <Compile Include="ehospitalTestDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ehospitalTestDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Functional\SqlResult.cs" />
     <Compile Include="Model\Assignment.cs" />
     <Compile Include="Model\AssignmentDetail.cs" />
@@ -330,6 +339,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\Report1.rdlc" />
     <EmbeddedResource Include="View\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -398,6 +408,17 @@
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="ehospitalTestDataSet.xsc">
+      <DependentUpon>ehospitalTestDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ehospitalTestDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ehospitalTestDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ehospitalTestDataSet.xss">
+      <DependentUpon>ehospitalTestDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
