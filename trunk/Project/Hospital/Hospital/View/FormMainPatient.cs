@@ -11,12 +11,6 @@ namespace Hospital.View
 {
     public partial class FormMain
     {
-        // Refresh datagridview when click patient tab
-        private void tabItemPatient_Click(object sender, EventArgs e)
-        {
-            refreshDataViewPatient();
-        }
-
         // Add new patient when click add button
         private void buttonPatientAdd_Click(object sender, EventArgs e)
         {
