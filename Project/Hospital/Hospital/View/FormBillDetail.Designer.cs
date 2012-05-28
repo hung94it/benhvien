@@ -28,302 +28,593 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBillDetail));
-            this.dataViewMedicine = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.dataViewService = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.dataViewMaterial = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.labelMedicinePrice = new DevComponents.DotNetBar.LabelX();
-            this.labelMedicine = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxMedicine = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.buttonMedicineAdd = new DevComponents.DotNetBar.ButtonX();
-            this.buttonMedicineDelete = new DevComponents.DotNetBar.ButtonX();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX3 = new DevComponents.DotNetBar.ButtonX();
-            this.buttonX4 = new DevComponents.DotNetBar.ButtonX();
+            this.labelPatientName = new DevComponents.DotNetBar.LabelX();
+            this.labelStaffName = new DevComponents.DotNetBar.LabelX();
+            this.textBoxStaffName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.groupPanelBill = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.textBoxQuantity = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelQuantity = new DevComponents.DotNetBar.LabelX();
+            this.labelPriceDetail = new DevComponents.DotNetBar.LabelX();
+            this.buttonClose = new DevComponents.DotNetBar.ButtonX();
+            this.labelBillID = new DevComponents.DotNetBar.LabelX();
+            this.textBoxBillID = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelBillState = new DevComponents.DotNetBar.LabelX();
+            this.labelStaffID = new DevComponents.DotNetBar.LabelX();
             this.buttonPay = new DevComponents.DotNetBar.ButtonX();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewMedicine)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewService)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewMaterial)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
+            this.textBoxStaffID = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelTotalBillPrice = new DevComponents.DotNetBar.LabelX();
+            this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.labelState = new DevComponents.DotNetBar.LabelX();
+            this.labelPrice = new DevComponents.DotNetBar.LabelX();
+            this.labelDate = new DevComponents.DotNetBar.LabelX();
+            this.textBoxPatientName = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.dateTimeInputBill = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.labelTotalPrice = new DevComponents.DotNetBar.LabelX();
+            this.labelPatientID = new DevComponents.DotNetBar.LabelX();
+            this.dataViewBillDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.buttonDelete = new DevComponents.DotNetBar.ButtonX();
+            this.buttonAdd = new DevComponents.DotNetBar.ButtonX();
+            this.comboBoxDetail = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.labelDetail = new DevComponents.DotNetBar.LabelX();
+            this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập số lượng");
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
+            this.groupPanelBill.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInputBill)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewBillDetail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataViewMedicine
+            // labelPatientName
             // 
-            this.dataViewMedicine.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewMedicine.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataViewMedicine.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataViewMedicine.Location = new System.Drawing.Point(0, 82);
-            this.dataViewMedicine.Name = "dataViewMedicine";
-            this.dataViewMedicine.Size = new System.Drawing.Size(444, 518);
-            this.dataViewMedicine.TabIndex = 0;
+            this.labelPatientName.BackColor = System.Drawing.Color.Transparent;
             // 
-            // dataViewService
             // 
-            this.dataViewService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewService.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataViewService.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataViewService.Location = new System.Drawing.Point(58, 120);
-            this.dataViewService.Name = "dataViewService";
-            this.dataViewService.Size = new System.Drawing.Size(376, 150);
-            this.dataViewService.TabIndex = 1;
             // 
-            // dataViewMaterial
+            this.labelPatientName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelPatientName.Location = new System.Drawing.Point(18, 63);
+            this.labelPatientName.Name = "labelPatientName";
+            this.labelPatientName.Size = new System.Drawing.Size(74, 23);
+            this.labelPatientName.TabIndex = 13;
+            this.labelPatientName.Text = "Bệnh nhân:";
             // 
-            this.dataViewMaterial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewMaterial.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataViewMaterial.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataViewMaterial.Location = new System.Drawing.Point(38, 123);
-            this.dataViewMaterial.Name = "dataViewMaterial";
-            this.dataViewMaterial.Size = new System.Drawing.Size(396, 150);
-            this.dataViewMaterial.TabIndex = 2;
+            // labelStaffName
             // 
-            // splitContainer1
+            this.labelStaffName.BackColor = System.Drawing.Color.Transparent;
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
             // 
-            // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.buttonPay);
-            this.splitContainer1.Panel1.Controls.Add(this.labelMedicinePrice);
-            this.splitContainer1.Panel1.Controls.Add(this.labelMedicine);
-            this.splitContainer1.Panel1.Controls.Add(this.comboBoxMedicine);
-            this.splitContainer1.Panel1.Controls.Add(this.buttonMedicineAdd);
-            this.splitContainer1.Panel1.Controls.Add(this.buttonMedicineDelete);
-            this.splitContainer1.Panel1.Controls.Add(this.dataViewMedicine);
+            this.labelStaffName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelStaffName.Location = new System.Drawing.Point(18, 115);
+            this.labelStaffName.Name = "labelStaffName";
+            this.labelStaffName.Size = new System.Drawing.Size(61, 23);
+            this.labelStaffName.TabIndex = 15;
+            this.labelStaffName.Text = "Nhân viên:";
             // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(884, 684);
-            this.splitContainer1.SplitterDistance = 446;
-            this.splitContainer1.TabIndex = 3;
-            // 
-            // labelMedicinePrice
+            // textBoxStaffName
             // 
             // 
             // 
             // 
-            this.labelMedicinePrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelMedicinePrice.Location = new System.Drawing.Point(12, 53);
-            this.labelMedicinePrice.Name = "labelMedicinePrice";
-            this.labelMedicinePrice.Size = new System.Drawing.Size(45, 23);
-            this.labelMedicinePrice.TabIndex = 13;
-            this.labelMedicinePrice.Text = "Giá:";
+            this.textBoxStaffName.Border.Class = "TextBoxBorder";
+            this.textBoxStaffName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxStaffName.Location = new System.Drawing.Point(98, 118);
+            this.textBoxStaffName.Name = "textBoxStaffName";
+            this.textBoxStaffName.ReadOnly = true;
+            this.textBoxStaffName.Size = new System.Drawing.Size(300, 20);
+            this.textBoxStaffName.TabIndex = 14;
             // 
-            // labelMedicine
+            // groupPanelBill
+            // 
+            this.groupPanelBill.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupPanelBill.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanelBill.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanelBill.Controls.Add(this.textBoxQuantity);
+            this.groupPanelBill.Controls.Add(this.labelQuantity);
+            this.groupPanelBill.Controls.Add(this.labelPriceDetail);
+            this.groupPanelBill.Controls.Add(this.buttonClose);
+            this.groupPanelBill.Controls.Add(this.labelBillID);
+            this.groupPanelBill.Controls.Add(this.textBoxBillID);
+            this.groupPanelBill.Controls.Add(this.labelBillState);
+            this.groupPanelBill.Controls.Add(this.labelStaffID);
+            this.groupPanelBill.Controls.Add(this.buttonPay);
+            this.groupPanelBill.Controls.Add(this.textBoxStaffID);
+            this.groupPanelBill.Controls.Add(this.labelTotalBillPrice);
+            this.groupPanelBill.Controls.Add(this.textBoxPatientID);
+            this.groupPanelBill.Controls.Add(this.labelState);
+            this.groupPanelBill.Controls.Add(this.labelPrice);
+            this.groupPanelBill.Controls.Add(this.labelDate);
+            this.groupPanelBill.Controls.Add(this.textBoxPatientName);
+            this.groupPanelBill.Controls.Add(this.dateTimeInputBill);
+            this.groupPanelBill.Controls.Add(this.labelTotalPrice);
+            this.groupPanelBill.Controls.Add(this.labelPatientID);
+            this.groupPanelBill.Controls.Add(this.labelStaffName);
+            this.groupPanelBill.Controls.Add(this.dataViewBillDetail);
+            this.groupPanelBill.Controls.Add(this.buttonDelete);
+            this.groupPanelBill.Controls.Add(this.buttonAdd);
+            this.groupPanelBill.Controls.Add(this.comboBoxDetail);
+            this.groupPanelBill.Controls.Add(this.textBoxStaffName);
+            this.groupPanelBill.Controls.Add(this.labelPatientName);
+            this.groupPanelBill.Controls.Add(this.labelDetail);
+            this.groupPanelBill.Location = new System.Drawing.Point(12, 12);
+            this.groupPanelBill.Name = "groupPanelBill";
+            this.groupPanelBill.Size = new System.Drawing.Size(860, 388);
+            // 
+            // 
+            // 
+            this.groupPanelBill.Style.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.groupPanelBill.Style.BackColorGradientAngle = 90;
+            this.groupPanelBill.Style.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.groupPanelBill.Style.BorderBottom = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanelBill.Style.BorderBottomWidth = 1;
+            this.groupPanelBill.Style.BorderColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.groupPanelBill.Style.BorderLeft = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanelBill.Style.BorderLeftWidth = 1;
+            this.groupPanelBill.Style.BorderRight = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanelBill.Style.BorderRightWidth = 1;
+            this.groupPanelBill.Style.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.groupPanelBill.Style.BorderTopWidth = 1;
+            this.groupPanelBill.Style.CornerDiameter = 4;
+            this.groupPanelBill.Style.CornerType = DevComponents.DotNetBar.eCornerType.Rounded;
+            this.groupPanelBill.Style.TextAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Center;
+            this.groupPanelBill.Style.TextColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.groupPanelBill.Style.TextLineAlignment = DevComponents.DotNetBar.eStyleTextAlignment.Near;
+            // 
+            // 
+            // 
+            this.groupPanelBill.StyleMouseDown.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            // 
+            // 
+            // 
+            this.groupPanelBill.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.groupPanelBill.TabIndex = 0;
+            this.groupPanelBill.Text = "Thông tin hóa đơn";
+            // 
+            // textBoxQuantity
             // 
             // 
             // 
             // 
-            this.labelMedicine.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelMedicine.Location = new System.Drawing.Point(13, 24);
-            this.labelMedicine.Name = "labelMedicine";
-            this.labelMedicine.Size = new System.Drawing.Size(45, 23);
-            this.labelMedicine.TabIndex = 12;
-            this.labelMedicine.Text = "Thuốc:";
+            this.textBoxQuantity.Border.Class = "TextBoxBorder";
+            this.textBoxQuantity.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxQuantity.Location = new System.Drawing.Point(484, 46);
+            this.textBoxQuantity.Name = "textBoxQuantity";
+            this.textBoxQuantity.Size = new System.Drawing.Size(77, 20);
+            this.textBoxQuantity.TabIndex = 1;
+            this.superValidator1.SetValidator1(this.textBoxQuantity, this.requiredFieldValidator1);
+            this.superValidator1.SetValidator2(this.textBoxQuantity, this.regularExpressionValidator1);
             // 
-            // comboBoxMedicine
+            // labelQuantity
             // 
-            this.comboBoxMedicine.DisplayMember = "Text";
-            this.comboBoxMedicine.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxMedicine.FormattingEnabled = true;
-            this.comboBoxMedicine.ItemHeight = 14;
-            this.comboBoxMedicine.Location = new System.Drawing.Point(64, 27);
-            this.comboBoxMedicine.Name = "comboBoxMedicine";
-            this.comboBoxMedicine.Size = new System.Drawing.Size(379, 20);
-            this.comboBoxMedicine.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxMedicine.TabIndex = 11;
+            this.labelQuantity.BackColor = System.Drawing.Color.Transparent;
             // 
-            // buttonMedicineAdd
             // 
-            this.buttonMedicineAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonMedicineAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMedicineAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonMedicineAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonMedicineAdd.Image")));
-            this.buttonMedicineAdd.Location = new System.Drawing.Point(287, 53);
-            this.buttonMedicineAdd.Name = "buttonMedicineAdd";
-            this.buttonMedicineAdd.Size = new System.Drawing.Size(75, 23);
-            this.buttonMedicineAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonMedicineAdd.TabIndex = 10;
-            this.buttonMedicineAdd.Text = "Thêm";
             // 
-            // buttonMedicineDelete
+            this.labelQuantity.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelQuantity.Location = new System.Drawing.Point(404, 43);
+            this.labelQuantity.Name = "labelQuantity";
+            this.labelQuantity.Size = new System.Drawing.Size(54, 23);
+            this.labelQuantity.TabIndex = 48;
+            this.labelQuantity.Text = "Số lượng:";
             // 
-            this.buttonMedicineDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonMedicineDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonMedicineDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonMedicineDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonMedicineDelete.Image")));
-            this.buttonMedicineDelete.Location = new System.Drawing.Point(368, 53);
-            this.buttonMedicineDelete.Name = "buttonMedicineDelete";
-            this.buttonMedicineDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonMedicineDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonMedicineDelete.TabIndex = 8;
-            this.buttonMedicineDelete.Text = "Xóa";
+            // labelPriceDetail
             // 
-            // splitContainer2
+            this.labelPriceDetail.BackColor = System.Drawing.Color.Transparent;
             // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainer2.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.buttonX1);
-            this.splitContainer2.Panel1.Controls.Add(this.buttonX2);
-            this.splitContainer2.Panel1.Controls.Add(this.dataViewService);
+            this.labelPriceDetail.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelPriceDetail.Location = new System.Drawing.Point(647, 46);
+            this.labelPriceDetail.Name = "labelPriceDetail";
+            this.labelPriceDetail.Size = new System.Drawing.Size(190, 23);
+            this.labelPriceDetail.TabIndex = 47;
+            this.labelPriceDetail.Text = "100";
             // 
-            // splitContainer2.Panel2
+            // buttonClose
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.buttonX3);
-            this.splitContainer2.Panel2.Controls.Add(this.buttonX4);
-            this.splitContainer2.Panel2.Controls.Add(this.dataViewMaterial);
-            this.splitContainer2.Size = new System.Drawing.Size(434, 684);
-            this.splitContainer2.SplitterDistance = 305;
-            this.splitContainer2.TabIndex = 0;
+            this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonClose.Location = new System.Drawing.Point(762, 339);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonClose.TabIndex = 46;
+            this.buttonClose.Text = "Đóng";
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
-            // buttonX1
+            // labelBillID
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Image = ((System.Drawing.Image)(resources.GetObject("buttonX1.Image")));
-            this.buttonX1.Location = new System.Drawing.Point(239, 67);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(75, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 12;
-            this.buttonX1.Text = "Thêm mới";
+            this.labelBillID.BackColor = System.Drawing.Color.Transparent;
             // 
-            // buttonX2
             // 
-            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX2.Image = ((System.Drawing.Image)(resources.GetObject("buttonX2.Image")));
-            this.buttonX2.Location = new System.Drawing.Point(335, 67);
-            this.buttonX2.Name = "buttonX2";
-            this.buttonX2.Size = new System.Drawing.Size(75, 23);
-            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX2.TabIndex = 11;
-            this.buttonX2.Text = "Xóa";
             // 
-            // buttonX3
+            this.labelBillID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelBillID.Location = new System.Drawing.Point(18, 14);
+            this.labelBillID.Name = "labelBillID";
+            this.labelBillID.Size = new System.Drawing.Size(61, 23);
+            this.labelBillID.TabIndex = 45;
+            this.labelBillID.Text = "Số hóa đơn:";
             // 
-            this.buttonX3.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX3.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX3.Image = ((System.Drawing.Image)(resources.GetObject("buttonX3.Image")));
-            this.buttonX3.Location = new System.Drawing.Point(239, 76);
-            this.buttonX3.Name = "buttonX3";
-            this.buttonX3.Size = new System.Drawing.Size(75, 23);
-            this.buttonX3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX3.TabIndex = 12;
-            this.buttonX3.Text = "Thêm mới";
+            // textBoxBillID
             // 
-            // buttonX4
             // 
-            this.buttonX4.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonX4.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX4.Image = ((System.Drawing.Image)(resources.GetObject("buttonX4.Image")));
-            this.buttonX4.Location = new System.Drawing.Point(335, 76);
-            this.buttonX4.Name = "buttonX4";
-            this.buttonX4.Size = new System.Drawing.Size(75, 23);
-            this.buttonX4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX4.TabIndex = 11;
-            this.buttonX4.Text = "Xóa";
+            // 
+            // 
+            this.textBoxBillID.Border.Class = "TextBoxBorder";
+            this.textBoxBillID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxBillID.Location = new System.Drawing.Point(98, 14);
+            this.textBoxBillID.Name = "textBoxBillID";
+            this.textBoxBillID.ReadOnly = true;
+            this.textBoxBillID.Size = new System.Drawing.Size(300, 20);
+            this.textBoxBillID.TabIndex = 44;
+            // 
+            // labelBillState
+            // 
+            this.labelBillState.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelBillState.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelBillState.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBillState.ForeColor = System.Drawing.Color.Red;
+            this.labelBillState.Location = new System.Drawing.Point(98, 310);
+            this.labelBillState.Name = "labelBillState";
+            this.labelBillState.Size = new System.Drawing.Size(171, 23);
+            this.labelBillState.TabIndex = 43;
+            this.labelBillState.Text = "Chưa thanh toán";
+            // 
+            // labelStaffID
+            // 
+            this.labelStaffID.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelStaffID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelStaffID.Location = new System.Drawing.Point(18, 89);
+            this.labelStaffID.Name = "labelStaffID";
+            this.labelStaffID.Size = new System.Drawing.Size(70, 23);
+            this.labelStaffID.TabIndex = 25;
+            this.labelStaffID.Text = "Mã nhân viên:";
             // 
             // buttonPay
             // 
             this.buttonPay.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonPay.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.buttonPay.Image = ((System.Drawing.Image)(resources.GetObject("buttonPay.Image")));
             this.buttonPay.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
-            this.buttonPay.Location = new System.Drawing.Point(354, 606);
+            this.buttonPay.Location = new System.Drawing.Point(328, 263);
             this.buttonPay.Name = "buttonPay";
             this.buttonPay.Size = new System.Drawing.Size(70, 70);
             this.buttonPay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonPay.TabIndex = 14;
+            this.buttonPay.TabIndex = 3;
             this.buttonPay.Text = "Thanh toán";
+            this.buttonPay.Click += new System.EventHandler(this.buttonPay_Click);
+            // 
+            // textBoxStaffID
+            // 
+            // 
+            // 
+            // 
+            this.textBoxStaffID.Border.Class = "TextBoxBorder";
+            this.textBoxStaffID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxStaffID.Location = new System.Drawing.Point(98, 92);
+            this.textBoxStaffID.Name = "textBoxStaffID";
+            this.textBoxStaffID.ReadOnly = true;
+            this.textBoxStaffID.Size = new System.Drawing.Size(300, 20);
+            this.textBoxStaffID.TabIndex = 24;
+            // 
+            // labelTotalBillPrice
+            // 
+            this.labelTotalBillPrice.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelTotalBillPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelTotalBillPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTotalBillPrice.ForeColor = System.Drawing.Color.Red;
+            this.labelTotalBillPrice.Location = new System.Drawing.Point(98, 282);
+            this.labelTotalBillPrice.Name = "labelTotalBillPrice";
+            this.labelTotalBillPrice.Size = new System.Drawing.Size(171, 23);
+            this.labelTotalBillPrice.TabIndex = 42;
+            this.labelTotalBillPrice.Text = "100";
+            // 
+            // textBoxPatientID
+            // 
+            // 
+            // 
+            // 
+            this.textBoxPatientID.Border.Class = "TextBoxBorder";
+            this.textBoxPatientID.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxPatientID.Location = new System.Drawing.Point(98, 40);
+            this.textBoxPatientID.Name = "textBoxPatientID";
+            this.textBoxPatientID.ReadOnly = true;
+            this.textBoxPatientID.Size = new System.Drawing.Size(300, 20);
+            this.textBoxPatientID.TabIndex = 23;
+            // 
+            // labelState
+            // 
+            this.labelState.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelState.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelState.Location = new System.Drawing.Point(18, 310);
+            this.labelState.Name = "labelState";
+            this.labelState.Size = new System.Drawing.Size(74, 23);
+            this.labelState.TabIndex = 41;
+            this.labelState.Text = "Tình trạng:";
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelPrice.Location = new System.Drawing.Point(591, 46);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(50, 23);
+            this.labelPrice.TabIndex = 36;
+            this.labelPrice.Text = "Đơn giá:";
+            // 
+            // labelDate
+            // 
+            this.labelDate.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelDate.Location = new System.Drawing.Point(18, 144);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(61, 23);
+            this.labelDate.TabIndex = 39;
+            this.labelDate.Text = "Ngày lập:";
+            // 
+            // textBoxPatientName
+            // 
+            // 
+            // 
+            // 
+            this.textBoxPatientName.Border.Class = "TextBoxBorder";
+            this.textBoxPatientName.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxPatientName.Location = new System.Drawing.Point(98, 66);
+            this.textBoxPatientName.Name = "textBoxPatientName";
+            this.textBoxPatientName.ReadOnly = true;
+            this.textBoxPatientName.Size = new System.Drawing.Size(300, 20);
+            this.textBoxPatientName.TabIndex = 22;
+            // 
+            // dateTimeInputBill
+            // 
+            // 
+            // 
+            // 
+            this.dateTimeInputBill.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dateTimeInputBill.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateTimeInputBill.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dateTimeInputBill.ButtonDropDown.Visible = true;
+            this.dateTimeInputBill.IsPopupCalendarOpen = false;
+            this.dateTimeInputBill.Location = new System.Drawing.Point(98, 144);
+            // 
+            // 
+            // 
+            this.dateTimeInputBill.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dateTimeInputBill.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateTimeInputBill.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.dateTimeInputBill.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dateTimeInputBill.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dateTimeInputBill.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dateTimeInputBill.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dateTimeInputBill.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dateTimeInputBill.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dateTimeInputBill.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dateTimeInputBill.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateTimeInputBill.MonthCalendar.DisplayMonth = new System.DateTime(2012, 5, 1, 0, 0, 0, 0);
+            this.dateTimeInputBill.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dateTimeInputBill.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dateTimeInputBill.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dateTimeInputBill.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dateTimeInputBill.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dateTimeInputBill.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateTimeInputBill.MonthCalendar.TodayButtonVisible = true;
+            this.dateTimeInputBill.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dateTimeInputBill.Name = "dateTimeInputBill";
+            this.dateTimeInputBill.Size = new System.Drawing.Size(219, 20);
+            this.dateTimeInputBill.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dateTimeInputBill.TabIndex = 38;
+            // 
+            // labelTotalPrice
+            // 
+            this.labelTotalPrice.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelTotalPrice.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelTotalPrice.Location = new System.Drawing.Point(18, 281);
+            this.labelTotalPrice.Name = "labelTotalPrice";
+            this.labelTotalPrice.Size = new System.Drawing.Size(74, 23);
+            this.labelTotalPrice.TabIndex = 40;
+            this.labelTotalPrice.Text = "Tổng tiền:";
+            // 
+            // labelPatientID
+            // 
+            this.labelPatientID.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelPatientID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelPatientID.Location = new System.Drawing.Point(18, 37);
+            this.labelPatientID.Name = "labelPatientID";
+            this.labelPatientID.Size = new System.Drawing.Size(74, 23);
+            this.labelPatientID.TabIndex = 21;
+            this.labelPatientID.Text = "Mã bệnh nhân:";
+            // 
+            // dataViewBillDetail
+            // 
+            this.dataViewBillDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataViewBillDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewBillDetail.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataViewBillDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataViewBillDetail.Location = new System.Drawing.Point(404, 104);
+            this.dataViewBillDetail.Name = "dataViewBillDetail";
+            this.dataViewBillDetail.ReadOnly = true;
+            this.dataViewBillDetail.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataViewBillDetail.Size = new System.Drawing.Size(433, 229);
+            this.dataViewBillDetail.TabIndex = 31;
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonDelete.Image")));
+            this.buttonDelete.Location = new System.Drawing.Point(768, 75);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(69, 23);
+            this.buttonDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonDelete.TabIndex = 32;
+            this.buttonDelete.Text = "Xóa";
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonAdd.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonAdd.Image = ((System.Drawing.Image)(resources.GetObject("buttonAdd.Image")));
+            this.buttonAdd.Location = new System.Drawing.Point(693, 75);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(69, 23);
+            this.buttonAdd.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonAdd.TabIndex = 2;
+            this.buttonAdd.Text = "Thêm";
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // comboBoxDetail
+            // 
+            this.comboBoxDetail.DisplayMember = "Text";
+            this.comboBoxDetail.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxDetail.FormattingEnabled = true;
+            this.comboBoxDetail.ItemHeight = 14;
+            this.comboBoxDetail.Location = new System.Drawing.Point(483, 17);
+            this.comboBoxDetail.Name = "comboBoxDetail";
+            this.comboBoxDetail.Size = new System.Drawing.Size(254, 20);
+            this.comboBoxDetail.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxDetail.TabIndex = 0;
+            this.comboBoxDetail.SelectedIndexChanged += new System.EventHandler(this.comboBoxDetail_SelectedIndexChanged);
+            // 
+            // labelDetail
+            // 
+            this.labelDetail.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelDetail.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelDetail.Location = new System.Drawing.Point(404, 14);
+            this.labelDetail.Name = "labelDetail";
+            this.labelDetail.Size = new System.Drawing.Size(54, 23);
+            this.labelDetail.TabIndex = 35;
+            this.labelDetail.Text = "Đồ dùng;";
+            // 
+            // superValidator1
+            // 
+            this.superValidator1.ContainerControl = this;
+            this.superValidator1.ErrorProvider = this.errorProvider1;
+            this.superValidator1.Highlighter = this.highlighter1;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập số lượng";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.ErrorMessage = "Nhập số lượng";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = "\\d+";
             // 
             // FormBillDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 684);
-            this.Controls.Add(this.splitContainer1);
-            this.MinimumSize = new System.Drawing.Size(900, 700);
+            this.ClientSize = new System.Drawing.Size(884, 412);
+            this.Controls.Add(this.groupPanelBill);
             this.Name = "FormBillDetail";
-            this.Text = "FormBillDetail";
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewMedicine)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewService)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewMaterial)).EndInit();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
-            this.splitContainer2.ResumeLayout(false);
+            this.Text = "Chi tiết hóa đơn";
+            this.groupPanelBill.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInputBill)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewBillDetail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevComponents.DotNetBar.Controls.DataGridViewX dataViewMedicine;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dataViewService;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dataViewMaterial;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private DevComponents.DotNetBar.LabelX labelMedicinePrice;
-        private DevComponents.DotNetBar.LabelX labelMedicine;
-        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxMedicine;
-        private DevComponents.DotNetBar.ButtonX buttonMedicineAdd;
-        private DevComponents.DotNetBar.ButtonX buttonMedicineDelete;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.ButtonX buttonX2;
-        private DevComponents.DotNetBar.ButtonX buttonX3;
-        private DevComponents.DotNetBar.ButtonX buttonX4;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxStaffName;
+        private DevComponents.DotNetBar.LabelX labelPatientName;
+        private DevComponents.DotNetBar.LabelX labelStaffName;
+        private DevComponents.DotNetBar.Controls.GroupPanel groupPanelBill;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientID;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxPatientName;
+        private DevComponents.DotNetBar.LabelX labelPatientID;
+        private DevComponents.DotNetBar.LabelX labelStaffID;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxStaffID;
+        private DevComponents.DotNetBar.ButtonX buttonClose;
+        private DevComponents.DotNetBar.LabelX labelBillID;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxBillID;
+        private DevComponents.DotNetBar.LabelX labelBillState;
         private DevComponents.DotNetBar.ButtonX buttonPay;
+        private DevComponents.DotNetBar.LabelX labelTotalBillPrice;
+        private DevComponents.DotNetBar.LabelX labelState;
+        private DevComponents.DotNetBar.LabelX labelPrice;
+        private DevComponents.DotNetBar.LabelX labelDate;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInputBill;
+        private DevComponents.DotNetBar.LabelX labelTotalPrice;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dataViewBillDetail;
+        private DevComponents.DotNetBar.ButtonX buttonDelete;
+        private DevComponents.DotNetBar.ButtonX buttonAdd;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxDetail;
+        private DevComponents.DotNetBar.LabelX labelDetail;
+        private DevComponents.DotNetBar.LabelX labelPriceDetail;
+        private DevComponents.DotNetBar.Controls.TextBoxX textBoxQuantity;
+        private DevComponents.DotNetBar.LabelX labelQuantity;
+        private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
+        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
     }
 }

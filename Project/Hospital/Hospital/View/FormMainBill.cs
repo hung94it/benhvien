@@ -26,18 +26,21 @@ namespace Hospital.View
 
                 // Add Vietnamese column's name
                 billTable.Columns.Add("Mã hóa đơn", typeof(string), "[BILLID]");
-                billTable.Columns.Add("Loại hóa đơn", typeof(string), "[BILLTYPEID]");
-                billTable.Columns.Add("Bệnh nhân", typeof(string), "[PATIENTID]");
-                billTable.Columns.Add("Nhân viên", typeof(string), "[STAFFID]");
+                billTable.Columns.Add("Loại hóa đơn", typeof(string), @"IIF([TYPENAME] = 'Medicine', 'Thuốc',
+                                                                            IIF([TYPENAME] = 'Service', 'Dịch vụ', 'Đồ dùng'))");
+                billTable.Columns.Add("Mã bệnh nhân", typeof(string), "[PATIENTID]");
+                billTable.Columns.Add("Họ tên bệnh nhân", typeof(string), "[PATIENTLASTNAME] + ' ' + [PATIENTFIRSTNAME]");
                 billTable.Columns.Add("Ngày lập", typeof(DateTime), "[DATE]");
-                billTable.Columns.Add("Tỏng tiền", typeof(decimal), "[TOTALPRICE]");
+                billTable.Columns.Add("Tổng tiền", typeof(decimal), "[TOTALPRICE]");
                 billTable.Columns.Add("Trạng thái", typeof(string), "IIF([STATE] = 0, 'Chưa thanh toán', 'Đã thanh toán')");
+                billTable.Columns.Add("Nhân viên", typeof(string), "[STAFFID]");
+                billTable.Columns.Add("Họ tên nhân viên", typeof(string), "[STAFFLASTNAME] + ' ' + [STAFFFIRSTNAME]");
 
                 // Set data source to dataview for searching
                 dataViewBill.DataSource = billTable.DefaultView;
 
                 //Hide English columns'name
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 12; i++)
                 {
                     dataViewBill.Columns[i].Visible = false;
                 }

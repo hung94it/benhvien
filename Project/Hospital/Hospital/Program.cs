@@ -21,12 +21,14 @@ namespace Hospital
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Test login
-            Staff loginStaff = Staff.GetStaff(10000001);
+            Staff loginStaff = Staff.GetStaff(10000000);
             // Main form here
-            Application.Run(new FormMain(loginStaff));
+           // Application.Run(new FormMain(loginStaff));
 
             // Test
-            //Application.Run(new FormBillDetail("insert", new Bill()));
+            Bill newBill = Bill.GetBill(10000017);            
+            //Patient patient = Patient.GetPatient(10000000);
+            Application.Run(new FormBillDetail("edit", newBill));
         }
 
         //static void Application_ThreadException(
