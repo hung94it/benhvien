@@ -34,6 +34,7 @@ namespace Hospital.View
 
             // Set default gender
             comboBoxGender.SelectedIndex = 0;
+            //comboBoxGender.Enabled = false;
 
             // Get department list and set it to comboBox
             comboBoxDepartment.DataSource = Department.GetListDepartment();
