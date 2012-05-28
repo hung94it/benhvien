@@ -176,7 +176,7 @@ namespace Hospital.View
                 newPrescription.StaffID = int.Parse(textBoxStaffID.Text);
                 if(this.UserAction=="edit")
                 {
-                    newPrescription.PrescriptionID = int.Parse(textBoxPrescriptionID.Text);
+                    newPrescription.PrescriptionID = Convert.ToInt32(textBoxPrescriptionID.Text);
                     DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin toa thuốc?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.OK)
                     {
@@ -206,6 +206,7 @@ namespace Hospital.View
                             PrescriptionDetail.InsertPrescriptionDetail(listDP[i]);
                         }
                         MessageBox.Show("Thêm toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        listDP.Clear();
                     }
                 }
             }

@@ -27,8 +27,8 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        TESTTYPEID, TYPENAME
                                 FROM            TESTTYPE";
             dtT = SqlResult.ExecuteQuery(sqlSelect);
-            dtT.Columns[0].ColumnName = "Mã loại xét nghiệm";
-            dtT.Columns[1].ColumnName = "Tên loại xét nghiệm";
+            //dtT.Columns[0].ColumnName = "Mã loại xét nghiệm";
+            //dtT.Columns[1].ColumnName = "Tên loại xét nghiệm";
             return dtT;
         }
         public static TestType GetTestType(int testTypeID)

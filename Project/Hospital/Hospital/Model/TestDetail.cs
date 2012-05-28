@@ -49,17 +49,18 @@ namespace Hospital.Model
             SqlParameter[] sqlParameters = { new SqlParameter("@TCID", tCID)};
             return SqlResult.ExecuteNonQuery(sqlDelete, sqlParameters);
         }
-        public static  DataTable GetTestDetail(int tCID)
+        public static  DataTable GetListTestDetail(int tCID)
         {
             DataTable dtTD = new DataTable();
-            string sqlSelect = @"SELECT        TCID, TESTTYPEID, RESULT
-                                FROM            TESTDETAIL
-                                WHERE        TCID=@TCID";
+            string sqlSelect = @"SELECT        TESTDETAIL.TCID, TESTDETAIL.TESTTYPEID, TESTDETAIL.RESULT, TESTTYPE.TYPENAME
+                                FROM            TESTTYPE INNER JOIN TESTDETAIL ON TESTTYPE.TESTTYPEID = TESTDETAIL.TESTTYPEID
+                                WHERE        TESTDETAIL.TCID=@TCID";
             SqlParameter[] sqlParameters = { new SqlParameter("@TCID", tCID) };
             dtTD = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
-            dtTD.Columns[0].ColumnName = "Mã giấy xét nghiệm";
+            dtTD.Columns[0].ColumnName = "Mã phiếu xét nghiệm";
             dtTD.Columns[1].ColumnName = "Mã loại xét nghiệm";
             dtTD.Columns[2].ColumnName = "Kết quả";
+            dtTD.Columns[3].ColumnName = "Tên loại xét nghiệm";
             return dtTD;
         }
     }

@@ -179,9 +179,15 @@ namespace Hospital.View
             int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
             //Current user
             int staffID = 10000000;
-
-            FormHCDetail formHCD = new FormHCDetail(staffID, patientID);
-            formHCD.ShowDialog();
+            if (HospitalizationCertificate.IsPatientHadHC(patientID))
+            {
+                MessageBox.Show("Bệnh nhân đã có giấy nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                FormHCDetail formHCD = new FormHCDetail(staffID, patientID);
+                formHCD.ShowDialog();
+            }
 
         }
         //Add a new discharged certificate
@@ -209,6 +215,37 @@ namespace Hospital.View
 
             FormSurgicalDetail formSD = new FormSurgicalDetail(patientID);
             formSD.ShowDialog();
+        }
+        //Add a new assignment
+        private void buttonAssign_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+            if (HospitalizationCertificate.IsPatientHadHC(patientID))
+            {
+                if (Assignment.IsPatientHadAssignment(patientID))
+                {
+                    MessageBox.Show("Bệnh nhân đã được phân công chăm sóc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    FormAssignDetail formAD = new FormAssignDetail(patientID);
+                    formAD.ShowDialog();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Bệnh nhân chưa nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        //Add a new test certificate
+        private void buttonPatientTest_Click(object sender, EventArgs e)
+        {
+            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+            //Current user
+            int staffID = 10000000;
+
+            FormTestDetail formTD = new FormTestDetail(staffID, patientID);
+            formTD.ShowDialog();
         }
     }
 }
