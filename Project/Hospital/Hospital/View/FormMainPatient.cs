@@ -25,42 +25,50 @@ namespace Hospital.View
         // Edit patient's information when click edit button
         private void buttonPatientEdit_Click(object sender, EventArgs e)
         {
-            // Get patient for edit
-            Patient PatientDetail = Patient.GetPatient(Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString()));
+            if (dataViewPatient.SelectedRows.Count > 0)
+            { 
+                // Get patient for edit
+                Patient PatientDetail = Patient.GetPatient(Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString()));
 
-            // Open patientdetail form for edit
-            FormPatientDetail patientDetailForm = new FormPatientDetail("edit", PatientDetail);
-            patientDetailForm.ShowDialog();
+                // Open patientdetail form for edit
+                FormPatientDetail patientDetailForm = new FormPatientDetail("edit", PatientDetail);
+                patientDetailForm.ShowDialog();
 
-            // Refresh datagridview after edit
-            refreshDataViewPatient();
+                // Refresh datagridview after edit
+                refreshDataViewPatient();
+            }
+            
         }
 
         // Delete patient when click delete button
         private void buttonPatientDelete_Click(object sender, EventArgs e)
         {
-            int patientID;
-
-            try
+            if (dataViewPatient.SelectedRows.Count > 0)
             {
-                // Warning before delete
-                if (MessageBox.Show("Bạn có muốn xóa bệnh nhân này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-                    == DialogResult.Yes)
+                int patientID;
+
+                try
                 {
-                    // Get patientid for delete
-                    if (int.TryParse(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString(), out patientID))
+                    // Warning before delete
+                    if (MessageBox.Show("Bạn có muốn xóa bệnh nhân này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                        == DialogResult.Yes)
                     {
-                        Patient.DeletePatient(patientID);
+                        // Get patientid for delete
+                        if (int.TryParse(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString(), out patientID))
+                        {
+                            Patient.DeletePatient(patientID);
+                        }
                     }
                 }
-            }
-            catch (SqlException exception)
-            {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                catch (SqlException exception)
+                {
+                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                }
+
+                // Refresh datagridview after delete
+                refreshDataViewPatient();
             }
 
-            // Refresh datagridview after delete
-            refreshDataViewPatient();
         }
 
         // Reset search when click searchdelete button
@@ -138,114 +146,154 @@ namespace Hospital.View
         //Add a new Prescription
         private void Prescription_Click(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
-            //Current user
-            int staffID = 10000000;
+            if (dataViewPatient.SelectedRows.Count > 0)
+            { 
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                //Current user
+                int staffID = 10000000;
             
-            FormPrescriptionDetail formPD = new FormPrescriptionDetail(staffID,patientID);
-            formPD.ShowDialog();
+                FormPrescriptionDetail formPD = new FormPrescriptionDetail(staffID,patientID);
+                formPD.ShowDialog();
+            }
+
         }
         //Add a new heath file
         private void buttonHealthFile_Click(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                if (dataViewPatient.SelectedRows.Count > 0)
+                {
+                    int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
 
-            FormHFDetail formHFD = new FormHFDetail(patientID);
-            formHFD.ShowDialog();
+                    FormHFDetail formHFD = new FormHFDetail(patientID);
+                    formHFD.ShowDialog();
+                }
+            }
+
+
         }
         //Add a new heath note
         private void buttonHealthMonitor_Click(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
-            //Current user
-            int staffID = 10000000;
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                //Current user
+                int staffID = 10000000;
 
-            FormHNDetail formHND = new FormHNDetail(staffID, patientID);
-            formHND.ShowDialog();
+                FormHNDetail formHND = new FormHNDetail(staffID, patientID);
+                formHND.ShowDialog();
+            }
+
         }
         //Add a new examination certificate
         private void buttonPatientExamination_Click(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
-            //Current user
-            int staffID = 10000000;
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                //Current user
+                int staffID = 10000000;
 
-            FormECDetail formECD = new FormECDetail(staffID, patientID);
-            formECD.ShowDialog();
+                FormECDetail formECD = new FormECDetail(staffID, patientID);
+                formECD.ShowDialog();
+            }
+
         }
         //Add a new hostpitalization certificate
         private void buttonHospitalizationCert_Click(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
-            //Current user
-            int staffID = 10000000;
-            if (HospitalizationCertificate.IsPatientHadHC(patientID))
+            if (dataViewPatient.SelectedRows.Count > 0)
             {
-                MessageBox.Show("Bệnh nhân đã có giấy nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                //Current user
+                int staffID = 10000000;
+                if (HospitalizationCertificate.IsPatientHadHC(patientID))
+                {
+                    MessageBox.Show("Bệnh nhân đã có giấy nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    FormHCDetail formHCD = new FormHCDetail(staffID, patientID);
+                    formHCD.ShowDialog();
+                }
             }
-            else
-            {
-                FormHCDetail formHCD = new FormHCDetail(staffID, patientID);
-                formHCD.ShowDialog();
-            }
+
 
         }
         //Add a new discharged certificate
         private void buttonDischargeCert_Click(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
-            //Current user
-            int staffID = 10000000;
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                //Current user
+                int staffID = 10000000;
 
-            if (HospitalizationCertificate.IsPatientHadHC(patientID))
-            {
-                FormDCDetail formDCD = new FormDCDetail(staffID, patientID);
-                formDCD.ShowDialog();
+                if (HospitalizationCertificate.IsPatientHadHC(patientID))
+                {
+                    FormDCDetail formDCD = new FormDCDetail(staffID, patientID);
+                    formDCD.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Bệnh nhân chưa nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
-            {
-                MessageBox.Show("Bệnh nhân chưa nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+
         }
 
         //Add a new surgical
         private void buttonPatientSurgery_Click(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
 
-            FormSurgicalDetail formSD = new FormSurgicalDetail(patientID);
-            formSD.ShowDialog();
+                FormSurgicalDetail formSD = new FormSurgicalDetail(patientID);
+                formSD.ShowDialog();
+            }
+
         }
         //Add a new assignment
         private void buttonAssign_Click(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
-            if (HospitalizationCertificate.IsPatientHadHC(patientID))
+            if (dataViewPatient.SelectedRows.Count > 0)
             {
-                if (Assignment.IsPatientHadAssignment(patientID))
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                if (HospitalizationCertificate.IsPatientHadHC(patientID))
                 {
-                    MessageBox.Show("Bệnh nhân đã được phân công chăm sóc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (Assignment.IsPatientHadAssignment(patientID))
+                    {
+                        MessageBox.Show("Bệnh nhân đã được phân công chăm sóc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        FormAssignDetail formAD = new FormAssignDetail(patientID);
+                        formAD.ShowDialog();
+                    }
                 }
                 else
                 {
-                    FormAssignDetail formAD = new FormAssignDetail(patientID);
-                    formAD.ShowDialog();
+                    MessageBox.Show("Bệnh nhân chưa nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else
-            {
-                MessageBox.Show("Bệnh nhân chưa nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+
         }
         //Add a new test certificate
         private void buttonPatientTest_Click(object sender, EventArgs e)
         {
-            int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
-            //Current user
-            int staffID = 10000000;
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                //Current user
+                int staffID = 10000000;
 
-            FormTestDetail formTD = new FormTestDetail(staffID, patientID);
-            formTD.ShowDialog();
+                FormTestDetail formTD = new FormTestDetail(staffID, patientID);
+                formTD.ShowDialog();
+            }
+
         }
     }
 }

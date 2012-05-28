@@ -38,31 +38,39 @@ namespace Hospital.View
 
         private void buttonMonitorDelete_Click(object sender, EventArgs e)
         {
-            int heathNoteID = Convert.ToInt32(dataViewHeathNote.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu theo dõi này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (dataViewHeathNote.SelectedRows.Count > 0)
             {
-                try
+                int heathNoteID = Convert.ToInt32(dataViewHeathNote.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu theo dõi này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (HeathMonitoringNote.DeleteHN(heathNoteID) > 0)
-                        MessageBox.Show("Xóa phiếu theo dõi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (HeathMonitoringNote.DeleteHN(heathNoteID) > 0)
+                            MessageBox.Show("Xóa phiếu theo dõi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Không xóa phiếu theo dõi này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Không xóa phiếu theo dõi này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                refreshDataViewHeathNote();
             }
 
-            refreshDataViewHeathNote();
         }
 
         private void buttonMonitorEdit_Click(object sender, EventArgs e)
         {
-            int heathNoteID = Convert.ToInt32(dataViewHeathNote.SelectedRows[0].Cells[0].Value);
-            FormHNDetail formHNDetail = new FormHNDetail(HeathMonitoringNote.GetHN(heathNoteID), "edit");
-            formHNDetail.ShowDialog();
+            if (dataViewHeathNote.SelectedRows.Count > 0)
+            {
+                int heathNoteID = Convert.ToInt32(dataViewHeathNote.SelectedRows[0].Cells[0].Value);
+                FormHNDetail formHNDetail = new FormHNDetail(HeathMonitoringNote.GetHN(heathNoteID), "edit");
+                formHNDetail.ShowDialog();
 
-            refreshDataViewHeathNote();
+                refreshDataViewHeathNote();
+            }
+
         }
         
         //Refresh datagridview in monitor tab

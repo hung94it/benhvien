@@ -35,31 +35,39 @@ namespace Hospital.View
 
         private void buttonServiceDelete_Click(object sender, EventArgs e)
         {
-            int serviceID = Convert.ToInt16(dataViewService.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa dịch vụ này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                try
+            if (dataViewService.SelectedRows.Count > 0)
+            { 
+                int serviceID = Convert.ToInt16(dataViewService.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa dịch vụ này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (Service.DeleteService(serviceID) > 0)
-                        MessageBox.Show("Xóa dịch thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (Service.DeleteService(serviceID) > 0)
+                            MessageBox.Show("Xóa dịch thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Dịch vụ đã hoặc đang được sử dụng", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Dịch vụ đã hoặc đang được sử dụng", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
 
-            refreshDataViewService();
+                refreshDataViewService();
+            }
+            
         }
 
         private void buttonServiceEdit_Click(object sender, EventArgs e)
         {
-            int serviceID = Convert.ToInt16(dataViewService.SelectedRows[0].Cells[0].Value);
-            FormServiceDetail formServiceDetail = new FormServiceDetail(Service.GetService(serviceID), "edit");
-            formServiceDetail.ShowDialog();
+            if (dataViewService.SelectedRows.Count > 0)
+            {
+                int serviceID = Convert.ToInt16(dataViewService.SelectedRows[0].Cells[0].Value);
+                FormServiceDetail formServiceDetail = new FormServiceDetail(Service.GetService(serviceID), "edit");
+                formServiceDetail.ShowDialog();
 
-            refreshDataViewService();
+                refreshDataViewService();
+            }
+
         }
 
         private void buttonServiceAdd_Click(object sender, EventArgs e)

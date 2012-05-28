@@ -38,58 +38,70 @@ namespace Hospital.View
 
         private void buttonDCConfirm_Click(object sender, EventArgs e)
         {
-            int dcID = Convert.ToInt32(dataViewDC.SelectedRows[0].Cells[0].Value);
-            int state = Convert.ToInt16(dataViewDC.SelectedRows[0].Cells[4].Value);
+            if (dataViewDC.SelectedRows.Count > 0)
+            { 
+                int dcID = Convert.ToInt32(dataViewDC.SelectedRows[0].Cells[0].Value);
+                int state = Convert.ToInt16(dataViewDC.SelectedRows[0].Cells[4].Value);
 
-            if (state != 1)
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xác nhận giấy xuất viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
+                if (state != 1)
                 {
-                    DischargeCertificate confirmDC = DischargeCertificate.GetDC(dcID);
-                    confirmDC.State = 1;
-                    if (DischargeCertificate.UpdateDC(confirmDC) > 0)
-                        MessageBox.Show("Xác nhận giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
-                }
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xác nhận giấy xuất viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        DischargeCertificate confirmDC = DischargeCertificate.GetDC(dcID);
+                        confirmDC.State = 1;
+                        if (DischargeCertificate.UpdateDC(confirmDC) > 0)
+                            MessageBox.Show("Xác nhận giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
 
+                }
+                else
+                {
+                    MessageBox.Show("Giấy xuất viện đã được xác nhận", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                refreshDataViewDC();
             }
-            else
-            {
-                MessageBox.Show("Giấy xuất viện đã được xác nhận", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            refreshDataViewDC();
+            
         }
 
         private void buttonDCDelete_Click(object sender, EventArgs e)
         {
-            int dcID = Convert.ToInt32(dataViewDC.SelectedRows[0].Cells[0].Value);
-            int state = Convert.ToInt16(dataViewDC.SelectedRows[0].Cells[4].Value);
-
-            if (state != 1)
+            if (dataViewDC.SelectedRows.Count > 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa giấy xuất viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
+                int dcID = Convert.ToInt32(dataViewDC.SelectedRows[0].Cells[0].Value);
+                int state = Convert.ToInt16(dataViewDC.SelectedRows[0].Cells[4].Value);
+
+                if (state != 1)
                 {
-                    if (DischargeCertificate.DeleteDC(dcID) > 0)
-                        MessageBox.Show("Xóa giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
-                }
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa giấy xuất viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        if (DischargeCertificate.DeleteDC(dcID) > 0)
+                            MessageBox.Show("Xóa giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
 
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa giấy xuất viện đã được xác nhận", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                refreshDataViewDC();
             }
-            else
-            {
-                MessageBox.Show("Không thể xóa giấy xuất viện đã được xác nhận", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            refreshDataViewDC();
+ 
         }
 
         private void buttonDCUpdate_Click(object sender, EventArgs e)
         {
-            int dcID = Convert.ToInt32(dataViewDC.SelectedRows[0].Cells[0].Value);
-            DischargeCertificate updateDC = DischargeCertificate.GetDC(dcID);
-            FormDCDetail formDCD = new FormDCDetail(updateDC, "edit");
-            formDCD.ShowDialog();
+            if (dataViewDC.SelectedRows.Count > 0)
+            {
+                int dcID = Convert.ToInt32(dataViewDC.SelectedRows[0].Cells[0].Value);
+                DischargeCertificate updateDC = DischargeCertificate.GetDC(dcID);
+                FormDCDetail formDCD = new FormDCDetail(updateDC, "edit");
+                formDCD.ShowDialog();
 
-            refreshDataViewDC();
+                refreshDataViewDC();
+            }
+
         }
         //Refresh datagridview in Discharge tab
         private void refreshDataViewDC()

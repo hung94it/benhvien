@@ -38,58 +38,70 @@ namespace Hospital.View
 
         private void buttonHCConfirm_Click(object sender, EventArgs e)
         {
-            int hcID = Convert.ToInt32(dataViewHC.SelectedRows[0].Cells[0].Value);
-            int state = Convert.ToInt16(dataViewHC.SelectedRows[0].Cells[5].Value);
-
-            if (state != 1)
+            if (dataViewHC.SelectedRows.Count > 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xác nhận giấy nhập viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
+                int hcID = Convert.ToInt32(dataViewHC.SelectedRows[0].Cells[0].Value);
+                int state = Convert.ToInt16(dataViewHC.SelectedRows[0].Cells[5].Value);
+
+                if (state != 1)
                 {
-                    HospitalizationCertificate confirmHC = HospitalizationCertificate.GetHC(hcID);
-                    confirmHC.State = 1;
-                    if (HospitalizationCertificate.UpdateHC(confirmHC) > 0)
-                        MessageBox.Show("Xác nhận giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
-                }
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xác nhận giấy nhập viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        HospitalizationCertificate confirmHC = HospitalizationCertificate.GetHC(hcID);
+                        confirmHC.State = 1;
+                        if (HospitalizationCertificate.UpdateHC(confirmHC) > 0)
+                            MessageBox.Show("Xác nhận giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
 
+                }
+                else
+                {
+                    MessageBox.Show("Giấy nhập viện đã được xác nhận", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                refreshDataViewHC();
             }
-            else
-            {
-                MessageBox.Show("Giấy nhập viện đã được xác nhận", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            refreshDataViewHC();
+
         }
 
         private void buttonHCDelete_Click(object sender, EventArgs e)
         {
-            int hcID = Convert.ToInt32(dataViewHC.SelectedRows[0].Cells[0].Value);
-            int state = Convert.ToInt16(dataViewHC.SelectedRows[0].Cells[5].Value);
+            if (dataViewHC.SelectedRows.Count > 0)
+            {
+                int hcID = Convert.ToInt32(dataViewHC.SelectedRows[0].Cells[0].Value);
+                int state = Convert.ToInt16(dataViewHC.SelectedRows[0].Cells[5].Value);
 
-            if (state != 1)
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa giấy nhập viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
+                if (state != 1)
                 {
-                    if (HospitalizationCertificate.DeleteHC(hcID) > 0)
-                        MessageBox.Show("Xóa giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
-                }
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa giấy nhập viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        if (HospitalizationCertificate.DeleteHC(hcID) > 0)
+                            MessageBox.Show("Xóa giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
                 
+                }
+                else
+                {
+                    MessageBox.Show("Không thể xóa giấy nhập viện đã được xác nhận", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                refreshDataViewHC(); 
             }
-            else
-            {
-                MessageBox.Show("Không thể xóa giấy nhập viện đã được xác nhận", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            refreshDataViewHC();
+
         }
 
         private void buttonHCUpdate_Click(object sender, EventArgs e)
         {
-            int hcID = Convert.ToInt32(dataViewHC.SelectedRows[0].Cells[0].Value);
-            HospitalizationCertificate updateHC = HospitalizationCertificate.GetHC(hcID);
-            FormHCDetail formHCD = new FormHCDetail(updateHC, "edit");
-            formHCD.ShowDialog();
+            if (dataViewHC.SelectedRows.Count > 0)
+            {
+                int hcID = Convert.ToInt32(dataViewHC.SelectedRows[0].Cells[0].Value);
+                HospitalizationCertificate updateHC = HospitalizationCertificate.GetHC(hcID);
+                FormHCDetail formHCD = new FormHCDetail(updateHC, "edit");
+                formHCD.ShowDialog();
 
-            refreshDataViewHC();
+                refreshDataViewHC();
+            }
+
         }
         //Refresh datagridview in Hospitalization tab
         private void refreshDataViewHC()

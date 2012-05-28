@@ -38,32 +38,40 @@ namespace Hospital.View
 
         private void buttonFunctionDelete_Click(object sender, EventArgs e)
         {
-            int funtionlID = Convert.ToInt16(dataViewFunction.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa chức năng này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                try
+            if (dataViewFunction.SelectedRows.Count > 0)
+            { 
+                int funtionlID = Convert.ToInt16(dataViewFunction.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa chức năng này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (RoleFunction.DeleteFunction(funtionlID) > 0)
-                        MessageBox.Show("Xóa chức năng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (RoleFunction.DeleteFunction(funtionlID) > 0)
+                            MessageBox.Show("Xóa chức năng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Chức năng này đang được sử dụng", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Chức năng này đang được sử dụng", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
 
-            refreshDataViewFunction();
+                refreshDataViewFunction();
+            }
+            
         }
 
         private void buttonFunctionEdit_Click(object sender, EventArgs e)
         {
-            int funtionlID = Convert.ToInt16(dataViewFunction.SelectedRows[0].Cells[0].Value);
-            RoleFunction updateFunction = RoleFunction.GetFunction(funtionlID);
-            FormRoleFunctionDetail formRFD = new FormRoleFunctionDetail(updateFunction,"edit");
-            formRFD.ShowDialog();
+            if (dataViewFunction.SelectedRows.Count > 0)
+            {
+                int funtionlID = Convert.ToInt16(dataViewFunction.SelectedRows[0].Cells[0].Value);
+                RoleFunction updateFunction = RoleFunction.GetFunction(funtionlID);
+                FormRoleFunctionDetail formRFD = new FormRoleFunctionDetail(updateFunction,"edit");
+                formRFD.ShowDialog();
 
-            refreshDataViewFunction();
+                refreshDataViewFunction();
+            }
+
         }
 
         private void buttonFunctionAdd_Click(object sender, EventArgs e)

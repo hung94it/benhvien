@@ -39,42 +39,54 @@ namespace Hospital.View
 
         private void buttonExaminationDelete_Click(object sender, EventArgs e)
         {
-            int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu khám bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (dataViewExamination.SelectedRows.Count > 0)
             {
-                if(ExaminationCertificate.GetEC(ecID).State != 1)
+                int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu khám bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (ExaminationCertificate.DeleteEC(ecID) > 0)
-                        MessageBox.Show("Xóa phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    if(ExaminationCertificate.GetEC(ecID).State != 1)
+                    {
+                        if (ExaminationCertificate.DeleteEC(ecID) > 0)
+                            MessageBox.Show("Xóa phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không thể xóa phiếu khám bệnh này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Không thể xóa phiếu khám bệnh này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                refreshDataViewExamination();
             }
-            refreshDataViewExamination();
+
         }
 
         private void buttonExaminationEdit_Click(object sender, EventArgs e)
         {
-            int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
-            ExaminationCertificate updateEC = ExaminationCertificate.GetEC(ecID);
-            FormECDetail formECD = new FormECDetail(updateEC, "edit");
-            formECD.ShowDialog();
+            if (dataViewExamination.SelectedRows.Count > 0)
+            {
+                int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
+                ExaminationCertificate updateEC = ExaminationCertificate.GetEC(ecID);
+                FormECDetail formECD = new FormECDetail(updateEC, "edit");
+                formECD.ShowDialog();
 
-            refreshDataViewExamination();
+                refreshDataViewExamination();
+            }
+
         }
         private void buttonUpdateResult_Click(object sender, EventArgs e)
         {
-            int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
-            ExaminationCertificate updateEC = ExaminationCertificate.GetEC(ecID);
-            //Current user
-            int staffID = 10000000;
-            FormECDetail formECD = new FormECDetail(updateEC, "updateResult", staffID);
-            formECD.ShowDialog();
+            if (dataViewExamination.SelectedRows.Count > 0)
+            {
+                int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
+                ExaminationCertificate updateEC = ExaminationCertificate.GetEC(ecID);
+                //Current user
+                int staffID = 10000000;
+                FormECDetail formECD = new FormECDetail(updateEC, "updateResult", staffID);
+                formECD.ShowDialog();
 
-            refreshDataViewExamination();
+                refreshDataViewExamination();
+            }
+
         }
       
         //Refresh datagridview in Examination tab

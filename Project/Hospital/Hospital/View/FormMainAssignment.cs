@@ -39,41 +39,52 @@ namespace Hospital.View
 
         private void dataViewAssignment_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int assignID = Convert.ToInt32(dataViewAssignment.SelectedRows[0].Cells[0].Value);
-            DataTable dtAD = AssignmentDetail.GetListAssignmentDetails(assignID);
+            if (dataViewAssignment.SelectedRows.Count > 0)
+            {
+                int assignID = Convert.ToInt32(dataViewAssignment.SelectedRows[0].Cells[0].Value);
+                DataTable dtAD = AssignmentDetail.GetListAssignmentDetails(assignID);
 
-            dataViewAsssignmentDetail.DataSource = dtAD.DefaultView;
+                dataViewAsssignmentDetail.DataSource = dtAD.DefaultView;
+            }  
         }
 
         private void buttonAssignmentDelete_Click(object sender, EventArgs e)
         {
-            int assignID = Convert.ToInt32(dataViewAssignment.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa bảng phân công này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (dataViewAssignment.SelectedRows.Count > 0)
             {
-                try
+                int assignID = Convert.ToInt32(dataViewAssignment.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa bảng phân công này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (AssignmentDetail.DeleteAssignmentDetails(assignID) > 0 && Assignment.DeleteAssignment(assignID) > 0)
-                        MessageBox.Show("Xóa bảng phân công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (AssignmentDetail.DeleteAssignmentDetails(assignID) > 0 && Assignment.DeleteAssignment(assignID) > 0)
+                            MessageBox.Show("Xóa bảng phân công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch (SqlException exception)
+                    {
+                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (SqlException exception)
-                {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                refreshDataViewAssignment();
+                refreshDataViewAssignmentDetail();
             }
-            refreshDataViewAssignment();
-            refreshDataViewAssignmentDetail();
+            
         }
 
         private void buttonAssignmentEdit_Click(object sender, EventArgs e)
         {
-            int assignID = Convert.ToInt32(dataViewAssignment.SelectedRows[0].Cells[0].Value);
-            Assignment updateAssign = Assignment.GetAssignment(assignID);
+            if (dataViewAssignment.SelectedRows.Count > 0)
+            { 
+                int assignID = Convert.ToInt32(dataViewAssignment.SelectedRows[0].Cells[0].Value);
+                Assignment updateAssign = Assignment.GetAssignment(assignID);
 
-            FormAssignDetail formAD = new FormAssignDetail(updateAssign, "edit");
-            formAD.ShowDialog();
-            refreshDataViewAssignment();
-            refreshDataViewAssignmentDetail();
+                FormAssignDetail formAD = new FormAssignDetail(updateAssign, "edit");
+                formAD.ShowDialog();
+                refreshDataViewAssignment();
+                refreshDataViewAssignmentDetail();
+            }
+            
         }
         //Refresh datagridview in assignment tab
         private void refreshDataViewAssignment()

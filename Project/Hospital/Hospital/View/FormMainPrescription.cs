@@ -20,12 +20,16 @@ namespace Hospital.View
         //Reload dateViewPrescriptionDetail
         private void dataViewPrescription_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Get PrescriptionDetail's datatable
-            int prescriptionID = Convert.ToInt32(dataViewPrescription.SelectedRows[0].Cells[0].Value);
-            DataTable prescriptionDetailTable = PrescriptionDetail.GetListPrescriptionDetail(prescriptionID);
+            if (dataViewPrescription.SelectedRows.Count > 0)
+            { 
+                // Get PrescriptionDetail's datatable
+                int prescriptionID = Convert.ToInt32(dataViewPrescription.SelectedRows[0].Cells[0].Value);
+                DataTable prescriptionDetailTable = PrescriptionDetail.GetListPrescriptionDetail(prescriptionID);
 
-            // Set data source to dataview for searching
-            dataViewPrescriptionDetail.DataSource = prescriptionDetailTable;
+                // Set data source to dataview for searching
+                dataViewPrescriptionDetail.DataSource = prescriptionDetailTable;
+            }
+
         }
         private void textBoxPrescriptionSearch_TextChanged(object sender, EventArgs e)
         {
@@ -48,33 +52,41 @@ namespace Hospital.View
 
         private void buttonPrescpitionEdit_Click(object sender, EventArgs e)
         {
-            int prescriptionID = Convert.ToInt32(dataViewPrescription.SelectedRows[0].Cells[0].Value);
-            FormPrescriptionDetail formPD = new FormPrescriptionDetail(Prescription.GetPrescription(prescriptionID), "edit");
-            formPD.ShowDialog();
+            if (dataViewPrescription.SelectedRows.Count > 0)
+            { 
+                int prescriptionID = Convert.ToInt32(dataViewPrescription.SelectedRows[0].Cells[0].Value);
+                FormPrescriptionDetail formPD = new FormPrescriptionDetail(Prescription.GetPrescription(prescriptionID), "edit");
+                formPD.ShowDialog();
 
-            refreshDataViewPrescription();
-            refreshDataViewPrescriptionDetail();
+                refreshDataViewPrescription();
+                refreshDataViewPrescriptionDetail();
+            }
+
         }
 
         private void buttonPrescpitionDelete_Click(object sender, EventArgs e)
         {
-            int prescriptionID = Convert.ToInt32(dataViewPrescription.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa toa thuốc này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (dataViewPrescription.SelectedRows.Count > 0)
             {
-                try
+                int prescriptionID = Convert.ToInt32(dataViewPrescription.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa toa thuốc này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (PrescriptionDetail.DeletePrescriptionDetail(prescriptionID) > 0 && Prescription.DeletePrescription(prescriptionID) > 0)
-                        MessageBox.Show("Xóa toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (PrescriptionDetail.DeletePrescriptionDetail(prescriptionID) > 0 && Prescription.DeletePrescription(prescriptionID) > 0)
+                            MessageBox.Show("Xóa toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch (SqlException exception)
+                    {
+                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (SqlException exception)
-                {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                refreshDataViewPrescription();
+                refreshDataViewPrescriptionDetail();
             }
 
-            refreshDataViewPrescription();
-            refreshDataViewPrescriptionDetail();
         }
         //Refresh datagridview in prescription tab
         private void refreshDataViewPrescription()

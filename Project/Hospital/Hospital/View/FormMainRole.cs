@@ -27,33 +27,41 @@ namespace Hospital.View
         }
         private void buttonRoleDelete_Click(object sender, EventArgs e)
         {
-            int roleID = Convert.ToInt16(dataViewRole.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult=MessageBox.Show("Bạn có muốn xóa phân quyền này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if(dialogResult==DialogResult.Yes)
-            {
-                try
+            if (dataViewRole.SelectedRows.Count > 0)
+            { 
+                int roleID = Convert.ToInt16(dataViewRole.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult=MessageBox.Show("Bạn có muốn xóa phân quyền này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if(dialogResult==DialogResult.Yes)
                 {
-                    if(RoleDetail.DeleteRoleDetail(roleID) >0 && Role.DeleteRole(roleID)>0)
-                        MessageBox.Show("Xóa phân quyền thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if(RoleDetail.DeleteRoleDetail(roleID) >0 && Role.DeleteRole(roleID)>0)
+                            MessageBox.Show("Xóa phân quyền thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch (SqlException exception)
+                    {
+                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (SqlException exception)
-                {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                refreshDataViewRole();
+                refreshDataViewRoleDetail();
             }
 
-            refreshDataViewRole();
-            refreshDataViewRoleDetail();
         }
 
         private void buttonRoleEdit_Click(object sender, EventArgs e)
         {
-            int roleID = Convert.ToInt16(dataViewRole.SelectedRows[0].Cells[0].Value);
-            FormRoleDetail formRoleDetail = new FormRoleDetail(Role.GetRole(roleID), "edit");
-            formRoleDetail.ShowDialog();
+            if (dataViewRole.SelectedRows.Count > 0)
+            {
+                int roleID = Convert.ToInt16(dataViewRole.SelectedRows[0].Cells[0].Value);
+                FormRoleDetail formRoleDetail = new FormRoleDetail(Role.GetRole(roleID), "edit");
+                formRoleDetail.ShowDialog();
 
-            refreshDataViewRole();
-            refreshDataViewRoleDetail();
+                refreshDataViewRole();
+                refreshDataViewRoleDetail();
+            }
+
         }
         //Refresh datagridview in role tab
         private void refreshDataViewRole()
@@ -124,11 +132,15 @@ namespace Hospital.View
         //Reload dateViewRoldeDetail
         private void dataViewRole_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Get RoleDetail's datatable
-            int roleID = Convert.ToInt16(dataViewRole.SelectedRows[0].Cells[0].Value);
-            DataTable roleDetailTable = RoleDetail.GetListStaffFunction(roleID);
+            if (dataViewRole.SelectedRows.Count > 0)
+            {
+                // Get RoleDetail's datatable
+                int roleID = Convert.ToInt16(dataViewRole.SelectedRows[0].Cells[0].Value);
+                DataTable roleDetailTable = RoleDetail.GetListStaffFunction(roleID);
 
-            // Set data source to dataview for searching
+                // Set data source to dataview for searching
+            }
+
             dataViewRoleDetail.DataSource = roleDetailTable;
         }
         // Search when text changed
