@@ -58,32 +58,36 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        TCID, PATIENTID, STAFFID, DATE, STATE
                                 FROM            TESTCERTIFICATE";
             dtTC = SqlResult.ExecuteQuery(sqlSelect);
-            dtTC.Columns[0].ColumnName = "Mã phiếu xét nghiệm";
-            dtTC.Columns[1].ColumnName = "Mã bệnh nhân";
-            dtTC.Columns[2].ColumnName = "Mã nhân viên";
-            dtTC.Columns[3].ColumnName = "Ngày lập";
-            dtTC.Columns[4].ColumnName = "Trạng thái";
+            //dtTC.Columns[0].ColumnName = "Mã phiếu xét nghiệm";
+            //dtTC.Columns[1].ColumnName = "Mã bệnh nhân";
+            //dtTC.Columns[2].ColumnName = "Mã nhân viên";
+            //dtTC.Columns[3].ColumnName = "Ngày lập";
+            //dtTC.Columns[4].ColumnName = "Trạng thái";
             return dtTC;
         }
         public static TestCertificate GetTC(int tCID)
         {
             TestCertificate newTC = new TestCertificate();
-            int tempInterger;
             string sqlSelect = @"SELECT        TCID, PATIENTID, STAFFID, DATE, STATE
                                 FROM            TESTCERTIFICATE
-                                WHERE        TCID=@STCID";
+                                WHERE        TCID=@TCID";
             SqlParameter[] sqlParameters = { new SqlParameter("@TCID", tCID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
-                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-                newTC.TCID = tempInterger;
-                newTC.PatientID = int.Parse(dataTable.Rows[0][1].ToString());
-                newTC.StafID = int.Parse(dataTable.Rows[0][2].ToString());
+                newTC.TCID = Convert.ToInt32(dataTable.Rows[0][0]);
+                newTC.PatientID = Convert.ToInt32(dataTable.Rows[0][1]);
+                newTC.StafID = Convert.ToInt32(dataTable.Rows[0][2]);
                 newTC.Date = DateTime.Parse((dataTable.Rows[0][3].ToString()));
                 newTC.State = int.Parse(dataTable.Rows[0][4].ToString());
             }
             return newTC;
+        }
+        public static int GetCurrentIdentity()
+        {
+            string sqlSelect = @"SELECT IDENT_CURRENT('TESTCERTIFICATE')  as currIdent";
+            object ob = SqlResult.ExecuteScalar(sqlSelect);
+            return Convert.ToInt32(ob);
         }
     }
 }

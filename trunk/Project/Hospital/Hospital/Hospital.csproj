@@ -217,7 +217,9 @@
     <Compile Include="View\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FormMainAssignment.cs" />
+    <Compile Include="View\FormMainAssignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FormMainBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,6 +277,9 @@
     <Compile Include="View\FormMainSurgical.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FormMainTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FormMaterialDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,6 +333,12 @@
     </Compile>
     <Compile Include="View\FormSurgicalDetail.Designer.cs">
       <DependentUpon>FormSurgicalDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormTestDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormTestDetail.Designer.cs">
+      <DependentUpon>FormTestDetail.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -405,6 +416,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormSurgicalDetail.resx">
       <DependentUpon>FormSurgicalDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormTestDetail.resx">
+      <DependentUpon>FormTestDetail.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
