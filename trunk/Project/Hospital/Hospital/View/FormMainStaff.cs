@@ -25,45 +25,60 @@ namespace Hospital.View
         // Edit staff's information when click edit button
         private void buttonStaffEdit_Click(object sender, EventArgs e)
         {
-            // Get staff for edit
-            Staff StaffDetail = Staff.GetStaff(Convert.ToInt32(dataViewStaff.SelectedRows[0].Cells[0].Value.ToString()));
+            if (dataViewStaff.SelectedRows.Count > 0)
+            {
+                // Get staff for edit
+                Staff StaffDetail = Staff.GetStaff(Convert.ToInt32(dataViewStaff.SelectedRows[0].Cells[0].Value.ToString()));
 
-            // Open staffdetail form for edit
-            FormStaffDetail staffDetailForm = new FormStaffDetail("edit", StaffDetail);
-            staffDetailForm.ShowDialog();
+                // Open staffdetail form for edit
+                FormStaffDetail staffDetailForm = new FormStaffDetail("edit", StaffDetail);
+                staffDetailForm.ShowDialog();
 
-            // Refresh datagridview after edit
-            refreshDataViewStaff();
+                // Refresh datagridview after edit
+                refreshDataViewStaff();
+            }
+
         }
 
         // Delete staff when click delete button
         private void buttonStaffDelete_Click(object sender, EventArgs e)
         {
-            int staffID;
 
-            try
-            {
-                // Warning before delete
-                if (MessageBox.Show("Bạn có muốn xóa nhân viên này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-                    == DialogResult.Yes)
+                int staffID;
+
+                try
                 {
+
+                    // Warning before delete
+                    if (MessageBox.Show("Bạn có muốn xóa nhân viên này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                        == DialogResult.Yes)
+
                     // Get staffid for delete
                     if (dataViewStaff.SelectedRows.Count > 0)
+
                     {
+
+                        // Get staffid for delete
+                        if (int.TryParse(dataViewStaff.SelectedRows[0].Cells[0].Value.ToString(), out staffID))
+                        {
+                            Staff.DeleteStaff(staffID);
+                        }
+
                         if (int.TryParse(dataViewStaff.SelectedRows[0].Cells[0].Value.ToString(), out staffID))
                         {
                             Staff.DeleteStaff(staffID);
                         } 
                     }
                 }
-            }
-            catch (SqlException exception)
-            {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                catch (SqlException exception)
+                {
+                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-            // Refresh datagridview after delete
-            refreshDataViewStaff();
+                // Refresh datagridview after delete
+                refreshDataViewStaff();
+            
+
         }
 
         // Reset search when click searchdelete button

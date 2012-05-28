@@ -35,31 +35,39 @@ namespace Hospital.View
 
         private void buttonMaterialDelete_Click(object sender, EventArgs e)
         {
-            int materialID = Convert.ToInt16(dataViewMaterial.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa vật tư này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (dataViewMaterial.SelectedRows.Count > 0)
             {
-                try
+                int materialID = Convert.ToInt16(dataViewMaterial.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa vật tư này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (Material.DeleteMaterial(materialID) > 0 )
-                        MessageBox.Show("Xóa vật tư thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (Material.DeleteMaterial(materialID) > 0 )
+                            MessageBox.Show("Xóa vật tư thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Vật tư đã hoặc đang được sử dụng", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Vật tư đã hoặc đang được sử dụng", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                refreshDataViewMaterial();
             }
 
-            refreshDataViewMaterial();
         }
 
         private void buttonMaterialEdit_Click(object sender, EventArgs e)
         {
-            int materialID = Convert.ToInt16(dataViewMaterial.SelectedRows[0].Cells[0].Value);
-            FormMaterialDetail formMaterialDetail = new FormMaterialDetail(Material.GetMaterial(materialID),"edit");
-            formMaterialDetail.ShowDialog();
+            if (dataViewMaterial.SelectedRows.Count > 0)
+            {
+                int materialID = Convert.ToInt16(dataViewMaterial.SelectedRows[0].Cells[0].Value);
+                FormMaterialDetail formMaterialDetail = new FormMaterialDetail(Material.GetMaterial(materialID),"edit");
+                formMaterialDetail.ShowDialog();
 
-            refreshDataViewMaterial();
+                refreshDataViewMaterial();
+            }
+
         }
 
         private void buttonMaterialAdd_Click(object sender, EventArgs e)

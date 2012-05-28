@@ -37,64 +37,76 @@ namespace Hospital.View
 
         private void buttonRecevieBed_Click(object sender, EventArgs e)
         {
-            int bedID = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[0].Value);
-            int state = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[2].Value);
-            if (state == 0)
+            if (dataViewBed.SelectedRows.Count > 0)
             {
-                FormHostpitalBedDetail formHBDetail = new FormHostpitalBedDetail(HospitalBed.GetHospitalBed(bedID));
-                formHBDetail.ShowDialog();
+                int bedID = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[0].Value);
+                int state = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[2].Value);
+                if (state == 0)
+                {
+                    FormHostpitalBedDetail formHBDetail = new FormHostpitalBedDetail(HospitalBed.GetHospitalBed(bedID));
+                    formHBDetail.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("giường bệnh đang được sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                refreshDataViewBed();
             }
-            else
-            {
-                MessageBox.Show("giường bệnh đang được sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            refreshDataViewBed();
+            
         }
 
         private void buttonReturnBed_Click(object sender, EventArgs e)
         {
-            int bedID = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[0].Value);
-            int state = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[2].Value);
-            if (state == 1)
+            if (dataViewBed.SelectedRows.Count > 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có xác nhận trả giường này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
+                int bedID = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[0].Value);
+                int state = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[2].Value);
+                if (state == 1)
                 {
-                    HospitalBed updateHB = HospitalBed.GetHospitalBed(bedID);
-                    updateHB.Patient = 0;
-                    updateHB.State = 0;
-                    if (HospitalBed.UpdateHospitalBed(updateHB) > 0)
-                        MessageBox.Show("Trả giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    DialogResult dialogResult = MessageBox.Show("Bạn có xác nhận trả giường này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        HospitalBed updateHB = HospitalBed.GetHospitalBed(bedID);
+                        updateHB.Patient = 0;
+                        updateHB.State = 0;
+                        if (HospitalBed.UpdateHospitalBed(updateHB) > 0)
+                            MessageBox.Show("Trả giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
 
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Giường bệnh trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                refreshDataViewBed();
             }
-            else
-            {
-                MessageBox.Show("Giường bệnh trống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            refreshDataViewBed();
+
         }
 
         private void buttonBedDelete_Click(object sender, EventArgs e)
         {
-            int bedID = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[0].Value);
-            int state = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[2].Value);
-            if (state == 0)
+            if (dataViewBed.SelectedRows.Count > 0)
             {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa giường bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
+                int bedID = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[0].Value);
+                int state = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[2].Value);
+                if (state == 0)
                 {
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa giường bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
                 
-                        if (HospitalBed.DeleteHospitalBed(bedID) > 0)
-                            MessageBox.Show("Xóa giường bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            if (HospitalBed.DeleteHospitalBed(bedID) > 0)
+                                MessageBox.Show("Xóa giường bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                 
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("giường bệnh đã hoặc đang được sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                refreshDataViewBed();
             }
-            else
-            {
-                MessageBox.Show("giường bệnh đã hoặc đang được sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            refreshDataViewBed();
+
         }
 
         private void buttonBedAdd_Click(object sender, EventArgs e)

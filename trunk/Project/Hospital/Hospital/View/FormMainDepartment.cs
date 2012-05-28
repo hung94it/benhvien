@@ -19,31 +19,39 @@ namespace Hospital.View
 
         private void buttonDepartmentDelete_Click(object sender, EventArgs e)
         {
-            int departmentID = Convert.ToInt16(dataViewDepartment.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phòng khoa này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (dataViewDepartment.SelectedRows.Count > 0)
             {
-                try
+                            int departmentID = Convert.ToInt16(dataViewDepartment.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phòng khoa này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (Department.DeleteDepartment(departmentID) > 0)
-                        MessageBox.Show("Xóa phòng khoa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (Department.DeleteDepartment(departmentID) > 0)
+                            MessageBox.Show("Xóa phòng khoa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("phòng khoa đã hoặc đang có người công tác", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("phòng khoa đã hoặc đang có người công tác", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                refreshDataViewDepartment();
             }
 
-            refreshDataViewDepartment();
         }
 
         private void buttonDepartmentEdit_Click(object sender, EventArgs e)
         {
-            int departmentID = Convert.ToInt16(dataViewDepartment.SelectedRows[0].Cells[0].Value);
-            FormDepartmentDetail formDepartmentDetail = new FormDepartmentDetail(Department.GetDepartment(departmentID),"edit");
-            formDepartmentDetail.ShowDialog();
+            if (dataViewDepartment.SelectedRows.Count > 0)
+            {
+                int departmentID = Convert.ToInt16(dataViewDepartment.SelectedRows[0].Cells[0].Value);
+                FormDepartmentDetail formDepartmentDetail = new FormDepartmentDetail(Department.GetDepartment(departmentID),"edit");
+                formDepartmentDetail.ShowDialog();
 
-            refreshDataViewDepartment();
+                refreshDataViewDepartment();
+            }
+
         }
 
         private void buttonDepartmentAdd_Click(object sender, EventArgs e)

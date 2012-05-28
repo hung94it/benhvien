@@ -20,12 +20,16 @@ namespace Hospital.View
         // Refresh datagridview when click a cell
         private void dataViewSurgical_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Get SurgicalnDetail's datatable
-            int surgicalID = Convert.ToInt32(dataViewSurgical.SelectedRows[0].Cells[0].Value);
-            DataTable surgicalDetailTable = SurgicalDetail.GetListSurgicalDetail(surgicalID);
+            if (dataViewSurgical.SelectedRows.Count > 0)
+            {
+                // Get SurgicalnDetail's datatable
+                int surgicalID = Convert.ToInt32(dataViewSurgical.SelectedRows[0].Cells[0].Value);
+                DataTable surgicalDetailTable = SurgicalDetail.GetListSurgicalDetail(surgicalID);
 
-            // Set data source to dataview for searching
-            dataViewSurgicalDetail.DataSource = surgicalDetailTable;
+                // Set data source to dataview for searching
+                dataViewSurgicalDetail.DataSource = surgicalDetailTable;
+            }
+
         }
 
         private void textBoxSurgicalSearch_TextChanged(object sender, EventArgs e)
@@ -49,41 +53,49 @@ namespace Hospital.View
 
         private void buttonSurgeryDelete_Click(object sender, EventArgs e)
         {
-            int surgicalID = Convert.ToInt32(dataViewSurgical.SelectedRows[0].Cells[0].Value);
-            Surgical deleteSurgical = Surgical.GetSurgical(surgicalID);
-            if (deleteSurgical.State != 1)
-            {
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa ca phẩu thuật này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == DialogResult.Yes)
+            if (dataViewSurgical.SelectedRows.Count > 0)
+            { 
+                int surgicalID = Convert.ToInt32(dataViewSurgical.SelectedRows[0].Cells[0].Value);
+                Surgical deleteSurgical = Surgical.GetSurgical(surgicalID);
+                if (deleteSurgical.State != 1)
                 {
-                    try
+                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa ca phẩu thuật này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        if (SurgicalDetail.DeleteSurgicalDetail(surgicalID) > 0 && Surgical.DeleteSurgical(surgicalID) > 0)
-                            MessageBox.Show("Xóa ca phẩu thuật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    }
-                    catch (SqlException exception)
-                    {
-                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            if (SurgicalDetail.DeleteSurgicalDetail(surgicalID) > 0 && Surgical.DeleteSurgical(surgicalID) > 0)
+                                MessageBox.Show("Xóa ca phẩu thuật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        }
+                        catch (SqlException exception)
+                        {
+                            MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Không thể xóa ca phẩu thuật đã được thực hiện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                refreshDataViewSurgical();
+                refreshDataViewSurgicalDetail();
             }
-            else
-            {
-                MessageBox.Show("Không thể xóa ca phẩu thuật đã được thực hiện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            refreshDataViewSurgical();
-            refreshDataViewSurgicalDetail();
+            
         }
 
         private void buttonSurgeryEdit_Click(object sender, EventArgs e)
         {
-            int surgicalID = Convert.ToInt32(dataViewSurgical.SelectedRows[0].Cells[0].Value);
-            Surgical updateSurgical = Surgical.GetSurgical(surgicalID);
-            FormSurgicalDetail formSD = new FormSurgicalDetail(updateSurgical, "edit");
-            formSD.ShowDialog();
+            if (dataViewSurgical.SelectedRows.Count > 0)
+            { 
+                int surgicalID = Convert.ToInt32(dataViewSurgical.SelectedRows[0].Cells[0].Value);
+                Surgical updateSurgical = Surgical.GetSurgical(surgicalID);
+                FormSurgicalDetail formSD = new FormSurgicalDetail(updateSurgical, "edit");
+                formSD.ShowDialog();
  
-            refreshDataViewSurgical();
-            refreshDataViewSurgicalDetail();
+                refreshDataViewSurgical();
+                refreshDataViewSurgicalDetail();
+            }
+
         }
         //Refresh datagridview in surgical tab
         private void refreshDataViewSurgical()

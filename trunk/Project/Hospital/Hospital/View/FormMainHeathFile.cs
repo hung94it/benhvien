@@ -38,31 +38,39 @@ namespace Hospital.View
 
         private void buttonHealthFileDelete_Click(object sender, EventArgs e)
         {
-            int heathFileID = Convert.ToInt32(dataViewHeathFile.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa bệnh án này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                try
+            if (dataViewHeathFile.SelectedRows.Count > 0)
+            { 
+                int heathFileID = Convert.ToInt32(dataViewHeathFile.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa bệnh án này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (HeathFile.DeleteHeathFile(heathFileID) > 0)
-                        MessageBox.Show("Xóa bệnh án thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (HeathFile.DeleteHeathFile(heathFileID) > 0)
+                            MessageBox.Show("Xóa bệnh án thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Không thể xóa bệnh án này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Không thể xóa bệnh án này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                refreshDataViewHeathFile();
             }
 
-            refreshDataViewHeathFile();
         }
 
         private void buttonHealthFileEdit_Click(object sender, EventArgs e)
         {
-            int heathFileID = Convert.ToInt32(dataViewHeathFile.SelectedRows[0].Cells[0].Value);
-            FormHFDetail formHFDetail = new FormHFDetail(HeathFile.GetHeathFile(heathFileID), "edit");
-            formHFDetail.ShowDialog();
+            if (dataViewHeathFile.SelectedRows.Count > 0)
+            {
+                int heathFileID = Convert.ToInt32(dataViewHeathFile.SelectedRows[0].Cells[0].Value);
+                FormHFDetail formHFDetail = new FormHFDetail(HeathFile.GetHeathFile(heathFileID), "edit");
+                formHFDetail.ShowDialog();
 
-            refreshDataViewHeathFile();
+                refreshDataViewHeathFile();
+            }
+
         }
         //Refresh datagridview in heath file tab
         private void refreshDataViewHeathFile()

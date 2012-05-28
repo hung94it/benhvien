@@ -18,31 +18,39 @@ namespace Hospital.View
         }
         private void buttonMedicineDelete_Click(object sender, EventArgs e)
         {
-            int medicineID = Convert.ToInt32(dataViewMedicine.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa loại thuốc này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (dataViewMedicine.SelectedRows.Count > 0)
             {
-                try
+                int medicineID = Convert.ToInt32(dataViewMedicine.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa loại thuốc này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (Medicine.DeleteMedicne(medicineID) > 0)
-                        MessageBox.Show("Xóa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (Medicine.DeleteMedicne(medicineID) > 0)
+                            MessageBox.Show("Xóa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Thuốc đã hoặc đang được sử dụng", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Thuốc đã hoặc đang được sử dụng", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                refreshDataViewMedicine();
             }
 
-            refreshDataViewMedicine();
         }
 
         private void buttonMedicineEdit_Click(object sender, EventArgs e)
         {
-            int medicineID = Convert.ToInt32(dataViewMedicine.SelectedRows[0].Cells[0].Value);
-            FormMedicineDetail formMedicineDetail = new FormMedicineDetail(Medicine.GetMedicine(medicineID),"edit");
-            formMedicineDetail.ShowDialog();
+            if (dataViewMedicine.SelectedRows.Count > 0)
+            { 
+                int medicineID = Convert.ToInt32(dataViewMedicine.SelectedRows[0].Cells[0].Value);
+                FormMedicineDetail formMedicineDetail = new FormMedicineDetail(Medicine.GetMedicine(medicineID),"edit");
+                formMedicineDetail.ShowDialog();
 
-            refreshDataViewMedicine();
+                refreshDataViewMedicine();
+            }
+
         }
         private void buttonMedicineAdd_Click(object sender, EventArgs e)
         {

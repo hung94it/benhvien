@@ -39,41 +39,53 @@ namespace Hospital.View
 
         private void dataViewTC_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int testID = Convert.ToInt32(dataViewTC.SelectedRows[0].Cells[0].Value);
-            DataTable dtTD = TestDetail.GetListTestDetail(testID);
+            if (dataViewTC.SelectedRows.Count > 0)
+            {
+                int testID = Convert.ToInt32(dataViewTC.SelectedRows[0].Cells[0].Value);
+                DataTable dtTD = TestDetail.GetListTestDetail(testID);
 
-            dataViewTCDetail.DataSource = dtTD.DefaultView;
+                dataViewTCDetail.DataSource = dtTD.DefaultView;
+            }
+            
         }
 
         private void buttonTestDelete_Click(object sender, EventArgs e)
         {
-            int testID = Convert.ToInt32(dataViewTC.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu xét nghiệm này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (dataViewTC.SelectedRows.Count > 0)
             {
-                try
+                int testID = Convert.ToInt32(dataViewTC.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu xét nghiệm này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (TestDetail.DeleteTestDetail(testID) > 0 && TestCertificate.DeleteTC(testID) > 0)
-                        MessageBox.Show("Xóa phiếu xét nghiệm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (TestDetail.DeleteTestDetail(testID) > 0 && TestCertificate.DeleteTC(testID) > 0)
+                            MessageBox.Show("Xóa phiếu xét nghiệm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Không thể xóa phiếu xét nghiệm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Không thể xóa phiếu xét nghiệm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                refreshDataViewTest();
+                refreshDataViewTestDetail();
             }
-            refreshDataViewTest();
-            refreshDataViewTestDetail();
+
         }
 
         private void buttonTestEdit_Click(object sender, EventArgs e)
         {
-            int testID = Convert.ToInt32(dataViewTC.SelectedRows[0].Cells[0].Value);
-            TestCertificate updateTD=TestCertificate.GetTC(testID);
-            FormTestDetail formTD = new FormTestDetail(updateTD,"edit");
-            formTD.ShowDialog();
+            if (dataViewTC.SelectedRows.Count > 0)
+            {
+                int testID = Convert.ToInt32(dataViewTC.SelectedRows[0].Cells[0].Value);
+                TestCertificate updateTD=TestCertificate.GetTC(testID);
+                FormTestDetail formTD = new FormTestDetail(updateTD,"edit");
+                formTD.ShowDialog();
 
-            refreshDataViewTest();
-            refreshDataViewTestDetail();
+                refreshDataViewTest();
+                refreshDataViewTestDetail();
+            }
+
         }
         //Refresh datagridview in test tab
         private void refreshDataViewTest()

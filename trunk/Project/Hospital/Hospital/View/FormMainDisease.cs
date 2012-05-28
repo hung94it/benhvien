@@ -37,31 +37,39 @@ namespace Hospital.View
 
         private void buttonDiseaseDelete_Click(object sender, EventArgs e)
         {
-            int diseaseID = Convert.ToInt16(dataViewDisease.SelectedRows[0].Cells[0].Value);
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
+            if (dataViewDisease.SelectedRows.Count > 0)
             {
-                try
+                int diseaseID = Convert.ToInt16(dataViewDisease.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    if (Disease.DeleteDisease(diseaseID) > 0)
-                        MessageBox.Show("Xóa bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    try
+                    {
+                        if (Disease.DeleteDisease(diseaseID) > 0)
+                            MessageBox.Show("Xóa bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Bệnh đã hoặc đang có người mắc phải", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch
-                {
-                    MessageBox.Show("Bệnh đã hoặc đang có người mắc phải", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                refreshDataViewDisease();
             }
 
-            refreshDataViewDisease();
         }
 
         private void buttonDiseaseEdit_Click(object sender, EventArgs e)
         {
-            int diseaseID = Convert.ToInt16(dataViewDisease.SelectedRows[0].Cells[0].Value);
-            FormDiseaseDetail formDiseaseDetail = new FormDiseaseDetail(Disease.GetDisease(diseaseID),"edit");
-            formDiseaseDetail.ShowDialog();
+            if (dataViewDisease.SelectedRows.Count > 0)
+            {
+                int diseaseID = Convert.ToInt16(dataViewDisease.SelectedRows[0].Cells[0].Value);
+                FormDiseaseDetail formDiseaseDetail = new FormDiseaseDetail(Disease.GetDisease(diseaseID),"edit");
+                formDiseaseDetail.ShowDialog();
 
-            refreshDataViewDisease();
+                refreshDataViewDisease();
+            }
+
         }
 
         private void buttonDiseaseAdd_Click(object sender, EventArgs e)
