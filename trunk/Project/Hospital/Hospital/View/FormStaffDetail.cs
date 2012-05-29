@@ -34,7 +34,7 @@ namespace Hospital.View
 
             // Set default gender
             comboBoxGender.SelectedIndex = 0;
-            //comboBoxGender.Enabled = false;
+            comboBoxState.SelectedIndex = 0;            
 
             // Get department list and set it to comboBox
             comboBoxDepartment.DataSource = Department.GetListDepartment();
@@ -93,6 +93,15 @@ namespace Hospital.View
 
             StaffDetail.Address = textBoxAddress.Text;
 
+            if (comboBoxState.SelectedIndex == 0)
+            {
+                StaffDetail.State = 0;
+            }
+            else
+            {
+                StaffDetail.State = 1;
+            }
+
             // Process useraction
             try
             {
@@ -129,18 +138,31 @@ namespace Hospital.View
             textBoxFirstName.Text = staff.FirstName;
             textBoxLastName.Text = staff.LastName;
             dateBirthday.Value = staff.BirthDay;
-            textBoxIdentityCard.Text = staff.ICN.ToString();
-
-            if (staff.ICN == 0)
+            if (staff.ICN != 0)
             {
-                comboBoxGender.Text = "Nam";
+                textBoxIdentityCard.Text = staff.ICN.ToString();
+            }
+            
+            if (Staff.GENDER_MALE.Equals(staff.Gender))
+            {
+                comboBoxGender.SelectedIndex = Staff.GENDER_MALE;
             }
             else
             {
-                comboBoxGender.Text = "Nữ";
+                comboBoxGender.SelectedIndex = Staff.GENDER_FEMALE;
             }
 
             textBoxAddress.Text = staff.Address;
+
+            if (staff.State == 0)
+            {
+                comboBoxState.Text = "Đã thôi việc";
+            }
+            else
+            {
+                comboBoxState.Text = "Đang làm việc";
+            }
+
             comboBoxDepartment.SelectedValue = (object)staff.DepartmentID;
             comboBoxMajor.SelectedValue = (object)staff.MajorID;
             comboBoxRole.SelectedValue = (object)staff.RoleID;

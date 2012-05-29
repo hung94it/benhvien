@@ -127,7 +127,7 @@ namespace Hospital.View
                 patientTable.Columns.Add("Nghề nghiệp", typeof(string), "PROFESSION");
                 patientTable.Columns.Add("Địa chỉ", typeof(string), "[ADDRESS]");
                 patientTable.Columns.Add("Tiền đặt cọc", typeof(string), "[DEPOSIT]");
-                //staffTable.Columns.Add("Trạng thái", typeof(string), "[STATE]");
+                patientTable.Columns.Add("Trạng thái", typeof(string), "IIF([STATE] = 0, 'Ngoại trú', 'Nội trú')");
 
                 // Set data source to dataview for searching
                 dataViewPatient.DataSource = patientTable.DefaultView;

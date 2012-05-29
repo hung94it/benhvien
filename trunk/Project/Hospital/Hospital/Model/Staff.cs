@@ -144,7 +144,8 @@ namespace Hospital.Model
                 newStaff.BirthDay = (DateTime)staffDataTable.Rows[0]["BIRTHDAY"];
                 newStaff.Gender = (int)staffDataTable.Rows[0]["GENDER"];
                 newStaff.ICN = (decimal)staffDataTable.Rows[0]["ICN"];
-                newStaff.Address = (string)staffDataTable.Rows[0]["ADDRESS"];                
+                newStaff.Address = (string)staffDataTable.Rows[0]["ADDRESS"];
+                newStaff.State = (int)staffDataTable.Rows[0]["STATE"];
             }
             
             return newStaff;

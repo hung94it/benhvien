@@ -34,6 +34,7 @@ namespace Hospital.View
 
             // Set useraction and staff
             comboBoxGender.SelectedIndex = 0;
+            comboBoxState.SelectedIndex = 0;
 
             // If useraction is edit then set patientdetail to patientdetail form
             if ("edit".Equals(userAction))
@@ -80,6 +81,15 @@ namespace Hospital.View
                 PatientDetail.Deposit = Convert.ToDecimal(textBoxDeposit.Text);
             }
 
+            if (comboBoxState.SelectedIndex == 0)
+            {
+                PatientDetail.State = 0;
+            }
+            else
+            {
+                PatientDetail.State = 1;
+            }
+
             // Process useraction
             try
             {
@@ -117,8 +127,13 @@ namespace Hospital.View
             textBoxFirstName.Text = patient.FirstName;
             textBoxLastName.Text = patient.LastName;
             dateBirthday.Value = patient.BirthDay;
-            textBoxIdentityCard.Text = patient.ICN.ToString();
-            if (patient.ICN == 0)
+
+            if (patient.ICN != 0)
+            {
+                textBoxIdentityCard.Text = patient.ICN.ToString();
+            }
+            
+            if (patient.Gender == Patient.GENDER_MALE)
             {
                 comboBoxGender.Text = "Nam";
             }
@@ -128,6 +143,15 @@ namespace Hospital.View
             }
             textBoxProfession.Text = patient.Profession;
             textBoxAddress.Text = patient.Address;
+
+            if (patient.State == 0)
+            {
+                comboBoxState.Text = "Ngoại trú";
+            }
+            else
+            {
+                comboBoxState.Text = "Nội trú";
+            }
         }
     }
 }

@@ -69,6 +69,8 @@
             this.compareValidator1 = new DevComponents.DotNetBar.Validator.CompareValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.groupPanelAccout.SuspendLayout();
             this.groupPanelInformation.SuspendLayout();
@@ -118,6 +120,9 @@
             this.comboBoxState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxState.FormattingEnabled = true;
             this.comboBoxState.ItemHeight = 14;
+            this.comboBoxState.Items.AddRange(new object[] {
+            this.comboItem2,
+            this.comboItem1});
             this.comboBoxState.Location = new System.Drawing.Point(104, 311);
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(240, 20);
@@ -624,6 +629,14 @@
             // 
             this.highlighter1.ContainerControl = this;
             // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "Đang làm việc";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "Đã thôi việc";
+            // 
             // FormStaffDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -684,6 +697,8 @@
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
         private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
 
     }
 }
