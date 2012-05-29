@@ -63,11 +63,12 @@
             this.labelRole = new DevComponents.DotNetBar.LabelX();
             this.comboBoxRole = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Phải điền họ");
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Phải điền tên");
+            this.compareValidator1 = new DevComponents.DotNetBar.Validator.CompareValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.compareValidator1 = new DevComponents.DotNetBar.Validator.CompareValidator();
-            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Phải điền tên");
-            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Phải điền họ");
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.groupPanelAccout.SuspendLayout();
             this.groupPanelInformation.SuspendLayout();
@@ -161,6 +162,7 @@
             this.textBoxIdentityCard.Name = "textBoxIdentityCard";
             this.textBoxIdentityCard.Size = new System.Drawing.Size(348, 20);
             this.textBoxIdentityCard.TabIndex = 24;
+            this.superValidator1.SetValidator1(this.textBoxIdentityCard, this.regularExpressionValidator1);
             // 
             // textBoxAddress
             // 
@@ -590,6 +592,29 @@
             this.superValidator1.ErrorProvider = this.errorProvider1;
             this.superValidator1.Highlighter = this.highlighter1;
             // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.EmptyValueIsValid = true;
+            this.regularExpressionValidator1.ErrorMessage = "Nhập đủ 9 số CMND";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d{8}";
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Phải điền họ";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Phải điền tên";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // compareValidator1
+            // 
+            this.compareValidator1.ControlToCompare = this.textBoxPassword;
+            this.compareValidator1.ErrorMessage = "Mật khẩu phải trùng";
+            this.compareValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -598,22 +623,6 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
-            // 
-            // compareValidator1
-            // 
-            this.compareValidator1.ControlToCompare = this.textBoxPassword;
-            this.compareValidator1.ErrorMessage = "Mật khẩu phải trùng";
-            this.compareValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
-            // requiredFieldValidator1
-            // 
-            this.requiredFieldValidator1.ErrorMessage = "Phải điền tên";
-            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
-            // requiredFieldValidator2
-            // 
-            this.requiredFieldValidator2.ErrorMessage = "Phải điền họ";
-            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
             // FormStaffDetail
             // 
@@ -674,6 +683,7 @@
         private DevComponents.DotNetBar.Validator.CompareValidator compareValidator1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
 
     }
 }

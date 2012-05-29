@@ -60,6 +60,7 @@
             this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Họ chỉ gồm các kí tự");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -266,6 +267,7 @@
             this.textBoxIdentityCard.Name = "textBoxIdentityCard";
             this.textBoxIdentityCard.Size = new System.Drawing.Size(348, 20);
             this.textBoxIdentityCard.TabIndex = 2;
+            this.superValidator1.SetValidator1(this.textBoxIdentityCard, this.regularExpressionValidator1);
             // 
             // textBoxPatientID
             // 
@@ -478,6 +480,12 @@
             // 
             this.highlighter1.ContainerControl = this;
             // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.ErrorMessage = "Nhập 9 số CMND";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d{8}";
+            // 
             // FormPatientDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -526,5 +534,6 @@
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
     }
 }
