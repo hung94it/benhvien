@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBillDetail));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelPatientName = new DevComponents.DotNetBar.LabelX();
             this.labelStaffName = new DevComponents.DotNetBar.LabelX();
             this.textBoxStaffName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupPanelBill = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.buttonSave = new DevComponents.DotNetBar.ButtonX();
             this.textBoxQuantity = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelQuantity = new DevComponents.DotNetBar.LabelX();
             this.labelPriceDetail = new DevComponents.DotNetBar.LabelX();
@@ -60,11 +61,9 @@
             this.comboBoxDetail = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelDetail = new DevComponents.DotNetBar.LabelX();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
-            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập số lượng");
             this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.buttonSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanelBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInputBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewBillDetail)).BeginInit();
@@ -179,6 +178,19 @@
             this.groupPanelBill.TabIndex = 0;
             this.groupPanelBill.Text = "Thông tin hóa đơn";
             // 
+            // buttonSave
+            // 
+            this.buttonSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSave.Image")));
+            this.buttonSave.Location = new System.Drawing.Point(630, 339);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(126, 23);
+            this.buttonSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonSave.TabIndex = 49;
+            this.buttonSave.Text = "Lưu hóa đơn";
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // textBoxQuantity
             // 
             // 
@@ -190,7 +202,6 @@
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(77, 20);
             this.textBoxQuantity.TabIndex = 1;
-            this.superValidator1.SetValidator1(this.textBoxQuantity, this.requiredFieldValidator1);
             this.superValidator1.SetValidator2(this.textBoxQuantity, this.regularExpressionValidator1);
             // 
             // labelQuantity
@@ -549,16 +560,11 @@
             this.superValidator1.ErrorProvider = this.errorProvider1;
             this.superValidator1.Highlighter = this.highlighter1;
             // 
-            // requiredFieldValidator1
-            // 
-            this.requiredFieldValidator1.ErrorMessage = "Nhập số lượng";
-            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
             // regularExpressionValidator1
             // 
             this.regularExpressionValidator1.ErrorMessage = "Nhập số lượng";
             this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d+";
+            this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d*";
             // 
             // errorProvider1
             // 
@@ -568,19 +574,6 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSave.Image")));
-            this.buttonSave.Location = new System.Drawing.Point(630, 339);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(126, 23);
-            this.buttonSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonSave.TabIndex = 49;
-            this.buttonSave.Text = "Lưu hóa đơn";
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // FormBillDetail
             // 
@@ -631,7 +624,6 @@
         private DevComponents.DotNetBar.Validator.SuperValidator superValidator1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
-        private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
         private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
         private DevComponents.DotNetBar.ButtonX buttonSave;
     }

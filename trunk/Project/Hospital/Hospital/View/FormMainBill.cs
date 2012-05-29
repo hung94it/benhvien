@@ -23,7 +23,7 @@ namespace Hospital.View
                 billDetailForm.ShowDialog();
 
                 // Refresh datagridview after edit
-                refreshDataViewStaff();
+                refreshDataViewBill();
             }
         }
 
@@ -56,8 +56,8 @@ namespace Hospital.View
 
                 // Add Vietnamese column's name
                 billTable.Columns.Add("Mã hóa đơn", typeof(string), "[BILLID]");
-                billTable.Columns.Add("Loại hóa đơn", typeof(string), @"IIF([TYPENAME] = 'Medicine', 'Thuốc',
-                                                                            IIF([TYPENAME] = 'Service', 'Dịch vụ', 'Đồ dùng'))");                
+                billTable.Columns.Add("Loại hóa đơn", typeof(string), @"IIF([BILLTYPEID] = 100, 'Thuốc',
+                                                                            IIF([BILLTYPEID] = 101, 'Dịch vụ', 'Đồ dùng'))");                
                 billTable.Columns.Add("Họ tên bệnh nhân", typeof(string), "[PATIENTLASTNAME] + ' ' + [PATIENTFIRSTNAME]");
                 billTable.Columns.Add("Ngày lập", typeof(DateTime), "[DATE]");
                 billTable.Columns.Add("Tổng tiền", typeof(decimal), "[TOTALPRICE]");

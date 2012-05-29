@@ -18,6 +18,7 @@ namespace Hospital.View
         public Staff StaffDetail { get; set; }
         public Patient PatientDetail { get; set; }
         public string UserAction { get; set; }
+        public int PrescriptionID { get; set; }
 
         private DataTable BillMedicineTable { get; set; }
         private DataTable BillServiceTable { get; set; }
@@ -37,6 +38,20 @@ namespace Hospital.View
             this.UserAction = userAction;
             this.StaffDetail = Staff.GetStaff(BillDetail.StaffID);
             this.PatientDetail = Patient.GetPatient(BillDetail.PatientID);
+
+            reFreshForm();
+        }
+
+        public FormBillDetail(string userAction, Bill bill, int prescriptionID)
+        {
+            InitializeComponent();
+
+            // Set useraction and bill            
+            this.BillDetail = bill;
+            this.UserAction = userAction;
+            this.StaffDetail = Staff.GetStaff(BillDetail.StaffID);
+            this.PatientDetail = Patient.GetPatient(BillDetail.PatientID);
+            this.PrescriptionID = prescriptionID;
 
             reFreshForm();
         }
@@ -90,7 +105,7 @@ namespace Hospital.View
                         // Get Material list and set it to comboBox
                         comboBoxDetail.DataSource = Material.GetListMaterial();
                         comboBoxDetail.ValueMember = "PRICE";
-                        comboBoxDetail.DisplayMember = "SERVICENAME";
+                        comboBoxDetail.DisplayMember = "MATERIALNAME";
                         break;
                 }
 
@@ -113,10 +128,10 @@ namespace Hospital.View
                 {
                     // Set billID
                     textBoxBillID.Text = BillDetail.BillID.ToString();
+                    dateTimeInputBill.Value = BillDetail.Date;
                     // When update bill, user can only update bill's state
                     buttonAdd.Enabled = false;
                     buttonDelete.Enabled = false;
-                    buttonPay.Enabled = false;
                     buttonSave.Enabled = false;
                     dateTimeInputBill.Enabled = false;
 
@@ -135,6 +150,12 @@ namespace Hospital.View
                             BillMedicineTable.Columns.Add("Giá", typeof(decimal), "[PRICE]");
 
                             dataViewBillDetail.DataSource = BillMedicineTable;
+
+                            for (int i = 0; i < 3; i++)
+                            {
+                                dataViewBillDetail.Columns[i].Visible = false;
+                            }
+
                             break;
                         case Bill.SERVICEBILL:
                             BillServiceTable = ServiceBillDetail.GetListServiceBillDetail(BillDetail.BillID);
@@ -144,6 +165,12 @@ namespace Hospital.View
                             BillServiceTable.Columns.Add("Giá", typeof(decimal), "[PRICE]");
 
                             dataViewBillDetail.DataSource = BillServiceTable;
+
+                            for (int i = 0; i < 3; i++)
+                            {
+                                dataViewBillDetail.Columns[i].Visible = false;
+                            }
+
                             break;
                         case Bill.MATERIALBILL:
                             BillMaterialTable = RentMaterialBillDetail.GetListRentMaterialBillDetail(BillDetail.BillID);
@@ -153,6 +180,12 @@ namespace Hospital.View
                             BillMaterialTable.Columns.Add("Giá", typeof(decimal), "[PRICE]");
 
                             dataViewBillDetail.DataSource = BillMaterialTable;
+
+                            for (int i = 0; i < 3; i++)
+                            {
+                                dataViewBillDetail.Columns[i].Visible = false;
+                            }
+
                             break;
                     }
                 }
@@ -161,6 +194,7 @@ namespace Hospital.View
                     // Generate next billID
                     textBoxBillID.Text = Bill.GetNextBillID().ToString();
                     dateTimeInputBill.Value = DateTime.Now;
+                    labelTotalBillPrice.Text = 0.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
 
                     BillDetail.BillID = Bill.GetNextBillID();
                     BillDetail.Date = dateTimeInputBill.Value;
@@ -170,21 +204,54 @@ namespace Hospital.View
                     switch (BillDetail.BillTypeID)
                     {
                         case Bill.MEDICINEBILL:
-                            BillMedicineTable = new DataTable();
+                            buttonAdd.Enabled = false;
+                            buttonDelete.Enabled = false;
+                            decimal totalPrice = new Decimal();
 
-                            BillMedicineTable.Columns.Add("MEDICINEID", typeof(int));
-                            BillMedicineTable.Columns.Add("Thuốc", typeof(string));
-                            BillMedicineTable.Columns.Add("Số lượng", typeof(int));
-                            BillMedicineTable.Columns.Add("Giá", typeof(decimal));
+                            BillMedicineTable = PrescriptionDetail.GetListPrescriptionDetailWithMedicine(PrescriptionID);
+
+                            BillMedicineTable.Columns.Add("Thuốc", typeof(string), "[MEDICINENAME]");
+                            BillMedicineTable.Columns.Add("Số lượng", typeof(int), "[QUANTITY]");
+                            BillMedicineTable.Columns.Add("Giá", typeof(decimal), "[PRICE]");
 
                             dataViewBillDetail.DataSource = BillMedicineTable;
-                            dataViewBillDetail.Columns["MEDICINEID"].Visible = false;
+
+                            for (int i = 0; i < 4; i++)
+                            {
+                                dataViewBillDetail.Columns[i].Visible = false;
+                            }
+
+                            foreach (DataRow row in BillMedicineTable.Rows)
+                            {
+                                totalPrice += (decimal)row["Giá"];
+                            }
+
+                            BillDetail.TotalPrice = totalPrice;
+                            labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
 
                             break;
 
                         case Bill.SERVICEBILL:
+                            BillServiceTable = new DataTable();
+
+                            BillServiceTable.Columns.Add("SERVICEID", typeof(int));
+                            BillServiceTable.Columns.Add("Dịch vụ", typeof(string));
+                            BillServiceTable.Columns.Add("Số lượng", typeof(int));
+                            BillServiceTable.Columns.Add("Giá", typeof(decimal));
+
+                            dataViewBillDetail.DataSource = BillServiceTable;
+                            dataViewBillDetail.Columns["SERVICEID"].Visible = false;
                             break;
                         case Bill.MATERIALBILL:
+                            BillMaterialTable = new DataTable();
+
+                            BillMaterialTable.Columns.Add("MATERIALID", typeof(int));
+                            BillMaterialTable.Columns.Add("Đồ dùng", typeof(string));
+                            BillMaterialTable.Columns.Add("Số lượng", typeof(int));
+                            BillMaterialTable.Columns.Add("Giá", typeof(decimal));
+
+                            dataViewBillDetail.DataSource = BillMaterialTable;
+                            dataViewBillDetail.Columns["MATERIALID"].Visible = false;
                             break;
                     }
 
@@ -219,6 +286,7 @@ namespace Hospital.View
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             decimal totalPrice = new Decimal();
+            bool isDulicate = false;
             // Check validate
             if (!superValidator1.Validate())
             {
@@ -230,85 +298,138 @@ namespace Hospital.View
             {
                 // Add medicine detail
                 case Bill.MEDICINEBILL:
-                    int medicineID = Convert.ToInt32(((DataRowView)comboBoxDetail.SelectedItem).Row["MEDICINEID"]);
-                    string medicineName = ((DataRowView)comboBoxDetail.SelectedItem).Row["MEDICINENAME"].ToString();
-                    int quantity = Convert.ToInt32(textBoxQuantity.Text);
-                    decimal price = Convert.ToDecimal(((DataRowView)comboBoxDetail.SelectedItem).Row["PRICE"]) * quantity;
+                    //int medicineID = Convert.ToInt32(((DataRowView)comboBoxDetail.SelectedItem).Row["MEDICINEID"]);
+                    //string medicineName = ((DataRowView)comboBoxDetail.SelectedItem).Row["MEDICINENAME"].ToString();
+                    //int quantityMedicine = Convert.ToInt32(textBoxQuantity.Text);
+                    //decimal priceMedicine = Convert.ToDecimal(((DataRowView)comboBoxDetail.SelectedItem).Row["PRICE"]) * quantityMedicine;
 
-
-                    BillMedicineTable.Rows.Add(new object[] { medicineID, medicineName, quantity, price });
-
-                    foreach (DataRow record in ((DataTable)dataViewBillDetail.DataSource).Rows)
-                    {
-                        totalPrice += Convert.ToDecimal(record["Giá"]);
-                    }
-
-                    BillDetail.TotalPrice = totalPrice;
-                    labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+                    //BillMedicineTable.Rows.Add(new object[] { medicineID, medicineName, quantityMedicine, priceMedicine });
 
                     break;
                 // Add service detail
                 case Bill.SERVICEBILL:
+                    int serviceID = Convert.ToInt32(((DataRowView)comboBoxDetail.SelectedItem).Row["SERVICEID"]);
+                    string serviceName = ((DataRowView)comboBoxDetail.SelectedItem).Row["SERVICENAME"].ToString();
+                    int quantityService = Convert.ToInt32(textBoxQuantity.Text);
+                    decimal priceService = Convert.ToDecimal(((DataRowView)comboBoxDetail.SelectedItem).Row["PRICE"]) * quantityService;
+
+                    foreach (DataRow row in BillServiceTable.Rows)
+                    {
+                        if (row["SERVICEID"].ToString().Trim().Equals(
+                            ((DataRowView)comboBoxDetail.SelectedItem).Row["SERVICEID"].ToString().Trim()))
+                        {
+                            isDulicate = true;
+                            row["Số lượng"] = quantityService + (int)row["Số lượng"];
+                            row["Giá"] = priceService + (decimal)row["Giá"];
+                        }
+                    }
+
+                    if (!isDulicate)
+                    {
+                        BillServiceTable.Rows.Add(new object[] { serviceID, serviceName, quantityService, priceService });
+                        isDulicate = false;
+                    }
 
                     break;
                 case Bill.MATERIALBILL:
+                    int materialID = Convert.ToInt32(((DataRowView)comboBoxDetail.SelectedItem).Row["MATERIALID"]);
+                    string materialName = ((DataRowView)comboBoxDetail.SelectedItem).Row["MATERIALNAME"].ToString();
+                    int quantityMaterial = Convert.ToInt32(textBoxQuantity.Text);
+                    decimal priceMaterial = Convert.ToDecimal(((DataRowView)comboBoxDetail.SelectedItem).Row["PRICE"]) * quantityMaterial;
+
+                    foreach (DataRow row in BillMaterialTable.Rows)
+                    {
+                        if (row["MATERIALID"].ToString().Trim().Equals(
+                            ((DataRowView)comboBoxDetail.SelectedItem).Row["MATERIALID"].ToString().Trim()))
+                        {
+                            isDulicate = true;
+                            row["Số lượng"] = quantityMaterial + (int)row["Số lượng"];
+                            row["Giá"] = priceMaterial + (decimal)row["Giá"];
+                        }
+                    }
+
+                    if (!isDulicate)
+                    {
+                        BillMaterialTable.Rows.Add(new object[] { materialID, materialName, quantityMaterial, priceMaterial });
+                        isDulicate = false;
+                    }
 
                     break;
             }
+
+            foreach (DataRow record in ((DataTable)dataViewBillDetail.DataSource).Rows)
+            {
+                totalPrice += Convert.ToDecimal(record["Giá"]);
+            }
+
+            BillDetail.TotalPrice = totalPrice;
+            labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
         }
 
         // Delete bill detail
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            decimal totalPrice = new Decimal();
+
             if (dataViewBillDetail.SelectedRows.Count > 0)
             {
                 dataViewBillDetail.Rows.Remove(dataViewBillDetail.SelectedRows[0]);
+
+                switch (BillDetail.BillTypeID)
+                {
+                    case Bill.MEDICINEBILL:
+                        foreach (DataRow row in BillMedicineTable.Rows)
+                        {
+                            totalPrice += (decimal)row["Giá"];
+                        }
+                        break;
+                    case Bill.SERVICEBILL:
+                        foreach (DataRow row in BillServiceTable.Rows)
+                        {
+                            totalPrice += (decimal)row["Giá"];
+                        }
+                        break;
+                    case Bill.MATERIALBILL:
+                        foreach (DataRow row in BillMaterialTable.Rows)
+                        {
+                            totalPrice += (decimal)row["Giá"];
+                        }
+                        break;
+                }
+                labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
             }
         }
 
         // Accept payment
         private void buttonPay_Click(object sender, EventArgs e)
         {
-
             try
             {
+                if (dataViewBillDetail.Rows.Count <= 0)
+                {
+                    MessageBox.Show("Thêm chi tiết hóa đơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 // Ask user to accpet payment
-                if (MessageBox.Show("Xác nhận thanh toán?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                if (MessageBox.Show("Xác nhận thanh toán?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk)
                             == DialogResult.Yes)
                 {
                     if ("insert".Equals(UserAction))
                     {
-                        switch (BillDetail.BillTypeID)
-                        {
-                            case Bill.MEDICINEBILL:
 
-                                MedicineBillDetail newMedicineBillDetail = new MedicineBillDetail();
+                        BillDetail.State = Bill.PAY;
+                        Bill.InsertBill(BillDetail);
 
-                                if (dataViewBillDetail.Rows.Count <= 0)
-                                {
-                                    MessageBox.Show("Thêm chi tiết hóa đơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    return;
-                                }
+                        insertBillDetail();
 
-                                BillDetail.State = Bill.PAY;
-                                Bill.InsertBill(BillDetail);
-
-                                foreach (DataRow record in ((DataTable)dataViewBillDetail.DataSource).Rows)
-                                {
-                                    newMedicineBillDetail.BillID = BillDetail.BillID;
-                                    newMedicineBillDetail.MedicineID = Convert.ToInt32(record["MEDICINEID"]);
-                                    newMedicineBillDetail.Quantity = Convert.ToInt32(record["Số lượng"]);
-                                    newMedicineBillDetail.Price = Convert.ToDecimal(record["Giá"]);
-
-                                    MedicineBillDetail.InsertMedicineBillDetail(newMedicineBillDetail);
-                                }
-                                break;
-                            case Bill.SERVICEBILL:
-                                break;
-                            case Bill.MATERIALBILL:
-                                break;
-                        }
                     }
+                    else if ("edit".Equals(UserAction))
+                    {
+                        BillDetail.State = Bill.PAY;
+                        Bill.UpdateBill(BillDetail);
+                    }
+
                 }
             }
             catch (SqlException exception)
@@ -324,9 +445,82 @@ namespace Hospital.View
             this.Close();
         }
 
+        // Save bill's information for payment
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            Bill.InsertBill(BillDetail);
+            try
+            {
+                if (dataViewBillDetail.Rows.Count <= 0)
+                {
+                    MessageBox.Show("Thêm chi tiết hóa đơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (MessageBox.Show("Lưu hóa đơn?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk)
+                            == DialogResult.Yes)
+                {
+                    Bill.InsertBill(BillDetail);
+                    insertBillDetail();
+                    this.Close();
+                }
+            }
+            catch (SqlException exception)
+            {
+                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+        // Insert bill detail after insert bill
+        private void insertBillDetail()
+        {
+            switch (BillDetail.BillTypeID)
+            {
+                case Bill.MEDICINEBILL:
+
+                    MedicineBillDetail newMedicineBillDetail = new MedicineBillDetail();
+
+                    foreach (DataRow record in ((DataTable)dataViewBillDetail.DataSource).Rows)
+                    {
+                        newMedicineBillDetail.BillID = BillDetail.BillID;
+                        newMedicineBillDetail.MedicineID = Convert.ToInt32(record["MEDICINEID"]);
+                        newMedicineBillDetail.Quantity = Convert.ToInt32(record["Số lượng"]);
+                        newMedicineBillDetail.Price = Convert.ToDecimal(record["Giá"]);
+
+                        MedicineBillDetail.InsertMedicineBillDetail(newMedicineBillDetail);
+                    }
+                    break;
+
+                case Bill.SERVICEBILL:
+
+                    ServiceBillDetail newServiceBillDetail = new ServiceBillDetail();
+
+                    foreach (DataRow record in ((DataTable)dataViewBillDetail.DataSource).Rows)
+                    {
+                        newServiceBillDetail.BillID = BillDetail.BillID;
+                        newServiceBillDetail.ServiceID = Convert.ToInt32(record["SERVICEID"]);
+                        newServiceBillDetail.Quantity = Convert.ToInt32(record["Số lượng"]);
+                        newServiceBillDetail.Price = Convert.ToDecimal(record["Giá"]);
+
+                        ServiceBillDetail.InsertServiceBillDetail(newServiceBillDetail);
+                    }
+                    break;
+                case Bill.MATERIALBILL:
+
+                    RentMaterialBillDetail newRentMaterialBillDetail = new RentMaterialBillDetail();
+
+                    foreach (DataRow record in ((DataTable)dataViewBillDetail.DataSource).Rows)
+                    {
+                        newRentMaterialBillDetail.BillID = BillDetail.BillID;
+                        newRentMaterialBillDetail.MaterialID = Convert.ToInt32(record["MATERIALID"]);
+                        newRentMaterialBillDetail.Quantity = Convert.ToInt32(record["Số lượng"]);
+                        newRentMaterialBillDetail.Price = Convert.ToDecimal(record["Giá"]);
+
+                        RentMaterialBillDetail.InsertRentMaterialBillDetail(newRentMaterialBillDetail);
+                    }
+                    break;
+            }
+        }
+
+
     }
 }

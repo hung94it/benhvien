@@ -295,5 +295,33 @@ namespace Hospital.View
             }
 
         }
+
+        private void buttonPatientMaterial_Click(object sender, EventArgs e)
+        {
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                //Current user
+                int staffID = loginStaff.StaffID;
+
+                Bill newBill = new Bill(Bill.MATERIALBILL, patientID, staffID);
+                FormBillDetail billDetailForm = new FormBillDetail("insert", newBill);
+                billDetailForm.ShowDialog();
+            }
+        }
+
+        private void buttonPatientService_Click(object sender, EventArgs e)
+        {
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                //Current user
+                int staffID = loginStaff.StaffID;
+
+                Bill newBill = new Bill(Bill.SERVICEBILL, patientID, staffID);
+                FormBillDetail billDetailForm = new FormBillDetail("insert", newBill);
+                billDetailForm.ShowDialog();
+            }
+        }
     }
 }

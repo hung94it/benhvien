@@ -54,7 +54,6 @@ namespace Hospital.View
                     break;
             }
         }
-
         
      }
 }

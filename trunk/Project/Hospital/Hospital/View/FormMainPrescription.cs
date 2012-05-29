@@ -150,6 +150,20 @@ namespace Hospital.View
                 ((DataView)dataViewPrescription.DataSource).RowFilter = "";
             }
         }
+
+        private void buttonPrescriptionSell_Click(object sender, EventArgs e)
+        {
+            if (dataViewPrescription.SelectedRows.Count > 0)
+            {
+                int prescriptionID = Convert.ToInt32(dataViewPrescription.SelectedRows[0].Cells[0].Value);                
+                int patientID = Convert.ToInt32(Prescription.GetPatientIDInPrescription(prescriptionID).Rows[0][0]);
+                int staffID = loginStaff.StaffID;
+
+                Bill newBill = new Bill(Bill.MEDICINEBILL, patientID, staffID);
+                FormBillDetail billDetailForm = new FormBillDetail("insert", newBill, prescriptionID);
+                billDetailForm.ShowDialog();
+            }
+        }
        
     }
 }
