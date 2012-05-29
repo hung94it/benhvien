@@ -57,112 +57,152 @@ namespace Hospital.View
         // Set information to form
         private void reFreshForm()
         {
-            // Set bill information
-            textBoxPatientID.Text = PatientDetail.PatientID.ToString();
-            textBoxPatientName.Text = PatientDetail.LastName + ' ' + PatientDetail.FirstName;
-            textBoxStaffID.Text = StaffDetail.StaffID.ToString();
-            textBoxStaffName.Text = StaffDetail.LastName + ' ' + StaffDetail.FirstName;
-
-            // Set information when user edit bill's detail
-            if ("edit".Equals(UserAction))
+            try
             {
-                // Set billID
-                textBoxBillID.Text = BillDetail.BillID.ToString();
-                // Set total price
-                labelTotalBillPrice.Text = BillDetail.TotalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+                // Set bill information
+                textBoxPatientID.Text = PatientDetail.PatientID.ToString();
+                textBoxPatientName.Text = PatientDetail.LastName + ' ' + PatientDetail.FirstName;
+                textBoxStaffID.Text = StaffDetail.StaffID.ToString();
+                textBoxStaffName.Text = StaffDetail.LastName + ' ' + StaffDetail.FirstName;
 
-                // Set dataViewBillDetail corresponding bill's type
+                // Set comboBoxDetail corresponding to bill's type
                 switch (BillDetail.BillTypeID)
                 {
                     case Bill.MEDICINEBILL:
-                        BillMedicineTable = MedicineBillDetail.GetListMedicineBillDetail(BillDetail.BillID);
+                        labelDetail.Text = "Tên thuốc:";
 
-                        BillMedicineTable.Columns.Add("Thuốc", typeof(string), "[MEDICINEID]");
-                        BillMedicineTable.Columns.Add("Số lượng", typeof(int), "[QUANTITY]");
-                        BillMedicineTable.Columns.Add("Giá", typeof(decimal), "[PRICE]");
-
-                        dataViewBillDetail.DataSource = BillMedicineTable;
+                        // Get Medicine list and set it to comboBox
+                        comboBoxDetail.DataSource = Medicine.GetListMedicine();
+                        comboBoxDetail.ValueMember = "PRICE";
+                        comboBoxDetail.DisplayMember = "MEDICINENAME";
                         break;
                     case Bill.SERVICEBILL:
+                        labelDetail.Text = "Dịch vụ:";
+
+                        // Get Service list and set it to comboBox
+                        comboBoxDetail.DataSource = Service.GetListService();
+                        comboBoxDetail.ValueMember = "PRICE";
+                        comboBoxDetail.DisplayMember = "SERVICENAME";
                         break;
                     case Bill.MATERIALBILL:
+                        labelDetail.Text = "Đồ dùng:";
+
+                        // Get Material list and set it to comboBox
+                        comboBoxDetail.DataSource = Material.GetListMaterial();
+                        comboBoxDetail.ValueMember = "PRICE";
+                        comboBoxDetail.DisplayMember = "SERVICENAME";
                         break;
                 }
-            }
-            else if ("insert".Equals(UserAction))       /// Set information when user insert bill's detail
-            {
-                // Generate next billID
-                textBoxBillID.Text = Bill.GetNextBillID().ToString();
-                BillDetail.BillID = Bill.GetNextBillID();
 
-                dateTimeInputBill.Value = DateTime.Now;                
-
-                switch (BillDetail.BillTypeID)
+                // If bill was pay then do nothing
+                if (BillDetail.State == Bill.PAY)
                 {
-                    case Bill.MEDICINEBILL:
-                        BillMedicineTable = new DataTable();
-
-                        BillMedicineTable.Columns.Add("MEDICINEID", typeof(int));
-                        BillMedicineTable.Columns.Add("Thuốc", typeof(string));
-                        BillMedicineTable.Columns.Add("Số lượng", typeof(int));
-                        BillMedicineTable.Columns.Add("Giá", typeof(decimal));
-
-                        dataViewBillDetail.DataSource = BillMedicineTable;
-                        dataViewBillDetail.Columns["MEDICINEID"].Visible = false;
-
-                        break;
-
-                    case Bill.SERVICEBILL:
-                        break;
-                    case Bill.MATERIALBILL:
-                        break;
+                    buttonAdd.Enabled = false;
+                    buttonDelete.Enabled = false;
+                    buttonPay.Enabled = false;
+                    buttonSave.Enabled = false;
+                    dateTimeInputBill.Enabled = false;
+                    labelTotalBillPrice.ForeColor = Color.Green;
+                    labelBillState.ForeColor = Color.Green;
+                    labelBillState.Text = "Đã thanh toán";
                 }
 
-            }
 
-            // If bill was pay then do nothing
-            if (BillDetail.State == Bill.PAY)
+                // Set information when user edit bill's detail
+                if ("edit".Equals(UserAction))
+                {
+                    // Set billID
+                    textBoxBillID.Text = BillDetail.BillID.ToString();
+                    // When update bill, user can only update bill's state
+                    buttonAdd.Enabled = false;
+                    buttonDelete.Enabled = false;
+                    buttonPay.Enabled = false;
+                    buttonSave.Enabled = false;
+                    dateTimeInputBill.Enabled = false;
+
+                    BillDetail = Bill.GetBill(BillDetail.BillID);
+                    labelTotalBillPrice.Text = BillDetail.TotalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+
+                    // Set dataViewBillDetail corresponding bill's type
+                    switch (BillDetail.BillTypeID)
+                    {
+                        case Bill.MEDICINEBILL:
+                            BillMedicineTable = MedicineBillDetail.GetListMedicineBillDetail(BillDetail.BillID);
+
+                            BillMedicineTable.Columns.Add("Thuốc", typeof(string), "[MEDICINEID]");
+                            BillMedicineTable.Columns.Add("Số lượng", typeof(int), "[QUANTITY]");
+                            BillMedicineTable.Columns.Add("Giá", typeof(decimal), "[PRICE]");
+
+                            dataViewBillDetail.DataSource = BillMedicineTable;
+                            break;
+                        case Bill.SERVICEBILL:
+                            BillServiceTable = ServiceBillDetail.GetListServiceBillDetail(BillDetail.BillID);
+
+                            //BillServiceTable.Columns.Add("Dịch vụ", typeof(
+
+                            break;
+                        case Bill.MATERIALBILL:
+                            break;
+                    }
+                }
+                else if ("insert".Equals(UserAction))       /// Set information when user insert bill's detail
+                {
+                    // Generate next billID
+                    textBoxBillID.Text = Bill.GetNextBillID().ToString();
+                    dateTimeInputBill.Value = DateTime.Now;
+
+                    BillDetail.BillID = Bill.GetNextBillID();
+                    BillDetail.Date = dateTimeInputBill.Value;
+                    BillDetail.TotalPrice = 0;
+                    BillDetail.State = 0;
+
+                    switch (BillDetail.BillTypeID)
+                    {
+                        case Bill.MEDICINEBILL:
+                            BillMedicineTable = new DataTable();
+
+                            BillMedicineTable.Columns.Add("MEDICINEID", typeof(int));
+                            BillMedicineTable.Columns.Add("Thuốc", typeof(string));
+                            BillMedicineTable.Columns.Add("Số lượng", typeof(int));
+                            BillMedicineTable.Columns.Add("Giá", typeof(decimal));
+
+                            dataViewBillDetail.DataSource = BillMedicineTable;
+                            dataViewBillDetail.Columns["MEDICINEID"].Visible = false;
+
+                            break;
+
+                        case Bill.SERVICEBILL:
+                            break;
+                        case Bill.MATERIALBILL:
+                            break;
+                    }
+
+                }
+            }
+            catch (SqlException exception)
             {
-                buttonAdd.Enabled = false;
-                buttonDelete.Enabled = false;
-                buttonPay.Enabled = false;
-                dateTimeInputBill.Enabled = false;
-                labelTotalBillPrice.ForeColor = Color.Green;
-                labelBillState.ForeColor = Color.Green;
-                labelBillState.Text = "Đã thanh toán";
+                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-            // Set comboBoxDetail corresponding to bill's type
-            switch (BillDetail.BillTypeID)
-            {
-                case Bill.MEDICINEBILL:
-                    labelDetail.Text = "Tên thuốc:";
-
-                    // Get Medicine list and set it to comboBox
-                    comboBoxDetail.DataSource = Medicine.GetListMedicine();
-                    comboBoxDetail.ValueMember = "PRICE";
-                    comboBoxDetail.DisplayMember = "MEDICINENAME";
-                    break;
-                case Bill.SERVICEBILL:
-                    labelDetail.Text = "Dịch vụ:";
-                    break;
-                case Bill.MATERIALBILL:
-                    labelDetail.Text = "Đồ dùng:";
-                    break;
-            }
-
-        }
-
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
 
         private void comboBoxDetail_SelectedIndexChanged(object sender, EventArgs e)
         {
-            decimal medicinePrice = Convert.ToDecimal(((DataRowView)comboBoxDetail.SelectedItem).Row["PRICE"]);
-            labelPriceDetail.Text = medicinePrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+            switch (BillDetail.BillTypeID)
+            {
+                case Bill.MEDICINEBILL:
+                    decimal medicinePrice = Convert.ToDecimal(((DataRowView)comboBoxDetail.SelectedItem).Row["PRICE"]);
+                    labelPriceDetail.Text = medicinePrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+                    break;
+                case Bill.SERVICEBILL:
+                    decimal servicePrice = Convert.ToDecimal(((DataRowView)comboBoxDetail.SelectedItem).Row["PRICE"]);
+                    labelPriceDetail.Text = servicePrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+                    break;
+                case Bill.MATERIALBILL:
+                    decimal materialPrice = Convert.ToDecimal(((DataRowView)comboBoxDetail.SelectedItem).Row["PRICE"]);
+                    labelPriceDetail.Text = materialPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+                    break;
+            }
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -230,23 +270,31 @@ namespace Hospital.View
                     switch (BillDetail.BillTypeID)
                     {
                         case Bill.MEDICINEBILL:
-                            MedicineBillDetail newMedicineBillDetail = new MedicineBillDetail();
-
-                            if (dataViewBillDetail.Rows.Count <= 0)
+                            if ("insert".Equals(UserAction))
                             {
-                                return;
+                                MedicineBillDetail newMedicineBillDetail = new MedicineBillDetail();
+
+                                if (dataViewBillDetail.Rows.Count <= 0)
+                                {
+                                    MessageBox.Show("Thêm chi tiết hóa đơn!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    return;
+                                }
+
+                                Bill.InsertBill(BillDetail);
+
+                                foreach (DataRow record in ((DataTable)dataViewBillDetail.DataSource).Rows)
+                                {
+                                    newMedicineBillDetail.BillID = BillDetail.BillID;
+                                    newMedicineBillDetail.MedicineID = Convert.ToInt32(record["MEDICINEID"]);
+                                    newMedicineBillDetail.Quantity = Convert.ToInt32(record["Số lượng"]);
+                                    newMedicineBillDetail.Price = Convert.ToDecimal(record["Giá"]);
+
+                                    MedicineBillDetail.InsertMedicineBillDetail(newMedicineBillDetail);
+                                } 
                             }
-
-                            Bill.InsertBill(BillDetail);
-
-                            foreach (DataRow record in ((DataTable)dataViewBillDetail.DataSource).Rows)
-                            {
-                                newMedicineBillDetail.BillID = BillDetail.BillID;
-                                newMedicineBillDetail.MedicineID = Convert.ToInt32(record["MEDICINEID"]);
-                                newMedicineBillDetail.Quantity = Convert.ToInt32(record["Số lượng"]);
-                                newMedicineBillDetail.Price = Convert.ToDecimal(record["Giá"]);
-
-                                MedicineBillDetail.InsertMedicineBillDetail(newMedicineBillDetail);
+                            else if ("edit".Equals("UserAction"))
+                            { 
+                                
                             }
 
                             break;
@@ -261,10 +309,18 @@ namespace Hospital.View
             {
                 MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
             this.Close();
-
         }
 
+        // Close this form when click buttonClose
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            Bill.InsertBill(BillDetail);
+        }
     }
 }

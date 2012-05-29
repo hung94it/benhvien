@@ -60,12 +60,13 @@ namespace Hospital.Model
 
         public static int UpdateBill(Bill updateBill)
         {
-            string sqlUpdate = @"INSERT INTO BILL(DATE, STATE)
-                                VALUES          (@DATE,@STATE)
+            string sqlUpdate = @"INSERT INTO BILL(STATE)
+                                VALUES          (@STATE)
                                 WHERE           BILLID=@BILLID ";
+
             SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", updateBill.BillID),
-                                            new SqlParameter("@DATE", updateBill.Date),
                                            new SqlParameter("@STATE",updateBill.State)};
+
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
 
