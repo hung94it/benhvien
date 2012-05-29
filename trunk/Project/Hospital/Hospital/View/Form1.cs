@@ -53,5 +53,11 @@ namespace Hospital.View
                 MessageBox.Show(exception.Message);
             }
         }
+
+        private void buttonX2_Click(object sender, EventArgs e)
+        {
+            FormBillDetail newForm = new FormBillDetail("insertExamination", new Bill(Bill.SERVICEBILL, 10000000, 10000000));
+            newForm.ShowDialog();
+        }
     }
 }

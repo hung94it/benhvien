@@ -29,6 +29,7 @@ namespace Hospital
             Bill newBill = Bill.GetBill(10000017);            
             //Patient patient = Patient.GetPatient(10000000);
             //Application.Run(new FormBillDetail("edit", newBill));
+            //Application.Run(new Form1());
         }
 
         //static void Application_ThreadException(
