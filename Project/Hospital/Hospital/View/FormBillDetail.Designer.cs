@@ -64,6 +64,7 @@
             this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.buttonSave = new DevComponents.DotNetBar.ButtonX();
             this.groupPanelBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInputBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewBillDetail)).BeginInit();
@@ -116,6 +117,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanelBill.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanelBill.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanelBill.Controls.Add(this.buttonSave);
             this.groupPanelBill.Controls.Add(this.textBoxQuantity);
             this.groupPanelBill.Controls.Add(this.labelQuantity);
             this.groupPanelBill.Controls.Add(this.labelPriceDetail);
@@ -467,6 +469,8 @@
             // 
             // dataViewBillDetail
             // 
+            this.dataViewBillDetail.AllowUserToAddRows = false;
+            this.dataViewBillDetail.AllowUserToDeleteRows = false;
             this.dataViewBillDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -565,6 +569,19 @@
             // 
             this.highlighter1.ContainerControl = this;
             // 
+            // buttonSave
+            // 
+            this.buttonSave.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonSave.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonSave.Image = ((System.Drawing.Image)(resources.GetObject("buttonSave.Image")));
+            this.buttonSave.Location = new System.Drawing.Point(630, 339);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(126, 23);
+            this.buttonSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonSave.TabIndex = 49;
+            this.buttonSave.Text = "Lưu hóa đơn";
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // FormBillDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -616,5 +633,6 @@
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
         private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
+        private DevComponents.DotNetBar.ButtonX buttonSave;
     }
 }
