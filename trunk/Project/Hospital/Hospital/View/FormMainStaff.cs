@@ -63,11 +63,6 @@ namespace Hospital.View
                         {
                             Staff.DeleteStaff(staffID);
                         }
-
-                        if (int.TryParse(dataViewStaff.SelectedRows[0].Cells[0].Value.ToString(), out staffID))
-                        {
-                            Staff.DeleteStaff(staffID);
-                        } 
                     }
                 }
                 catch (SqlException exception)

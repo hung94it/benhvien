@@ -139,9 +139,10 @@ namespace Hospital.View
                 DataTable roleDetailTable = RoleDetail.GetListStaffFunction(roleID);
 
                 // Set data source to dataview for searching
+                dataViewRoleDetail.DataSource = roleDetailTable;
             }
 
-            dataViewRoleDetail.DataSource = roleDetailTable;
+            
         }
         // Search when text changed
         private void textBoxRoleSearch_TextChanged(object sender, EventArgs e)

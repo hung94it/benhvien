@@ -33,7 +33,7 @@ namespace Hospital.View
 
         private void buttonDeleteTCSearch_Click(object sender, EventArgs e)
         {
-            textBoxTCSearch.Text = "";
+            textBoxSearchTest.Text = "";
             searchTest();
         }
 
@@ -134,13 +134,13 @@ namespace Hospital.View
         private void searchTest()
         {
             // Not search it search string is empty
-            if (textBoxTCSearch.Text != "")
+            if (textBoxSearchTest.Text != "")
             {
                 // Search with RowFilter
-                ((DataView)dataViewTC.DataSource).RowFilter = "[Mã phiếu xét nghiệm] LIKE '*" + textBoxTCSearch.Text.Trim() + "*'"
-                                                                + "OR [Mã bệnh nhân] LIKE '*" + textBoxTCSearch.Text.Trim() + "*'"
-                                                                 + "OR [Mã nhân viên] LIKE '*" + textBoxTCSearch.Text.Trim() + "*'"
-                                                                  + "OR [Trạng thái] LIKE '*" + textBoxTCSearch.Text.Trim() + "*'";
+                ((DataView)dataViewTC.DataSource).RowFilter = "[Mã phiếu xét nghiệm] LIKE '*" + textBoxSearchTest.Text.Trim() + "*'"
+                                                                + "OR [Mã bệnh nhân] LIKE '*" + textBoxSearchTest.Text.Trim() + "*'"
+                                                                 + "OR [Mã nhân viên] LIKE '*" + textBoxSearchTest.Text.Trim() + "*'"
+                                                                  + "OR [Trạng thái] LIKE '*" + textBoxSearchTest.Text.Trim() + "*'";
                 refreshDataViewTestDetail();
             }
             else

@@ -53,6 +53,7 @@ namespace Hospital.View
                     refreshDataViewBill();
                     break;
             }
-        }     
+        }
+    
      }
 }
