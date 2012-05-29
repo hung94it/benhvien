@@ -88,5 +88,11 @@ namespace Hospital.View
                 Login();
             }
         }
+
+        private void buttonSetting_Click(object sender, EventArgs e)
+        {
+            FormDatabase formDatabase = new FormDatabase();
+            formDatabase.ShowDialog();
+        }
     }
 }
