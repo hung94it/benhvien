@@ -120,7 +120,8 @@ namespace Hospital.View
                     buttonSave.Enabled = false;
                     dateTimeInputBill.Enabled = false;
 
-                    BillDetail = Bill.GetBill(BillDetail.BillID);
+                    //BillDetail = Bill.GetBill(BillDetail.BillID);
+
                     labelTotalBillPrice.Text = BillDetail.TotalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
 
                     // Set dataViewBillDetail corresponding bill's type
@@ -129,7 +130,7 @@ namespace Hospital.View
                         case Bill.MEDICINEBILL:
                             BillMedicineTable = MedicineBillDetail.GetListMedicineBillDetail(BillDetail.BillID);
 
-                            BillMedicineTable.Columns.Add("Thuốc", typeof(string), "[MEDICINEID]");
+                            BillMedicineTable.Columns.Add("Thuốc", typeof(string), "[MEDICINENAME]");
                             BillMedicineTable.Columns.Add("Số lượng", typeof(int), "[QUANTITY]");
                             BillMedicineTable.Columns.Add("Giá", typeof(decimal), "[PRICE]");
 
@@ -138,10 +139,20 @@ namespace Hospital.View
                         case Bill.SERVICEBILL:
                             BillServiceTable = ServiceBillDetail.GetListServiceBillDetail(BillDetail.BillID);
 
-                            //BillServiceTable.Columns.Add("Dịch vụ", typeof(
+                            BillServiceTable.Columns.Add("Dịch vụ", typeof(string), "[SERVICENAME]");
+                            BillServiceTable.Columns.Add("Số lượng", typeof(int), "[QUANTITY]");
+                            BillServiceTable.Columns.Add("Giá", typeof(decimal), "[PRICE]");
 
+                            dataViewBillDetail.DataSource = BillServiceTable;
                             break;
                         case Bill.MATERIALBILL:
+                            BillMaterialTable = RentMaterialBillDetail.GetListRentMaterialBillDetail(BillDetail.BillID);
+
+                            BillMaterialTable.Columns.Add("Đồ dùng", typeof(string), "[MATERIALNAME]");
+                            BillMaterialTable.Columns.Add("Số lượng", typeof(int), "[QUANTITY]");
+                            BillMaterialTable.Columns.Add("Giá", typeof(decimal), "[PRICE]");
+
+                            dataViewBillDetail.DataSource = BillMaterialTable;
                             break;
                     }
                 }
@@ -265,13 +276,12 @@ namespace Hospital.View
                 if (MessageBox.Show("Xác nhận thanh toán?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                             == DialogResult.Yes)
                 {
-                    BillDetail.State = Bill.PAY;
-
-                    switch (BillDetail.BillTypeID)
+                    if ("insert".Equals(UserAction))
                     {
-                        case Bill.MEDICINEBILL:
-                            if ("insert".Equals(UserAction))
-                            {
+                        switch (BillDetail.BillTypeID)
+                        {
+                            case Bill.MEDICINEBILL:
+
                                 MedicineBillDetail newMedicineBillDetail = new MedicineBillDetail();
 
                                 if (dataViewBillDetail.Rows.Count <= 0)
@@ -280,6 +290,7 @@ namespace Hospital.View
                                     return;
                                 }
 
+                                BillDetail.State = Bill.PAY;
                                 Bill.InsertBill(BillDetail);
 
                                 foreach (DataRow record in ((DataTable)dataViewBillDetail.DataSource).Rows)
@@ -290,18 +301,13 @@ namespace Hospital.View
                                     newMedicineBillDetail.Price = Convert.ToDecimal(record["Giá"]);
 
                                     MedicineBillDetail.InsertMedicineBillDetail(newMedicineBillDetail);
-                                } 
-                            }
-                            else if ("edit".Equals("UserAction"))
-                            { 
-                                
-                            }
-
-                            break;
-                        case Bill.SERVICEBILL:
-                            break;
-                        case Bill.MATERIALBILL:
-                            break;
+                                }
+                                break;
+                            case Bill.SERVICEBILL:
+                                break;
+                            case Bill.MATERIALBILL:
+                                break;
+                        }
                     }
                 }
             }

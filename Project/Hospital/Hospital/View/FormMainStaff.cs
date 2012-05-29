@@ -131,7 +131,7 @@ namespace Hospital.View
                 staffTable.Columns.Add("Giới tính", typeof(string), "IIF([GENDER] = 0, 'Nam', 'Nữ')");
                 staffTable.Columns.Add("Ngày sinh", typeof(DateTime), "[BIRTHDAY]");
                 staffTable.Columns.Add("Địa chỉ", typeof(string), "[ADDRESS]");
-                //staffTable.Columns.Add("Trạng thái", typeof(string), "[STATE]");
+                staffTable.Columns.Add("Trạng thái", typeof(string), "IIF([STATE] = 0, 'Đã thôi việc', 'Đang làm việc')");
 
                 // Set data source to dataview for searching
                 dataViewStaff.DataSource = staffTable.DefaultView;

@@ -58,9 +58,12 @@
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
             this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Tên chỉ gồm các kí tự");
             this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Họ chỉ gồm các kí tự");
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.regularExpressionValidator2 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -302,6 +305,9 @@
             this.comboBoxState.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.comboBoxState.FormattingEnabled = true;
             this.comboBoxState.ItemHeight = 14;
+            this.comboBoxState.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2});
             this.comboBoxState.Location = new System.Drawing.Point(96, 319);
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(240, 20);
@@ -356,6 +362,7 @@
             this.textBoxDeposit.Name = "textBoxDeposit";
             this.textBoxDeposit.Size = new System.Drawing.Size(348, 20);
             this.textBoxDeposit.TabIndex = 7;
+            this.superValidator1.SetValidator1(this.textBoxDeposit, this.regularExpressionValidator2);
             // 
             // labelX1
             // 
@@ -471,6 +478,13 @@
             this.requiredFieldValidator2.ErrorMessage = "Họ chỉ gồm các kí tự";
             this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.EmptyValueIsValid = true;
+            this.regularExpressionValidator1.ErrorMessage = "Nhập 9 số CMND";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d{8}";
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -480,11 +494,20 @@
             // 
             this.highlighter1.ContainerControl = this;
             // 
-            // regularExpressionValidator1
+            // comboItem1
             // 
-            this.regularExpressionValidator1.ErrorMessage = "Nhập 9 số CMND";
-            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d{8}";
+            this.comboItem1.Text = "Ngoại trú";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "Nội trú";
+            // 
+            // regularExpressionValidator2
+            // 
+            this.regularExpressionValidator2.EmptyValueIsValid = true;
+            this.regularExpressionValidator2.ErrorMessage = "Nhập số tiền";
+            this.regularExpressionValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator2.ValidationExpression = "[1-9]\\d+";
             // 
             // FormPatientDetail
             // 
@@ -535,5 +558,8 @@
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
         private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator2;
     }
 }

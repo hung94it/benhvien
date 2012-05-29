@@ -13,7 +13,18 @@ namespace Hospital.View
     {
         private void buttonBillEdit_Click(object sender, EventArgs e)
         {
+            if (dataViewBill.SelectedRows.Count > 0)
+            {
+                // Get staff for edit
+                Bill billDetail = Bill.GetBill(Convert.ToInt32(dataViewBill.SelectedRows[0].Cells[0].Value.ToString()));
 
+                // Open staffdetail form for edit
+                FormBillDetail billDetailForm = new FormBillDetail("edit", billDetail);
+                billDetailForm.ShowDialog();
+
+                // Refresh datagridview after edit
+                refreshDataViewStaff();
+            }
         }
 
 

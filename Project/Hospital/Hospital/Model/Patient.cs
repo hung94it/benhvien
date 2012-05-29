@@ -145,7 +145,8 @@ namespace Hospital.Model
                 newPatient.ICN = (decimal)patientDataTable.Rows[0]["ICN"];
                 newPatient.Profession = (string)patientDataTable.Rows[0]["PROFESSION"];
                 newPatient.Address = (string)patientDataTable.Rows[0]["ADDRESS"];
-                newPatient.Deposit = (decimal)patientDataTable.Rows[0]["DEPOSIT"];                
+                newPatient.Deposit = (decimal)patientDataTable.Rows[0]["DEPOSIT"];
+                newPatient.State = (int)patientDataTable.Rows[0]["STATE"];
             }
 
             return newPatient;

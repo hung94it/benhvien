@@ -65,8 +65,9 @@ namespace Hospital.Model
         {
             DataTable dtMBD;
 
-            string sqlSelect = @"SELECT     BILLID, MEDICINEID, QUANTITY, PRICE
-                                FROM        MEDICINEBILLDETAIL
+            string sqlSelect = @"SELECT     MEDICINE.MEDICINENAME, MEDICINEBILLDETAIL.QUANTITY, MEDICINEBILLDETAIL.PRICE
+                                FROM        MEDICINEBILLDETAIL INNER JOIN
+                                            MEDICINE ON MEDICINEBILLDETAIL.MEDICINEID = MEDICINE.MEDICINEID
                                 WHERE       BILLID=@BILLID";
 
             SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", billID) };
