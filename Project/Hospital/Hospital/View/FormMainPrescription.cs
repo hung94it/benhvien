@@ -117,18 +117,21 @@ namespace Hospital.View
         }
         private void refreshDataViewPrescriptionDetail()
         {
-            try
+            if (dataViewPrescription.SelectedRows.Count >0)
             {
-                // Get PrescriptionDetail's datatable
-                int prescriptionID = Convert.ToInt32(dataViewPrescription.Rows[0].Cells[0].Value);
-                DataTable prescriptionDetailTable = PrescriptionDetail.GetListPrescriptionDetail(prescriptionID);
+                try
+                {
+                    // Get PrescriptionDetail's datatable
+                    int prescriptionID = Convert.ToInt32(dataViewPrescription.Rows[0].Cells[0].Value);
+                    DataTable prescriptionDetailTable = PrescriptionDetail.GetListPrescriptionDetail(prescriptionID);
 
-                // Set data source to dataview for searching
-                dataViewPrescriptionDetail.DataSource = prescriptionDetailTable.DefaultView;
-            }
-            catch (SqlException exception)
-            {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Set data source to dataview for searching
+                    dataViewPrescriptionDetail.DataSource = prescriptionDetailTable.DefaultView;
+                }
+                catch (SqlException exception)
+                {
+                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
             }
         }
         private void searchPrescription()

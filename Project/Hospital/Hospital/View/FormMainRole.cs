@@ -99,18 +99,21 @@ namespace Hospital.View
         }
         private void refreshDataViewRoleDetail()
         {
-            try
+            if (dataViewRole.SelectedRows.Count>0)
             {
-                // Get RoleDetail's datatable
-                int roleID = Convert.ToInt16(dataViewRole.Rows[0].Cells[0].Value);
-                DataTable roleDetailTable = RoleDetail.GetListStaffFunction(roleID);
+                try
+                {
+                    // Get RoleDetail's datatable
+                    int roleID = Convert.ToInt16(dataViewRole.Rows[0].Cells[0].Value);
+                    DataTable roleDetailTable = RoleDetail.GetListStaffFunction(roleID);
 
-                // Set data source to dataview for searching
-                dataViewRoleDetail.DataSource = roleDetailTable;
-            }
-            catch (SqlException exception)
-            {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    // Set data source to dataview for searching
+                    dataViewRoleDetail.DataSource = roleDetailTable;
+                }
+                catch (SqlException exception)
+                {
+                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
             }
         }
         //Search in datagridview

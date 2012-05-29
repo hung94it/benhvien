@@ -116,17 +116,20 @@ namespace Hospital.View
         }
         private void refreshDataViewAssignmentDetail()
         {
-            try
+            if (dataViewAssignment.SelectedRows.Count > 0)
             {
-                // Get AssignmentDetail's datatable
-                int assignmentID = Convert.ToInt32(dataViewAssignment.Rows[0].Cells[0].Value);
-                DataTable assignmentDetailTable = AssignmentDetail.GetListAssignmentDetails(assignmentID);
-                // Set data source to dataview for searching
-                dataViewAsssignmentDetail.DataSource = assignmentDetailTable.DefaultView;
-            }
-            catch (SqlException exception)
-            {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    // Get AssignmentDetail's datatable
+                    int assignmentID = Convert.ToInt32(dataViewAssignment.Rows[0].Cells[0].Value);
+                    DataTable assignmentDetailTable = AssignmentDetail.GetListAssignmentDetails(assignmentID);
+                    // Set data source to dataview for searching
+                    dataViewAsssignmentDetail.DataSource = assignmentDetailTable.DefaultView;
+                }
+                catch (SqlException exception)
+                {
+                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
             }
         }
         private void searchAsssignment()
