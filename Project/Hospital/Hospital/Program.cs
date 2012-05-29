@@ -21,12 +21,12 @@ namespace Hospital
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Test login
-            Staff loginStaff = Staff.GetStaff(10000000);
+            //Staff loginStaff = Staff.GetStaff(10000000);
             // Main form here
-            Application.Run(new FormMain(loginStaff));
+            Application.Run(new FormLogin());
 
             // Test
-            Bill newBill = Bill.GetBill(10000017);            
+            //Bill newBill = Bill.GetBill(10000017);            
             //Patient patient = Patient.GetPatient(10000000);
             //Application.Run(new FormBillDetail("edit", newBill));
             //Application.Run(new Form1());

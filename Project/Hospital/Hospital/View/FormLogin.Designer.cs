@@ -43,6 +43,7 @@
             this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tài khoản");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.buttonSetting = new DevComponents.DotNetBar.ButtonX();
             this.groupPanelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -53,13 +54,14 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPanelLogin.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanelLogin.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.groupPanelLogin.Controls.Add(this.buttonSetting);
             this.groupPanelLogin.Controls.Add(this.buttonClose);
             this.groupPanelLogin.Controls.Add(this.buttonLogin);
             this.groupPanelLogin.Controls.Add(this.labelPassword);
             this.groupPanelLogin.Controls.Add(this.textBoxPassword);
             this.groupPanelLogin.Controls.Add(this.labelUsername);
             this.groupPanelLogin.Controls.Add(this.textBoxUsername);
-            this.groupPanelLogin.Location = new System.Drawing.Point(12, 156);
+            this.groupPanelLogin.Location = new System.Drawing.Point(12, 184);
             this.groupPanelLogin.Name = "groupPanelLogin";
             this.groupPanelLogin.Size = new System.Drawing.Size(310, 136);
             // 
@@ -184,9 +186,9 @@
             // 
             this.reflectionLabelHospital.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.reflectionLabelHospital.Font = new System.Drawing.Font("Freestyle Script", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reflectionLabelHospital.Location = new System.Drawing.Point(45, 12);
+            this.reflectionLabelHospital.Location = new System.Drawing.Point(57, 2);
             this.reflectionLabelHospital.Name = "reflectionLabelHospital";
-            this.reflectionLabelHospital.Size = new System.Drawing.Size(248, 114);
+            this.reflectionLabelHospital.Size = new System.Drawing.Size(248, 176);
             this.reflectionLabelHospital.TabIndex = 2;
             this.reflectionLabelHospital.Text = "     <font size=\"+20\">e<font color=\"#B02B2C\"><i>Hospital</i></font></font>";
             // 
@@ -215,13 +217,27 @@
             // 
             this.highlighter1.ContainerControl = this;
             // 
+            // buttonSetting
+            // 
+            this.buttonSetting.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSetting.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonSetting.Location = new System.Drawing.Point(3, 89);
+            this.buttonSetting.Name = "buttonSetting";
+            this.buttonSetting.Size = new System.Drawing.Size(75, 23);
+            this.buttonSetting.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonSetting.TabIndex = 6;
+            this.buttonSetting.Text = "Tùy chỉnh";
+            this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(334, 312);
+            this.ClientSize = new System.Drawing.Size(334, 332);
             this.Controls.Add(this.reflectionLabelHospital);
             this.Controls.Add(this.groupPanelLogin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(350, 350);
             this.Name = "FormLogin";
             this.Text = "eHospital";
@@ -246,5 +262,6 @@
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
         private DevComponents.DotNetBar.ButtonX buttonClose;
+        private DevComponents.DotNetBar.ButtonX buttonSetting;
     }
 }
