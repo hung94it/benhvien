@@ -86,5 +86,17 @@ namespace Hospital.Model
             return Convert.ToInt16(ob);
         }
 
+        public static DataTable GetPatientIDInPrescription(int pID)
+        {
+            DataTable dtPD;
+
+            string sqlSelect = @"SELECT        PATIENTID
+                                FROM           PRESCRIPTION";
+
+            dtPD = SqlResult.ExecuteQuery(sqlSelect);
+
+            return dtPD;
+        }
+
     }
 }

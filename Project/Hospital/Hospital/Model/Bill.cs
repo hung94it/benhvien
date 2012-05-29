@@ -60,23 +60,13 @@ namespace Hospital.Model
 
         public static int UpdateBill(Bill updateBill)
         {
-            string sqlUpdate = @"INSERT INTO BILL(STATE)
-                                VALUES          (@STATE)
-                                WHERE           BILLID=@BILLID ";
+            string sqlUpdate = @"UPDATE     BILL
+                                SET         STATE = @STATE
+                                WHERE       BILLID=@BILLID";
 
             SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", updateBill.BillID),
                                            new SqlParameter("@STATE",updateBill.State)};
 
-            return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
-        }
-
-        public static int UpdateBillTotal(Bill updateBill)
-        {
-            string sqlUpdate = @"INSERT INTO BILL(TOTALPRICE)
-                                VALUES      (@TOTALPRICE)
-                                WHERE       BILLID=@BILLID ";
-            SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", updateBill.BillID),
-                                            new SqlParameter("@TOTALPRICE", updateBill.TotalPrice)};
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
 
@@ -126,11 +116,6 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT IDENT_CURRENT('BILL') + IDENT_INCR('BILL') as NEXTIDENTITY";
 
             return Convert.ToInt32(SqlResult.ExecuteScalar(sqlSelect));
-        }
-
-        public void Billing()
-        { 
-        
         }
 
         public static Bill GetBill(int billID)

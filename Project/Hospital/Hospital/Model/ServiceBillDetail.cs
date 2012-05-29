@@ -13,11 +13,11 @@ namespace Hospital.Model
         public int BillID { get; set; }
         public int ServiceID { get; set; }
         public int Quantity { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
 
         public ServiceBillDetail() { }
 
-        public ServiceBillDetail(int billID, int serviceID, int quantity, int price)
+        public ServiceBillDetail(int billID, int serviceID, int quantity, decimal price)
         {
             this.BillID = billID;
             this.ServiceID = serviceID;

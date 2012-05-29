@@ -24,7 +24,7 @@ namespace Hospital.View
             this.pATIENTTableAdapter.Fill(this.ehospitalTestDataSet.PATIENT);
             try
             {
-                int i = 0;
+                //int i = 0;
                 
                 //dataGridViewX1.DataSource = MedicineBillDetail.GetListMedicineBillDetail(i);
                 dataGridViewX1.DataSource = DischargeCertificate.GetListDC();
@@ -45,7 +45,7 @@ namespace Hospital.View
                 //Patient.DeletePatient(10000010);
                 RoleFunction rF = new RoleFunction(101, "Thêm bệnh nhân", "btnInsertPatient");
                 RoleFunction.DeleteFunction(101);
-                int i = 0;
+                //int i = 0;
                 dataGridViewX1.DataSource = RoleFunction.GetListFunction();
             }
             catch (SqlException exception)
