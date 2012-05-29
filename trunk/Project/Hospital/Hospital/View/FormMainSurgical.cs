@@ -127,17 +127,20 @@ namespace Hospital.View
         }
         private void refreshDataViewSurgicalDetail()
         {
-            try
+            if (dataViewSurgical.SelectedRows.Count>0)
             {
-                // Get SurgicalDetail's datatable
-                int surgicalID = Convert.ToInt32(dataViewSurgical.Rows[0].Cells[0].Value);
-                DataTable surgicalDetailTable = SurgicalDetail.GetListSurgicalDetail(surgicalID);
-                // Set data source to dataview for searching
-                dataViewSurgicalDetail.DataSource = surgicalDetailTable.DefaultView;
-            }
-            catch (SqlException exception)
-            {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    // Get SurgicalDetail's datatable
+                    int surgicalID = Convert.ToInt32(dataViewSurgical.Rows[0].Cells[0].Value);
+                    DataTable surgicalDetailTable = SurgicalDetail.GetListSurgicalDetail(surgicalID);
+                    // Set data source to dataview for searching
+                    dataViewSurgicalDetail.DataSource = surgicalDetailTable.DefaultView;
+                }
+                catch (SqlException exception)
+                {
+                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
             }
         }
         private void searchSurgical()

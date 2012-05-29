@@ -118,17 +118,20 @@ namespace Hospital.View
         }
         private void refreshDataViewTestDetail()
         {
-            try
+            if (dataViewTC.SelectedRows.Count>0)
             {
-                // Get Test's datatable
-                int testID = Convert.ToInt32(dataViewTC.Rows[0].Cells[0].Value);
-                DataTable testDetailTable = TestDetail.GetListTestDetail(testID);
-                // Set data source to dataview for searching
-                dataViewTCDetail.DataSource = testDetailTable.DefaultView;
-            }
-            catch (SqlException exception)
-            {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    // Get Test's datatable
+                    int testID = Convert.ToInt32(dataViewTC.Rows[0].Cells[0].Value);
+                    DataTable testDetailTable = TestDetail.GetListTestDetail(testID);
+                    // Set data source to dataview for searching
+                    dataViewTCDetail.DataSource = testDetailTable.DefaultView;
+                }
+                catch (SqlException exception)
+                {
+                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                } 
             }
         }
         private void searchTest()
