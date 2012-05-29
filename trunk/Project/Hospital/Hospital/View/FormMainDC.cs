@@ -49,8 +49,10 @@ namespace Hospital.View
                     if (dialogResult == DialogResult.Yes)
                     {
                         DischargeCertificate confirmDC = DischargeCertificate.GetDC(dcID);
+                        Patient updatePatient = Patient.GetPatient(confirmDC.PatientID);
+                        updatePatient.State = 0;
                         confirmDC.State = 1;
-                        if (DischargeCertificate.UpdateDC(confirmDC) > 0)
+                        if (DischargeCertificate.UpdateDC(confirmDC) > 0 && Patient.UpdatePatient(updatePatient) > 0 )
                             MessageBox.Show("Xác nhận giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
 
