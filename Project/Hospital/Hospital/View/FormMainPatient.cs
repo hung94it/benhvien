@@ -180,7 +180,7 @@ namespace Hospital.View
             {
                 int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
                 //Current user
-                int staffID = 10000000;
+                int staffID = loginStaff.StaffID;
 
                 FormHNDetail formHND = new FormHNDetail(staffID, patientID);
                 formHND.ShowDialog();
@@ -194,7 +194,7 @@ namespace Hospital.View
             {
                 int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
                 //Current user
-                int staffID = 10000000;
+                int staffID = loginStaff.StaffID;
 
                 FormECDetail formECD = new FormECDetail(staffID, patientID);
                 formECD.ShowDialog();
@@ -208,7 +208,7 @@ namespace Hospital.View
             {
                 int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
                 //Current user
-                int staffID = 10000000;
+                int staffID = loginStaff.StaffID;
                 if (HospitalizationCertificate.IsPatientHadHC(patientID))
                 {
                     MessageBox.Show("Bệnh nhân đã có giấy nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -229,7 +229,7 @@ namespace Hospital.View
             {
                 int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
                 //Current user
-                int staffID = 10000000;
+                int staffID = loginStaff.StaffID;
 
                 if (HospitalizationCertificate.IsPatientHadHC(patientID))
                 {
@@ -288,7 +288,7 @@ namespace Hospital.View
             {
                 int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
                 //Current user
-                int staffID = 10000000;
+                int staffID = loginStaff.StaffID;
 
                 FormTestDetail formTD = new FormTestDetail(staffID, patientID);
                 formTD.ShowDialog();

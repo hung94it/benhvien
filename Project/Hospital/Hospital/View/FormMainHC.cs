@@ -49,8 +49,10 @@ namespace Hospital.View
                     if (dialogResult == DialogResult.Yes)
                     {
                         HospitalizationCertificate confirmHC = HospitalizationCertificate.GetHC(hcID);
+                        Patient updatePatient = Patient.GetPatient(confirmHC.PatientID);
+                        updatePatient.State = 1;
                         confirmHC.State = 1;
-                        if (HospitalizationCertificate.UpdateHC(confirmHC) > 0)
+                        if (HospitalizationCertificate.UpdateHC(confirmHC) > 0 && Patient.UpdatePatient(updatePatient) > 0 )
                             MessageBox.Show("Xác nhận giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
                     }
 

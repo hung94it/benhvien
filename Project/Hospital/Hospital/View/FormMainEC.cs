@@ -80,7 +80,7 @@ namespace Hospital.View
                 int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
                 ExaminationCertificate updateEC = ExaminationCertificate.GetEC(ecID);
                 //Current user
-                int staffID = 10000000;
+                int staffID = loginStaff.StaffID;
                 FormECDetail formECD = new FormECDetail(updateEC, "updateResult", staffID);
                 formECD.ShowDialog();
 
