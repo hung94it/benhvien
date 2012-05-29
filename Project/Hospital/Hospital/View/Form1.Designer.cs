@@ -46,20 +46,26 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.pATIENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ehospitalTestDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ehospitalTestDataSet = new Hospital.ehospitalTestDataSet();
             this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.pATIENTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pATIENTTableAdapter = new Hospital.ehospitalTestDataSetTableAdapters.PATIENTTableAdapter();
+            this.buttonX2 = new DevComponents.DotNetBar.ButtonX();
+            ((System.ComponentModel.ISupportInitialize)(this.pATIENTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ehospitalTestDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ehospitalTestDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pATIENTBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pATIENTBindingSource
+            // 
+            this.pATIENTBindingSource.DataMember = "PATIENT";
+            this.pATIENTBindingSource.DataSource = this.ehospitalTestDataSetBindingSource;
             // 
             // ehospitalTestDataSetBindingSource
             // 
@@ -153,20 +159,28 @@
             this.reportViewer1.Size = new System.Drawing.Size(503, 285);
             this.reportViewer1.TabIndex = 3;
             // 
-            // pATIENTBindingSource
-            // 
-            this.pATIENTBindingSource.DataMember = "PATIENT";
-            this.pATIENTBindingSource.DataSource = this.ehospitalTestDataSetBindingSource;
-            // 
             // pATIENTTableAdapter
             // 
             this.pATIENTTableAdapter.ClearBeforeFill = true;
+            // 
+            // buttonX2
+            // 
+            this.buttonX2.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX2.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX2.Location = new System.Drawing.Point(551, 12);
+            this.buttonX2.Name = "buttonX2";
+            this.buttonX2.Size = new System.Drawing.Size(75, 23);
+            this.buttonX2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX2.TabIndex = 4;
+            this.buttonX2.Text = "buttonX2";
+            this.buttonX2.Click += new System.EventHandler(this.buttonX2_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 595);
+            this.Controls.Add(this.buttonX2);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.buttonX1);
@@ -174,11 +188,11 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pATIENTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ehospitalTestDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ehospitalTestDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pATIENTBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -193,5 +207,6 @@
         private ehospitalTestDataSet ehospitalTestDataSet;
         private System.Windows.Forms.BindingSource pATIENTBindingSource;
         private ehospitalTestDataSetTableAdapters.PATIENTTableAdapter pATIENTTableAdapter;
+        private DevComponents.DotNetBar.ButtonX buttonX2;
     }
 }

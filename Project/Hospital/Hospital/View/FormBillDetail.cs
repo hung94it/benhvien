@@ -254,7 +254,48 @@ namespace Hospital.View
                             dataViewBillDetail.Columns["MATERIALID"].Visible = false;
                             break;
                     }
+                }
+                else
+                {
+                    switch (UserAction)
+                    {
+                        case "insertExamination":
+                            // Only save and pay when create examination
+                            buttonAdd.Enabled = false;
+                            buttonDelete.Enabled = false;
+                            
+                            // Set new bill detail for examination
+                            BillDetail.BillID = Bill.GetNextBillID();
+                            BillDetail.Date = DateTime.Now;
+                            BillDetail.TotalPrice = 30000;
+                            BillDetail.State = 0;
 
+                            // Set form information
+                            textBoxBillID.Text = Bill.GetNextBillID().ToString();
+                            dateTimeInputBill.Value = BillDetail.Date;
+                            labelTotalBillPrice.Text = BillDetail.TotalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+
+                            // Create table for datagridview
+                            BillServiceTable = new DataTable();
+
+                            BillServiceTable.Columns.Add("SERVICEID", typeof(int));
+                            BillServiceTable.Columns.Add("Dịch vụ", typeof(string));
+                            BillServiceTable.Columns.Add("Số lượng", typeof(int));
+                            BillServiceTable.Columns.Add("Giá", typeof(decimal));
+
+                            dataViewBillDetail.DataSource = BillServiceTable;
+                            dataViewBillDetail.Columns["SERVICEID"].Visible = false;
+
+                            BillServiceTable.Rows.Add(new object[] { 100, "Khám bệnh", 1, 30000 });
+
+                            break;
+                        case "insertTest":
+                            break;
+                        case "insertSurgery":
+                            break;
+                    }
+
+                    UserAction = "insert";
                 }
             }
             catch (SqlException exception)
@@ -306,8 +347,10 @@ namespace Hospital.View
                     //BillMedicineTable.Rows.Add(new object[] { medicineID, medicineName, quantityMedicine, priceMedicine });
 
                     break;
+
                 // Add service detail
                 case Bill.SERVICEBILL:
+
                     int serviceID = Convert.ToInt32(((DataRowView)comboBoxDetail.SelectedItem).Row["SERVICEID"]);
                     string serviceName = ((DataRowView)comboBoxDetail.SelectedItem).Row["SERVICENAME"].ToString();
                     int quantityService = Convert.ToInt32(textBoxQuantity.Text);
@@ -331,6 +374,7 @@ namespace Hospital.View
                     }
 
                     break;
+
                 case Bill.MATERIALBILL:
                     int materialID = Convert.ToInt32(((DataRowView)comboBoxDetail.SelectedItem).Row["MATERIALID"]);
                     string materialName = ((DataRowView)comboBoxDetail.SelectedItem).Row["MATERIALNAME"].ToString();
