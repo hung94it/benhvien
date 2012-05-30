@@ -11,7 +11,7 @@ namespace Hospital.Functional
     public static class SqlResult
     {
         //Get ConnectionString in app.config
-        private static string sqlConnectString = ConfigurationManager.ConnectionStrings["eHospital"].ConnectionString;
+        private static string sqlConnectString = ConfigurationManager.ConnectionStrings["Hospital.Properties.Settings.eHospital"].ConnectionString;
 
         //Execute insert, update, delete command without parameters
         public static int ExecuteNonQuery(string commandString)
