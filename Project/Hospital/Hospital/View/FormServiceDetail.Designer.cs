@@ -141,7 +141,7 @@
             this.textBoxPrice.Location = new System.Drawing.Point(67, 58);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPrice.TabIndex = 54;
+            this.textBoxPrice.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxPrice, this.requiredFieldValidator2);
             // 
             // labelServiceID
@@ -180,7 +180,7 @@
             this.textBoxServiceName.Location = new System.Drawing.Point(67, 32);
             this.textBoxServiceName.Name = "textBoxServiceName";
             this.textBoxServiceName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxServiceName.TabIndex = 53;
+            this.textBoxServiceName.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxServiceName, this.requiredFieldValidator1);
             // 
             // labelServiceName

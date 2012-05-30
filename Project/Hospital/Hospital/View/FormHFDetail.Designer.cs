@@ -48,12 +48,12 @@
             this.textBoxHFID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelHCID = new DevComponents.DotNetBar.LabelX();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.requiredFieldValidator4 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập hướng điều trị");
+            this.requiredFieldValidator3 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập bệnh mắc phải");
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tiến sử bệnh lý");
+            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tình trạng bệnh nhân");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tình trạng bệnh nhân");
-            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tiến sử bệnh lý");
-            this.requiredFieldValidator3 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập bệnh mắc phải");
-            this.requiredFieldValidator4 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập hướng điều trị");
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateCreate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -196,7 +196,7 @@
             this.dateCreate.Name = "dateCreate";
             this.dateCreate.Size = new System.Drawing.Size(293, 20);
             this.dateCreate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateCreate.TabIndex = 60;
+            this.dateCreate.TabIndex = 8;
             this.dateCreate.Value = new System.DateTime(2012, 5, 20, 0, 0, 0, 0);
             // 
             // textBoxTreatment
@@ -210,7 +210,7 @@
             this.textBoxTreatment.Multiline = true;
             this.textBoxTreatment.Name = "textBoxTreatment";
             this.textBoxTreatment.Size = new System.Drawing.Size(293, 42);
-            this.textBoxTreatment.TabIndex = 64;
+            this.textBoxTreatment.TabIndex = 4;
             this.superValidator1.SetValidator1(this.textBoxTreatment, this.requiredFieldValidator4);
             // 
             // labelX5
@@ -237,7 +237,7 @@
             this.textBoxDisease.Multiline = true;
             this.textBoxDisease.Name = "textBoxDisease";
             this.textBoxDisease.Size = new System.Drawing.Size(293, 42);
-            this.textBoxDisease.TabIndex = 63;
+            this.textBoxDisease.TabIndex = 3;
             this.superValidator1.SetValidator1(this.textBoxDisease, this.requiredFieldValidator3);
             // 
             // labelX4
@@ -264,7 +264,7 @@
             this.textBoxPrehistory.Multiline = true;
             this.textBoxPrehistory.Name = "textBoxPrehistory";
             this.textBoxPrehistory.Size = new System.Drawing.Size(293, 42);
-            this.textBoxPrehistory.TabIndex = 62;
+            this.textBoxPrehistory.TabIndex = 2;
             this.superValidator1.SetValidator1(this.textBoxPrehistory, this.requiredFieldValidator1);
             // 
             // labelX3
@@ -291,7 +291,7 @@
             this.textBoxPatientState.Multiline = true;
             this.textBoxPatientState.Name = "textBoxPatientState";
             this.textBoxPatientState.Size = new System.Drawing.Size(293, 42);
-            this.textBoxPatientState.TabIndex = 61;
+            this.textBoxPatientState.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxPatientState, this.requiredFieldValidator2);
             // 
             // labelAddress
@@ -368,6 +368,26 @@
             this.superValidator1.ErrorProvider = this.errorProvider1;
             this.superValidator1.Highlighter = this.highlighter1;
             // 
+            // requiredFieldValidator4
+            // 
+            this.requiredFieldValidator4.ErrorMessage = "Nhập hướng điều trị";
+            this.requiredFieldValidator4.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator3
+            // 
+            this.requiredFieldValidator3.ErrorMessage = "Nhập bệnh mắc phải";
+            this.requiredFieldValidator3.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập tiến sử bệnh lý";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator2
+            // 
+            this.requiredFieldValidator2.ErrorMessage = "Nhập tình trạng bệnh nhân";
+            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -376,26 +396,6 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
-            // 
-            // requiredFieldValidator2
-            // 
-            this.requiredFieldValidator2.ErrorMessage = "Nhập tình trạng bệnh nhân";
-            this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
-            // requiredFieldValidator1
-            // 
-            this.requiredFieldValidator1.ErrorMessage = "Nhập tiến sử bệnh lý";
-            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
-            // requiredFieldValidator3
-            // 
-            this.requiredFieldValidator3.ErrorMessage = "Nhập bệnh mắc phải";
-            this.requiredFieldValidator3.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
-            // requiredFieldValidator4
-            // 
-            this.requiredFieldValidator4.ErrorMessage = "Nhập hướng điều trị";
-            this.requiredFieldValidator4.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
             // FormHFDetail
             // 

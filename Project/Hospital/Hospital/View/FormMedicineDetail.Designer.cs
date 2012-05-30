@@ -42,11 +42,11 @@
             this.textBoxMedicineName = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelMedicineName = new DevComponents.DotNetBar.LabelX();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên thuốc");
             this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập số lượng");
             this.requiredFieldValidator3 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập đơn giá");
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên thuốc");
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -133,7 +133,7 @@
             this.textBoxQuantity.Location = new System.Drawing.Point(63, 55);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(293, 20);
-            this.textBoxQuantity.TabIndex = 44;
+            this.textBoxQuantity.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxQuantity, this.requiredFieldValidator2);
             // 
             // labelQuantity
@@ -172,7 +172,7 @@
             this.textBoxPrice.Location = new System.Drawing.Point(63, 81);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPrice.TabIndex = 45;
+            this.textBoxPrice.TabIndex = 2;
             this.superValidator1.SetValidator1(this.textBoxPrice, this.requiredFieldValidator3);
             // 
             // labelMedicineID
@@ -211,7 +211,7 @@
             this.textBoxMedicineName.Location = new System.Drawing.Point(63, 29);
             this.textBoxMedicineName.Name = "textBoxMedicineName";
             this.textBoxMedicineName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxMedicineName.TabIndex = 43;
+            this.textBoxMedicineName.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxMedicineName, this.requiredFieldValidator1);
             // 
             // labelMedicineName
@@ -233,20 +233,6 @@
             this.superValidator1.ErrorProvider = this.errorProvider1;
             this.superValidator1.Highlighter = this.highlighter1;
             // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
-            // 
-            // highlighter1
-            // 
-            this.highlighter1.ContainerControl = this;
-            // 
-            // requiredFieldValidator1
-            // 
-            this.requiredFieldValidator1.ErrorMessage = "Nhập tên thuốc";
-            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            // 
             // requiredFieldValidator2
             // 
             this.requiredFieldValidator2.ErrorMessage = "Nhập số lượng";
@@ -256,6 +242,20 @@
             // 
             this.requiredFieldValidator3.ErrorMessage = "Nhập đơn giá";
             this.requiredFieldValidator3.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập tên thuốc";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            this.errorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider1.Icon")));
+            // 
+            // highlighter1
+            // 
+            this.highlighter1.ContainerControl = this;
             // 
             // FormMedicineDetail
             // 

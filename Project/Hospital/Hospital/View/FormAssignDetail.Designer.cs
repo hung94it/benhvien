@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.dateCreate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dateDischarge = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.dateHospitalize = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
@@ -40,17 +41,16 @@
             this.textBoxAssignID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelRoleID = new DevComponents.DotNetBar.LabelX();
             this.labelX2 = new DevComponents.DotNetBar.LabelX();
+            this.labelX5 = new DevComponents.DotNetBar.LabelX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX3 = new DevComponents.DotNetBar.LabelX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.labelRoleName = new DevComponents.DotNetBar.LabelX();
-            this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.dateCreate = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.groupPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dateCreate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDischarge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateHospitalize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateCreate)).BeginInit();
             this.SuspendLayout();
             // 
             // groupPanel1
@@ -109,6 +109,55 @@
             this.groupPanel1.TabIndex = 0;
             this.groupPanel1.Text = "Bảng phân công";
             // 
+            // dateCreate
+            // 
+            // 
+            // 
+            // 
+            this.dateCreate.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dateCreate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateCreate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dateCreate.ButtonDropDown.Visible = true;
+            this.dateCreate.IsPopupCalendarOpen = false;
+            this.dateCreate.Location = new System.Drawing.Point(101, 109);
+            // 
+            // 
+            // 
+            this.dateCreate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dateCreate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateCreate.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
+            this.dateCreate.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateCreate.MonthCalendar.DisplayMonth = new System.DateTime(2012, 5, 1, 0, 0, 0, 0);
+            this.dateCreate.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dateCreate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dateCreate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dateCreate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dateCreate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dateCreate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dateCreate.MonthCalendar.TodayButtonVisible = true;
+            this.dateCreate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dateCreate.Name = "dateCreate";
+            this.dateCreate.Size = new System.Drawing.Size(293, 20);
+            this.dateCreate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dateCreate.TabIndex = 3;
+            this.dateCreate.Value = new System.DateTime(2012, 5, 23, 0, 0, 0, 0);
+            // 
             // dateDischarge
             // 
             // 
@@ -155,7 +204,7 @@
             this.dateDischarge.Name = "dateDischarge";
             this.dateDischarge.Size = new System.Drawing.Size(293, 20);
             this.dateDischarge.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateDischarge.TabIndex = 56;
+            this.dateDischarge.TabIndex = 2;
             this.dateDischarge.Value = new System.DateTime(2012, 5, 23, 0, 0, 0, 0);
             // 
             // dateHospitalize
@@ -194,7 +243,7 @@
             this.dateHospitalize.Name = "dateHospitalize";
             this.dateHospitalize.Size = new System.Drawing.Size(293, 20);
             this.dateHospitalize.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateHospitalize.TabIndex = 57;
+            this.dateHospitalize.TabIndex = 1;
             this.dateHospitalize.Value = new System.DateTime(2012, 5, 23, 0, 0, 0, 0);
             // 
             // buttonClose
@@ -272,7 +321,7 @@
             this.textBoxAssignID.Name = "textBoxAssignID";
             this.textBoxAssignID.ReadOnly = true;
             this.textBoxAssignID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxAssignID.TabIndex = 49;
+            this.textBoxAssignID.TabIndex = 12;
             // 
             // labelRoleID
             // 
@@ -300,6 +349,19 @@
             this.labelX2.TabIndex = 44;
             this.labelX2.Text = "Danh sách nhân viên";
             // 
+            // labelX5
+            // 
+            this.labelX5.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX5.Location = new System.Drawing.Point(3, 106);
+            this.labelX5.Name = "labelX5";
+            this.labelX5.Size = new System.Drawing.Size(92, 23);
+            this.labelX5.TabIndex = 46;
+            this.labelX5.Text = "Ngày lập";
+            // 
             // labelX4
             // 
             this.labelX4.BackColor = System.Drawing.Color.Transparent;
@@ -324,7 +386,7 @@
             this.textBoxPatientID.Name = "textBoxPatientID";
             this.textBoxPatientID.ReadOnly = true;
             this.textBoxPatientID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPatientID.TabIndex = 42;
+            this.textBoxPatientID.TabIndex = 10;
             // 
             // labelX3
             // 
@@ -365,68 +427,6 @@
             this.labelRoleName.TabIndex = 47;
             this.labelRoleName.Text = "Mã bệnh nhân";
             // 
-            // labelX5
-            // 
-            this.labelX5.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(3, 106);
-            this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(92, 23);
-            this.labelX5.TabIndex = 46;
-            this.labelX5.Text = "Ngày lập";
-            // 
-            // dateCreate
-            // 
-            // 
-            // 
-            // 
-            this.dateCreate.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dateCreate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateCreate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dateCreate.ButtonDropDown.Visible = true;
-            this.dateCreate.IsPopupCalendarOpen = false;
-            this.dateCreate.Location = new System.Drawing.Point(101, 109);
-            // 
-            // 
-            // 
-            this.dateCreate.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dateCreate.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateCreate.MonthCalendar.CalendarDimensions = new System.Drawing.Size(1, 1);
-            this.dateCreate.MonthCalendar.ClearButtonVisible = true;
-            // 
-            // 
-            // 
-            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dateCreate.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateCreate.MonthCalendar.DisplayMonth = new System.DateTime(2012, 5, 1, 0, 0, 0, 0);
-            this.dateCreate.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.dateCreate.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
-            // 
-            // 
-            // 
-            this.dateCreate.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dateCreate.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateCreate.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dateCreate.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateCreate.MonthCalendar.TodayButtonVisible = true;
-            this.dateCreate.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.dateCreate.Name = "dateCreate";
-            this.dateCreate.Size = new System.Drawing.Size(293, 20);
-            this.dateCreate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateCreate.TabIndex = 56;
-            this.dateCreate.Value = new System.DateTime(2012, 5, 23, 0, 0, 0, 0);
-            // 
             // FormAssignDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,9 +436,9 @@
             this.Name = "FormAssignDetail";
             this.Text = "Thông tin bảng phân công";
             this.groupPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dateCreate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateDischarge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateHospitalize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateCreate)).EndInit();
             this.ResumeLayout(false);
 
         }

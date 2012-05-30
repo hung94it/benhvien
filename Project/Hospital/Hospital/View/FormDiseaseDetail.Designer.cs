@@ -129,7 +129,7 @@
             this.textBoxDiseaseSymptom.Multiline = true;
             this.textBoxDiseaseSymptom.Name = "textBoxDiseaseSymptom";
             this.textBoxDiseaseSymptom.Size = new System.Drawing.Size(293, 187);
-            this.textBoxDiseaseSymptom.TabIndex = 31;
+            this.textBoxDiseaseSymptom.TabIndex = 2;
             this.superValidator1.SetValidator1(this.textBoxDiseaseSymptom, this.requiredFieldValidator2);
             // 
             // textBoxDiseaseID
@@ -181,7 +181,7 @@
             this.textBoxDiseaseName.Location = new System.Drawing.Point(73, 35);
             this.textBoxDiseaseName.Name = "textBoxDiseaseName";
             this.textBoxDiseaseName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxDiseaseName.TabIndex = 30;
+            this.textBoxDiseaseName.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxDiseaseName, this.requiredFieldValidator1);
             // 
             // labelDiseaseName

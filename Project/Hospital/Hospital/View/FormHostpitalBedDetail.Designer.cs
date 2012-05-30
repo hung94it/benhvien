@@ -42,9 +42,9 @@
             this.labelState = new DevComponents.DotNetBar.LabelX();
             this.labelPatientID = new DevComponents.DotNetBar.LabelX();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập mã bệnh nhân");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập mã bệnh nhân");
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -134,7 +134,7 @@
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(119, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxState.TabIndex = 35;
+            this.comboBoxState.TabIndex = 1;
             // 
             // comboItemMale
             // 
@@ -180,7 +180,7 @@
             this.textBoxPatientID.Location = new System.Drawing.Point(101, 32);
             this.textBoxPatientID.Name = "textBoxPatientID";
             this.textBoxPatientID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPatientID.TabIndex = 34;
+            this.textBoxPatientID.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxPatientID, this.requiredFieldValidator1);
             // 
             // labelState
@@ -215,6 +215,11 @@
             this.superValidator1.ErrorProvider = this.errorProvider1;
             this.superValidator1.Highlighter = this.highlighter1;
             // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập mã bệnh nhân";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -223,11 +228,6 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
-            // 
-            // requiredFieldValidator1
-            // 
-            this.requiredFieldValidator1.ErrorMessage = "Nhập mã bệnh nhân";
-            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
             // FormHostpitalBedDetail
             // 

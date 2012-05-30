@@ -142,7 +142,7 @@
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(114, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxState.TabIndex = 44;
+            this.comboBoxState.TabIndex = 1;
             // 
             // comboItemNo
             // 
@@ -163,7 +163,7 @@
             this.textBoxDescription.Multiline = true;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(293, 54);
-            this.textBoxDescription.TabIndex = 42;
+            this.textBoxDescription.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxDescription, this.requiredFieldValidator1);
             // 
             // labelAddress

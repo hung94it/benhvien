@@ -133,7 +133,7 @@
             this.textBoxQuantity.Location = new System.Drawing.Point(57, 58);
             this.textBoxQuantity.Name = "textBoxQuantity";
             this.textBoxQuantity.Size = new System.Drawing.Size(293, 20);
-            this.textBoxQuantity.TabIndex = 35;
+            this.textBoxQuantity.TabIndex = 2;
             this.superValidator1.SetValidator1(this.textBoxQuantity, this.requiredFieldValidator2);
             // 
             // labelQuantity
@@ -172,7 +172,7 @@
             this.textBoxPrice.Location = new System.Drawing.Point(57, 84);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
-            this.textBoxPrice.TabIndex = 36;
+            this.textBoxPrice.TabIndex = 3;
             this.superValidator1.SetValidator1(this.textBoxPrice, this.requiredFieldValidator3);
             // 
             // labelMaterialID
@@ -211,7 +211,7 @@
             this.textBoxMaterialName.Location = new System.Drawing.Point(57, 32);
             this.textBoxMaterialName.Name = "textBoxMaterialName";
             this.textBoxMaterialName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxMaterialName.TabIndex = 34;
+            this.textBoxMaterialName.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxMaterialName, this.requiredFieldValidator1);
             // 
             // labelMaterialName

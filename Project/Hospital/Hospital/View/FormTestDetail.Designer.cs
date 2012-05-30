@@ -448,7 +448,7 @@
             this.dateCreate.Name = "dateCreate";
             this.dateCreate.Size = new System.Drawing.Size(109, 20);
             this.dateCreate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateCreate.TabIndex = 3;
+            this.dateCreate.TabIndex = 0;
             this.dateCreate.Value = new System.DateTime(2012, 5, 20, 0, 0, 0, 0);
             // 
             // labelX1

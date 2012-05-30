@@ -286,6 +286,12 @@
     <Compile Include="View\FormMainTest.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="View\FormMajorDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormMajorDetail.Designer.cs">
+      <DependentUpon>FormMajorDetail.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormMaterialDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -404,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormMajorDetail.resx">
+      <DependentUpon>FormMajorDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FormMaterialDetail.resx">
       <DependentUpon>FormMaterialDetail.cs</DependentUpon>

@@ -148,7 +148,7 @@
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(127, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxState.TabIndex = 59;
+            this.comboBoxState.TabIndex = 1;
             // 
             // comboItemNo
             // 
@@ -217,7 +217,7 @@
             this.dateDischarge.Name = "dateDischarge";
             this.dateDischarge.Size = new System.Drawing.Size(293, 20);
             this.dateDischarge.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateDischarge.TabIndex = 58;
+            this.dateDischarge.TabIndex = 0;
             this.dateDischarge.Value = new System.DateTime(2012, 5, 20, 0, 0, 0, 0);
             // 
             // textBoxStaffID
