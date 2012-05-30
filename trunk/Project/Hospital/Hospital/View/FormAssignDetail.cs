@@ -139,8 +139,8 @@ namespace Hospital.View
                         if (this.UserAction == "edit")
                         {
                             newAssign.AssignID = Convert.ToInt32(textBoxAssignID.Text);
-                            DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin bảng phân công này không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                            if (dialogResult == DialogResult.OK)
+                            DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin bản phân công", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dialogResult == DialogResult.Yes)
                             {
                                 if (Assignment.UpdateAssignment(newAssign) > 0)
                                 {
@@ -152,7 +152,7 @@ namespace Hospital.View
                                         AssignmentDetail.InsertAssignmentDetails(newAD);
                                     }
                                     listAD.Clear();
-                                    MessageBox.Show("Cập nhập thông tin bảng phân công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                    MessageBox.Show("Cập nhập thông tin bảng phân công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
                         }
@@ -167,13 +167,13 @@ namespace Hospital.View
                                     listAD[i].AssignID = curAssignID;
                                     AssignmentDetail.InsertAssignmentDetails(listAD[i]);
                                 }
-                                MessageBox.Show("Thêm bảng phân công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Thêm bảng phân công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                     }
-                    catch (SqlException exception)
+                    catch
                     {
-                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     listAD.Clear();
                     this.Close();

@@ -69,17 +69,17 @@ namespace Hospital.View
             if (dataViewPrescription.SelectedRows.Count > 0)
             {
                 int prescriptionID = Convert.ToInt32(dataViewPrescription.SelectedRows[0].Cells[0].Value);
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa toa thuốc này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Xác nhận xóa toa thuốc", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
                     {
                         if (PrescriptionDetail.DeletePrescriptionDetail(prescriptionID) > 0 && Prescription.DeletePrescription(prescriptionID) > 0)
-                            MessageBox.Show("Xóa toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xóa toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (SqlException exception)
+                    catch
                     {
-                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -110,9 +110,9 @@ namespace Hospital.View
                     dataViewPrescription.Columns[i].Visible = false;
                 }                
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void refreshDataViewPrescriptionDetail()
@@ -128,9 +128,9 @@ namespace Hospital.View
                     // Set data source to dataview for searching
                     dataViewPrescriptionDetail.DataSource = prescriptionDetailTable.DefaultView;
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } 
             }
         }

@@ -54,13 +54,13 @@ namespace Hospital.View
             if (dataViewTC.SelectedRows.Count > 0)
             {
                 int testID = Convert.ToInt32(dataViewTC.SelectedRows[0].Cells[0].Value);
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu xét nghiệm này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Xác nhận xóa phiếu xét nghiệm", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
                     {
                         if (TestDetail.DeleteTestDetail(testID) > 0 && TestCertificate.DeleteTC(testID) > 0)
-                            MessageBox.Show("Xóa phiếu xét nghiệm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xóa phiếu xét nghiệm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch
                     {
@@ -111,9 +111,9 @@ namespace Hospital.View
                     dataViewTC.Columns[i].Visible = false;
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void refreshDataViewTestDetail()
@@ -128,9 +128,9 @@ namespace Hospital.View
                     // Set data source to dataview for searching
                     dataViewTCDetail.DataSource = testDetailTable.DefaultView;
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } 
             }
         }

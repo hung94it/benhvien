@@ -81,11 +81,11 @@ namespace Hospital.View
                             newHN.Weight = textBoxWeight.Text;
                             newHN.BloodPressure = textBoxBloodPressure.Text;
                             newHN.Date = dateCreate.Value;
-                            DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin phiếu theo dõi sức khỏe", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin phiếu theo dõi sức khỏe", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (dialogResult == DialogResult.Yes)
                             {
                                 if (HeathMonitoringNote.UpdateHN(newHN) > 0)
-                                    MessageBox.Show("Cập nhập thông tin phiếu theo dõi sức khỏe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                    MessageBox.Show("Cập nhập thông tin phiếu theo dõi sức khỏe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             
                         }
@@ -100,12 +100,12 @@ namespace Hospital.View
                             newHN.BloodPressure = textBoxBloodPressure.Text;
                             newHN.Date = dateCreate.Value;
                             if(HeathMonitoringNote.InsertHN(newHN)>0)
-                                MessageBox.Show("Thêm phiếu theo dõi sức khỏe thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Thêm phiếu theo dõi sức khỏe thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
-                    catch (SqlException exception)
+                    catch
                     {
-                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 
                 this.Close();

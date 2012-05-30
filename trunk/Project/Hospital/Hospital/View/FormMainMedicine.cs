@@ -21,13 +21,13 @@ namespace Hospital.View
             if (dataViewMedicine.SelectedRows.Count > 0)
             {
                 int medicineID = Convert.ToInt32(dataViewMedicine.SelectedRows[0].Cells[0].Value);
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa loại thuốc này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Xác nhận xóa thuốc", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
                     {
                         if (Medicine.DeleteMedicne(medicineID) > 0)
-                            MessageBox.Show("Xóa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xóa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch
                     {
@@ -108,9 +108,9 @@ namespace Hospital.View
                     textBoxMedicineSearch.AutoCompleteCustomSource.Add(strMaterialName);
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //Search in datagridview

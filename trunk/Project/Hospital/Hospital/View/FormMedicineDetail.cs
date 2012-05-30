@@ -51,11 +51,11 @@ namespace Hospital.View
                         MedicineDetail.MedicineName = textBoxMedicineName.Text;
                         MedicineDetail.Quantity = int.Parse(textBoxQuantity.Text);
                         MedicineDetail.Price = decimal.Parse(textBoxPrice.Text);
-                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin thuốc", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin thuốc", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
                             if (Medicine.UpdateMedicine(MedicineDetail) > 0)
-                                MessageBox.Show("Cập nhập thông tin thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Cập nhập thông tin thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         
                     }
@@ -63,12 +63,12 @@ namespace Hospital.View
                     {
                         Medicine newMedicine = new Medicine(0, textBoxMedicineName.Text, int.Parse(textBoxQuantity.Text), decimal.Parse(textBoxPrice.Text));
                         if (Medicine.InsertMedicine(newMedicine) > 0)
-                            MessageBox.Show("Thêm thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Thêm thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             
             this.Close();

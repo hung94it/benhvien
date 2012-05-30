@@ -100,12 +100,16 @@ namespace Hospital.View
                 } 
                 else if ("edit".Equals(this.UserAction))
                 {
-                    Patient.UpdatePatient(PatientDetail);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin bệnh nhân", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult==DialogResult.Yes)
+                    {
+                        Patient.UpdatePatient(PatientDetail); 
+                    }
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // After process then close this form

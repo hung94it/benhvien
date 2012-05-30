@@ -177,7 +177,7 @@ namespace Hospital.View
                 if(this.UserAction=="edit")
                 {
                     newPrescription.PrescriptionID = Convert.ToInt32(textBoxPrescriptionID.Text);
-                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin toa thuốc?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin toa thuốc", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.OK)
                     {
                         if (Prescription.UpdatePrescription(newPrescription) > 0)
@@ -190,7 +190,7 @@ namespace Hospital.View
                                 PrescriptionDetail.InsertPrescriptionDetail(newPD);
                             }
                             listDP.Clear();
-                            MessageBox.Show("Cập nhập thông tin toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Cập nhập thông tin toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -205,14 +205,14 @@ namespace Hospital.View
                             listDP[i].PrescriptionID = prescriptionID;
                             PrescriptionDetail.InsertPrescriptionDetail(listDP[i]);
                         }
-                        MessageBox.Show("Thêm toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show("Thêm toa thuốc thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         listDP.Clear();
                     }
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close();
         }

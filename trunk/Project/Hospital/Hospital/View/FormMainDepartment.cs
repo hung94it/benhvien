@@ -22,17 +22,17 @@ namespace Hospital.View
             if (dataViewDepartment.SelectedRows.Count > 0)
             {
                 int departmentID = Convert.ToInt16(dataViewDepartment.SelectedRows[0].Cells[0].Value);
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phòng khoa này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Xác nhận xóa phòng ban", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
                     {
                         if (Department.DeleteDepartment(departmentID) > 0)
-                            MessageBox.Show("Xóa phòng khoa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xóa phòng ban thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch
                     {
-                        MessageBox.Show("phòng khoa đã hoặc đang có người công tác", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("phòng khoa đã hoặc đang có người công tác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -82,9 +82,9 @@ namespace Hospital.View
                 }
 
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //Refresh datagridview in DeptMajor tab
@@ -108,9 +108,9 @@ namespace Hospital.View
                 }
 
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -119,7 +119,7 @@ namespace Hospital.View
             if (dataViewMajor.SelectedRows.Count > 0)
             {
                 int majorID = Convert.ToInt16(dataViewMajor.SelectedRows[0].Cells[0].Value);
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phòng khoa này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Xác nhận xóa chuyên ngành", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     try

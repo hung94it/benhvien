@@ -145,7 +145,7 @@ namespace Hospital.View
                     if (this.UserAction == "edit")
                     {
                         newTC.TCID = Convert.ToInt32(textBoxTCID.Text);
-                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin phiếu xét nghiệm?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin phiếu xét nghiệm", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.OK)
                         {
                             if (TestCertificate.UpdateTC(newTC) > 0)
@@ -157,7 +157,7 @@ namespace Hospital.View
                                     TestDetail.InsertTestDetail(listTD[i]);
                                 }
                                 listTD.Clear();
-                                MessageBox.Show("Cập nhập thông tin phiếu xét nghiệm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Cập nhập thông tin phiếu xét nghiệm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                     }
@@ -172,7 +172,7 @@ namespace Hospital.View
                                 listTD[i].TCID = tcID;
                                 TestDetail.InsertTestDetail(listTD[i]);
                             }
-                            MessageBox.Show("Thêm phiếu xét nghiệm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Thêm phiếu xét nghiệm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             listTD.Clear();
                         }
                         
@@ -184,9 +184,9 @@ namespace Hospital.View
                     MessageBox.Show("Yêu cầu nhập loại xét nghiệm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
             

@@ -51,11 +51,11 @@ namespace Hospital.View
                     try
                     {
                         if (HospitalBed.UpdateHospitalBed(HBDetail) > 0)
-                            MessageBox.Show("Nhận giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Nhận giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (SqlException exception)
+                    catch
                     {
-                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else

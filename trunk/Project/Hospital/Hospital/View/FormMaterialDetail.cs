@@ -51,11 +51,11 @@ namespace Hospital.View
                         MaterialDetail.MaterialName = textBoxMaterialName.Text;
                         MaterialDetail.Quantity = int.Parse(textBoxQuantity.Text);
                         MaterialDetail.Price = decimal.Parse(textBoxPrice.Text);
-                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin vật tư", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin vật tư", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
                             if (Material.UpdateMaterial(MaterialDetail) > 0)
-                                MessageBox.Show("Cập nhập thông tin vật tư thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Cập nhập thông tin vật tư thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         
                     }
@@ -63,12 +63,12 @@ namespace Hospital.View
                     {
                         Material newMaterial = new Material(0, textBoxMaterialName.Text, int.Parse(textBoxQuantity.Text), decimal.Parse(textBoxPrice.Text));
                         if (Material.InsertMaterial(newMaterial) > 0)
-                            MessageBox.Show("Thêm vật tư thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Thêm vật tư thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             
             this.Close();

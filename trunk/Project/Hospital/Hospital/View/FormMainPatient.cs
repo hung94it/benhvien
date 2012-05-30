@@ -50,7 +50,7 @@ namespace Hospital.View
                 try
                 {
                     // Warning before delete
-                    if (MessageBox.Show("Bạn có muốn xóa bệnh nhân này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                    if (MessageBox.Show("Xác nhận xóa bệnh nhân", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
                         == DialogResult.Yes)
                     {
                         // Get patientid for delete
@@ -60,9 +60,9 @@ namespace Hospital.View
                         }
                     }
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);                
                 }
 
                 // Refresh datagridview after delete
@@ -138,9 +138,9 @@ namespace Hospital.View
                     dataViewPatient.Columns[i].Visible = false;
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //Add a new Prescription

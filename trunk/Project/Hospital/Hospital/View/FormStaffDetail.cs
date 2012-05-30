@@ -116,20 +116,28 @@ namespace Hospital.View
                 }
                 else if ("edit".Equals(this.UserAction))
                 {
-                    Staff.UpdateStaff(StaffDetail);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin nhân viên", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult==DialogResult.Yes)
+                    {
+                        Staff.UpdateStaff(StaffDetail); 
+                    }
                 }
                 else if ("personalEdit".Equals(this.UserAction))
                 {
-                    if (textBoxPassword.Text != "")
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin tài khoản cá nhân", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        StaffDetail.Password = textBoxPassword.Text;
+                        if (textBoxPassword.Text != "")
+                        {
+                            StaffDetail.Password = textBoxPassword.Text;
+                        }
+                        Staff.UpdateStaff(StaffDetail); 
                     }
-                    Staff.UpdateStaff(StaffDetail);
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // After process then close this form

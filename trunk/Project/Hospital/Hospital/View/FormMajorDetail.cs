@@ -48,7 +48,7 @@ namespace Hospital.View
                 if (UserAction == "edit")
                 {
                     newMajor.MajorID = Convert.ToInt32(textBoxMajorID.Text);
-                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin chuyên ngành", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin chuyên ngành", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
                         if (Major.UpdateMajor(newMajor) > 0)
@@ -63,9 +63,9 @@ namespace Hospital.View
                         MessageBox.Show("Thêm phòng khoa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             this.Close();

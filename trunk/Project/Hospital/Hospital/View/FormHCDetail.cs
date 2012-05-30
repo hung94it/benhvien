@@ -95,8 +95,12 @@ namespace Hospital.View
                     newHC.Reason = textBoxReason.Text;
                     newHC.State = (int)comboBoxState.SelectedIndex;
                     newHC.Date = dateHospitalizate.Value;
-                    if (HospitalizationCertificate.UpdateHC(newHC) > 0)
-                        MessageBox.Show("Cập nhập thông tin giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin giấy nhập viện", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult==DialogResult.Yes)
+                    {
+                        if (HospitalizationCertificate.UpdateHC(newHC) > 0)
+                            MessageBox.Show("Cập nhập thông tin giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    }
                 }
                 else
                 {
@@ -114,13 +118,13 @@ namespace Hospital.View
                         newHC.State = 0;
                         newHC.Date = dateHospitalizate.Value;
                         if (HospitalizationCertificate.InsertHC(newHC) > 0)
-                            MessageBox.Show("Thêm giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Thêm giấy nhập viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 } 
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close();
         }

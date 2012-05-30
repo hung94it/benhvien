@@ -92,11 +92,11 @@ namespace Hospital.View
                         newEC.Result = textBoxResult.Text;
                         newEC.State = comboBoxState.SelectedIndex;
                         newEC.Date = dateCreate.Value;
-                        DialogResult dialogResult = MessageBox.Show("Bạn có cập nhập thông tin phiếu khám bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin phiếu khám bệnh", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.Yes)
                         {
                             if (ExaminationCertificate.UpdateEC(newEC) > 0)
-                                MessageBox.Show("Cập nhập thông tin phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Cập nhập thông tin phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         
                         
@@ -112,7 +112,7 @@ namespace Hospital.View
                         newEC.Date = dateCreate.Value;
                         newEC.Result = textBoxResult.Text;
                         if (ExaminationCertificate.UpdateEC(newEC) > 0)
-                            MessageBox.Show("Cập nhập kết quả khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Cập nhập kết quả khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -124,14 +124,14 @@ namespace Hospital.View
                         newEC.Date = dateCreate.Value;
                         newEC.Result = textBoxResult.Text;
                         if (ExaminationCertificate.InsertEC(newEC) > 0)
-                            MessageBox.Show("Thêm phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Thêm phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 
                 
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close();
         }

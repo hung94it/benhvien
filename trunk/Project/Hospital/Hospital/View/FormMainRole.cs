@@ -30,17 +30,17 @@ namespace Hospital.View
             if (dataViewRole.SelectedRows.Count > 0)
             { 
                 int roleID = Convert.ToInt16(dataViewRole.SelectedRows[0].Cells[0].Value);
-                DialogResult dialogResult=MessageBox.Show("Bạn có muốn xóa phân quyền này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult=MessageBox.Show("Xác nhận xóa phân quyền", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if(dialogResult==DialogResult.Yes)
                 {
                     try
                     {
                         if(RoleDetail.DeleteRoleDetail(roleID) >0 && Role.DeleteRole(roleID)>0)
-                            MessageBox.Show("Xóa phân quyền thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xóa phân quyền thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (SqlException exception)
+                    catch
                     {
-                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -92,9 +92,9 @@ namespace Hospital.View
                     textBoxRoleSearch.AutoCompleteCustomSource.Add(strRoleName);
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void refreshDataViewRoleDetail()
@@ -110,9 +110,9 @@ namespace Hospital.View
                     // Set data source to dataview for searching
                     dataViewRoleDetail.DataSource = roleDetailTable;
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } 
             }
         }
