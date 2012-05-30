@@ -22,6 +22,8 @@ namespace Hospital.View
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             Login();
+            textBoxUsername.Text = "";
+            textBoxPassword.Text = "";
         }
 
         // Show FormLogin if FormMain close
@@ -74,9 +76,9 @@ namespace Hospital.View
                     MessageBox.Show("Tài khoản không hợp lệ", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không thể kết nối với cơ sở dữ liệu. Vui lòng kiểm tra lại tùy chỉnh", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -181,6 +181,11 @@ namespace Hospital.View
             comboBoxMajor.Enabled = false;
             comboBoxRole.Enabled = false;
             comboBoxState.Enabled = false;
+            textBoxFirstName.ReadOnly = true;
+            textBoxLastName.ReadOnly = true;
+            textBoxIdentityCard.ReadOnly = true;
+            comboBoxGender.Enabled = false;
+            dateBirthday.Enabled = false;
         }
         // Set staffdetail to staffdetail form
         public void setStaffDetail(Staff staff)
@@ -221,6 +226,8 @@ namespace Hospital.View
 
             textBoxPassword.ReadOnly = true;
             textBoxPasswordCheck.ReadOnly = true;
+
+
         }
     }
 }
