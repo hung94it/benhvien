@@ -26,11 +26,10 @@ namespace Hospital.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=ehospitalTest;Integrated Security=True;P" +
-            "ooling=False")]
-        public string ehospitalTestConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\sqlexpress;Initial Catalog=ehospitaltest;Integrated Security=True")]
+        public string eHospital {
             get {
-                return ((string)(this["ehospitalTestConnectionString"]));
+                return ((string)(this["eHospital"]));
             }
         }
     }

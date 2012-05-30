@@ -33,7 +33,7 @@ namespace Hospital.View
             }
 
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.ConnectionStrings.ConnectionStrings["eHospital"].ConnectionString = getConnectionString();
+            config.ConnectionStrings.ConnectionStrings["Hospital.Properties.Settings.eHospital"].ConnectionString = getConnectionString();
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("connectionStrings");
 

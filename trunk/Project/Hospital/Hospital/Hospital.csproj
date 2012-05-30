@@ -91,10 +91,10 @@
     <Compile Include="Controller\StaffController.cs" />
     <Compile Include="Controller\SurgicalController.cs" />
     <Compile Include="Controller\TestController.cs" />
-    <Compile Include="ehospitalTestDataSet.Designer.cs">
+    <Compile Include="ehospitaltestDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ehospitalTestDataSet.xsd</DependentUpon>
+      <DependentUpon>ehospitaltestDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Functional\SqlResult.cs" />
     <Compile Include="Model\Assignment.cs" />
@@ -133,12 +133,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="View\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -316,12 +310,6 @@
     <Compile Include="View\FormPrescriptionDetail.Designer.cs">
       <DependentUpon>FormPrescriptionDetail.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\FormReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FormReport.Designer.cs">
-      <DependentUpon>FormReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\FormRoleDetail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -369,9 +357,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Report\Report1.rdlc" />
-    <EmbeddedResource Include="View\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FormAssignDetail.resx">
       <DependentUpon>FormAssignDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -426,9 +411,6 @@
     <EmbeddedResource Include="View\FormPrescriptionDetail.resx">
       <DependentUpon>FormPrescriptionDetail.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FormReport.resx">
-      <DependentUpon>FormReport.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FormRoleDetail.resx">
       <DependentUpon>FormRoleDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -450,16 +432,16 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ehospitalTestDataSet.xsc">
-      <DependentUpon>ehospitalTestDataSet.xsd</DependentUpon>
+    <None Include="ehospitaltestDataSet.xsc">
+      <DependentUpon>ehospitaltestDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ehospitalTestDataSet.xsd">
+    <None Include="ehospitaltestDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ehospitalTestDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>ehospitaltestDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="ehospitalTestDataSet.xss">
-      <DependentUpon>ehospitalTestDataSet.xsd</DependentUpon>
+    <None Include="ehospitaltestDataSet.xss">
+      <DependentUpon>ehospitaltestDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
