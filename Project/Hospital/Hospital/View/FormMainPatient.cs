@@ -143,6 +143,20 @@ namespace Hospital.View
                 MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonPrescription_Click(object sender, EventArgs e)
+        {
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                //Current user
+                int staffID = 10000000;
+
+                FormPrescriptionDetail formPD = new FormPrescriptionDetail(staffID, patientID);
+                formPD.ShowDialog();
+            }
+        }
+
         //Add a new Prescription
         private void Prescription_Click(object sender, EventArgs e)
         {
