@@ -69,7 +69,7 @@ namespace Hospital.View
             comboBoxState.SelectedIndex = 0;
 
             dateHospitalizate.Enabled = false;
-            dateHospitalizate.Text = DateTime.Now.ToShortDateString();
+            dateHospitalizate.Value = DateTime.Today;
 
         }
         private void SetAutoComplete()

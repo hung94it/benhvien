@@ -44,13 +44,14 @@ namespace Hospital.Model
         public static DataTable GetListStaffFunction(int roleID)
         {
             DataTable dtRoleDetail = new DataTable();
-            string sqlSelect = @"SELECT        ROLEFUNCTION.FUNCTIONID, ROLEFUNCTION.FUNCTIONNAME
+            string sqlSelect = @"SELECT        ROLEFUNCTION.FUNCTIONID, ROLEFUNCTION.FUNCTIONNAME, ROLEFUNCTION.BUTTON
                                 FROM            ROLEDETAIL INNER JOIN ROLEFUNCTION ON ROLEDETAIL.FUNCTIONID = ROLEFUNCTION.FUNCTIONID
                                 WHERE        ROLEDETAIL.ROLEID=@ROLEID";
             SqlParameter[] sqlParameters = { new SqlParameter("@ROLEID", roleID) };
             dtRoleDetail = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             dtRoleDetail.Columns[0].ColumnName = "Mã chức năng";
             dtRoleDetail.Columns[1].ColumnName = "Tên chức năng";
+            dtRoleDetail.Columns[2].ColumnName = "Nút kích hoạt";
             return dtRoleDetail;
         }
     }

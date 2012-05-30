@@ -43,7 +43,7 @@ namespace Hospital.View
         {
             textBoxPatientID.Text = patientID.ToString();
             textBoxStaffID.Text = staffID.ToString();
-            dateCreate.Value = DateTime.Now;
+            dateCreate.Value = DateTime.Today;
             dateCreate.Enabled = false;
 
             DataTable dtMedicine = Medicine.GetListMedicine();

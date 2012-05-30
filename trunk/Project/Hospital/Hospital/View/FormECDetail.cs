@@ -25,7 +25,7 @@ namespace Hospital.View
             InitializeComponent();
             textBoxPatientID.Text = patientID.ToString();
             textBoxStaffID.Text = staffID.ToString();
-            dateCreate.Value = DateTime.Now;
+            dateCreate.Value = DateTime.Today;
             comboBoxState.SelectedIndex = 0;
             textBoxResult.Text = "Không có";
             this.UserAction = "add";
