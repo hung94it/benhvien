@@ -53,17 +53,17 @@ namespace Hospital.View
             if (dataViewAssignment.SelectedRows.Count > 0)
             {
                 int assignID = Convert.ToInt32(dataViewAssignment.SelectedRows[0].Cells[0].Value);
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa bảng phân công này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Xác nhận xóa bản phân công", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
                     {
                         if (AssignmentDetail.DeleteAssignmentDetails(assignID) > 0 && Assignment.DeleteAssignment(assignID) > 0)
-                            MessageBox.Show("Xóa bảng phân công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xóa bảng phân công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (SqlException exception)
+                    catch
                     {
-                        MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 refreshDataViewAssignment();
@@ -109,9 +109,9 @@ namespace Hospital.View
                     dataViewAssignment.Columns[i].Visible = false;
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void refreshDataViewAssignmentDetail()
@@ -126,9 +126,9 @@ namespace Hospital.View
                     // Set data source to dataview for searching
                     dataViewAsssignmentDetail.DataSource = assignmentDetailTable.DefaultView;
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } 
             }
         }

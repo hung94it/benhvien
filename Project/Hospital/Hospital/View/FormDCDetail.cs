@@ -68,8 +68,12 @@ namespace Hospital.View
                 if (UserAction == "edit")
                 {
                     newDC.DCID = Convert.ToInt32(textBoxDCID.Text);
-                    if (DischargeCertificate.UpdateDC(newDC) > 0)
-                        MessageBox.Show("Cập nhập thông tin giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin giấy xuất viện", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult== DialogResult.Yes)
+                    {
+                        if (DischargeCertificate.UpdateDC(newDC) > 0)
+                            MessageBox.Show("Cập nhập thông tin giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    }
                 }
                 else
                 {
@@ -81,13 +85,13 @@ namespace Hospital.View
                     {
                         newDC.DCID = 0;
                         if (DischargeCertificate.InsertDC(newDC) > 0)
-                        MessageBox.Show("Thêm giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show("Thêm giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.Close();
         }

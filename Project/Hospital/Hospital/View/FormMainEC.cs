@@ -42,13 +42,13 @@ namespace Hospital.View
             if (dataViewExamination.SelectedRows.Count > 0)
             {
                 int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu khám bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Xác nhận xóa phiếu khám bệnh", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     if(ExaminationCertificate.GetEC(ecID).State != 1)
                     {
                         if (ExaminationCertificate.DeleteEC(ecID) > 0)
-                            MessageBox.Show("Xóa phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xóa phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -114,9 +114,9 @@ namespace Hospital.View
                 }
 
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //Search in datagridview

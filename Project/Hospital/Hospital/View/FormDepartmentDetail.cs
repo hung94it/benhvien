@@ -47,11 +47,11 @@ namespace Hospital.View
                     if (UserAction == "edit")
                     {
                         DepartmentDetail.DepartmentName = textBoxDepartmentName.Text;
-                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin phòng khoa", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin phòng ban", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.Yes)
                         {
                             if (Department.UpdateDepartment(DepartmentDetail) > 0)
-                                MessageBox.Show("Cập nhập thông tin phòng khoa thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Cập nhập thông tin phòng ban thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         
                     }
@@ -59,12 +59,12 @@ namespace Hospital.View
                     {
                         Department newDepartment = new Department(0, textBoxDepartmentName.Text);
                         if (Department.InsertDepartment(newDepartment) > 0)
-                            MessageBox.Show("Thêm phòng khoa thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Thêm phòng ban thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             
             this.Close();

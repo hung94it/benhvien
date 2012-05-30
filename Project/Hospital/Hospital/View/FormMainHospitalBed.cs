@@ -63,14 +63,14 @@ namespace Hospital.View
                 int state = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[2].Value);
                 if (state == 1)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Bạn có xác nhận trả giường này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận trả giường", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                         HospitalBed updateHB = HospitalBed.GetHospitalBed(bedID);
                         updateHB.Patient = 0;
                         updateHB.State = 0;
                         if (HospitalBed.UpdateHospitalBed(updateHB) > 0)
-                            MessageBox.Show("Trả giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Trả giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                 }
@@ -91,12 +91,12 @@ namespace Hospital.View
                 int state = Convert.ToInt16(dataViewBed.SelectedRows[0].Cells[2].Value);
                 if (state == 0)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa giường bệnh này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận xóa giường", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                 
                             if (HospitalBed.DeleteHospitalBed(bedID) > 0)
-                                MessageBox.Show("Xóa giường bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Xóa giường bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 
                     }
                 }
@@ -111,7 +111,7 @@ namespace Hospital.View
 
         private void buttonBedAdd_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Bạn có muốn thêm giường bệnh không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult dialogResult = MessageBox.Show("Xác nhận thêm giường", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dialogResult == DialogResult.Yes)
             {
                 if (HospitalBed.InsertHospitalBed() > 0)
@@ -142,9 +142,9 @@ namespace Hospital.View
                     dataViewBed.Columns[i].Visible = false;
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //Search in datagridview

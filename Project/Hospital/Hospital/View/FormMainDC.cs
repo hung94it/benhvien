@@ -45,7 +45,7 @@ namespace Hospital.View
 
                 if (state != 1)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xác nhận giấy xuất viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận giấy xuất viện", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                         DischargeCertificate confirmDC = DischargeCertificate.GetDC(dcID);
@@ -53,7 +53,7 @@ namespace Hospital.View
                         updatePatient.State = 0;
                         confirmDC.State = 1;
                         if (DischargeCertificate.UpdateDC(confirmDC) > 0 && Patient.UpdatePatient(updatePatient) > 0 )
-                            MessageBox.Show("Xác nhận giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xác nhận giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                 }
@@ -75,11 +75,11 @@ namespace Hospital.View
 
                 if (state != 1)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa giấy xuất viện này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận xóa giấy xuất viện", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                         if (DischargeCertificate.DeleteDC(dcID) > 0)
-                            MessageBox.Show("Xóa giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xóa giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                 }
@@ -129,9 +129,9 @@ namespace Hospital.View
                 }
 
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //Search in datagridview

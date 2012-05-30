@@ -138,7 +138,7 @@ namespace Hospital.View
                     if (this.UserAction == "edit")
                     {
                         newSurgical.SurgicalID = Convert.ToInt32(textBoxSurgicalID.Text);
-                        DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin ca phẩu thuật này không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin ca phẩu thuật này không?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                         if (dialogResult == DialogResult.OK)
                         {
                             if (Surgical.UpdateSurgical(newSurgical) > 0)
@@ -151,7 +151,7 @@ namespace Hospital.View
                                     SurgicalDetail.InsertSurgicalDetail(newSD);
                                 }
                                 listSD.Clear();
-                                MessageBox.Show("Cập nhập thông tin ca phẩu thuật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                                MessageBox.Show("Cập nhập thông tin ca phẩu thuật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
                     }
@@ -165,13 +165,13 @@ namespace Hospital.View
                                 listSD[i].SurgicalID = curSurgicalID;
                                 SurgicalDetail.InsertSurgicalDetail(listSD[i]);
                             }
-                            MessageBox.Show("Thêm ca phẩu thuật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Thêm ca phẩu thuật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
-                catch (SqlException exception)
+                catch
                 {
-                    MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 listSD.Clear();
                 this.Close();

@@ -41,13 +41,13 @@ namespace Hospital.View
             if (dataViewHeathNote.SelectedRows.Count > 0)
             {
                 int heathNoteID = Convert.ToInt32(dataViewHeathNote.SelectedRows[0].Cells[0].Value);
-                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phiếu theo dõi này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult dialogResult = MessageBox.Show("Xác nhận xóa phiếu theo dõi", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
                     try
                     {
                         if (HeathMonitoringNote.DeleteHN(heathNoteID) > 0)
-                            MessageBox.Show("Xóa phiếu theo dõi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Xóa phiếu theo dõi thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch
                     {
@@ -98,9 +98,9 @@ namespace Hospital.View
                     dataViewHeathNote.Columns[i].Visible = false;
                 }              
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //Search in datagridview

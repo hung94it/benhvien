@@ -49,11 +49,11 @@ namespace Hospital.View
                 {
                     Function.FucntionName = textBoxFunctionName.Text;
                     Function.Button = textBoxButton.Text;
-                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin chức năng này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin chức năng này không", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
                         if (RoleFunction.UpdateFunction(Function) > 0)
-                            MessageBox.Show("Cập nhập chức năng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Cập nhập chức năng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     
                 }
@@ -61,12 +61,12 @@ namespace Hospital.View
                 {
                     RoleFunction newFunction = new RoleFunction(0, textBoxFunctionName.Text, textBoxButton.Text);
                     if (RoleFunction.InsertFunction(newFunction) > 0)
-                        MessageBox.Show("Thêm chức năng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show("Thêm chức năng thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
             this.Close();

@@ -48,11 +48,11 @@ namespace Hospital.View
                 {
                     ServiceDetail.ServiceName = textBoxServiceName.Text;
                     ServiceDetail.Price = decimal.Parse(textBoxPrice.Text);
-                    DialogResult dialogResult = MessageBox.Show("Bạn muốn cập nhập thông tin dịch vụ", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin dịch vụ", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
                         if (Service.UpdateService(ServiceDetail) > 0)
-                            MessageBox.Show("Cập nhập dịch vụ thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                            MessageBox.Show("Cập nhập dịch vụ thành công thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                 }
@@ -60,12 +60,12 @@ namespace Hospital.View
                 {
                     Service newService = new Service(0, textBoxServiceName.Text, decimal.Parse(textBoxPrice.Text));
                     if (Service.InsertService(newService) > 0)
-                        MessageBox.Show("Thêm dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.None);
+                        MessageBox.Show("Thêm dịch vụ thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (SqlException exception)
+            catch
             {
-                MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             this.Close();
