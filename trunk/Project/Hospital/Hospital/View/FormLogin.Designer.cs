@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.groupPanelLogin = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.buttonSetting = new DevComponents.DotNetBar.ButtonX();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
             this.buttonLogin = new DevComponents.DotNetBar.ButtonX();
             this.labelPassword = new DevComponents.DotNetBar.LabelX();
@@ -43,7 +44,6 @@
             this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tài khoản");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.buttonSetting = new DevComponents.DotNetBar.ButtonX();
             this.groupPanelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -95,12 +95,25 @@
             this.groupPanelLogin.TabIndex = 1;
             this.groupPanelLogin.Text = "Đăng nhập";
             // 
+            // buttonSetting
+            // 
+            this.buttonSetting.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSetting.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonSetting.Location = new System.Drawing.Point(3, 89);
+            this.buttonSetting.Name = "buttonSetting";
+            this.buttonSetting.Size = new System.Drawing.Size(75, 23);
+            this.buttonSetting.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonSetting.TabIndex = 6;
+            this.buttonSetting.Text = "Tùy chỉnh";
+            this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
+            // 
             // buttonClose
             // 
             this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonClose.Location = new System.Drawing.Point(145, 89);
+            this.buttonClose.Location = new System.Drawing.Point(226, 89);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -113,7 +126,7 @@
             this.buttonLogin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonLogin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLogin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonLogin.Location = new System.Drawing.Point(226, 89);
+            this.buttonLogin.Location = new System.Drawing.Point(151, 89);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(75, 23);
             this.buttonLogin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -216,19 +229,6 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
-            // 
-            // buttonSetting
-            // 
-            this.buttonSetting.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSetting.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonSetting.Location = new System.Drawing.Point(3, 89);
-            this.buttonSetting.Name = "buttonSetting";
-            this.buttonSetting.Size = new System.Drawing.Size(75, 23);
-            this.buttonSetting.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonSetting.TabIndex = 6;
-            this.buttonSetting.Text = "Tùy chỉnh";
-            this.buttonSetting.Click += new System.EventHandler(this.buttonSetting_Click);
             // 
             // FormLogin
             // 
