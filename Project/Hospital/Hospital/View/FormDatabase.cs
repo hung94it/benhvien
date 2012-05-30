@@ -13,19 +13,31 @@ namespace Hospital.View
 {
     public partial class FormDatabase : Form
     {
+        private SqlConnectionStringBuilder connectionBuilder;
+
         public FormDatabase()
         {
             InitializeComponent();
+
+            connectionBuilder = new SqlConnectionStringBuilder();
+
+            comboBoxConnection.SelectedIndex = 1;
+            
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            if (!superValidator1.Validate())
+            {
+                return;
+            }
+
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.ConnectionStrings.ConnectionStrings["eHospital"].ConnectionString = textBoxConnectionString.Text;
+            config.ConnectionStrings.ConnectionStrings["eHospital"].ConnectionString = getConnectionString();
             config.Save(ConfigurationSaveMode.Modified, true);
             ConfigurationManager.RefreshSection("connectionStrings");
 
-            string temp = ConfigurationManager.ConnectionStrings["eHospital"].ConnectionString;
+            MessageBox.Show("Khởi động lại chương trình để kết nối mới có hiệu lực!");
             this.Close();
         }
 
@@ -36,18 +48,56 @@ namespace Hospital.View
 
         private void buttonCheck_Click(object sender, EventArgs e)
         {
+            if (!superValidator1.Validate())
+            {
+                return;
+            }
+
             try
             {
-                using (SqlConnection connection = new SqlConnection(textBoxConnectionString.Text))
+                using (SqlConnection connection = new SqlConnection(getConnectionString()))
                 {
                     connection.Open();
-                    MessageBox.Show("OK. Khởi động lại chương trình để kết nối mới có hiệu lực!");
+                    MessageBox.Show("Kết nối thành công!");
                 }
             }
             catch(Exception)
             {
                 MessageBox.Show("Kiểm tra lại chuỗi kết nối", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void comboBoxConnection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxConnection.SelectedIndex == 0)
+            {
+                textBoxUsername.Enabled = false;
+                textBoxPassword.Enabled = false;
+            }
+            else
+            {
+                textBoxUsername.Enabled = true;
+                textBoxPassword.Enabled = true;
+            }            
+        }
+
+        private string getConnectionString()
+        {
+            connectionBuilder.DataSource = textBoxServer.Text;
+            connectionBuilder.InitialCatalog = textBoxDatabase.Text;            
+
+            if (comboBoxConnection.SelectedIndex == 0)
+            {
+                connectionBuilder.IntegratedSecurity = true;
+            }
+            else
+            {
+                connectionBuilder.IntegratedSecurity = false;
+                connectionBuilder.UserID = textBoxUsername.Text;
+                connectionBuilder.Password = textBoxPassword.Text;
+            }
+
+            return connectionBuilder.ConnectionString;
         }
     }
 }
