@@ -27,18 +27,6 @@ namespace Hospital.View
             }
         }
 
-
-        private void comboBoxBillType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxBillState_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         private void buttonBillDeleteSearch_Click(object sender, EventArgs e)
         {
             textBoxBillSearch.Text = "";
@@ -48,9 +36,6 @@ namespace Hospital.View
         {
             try
             {
-                comboBoxBillType.SelectedIndex = 0;
-                comboBoxBillState.SelectedIndex = 0;
-
                 // Get Staff's datatable
                 DataTable billTable = Bill.GetListBill();
 
@@ -78,6 +63,36 @@ namespace Hospital.View
             catch (SqlException exception)
             {
                 MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBoxBillSearch_TextChanged(object sender, EventArgs e)
+        {
+            searchBill();
+        }
+
+        private void textBoxBillSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                searchBill();
+            }
+        }
+
+        private void searchBill()
+        {
+            // Not search it search string is empty
+            if (textBoxBillSearch.Text != "")
+            {
+                // Search with RowFilter
+                ((DataView)dataViewBill.DataSource).RowFilter = "[Họ tên bệnh nhân] LIKE '*" + textBoxBillSearch.Text.Trim() + "*'"
+                                                                + "OR [Mã bệnh nhân] LIKE '*" + textBoxBillSearch.Text.Trim() + "*'"
+                                                                + "OR [Họ tên nhân viên] LIKE '*" + textBoxBillSearch.Text.Trim() + "*'"
+                                                                + "OR [Mã nhân viên] LIKE '*" + textBoxBillSearch.Text.Trim() + "*'";
+            }
+            else
+            {
+                ((DataView)dataViewBill.DataSource).RowFilter = "";
             }
         }
     }

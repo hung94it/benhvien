@@ -91,11 +91,6 @@
     <Compile Include="Controller\StaffController.cs" />
     <Compile Include="Controller\SurgicalController.cs" />
     <Compile Include="Controller\TestController.cs" />
-    <Compile Include="ehospitaltestDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ehospitaltestDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Functional\SqlResult.cs" />
     <Compile Include="Model\Assignment.cs" />
     <Compile Include="Model\AssignmentDetail.cs" />
@@ -133,6 +128,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="View\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -356,7 +357,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Report\Report1.rdlc" />
+    <EmbeddedResource Include="View\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormAssignDetail.resx">
       <DependentUpon>FormAssignDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -432,17 +435,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="ehospitaltestDataSet.xsc">
-      <DependentUpon>ehospitaltestDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="ehospitaltestDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>ehospitaltestDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="ehospitaltestDataSet.xss">
-      <DependentUpon>ehospitaltestDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -454,6 +446,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Report\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
