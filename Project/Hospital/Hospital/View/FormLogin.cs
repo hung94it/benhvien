@@ -29,7 +29,7 @@ namespace Hospital.View
         // Show FormLogin if FormMain close
         private void FormLogin_FormClosed(object sender, FormClosedEventArgs e)
         {
-            this.Show();
+            this.Close();
         }
 
         // Click buttonclose event

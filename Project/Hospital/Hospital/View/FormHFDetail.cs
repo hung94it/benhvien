@@ -40,7 +40,7 @@ namespace Hospital.View
         {
             textBoxPatientID.Text = patientID.ToString();
             dateCreate.Enabled = false;
-            dateCreate.Value = DateTime.Now;
+            dateCreate.Value = DateTime.Today;
         }
         //For edit feature
         private void SetHFDetail(HeathFile hfDetail)
