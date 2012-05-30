@@ -38,9 +38,9 @@
             this.buttonOk = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên phòng ban");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên phòng ban");
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             this.textBoxDepartmentID.Name = "textBoxDepartmentID";
             this.textBoxDepartmentID.ReadOnly = true;
             this.textBoxDepartmentID.Size = new System.Drawing.Size(293, 20);
-            this.textBoxDepartmentID.TabIndex = 0;
+            this.textBoxDepartmentID.TabIndex = 1;
             // 
             // labelDepartmentID
             // 
@@ -81,7 +81,7 @@
             this.textBoxDepartmentName.Location = new System.Drawing.Point(107, 31);
             this.textBoxDepartmentName.Name = "textBoxDepartmentName";
             this.textBoxDepartmentName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxDepartmentName.TabIndex = 1;
+            this.textBoxDepartmentName.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxDepartmentName, this.requiredFieldValidator1);
             // 
             // labelDepartmentName
@@ -171,6 +171,11 @@
             this.superValidator1.ErrorProvider = this.errorProvider1;
             this.superValidator1.Highlighter = this.highlighter1;
             // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập tên phòng ban";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -179,11 +184,6 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
-            // 
-            // requiredFieldValidator1
-            // 
-            this.requiredFieldValidator1.ErrorMessage = "Nhập tên phòng ban";
-            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
             // FormDepartmentDetail
             // 

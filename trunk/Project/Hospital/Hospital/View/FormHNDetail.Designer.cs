@@ -146,7 +146,7 @@
             this.textBoxPatientState.Multiline = true;
             this.textBoxPatientState.Name = "textBoxPatientState";
             this.textBoxPatientState.Size = new System.Drawing.Size(293, 42);
-            this.textBoxPatientState.TabIndex = 72;
+            this.textBoxPatientState.TabIndex = 2;
             this.superValidator1.SetValidator1(this.textBoxPatientState, this.requiredFieldValidator2);
             // 
             // labelX4
@@ -173,7 +173,7 @@
             this.textBoxBloodPressure.Multiline = true;
             this.textBoxBloodPressure.Name = "textBoxBloodPressure";
             this.textBoxBloodPressure.Size = new System.Drawing.Size(293, 42);
-            this.textBoxBloodPressure.TabIndex = 71;
+            this.textBoxBloodPressure.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxBloodPressure, this.requiredFieldValidator1);
             // 
             // labelX5
@@ -199,7 +199,7 @@
             this.textBoxWeight.Multiline = true;
             this.textBoxWeight.Name = "textBoxWeight";
             this.textBoxWeight.Size = new System.Drawing.Size(293, 42);
-            this.textBoxWeight.TabIndex = 70;
+            this.textBoxWeight.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxWeight, this.requiredFieldValidator1);
             // 
             // labelAddress

@@ -35,6 +35,8 @@
             this.comboItemFemale = new DevComponents.Editors.ComboItem();
             this.labelState = new DevComponents.DotNetBar.LabelX();
             this.comboBoxState = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.textBoxStaffID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelStaffID = new DevComponents.DotNetBar.LabelX();
             this.textBoxIdentityCard = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -69,8 +71,6 @@
             this.compareValidator1 = new DevComponents.DotNetBar.Validator.CompareValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.groupPanelAccout.SuspendLayout();
             this.groupPanelInformation.SuspendLayout();
@@ -128,6 +128,14 @@
             this.comboBoxState.Size = new System.Drawing.Size(240, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxState.TabIndex = 30;
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "Đã thôi việc";
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "Đang làm việc";
             // 
             // textBoxStaffID
             // 
@@ -628,14 +636,6 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
-            // 
-            // comboItem1
-            // 
-            this.comboItem1.Text = "Đang làm việc";
-            // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "Đã thôi việc";
             // 
             // FormStaffDetail
             // 

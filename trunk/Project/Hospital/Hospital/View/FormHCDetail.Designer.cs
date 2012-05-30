@@ -160,7 +160,7 @@
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(127, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxState.TabIndex = 59;
+            this.comboBoxState.TabIndex = 2;
             // 
             // comboItemNo
             // 
@@ -229,7 +229,7 @@
             this.dateHospitalizate.Name = "dateHospitalizate";
             this.dateHospitalizate.Size = new System.Drawing.Size(293, 20);
             this.dateHospitalizate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateHospitalizate.TabIndex = 58;
+            this.dateHospitalizate.TabIndex = 1;
             this.dateHospitalizate.Value = new System.DateTime(2012, 5, 20, 0, 0, 0, 0);
             // 
             // textBoxReason
@@ -243,7 +243,7 @@
             this.textBoxReason.Multiline = true;
             this.textBoxReason.Name = "textBoxReason";
             this.textBoxReason.Size = new System.Drawing.Size(293, 91);
-            this.textBoxReason.TabIndex = 57;
+            this.textBoxReason.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxReason, this.requiredFieldValidator2);
             // 
             // labelAddress

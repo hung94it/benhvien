@@ -48,9 +48,9 @@
             this.textBoxECID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelHCID = new DevComponents.DotNetBar.LabelX();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
+            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập kết quả khám bệnh");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập kết quả khám bệnh");
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateCreate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -159,7 +159,7 @@
             this.comboBoxState.Name = "comboBoxState";
             this.comboBoxState.Size = new System.Drawing.Size(127, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxState.TabIndex = 73;
+            this.comboBoxState.TabIndex = 2;
             // 
             // comboItemNo
             // 
@@ -180,7 +180,7 @@
             this.textBoxResult.Multiline = true;
             this.textBoxResult.Name = "textBoxResult";
             this.textBoxResult.Size = new System.Drawing.Size(293, 42);
-            this.textBoxResult.TabIndex = 72;
+            this.textBoxResult.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxResult, this.requiredFieldValidator1);
             // 
             // labelAddress
@@ -255,7 +255,7 @@
             this.dateCreate.Name = "dateCreate";
             this.dateCreate.Size = new System.Drawing.Size(293, 20);
             this.dateCreate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateCreate.TabIndex = 71;
+            this.dateCreate.TabIndex = 0;
             this.dateCreate.Value = new System.DateTime(2012, 5, 20, 0, 0, 0, 0);
             // 
             // labelX2
@@ -345,6 +345,11 @@
             this.superValidator1.ErrorProvider = this.errorProvider1;
             this.superValidator1.Highlighter = this.highlighter1;
             // 
+            // requiredFieldValidator1
+            // 
+            this.requiredFieldValidator1.ErrorMessage = "Nhập kết quả khám bệnh";
+            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -353,11 +358,6 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
-            // 
-            // requiredFieldValidator1
-            // 
-            this.requiredFieldValidator1.ErrorMessage = "Nhập kết quả khám bệnh";
-            this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
             // FormECDetail
             // 

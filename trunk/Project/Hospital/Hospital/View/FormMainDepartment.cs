@@ -21,7 +21,7 @@ namespace Hospital.View
         {
             if (dataViewDepartment.SelectedRows.Count > 0)
             {
-                            int departmentID = Convert.ToInt16(dataViewDepartment.SelectedRows[0].Cells[0].Value);
+                int departmentID = Convert.ToInt16(dataViewDepartment.SelectedRows[0].Cells[0].Value);
                 DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phòng khoa này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -112,6 +112,50 @@ namespace Hospital.View
             {
                 MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonMajorDelete_Click(object sender, EventArgs e)
+        {
+            if (dataViewMajor.SelectedRows.Count > 0)
+            {
+                int majorID = Convert.ToInt16(dataViewMajor.SelectedRows[0].Cells[0].Value);
+                DialogResult dialogResult = MessageBox.Show("Bạn có muốn xóa phòng khoa này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    try
+                    {
+                        if (Major.DeleteMajor(majorID) > 0)
+                            MessageBox.Show("Xóa chuyên ngành thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Không thể xóa được chuyên ngành này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+                refreshDataViewMajor();
+            }
+        }
+
+        private void buttonMajorEdit_Click(object sender, EventArgs e)
+        {
+            if (dataViewMajor.SelectedRows.Count > 0)
+            {
+                int majorID = Convert.ToInt16(dataViewMajor.SelectedRows[0].Cells[0].Value);
+                Major updateMajor = Major.GetMajor(majorID);
+                FormMajorDetail formMD = new FormMajorDetail(updateMajor, "edit");
+                formMD.ShowDialog();
+
+                refreshDataViewMajor(); 
+            }
+        }
+
+        private void buttonMajorAdd_Click(object sender, EventArgs e)
+        {
+            FormMajorDetail formMD = new FormMajorDetail();
+            formMD.ShowDialog();
+
+            refreshDataViewMajor();
         }
     }
 }

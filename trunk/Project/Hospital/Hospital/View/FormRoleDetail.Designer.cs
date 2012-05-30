@@ -236,7 +236,7 @@
             this.textBoxRoleName.Location = new System.Drawing.Point(101, 32);
             this.textBoxRoleName.Name = "textBoxRoleName";
             this.textBoxRoleName.Size = new System.Drawing.Size(293, 20);
-            this.textBoxRoleName.TabIndex = 31;
+            this.textBoxRoleName.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxRoleName, this.requiredFieldValidator1);
             // 
             // labelX1

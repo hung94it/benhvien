@@ -55,6 +55,10 @@ namespace Hospital.View
             {
                 setStaffDetail(staff);
             }
+            else if ("personalEdit".Equals(userAction))
+            {
+                SetPersonalDetail(staff);
+            }
         }
 
         // Handle event ok button click
@@ -72,7 +76,7 @@ namespace Hospital.View
             StaffDetail.DepartmentID = Convert.ToInt32(comboBoxDepartment.SelectedValue.ToString());
             StaffDetail.MajorID = Convert.ToInt32(comboBoxMajor.SelectedValue.ToString());
             StaffDetail.RoleID = Convert.ToInt32(comboBoxRole.SelectedValue.ToString());
-            StaffDetail.Password = textBoxPassword.Text;
+            //StaffDetail.Password = textBoxPassword.Text;
             StaffDetail.FirstName = textBoxFirstName.Text;
             StaffDetail.LastName = textBoxLastName.Text;
             StaffDetail.BirthDay = dateBirthday.Value;
@@ -114,6 +118,14 @@ namespace Hospital.View
                 {
                     Staff.UpdateStaff(StaffDetail);
                 }
+                else if ("personalEdit".Equals(this.UserAction))
+                {
+                    if (textBoxPassword.Text != "")
+                    {
+                        StaffDetail.Password = textBoxPassword.Text;
+                    }
+                    Staff.UpdateStaff(StaffDetail);
+                }
             }
             catch (SqlException exception)
             {
@@ -129,7 +141,47 @@ namespace Hospital.View
         {
             this.Close();
         }
+        private void SetPersonalDetail(Staff staff)
+        {
+            this.StaffDetail = staff;
+            textBoxStaffID.Text = staff.StaffID.ToString();
+            textBoxFirstName.Text = staff.FirstName;
+            textBoxLastName.Text = staff.LastName;
+            dateBirthday.Value = staff.BirthDay;
+            if (staff.ICN != 0)
+            {
+                textBoxIdentityCard.Text = staff.ICN.ToString();
+            }
 
+            if (Staff.GENDER_MALE.Equals(staff.Gender))
+            {
+                comboBoxGender.SelectedIndex = Staff.GENDER_MALE;
+            }
+            else
+            {
+                comboBoxGender.SelectedIndex = Staff.GENDER_FEMALE;
+            }
+
+            textBoxAddress.Text = staff.Address;
+
+            if (staff.State == 0)
+            {
+                comboBoxState.Text = "Đã thôi việc";
+            }
+            else
+            {
+                comboBoxState.Text = "Đang làm việc";
+            }
+
+            comboBoxDepartment.SelectedValue = (object)staff.DepartmentID;
+            comboBoxMajor.SelectedValue = (object)staff.MajorID;
+            comboBoxRole.SelectedValue = (object)staff.RoleID;
+
+            comboBoxDepartment.Enabled = false;
+            comboBoxMajor.Enabled = false;
+            comboBoxRole.Enabled = false;
+            comboBoxState.Enabled = false;
+        }
         // Set staffdetail to staffdetail form
         public void setStaffDetail(Staff staff)
         {
@@ -166,6 +218,9 @@ namespace Hospital.View
             comboBoxDepartment.SelectedValue = (object)staff.DepartmentID;
             comboBoxMajor.SelectedValue = (object)staff.MajorID;
             comboBoxRole.SelectedValue = (object)staff.RoleID;
+
+            textBoxPassword.ReadOnly = true;
+            textBoxPasswordCheck.ReadOnly = true;
         }
     }
 }
