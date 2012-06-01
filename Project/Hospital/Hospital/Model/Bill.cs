@@ -101,9 +101,9 @@ namespace Hospital.Model
             DataTable patientBillTable = new DataTable();
             string sqlSelect = @"SELECT BILLID, BILLTYPEID, PATIENTID, STAFFID, DATE, TOTALPRICE, STATE
                                 FROM    BILL
-                                WHERE   (BILLID=@BILLID)";
+                                WHERE   (PATIENTID=@PATIENTID)";
 
-            SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", patientID) };
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", patientID) };
 
             patientBillTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
 
@@ -140,6 +140,18 @@ namespace Hospital.Model
                 newBill.State = (int)dataTable.Rows[0]["STATE"];
             }
             return newBill;
+        }
+        //Check can confirm DC of patient. If there are any bill haven't paid yes, return false
+        public static Boolean ConfirmPatient(int patientID)
+        {
+            DataTable dtPatientBill = Bill.GetPatientBill(patientID);
+            for (int i = 0; i < dtPatientBill.Rows.Count; i++)
+            { 
+                int billState=Convert.ToInt16(dtPatientBill.Rows[i][6]);
+                if( billState == 0)
+                    return false;
+            }
+            return true;
         }
     }
 }

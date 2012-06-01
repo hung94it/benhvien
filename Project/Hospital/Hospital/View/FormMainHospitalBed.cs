@@ -48,7 +48,7 @@ namespace Hospital.View
                 }
                 else
                 {
-                    MessageBox.Show("giường bệnh đang được sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Giường bệnh đang được sử dụng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                 refreshDataViewBed();
             }

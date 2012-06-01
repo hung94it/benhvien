@@ -43,15 +43,22 @@ namespace Hospital.View
         {
             if (!superValidator1.Validate())
                 return;
-                HBDetail.Patient = int.Parse(textBoxPatientID.Text);
+                HBDetail.Patient = Convert.ToInt32(textBoxPatientID.Text);
                 String str = comboBoxState.Items[comboBoxState.SelectedIndex].ToString();
                 HBDetail.State = 1;
                 if (Patient.IsPatientExist(HBDetail.Patient))
                 {
                     try
                     {
-                        if (HospitalBed.UpdateHospitalBed(HBDetail) > 0)
-                            MessageBox.Show("Nhận giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (!HospitalBed.CheckPatient(HBDetail.Patient))
+                        {
+                            if (HospitalBed.UpdateHospitalBed(HBDetail) > 0)
+                                MessageBox.Show("Nhận giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bệnh nhân đã nhận giường", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     catch
                     {
