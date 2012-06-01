@@ -79,20 +79,40 @@ namespace Hospital.Model
         public static HospitalBed GetHospitalBed(String patient)
         {
             HospitalBed hB = new HospitalBed();
-            int tempInterger;
-            string sqlSelect = @"SELECT        PATIENT, STATE, BEDID
+            string sqlSelect = @"SELECT        BEDID, PATIENT, STATE, 
                                 FROM            HOSPITALBED
                                 WHERE          (PATIENT=@PATIENT)";
             SqlParameter[] sqlParameters = { new SqlParameter("@PATIENT", int.Parse(patient)) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
-                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
-                hB.BedID = tempInterger;
-                hB.Patient = int.Parse(dataTable.Rows[0][1].ToString());
+                hB.BedID = Convert.ToInt32(dataTable.Rows[0][0]);
+                hB.Patient = Convert.ToInt32(dataTable.Rows[0][1].ToString());
                 hB.State = int.Parse(dataTable.Rows[0][2].ToString());
             }
             return hB;
+        }
+        //Check patient already have bed or not
+        public static Boolean CheckPatient(int patientID)
+        {
+            HospitalBed hB = new HospitalBed();
+            string sqlSelect = @"SELECT        PATIENT, STATE, BEDID
+                                FROM            HOSPITALBED
+                                WHERE          (PATIENT=@PATIENT)";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENT", patientID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if(dataTable.Rows.Count >0)
+                return true;
+            else
+                return false;
+        }
+        //Check can conform of patient, if there are a bed haven't return yet, return false
+        public static Boolean ConfirmPatient(int patientID)
+        {
+            if(CheckPatient(patientID))
+                return false;
+            else
+                return true;
         }
     }
 }

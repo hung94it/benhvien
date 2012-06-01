@@ -45,15 +45,29 @@ namespace Hospital.View
 
                 if (state != 1)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Xác nhận giấy xuất viện", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (dialogResult == DialogResult.Yes)
+                    DischargeCertificate confirmDC = DischargeCertificate.GetDC(dcID);
+                    if (HospitalBed.ConfirmPatient(confirmDC.PatientID))
                     {
-                        DischargeCertificate confirmDC = DischargeCertificate.GetDC(dcID);
-                        Patient updatePatient = Patient.GetPatient(confirmDC.PatientID);
-                        updatePatient.State = 0;
-                        confirmDC.State = 1;
-                        if (DischargeCertificate.UpdateDC(confirmDC) > 0 && Patient.UpdatePatient(updatePatient) > 0 )
-                            MessageBox.Show("Xác nhận giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (Bill.ConfirmPatient(confirmDC.PatientID))
+                        {
+                            DialogResult dialogResult = MessageBox.Show("Xác nhận giấy xuất viện", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                Patient updatePatient = Patient.GetPatient(confirmDC.PatientID);
+                                updatePatient.State = 0;
+                                confirmDC.State = 1;
+                                if (DischargeCertificate.UpdateDC(confirmDC) > 0 && Patient.UpdatePatient(updatePatient) > 0)
+                                    MessageBox.Show("Xác nhận giấy xuất viện thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Bệnh nhân chưa thanh toán hóa đơn", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bệnh nhân chưa trả giường", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                 }

@@ -59,6 +59,11 @@ namespace Hospital.View
             {
                 SetPersonalDetail(staff);
             }
+            else
+            {
+                textBoxPassword.ReadOnly = true;
+                textBoxPasswordCheck.ReadOnly = true;
+            }
         }
 
         // Handle event ok button click
@@ -112,6 +117,7 @@ namespace Hospital.View
                 // If useraction is add then insert to database else update
                 if ("add".Equals(this.UserAction))
                 {
+                    StaffDetail.Password = StaffDetail.ICN.ToString();
                     Staff.InsertStaff(StaffDetail);
                 }
                 else if ("edit".Equals(this.UserAction))
