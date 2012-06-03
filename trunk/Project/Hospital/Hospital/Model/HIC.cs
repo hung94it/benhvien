@@ -63,26 +63,61 @@ namespace Hospital.Model
             dtHIC.Columns[3].ColumnName = "Ngày phát hành";
             return dtHIC;
         }
-        public static HIC GetHIC(int hICID)
+        public static HIC GetPatientHIC(int patientID)
         {
             HIC newHIC = new HIC();
             string sqlSelect = @"SELECT        HICID, PATIENTID, EXPIREDATE, ISSUEDATE
                                 FROM            HIC
-                                WHERE           HICID=@HICID";
-            SqlParameter[] sqlParameters = { new SqlParameter("@HICID", hICID) };
+                                WHERE           PATIENTID=@PATIENTID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", patientID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
-                newHIC.HICID = (int)dataTable.Rows[0][0];
-                newHIC.PatientID = (int)dataTable.Rows[0][1];
+                newHIC.HICID = Convert.ToInt32(dataTable.Rows[0][0]);
+                newHIC.PatientID = Convert.ToInt32(dataTable.Rows[0][1]);
                 newHIC.ExpireDate = (DateTime)dataTable.Rows[0][2];
                 newHIC.IssueDate = (DateTime)dataTable.Rows[0][3];
             }
             return newHIC;
         }
-        public Boolean CheckHIC()
+        public static HIC GetHIC(int HICID)
         {
-            return true;
+            HIC newHIC = new HIC();
+            string sqlSelect = @"SELECT        HICID, PATIENTID, EXPIREDATE, ISSUEDATE
+                                FROM            HIC
+                                WHERE           HICID=@HICID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", HICID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if (dataTable.Rows.Count > 0)
+            {
+                newHIC.HICID = Convert.ToInt32(dataTable.Rows[0][0]);
+                newHIC.PatientID = Convert.ToInt32(dataTable.Rows[0][1]);
+                newHIC.ExpireDate = (DateTime)dataTable.Rows[0][2];
+                newHIC.IssueDate = (DateTime)dataTable.Rows[0][3];
+            }
+            return newHIC;
+        }
+        //Checking patient already have HIC or not, return true if patient had
+        public static Boolean CheckHIC(int patientID)
+        {
+            string sqlSelect = @"SELECT        HICID, PATIENTID, EXPIREDATE, ISSUEDATE
+                                FROM            HIC
+                                WHERE           PATIENTID=@PATIENTID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", patientID) };
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+            if(dataTable.Rows.Count >0)
+                return true;
+            else
+                return false;
+        }
+        //Checking HIC is expired or not, return true if it is expired
+        public static Boolean CheckHICExpiration(int HICID)
+        {
+            HIC newHIC = GetHIC(HICID);
+            if(newHIC.ExpireDate < DateTime.Today)
+                return true;
+            else
+                return false;
         }
 
     }

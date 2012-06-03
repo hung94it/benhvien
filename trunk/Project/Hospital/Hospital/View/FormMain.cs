@@ -36,43 +36,6 @@ namespace Hospital.View
             this.Close();
         }
 
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-       
-
-        
 
         
 

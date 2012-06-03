@@ -54,6 +54,7 @@ namespace Hospital.View
                         {
                             if (HospitalBed.UpdateHospitalBed(HBDetail) > 0)
                                 MessageBox.Show("Nhận giường thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
                         }
                         else
                         {
@@ -69,7 +70,7 @@ namespace Hospital.View
                 {
                     MessageBox.Show("Bệnh nhân không tồn tại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-            this.Close();
+            
         }
     }
 }

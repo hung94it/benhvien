@@ -371,5 +371,26 @@ namespace Hospital.View
                 refreshDataViewPatient();
             }
         }
+        //Add or update patient's HIC
+        private void buttonHIC_Click(object sender, EventArgs e)
+        {
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                if (HIC.CheckHIC(patientID))
+                {
+                    HIC newHIC = HIC.GetPatientHIC(patientID);
+                    FormHICDetail formHICD = new FormHICDetail(newHIC, "edit");
+
+                    formHICD.ShowDialog();
+                }
+                else
+                {
+                    FormHICDetail formHICD = new FormHICDetail(patientID);
+
+                    formHICD.ShowDialog();
+                }
+            }
+        }
     }
 }
