@@ -59,6 +59,18 @@ namespace Hospital.View
 
         }
 
+        private void dataViewDisease_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewDisease.SelectedRows.Count > 0)
+            {
+                int diseaseID = Convert.ToInt16(dataViewDisease.SelectedRows[0].Cells[0].Value);
+                FormDiseaseDetail formDiseaseDetail = new FormDiseaseDetail(Disease.GetDisease(diseaseID), "edit");
+                formDiseaseDetail.ShowDialog();
+
+                refreshDataViewDisease();
+            }
+        }
+
         private void buttonDiseaseEdit_Click(object sender, EventArgs e)
         {
             if (dataViewDisease.SelectedRows.Count > 0)

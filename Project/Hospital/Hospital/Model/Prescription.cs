@@ -83,7 +83,7 @@ namespace Hospital.Model
         {
             string sqlSelect = @"SELECT IDENT_CURRENT('PRESCRIPTION')  as currIdent";
             object ob = SqlResult.ExecuteScalar(sqlSelect);
-            return Convert.ToInt16(ob);
+            return Convert.ToInt32(ob);
         }
 
         public static DataTable GetPatientIDInPrescription(int pID)

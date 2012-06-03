@@ -50,6 +50,19 @@ namespace Hospital.View
             searchPrescription();
         }
 
+        private void dataViewPrescription_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewPrescription.SelectedRows.Count > 0)
+            {
+                int prescriptionID = Convert.ToInt32(dataViewPrescription.SelectedRows[0].Cells[0].Value);
+                FormPrescriptionDetail formPD = new FormPrescriptionDetail(Prescription.GetPrescription(prescriptionID), "edit");
+                formPD.ShowDialog();
+
+                refreshDataViewPrescription();
+                refreshDataViewPrescriptionDetail();
+            }
+        }
+
         private void buttonPrescpitionEdit_Click(object sender, EventArgs e)
         {
             if (dataViewPrescription.SelectedRows.Count > 0)

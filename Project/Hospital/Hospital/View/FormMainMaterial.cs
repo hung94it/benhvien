@@ -57,6 +57,18 @@ namespace Hospital.View
 
         }
 
+        private void dataViewMaterial_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewMaterial.SelectedRows.Count > 0)
+            {
+                int materialID = Convert.ToInt16(dataViewMaterial.SelectedRows[0].Cells[0].Value);
+                FormMaterialDetail formMaterialDetail = new FormMaterialDetail(Material.GetMaterial(materialID), "edit");
+                formMaterialDetail.ShowDialog();
+
+                refreshDataViewMaterial();
+            }
+        }
+
         private void buttonMaterialEdit_Click(object sender, EventArgs e)
         {
             if (dataViewMaterial.SelectedRows.Count > 0)

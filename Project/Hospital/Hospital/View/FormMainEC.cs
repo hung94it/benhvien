@@ -36,7 +36,18 @@ namespace Hospital.View
             textBoxExaminationSearch.Text = "";
             searchExamination();
         }
+        private void dataViewExamination_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewExamination.SelectedRows.Count > 0)
+            {
+                int ecID = Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value);
+                ExaminationCertificate updateEC = ExaminationCertificate.GetEC(ecID);
+                FormECDetail formECD = new FormECDetail(updateEC, "edit");
+                formECD.ShowDialog();
 
+                refreshDataViewExamination();
+            }
+        }
         private void buttonExaminationDelete_Click(object sender, EventArgs e)
         {
             if (dataViewExamination.SelectedRows.Count > 0)

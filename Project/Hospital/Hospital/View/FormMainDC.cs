@@ -106,6 +106,19 @@ namespace Hospital.View
  
         }
 
+        private void dataViewDC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewDC.SelectedRows.Count > 0)
+            {
+                int dcID = Convert.ToInt32(dataViewDC.SelectedRows[0].Cells[0].Value);
+                DischargeCertificate updateDC = DischargeCertificate.GetDC(dcID);
+                FormDCDetail formDCD = new FormDCDetail(updateDC, "edit");
+                formDCD.ShowDialog();
+
+                refreshDataViewDC();
+            }
+        }
+
         private void buttonDCUpdate_Click(object sender, EventArgs e)
         {
             if (dataViewDC.SelectedRows.Count > 0)
@@ -165,5 +178,6 @@ namespace Hospital.View
                 ((DataView)dataViewDC.DataSource).RowFilter = "";
             }
         }
+        
     }
 }

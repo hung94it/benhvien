@@ -41,6 +41,18 @@ namespace Hospital.View
 
         }
 
+        private void dataViewDepartment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewDepartment.SelectedRows.Count > 0)
+            {
+                int departmentID = Convert.ToInt16(dataViewDepartment.SelectedRows[0].Cells[0].Value);
+                FormDepartmentDetail formDepartmentDetail = new FormDepartmentDetail(Department.GetDepartment(departmentID), "edit");
+                formDepartmentDetail.ShowDialog();
+
+                refreshDataViewDepartment();
+            }
+        }
+
         private void buttonDepartmentEdit_Click(object sender, EventArgs e)
         {
             if (dataViewDepartment.SelectedRows.Count > 0)
@@ -132,6 +144,19 @@ namespace Hospital.View
                         MessageBox.Show("Không thể xóa được chuyên ngành này", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+
+                refreshDataViewMajor();
+            }
+        }
+
+        private void dataViewMajor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewMajor.SelectedRows.Count > 0)
+            {
+                int majorID = Convert.ToInt16(dataViewMajor.SelectedRows[0].Cells[0].Value);
+                Major updateMajor = Major.GetMajor(majorID);
+                FormMajorDetail formMD = new FormMajorDetail(updateMajor, "edit");
+                formMD.ShowDialog();
 
                 refreshDataViewMajor();
             }

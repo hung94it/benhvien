@@ -50,6 +50,19 @@ namespace Hospital.View
 
         }
 
+        private void dataViewRole_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewRole.SelectedRows.Count > 0)
+            {
+                int roleID = Convert.ToInt16(dataViewRole.SelectedRows[0].Cells[0].Value);
+                FormRoleDetail formRoleDetail = new FormRoleDetail(Role.GetRole(roleID), "edit");
+                formRoleDetail.ShowDialog();
+
+                refreshDataViewRole();
+                refreshDataViewRoleDetail();
+            }
+        }
+
         private void buttonRoleEdit_Click(object sender, EventArgs e)
         {
             if (dataViewRole.SelectedRows.Count > 0)

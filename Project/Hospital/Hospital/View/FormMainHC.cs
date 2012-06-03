@@ -92,6 +92,19 @@ namespace Hospital.View
 
         }
 
+        private void dataViewHC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewHC.SelectedRows.Count > 0)
+            {
+                int hcID = Convert.ToInt32(dataViewHC.SelectedRows[0].Cells[0].Value);
+                HospitalizationCertificate updateHC = HospitalizationCertificate.GetHC(hcID);
+                FormHCDetail formHCD = new FormHCDetail(updateHC, "edit");
+                formHCD.ShowDialog();
+
+                refreshDataViewHC();
+            }
+        }
+
         private void buttonHCUpdate_Click(object sender, EventArgs e)
         {
             if (dataViewHC.SelectedRows.Count > 0)
