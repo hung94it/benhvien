@@ -60,9 +60,10 @@
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
             this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập hướng dẫn sử dụng thuốc");
             this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhấp số lượng thuốc");
-            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
+            this.rangeValidator1 = new DevComponents.DotNetBar.Validator.RangeValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             ((System.ComponentModel.ISupportInitialize)(this.dateCreate)).BeginInit();
             this.groupPanel1.SuspendLayout();
             this.groupPanel2.SuspendLayout();
@@ -393,7 +394,8 @@
             this.textBoxInputQuantity.Size = new System.Drawing.Size(62, 20);
             this.textBoxInputQuantity.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxInputQuantity, this.requiredFieldValidator1);
-            this.superValidator1.SetValidator2(this.textBoxInputQuantity, this.regularExpressionValidator1);
+            this.superValidator1.SetValidator2(this.textBoxInputQuantity, this.rangeValidator1);
+            this.superValidator1.SetValidator3(this.textBoxInputQuantity, this.regularExpressionValidator1);
             // 
             // buttonRemove
             // 
@@ -569,11 +571,12 @@
             this.requiredFieldValidator1.ErrorMessage = "Nhấp số lượng thuốc";
             this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
-            // regularExpressionValidator1
+            // rangeValidator1
             // 
-            this.regularExpressionValidator1.ErrorMessage = "Nhập số lượng thuốc";
-            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            this.regularExpressionValidator1.ValidationExpression = null;
+            this.rangeValidator1.ErrorMessage = "Số lượng phải từ 1-1000";
+            this.rangeValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.rangeValidator1.MaximumValue = "1000";
+            this.rangeValidator1.MinimumValue = "1";
             // 
             // errorProvider1
             // 
@@ -583,6 +586,12 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
+            // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.ErrorMessage = "Chỉ được phép nhập số";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = "^[1-9]\\d?\\d?\\d?$";
             // 
             // FormPrescriptionDetail
             // 
@@ -636,7 +645,8 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
-        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
+        private DevComponents.DotNetBar.Validator.RangeValidator rangeValidator1;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
     }
 }

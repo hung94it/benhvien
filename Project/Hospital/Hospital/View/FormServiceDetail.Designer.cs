@@ -41,6 +41,8 @@
             this.labelServiceName = new DevComponents.DotNetBar.LabelX();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
             this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập đơn giá");
+            this.rangeValidator1 = new DevComponents.DotNetBar.Validator.RangeValidator();
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên dịch vụ");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
@@ -143,6 +145,8 @@
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
             this.textBoxPrice.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxPrice, this.requiredFieldValidator2);
+            this.superValidator1.SetValidator2(this.textBoxPrice, this.rangeValidator1);
+            this.superValidator1.SetValidator3(this.textBoxPrice, this.regularExpressionValidator1);
             // 
             // labelServiceID
             // 
@@ -207,6 +211,19 @@
             this.requiredFieldValidator2.ErrorMessage = "Nhập đơn giá";
             this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
+            // rangeValidator1
+            // 
+            this.rangeValidator1.ErrorMessage = "Đơn giá phải gồm 4-9 chữ số";
+            this.rangeValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.rangeValidator1.MaximumValue = "999999999";
+            this.rangeValidator1.MinimumValue = "1000";
+            // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.ErrorMessage = "Chỉ được phép nhập số";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = "^[1-9]\\d{3}\\d?\\d?\\d?\\d?\\d?$";
+            // 
             // requiredFieldValidator1
             // 
             this.requiredFieldValidator1.ErrorMessage = "Nhập tên dịch vụ";
@@ -251,6 +268,8 @@
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
+        private DevComponents.DotNetBar.Validator.RangeValidator rangeValidator1;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
 
     }
 }

@@ -64,6 +64,7 @@
             this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.rangeValidator1 = new DevComponents.DotNetBar.Validator.RangeValidator();
             this.groupPanelBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInputBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewBillDetail)).BeginInit();
@@ -203,6 +204,7 @@
             this.textBoxQuantity.Size = new System.Drawing.Size(77, 20);
             this.textBoxQuantity.TabIndex = 1;
             this.superValidator1.SetValidator2(this.textBoxQuantity, this.regularExpressionValidator1);
+            this.superValidator1.SetValidator3(this.textBoxQuantity, this.rangeValidator1);
             // 
             // labelQuantity
             // 
@@ -575,6 +577,13 @@
             // 
             this.highlighter1.ContainerControl = this;
             // 
+            // rangeValidator1
+            // 
+            this.rangeValidator1.ErrorMessage = "Số lượng phải từ 1-1000";
+            this.rangeValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.rangeValidator1.MaximumValue = "1000";
+            this.rangeValidator1.MinimumValue = "1";
+            // 
             // FormBillDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -626,5 +635,6 @@
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
         private DevComponents.DotNetBar.ButtonX buttonSave;
+        private DevComponents.DotNetBar.Validator.RangeValidator rangeValidator1;
     }
 }

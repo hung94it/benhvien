@@ -43,6 +43,8 @@
             this.labelPatientID = new DevComponents.DotNetBar.LabelX();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
             this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập mã bệnh nhân");
+            this.rangeValidator1 = new DevComponents.DotNetBar.Validator.RangeValidator();
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
             this.groupPanel1.SuspendLayout();
@@ -182,6 +184,8 @@
             this.textBoxPatientID.Size = new System.Drawing.Size(293, 20);
             this.textBoxPatientID.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxPatientID, this.requiredFieldValidator1);
+            this.superValidator1.SetValidator2(this.textBoxPatientID, this.rangeValidator1);
+            this.superValidator1.SetValidator3(this.textBoxPatientID, this.regularExpressionValidator1);
             // 
             // labelState
             // 
@@ -219,6 +223,19 @@
             // 
             this.requiredFieldValidator1.ErrorMessage = "Nhập mã bệnh nhân";
             this.requiredFieldValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // rangeValidator1
+            // 
+            this.rangeValidator1.ErrorMessage = "Mã bệnh nhân phải có 8 số";
+            this.rangeValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.rangeValidator1.MaximumValue = "99999999";
+            this.rangeValidator1.MinimumValue = "10000000";
+            // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.ErrorMessage = "Chỉ được phép nhập số";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d{7}";
             // 
             // errorProvider1
             // 
@@ -260,6 +277,8 @@
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private DevComponents.DotNetBar.Validator.Highlighter highlighter1;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
+        private DevComponents.DotNetBar.Validator.RangeValidator rangeValidator1;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
 
     }
 }

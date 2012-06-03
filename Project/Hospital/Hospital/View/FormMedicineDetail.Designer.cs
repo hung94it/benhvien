@@ -43,10 +43,13 @@
             this.labelMedicineName = new DevComponents.DotNetBar.LabelX();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
             this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập số lượng");
+            this.rangeValidator1 = new DevComponents.DotNetBar.Validator.RangeValidator();
             this.requiredFieldValidator3 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập đơn giá");
+            this.rangeValidator2 = new DevComponents.DotNetBar.Validator.RangeValidator();
             this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tên thuốc");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -135,6 +138,7 @@
             this.textBoxQuantity.Size = new System.Drawing.Size(293, 20);
             this.textBoxQuantity.TabIndex = 1;
             this.superValidator1.SetValidator1(this.textBoxQuantity, this.requiredFieldValidator2);
+            this.superValidator1.SetValidator2(this.textBoxQuantity, this.rangeValidator1);
             // 
             // labelQuantity
             // 
@@ -174,6 +178,8 @@
             this.textBoxPrice.Size = new System.Drawing.Size(293, 20);
             this.textBoxPrice.TabIndex = 2;
             this.superValidator1.SetValidator1(this.textBoxPrice, this.requiredFieldValidator3);
+            this.superValidator1.SetValidator2(this.textBoxPrice, this.rangeValidator2);
+            this.superValidator1.SetValidator3(this.textBoxPrice, this.regularExpressionValidator1);
             // 
             // labelMedicineID
             // 
@@ -238,10 +244,24 @@
             this.requiredFieldValidator2.ErrorMessage = "Nhập số lượng";
             this.requiredFieldValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             // 
+            // rangeValidator1
+            // 
+            this.rangeValidator1.ErrorMessage = "Số lượng phải từ 1-1000";
+            this.rangeValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.rangeValidator1.MaximumValue = "1000";
+            this.rangeValidator1.MinimumValue = "1";
+            // 
             // requiredFieldValidator3
             // 
             this.requiredFieldValidator3.ErrorMessage = "Nhập đơn giá";
             this.requiredFieldValidator3.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            // 
+            // rangeValidator2
+            // 
+            this.rangeValidator2.ErrorMessage = "Đơn giá phải từ từ 4-9 chữ số";
+            this.rangeValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.rangeValidator2.MaximumValue = "999999999";
+            this.rangeValidator2.MinimumValue = "1000";
             // 
             // requiredFieldValidator1
             // 
@@ -256,6 +276,12 @@
             // highlighter1
             // 
             this.highlighter1.ContainerControl = this;
+            // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.ErrorMessage = "Chỉ được phép nhập số";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = "^[1-9]\\d{3}\\d?\\d?\\d?\\d?\\d?$";
             // 
             // FormMedicineDetail
             // 
@@ -290,6 +316,9 @@
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator2;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator3;
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
+        private DevComponents.DotNetBar.Validator.RangeValidator rangeValidator1;
+        private DevComponents.DotNetBar.Validator.RangeValidator rangeValidator2;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
 
     }
 }

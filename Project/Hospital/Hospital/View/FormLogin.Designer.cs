@@ -44,6 +44,8 @@
             this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Nhập tài khoản");
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
+            this.rangeValidator1 = new DevComponents.DotNetBar.Validator.RangeValidator();
+            this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.groupPanelLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -191,6 +193,8 @@
             this.textBoxUsername.Size = new System.Drawing.Size(194, 20);
             this.textBoxUsername.TabIndex = 0;
             this.superValidator1.SetValidator1(this.textBoxUsername, this.requiredFieldValidator1);
+            this.superValidator1.SetValidator2(this.textBoxUsername, this.rangeValidator1);
+            this.superValidator1.SetValidator3(this.textBoxUsername, this.regularExpressionValidator1);
             // 
             // reflectionLabelHospital
             // 
@@ -230,6 +234,19 @@
             // 
             this.highlighter1.ContainerControl = this;
             // 
+            // rangeValidator1
+            // 
+            this.rangeValidator1.ErrorMessage = "Tài khoản phải có 8 số";
+            this.rangeValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.rangeValidator1.MaximumValue = "99999999";
+            this.rangeValidator1.MinimumValue = "10000000";
+            // 
+            // regularExpressionValidator1
+            // 
+            this.regularExpressionValidator1.ErrorMessage = "Chỉ được phép nhập số";
+            this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d{7}";
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,5 +280,7 @@
         private DevComponents.DotNetBar.Validator.RequiredFieldValidator requiredFieldValidator1;
         private DevComponents.DotNetBar.ButtonX buttonClose;
         private DevComponents.DotNetBar.ButtonX buttonSetting;
+        private DevComponents.DotNetBar.Validator.RangeValidator rangeValidator1;
+        private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
     }
 }
