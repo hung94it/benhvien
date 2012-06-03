@@ -19,6 +19,7 @@ namespace Hospital.View
         public Patient PatientDetail { get; set; }
         public string UserAction { get; set; }
         public int PrescriptionID { get; set; }
+        public int HICID { get; set; }
 
         private DataTable BillMedicineTable { get; set; }
         private DataTable BillServiceTable { get; set; }
@@ -80,6 +81,27 @@ namespace Hospital.View
                 textBoxStaffID.Text = StaffDetail.StaffID.ToString();
                 textBoxStaffName.Text = StaffDetail.LastName + ' ' + StaffDetail.FirstName;
 
+                //Check HIC
+                if (HIC.CheckHIC(BillDetail.PatientID))
+                {
+                    HIC newHIC = HIC.GetPatientHIC(BillDetail.PatientID);
+                    if (HIC.CheckHICExpiration(newHIC.HICID))
+                    {
+                        labelHICID.Text = "Đã hết hạn";
+                        this.HICID = 0;
+                    }
+                    else
+                    {
+                        labelHICID.Text = "Còn hạn sử dụng";
+                        this.HICID = newHIC.HICID;
+                    }
+                }
+                else
+                {
+                    labelHICID.Text = "Không có";
+                    this.HICID = 0;
+                }
+
                 // Set comboBoxDetail corresponding to bill's type
                 switch (BillDetail.BillTypeID)
                 {
@@ -106,6 +128,8 @@ namespace Hospital.View
                         comboBoxDetail.DataSource = Material.GetListMaterial();
                         comboBoxDetail.ValueMember = "PRICE";
                         comboBoxDetail.DisplayMember = "MATERIALNAME";
+                        labelHIC.Visible = false;
+                        labelHICID.Visible = false;
                         break;
                 }
 

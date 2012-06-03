@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBillDetail));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.labelPatientName = new DevComponents.DotNetBar.LabelX();
             this.labelStaffName = new DevComponents.DotNetBar.LabelX();
             this.textBoxStaffName = new DevComponents.DotNetBar.Controls.TextBoxX();
@@ -62,9 +62,11 @@
             this.labelDetail = new DevComponents.DotNetBar.LabelX();
             this.superValidator1 = new DevComponents.DotNetBar.Validator.SuperValidator();
             this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
+            this.rangeValidator1 = new DevComponents.DotNetBar.Validator.RangeValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.rangeValidator1 = new DevComponents.DotNetBar.Validator.RangeValidator();
+            this.labelHIC = new DevComponents.DotNetBar.LabelX();
+            this.labelHICID = new DevComponents.DotNetBar.LabelX();
             this.groupPanelBill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dateTimeInputBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewBillDetail)).BeginInit();
@@ -130,6 +132,8 @@
             this.groupPanelBill.Controls.Add(this.textBoxStaffID);
             this.groupPanelBill.Controls.Add(this.labelTotalBillPrice);
             this.groupPanelBill.Controls.Add(this.textBoxPatientID);
+            this.groupPanelBill.Controls.Add(this.labelHICID);
+            this.groupPanelBill.Controls.Add(this.labelHIC);
             this.groupPanelBill.Controls.Add(this.labelState);
             this.groupPanelBill.Controls.Add(this.labelPrice);
             this.groupPanelBill.Controls.Add(this.labelDate);
@@ -488,14 +492,14 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dataViewBillDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewBillDetail.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewBillDetail.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataViewBillDetail.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dataViewBillDetail.Location = new System.Drawing.Point(404, 104);
             this.dataViewBillDetail.Name = "dataViewBillDetail";
@@ -568,6 +572,13 @@
             this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d*";
             // 
+            // rangeValidator1
+            // 
+            this.rangeValidator1.ErrorMessage = "Số lượng phải từ 1-1000";
+            this.rangeValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.rangeValidator1.MaximumValue = "1000";
+            this.rangeValidator1.MinimumValue = "1";
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -577,12 +588,33 @@
             // 
             this.highlighter1.ContainerControl = this;
             // 
-            // rangeValidator1
+            // labelHIC
             // 
-            this.rangeValidator1.ErrorMessage = "Số lượng phải từ 1-1000";
-            this.rangeValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            this.rangeValidator1.MaximumValue = "1000";
-            this.rangeValidator1.MinimumValue = "1";
+            this.labelHIC.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelHIC.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelHIC.Location = new System.Drawing.Point(18, 339);
+            this.labelHIC.Name = "labelHIC";
+            this.labelHIC.Size = new System.Drawing.Size(74, 23);
+            this.labelHIC.TabIndex = 41;
+            this.labelHIC.Text = "Bảo hiểm y tế:";
+            // 
+            // labelHICID
+            // 
+            this.labelHICID.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelHICID.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelHICID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHICID.ForeColor = System.Drawing.Color.Red;
+            this.labelHICID.Location = new System.Drawing.Point(98, 336);
+            this.labelHICID.Name = "labelHICID";
+            this.labelHICID.Size = new System.Drawing.Size(148, 23);
+            this.labelHICID.TabIndex = 41;
+            this.labelHICID.Text = "100";
             // 
             // FormBillDetail
             // 
@@ -636,5 +668,7 @@
         private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator1;
         private DevComponents.DotNetBar.ButtonX buttonSave;
         private DevComponents.DotNetBar.Validator.RangeValidator rangeValidator1;
+        private DevComponents.DotNetBar.LabelX labelHIC;
+        private DevComponents.DotNetBar.LabelX labelHICID;
     }
 }

@@ -86,7 +86,7 @@ namespace Hospital.Model
             string sqlSelect = @"SELECT        HICID, PATIENTID, EXPIREDATE, ISSUEDATE
                                 FROM            HIC
                                 WHERE           HICID=@HICID";
-            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", HICID) };
+            SqlParameter[] sqlParameters = { new SqlParameter("@HICID", HICID) };
             DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
             if (dataTable.Rows.Count > 0)
             {
