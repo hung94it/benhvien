@@ -11,8 +11,7 @@
     <RootNamespace>Hospital</RootNamespace>
     <AssemblyName>Hospital</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -62,7 +61,6 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
@@ -129,7 +127,22 @@
     <Compile Include="Model\TestType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report.cs">
+      <DependentUpon>Report.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="View\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -353,6 +366,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\EC.rdlc" />
+    <EmbeddedResource Include="View\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormAssignDetail.resx">
       <DependentUpon>FormAssignDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -437,9 +454,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Report.xsc">
+      <DependentUpon>Report.xsd</DependentUpon>
+    </None>
+    <None Include="Report.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Report.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report.xss">
+      <DependentUpon>Report.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Report\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
