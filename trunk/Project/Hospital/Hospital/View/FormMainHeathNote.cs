@@ -60,6 +60,18 @@ namespace Hospital.View
 
         }
 
+        private void dataViewHeathNote_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewHeathNote.SelectedRows.Count > 0)
+            {
+                int heathNoteID = Convert.ToInt32(dataViewHeathNote.SelectedRows[0].Cells[0].Value);
+                FormHNDetail formHNDetail = new FormHNDetail(HeathMonitoringNote.GetHN(heathNoteID), "edit");
+                formHNDetail.ShowDialog();
+
+                refreshDataViewHeathNote();
+            }
+        }
+
         private void buttonMonitorEdit_Click(object sender, EventArgs e)
         {
             if (dataViewHeathNote.SelectedRows.Count > 0)

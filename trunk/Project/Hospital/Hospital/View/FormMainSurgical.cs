@@ -83,6 +83,20 @@ namespace Hospital.View
             
         }
 
+        private void dataViewSurgical_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewSurgical.SelectedRows.Count > 0)
+            {
+                int surgicalID = Convert.ToInt32(dataViewSurgical.SelectedRows[0].Cells[0].Value);
+                Surgical updateSurgical = Surgical.GetSurgical(surgicalID);
+                FormSurgicalDetail formSD = new FormSurgicalDetail(updateSurgical, "edit");
+                formSD.ShowDialog();
+
+                refreshDataViewSurgical();
+                refreshDataViewSurgicalDetail();
+            }
+        }
+
         private void buttonSurgeryEdit_Click(object sender, EventArgs e)
         {
             if (dataViewSurgical.SelectedRows.Count > 0)

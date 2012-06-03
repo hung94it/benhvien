@@ -72,6 +72,20 @@ namespace Hospital.View
             
         }
 
+        private void dataViewAssignment_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewAssignment.SelectedRows.Count > 0)
+            {
+                int assignID = Convert.ToInt32(dataViewAssignment.SelectedRows[0].Cells[0].Value);
+                Assignment updateAssign = Assignment.GetAssignment(assignID);
+
+                FormAssignDetail formAD = new FormAssignDetail(updateAssign, "edit");
+                formAD.ShowDialog();
+                refreshDataViewAssignment();
+                refreshDataViewAssignmentDetail();
+            }
+        }
+
         private void buttonAssignmentEdit_Click(object sender, EventArgs e)
         {
             if (dataViewAssignment.SelectedRows.Count > 0)

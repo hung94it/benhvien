@@ -60,6 +60,19 @@ namespace Hospital.View
             
         }
 
+        private void dataViewFunction_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewFunction.SelectedRows.Count > 0)
+            {
+                int funtionlID = Convert.ToInt16(dataViewFunction.SelectedRows[0].Cells[0].Value);
+                RoleFunction updateFunction = RoleFunction.GetFunction(funtionlID);
+                FormRoleFunctionDetail formRFD = new FormRoleFunctionDetail(updateFunction, "edit");
+                formRFD.ShowDialog();
+
+                refreshDataViewFunction();
+            }
+        }
+
         private void buttonFunctionEdit_Click(object sender, EventArgs e)
         {
             if (dataViewFunction.SelectedRows.Count > 0)

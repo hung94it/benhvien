@@ -57,6 +57,18 @@ namespace Hospital.View
             
         }
 
+        private void dataViewService_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewService.SelectedRows.Count > 0)
+            {
+                int serviceID = Convert.ToInt16(dataViewService.SelectedRows[0].Cells[0].Value);
+                FormServiceDetail formServiceDetail = new FormServiceDetail(Service.GetService(serviceID), "edit");
+                formServiceDetail.ShowDialog();
+
+                refreshDataViewService();
+            }
+        }
+
         private void buttonServiceEdit_Click(object sender, EventArgs e)
         {
             if (dataViewService.SelectedRows.Count > 0)

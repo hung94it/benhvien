@@ -342,10 +342,10 @@
             // 
             // comboBoxMedicine
             // 
-            this.comboBoxMedicine.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxMedicine.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.comboBoxMedicine.DisplayMember = "Text";
             this.comboBoxMedicine.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxMedicine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMedicine.FormattingEnabled = true;
             this.comboBoxMedicine.ItemHeight = 14;
             this.comboBoxMedicine.Location = new System.Drawing.Point(96, 3);

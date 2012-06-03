@@ -60,6 +60,18 @@ namespace Hospital.View
 
         }
 
+        private void dataViewHeathFile_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewHeathFile.SelectedRows.Count > 0)
+            {
+                int heathFileID = Convert.ToInt32(dataViewHeathFile.SelectedRows[0].Cells[0].Value);
+                FormHFDetail formHFDetail = new FormHFDetail(HeathFile.GetHeathFile(heathFileID), "edit");
+                formHFDetail.ShowDialog();
+
+                refreshDataViewHeathFile();
+            }
+        }
+
         private void buttonHealthFileEdit_Click(object sender, EventArgs e)
         {
             if (dataViewHeathFile.SelectedRows.Count > 0)

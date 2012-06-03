@@ -176,15 +176,26 @@ namespace Hospital.View
         {
             if (dataViewPatient.SelectedRows.Count > 0)
             {
-                if (dataViewPatient.SelectedRows.Count > 0)
-                {
-                    int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                int state = Patient.GetPatient(patientID).State;
 
-                    FormHFDetail formHFD = new FormHFDetail(patientID);
-                    formHFD.ShowDialog();
+                if (state == 1)
+                {
+                    if (!HeathFile.DidPatientHaveHF(patientID))
+                    {
+                        FormHFDetail formHFD = new FormHFDetail(patientID);
+                        formHFD.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bệnh nhân đã có bệnh án", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Bệnh nhân chưa nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-
 
         }
         //Add a new heath note
@@ -193,11 +204,19 @@ namespace Hospital.View
             if (dataViewPatient.SelectedRows.Count > 0)
             {
                 int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
+                int state = Patient.GetPatient(patientID).State;
                 //Current user
                 int staffID = loginStaff.StaffID;
 
-                FormHNDetail formHND = new FormHNDetail(staffID, patientID);
-                formHND.ShowDialog();
+                if (state == 1)
+                {
+                    FormHNDetail formHND = new FormHNDetail(staffID, patientID);
+                    formHND.ShowDialog(); 
+                }
+                else
+                {
+                    MessageBox.Show("Bệnh nhân chưa nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
 
         }
@@ -335,6 +354,21 @@ namespace Hospital.View
                 Bill newBill = new Bill(Bill.SERVICEBILL, patientID, staffID);
                 FormBillDetail billDetailForm = new FormBillDetail("insert", newBill);
                 billDetailForm.ShowDialog();
+            }
+        }
+        private void dataViewPatient_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                // Get patient for edit
+                Patient PatientDetail = Patient.GetPatient(Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString()));
+
+                // Open patientdetail form for edit
+                FormPatientDetail patientDetailForm = new FormPatientDetail("edit", PatientDetail);
+                patientDetailForm.ShowDialog();
+
+                // Refresh datagridview after edit
+                refreshDataViewPatient();
             }
         }
     }

@@ -25,7 +25,21 @@ namespace Hospital.View
             // Refresh datagridview after add
             refreshDataViewStaff();
         }
+        private void dataViewStaff_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewStaff.SelectedRows.Count > 0)
+            {
+                // Get staff for edit
+                Staff StaffDetail = Staff.GetStaff(Convert.ToInt32(dataViewStaff.SelectedRows[0].Cells[0].Value.ToString()));
 
+                // Open staffdetail form for edit
+                FormStaffDetail staffDetailForm = new FormStaffDetail("edit", StaffDetail);
+                staffDetailForm.ShowDialog();
+
+                // Refresh datagridview after edit
+                refreshDataViewStaff();
+            }
+        }
         // Edit staff's information when click edit button
         private void buttonStaffEdit_Click(object sender, EventArgs e)
         {

@@ -40,6 +40,18 @@ namespace Hospital.View
 
         }
 
+        private void dataViewMedicine_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewMedicine.SelectedRows.Count > 0)
+            {
+                int medicineID = Convert.ToInt32(dataViewMedicine.SelectedRows[0].Cells[0].Value);
+                FormMedicineDetail formMedicineDetail = new FormMedicineDetail(Medicine.GetMedicine(medicineID), "edit");
+                formMedicineDetail.ShowDialog();
+
+                refreshDataViewMedicine();
+            }
+        }
+
         private void buttonMedicineEdit_Click(object sender, EventArgs e)
         {
             if (dataViewMedicine.SelectedRows.Count > 0)

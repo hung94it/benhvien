@@ -73,6 +73,20 @@ namespace Hospital.View
 
         }
 
+        private void dataViewTC_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataViewTC.SelectedRows.Count > 0)
+            {
+                int testID = Convert.ToInt32(dataViewTC.SelectedRows[0].Cells[0].Value);
+                TestCertificate updateTD = TestCertificate.GetTC(testID);
+                FormTestDetail formTD = new FormTestDetail(updateTD, "edit");
+                formTD.ShowDialog();
+
+                refreshDataViewTest();
+                refreshDataViewTestDetail();
+            }
+        }
+
         private void buttonTestEdit_Click(object sender, EventArgs e)
         {
             if (dataViewTC.SelectedRows.Count > 0)
