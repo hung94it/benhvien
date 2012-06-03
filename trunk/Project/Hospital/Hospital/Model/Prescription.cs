@@ -91,9 +91,10 @@ namespace Hospital.Model
             DataTable dtPD;
 
             string sqlSelect = @"SELECT        PATIENTID
-                                FROM           PRESCRIPTION";
-
-            dtPD = SqlResult.ExecuteQuery(sqlSelect);
+                                FROM           PRESCRIPTION
+                                WHERE        PRESCRIPTIONID=@PRESCRIPTIONID";
+            SqlParameter[] sqlParameters = { new SqlParameter("@PRESCRIPTIONID", pID) };
+            dtPD = SqlResult.ExecuteQuery(sqlSelect,sqlParameters);
 
             return dtPD;
         }

@@ -217,7 +217,7 @@ namespace Hospital.View
                 {
                     // Generate next billID
                     textBoxBillID.Text = Bill.GetNextBillID().ToString();
-                    dateTimeInputBill.Value = DateTime.Now;
+                    dateTimeInputBill.Value = DateTime.Today;
                     labelTotalBillPrice.Text = 0.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
 
                     BillDetail.BillID = Bill.GetNextBillID();
@@ -249,7 +249,10 @@ namespace Hospital.View
                             {
                                 totalPrice += (decimal)row["Giá"];
                             }
-
+                            if (HICID != 0)
+                            {
+                                totalPrice = totalPrice/4;
+                            }
                             BillDetail.TotalPrice = totalPrice;
                             labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
 
@@ -429,7 +432,10 @@ namespace Hospital.View
             {
                 totalPrice += Convert.ToDecimal(record["Giá"]);
             }
-
+            if (HICID != 0)
+            {
+                totalPrice = totalPrice / 4;
+            }
             BillDetail.TotalPrice = totalPrice;
             labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
         }
@@ -463,6 +469,10 @@ namespace Hospital.View
                             totalPrice += (decimal)row["Giá"];
                         }
                         break;
+                }
+                if (HICID != 0)
+                {
+                    totalPrice = totalPrice / 4;
                 }
                 labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
             }
