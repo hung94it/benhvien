@@ -284,8 +284,15 @@ namespace Hospital.View
             {
                 int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
 
-                FormSurgicalDetail formSD = new FormSurgicalDetail(patientID);
-                formSD.ShowDialog();
+                if (Patient.GetPatient(patientID).State == 1)
+                {
+                    FormSurgicalDetail formSD = new FormSurgicalDetail(patientID);
+                    formSD.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Bệnh nhân chưa nhập viện nên không thể thực hiện phẩu thuật", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
 
         }
@@ -334,12 +341,19 @@ namespace Hospital.View
             if (dataViewPatient.SelectedRows.Count > 0)
             {
                 int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
-                //Current user
-                int staffID = loginStaff.StaffID;
+                if (Patient.GetPatient(patientID).State == 1)
+                {
+                    //Current user
+                    int staffID = loginStaff.StaffID;
 
-                Bill newBill = new Bill(Bill.MATERIALBILL, patientID, staffID);
-                FormBillDetail billDetailForm = new FormBillDetail("insert", newBill);
-                billDetailForm.ShowDialog();
+                    Bill newBill = new Bill(Bill.MATERIALBILL, patientID, staffID);
+                    FormBillDetail billDetailForm = new FormBillDetail("insert", newBill);
+                    billDetailForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Bệnh nhân chưa nhập viện nên không được phép mượn vật tư", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 

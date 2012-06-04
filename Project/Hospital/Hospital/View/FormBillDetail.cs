@@ -80,6 +80,10 @@ namespace Hospital.View
                 textBoxPatientName.Text = PatientDetail.LastName + ' ' + PatientDetail.FirstName;
                 textBoxStaffID.Text = StaffDetail.StaffID.ToString();
                 textBoxStaffName.Text = StaffDetail.LastName + ' ' + StaffDetail.FirstName;
+                if (PatientDetail.State == 0)
+                {
+                    buttonSave.Enabled = false; 
+                }
 
                 //Check HIC
                 if (HIC.CheckHIC(BillDetail.PatientID))
