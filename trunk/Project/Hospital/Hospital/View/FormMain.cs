@@ -61,7 +61,5 @@ namespace Hospital.View
             reportForm.Show();
         }
 
-
-
      }
 }

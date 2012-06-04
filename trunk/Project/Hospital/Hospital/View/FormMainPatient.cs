@@ -26,7 +26,7 @@ namespace Hospital.View
         private void buttonPatientEdit_Click(object sender, EventArgs e)
         {
             if (dataViewPatient.SelectedRows.Count > 0)
-            { 
+            {
                 // Get patient for edit
                 Patient PatientDetail = Patient.GetPatient(Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value.ToString()));
 
@@ -37,7 +37,7 @@ namespace Hospital.View
                 // Refresh datagridview after edit
                 refreshDataViewPatient();
             }
-            
+
         }
 
         // Delete patient when click delete button
@@ -62,7 +62,7 @@ namespace Hospital.View
                 }
                 catch
                 {
-                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                    MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 // Refresh datagridview after delete
@@ -161,12 +161,12 @@ namespace Hospital.View
         private void Prescription_Click(object sender, EventArgs e)
         {
             if (dataViewPatient.SelectedRows.Count > 0)
-            { 
+            {
                 int patientID = Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value);
                 //Current user
                 int staffID = 10000000;
-            
-                FormPrescriptionDetail formPD = new FormPrescriptionDetail(staffID,patientID);
+
+                FormPrescriptionDetail formPD = new FormPrescriptionDetail(staffID, patientID);
                 formPD.ShowDialog();
             }
 
@@ -211,7 +211,7 @@ namespace Hospital.View
                 if (state == 1)
                 {
                     FormHNDetail formHND = new FormHNDetail(staffID, patientID);
-                    formHND.ShowDialog(); 
+                    formHND.ShowDialog();
                 }
                 else
                 {
@@ -406,5 +406,16 @@ namespace Hospital.View
                 }
             }
         }
+
+        private void buttonPatientPay_Click(object sender, EventArgs e)
+        {
+            if (dataViewPatient.SelectedRows.Count > 0)
+            {
+                FormPayment paymentform = new FormPayment();
+                paymentform.patient = Patient.GetPatient(Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value));
+                paymentform.ShowDialog();
+            }            
+        }
+
     }
 }
