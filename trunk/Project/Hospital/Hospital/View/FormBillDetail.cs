@@ -57,18 +57,18 @@ namespace Hospital.View
             reFreshForm();
         }
 
-        public FormBillDetail(string userAction, Bill bill, Staff staff, Patient patient)
-        {
-            InitializeComponent();
+        //public FormBillDetail(string userAction, Bill bill, Staff staff, Patient patient)
+        //{
+        //    InitializeComponent();
 
-            // Set useraction and bill
-            this.BillDetail = bill;
-            this.UserAction = userAction;
-            this.StaffDetail = staff;
-            this.PatientDetail = patient;
+        //    // Set useraction and bill
+        //    this.BillDetail = bill;
+        //    this.UserAction = userAction;
+        //    this.StaffDetail = staff;
+        //    this.PatientDetail = patient;
 
-            reFreshForm();
-        }
+        //    reFreshForm();
+        //}
 
         // Set information to form
         private void reFreshForm()
@@ -154,6 +154,7 @@ namespace Hospital.View
                 // Set information when user edit bill's detail
                 if ("edit".Equals(UserAction))
                 {
+                    decimal totalPrice = BillDetail.TotalPrice;
                     // Set billID
                     textBoxBillID.Text = BillDetail.BillID.ToString();
                     dateTimeInputBill.Value = BillDetail.Date;
@@ -164,8 +165,11 @@ namespace Hospital.View
                     dateTimeInputBill.Enabled = false;
 
                     //BillDetail = Bill.GetBill(BillDetail.BillID);
-
-                    labelTotalBillPrice.Text = BillDetail.TotalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+                    if (HICID != 0)
+                    {
+                        totalPrice = totalPrice / 4;
+                    }
+                    labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
 
                     // Set dataViewBillDetail corresponding bill's type
                     switch (BillDetail.BillTypeID)
@@ -253,11 +257,14 @@ namespace Hospital.View
                             {
                                 totalPrice += (decimal)row["Giá"];
                             }
+
+                            BillDetail.TotalPrice = totalPrice;
+
                             if (HICID != 0)
                             {
                                 totalPrice = totalPrice/4;
                             }
-                            BillDetail.TotalPrice = totalPrice;
+                            
                             labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
 
                             break;
@@ -291,6 +298,7 @@ namespace Hospital.View
                     switch (UserAction)
                     {
                         case "insertExamination":
+                            decimal totalPrice = Service.GetServiceExamination().Price;
                             // Only save and pay when create examination
                             buttonAdd.Enabled = false;
                             buttonDelete.Enabled = false;
@@ -298,13 +306,8 @@ namespace Hospital.View
                             // Set new bill detail for examination
                             BillDetail.BillID = Bill.GetNextBillID();
                             BillDetail.Date = DateTime.Now;
-                            BillDetail.TotalPrice = 30000;
+                            BillDetail.TotalPrice = totalPrice;
                             BillDetail.State = 0;
-
-                            // Set form information
-                            textBoxBillID.Text = Bill.GetNextBillID().ToString();
-                            dateTimeInputBill.Value = BillDetail.Date;
-                            labelTotalBillPrice.Text = BillDetail.TotalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
 
                             // Create table for datagridview
                             BillServiceTable = new DataTable();
@@ -317,7 +320,18 @@ namespace Hospital.View
                             dataViewBillDetail.DataSource = BillServiceTable;
                             dataViewBillDetail.Columns["SERVICEID"].Visible = false;
 
-                            BillServiceTable.Rows.Add(new object[] { 100, "Khám bệnh", 1, 30000 });
+                            BillServiceTable.Rows.Add(new object[] { 100, "Khám bệnh", 1, totalPrice });
+
+                            if (HICID != 0)
+                            {
+                                totalPrice = totalPrice / 4;
+                                //BillDetail.TotalPrice = totalPrice;                                
+                            }
+
+                            // Set form information
+                            textBoxBillID.Text = Bill.GetNextBillID().ToString();
+                            dateTimeInputBill.Value = BillDetail.Date;
+                            labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
 
                             break;
                         case "insertTest":
@@ -436,11 +450,11 @@ namespace Hospital.View
             {
                 totalPrice += Convert.ToDecimal(record["Giá"]);
             }
-            if (HICID != 0)
+            BillDetail.TotalPrice = totalPrice;
+            if (HICID != 0 && BillDetail.BillTypeID != 102)
             {
                 totalPrice = totalPrice / 4;
             }
-            BillDetail.TotalPrice = totalPrice;
             labelTotalBillPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
         }
 
@@ -497,28 +511,70 @@ namespace Hospital.View
                 if (MessageBox.Show("Xác nhận thanh toán?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk)
                             == DialogResult.Yes)
                 {
+
+
                     if ("insert".Equals(UserAction))
                     {
-
+                        if (HICID != 0)
+                        {
+                            BillDetail.TotalPrice = BillDetail.TotalPrice / 4;
+                        }
                         BillDetail.State = Bill.PAY;
                         Bill.InsertBill(BillDetail);
 
                         insertBillDetail();
-
                     }
                     else if ("edit".Equals(UserAction))
                     {
+                        if (HICID != 0)
+                        {
+                            BillDetail.TotalPrice = BillDetail.TotalPrice / 4;
+                        }
                         BillDetail.State = Bill.PAY;
-                        Bill.UpdateBill(BillDetail);
+                        Bill.UpdateBill(BillDetail);                        
                     }
 
+                    Bill billReport;
+
+                    if ("insert".Equals(UserAction))
+                    {
+                        billReport = Bill.GetBill(Bill.GetCurrentBillID());
+                    }
+                    else
+                    {
+                        billReport = BillDetail;
+                    }
+
+                    FormReport reportForm = new FormReport();
+
+                    switch (billReport.BillTypeID)
+                    {
+                        case Bill.MEDICINEBILL:
+                            reportForm.ReportType = "MEDICINEBILL";
+                            reportForm.ObjectID = billReport.BillID;
+                            break;
+                        case Bill.SERVICEBILL:
+                            reportForm.ReportType = "SERVICEBILL";
+                            reportForm.ObjectID = billReport.BillID;
+                            break;
+                        case Bill.MATERIALBILL:
+                            reportForm.ReportType = "MATERIALBILL";
+                            reportForm.ObjectID = billReport.BillID;
+                            break;
+                        default:
+                            MessageBox.Show("Vui lòng chọn hóa đơn để in!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                    }
+
+                    reportForm.ShowDialog();
+
+                    this.Close();
                 }
             }
             catch (SqlException exception)
             {
                 MessageBox.Show(exception.Message, "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            this.Close();
+            }            
         }
 
         // Close this form when click buttonClose
@@ -602,7 +658,5 @@ namespace Hospital.View
                     break;
             }
         }
-
-
     }
 }

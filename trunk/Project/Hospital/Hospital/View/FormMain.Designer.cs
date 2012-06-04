@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
-            DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
-            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable1 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable2 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
+            DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable3 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable superTabPanelColorTable4 = new DevComponents.DotNetBar.Rendering.SuperTabPanelColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable superTabPanelItemColorTable4 = new DevComponents.DotNetBar.Rendering.SuperTabPanelItemColorTable();
             DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable superTabLinearGradientColorTable4 = new DevComponents.DotNetBar.Rendering.SuperTabLinearGradientColorTable();
@@ -165,25 +165,8 @@
             this.buttonAccount = new DevComponents.DotNetBar.ButtonItem();
             this.buttonAbout = new DevComponents.DotNetBar.ButtonItem();
             this.tabMain = new DevComponents.DotNetBar.SuperTabControl();
-            this.tabPanelExamanation = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.buttonExaminationPrint = new DevComponents.DotNetBar.ButtonX();
-            this.buttonExaminationResult = new DevComponents.DotNetBar.ButtonX();
-            this.buttonExaminationDeleteSearch = new DevComponents.DotNetBar.ButtonX();
-            this.labelExaminationSearch = new DevComponents.DotNetBar.LabelX();
-            this.textBoxExaminationSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.dataViewExamination = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.buttonExaminationEdit = new DevComponents.DotNetBar.ButtonX();
-            this.buttonExaminationDelete = new DevComponents.DotNetBar.ButtonX();
-            this.tabItemExamination = new DevComponents.DotNetBar.SuperTabItem();
-            this.tabPanelBill = new DevComponents.DotNetBar.SuperTabControlPanel();
-            this.buttonBILLPrint = new DevComponents.DotNetBar.ButtonX();
-            this.buttonBillDeleteSearch = new DevComponents.DotNetBar.ButtonX();
-            this.labelBillSearch = new DevComponents.DotNetBar.LabelX();
-            this.textBoxBillSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.dataViewBill = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.buttonBillEdit = new DevComponents.DotNetBar.ButtonX();
-            this.tabItemBill = new DevComponents.DotNetBar.SuperTabItem();
             this.tabPanelPatient = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.buttonPatientPay = new DevComponents.DotNetBar.ButtonX();
             this.buttonPatientService = new DevComponents.DotNetBar.ButtonX();
             this.buttonPrescription = new DevComponents.DotNetBar.ButtonX();
             this.buttonHealthMonitor = new DevComponents.DotNetBar.ButtonX();
@@ -204,6 +187,24 @@
             this.buttonPatientEdit = new DevComponents.DotNetBar.ButtonX();
             this.buttonPatientDelete = new DevComponents.DotNetBar.ButtonX();
             this.tabItemPatient = new DevComponents.DotNetBar.SuperTabItem();
+            this.tabPanelBill = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.buttonBILLPrint = new DevComponents.DotNetBar.ButtonX();
+            this.buttonBillDeleteSearch = new DevComponents.DotNetBar.ButtonX();
+            this.labelBillSearch = new DevComponents.DotNetBar.LabelX();
+            this.textBoxBillSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.dataViewBill = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.buttonBillEdit = new DevComponents.DotNetBar.ButtonX();
+            this.tabItemBill = new DevComponents.DotNetBar.SuperTabItem();
+            this.tabPanelExamanation = new DevComponents.DotNetBar.SuperTabControlPanel();
+            this.buttonExaminationPrint = new DevComponents.DotNetBar.ButtonX();
+            this.buttonExaminationResult = new DevComponents.DotNetBar.ButtonX();
+            this.buttonExaminationDeleteSearch = new DevComponents.DotNetBar.ButtonX();
+            this.labelExaminationSearch = new DevComponents.DotNetBar.LabelX();
+            this.textBoxExaminationSearch = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.dataViewExamination = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.buttonExaminationEdit = new DevComponents.DotNetBar.ButtonX();
+            this.buttonExaminationDelete = new DevComponents.DotNetBar.ButtonX();
+            this.tabItemExamination = new DevComponents.DotNetBar.SuperTabItem();
             this.tabPanelHealthFile = new DevComponents.DotNetBar.SuperTabControlPanel();
             this.buttonDeleteSearchHeathFile = new DevComponents.DotNetBar.ButtonX();
             this.labelHeathFileSearch = new DevComponents.DotNetBar.LabelX();
@@ -390,15 +391,14 @@
             this.buttonMonitorEdit = new DevComponents.DotNetBar.ButtonX();
             this.buttonMonitorDelete = new DevComponents.DotNetBar.ButtonX();
             this.tabItemMonitor = new DevComponents.DotNetBar.SuperTabItem();
-            this.buttonPatientPay = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).BeginInit();
             this.tabMain.SuspendLayout();
-            this.tabPanelExamanation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewExamination)).BeginInit();
-            this.tabPanelBill.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewBill)).BeginInit();
             this.tabPanelPatient.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewPatient)).BeginInit();
+            this.tabPanelBill.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewBill)).BeginInit();
+            this.tabPanelExamanation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewExamination)).BeginInit();
             this.tabPanelHealthFile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataViewHeathFile)).BeginInit();
             this.tabPanelStatistics.SuspendLayout();
@@ -604,316 +604,6 @@
             this.tabMain.TabStyle = DevComponents.DotNetBar.eSuperTabStyle.Office2010BackstageBlue;
             this.tabMain.SelectedTabChanged += new System.EventHandler<DevComponents.DotNetBar.SuperTabStripSelectedTabChangedEventArgs>(this.tabMain_SelectedTabChanged);
             // 
-            // tabPanelExamanation
-            // 
-            this.tabPanelExamanation.Controls.Add(this.buttonExaminationPrint);
-            this.tabPanelExamanation.Controls.Add(this.buttonExaminationResult);
-            this.tabPanelExamanation.Controls.Add(this.buttonExaminationDeleteSearch);
-            this.tabPanelExamanation.Controls.Add(this.labelExaminationSearch);
-            this.tabPanelExamanation.Controls.Add(this.textBoxExaminationSearch);
-            this.tabPanelExamanation.Controls.Add(this.dataViewExamination);
-            this.tabPanelExamanation.Controls.Add(this.buttonExaminationEdit);
-            this.tabPanelExamanation.Controls.Add(this.buttonExaminationDelete);
-            this.tabPanelExamanation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPanelExamanation.Location = new System.Drawing.Point(238, 0);
-            this.tabPanelExamanation.Name = "tabPanelExamanation";
-            superTabLinearGradientColorTable3.Colors = new System.Drawing.Color[] {
-        System.Drawing.Color.SkyBlue,
-        System.Drawing.Color.AliceBlue};
-            superTabPanelItemColorTable3.Background = superTabLinearGradientColorTable3;
-            superTabPanelColorTable3.Default = superTabPanelItemColorTable3;
-            this.tabPanelExamanation.PanelColor = superTabPanelColorTable3;
-            this.tabPanelExamanation.Size = new System.Drawing.Size(646, 571);
-            this.tabPanelExamanation.TabIndex = 1;
-            this.tabPanelExamanation.TabItem = this.tabItemExamination;
-            // 
-            // buttonExaminationPrint
-            // 
-            this.buttonExaminationPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonExaminationPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExaminationPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonExaminationPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonExaminationPrint.Image")));
-            this.buttonExaminationPrint.Location = new System.Drawing.Point(101, 536);
-            this.buttonExaminationPrint.Name = "buttonExaminationPrint";
-            this.buttonExaminationPrint.Size = new System.Drawing.Size(75, 23);
-            this.buttonExaminationPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonExaminationPrint.TabIndex = 72;
-            this.buttonExaminationPrint.Text = "In phiếu";
-            this.buttonExaminationPrint.Click += new System.EventHandler(this.buttonExamination_Click);
-            // 
-            // buttonExaminationResult
-            // 
-            this.buttonExaminationResult.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonExaminationResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonExaminationResult.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonExaminationResult.Location = new System.Drawing.Point(20, 536);
-            this.buttonExaminationResult.Name = "buttonExaminationResult";
-            this.buttonExaminationResult.Size = new System.Drawing.Size(75, 23);
-            this.buttonExaminationResult.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonExaminationResult.TabIndex = 71;
-            this.buttonExaminationResult.Text = "Kết quả khám";
-            this.buttonExaminationResult.Click += new System.EventHandler(this.buttonUpdateResult_Click);
-            // 
-            // buttonExaminationDeleteSearch
-            // 
-            this.buttonExaminationDeleteSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonExaminationDeleteSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonExaminationDeleteSearch.Location = new System.Drawing.Point(486, 15);
-            this.buttonExaminationDeleteSearch.Name = "buttonExaminationDeleteSearch";
-            this.buttonExaminationDeleteSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonExaminationDeleteSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonExaminationDeleteSearch.TabIndex = 71;
-            this.buttonExaminationDeleteSearch.Text = "Xóa tìm kiếm";
-            this.buttonExaminationDeleteSearch.Click += new System.EventHandler(this.buttonDeleteExaminationSearch_Click);
-            // 
-            // labelExaminationSearch
-            // 
-            this.labelExaminationSearch.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelExaminationSearch.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelExaminationSearch.Location = new System.Drawing.Point(20, 15);
-            this.labelExaminationSearch.Name = "labelExaminationSearch";
-            this.labelExaminationSearch.Size = new System.Drawing.Size(60, 23);
-            this.labelExaminationSearch.TabIndex = 70;
-            this.labelExaminationSearch.Text = "Tìm kiếm:";
-            // 
-            // textBoxExaminationSearch
-            // 
-            this.textBoxExaminationSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.textBoxExaminationSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            // 
-            // 
-            // 
-            this.textBoxExaminationSearch.Border.Class = "TextBoxBorder";
-            this.textBoxExaminationSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxExaminationSearch.Location = new System.Drawing.Point(86, 18);
-            this.textBoxExaminationSearch.Name = "textBoxExaminationSearch";
-            this.textBoxExaminationSearch.Size = new System.Drawing.Size(394, 20);
-            this.textBoxExaminationSearch.TabIndex = 69;
-            this.textBoxExaminationSearch.TextChanged += new System.EventHandler(this.textBoxExaminationSearch_TextChanged);
-            this.textBoxExaminationSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxExaminationSearch_KeyDown);
-            // 
-            // dataViewExamination
-            // 
-            this.dataViewExamination.AllowUserToAddRows = false;
-            this.dataViewExamination.AllowUserToDeleteRows = false;
-            this.dataViewExamination.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataViewExamination.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataViewExamination.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewExamination.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataViewExamination.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataViewExamination.Location = new System.Drawing.Point(0, 50);
-            this.dataViewExamination.MultiSelect = false;
-            this.dataViewExamination.Name = "dataViewExamination";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataViewExamination.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dataViewExamination.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataViewExamination.Size = new System.Drawing.Size(645, 466);
-            this.dataViewExamination.TabIndex = 68;
-            this.dataViewExamination.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataViewExamination_CellDoubleClick);
-            // 
-            // buttonExaminationEdit
-            // 
-            this.buttonExaminationEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonExaminationEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExaminationEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonExaminationEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonExaminationEdit.Image")));
-            this.buttonExaminationEdit.Location = new System.Drawing.Point(478, 536);
-            this.buttonExaminationEdit.Name = "buttonExaminationEdit";
-            this.buttonExaminationEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonExaminationEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonExaminationEdit.TabIndex = 2;
-            this.buttonExaminationEdit.Text = "Thay đổi";
-            this.buttonExaminationEdit.Click += new System.EventHandler(this.buttonExaminationEdit_Click);
-            // 
-            // buttonExaminationDelete
-            // 
-            this.buttonExaminationDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonExaminationDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonExaminationDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonExaminationDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonExaminationDelete.Image")));
-            this.buttonExaminationDelete.Location = new System.Drawing.Point(397, 536);
-            this.buttonExaminationDelete.Name = "buttonExaminationDelete";
-            this.buttonExaminationDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonExaminationDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonExaminationDelete.TabIndex = 1;
-            this.buttonExaminationDelete.Text = "Xóa";
-            this.buttonExaminationDelete.Click += new System.EventHandler(this.buttonExaminationDelete_Click);
-            // 
-            // tabItemExamination
-            // 
-            this.tabItemExamination.AttachedControl = this.tabPanelExamanation;
-            this.tabItemExamination.GlobalItem = false;
-            this.tabItemExamination.Image = ((System.Drawing.Image)(resources.GetObject("tabItemExamination.Image")));
-            this.tabItemExamination.Name = "tabItemExamination";
-            this.tabItemExamination.Text = "Khám bệnh";
-            this.tabItemExamination.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.tabItemExamination.Visible = false;
-            this.tabItemExamination.Click += new System.EventHandler(this.tabItemExamination_Click);
-            // 
-            // tabPanelBill
-            // 
-            this.tabPanelBill.Controls.Add(this.buttonBILLPrint);
-            this.tabPanelBill.Controls.Add(this.buttonBillDeleteSearch);
-            this.tabPanelBill.Controls.Add(this.labelBillSearch);
-            this.tabPanelBill.Controls.Add(this.textBoxBillSearch);
-            this.tabPanelBill.Controls.Add(this.dataViewBill);
-            this.tabPanelBill.Controls.Add(this.buttonBillEdit);
-            this.tabPanelBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabPanelBill.Location = new System.Drawing.Point(238, 0);
-            this.tabPanelBill.Name = "tabPanelBill";
-            superTabLinearGradientColorTable2.Colors = new System.Drawing.Color[] {
-        System.Drawing.Color.SkyBlue,
-        System.Drawing.Color.AliceBlue};
-            superTabPanelItemColorTable2.Background = superTabLinearGradientColorTable2;
-            superTabPanelColorTable2.Default = superTabPanelItemColorTable2;
-            this.tabPanelBill.PanelColor = superTabPanelColorTable2;
-            this.tabPanelBill.Size = new System.Drawing.Size(646, 571);
-            this.tabPanelBill.TabIndex = 0;
-            this.tabPanelBill.TabItem = this.tabItemBill;
-            // 
-            // buttonBILLPrint
-            // 
-            this.buttonBILLPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonBILLPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBILLPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonBILLPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonBILLPrint.Image")));
-            this.buttonBILLPrint.Location = new System.Drawing.Point(20, 533);
-            this.buttonBILLPrint.Name = "buttonBILLPrint";
-            this.buttonBILLPrint.Size = new System.Drawing.Size(75, 23);
-            this.buttonBILLPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonBILLPrint.TabIndex = 20;
-            this.buttonBILLPrint.Text = "In";
-            this.buttonBILLPrint.Click += new System.EventHandler(this.buttonBILLPrint_Click);
-            // 
-            // buttonBillDeleteSearch
-            // 
-            this.buttonBillDeleteSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonBillDeleteSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonBillDeleteSearch.Location = new System.Drawing.Point(486, 15);
-            this.buttonBillDeleteSearch.Name = "buttonBillDeleteSearch";
-            this.buttonBillDeleteSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonBillDeleteSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonBillDeleteSearch.TabIndex = 19;
-            this.buttonBillDeleteSearch.Text = "Xóa tìm kiếm";
-            this.buttonBillDeleteSearch.Click += new System.EventHandler(this.buttonBillDeleteSearch_Click);
-            // 
-            // labelBillSearch
-            // 
-            this.labelBillSearch.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelBillSearch.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelBillSearch.Location = new System.Drawing.Point(20, 15);
-            this.labelBillSearch.Name = "labelBillSearch";
-            this.labelBillSearch.Size = new System.Drawing.Size(60, 23);
-            this.labelBillSearch.TabIndex = 18;
-            this.labelBillSearch.Text = "Tìm kiếm:";
-            // 
-            // textBoxBillSearch
-            // 
-            // 
-            // 
-            // 
-            this.textBoxBillSearch.Border.Class = "TextBoxBorder";
-            this.textBoxBillSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxBillSearch.Location = new System.Drawing.Point(86, 18);
-            this.textBoxBillSearch.Name = "textBoxBillSearch";
-            this.textBoxBillSearch.Size = new System.Drawing.Size(394, 20);
-            this.textBoxBillSearch.TabIndex = 17;
-            this.textBoxBillSearch.TextChanged += new System.EventHandler(this.textBoxBillSearch_TextChanged);
-            this.textBoxBillSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBillSearch_KeyDown);
-            // 
-            // dataViewBill
-            // 
-            this.dataViewBill.AllowUserToAddRows = false;
-            this.dataViewBill.AllowUserToDeleteRows = false;
-            this.dataViewBill.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataViewBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataViewBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataViewBill.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataViewBill.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dataViewBill.Location = new System.Drawing.Point(0, 50);
-            this.dataViewBill.MultiSelect = false;
-            this.dataViewBill.Name = "dataViewBill";
-            this.dataViewBill.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataViewBill.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataViewBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataViewBill.Size = new System.Drawing.Size(646, 466);
-            this.dataViewBill.TabIndex = 9;
-            // 
-            // buttonBillEdit
-            // 
-            this.buttonBillEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonBillEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBillEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonBillEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonBillEdit.Image")));
-            this.buttonBillEdit.Location = new System.Drawing.Point(556, 536);
-            this.buttonBillEdit.Name = "buttonBillEdit";
-            this.buttonBillEdit.Size = new System.Drawing.Size(75, 23);
-            this.buttonBillEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonBillEdit.TabIndex = 6;
-            this.buttonBillEdit.Text = "Cập nhật";
-            this.buttonBillEdit.Click += new System.EventHandler(this.buttonBillEdit_Click);
-            // 
-            // tabItemBill
-            // 
-            this.tabItemBill.AttachedControl = this.tabPanelBill;
-            this.tabItemBill.GlobalItem = false;
-            this.tabItemBill.Image = ((System.Drawing.Image)(resources.GetObject("tabItemBill.Image")));
-            this.tabItemBill.Name = "tabItemBill";
-            this.tabItemBill.Text = "Hóa đơn";
-            this.tabItemBill.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
-            this.tabItemBill.Visible = false;
-            // 
             // tabPanelPatient
             // 
             this.tabPanelPatient.CanvasColor = System.Drawing.Color.Transparent;
@@ -949,6 +639,19 @@
             this.tabPanelPatient.Size = new System.Drawing.Size(646, 571);
             this.tabPanelPatient.TabIndex = 0;
             this.tabPanelPatient.TabItem = this.tabItemPatient;
+            // 
+            // buttonPatientPay
+            // 
+            this.buttonPatientPay.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonPatientPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPatientPay.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonPatientPay.Location = new System.Drawing.Point(556, 376);
+            this.buttonPatientPay.Name = "buttonPatientPay";
+            this.buttonPatientPay.Size = new System.Drawing.Size(75, 56);
+            this.buttonPatientPay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonPatientPay.TabIndex = 24;
+            this.buttonPatientPay.Text = "Thanh toán viện phí";
+            this.buttonPatientPay.Click += new System.EventHandler(this.buttonPatientPay_Click);
             // 
             // buttonPatientService
             // 
@@ -1064,7 +767,7 @@
             this.buttonPatientSearchDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonPatientSearchDelete.TabIndex = 16;
             this.buttonPatientSearchDelete.Text = "Xóa tìm kiếm";
-            this.buttonPatientSearchDelete.Click += new System.EventHandler(this.buttonPatientDelete_Click);
+            this.buttonPatientSearchDelete.Click += new System.EventHandler(this.buttonPatientSearchDelete_Click);
             // 
             // labelPatientSearch
             // 
@@ -1239,6 +942,316 @@
             this.tabItemPatient.Name = "tabItemPatient";
             this.tabItemPatient.Text = "Bệnh nhân";
             this.tabItemPatient.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            // 
+            // tabPanelBill
+            // 
+            this.tabPanelBill.Controls.Add(this.buttonBILLPrint);
+            this.tabPanelBill.Controls.Add(this.buttonBillDeleteSearch);
+            this.tabPanelBill.Controls.Add(this.labelBillSearch);
+            this.tabPanelBill.Controls.Add(this.textBoxBillSearch);
+            this.tabPanelBill.Controls.Add(this.dataViewBill);
+            this.tabPanelBill.Controls.Add(this.buttonBillEdit);
+            this.tabPanelBill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabPanelBill.Location = new System.Drawing.Point(238, 0);
+            this.tabPanelBill.Name = "tabPanelBill";
+            superTabLinearGradientColorTable2.Colors = new System.Drawing.Color[] {
+        System.Drawing.Color.SkyBlue,
+        System.Drawing.Color.AliceBlue};
+            superTabPanelItemColorTable2.Background = superTabLinearGradientColorTable2;
+            superTabPanelColorTable2.Default = superTabPanelItemColorTable2;
+            this.tabPanelBill.PanelColor = superTabPanelColorTable2;
+            this.tabPanelBill.Size = new System.Drawing.Size(646, 571);
+            this.tabPanelBill.TabIndex = 0;
+            this.tabPanelBill.TabItem = this.tabItemBill;
+            // 
+            // buttonBILLPrint
+            // 
+            this.buttonBILLPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonBILLPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonBILLPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonBILLPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonBILLPrint.Image")));
+            this.buttonBILLPrint.Location = new System.Drawing.Point(20, 533);
+            this.buttonBILLPrint.Name = "buttonBILLPrint";
+            this.buttonBILLPrint.Size = new System.Drawing.Size(75, 23);
+            this.buttonBILLPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonBILLPrint.TabIndex = 20;
+            this.buttonBILLPrint.Text = "In";
+            this.buttonBILLPrint.Click += new System.EventHandler(this.buttonBILLPrint_Click);
+            // 
+            // buttonBillDeleteSearch
+            // 
+            this.buttonBillDeleteSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonBillDeleteSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonBillDeleteSearch.Location = new System.Drawing.Point(486, 15);
+            this.buttonBillDeleteSearch.Name = "buttonBillDeleteSearch";
+            this.buttonBillDeleteSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonBillDeleteSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonBillDeleteSearch.TabIndex = 19;
+            this.buttonBillDeleteSearch.Text = "Xóa tìm kiếm";
+            this.buttonBillDeleteSearch.Click += new System.EventHandler(this.buttonBillDeleteSearch_Click);
+            // 
+            // labelBillSearch
+            // 
+            this.labelBillSearch.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelBillSearch.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelBillSearch.Location = new System.Drawing.Point(20, 15);
+            this.labelBillSearch.Name = "labelBillSearch";
+            this.labelBillSearch.Size = new System.Drawing.Size(60, 23);
+            this.labelBillSearch.TabIndex = 18;
+            this.labelBillSearch.Text = "Tìm kiếm:";
+            // 
+            // textBoxBillSearch
+            // 
+            // 
+            // 
+            // 
+            this.textBoxBillSearch.Border.Class = "TextBoxBorder";
+            this.textBoxBillSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxBillSearch.Location = new System.Drawing.Point(86, 18);
+            this.textBoxBillSearch.Name = "textBoxBillSearch";
+            this.textBoxBillSearch.Size = new System.Drawing.Size(394, 20);
+            this.textBoxBillSearch.TabIndex = 17;
+            this.textBoxBillSearch.TextChanged += new System.EventHandler(this.textBoxBillSearch_TextChanged);
+            this.textBoxBillSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBillSearch_KeyDown);
+            // 
+            // dataViewBill
+            // 
+            this.dataViewBill.AllowUserToAddRows = false;
+            this.dataViewBill.AllowUserToDeleteRows = false;
+            this.dataViewBill.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataViewBill.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataViewBill.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewBill.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataViewBill.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataViewBill.Location = new System.Drawing.Point(0, 50);
+            this.dataViewBill.MultiSelect = false;
+            this.dataViewBill.Name = "dataViewBill";
+            this.dataViewBill.ReadOnly = true;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataViewBill.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataViewBill.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataViewBill.Size = new System.Drawing.Size(646, 466);
+            this.dataViewBill.TabIndex = 9;
+            // 
+            // buttonBillEdit
+            // 
+            this.buttonBillEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonBillEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonBillEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonBillEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonBillEdit.Image")));
+            this.buttonBillEdit.Location = new System.Drawing.Point(556, 536);
+            this.buttonBillEdit.Name = "buttonBillEdit";
+            this.buttonBillEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonBillEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonBillEdit.TabIndex = 6;
+            this.buttonBillEdit.Text = "Cập nhật";
+            this.buttonBillEdit.Click += new System.EventHandler(this.buttonBillEdit_Click);
+            // 
+            // tabItemBill
+            // 
+            this.tabItemBill.AttachedControl = this.tabPanelBill;
+            this.tabItemBill.GlobalItem = false;
+            this.tabItemBill.Image = ((System.Drawing.Image)(resources.GetObject("tabItemBill.Image")));
+            this.tabItemBill.Name = "tabItemBill";
+            this.tabItemBill.Text = "Hóa đơn";
+            this.tabItemBill.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.tabItemBill.Visible = false;
+            // 
+            // tabPanelExamanation
+            // 
+            this.tabPanelExamanation.Controls.Add(this.buttonExaminationPrint);
+            this.tabPanelExamanation.Controls.Add(this.buttonExaminationResult);
+            this.tabPanelExamanation.Controls.Add(this.buttonExaminationDeleteSearch);
+            this.tabPanelExamanation.Controls.Add(this.labelExaminationSearch);
+            this.tabPanelExamanation.Controls.Add(this.textBoxExaminationSearch);
+            this.tabPanelExamanation.Controls.Add(this.dataViewExamination);
+            this.tabPanelExamanation.Controls.Add(this.buttonExaminationEdit);
+            this.tabPanelExamanation.Controls.Add(this.buttonExaminationDelete);
+            this.tabPanelExamanation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabPanelExamanation.Location = new System.Drawing.Point(238, 0);
+            this.tabPanelExamanation.Name = "tabPanelExamanation";
+            superTabLinearGradientColorTable3.Colors = new System.Drawing.Color[] {
+        System.Drawing.Color.SkyBlue,
+        System.Drawing.Color.AliceBlue};
+            superTabPanelItemColorTable3.Background = superTabLinearGradientColorTable3;
+            superTabPanelColorTable3.Default = superTabPanelItemColorTable3;
+            this.tabPanelExamanation.PanelColor = superTabPanelColorTable3;
+            this.tabPanelExamanation.Size = new System.Drawing.Size(646, 571);
+            this.tabPanelExamanation.TabIndex = 1;
+            this.tabPanelExamanation.TabItem = this.tabItemExamination;
+            // 
+            // buttonExaminationPrint
+            // 
+            this.buttonExaminationPrint.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonExaminationPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExaminationPrint.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonExaminationPrint.Image = ((System.Drawing.Image)(resources.GetObject("buttonExaminationPrint.Image")));
+            this.buttonExaminationPrint.Location = new System.Drawing.Point(101, 536);
+            this.buttonExaminationPrint.Name = "buttonExaminationPrint";
+            this.buttonExaminationPrint.Size = new System.Drawing.Size(75, 23);
+            this.buttonExaminationPrint.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonExaminationPrint.TabIndex = 72;
+            this.buttonExaminationPrint.Text = "In phiếu";
+            this.buttonExaminationPrint.Click += new System.EventHandler(this.buttonExamination_Click);
+            // 
+            // buttonExaminationResult
+            // 
+            this.buttonExaminationResult.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonExaminationResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonExaminationResult.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonExaminationResult.Location = new System.Drawing.Point(20, 536);
+            this.buttonExaminationResult.Name = "buttonExaminationResult";
+            this.buttonExaminationResult.Size = new System.Drawing.Size(75, 23);
+            this.buttonExaminationResult.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonExaminationResult.TabIndex = 71;
+            this.buttonExaminationResult.Text = "Kết quả khám";
+            this.buttonExaminationResult.Click += new System.EventHandler(this.buttonUpdateResult_Click);
+            // 
+            // buttonExaminationDeleteSearch
+            // 
+            this.buttonExaminationDeleteSearch.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonExaminationDeleteSearch.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonExaminationDeleteSearch.Location = new System.Drawing.Point(486, 15);
+            this.buttonExaminationDeleteSearch.Name = "buttonExaminationDeleteSearch";
+            this.buttonExaminationDeleteSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonExaminationDeleteSearch.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonExaminationDeleteSearch.TabIndex = 71;
+            this.buttonExaminationDeleteSearch.Text = "Xóa tìm kiếm";
+            this.buttonExaminationDeleteSearch.Click += new System.EventHandler(this.buttonDeleteExaminationSearch_Click);
+            // 
+            // labelExaminationSearch
+            // 
+            this.labelExaminationSearch.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelExaminationSearch.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelExaminationSearch.Location = new System.Drawing.Point(20, 15);
+            this.labelExaminationSearch.Name = "labelExaminationSearch";
+            this.labelExaminationSearch.Size = new System.Drawing.Size(60, 23);
+            this.labelExaminationSearch.TabIndex = 70;
+            this.labelExaminationSearch.Text = "Tìm kiếm:";
+            // 
+            // textBoxExaminationSearch
+            // 
+            this.textBoxExaminationSearch.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBoxExaminationSearch.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            // 
+            // 
+            // 
+            this.textBoxExaminationSearch.Border.Class = "TextBoxBorder";
+            this.textBoxExaminationSearch.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxExaminationSearch.Location = new System.Drawing.Point(86, 18);
+            this.textBoxExaminationSearch.Name = "textBoxExaminationSearch";
+            this.textBoxExaminationSearch.Size = new System.Drawing.Size(394, 20);
+            this.textBoxExaminationSearch.TabIndex = 69;
+            this.textBoxExaminationSearch.TextChanged += new System.EventHandler(this.textBoxExaminationSearch_TextChanged);
+            this.textBoxExaminationSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxExaminationSearch_KeyDown);
+            // 
+            // dataViewExamination
+            // 
+            this.dataViewExamination.AllowUserToAddRows = false;
+            this.dataViewExamination.AllowUserToDeleteRows = false;
+            this.dataViewExamination.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataViewExamination.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dataViewExamination.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataViewExamination.DefaultCellStyle = dataGridViewCellStyle8;
+            this.dataViewExamination.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dataViewExamination.Location = new System.Drawing.Point(0, 50);
+            this.dataViewExamination.MultiSelect = false;
+            this.dataViewExamination.Name = "dataViewExamination";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataViewExamination.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dataViewExamination.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataViewExamination.Size = new System.Drawing.Size(645, 466);
+            this.dataViewExamination.TabIndex = 68;
+            this.dataViewExamination.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataViewExamination_CellDoubleClick);
+            // 
+            // buttonExaminationEdit
+            // 
+            this.buttonExaminationEdit.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonExaminationEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExaminationEdit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonExaminationEdit.Image = ((System.Drawing.Image)(resources.GetObject("buttonExaminationEdit.Image")));
+            this.buttonExaminationEdit.Location = new System.Drawing.Point(478, 536);
+            this.buttonExaminationEdit.Name = "buttonExaminationEdit";
+            this.buttonExaminationEdit.Size = new System.Drawing.Size(75, 23);
+            this.buttonExaminationEdit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonExaminationEdit.TabIndex = 2;
+            this.buttonExaminationEdit.Text = "Thay đổi";
+            this.buttonExaminationEdit.Click += new System.EventHandler(this.buttonExaminationEdit_Click);
+            // 
+            // buttonExaminationDelete
+            // 
+            this.buttonExaminationDelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonExaminationDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonExaminationDelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonExaminationDelete.Image = ((System.Drawing.Image)(resources.GetObject("buttonExaminationDelete.Image")));
+            this.buttonExaminationDelete.Location = new System.Drawing.Point(397, 536);
+            this.buttonExaminationDelete.Name = "buttonExaminationDelete";
+            this.buttonExaminationDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonExaminationDelete.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonExaminationDelete.TabIndex = 1;
+            this.buttonExaminationDelete.Text = "Xóa";
+            this.buttonExaminationDelete.Click += new System.EventHandler(this.buttonExaminationDelete_Click);
+            // 
+            // tabItemExamination
+            // 
+            this.tabItemExamination.AttachedControl = this.tabPanelExamanation;
+            this.tabItemExamination.GlobalItem = false;
+            this.tabItemExamination.Image = ((System.Drawing.Image)(resources.GetObject("tabItemExamination.Image")));
+            this.tabItemExamination.Name = "tabItemExamination";
+            this.tabItemExamination.Text = "Khám bệnh";
+            this.tabItemExamination.TextAlignment = DevComponents.DotNetBar.eItemAlignment.Center;
+            this.tabItemExamination.Visible = false;
+            this.tabItemExamination.Click += new System.EventHandler(this.tabItemExamination_Click);
             // 
             // tabPanelHealthFile
             // 
@@ -4498,19 +4511,6 @@
             this.tabItemMonitor.Visible = false;
             this.tabItemMonitor.Click += new System.EventHandler(this.tabItemMonitor_Click);
             // 
-            // buttonPatientPay
-            // 
-            this.buttonPatientPay.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonPatientPay.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPatientPay.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonPatientPay.Location = new System.Drawing.Point(556, 376);
-            this.buttonPatientPay.Name = "buttonPatientPay";
-            this.buttonPatientPay.Size = new System.Drawing.Size(75, 56);
-            this.buttonPatientPay.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonPatientPay.TabIndex = 24;
-            this.buttonPatientPay.Text = "Thanh toán viện phí";
-            this.buttonPatientPay.Click += new System.EventHandler(this.buttonPatientPay_Click);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4525,12 +4525,12 @@
             this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tabMain)).EndInit();
             this.tabMain.ResumeLayout(false);
-            this.tabPanelExamanation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewExamination)).EndInit();
-            this.tabPanelBill.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataViewBill)).EndInit();
             this.tabPanelPatient.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewPatient)).EndInit();
+            this.tabPanelBill.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewBill)).EndInit();
+            this.tabPanelExamanation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataViewExamination)).EndInit();
             this.tabPanelHealthFile.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataViewHeathFile)).EndInit();
             this.tabPanelStatistics.ResumeLayout(false);

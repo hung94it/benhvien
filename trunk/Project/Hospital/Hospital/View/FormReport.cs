@@ -65,7 +65,7 @@ namespace Hospital.View
                     break;
                 case "MATERIALBILL":
                     ReportTableAdapters.MATERIALBILLTableAdapter METERIALBILLTableAdapter = new ReportTableAdapters.MATERIALBILLTableAdapter();
-                    METERIALBILLTableAdapter.Fill(reportDataset.MATERIALBILL, 10000002);
+                    METERIALBILLTableAdapter.Fill(reportDataset.MATERIALBILL, this.ObjectID);
 
                     this.reportDataSource.Name = "MATERIALBILL";
                     this.reportDataSource.Value = this.reportDataset.MATERIALBILL;
@@ -124,6 +124,11 @@ namespace Hospital.View
 
             //this.reportViewer1.LocalReport.DataSources.Add(this.reportDataSource);
             //this.reportViewer1.RefreshReport();
+        }
+
+        private void FormReport_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            reportViewer1.LocalReport.ReleaseSandboxAppDomain();
         }
     }
 }

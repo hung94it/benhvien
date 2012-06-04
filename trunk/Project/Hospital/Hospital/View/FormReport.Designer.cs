@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
@@ -40,14 +39,15 @@
             this.reportViewer1.Size = new System.Drawing.Size(613, 403);
             this.reportViewer1.TabIndex = 0;
             // 
-            // Form1
+            // FormReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 403);
             this.Controls.Add(this.reportViewer1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "FormReport";
+            this.Text = "Báo cáo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormReport_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 

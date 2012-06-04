@@ -112,7 +112,7 @@
             // 
             this.buttonOk.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonOk.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonOk.Location = new System.Drawing.Point(237, 181);
+            this.buttonOk.Location = new System.Drawing.Point(250, 181);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -124,7 +124,7 @@
             // 
             this.buttonClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.buttonClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonClose.Location = new System.Drawing.Point(329, 181);
+            this.buttonClose.Location = new System.Drawing.Point(331, 181);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(75, 23);
             this.buttonClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -363,7 +363,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 232);
+            this.ClientSize = new System.Drawing.Size(460, 241);
             this.Controls.Add(this.groupPanel1);
             this.Name = "FormECDetail";
             this.Text = "Thông tin phiếu khám bệnh";

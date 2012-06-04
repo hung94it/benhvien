@@ -17,5 +17,10 @@ namespace Hospital.View
             InitializeComponent();
             //FormBillDetail ew = new FormBillDetail("insertExamination", new Bill(Bill.MEDICINEBILL, patientID, staffID);
         }
+
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

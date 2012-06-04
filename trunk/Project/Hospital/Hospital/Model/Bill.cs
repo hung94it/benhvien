@@ -61,11 +61,12 @@ namespace Hospital.Model
         public static int UpdateBill(Bill updateBill)
         {
             string sqlUpdate = @"UPDATE     BILL
-                                SET         STATE = @STATE
+                                SET         STATE = @STATE, TOTALPRICE = @TOTALPRICE
                                 WHERE       BILLID=@BILLID";
 
             SqlParameter[] sqlParameters = { new SqlParameter("@BILLID", updateBill.BillID),
-                                           new SqlParameter("@STATE",updateBill.State)};
+                                           new SqlParameter("@STATE",updateBill.State),
+                                           new SqlParameter("@TOTALPRICE",updateBill.TotalPrice)};
 
             return SqlResult.ExecuteNonQuery(sqlUpdate, sqlParameters);
         }
@@ -118,6 +119,14 @@ namespace Hospital.Model
             return Convert.ToInt32(SqlResult.ExecuteScalar(sqlSelect));
         }
 
+        // Get current identity bill ID in database
+        public static int GetCurrentBillID()
+        {
+            string sqlSelect = @"SELECT IDENT_CURRENT('BILL') as CURRENTIDENTITY";
+
+            return Convert.ToInt32(SqlResult.ExecuteScalar(sqlSelect));
+        }
+
         public static Bill GetBill(int billID)
         {
             Bill newBill = new Bill();
@@ -147,7 +156,7 @@ namespace Hospital.Model
             DataTable dtPatientBill = Bill.GetPatientBill(patientID);
             for (int i = 0; i < dtPatientBill.Rows.Count; i++)
             { 
-                int billState=Convert.ToInt16(dtPatientBill.Rows[i][6]);
+                int billState=Convert.ToInt32(dtPatientBill.Rows[i][6]);
                 if( billState == 0)
                     return false;
             }
@@ -166,6 +175,22 @@ namespace Hospital.Model
             patientBillTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
 
             return patientBillTable;
+        }
+
+        // Get total price patient has not pay yet
+        public static decimal GetPatientPriceNeedPay(int patientID)
+        {
+            decimal totalPrice = new decimal();
+
+            DataTable patientBillTable = new DataTable();
+            string sqlSelect = @"SELECT Sum(TOTALPRICE)
+                                FROM    BILL
+                                WHERE   (PATIENTID=@PATIENTID) AND STATE = 0";
+
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", patientID) };
+
+            decimal.TryParse(SqlResult.ExecuteScalar(sqlSelect, sqlParameters).ToString(), out totalPrice);
+            return totalPrice;
         }
     }
 }

@@ -75,5 +75,24 @@ namespace Hospital.Model
             }
             return newService;
         }
+
+        public static Service GetServiceExamination()
+        {
+            Service newService = new Service();
+            int tempInterger;
+            string sqlSelect = @"SELECT        SERVICEID, SERVICENAME, PRICE
+                                FROM            SERVICE
+                                WHERE        SERVICEID=100";
+ 
+            DataTable dataTable = SqlResult.ExecuteQuery(sqlSelect);
+            if (dataTable.Rows.Count > 0)
+            {
+                int.TryParse(dataTable.Rows[0][0].ToString(), out tempInterger);
+                newService.ServiceID = tempInterger;
+                newService.ServiceName = dataTable.Rows[0][1].ToString();
+                newService.Price = (decimal)dataTable.Rows[0][2];
+            }
+            return newService;
+        }
     }
 }

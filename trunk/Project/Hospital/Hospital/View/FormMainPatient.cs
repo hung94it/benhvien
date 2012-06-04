@@ -230,6 +230,7 @@ namespace Hospital.View
                 int staffID = loginStaff.StaffID;
 
                 FormECDetail formECD = new FormECDetail(staffID, patientID);
+                formECD.LoginStaff = this.loginStaff;
                 formECD.ShowDialog();
             }
 
@@ -409,11 +410,20 @@ namespace Hospital.View
 
         private void buttonPatientPay_Click(object sender, EventArgs e)
         {
+            
             if (dataViewPatient.SelectedRows.Count > 0)
             {
-                FormPayment paymentform = new FormPayment();
-                paymentform.patient = Patient.GetPatient(Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value));
-                paymentform.ShowDialog();
+                int state = Patient.GetPatient(Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value)).State;
+                if (state == 1)
+                {
+                    FormPayment paymentform = new FormPayment();
+                    paymentform.patient = Patient.GetPatient(Convert.ToInt32(dataViewPatient.SelectedRows[0].Cells[0].Value));
+                    paymentform.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Chỉ thanh toán viện phí cho bệnh nhân nhập viện", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }            
         }
 
