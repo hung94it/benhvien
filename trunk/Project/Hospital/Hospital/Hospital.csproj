@@ -127,7 +127,22 @@
     <Compile Include="Model\TestType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report.cs">
+      <DependentUpon>Report.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Report.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="View\FormReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormReport.Designer.cs">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +372,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Report\EC.rdlc" />
+    <EmbeddedResource Include="Report\MATERIALBILL.rdlc" />
+    <EmbeddedResource Include="Report\MEDICINEBILL.rdlc" />
+    <EmbeddedResource Include="Report\REVENUEBYDAY.rdlc" />
+    <EmbeddedResource Include="Report\REVENUEBYMONTH.rdlc" />
+    <EmbeddedResource Include="Report\REVENUEBYYEAR.rdlc" />
+    <EmbeddedResource Include="Report\SERVICEBILL.rdlc" />
+    <EmbeddedResource Include="View\FormReport.resx">
+      <DependentUpon>FormReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormAssignDetail.resx">
       <DependentUpon>FormAssignDetail.cs</DependentUpon>
     </EmbeddedResource>
@@ -444,9 +469,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Report.xsc">
+      <DependentUpon>Report.xsd</DependentUpon>
+    </None>
+    <None Include="Report.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Report.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report.xss">
+      <DependentUpon>Report.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Report\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>

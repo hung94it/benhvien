@@ -36,8 +36,32 @@ namespace Hospital.View
             this.Close();
         }
 
+        private void buttonStatisticsReport_Click(object sender, EventArgs e)
+        {
+            FormReport reportForm = new FormReport();
 
-        
+            switch (comboBoxStatisticsType.SelectedIndex)
+            { 
+                case 0:
+                    reportForm.ReportType = "REVENUEBYDAY";                    
+                    break;
+                case 1:
+                    reportForm.ReportType = "REVENUEBYMONTH";
+                    break;
+                case 2:
+                    reportForm.ReportType = "REVENUEBYYEAR";
+                    break;
+                default:
+                    MessageBox.Show("Chọn loại thống kê!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+            }
+
+            reportForm.DATEFROM = dateTimeInputStatisticsDateFrom.Value;
+            reportForm.DATETO = dateTimeInputStatisticsDateTo.Value;
+            reportForm.Show();
+        }
+
+
 
      }
 }

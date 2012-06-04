@@ -20,16 +20,20 @@ namespace Hospital
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Test login
-            //Staff loginStaff = Staff.GetStaff(10000000);
-            // Main form here
+
             Application.Run(new FormLogin());
 
             // Test
             //Bill newBill = Bill.GetBill(10000017);            
             //Patient patient = Patient.GetPatient(10000000);
             //Application.Run(new FormBillDetail("edit", newBill));
-            //Application.Run(new Form1());
+            FormReport test = new FormReport();
+            test.ReportType = "REVENUEBYDAY";
+            test.ObjectID = 10000001;
+            test.DATEFROM = new DateTime(2012, 5, 30);
+            test.DATETO = new DateTime(2012, 6, 4);
+            //Application.Run(test);
+            //Application.Run(new Form2());
         }
 
         //static void Application_ThreadException(
