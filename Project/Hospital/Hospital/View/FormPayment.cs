@@ -8,12 +8,14 @@ using System.Text;
 using System.Windows.Forms;
 using Hospital.Model;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace Hospital.View
 {
     public partial class FormPayment : Form
     {
         public Patient patient { get; set; }
+        public int HICID { get; set; }
 
         public FormPayment()
         {
@@ -21,9 +23,38 @@ namespace Hospital.View
         }
 
         private void refreshDataViewBill()
-        {
+        {            
             try
             {
+                decimal totalPrice = Bill.GetPatientPriceNeedPay(patient.PatientID);
+
+                if (HIC.CheckHIC(patient.PatientID))
+                {
+                    HIC newHIC = HIC.GetPatientHIC(patient.PatientID);
+                    if (HIC.CheckHICExpiration(newHIC.HICID))
+                    {
+                        labelHICID.Text = "Đã hết hạn";
+                        this.HICID = 0;
+                    }
+                    else
+                    {
+                        labelHICID.Text = "Còn hạn sử dụng";
+                        this.HICID = newHIC.HICID;
+                    }
+                }
+                else
+                {
+                    labelHICID.Text = "Không có";
+                    this.HICID = 0;
+                }
+
+                if (HICID != 0)
+                {
+                    totalPrice = totalPrice / 4;
+                }
+
+                labelTotalPrice.Text = totalPrice.ToString("C", CultureInfo.CreateSpecificCulture("vi"));
+
                 // Get Bill's datatable
                 DataTable billTable = Bill.GetPatientNotPayBill(patient.PatientID);
 
@@ -48,38 +79,6 @@ namespace Hospital.View
             catch (SqlException exception)
             {
                 MessageBox.Show("Lỗi dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void buttonPrint_Click(object sender, EventArgs e)
-        {
-            if (dataViewBill.SelectedRows.Count > 0)
-            {
-                // Get bill for print
-                Bill billDetail = Bill.GetBill(Convert.ToInt32(dataViewBill.SelectedRows[0].Cells[0].Value.ToString()));
-
-                FormReport reportForm = new FormReport();
-
-                switch (billDetail.BillTypeID)
-                {
-                    case Bill.MEDICINEBILL:
-                        reportForm.ReportType = "MEDICINEBILL";
-                        reportForm.ObjectID = billDetail.BillID;
-                        break;
-                    case Bill.SERVICEBILL:
-                        reportForm.ReportType = "SERVICEBILL";
-                        reportForm.ObjectID = billDetail.BillID;
-                        break;
-                    case Bill.MATERIALBILL:
-                        reportForm.ReportType = "MATERIALBILL";
-                        reportForm.ObjectID = billDetail.BillID;
-                        break;
-                    default:
-                        MessageBox.Show("Vui lòng chọn hóa đơn để in!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                }
-
-                reportForm.Show();
             }
         }
 

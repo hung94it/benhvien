@@ -15,7 +15,8 @@ namespace Hospital.View
     {
         public ExaminationCertificate ECDetail { get; set; }
         public String UserAction { get; set; }
-        
+        public Staff LoginStaff { get; set; }
+
         public FormECDetail()
         {
             InitializeComponent();
@@ -41,17 +42,17 @@ namespace Hospital.View
             this.UserAction = userAction;
             SetECDetail(ecDetail);
         }
-        public FormECDetail(ExaminationCertificate ecDetail, String userAction,int staffID)
+        public FormECDetail(ExaminationCertificate ecDetail, String userAction, int staffID)
         {
             InitializeComponent();
             this.ECDetail = ecDetail;
             this.UserAction = userAction;
-            SetECDetail(ecDetail,staffID);
+            SetECDetail(ecDetail, staffID);
         }
         //This method is for update
         private void SetECDetail(ExaminationCertificate ecDetail)
         {
-            textBoxECID.Text = ecDetail.ECID.ToString();;
+            textBoxECID.Text = ecDetail.ECID.ToString(); ;
             textBoxPatientID.Text = ecDetail.PatientID.ToString();
             textBoxStaffID.Text = ecDetail.StaffID.ToString();
             dateCreate.Value = ecDetail.Date;
@@ -61,7 +62,7 @@ namespace Hospital.View
             comboBoxState.SelectedIndex = ecDetail.State;
         }
         //This method is for update result
-        private void SetECDetail(ExaminationCertificate ecDetail,int staffID)
+        private void SetECDetail(ExaminationCertificate ecDetail, int staffID)
         {
             textBoxECID.Text = ecDetail.ECID.ToString(); ;
             textBoxPatientID.Text = ecDetail.PatientID.ToString();
@@ -84,50 +85,64 @@ namespace Hospital.View
             {
 
                 if (!superValidator1.Validate())
+                {
                     return;
-                    if (this.UserAction.Equals("edit"))
+                }
+                if (this.UserAction.Equals("edit"))
+                {
+                    ExaminationCertificate newEC = new ExaminationCertificate();
+                    newEC = this.ECDetail;
+                    newEC.Result = textBoxResult.Text;
+                    newEC.State = comboBoxState.SelectedIndex;
+                    newEC.Date = dateCreate.Value;
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin phiếu khám bệnh", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        ExaminationCertificate newEC = new ExaminationCertificate();
-                        newEC = this.ECDetail;
-                        newEC.Result = textBoxResult.Text;
-                        newEC.State = comboBoxState.SelectedIndex;
-                        newEC.Date = dateCreate.Value;
-                        DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhập thông tin phiếu khám bệnh", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                        if (dialogResult == DialogResult.Yes)
-                        {
-                            if (ExaminationCertificate.UpdateEC(newEC) > 0)
-                                MessageBox.Show("Cập nhập thông tin phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        
-                        
-                        
-                    }
-                    else if (this.UserAction == "updateResult")
-                    {
-                        ExaminationCertificate newEC = new ExaminationCertificate();
-                        newEC.ECID = Convert.ToInt32(textBoxECID.Text);
-                        newEC.PatientID = Convert.ToInt32(textBoxPatientID.Text);
-                        newEC.StaffID = Convert.ToInt32(textBoxStaffID.Text);
-                        newEC.State = 1;
-                        newEC.Date = dateCreate.Value;
-                        newEC.Result = textBoxResult.Text;
                         if (ExaminationCertificate.UpdateEC(newEC) > 0)
-                            MessageBox.Show("Cập nhập kết quả khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Cập nhập thông tin phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else
+
+                }
+                else if (this.UserAction == "updateResult")
+                {
+                    ExaminationCertificate newEC = new ExaminationCertificate();
+                    newEC.ECID = Convert.ToInt32(textBoxECID.Text);
+                    newEC.PatientID = Convert.ToInt32(textBoxPatientID.Text);
+                    newEC.StaffID = Convert.ToInt32(textBoxStaffID.Text);
+                    newEC.State = 1;
+                    newEC.Date = dateCreate.Value;
+                    newEC.Result = textBoxResult.Text;
+                    if (ExaminationCertificate.UpdateEC(newEC) > 0)
+                        MessageBox.Show("Cập nhập kết quả khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    ExaminationCertificate newEC = new ExaminationCertificate();
+                    newEC.ECID = 0;
+                    newEC.PatientID = Convert.ToInt32(textBoxPatientID.Text);
+                    newEC.StaffID = Convert.ToInt32(textBoxStaffID.Text);
+                    newEC.State = comboBoxState.SelectedIndex;
+                    newEC.Date = dateCreate.Value;
+                    newEC.Result = textBoxResult.Text;
+                    if (ExaminationCertificate.InsertEC(newEC) > 0)
                     {
-                        ExaminationCertificate newEC = new ExaminationCertificate();
-                        newEC.ECID = 0;
-                        newEC.PatientID = Convert.ToInt32(textBoxPatientID.Text);
-                        newEC.StaffID = Convert.ToInt32(textBoxStaffID.Text);
-                        newEC.State = comboBoxState.SelectedIndex;
-                        newEC.Date = dateCreate.Value;
-                        newEC.Result = textBoxResult.Text;
-                        if (ExaminationCertificate.InsertEC(newEC) > 0)
-                            MessageBox.Show("Thêm phiếu khám bệnh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        FormReport reportForm = new FormReport();
+
+                        reportForm.ReportType = "EC";
+                        reportForm.ObjectID = ExaminationCertificate.GetCurrentECID();
+                        reportForm.ShowDialog();
+
+                        int patientID = newEC.PatientID;
+                        //Current user
+                        int staffID = LoginStaff.StaffID;
+
+                        Bill newBill = new Bill(Bill.SERVICEBILL, patientID, staffID);
+                        FormBillDetail billDetailForm = new FormBillDetail("insertExamination", newBill);
+                        billDetailForm.ShowDialog();
                     }
-                
-                
+                }
+
+
             }
             catch
             {
@@ -135,5 +150,6 @@ namespace Hospital.View
             }
             this.Close();
         }
+
     }
 }

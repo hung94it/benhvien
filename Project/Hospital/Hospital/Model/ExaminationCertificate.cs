@@ -88,5 +88,13 @@ namespace Hospital.Model
             }
             return newEC;
         }
+
+        public static int GetCurrentECID()
+        {
+            string sqlSelect = @"SELECT IDENT_CURRENT('EXAMINATIONCERTIFICATE') as CURRENTIDENTITY";
+
+            return Convert.ToInt32(SqlResult.ExecuteScalar(sqlSelect));
+        }
+
     }
 }
