@@ -46,6 +46,8 @@
             this.textBoxPatientID = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelPatientID = new DevComponents.DotNetBar.LabelX();
             this.comboBoxState = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
             this.labelState = new DevComponents.DotNetBar.LabelX();
             this.comboBoxGender = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItemMale = new DevComponents.Editors.ComboItem();
@@ -59,11 +61,10 @@
             this.requiredFieldValidator1 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Tên chỉ gồm các kí tự");
             this.requiredFieldValidator2 = new DevComponents.DotNetBar.Validator.RequiredFieldValidator("Họ chỉ gồm các kí tự");
             this.regularExpressionValidator1 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
+            this.regularExpressionValidator2 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.highlighter1 = new DevComponents.DotNetBar.Validator.Highlighter();
-            this.comboItem1 = new DevComponents.Editors.ComboItem();
-            this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.regularExpressionValidator2 = new DevComponents.DotNetBar.Validator.RegularExpressionValidator();
+            this.rangeValidator1 = new DevComponents.DotNetBar.Validator.RangeValidator();
             ((System.ComponentModel.ISupportInitialize)(this.dateBirthday)).BeginInit();
             this.groupPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -271,6 +272,7 @@
             this.textBoxIdentityCard.Size = new System.Drawing.Size(348, 20);
             this.textBoxIdentityCard.TabIndex = 2;
             this.superValidator1.SetValidator1(this.textBoxIdentityCard, this.regularExpressionValidator1);
+            this.superValidator1.SetValidator2(this.textBoxIdentityCard, this.rangeValidator1);
             // 
             // textBoxPatientID
             // 
@@ -313,6 +315,14 @@
             this.comboBoxState.Size = new System.Drawing.Size(240, 20);
             this.comboBoxState.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.comboBoxState.TabIndex = 8;
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "Ngoại trú";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "Nội trú";
             // 
             // labelState
             // 
@@ -360,6 +370,7 @@
             this.textBoxDeposit.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.textBoxDeposit.Location = new System.Drawing.Point(96, 293);
             this.textBoxDeposit.Name = "textBoxDeposit";
+            this.textBoxDeposit.ReadOnly = true;
             this.textBoxDeposit.Size = new System.Drawing.Size(348, 20);
             this.textBoxDeposit.TabIndex = 7;
             this.superValidator1.SetValidator1(this.textBoxDeposit, this.regularExpressionValidator2);
@@ -485,6 +496,13 @@
             this.regularExpressionValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
             this.regularExpressionValidator1.ValidationExpression = "[1-9]\\d{8}";
             // 
+            // regularExpressionValidator2
+            // 
+            this.regularExpressionValidator2.EmptyValueIsValid = true;
+            this.regularExpressionValidator2.ErrorMessage = "Nhập số tiền";
+            this.regularExpressionValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.regularExpressionValidator2.ValidationExpression = "[1-9]\\d+";
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
@@ -494,20 +512,12 @@
             // 
             this.highlighter1.ContainerControl = this;
             // 
-            // comboItem1
+            // rangeValidator1
             // 
-            this.comboItem1.Text = "Ngoại trú";
-            // 
-            // comboItem2
-            // 
-            this.comboItem2.Text = "Nội trú";
-            // 
-            // regularExpressionValidator2
-            // 
-            this.regularExpressionValidator2.EmptyValueIsValid = true;
-            this.regularExpressionValidator2.ErrorMessage = "Nhập số tiền";
-            this.regularExpressionValidator2.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
-            this.regularExpressionValidator2.ValidationExpression = "[1-9]\\d+";
+            this.rangeValidator1.ErrorMessage = "Nhập 9 số CMND";
+            this.rangeValidator1.HighlightColor = DevComponents.DotNetBar.Validator.eHighlightColor.Red;
+            this.rangeValidator1.MaximumValue = "999999999";
+            this.rangeValidator1.MinimumValue = "100000000";
             // 
             // FormPatientDetail
             // 
@@ -561,5 +571,6 @@
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
         private DevComponents.DotNetBar.Validator.RegularExpressionValidator regularExpressionValidator2;
+        private DevComponents.DotNetBar.Validator.RangeValidator rangeValidator1;
     }
 }
