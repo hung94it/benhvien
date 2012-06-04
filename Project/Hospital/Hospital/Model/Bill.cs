@@ -153,5 +153,19 @@ namespace Hospital.Model
             }
             return true;
         }
+
+        public static DataTable GetPatientNotPayBill(int patientID)
+        {
+            DataTable patientBillTable = new DataTable();
+            string sqlSelect = @"SELECT BILLID, BILLTYPEID, PATIENTID, STAFFID, DATE, TOTALPRICE, STATE
+                                FROM    BILL
+                                WHERE   (PATIENTID=@PATIENTID) AND STATE = 0";
+
+            SqlParameter[] sqlParameters = { new SqlParameter("@PATIENTID", patientID) };
+
+            patientBillTable = SqlResult.ExecuteQuery(sqlSelect, sqlParameters);
+
+            return patientBillTable;
+        }
     }
 }

@@ -1,35 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
-using Hospital.Model;
-using System.Data;
-using System.Data.SqlClient;
 using System.Windows.Forms;
+using Hospital.Model;
+using System.Data.SqlClient;
 
 namespace Hospital.View
 {
-    public partial class FormMain
+    public partial class FormPayment : Form
     {
-        private void buttonBillEdit_Click(object sender, EventArgs e)
+        public Patient patient { get; set; }
+
+        public FormPayment()
         {
-            if (dataViewBill.SelectedRows.Count > 0)
-            {
-                // Get bill for edit
-                Bill billDetail = Bill.GetBill(Convert.ToInt32(dataViewBill.SelectedRows[0].Cells[0].Value.ToString()));
-
-                // Open billdetail form for edit
-                FormBillDetail billDetailForm = new FormBillDetail("edit", billDetail);
-                billDetailForm.ShowDialog();
-
-                // Refresh datagridview after edit
-                refreshDataViewBill();
-            }
-        }
-
-        private void buttonBillDeleteSearch_Click(object sender, EventArgs e)
-        {
-            textBoxBillSearch.Text = "";
+            InitializeComponent();
         }
 
         private void refreshDataViewBill()
@@ -37,25 +25,22 @@ namespace Hospital.View
             try
             {
                 // Get Bill's datatable
-                DataTable billTable = Bill.GetListBill();
+                DataTable billTable = Bill.GetPatientNotPayBill(patient.PatientID);
 
                 // Add Vietnamese column's name
                 billTable.Columns.Add("Mã hóa đơn", typeof(string), "[BILLID]");
                 billTable.Columns.Add("Loại hóa đơn", typeof(string), @"IIF([BILLTYPEID] = 100, 'Thuốc',
                                                                             IIF([BILLTYPEID] = 101, 'Dịch vụ', 'Đồ dùng'))");
-                billTable.Columns.Add("Họ tên bệnh nhân", typeof(string), "[PATIENTLASTNAME] + ' ' + [PATIENTFIRSTNAME]");
                 billTable.Columns.Add("Ngày lập", typeof(DateTime), "[DATE]");
                 billTable.Columns.Add("Tổng tiền", typeof(decimal), "[TOTALPRICE]");
                 billTable.Columns.Add("Trạng thái", typeof(string), "IIF([STATE] = 0, 'Chưa thanh toán', 'Đã thanh toán')");
                 billTable.Columns.Add("Mã nhân viên", typeof(string), "[STAFFID]");
-                billTable.Columns.Add("Họ tên nhân viên", typeof(string), "[STAFFLASTNAME] + ' ' + [STAFFFIRSTNAME]");
-                billTable.Columns.Add("Mã bệnh nhân", typeof(string), "[PATIENTID]");
 
                 // Set data source to dataview for searching
                 dataViewBill.DataSource = billTable.DefaultView;
 
                 //Hide English columns'name
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < 7; i++)
                 {
                     dataViewBill.Columns[i].Visible = false;
                 }
@@ -66,37 +51,7 @@ namespace Hospital.View
             }
         }
 
-        private void textBoxBillSearch_TextChanged(object sender, EventArgs e)
-        {
-            searchBill();
-        }
-
-        private void textBoxBillSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                searchBill();
-            }
-        }
-
-        private void searchBill()
-        {
-            // Not search it search string is empty
-            if (textBoxBillSearch.Text != "")
-            {
-                // Search with RowFilter
-                ((DataView)dataViewBill.DataSource).RowFilter = "[Họ tên bệnh nhân] LIKE '*" + textBoxBillSearch.Text.Trim() + "*'"
-                                                                + "OR [Mã bệnh nhân] LIKE '*" + textBoxBillSearch.Text.Trim() + "*'"
-                                                                + "OR [Họ tên nhân viên] LIKE '*" + textBoxBillSearch.Text.Trim() + "*'"
-                                                                + "OR [Mã nhân viên] LIKE '*" + textBoxBillSearch.Text.Trim() + "*'";
-            }
-            else
-            {
-                ((DataView)dataViewBill.DataSource).RowFilter = "";
-            }
-        }
-
-        private void buttonBILLPrint_Click(object sender, EventArgs e)
+        private void buttonPrint_Click(object sender, EventArgs e)
         {
             if (dataViewBill.SelectedRows.Count > 0)
             {
@@ -125,8 +80,28 @@ namespace Hospital.View
                 }
 
                 reportForm.Show();
-
             }
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            // Get bill for edit
+            Bill billDetail = Bill.GetBill(Convert.ToInt32(dataViewBill.SelectedRows[0].Cells[0].Value.ToString()));
+
+            // Open billdetail form for edit
+            FormBillDetail billDetailForm = new FormBillDetail("edit", billDetail);
+            billDetailForm.ShowDialog();
+
+            // Refresh datagridview after edit
+            refreshDataViewBill();
+        }
+
+        private void FormPayment_Load(object sender, EventArgs e)
+        {
+            textBoxPatientID.Text = patient.PatientID.ToString();
+            textBoxPatientName.Text = patient.LastName + " " + patient.FirstName;
+
+            refreshDataViewBill();
         }
     }
 }

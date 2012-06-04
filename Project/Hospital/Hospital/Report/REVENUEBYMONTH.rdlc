@@ -622,7 +622,7 @@
                   <GroupExpression>=IIf(Fields!BILLTYPEID.Value = 100, "Thuốc", IIf(Fields!BILLTYPEID.Value = 101, "Dịch vụ", "Vật tư"))</GroupExpression>
                 </GroupExpressions>
               </Group>
-              <Label>=Fields!BILLTYPEID.Value</Label>
+              <Label>=IIf(Fields!BILLTYPEID.Value = 100, "Thuốc", IIf(Fields!BILLTYPEID.Value = 101, "Dịch vụ", "Vật tư"))</Label>
             </ChartMember>
           </ChartMembers>
         </ChartSeriesHierarchy>
