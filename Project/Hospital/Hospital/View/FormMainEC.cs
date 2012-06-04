@@ -147,5 +147,19 @@ namespace Hospital.View
                 ((DataView)dataViewExamination.DataSource).RowFilter = "";
             }
         }
+
+        private void buttonExamination_Click(object sender, EventArgs e)
+        {
+            if (dataViewExamination.SelectedRows.Count > 0)
+            {
+                ExaminationCertificate ECPrint = ExaminationCertificate.GetEC(Convert.ToInt32(dataViewExamination.SelectedRows[0].Cells[0].Value));
+
+                FormReport reportForm = new FormReport();
+
+                reportForm.ReportType = "EC";
+                reportForm.ObjectID = ECPrint.ECID;
+                reportForm.Show();
+            }
+        }
     }
 }

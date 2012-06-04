@@ -15,10 +15,10 @@ namespace Hospital.View
         {
             if (dataViewBill.SelectedRows.Count > 0)
             {
-                // Get staff for edit
+                // Get bill for edit
                 Bill billDetail = Bill.GetBill(Convert.ToInt32(dataViewBill.SelectedRows[0].Cells[0].Value.ToString()));
 
-                // Open staffdetail form for edit
+                // Open billdetail form for edit
                 FormBillDetail billDetailForm = new FormBillDetail("edit", billDetail);
                 billDetailForm.ShowDialog();
 
@@ -36,13 +36,13 @@ namespace Hospital.View
         {
             try
             {
-                // Get Staff's datatable
+                // Get Bill's datatable
                 DataTable billTable = Bill.GetListBill();
 
                 // Add Vietnamese column's name
                 billTable.Columns.Add("Mã hóa đơn", typeof(string), "[BILLID]");
                 billTable.Columns.Add("Loại hóa đơn", typeof(string), @"IIF([BILLTYPEID] = 100, 'Thuốc',
-                                                                            IIF([BILLTYPEID] = 101, 'Dịch vụ', 'Đồ dùng'))");                
+                                                                            IIF([BILLTYPEID] = 101, 'Dịch vụ', 'Đồ dùng'))");
                 billTable.Columns.Add("Họ tên bệnh nhân", typeof(string), "[PATIENTLASTNAME] + ' ' + [PATIENTFIRSTNAME]");
                 billTable.Columns.Add("Ngày lập", typeof(DateTime), "[DATE]");
                 billTable.Columns.Add("Tổng tiền", typeof(decimal), "[TOTALPRICE]");
@@ -93,6 +93,39 @@ namespace Hospital.View
             else
             {
                 ((DataView)dataViewBill.DataSource).RowFilter = "";
+            }
+        }
+
+        private void buttonBILLPrint_Click(object sender, EventArgs e)
+        {
+            if (dataViewBill.SelectedRows.Count > 0)
+            {
+                // Get bill for print
+                Bill billDetail = Bill.GetBill(Convert.ToInt32(dataViewBill.SelectedRows[0].Cells[0].Value.ToString()));
+
+                FormReport reportForm = new FormReport();
+
+                switch (billDetail.BillTypeID)
+                {
+                    case Bill.MEDICINEBILL:
+                        reportForm.ReportType = "MEDICINEBILL";
+                        reportForm.ObjectID = billDetail.BillID;
+                        break;
+                    case Bill.SERVICEBILL:
+                        reportForm.ReportType = "SERVICEBILL";
+                        reportForm.ObjectID = billDetail.BillID;
+                        break;
+                    case Bill.MATERIALBILL:
+                        reportForm.ReportType = "MATERIALBILL";
+                        reportForm.ObjectID = billDetail.BillID;
+                        break;
+                    default:
+                        MessageBox.Show("Vui lòng chọn hóa đơn để in!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                }
+
+                reportForm.Show();
+
             }
         }
     }

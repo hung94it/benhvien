@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Hospital.Model;
 
 namespace Hospital.View
 {
@@ -14,6 +15,7 @@ namespace Hospital.View
         public FormAbout()
         {
             InitializeComponent();
+            //FormBillDetail ew = new FormBillDetail("insertExamination", new Bill(Bill.MEDICINEBILL, patientID, staffID);
         }
     }
 }
