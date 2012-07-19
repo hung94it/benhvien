@@ -86,24 +86,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controller\AssignmentController.cs" />
-    <Compile Include="Controller\BillController.cs" />
-    <Compile Include="Controller\DepartmentController.cs" />
-    <Compile Include="Controller\DischargeCertificateController.cs" />
-    <Compile Include="Controller\DiseaseController.cs" />
-    <Compile Include="Controller\ExaminationCertificateController.cs" />
-    <Compile Include="Controller\HeathFileController.cs" />
-    <Compile Include="Controller\HeathMonitoringNoteController.cs" />
-    <Compile Include="Controller\HospitalBedController.cs" />
-    <Compile Include="Controller\HospitalizationCertificateController.cs" />
-    <Compile Include="Controller\MaterialController.cs" />
-    <Compile Include="Controller\MedicineController.cs" />
-    <Compile Include="Controller\PatientController.cs" />
-    <Compile Include="Controller\PrescriptionController.cs" />
-    <Compile Include="Controller\ServiceController.cs" />
-    <Compile Include="Controller\StaffController.cs" />
-    <Compile Include="Controller\SurgicalController.cs" />
-    <Compile Include="Controller\TestController.cs" />
     <Compile Include="Functional\SqlResult.cs" />
     <Compile Include="Model\Assignment.cs" />
     <Compile Include="Model\AssignmentDetail.cs" />
@@ -506,9 +488,7 @@
       <DependentUpon>Report.xsd</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
