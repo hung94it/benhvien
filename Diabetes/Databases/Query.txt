@@ -5,3 +5,7 @@ WHERE        ([1] IS NOT NULL) AND ([2] IS NOT NULL) AND ([3] IS NOT NULL) AND (
                          AND ([15] IS NOT NULL) AND ([16] IS NOT NULL) AND ([17] IS NOT NULL) AND ([18] IS NOT NULL) AND ([19] IS NOT NULL) AND ([20] IS NOT NULL) AND 
                          ([21] IS NOT NULL) AND ([22] IS NOT NULL) AND ([23] IS NOT NULL) AND ([24] IS NOT NULL) AND ([25] IS NOT NULL) AND ([26] IS NOT NULL) AND ([27] IS NOT NULL) 
                          AND ([28] IS NOT NULL) AND ([29] IS NOT NULL) AND ([30] IS NOT NULL) AND ([31] IS NOT NULL)
+
+select * from BenhNhan a, XetNghiem b where a.mabn=b.mabn
+and (Cholesterol <> ' ') and (SGOT <> ' ') and (SGPT <> ' ') and (Urea <> ' ') and (WBC <> ' ')
+and (LYM <> ' ') and (K <> ' ')
