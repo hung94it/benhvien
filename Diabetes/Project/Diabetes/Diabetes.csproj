@@ -55,7 +55,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Diabetes.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DTO\DataSetDTO.cs" />
     <Compile Include="DTO\MedicalTestDTO.cs" />
+    <Compile Include="DTO\ResultSetDTO.cs" />
+    <Compile Include="DTO\TestSetDTO.cs" />
+    <Compile Include="DTO\TrainingSetDTO.cs" />
     <Compile Include="Form\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
