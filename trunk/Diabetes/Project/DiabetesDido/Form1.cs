@@ -29,6 +29,9 @@ namespace DiabetesDido
             // TODO: This line of code loads data into the 'diabetesDataSet.BenhNhan' table. You can move, or remove it, as needed.
             this.benhNhanTableAdapter.Fill(this.diabetesDataSet.BenhNhan);
 
+
+            //this.benhNhanTableAdapter.GetData();
+
         }
     }
 }
