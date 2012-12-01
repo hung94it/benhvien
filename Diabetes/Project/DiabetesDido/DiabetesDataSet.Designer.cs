@@ -927,6 +927,8 @@ namespace DiabetesDido {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataSetDataTable : global::System.Data.TypedTableBase<DataSetRow> {
             
+            private global::System.Data.DataColumn columnID;
+            
             private global::System.Data.DataColumn columnMaBn;
             
             private global::System.Data.DataColumn columnHoTen;
@@ -1028,6 +1030,14 @@ namespace DiabetesDido {
             protected DataSetDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1352,7 +1362,7 @@ namespace DiabetesDido {
                         string HoTen, 
                         decimal NamSinh, 
                         System.DateTime NgayKham, 
-                        bool TieuDuong, 
+                        int TieuDuong, 
                         string GioiTinh, 
                         decimal Cholesterol, 
                         decimal HDL_Cholesterol, 
@@ -1385,6 +1395,7 @@ namespace DiabetesDido {
                         decimal Ca) {
                 DataSetRow rowDataSetRow = ((DataSetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        null,
                         MaBn,
                         HoTen,
                         NamSinh,
@@ -1427,9 +1438,9 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataSetRow FindByMaBn(decimal MaBn) {
+            public DataSetRow FindByID(decimal ID) {
                 return ((DataSetRow)(this.Rows.Find(new object[] {
-                            MaBn})));
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1449,6 +1460,7 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnID = base.Columns["ID"];
                 this.columnMaBn = base.Columns["MaBn"];
                 this.columnHoTen = base.Columns["HoTen"];
                 this.columnNamSinh = base.Columns["NamSinh"];
@@ -1489,6 +1501,8 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnMaBn = new global::System.Data.DataColumn("MaBn", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaBn);
                 this.columnHoTen = new global::System.Data.DataColumn("HoTen", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1497,7 +1511,7 @@ namespace DiabetesDido {
                 base.Columns.Add(this.columnNamSinh);
                 this.columnNgayKham = new global::System.Data.DataColumn("NgayKham", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNgayKham);
-                this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(bool), null, global::System.Data.MappingType.Element);
+                this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTieuDuong);
                 this.columnGioiTinh = new global::System.Data.DataColumn("GioiTinh", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGioiTinh);
@@ -1560,9 +1574,14 @@ namespace DiabetesDido {
                 this.columnCa = new global::System.Data.DataColumn("Ca", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCa);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnMaBn}, true));
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
                 this.columnMaBn.AllowDBNull = false;
-                this.columnMaBn.Unique = true;
                 this.columnHoTen.MaxLength = 2147483647;
                 this.columnGioiTinh.MaxLength = 2147483647;
             }
@@ -1698,6 +1717,8 @@ namespace DiabetesDido {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataSetTempDataTable : global::System.Data.TypedTableBase<DataSetTempRow> {
             
+            private global::System.Data.DataColumn columnID;
+            
             private global::System.Data.DataColumn columnMaBn;
             
             private global::System.Data.DataColumn columnHoTen;
@@ -1799,6 +1820,14 @@ namespace DiabetesDido {
             protected DataSetTempDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2123,7 +2152,7 @@ namespace DiabetesDido {
                         string HoTen, 
                         decimal NamSinh, 
                         System.DateTime NgayKham, 
-                        bool TieuDuong, 
+                        int TieuDuong, 
                         string GioiTinh, 
                         decimal Cholesterol, 
                         decimal HDL_Cholesterol, 
@@ -2156,6 +2185,7 @@ namespace DiabetesDido {
                         decimal Ca) {
                 DataSetTempRow rowDataSetTempRow = ((DataSetTempRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        null,
                         MaBn,
                         HoTen,
                         NamSinh,
@@ -2198,9 +2228,9 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataSetTempRow FindByMaBn(decimal MaBn) {
+            public DataSetTempRow FindByID(decimal ID) {
                 return ((DataSetTempRow)(this.Rows.Find(new object[] {
-                            MaBn})));
+                            ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2220,6 +2250,7 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnID = base.Columns["ID"];
                 this.columnMaBn = base.Columns["MaBn"];
                 this.columnHoTen = base.Columns["HoTen"];
                 this.columnNamSinh = base.Columns["NamSinh"];
@@ -2260,6 +2291,8 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
                 this.columnMaBn = new global::System.Data.DataColumn("MaBn", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaBn);
                 this.columnHoTen = new global::System.Data.DataColumn("HoTen", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2268,7 +2301,7 @@ namespace DiabetesDido {
                 base.Columns.Add(this.columnNamSinh);
                 this.columnNgayKham = new global::System.Data.DataColumn("NgayKham", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNgayKham);
-                this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(bool), null, global::System.Data.MappingType.Element);
+                this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTieuDuong);
                 this.columnGioiTinh = new global::System.Data.DataColumn("GioiTinh", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGioiTinh);
@@ -2331,9 +2364,14 @@ namespace DiabetesDido {
                 this.columnCa = new global::System.Data.DataColumn("Ca", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCa);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnMaBn}, true));
+                                this.columnID}, true));
+                this.columnID.AutoIncrement = true;
+                this.columnID.AutoIncrementSeed = -1;
+                this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.ReadOnly = true;
+                this.columnID.Unique = true;
                 this.columnMaBn.AllowDBNull = false;
-                this.columnMaBn.Unique = true;
                 this.columnHoTen.MaxLength = 2147483647;
                 this.columnGioiTinh.MaxLength = 2147483647;
             }
@@ -2469,6 +2507,8 @@ namespace DiabetesDido {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class ResultSetDataTable : global::System.Data.TypedTableBase<ResultSetRow> {
             
+            private global::System.Data.DataColumn columnMaBN;
+            
             private global::System.Data.DataColumn columnHoTen;
             
             private global::System.Data.DataColumn columnTuoi;
@@ -2566,6 +2606,14 @@ namespace DiabetesDido {
             protected ResultSetDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MaBNColumn {
+                get {
+                    return this.columnMaBN;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2870,6 +2918,7 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ResultSetRow AddResultSetRow(
+                        decimal MaBN, 
                         string HoTen, 
                         string Tuoi, 
                         bool TieuDuong, 
@@ -2905,6 +2954,7 @@ namespace DiabetesDido {
                         string Ca) {
                 ResultSetRow rowResultSetRow = ((ResultSetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        MaBN,
                         HoTen,
                         Tuoi,
                         TieuDuong,
@@ -2960,6 +3010,7 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnMaBN = base.Columns["MaBN"];
                 this.columnHoTen = base.Columns["HoTen"];
                 this.columnTuoi = base.Columns["Tuoi"];
                 this.columnTieuDuong = base.Columns["TieuDuong"];
@@ -2998,6 +3049,8 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnMaBN = new global::System.Data.DataColumn("MaBN", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMaBN);
                 this.columnHoTen = new global::System.Data.DataColumn("HoTen", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHoTen);
                 this.columnTuoi = new global::System.Data.DataColumn("Tuoi", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3229,6 +3282,8 @@ namespace DiabetesDido {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class TestSetDataTable : global::System.Data.TypedTableBase<TestSetRow> {
             
+            private global::System.Data.DataColumn columnMaBN;
+            
             private global::System.Data.DataColumn columnHoTen;
             
             private global::System.Data.DataColumn columnTuoi;
@@ -3326,6 +3381,14 @@ namespace DiabetesDido {
             protected TestSetDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MaBNColumn {
+                get {
+                    return this.columnMaBN;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3630,6 +3693,7 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public TestSetRow AddTestSetRow(
+                        decimal MaBN, 
                         string HoTen, 
                         string Tuoi, 
                         bool TieuDuong, 
@@ -3665,6 +3729,7 @@ namespace DiabetesDido {
                         string Ca) {
                 TestSetRow rowTestSetRow = ((TestSetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
+                        MaBN,
                         HoTen,
                         Tuoi,
                         TieuDuong,
@@ -3720,6 +3785,7 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
+                this.columnMaBN = base.Columns["MaBN"];
                 this.columnHoTen = base.Columns["HoTen"];
                 this.columnTuoi = base.Columns["Tuoi"];
                 this.columnTieuDuong = base.Columns["TieuDuong"];
@@ -3758,6 +3824,8 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
+                this.columnMaBN = new global::System.Data.DataColumn("MaBN", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMaBN);
                 this.columnHoTen = new global::System.Data.DataColumn("HoTen", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHoTen);
                 this.columnTuoi = new global::System.Data.DataColumn("Tuoi", typeof(string), null, global::System.Data.MappingType.Element);
@@ -5893,6 +5961,17 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal ID {
+                get {
+                    return ((decimal)(this[this.tableDataSet.IDColumn]));
+                }
+                set {
+                    this[this.tableDataSet.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal MaBn {
                 get {
                     return ((decimal)(this[this.tableDataSet.MaBnColumn]));
@@ -5952,10 +6031,10 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool TieuDuong {
+            public int TieuDuong {
                 get {
                     try {
-                        return ((bool)(this[this.tableDataSet.TieuDuongColumn]));
+                        return ((int)(this[this.tableDataSet.TieuDuongColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TieuDuong\' in table \'DataSet\' is DBNull.", e);
@@ -6871,6 +6950,17 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal ID {
+                get {
+                    return ((decimal)(this[this.tableDataSetTemp.IDColumn]));
+                }
+                set {
+                    this[this.tableDataSetTemp.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal MaBn {
                 get {
                     return ((decimal)(this[this.tableDataSetTemp.MaBnColumn]));
@@ -6930,10 +7020,10 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool TieuDuong {
+            public int TieuDuong {
                 get {
                     try {
-                        return ((bool)(this[this.tableDataSetTemp.TieuDuongColumn]));
+                        return ((int)(this[this.tableDataSetTemp.TieuDuongColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TieuDuong\' in table \'DataSetTemp\' is DBNull.", e);
@@ -7849,6 +7939,22 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal MaBN {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableResultSet.MaBNColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MaBN\' in table \'ResultSet\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResultSet.MaBNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string HoTen {
                 get {
                     try {
@@ -8377,6 +8483,18 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMaBNNull() {
+                return this.IsNull(this.tableResultSet.MaBNColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMaBNNull() {
+                this[this.tableResultSet.MaBNColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsHoTenNull() {
                 return this.IsNull(this.tableResultSet.HoTenColumn);
             }
@@ -8784,6 +8902,22 @@ namespace DiabetesDido {
             internal TestSetRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableTestSet = ((TestSetDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal MaBN {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableTestSet.MaBNColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MaBN\' in table \'TestSet\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableTestSet.MaBNColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9312,6 +9446,18 @@ namespace DiabetesDido {
                 set {
                     this[this.tableTestSet.CaColumn] = value;
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMaBNNull() {
+                return this.IsNull(this.tableTestSet.MaBNColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMaBNNull() {
+                this[this.tableTestSet.MaBNColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12574,6 +12720,7 @@ SELECT IDKhamBenh, MaBN, HoTen, NamSinh, Thon, TenXa, TenQuan, TenThiTran, TenNg
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "DataSet";
+            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("MaBn", "MaBn");
             tableMapping.ColumnMappings.Add("HoTen", "HoTen");
             tableMapping.ColumnMappings.Add("NamSinh", "NamSinh");
@@ -12612,47 +12759,48 @@ SELECT IDKhamBenh, MaBN, HoTen, NamSinh, Thon, TenXa, TenQuan, TenThiTran, TenNg
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DataSet] WHERE (([MaBn] = @Original_MaBn) AND ((@IsNull_NamSin" +
-                "h = 1 AND [NamSinh] IS NULL) OR ([NamSinh] = @Original_NamSinh)) AND ((@IsNull_N" +
-                "gayKham = 1 AND [NgayKham] IS NULL) OR ([NgayKham] = @Original_NgayKham)) AND ((" +
-                "@IsNull_TieuDuong = 1 AND [TieuDuong] IS NULL) OR ([TieuDuong] = @Original_TieuD" +
-                "uong)) AND ((@IsNull_Cholesterol = 1 AND [Cholesterol] IS NULL) OR ([Cholesterol" +
-                "] = @Original_Cholesterol)) AND ((@IsNull_HDL_Cholesterol = 1 AND [HDL_Cholester" +
-                "ol] IS NULL) OR ([HDL_Cholesterol] = @Original_HDL_Cholesterol)) AND ((@IsNull_T" +
-                "riglyceride = 1 AND [Triglyceride] IS NULL) OR ([Triglyceride] = @Original_Trigl" +
-                "yceride)) AND ((@IsNull_LDL_Cholesterol = 1 AND [LDL_Cholesterol] IS NULL) OR ([" +
-                "LDL_Cholesterol] = @Original_LDL_Cholesterol)) AND ((@IsNull_SGOT = 1 AND [SGOT]" +
-                " IS NULL) OR ([SGOT] = @Original_SGOT)) AND ((@IsNull_SGPT = 1 AND [SGPT] IS NUL" +
-                "L) OR ([SGPT] = @Original_SGPT)) AND ((@IsNull_Urea = 1 AND [Urea] IS NULL) OR (" +
-                "[Urea] = @Original_Urea)) AND ((@IsNull_WBC = 1 AND [WBC] IS NULL) OR ([WBC] = @" +
-                "Original_WBC)) AND ((@IsNull_LYM = 1 AND [LYM] IS NULL) OR ([LYM] = @Original_LY" +
-                "M)) AND ((@IsNull_MONO = 1 AND [MONO] IS NULL) OR ([MONO] = @Original_MONO)) AND" +
-                " ((@IsNull_GRAN = 1 AND [GRAN] IS NULL) OR ([GRAN] = @Original_GRAN)) AND ((@IsN" +
-                "ull_TyLeLYM = 1 AND [TyLeLYM] IS NULL) OR ([TyLeLYM] = @Original_TyLeLYM)) AND (" +
-                "(@IsNull_TyLeMONO = 1 AND [TyLeMONO] IS NULL) OR ([TyLeMONO] = @Original_TyLeMON" +
-                "O)) AND ((@IsNull_TyLeGRAN = 1 AND [TyLeGRAN] IS NULL) OR ([TyLeGRAN] = @Origina" +
-                "l_TyLeGRAN)) AND ((@IsNull_HGB = 1 AND [HGB] IS NULL) OR ([HGB] = @Original_HGB)" +
-                ") AND ((@IsNull_RBC = 1 AND [RBC] IS NULL) OR ([RBC] = @Original_RBC)) AND ((@Is" +
-                "Null_HTC = 1 AND [HTC] IS NULL) OR ([HTC] = @Original_HTC)) AND ((@IsNull_MCV = " +
-                "1 AND [MCV] IS NULL) OR ([MCV] = @Original_MCV)) AND ((@IsNull_MCH = 1 AND [MCH]" +
-                " IS NULL) OR ([MCH] = @Original_MCH)) AND ((@IsNull_MCHC = 1 AND [MCHC] IS NULL)" +
-                " OR ([MCHC] = @Original_MCHC)) AND ((@IsNull_RDW_CV = 1 AND [RDW_CV] IS NULL) OR" +
-                " ([RDW_CV] = @Original_RDW_CV)) AND ((@IsNull_PLT = 1 AND [PLT] IS NULL) OR ([PL" +
-                "T] = @Original_PLT)) AND ((@IsNull_MPV = 1 AND [MPV] IS NULL) OR ([MPV] = @Origi" +
-                "nal_MPV)) AND ((@IsNull_PDW = 1 AND [PDW] IS NULL) OR ([PDW] = @Original_PDW)) A" +
-                "ND ((@IsNull_PCT = 1 AND [PCT] IS NULL) OR ([PCT] = @Original_PCT)) AND ((@IsNul" +
-                "l_Na = 1 AND [Na] IS NULL) OR ([Na] = @Original_Na)) AND ((@IsNull_K = 1 AND [K]" +
-                " IS NULL) OR ([K] = @Original_K)) AND ((@IsNull_Cl = 1 AND [Cl] IS NULL) OR ([Cl" +
-                "] = @Original_Cl)) AND ((@IsNull_Ca = 1 AND [Ca] IS NULL) OR ([Ca] = @Original_C" +
-                "a)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DataSet] WHERE (([ID] = @Original_ID) AND ([MaBn] = @Original_" +
+                "MaBn) AND ((@IsNull_NamSinh = 1 AND [NamSinh] IS NULL) OR ([NamSinh] = @Original" +
+                "_NamSinh)) AND ((@IsNull_NgayKham = 1 AND [NgayKham] IS NULL) OR ([NgayKham] = @" +
+                "Original_NgayKham)) AND ((@IsNull_TieuDuong = 1 AND [TieuDuong] IS NULL) OR ([Ti" +
+                "euDuong] = @Original_TieuDuong)) AND ((@IsNull_Cholesterol = 1 AND [Cholesterol]" +
+                " IS NULL) OR ([Cholesterol] = @Original_Cholesterol)) AND ((@IsNull_HDL_Choleste" +
+                "rol = 1 AND [HDL_Cholesterol] IS NULL) OR ([HDL_Cholesterol] = @Original_HDL_Cho" +
+                "lesterol)) AND ((@IsNull_Triglyceride = 1 AND [Triglyceride] IS NULL) OR ([Trigl" +
+                "yceride] = @Original_Triglyceride)) AND ((@IsNull_LDL_Cholesterol = 1 AND [LDL_C" +
+                "holesterol] IS NULL) OR ([LDL_Cholesterol] = @Original_LDL_Cholesterol)) AND ((@" +
+                "IsNull_SGOT = 1 AND [SGOT] IS NULL) OR ([SGOT] = @Original_SGOT)) AND ((@IsNull_" +
+                "SGPT = 1 AND [SGPT] IS NULL) OR ([SGPT] = @Original_SGPT)) AND ((@IsNull_Urea = " +
+                "1 AND [Urea] IS NULL) OR ([Urea] = @Original_Urea)) AND ((@IsNull_WBC = 1 AND [W" +
+                "BC] IS NULL) OR ([WBC] = @Original_WBC)) AND ((@IsNull_LYM = 1 AND [LYM] IS NULL" +
+                ") OR ([LYM] = @Original_LYM)) AND ((@IsNull_MONO = 1 AND [MONO] IS NULL) OR ([MO" +
+                "NO] = @Original_MONO)) AND ((@IsNull_GRAN = 1 AND [GRAN] IS NULL) OR ([GRAN] = @" +
+                "Original_GRAN)) AND ((@IsNull_TyLeLYM = 1 AND [TyLeLYM] IS NULL) OR ([TyLeLYM] =" +
+                " @Original_TyLeLYM)) AND ((@IsNull_TyLeMONO = 1 AND [TyLeMONO] IS NULL) OR ([TyL" +
+                "eMONO] = @Original_TyLeMONO)) AND ((@IsNull_TyLeGRAN = 1 AND [TyLeGRAN] IS NULL)" +
+                " OR ([TyLeGRAN] = @Original_TyLeGRAN)) AND ((@IsNull_HGB = 1 AND [HGB] IS NULL) " +
+                "OR ([HGB] = @Original_HGB)) AND ((@IsNull_RBC = 1 AND [RBC] IS NULL) OR ([RBC] =" +
+                " @Original_RBC)) AND ((@IsNull_HTC = 1 AND [HTC] IS NULL) OR ([HTC] = @Original_" +
+                "HTC)) AND ((@IsNull_MCV = 1 AND [MCV] IS NULL) OR ([MCV] = @Original_MCV)) AND (" +
+                "(@IsNull_MCH = 1 AND [MCH] IS NULL) OR ([MCH] = @Original_MCH)) AND ((@IsNull_MC" +
+                "HC = 1 AND [MCHC] IS NULL) OR ([MCHC] = @Original_MCHC)) AND ((@IsNull_RDW_CV = " +
+                "1 AND [RDW_CV] IS NULL) OR ([RDW_CV] = @Original_RDW_CV)) AND ((@IsNull_PLT = 1 " +
+                "AND [PLT] IS NULL) OR ([PLT] = @Original_PLT)) AND ((@IsNull_MPV = 1 AND [MPV] I" +
+                "S NULL) OR ([MPV] = @Original_MPV)) AND ((@IsNull_PDW = 1 AND [PDW] IS NULL) OR " +
+                "([PDW] = @Original_PDW)) AND ((@IsNull_PCT = 1 AND [PCT] IS NULL) OR ([PCT] = @O" +
+                "riginal_PCT)) AND ((@IsNull_Na = 1 AND [Na] IS NULL) OR ([Na] = @Original_Na)) A" +
+                "ND ((@IsNull_K = 1 AND [K] IS NULL) OR ([K] = @Original_K)) AND ((@IsNull_Cl = 1" +
+                " AND [Cl] IS NULL) OR ([Cl] = @Original_Cl)) AND ((@IsNull_Ca = 1 AND [Ca] IS NU" +
+                "LL) OR ([Ca] = @Original_Ca)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaBn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBn", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NamSinh", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NamSinh", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NamSinh", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "NamSinh", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NgayKham", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NgayKham", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Cholesterol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cholesterol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cholesterol", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HDL_Cholesterol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -12714,13 +12862,13 @@ SELECT IDKhamBenh, MaBN, HoTen, NamSinh, Thon, TenXa, TenQuan, TenThiTran, TenNg
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[DataSet] ([MaBn], [HoTen], [NamSinh], [NgayKham], [TieuDuong], [GioiTinh], [Cholesterol], [HDL_Cholesterol], [Triglyceride], [LDL_Cholesterol], [SGOT], [SGPT], [Urea], [WBC], [LYM], [MONO], [GRAN], [TyLeLYM], [TyLeMONO], [TyLeGRAN], [HGB], [RBC], [HTC], [MCV], [MCH], [MCHC], [RDW_CV], [PLT], [MPV], [PDW], [PCT], [Na], [K], [Cl], [Ca]) VALUES (@MaBn, @HoTen, @NamSinh, @NgayKham, @TieuDuong, @GioiTinh, @Cholesterol, @HDL_Cholesterol, @Triglyceride, @LDL_Cholesterol, @SGOT, @SGPT, @Urea, @WBC, @LYM, @MONO, @GRAN, @TyLeLYM, @TyLeMONO, @TyLeGRAN, @HGB, @RBC, @HTC, @MCV, @MCH, @MCHC, @RDW_CV, @PLT, @MPV, @PDW, @PCT, @Na, @K, @Cl, @Ca);
-SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM DataSet WHERE (MaBn = @MaBn)";
+SELECT ID, MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM DataSet WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoTen", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NamSinh", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "NamSinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NgayKham", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GioiTinh", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GioiTinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HDL_Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12761,48 +12909,49 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                 ", [TyLeLYM] = @TyLeLYM, [TyLeMONO] = @TyLeMONO, [TyLeGRAN] = @TyLeGRAN, [HGB] = " +
                 "@HGB, [RBC] = @RBC, [HTC] = @HTC, [MCV] = @MCV, [MCH] = @MCH, [MCHC] = @MCHC, [R" +
                 "DW_CV] = @RDW_CV, [PLT] = @PLT, [MPV] = @MPV, [PDW] = @PDW, [PCT] = @PCT, [Na] =" +
-                " @Na, [K] = @K, [Cl] = @Cl, [Ca] = @Ca WHERE (([MaBn] = @Original_MaBn) AND ((@I" +
-                "sNull_NamSinh = 1 AND [NamSinh] IS NULL) OR ([NamSinh] = @Original_NamSinh)) AND" +
-                " ((@IsNull_NgayKham = 1 AND [NgayKham] IS NULL) OR ([NgayKham] = @Original_NgayK" +
-                "ham)) AND ((@IsNull_TieuDuong = 1 AND [TieuDuong] IS NULL) OR ([TieuDuong] = @Or" +
-                "iginal_TieuDuong)) AND ((@IsNull_Cholesterol = 1 AND [Cholesterol] IS NULL) OR (" +
-                "[Cholesterol] = @Original_Cholesterol)) AND ((@IsNull_HDL_Cholesterol = 1 AND [H" +
-                "DL_Cholesterol] IS NULL) OR ([HDL_Cholesterol] = @Original_HDL_Cholesterol)) AND" +
-                " ((@IsNull_Triglyceride = 1 AND [Triglyceride] IS NULL) OR ([Triglyceride] = @Or" +
-                "iginal_Triglyceride)) AND ((@IsNull_LDL_Cholesterol = 1 AND [LDL_Cholesterol] IS" +
-                " NULL) OR ([LDL_Cholesterol] = @Original_LDL_Cholesterol)) AND ((@IsNull_SGOT = " +
-                "1 AND [SGOT] IS NULL) OR ([SGOT] = @Original_SGOT)) AND ((@IsNull_SGPT = 1 AND [" +
-                "SGPT] IS NULL) OR ([SGPT] = @Original_SGPT)) AND ((@IsNull_Urea = 1 AND [Urea] I" +
-                "S NULL) OR ([Urea] = @Original_Urea)) AND ((@IsNull_WBC = 1 AND [WBC] IS NULL) O" +
-                "R ([WBC] = @Original_WBC)) AND ((@IsNull_LYM = 1 AND [LYM] IS NULL) OR ([LYM] = " +
-                "@Original_LYM)) AND ((@IsNull_MONO = 1 AND [MONO] IS NULL) OR ([MONO] = @Origina" +
-                "l_MONO)) AND ((@IsNull_GRAN = 1 AND [GRAN] IS NULL) OR ([GRAN] = @Original_GRAN)" +
-                ") AND ((@IsNull_TyLeLYM = 1 AND [TyLeLYM] IS NULL) OR ([TyLeLYM] = @Original_TyL" +
-                "eLYM)) AND ((@IsNull_TyLeMONO = 1 AND [TyLeMONO] IS NULL) OR ([TyLeMONO] = @Orig" +
-                "inal_TyLeMONO)) AND ((@IsNull_TyLeGRAN = 1 AND [TyLeGRAN] IS NULL) OR ([TyLeGRAN" +
-                "] = @Original_TyLeGRAN)) AND ((@IsNull_HGB = 1 AND [HGB] IS NULL) OR ([HGB] = @O" +
-                "riginal_HGB)) AND ((@IsNull_RBC = 1 AND [RBC] IS NULL) OR ([RBC] = @Original_RBC" +
-                ")) AND ((@IsNull_HTC = 1 AND [HTC] IS NULL) OR ([HTC] = @Original_HTC)) AND ((@I" +
-                "sNull_MCV = 1 AND [MCV] IS NULL) OR ([MCV] = @Original_MCV)) AND ((@IsNull_MCH =" +
-                " 1 AND [MCH] IS NULL) OR ([MCH] = @Original_MCH)) AND ((@IsNull_MCHC = 1 AND [MC" +
-                "HC] IS NULL) OR ([MCHC] = @Original_MCHC)) AND ((@IsNull_RDW_CV = 1 AND [RDW_CV]" +
-                " IS NULL) OR ([RDW_CV] = @Original_RDW_CV)) AND ((@IsNull_PLT = 1 AND [PLT] IS N" +
-                "ULL) OR ([PLT] = @Original_PLT)) AND ((@IsNull_MPV = 1 AND [MPV] IS NULL) OR ([M" +
-                "PV] = @Original_MPV)) AND ((@IsNull_PDW = 1 AND [PDW] IS NULL) OR ([PDW] = @Orig" +
-                "inal_PDW)) AND ((@IsNull_PCT = 1 AND [PCT] IS NULL) OR ([PCT] = @Original_PCT)) " +
-                "AND ((@IsNull_Na = 1 AND [Na] IS NULL) OR ([Na] = @Original_Na)) AND ((@IsNull_K" +
-                " = 1 AND [K] IS NULL) OR ([K] = @Original_K)) AND ((@IsNull_Cl = 1 AND [Cl] IS N" +
-                "ULL) OR ([Cl] = @Original_Cl)) AND ((@IsNull_Ca = 1 AND [Ca] IS NULL) OR ([Ca] =" +
-                " @Original_Ca)));\r\nSELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, C" +
-                "holesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WB" +
-                "C, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, " +
-                "RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM DataSet WHERE (MaBn = @MaBn)";
+                " @Na, [K] = @K, [Cl] = @Cl, [Ca] = @Ca WHERE (([ID] = @Original_ID) AND ([MaBn] " +
+                "= @Original_MaBn) AND ((@IsNull_NamSinh = 1 AND [NamSinh] IS NULL) OR ([NamSinh]" +
+                " = @Original_NamSinh)) AND ((@IsNull_NgayKham = 1 AND [NgayKham] IS NULL) OR ([N" +
+                "gayKham] = @Original_NgayKham)) AND ((@IsNull_TieuDuong = 1 AND [TieuDuong] IS N" +
+                "ULL) OR ([TieuDuong] = @Original_TieuDuong)) AND ((@IsNull_Cholesterol = 1 AND [" +
+                "Cholesterol] IS NULL) OR ([Cholesterol] = @Original_Cholesterol)) AND ((@IsNull_" +
+                "HDL_Cholesterol = 1 AND [HDL_Cholesterol] IS NULL) OR ([HDL_Cholesterol] = @Orig" +
+                "inal_HDL_Cholesterol)) AND ((@IsNull_Triglyceride = 1 AND [Triglyceride] IS NULL" +
+                ") OR ([Triglyceride] = @Original_Triglyceride)) AND ((@IsNull_LDL_Cholesterol = " +
+                "1 AND [LDL_Cholesterol] IS NULL) OR ([LDL_Cholesterol] = @Original_LDL_Cholester" +
+                "ol)) AND ((@IsNull_SGOT = 1 AND [SGOT] IS NULL) OR ([SGOT] = @Original_SGOT)) AN" +
+                "D ((@IsNull_SGPT = 1 AND [SGPT] IS NULL) OR ([SGPT] = @Original_SGPT)) AND ((@Is" +
+                "Null_Urea = 1 AND [Urea] IS NULL) OR ([Urea] = @Original_Urea)) AND ((@IsNull_WB" +
+                "C = 1 AND [WBC] IS NULL) OR ([WBC] = @Original_WBC)) AND ((@IsNull_LYM = 1 AND [" +
+                "LYM] IS NULL) OR ([LYM] = @Original_LYM)) AND ((@IsNull_MONO = 1 AND [MONO] IS N" +
+                "ULL) OR ([MONO] = @Original_MONO)) AND ((@IsNull_GRAN = 1 AND [GRAN] IS NULL) OR" +
+                " ([GRAN] = @Original_GRAN)) AND ((@IsNull_TyLeLYM = 1 AND [TyLeLYM] IS NULL) OR " +
+                "([TyLeLYM] = @Original_TyLeLYM)) AND ((@IsNull_TyLeMONO = 1 AND [TyLeMONO] IS NU" +
+                "LL) OR ([TyLeMONO] = @Original_TyLeMONO)) AND ((@IsNull_TyLeGRAN = 1 AND [TyLeGR" +
+                "AN] IS NULL) OR ([TyLeGRAN] = @Original_TyLeGRAN)) AND ((@IsNull_HGB = 1 AND [HG" +
+                "B] IS NULL) OR ([HGB] = @Original_HGB)) AND ((@IsNull_RBC = 1 AND [RBC] IS NULL)" +
+                " OR ([RBC] = @Original_RBC)) AND ((@IsNull_HTC = 1 AND [HTC] IS NULL) OR ([HTC] " +
+                "= @Original_HTC)) AND ((@IsNull_MCV = 1 AND [MCV] IS NULL) OR ([MCV] = @Original" +
+                "_MCV)) AND ((@IsNull_MCH = 1 AND [MCH] IS NULL) OR ([MCH] = @Original_MCH)) AND " +
+                "((@IsNull_MCHC = 1 AND [MCHC] IS NULL) OR ([MCHC] = @Original_MCHC)) AND ((@IsNu" +
+                "ll_RDW_CV = 1 AND [RDW_CV] IS NULL) OR ([RDW_CV] = @Original_RDW_CV)) AND ((@IsN" +
+                "ull_PLT = 1 AND [PLT] IS NULL) OR ([PLT] = @Original_PLT)) AND ((@IsNull_MPV = 1" +
+                " AND [MPV] IS NULL) OR ([MPV] = @Original_MPV)) AND ((@IsNull_PDW = 1 AND [PDW] " +
+                "IS NULL) OR ([PDW] = @Original_PDW)) AND ((@IsNull_PCT = 1 AND [PCT] IS NULL) OR" +
+                " ([PCT] = @Original_PCT)) AND ((@IsNull_Na = 1 AND [Na] IS NULL) OR ([Na] = @Ori" +
+                "ginal_Na)) AND ((@IsNull_K = 1 AND [K] IS NULL) OR ([K] = @Original_K)) AND ((@I" +
+                "sNull_Cl = 1 AND [Cl] IS NULL) OR ([Cl] = @Original_Cl)) AND ((@IsNull_Ca = 1 AN" +
+                "D [Ca] IS NULL) OR ([Ca] = @Original_Ca)));\r\nSELECT ID, MaBn, HoTen, NamSinh, Ng" +
+                "ayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cho" +
+                "lesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, H" +
+                "GB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM Dat" +
+                "aSet WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoTen", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NamSinh", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "NamSinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NgayKham", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GioiTinh", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GioiTinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HDL_Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -12833,13 +12982,14 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@K", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 1, "K", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cl", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ca", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Ca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaBn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBn", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NamSinh", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NamSinh", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NamSinh", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "NamSinh", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NgayKham", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NgayKham", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Cholesterol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cholesterol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cholesterol", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HDL_Cholesterol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -12898,6 +13048,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cl", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Ca", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ca", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ca", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Ca", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12913,7 +13064,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM dbo.DataSet";
+            this._commandCollection[0].CommandText = @"SELECT ID, MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM dbo.DataSet";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -12975,10 +13126,11 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
+                    decimal Original_ID, 
                     decimal Original_MaBn, 
                     global::System.Nullable<decimal> Original_NamSinh, 
                     global::System.Nullable<global::System.DateTime> Original_NgayKham, 
-                    global::System.Nullable<bool> Original_TieuDuong, 
+                    global::System.Nullable<int> Original_TieuDuong, 
                     global::System.Nullable<decimal> Original_Cholesterol, 
                     global::System.Nullable<decimal> Original_HDL_Cholesterol, 
                     global::System.Nullable<decimal> Original_Triglyceride, 
@@ -13008,262 +13160,263 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> Original_K, 
                     global::System.Nullable<decimal> Original_Cl, 
                     global::System.Nullable<decimal> Original_Ca) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((decimal)(Original_MaBn));
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((decimal)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_MaBn));
             if ((Original_NamSinh.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_NamSinh.Value));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_NamSinh.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((Original_NgayKham.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_NgayKham.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_NgayKham.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             if ((Original_TieuDuong.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((bool)(Original_TieuDuong.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_TieuDuong.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             if ((Original_Cholesterol.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((decimal)(Original_Cholesterol.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((decimal)(Original_Cholesterol.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             if ((Original_HDL_Cholesterol.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((decimal)(Original_HDL_Cholesterol.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((decimal)(Original_HDL_Cholesterol.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             if ((Original_Triglyceride.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_Triglyceride.Value));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((decimal)(Original_Triglyceride.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             if ((Original_LDL_Cholesterol.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((decimal)(Original_LDL_Cholesterol.Value));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((decimal)(Original_LDL_Cholesterol.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_SGOT.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((decimal)(Original_SGOT.Value));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((decimal)(Original_SGOT.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             if ((Original_SGPT.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((decimal)(Original_SGPT.Value));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((decimal)(Original_SGPT.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             if ((Original_Urea.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((decimal)(Original_Urea.Value));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((decimal)(Original_Urea.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             if ((Original_WBC.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((decimal)(Original_WBC.Value));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((decimal)(Original_WBC.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             if ((Original_LYM.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((decimal)(Original_LYM.Value));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((decimal)(Original_LYM.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             if ((Original_MONO.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((decimal)(Original_MONO.Value));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((decimal)(Original_MONO.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             if ((Original_GRAN.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((decimal)(Original_GRAN.Value));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((decimal)(Original_GRAN.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeLYM.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((decimal)(Original_TyLeLYM.Value));
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((decimal)(Original_TyLeLYM.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[30].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeMONO.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[32].Value = ((decimal)(Original_TyLeMONO.Value));
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[33].Value = ((decimal)(Original_TyLeMONO.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeGRAN.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[34].Value = ((decimal)(Original_TyLeGRAN.Value));
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((decimal)(Original_TyLeGRAN.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             if ((Original_HGB.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[36].Value = ((decimal)(Original_HGB.Value));
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((decimal)(Original_HGB.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[36].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             if ((Original_RBC.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[38].Value = ((decimal)(Original_RBC.Value));
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((decimal)(Original_RBC.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[38].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
             if ((Original_HTC.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[40].Value = ((decimal)(Original_HTC.Value));
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[41].Value = ((decimal)(Original_HTC.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
             if ((Original_MCV.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[42].Value = ((decimal)(Original_MCV.Value));
+                this.Adapter.DeleteCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[43].Value = ((decimal)(Original_MCV.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[42].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
             if ((Original_MCH.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[44].Value = ((decimal)(Original_MCH.Value));
+                this.Adapter.DeleteCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[45].Value = ((decimal)(Original_MCH.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[44].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
             if ((Original_MCHC.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[46].Value = ((decimal)(Original_MCHC.Value));
+                this.Adapter.DeleteCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[47].Value = ((decimal)(Original_MCHC.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[46].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
             if ((Original_RDW_CV.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[48].Value = ((decimal)(Original_RDW_CV.Value));
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((decimal)(Original_RDW_CV.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[48].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[49].Value = global::System.DBNull.Value;
             }
             if ((Original_PLT.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[50].Value = ((decimal)(Original_PLT.Value));
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[51].Value = ((decimal)(Original_PLT.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[51].Value = global::System.DBNull.Value;
             }
             if ((Original_MPV.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[52].Value = ((decimal)(Original_MPV.Value));
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[53].Value = ((decimal)(Original_MPV.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[52].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[53].Value = global::System.DBNull.Value;
             }
             if ((Original_PDW.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[54].Value = ((decimal)(Original_PDW.Value));
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((decimal)(Original_PDW.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[54].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[55].Value = global::System.DBNull.Value;
             }
             if ((Original_PCT.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[56].Value = ((decimal)(Original_PCT.Value));
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((decimal)(Original_PCT.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[56].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[57].Value = global::System.DBNull.Value;
             }
             if ((Original_Na.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[58].Value = ((decimal)(Original_Na.Value));
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((decimal)(Original_Na.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[58].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[59].Value = global::System.DBNull.Value;
             }
             if ((Original_K.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[60].Value = ((decimal)(Original_K.Value));
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((decimal)(Original_K.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[60].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[61].Value = global::System.DBNull.Value;
             }
             if ((Original_Cl.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[62].Value = ((decimal)(Original_Cl.Value));
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[63].Value = ((decimal)(Original_Cl.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[62].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[63].Value = global::System.DBNull.Value;
             }
             if ((Original_Ca.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[63].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[64].Value = ((decimal)(Original_Ca.Value));
+                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[65].Value = ((decimal)(Original_Ca.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[63].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[64].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[65].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -13290,7 +13443,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     string HoTen, 
                     global::System.Nullable<decimal> NamSinh, 
                     global::System.Nullable<global::System.DateTime> NgayKham, 
-                    global::System.Nullable<bool> TieuDuong, 
+                    global::System.Nullable<int> TieuDuong, 
                     string GioiTinh, 
                     global::System.Nullable<decimal> Cholesterol, 
                     global::System.Nullable<decimal> HDL_Cholesterol, 
@@ -13341,7 +13494,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((TieuDuong.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(TieuDuong.Value));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(TieuDuong.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -13551,7 +13704,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     string HoTen, 
                     global::System.Nullable<decimal> NamSinh, 
                     global::System.Nullable<global::System.DateTime> NgayKham, 
-                    global::System.Nullable<bool> TieuDuong, 
+                    global::System.Nullable<int> TieuDuong, 
                     string GioiTinh, 
                     global::System.Nullable<decimal> Cholesterol, 
                     global::System.Nullable<decimal> HDL_Cholesterol, 
@@ -13582,10 +13735,11 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> K, 
                     global::System.Nullable<decimal> Cl, 
                     global::System.Nullable<decimal> Ca, 
+                    decimal Original_ID, 
                     decimal Original_MaBn, 
                     global::System.Nullable<decimal> Original_NamSinh, 
                     global::System.Nullable<global::System.DateTime> Original_NgayKham, 
-                    global::System.Nullable<bool> Original_TieuDuong, 
+                    global::System.Nullable<int> Original_TieuDuong, 
                     global::System.Nullable<decimal> Original_Cholesterol, 
                     global::System.Nullable<decimal> Original_HDL_Cholesterol, 
                     global::System.Nullable<decimal> Original_Triglyceride, 
@@ -13614,7 +13768,8 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> Original_Na, 
                     global::System.Nullable<decimal> Original_K, 
                     global::System.Nullable<decimal> Original_Cl, 
-                    global::System.Nullable<decimal> Original_Ca) {
+                    global::System.Nullable<decimal> Original_Ca, 
+                    decimal ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((decimal)(MaBn));
             if ((HoTen == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -13635,7 +13790,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((TieuDuong.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(TieuDuong.Value));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(TieuDuong.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -13820,263 +13975,265 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             else {
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[35].Value = ((decimal)(Original_MaBn));
+            this.Adapter.UpdateCommand.Parameters[35].Value = ((decimal)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[36].Value = ((decimal)(Original_MaBn));
             if ((Original_NamSinh.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((decimal)(Original_NamSinh.Value));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((decimal)(Original_NamSinh.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
             if ((Original_NgayKham.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((System.DateTime)(Original_NgayKham.Value));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((System.DateTime)(Original_NgayKham.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
             if ((Original_TieuDuong.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((bool)(Original_TieuDuong.Value));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((int)(Original_TieuDuong.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
             if ((Original_Cholesterol.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((decimal)(Original_Cholesterol.Value));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((decimal)(Original_Cholesterol.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
             if ((Original_HDL_Cholesterol.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((decimal)(Original_HDL_Cholesterol.Value));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((decimal)(Original_HDL_Cholesterol.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
             if ((Original_Triglyceride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((decimal)(Original_Triglyceride.Value));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((decimal)(Original_Triglyceride.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
             }
             if ((Original_LDL_Cholesterol.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((decimal)(Original_LDL_Cholesterol.Value));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((decimal)(Original_LDL_Cholesterol.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
             }
             if ((Original_SGOT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((decimal)(Original_SGOT.Value));
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((decimal)(Original_SGOT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
             }
             if ((Original_SGPT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((decimal)(Original_SGPT.Value));
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((decimal)(Original_SGPT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
             }
             if ((Original_Urea.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((decimal)(Original_Urea.Value));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((decimal)(Original_Urea.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
             }
             if ((Original_WBC.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((decimal)(Original_WBC.Value));
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((decimal)(Original_WBC.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
             }
             if ((Original_LYM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((decimal)(Original_LYM.Value));
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((decimal)(Original_LYM.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
             }
             if ((Original_MONO.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((decimal)(Original_MONO.Value));
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((decimal)(Original_MONO.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
             }
             if ((Original_GRAN.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((decimal)(Original_GRAN.Value));
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((decimal)(Original_GRAN.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[63].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeLYM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((decimal)(Original_TyLeLYM.Value));
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((decimal)(Original_TyLeLYM.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[65].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeMONO.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((decimal)(Original_TyLeMONO.Value));
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((decimal)(Original_TyLeMONO.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[67].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[68].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeGRAN.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((decimal)(Original_TyLeGRAN.Value));
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((decimal)(Original_TyLeGRAN.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[70].Value = global::System.DBNull.Value;
             }
             if ((Original_HGB.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((decimal)(Original_HGB.Value));
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((decimal)(Original_HGB.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[71].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[72].Value = global::System.DBNull.Value;
             }
             if ((Original_RBC.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((decimal)(Original_RBC.Value));
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((decimal)(Original_RBC.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[74].Value = global::System.DBNull.Value;
             }
             if ((Original_HTC.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((decimal)(Original_HTC.Value));
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((decimal)(Original_HTC.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[76].Value = global::System.DBNull.Value;
             }
             if ((Original_MCV.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((decimal)(Original_MCV.Value));
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((decimal)(Original_MCV.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[77].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[78].Value = global::System.DBNull.Value;
             }
             if ((Original_MCH.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[79].Value = ((decimal)(Original_MCH.Value));
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((decimal)(Original_MCH.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[80].Value = global::System.DBNull.Value;
             }
             if ((Original_MCHC.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[81].Value = ((decimal)(Original_MCHC.Value));
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((decimal)(Original_MCHC.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[81].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[82].Value = global::System.DBNull.Value;
             }
             if ((Original_RDW_CV.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[83].Value = ((decimal)(Original_RDW_CV.Value));
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((decimal)(Original_RDW_CV.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[83].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[84].Value = global::System.DBNull.Value;
             }
             if ((Original_PLT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[85].Value = ((decimal)(Original_PLT.Value));
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((decimal)(Original_PLT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[85].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[86].Value = global::System.DBNull.Value;
             }
             if ((Original_MPV.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[87].Value = ((decimal)(Original_MPV.Value));
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((decimal)(Original_MPV.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[87].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[88].Value = global::System.DBNull.Value;
             }
             if ((Original_PDW.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[89].Value = ((decimal)(Original_PDW.Value));
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((decimal)(Original_PDW.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[89].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[90].Value = global::System.DBNull.Value;
             }
             if ((Original_PCT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[91].Value = ((decimal)(Original_PCT.Value));
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[92].Value = ((decimal)(Original_PCT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[91].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[92].Value = global::System.DBNull.Value;
             }
             if ((Original_Na.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[92].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[93].Value = ((decimal)(Original_Na.Value));
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[94].Value = ((decimal)(Original_Na.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[92].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[93].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[94].Value = global::System.DBNull.Value;
             }
             if ((Original_K.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[94].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[95].Value = ((decimal)(Original_K.Value));
+                this.Adapter.UpdateCommand.Parameters[95].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((decimal)(Original_K.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[94].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[95].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[95].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[96].Value = global::System.DBNull.Value;
             }
             if ((Original_Cl.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[97].Value = ((decimal)(Original_Cl.Value));
+                this.Adapter.UpdateCommand.Parameters[97].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[98].Value = ((decimal)(Original_Cl.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[97].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[97].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[98].Value = global::System.DBNull.Value;
             }
             if ((Original_Ca.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[98].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[99].Value = ((decimal)(Original_Ca.Value));
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((decimal)(Original_Ca.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[98].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[99].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[100].Value = global::System.DBNull.Value;
             }
+            this.Adapter.UpdateCommand.Parameters[101].Value = ((decimal)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -14098,10 +14255,11 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
+                    decimal MaBn, 
                     string HoTen, 
                     global::System.Nullable<decimal> NamSinh, 
                     global::System.Nullable<global::System.DateTime> NgayKham, 
-                    global::System.Nullable<bool> TieuDuong, 
+                    global::System.Nullable<int> TieuDuong, 
                     string GioiTinh, 
                     global::System.Nullable<decimal> Cholesterol, 
                     global::System.Nullable<decimal> HDL_Cholesterol, 
@@ -14132,10 +14290,11 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> K, 
                     global::System.Nullable<decimal> Cl, 
                     global::System.Nullable<decimal> Ca, 
+                    decimal Original_ID, 
                     decimal Original_MaBn, 
                     global::System.Nullable<decimal> Original_NamSinh, 
                     global::System.Nullable<global::System.DateTime> Original_NgayKham, 
-                    global::System.Nullable<bool> Original_TieuDuong, 
+                    global::System.Nullable<int> Original_TieuDuong, 
                     global::System.Nullable<decimal> Original_Cholesterol, 
                     global::System.Nullable<decimal> Original_HDL_Cholesterol, 
                     global::System.Nullable<decimal> Original_Triglyceride, 
@@ -14165,7 +14324,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> Original_K, 
                     global::System.Nullable<decimal> Original_Cl, 
                     global::System.Nullable<decimal> Original_Ca) {
-            return this.Update(Original_MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca, Original_MaBn, Original_NamSinh, Original_NgayKham, Original_TieuDuong, Original_Cholesterol, Original_HDL_Cholesterol, Original_Triglyceride, Original_LDL_Cholesterol, Original_SGOT, Original_SGPT, Original_Urea, Original_WBC, Original_LYM, Original_MONO, Original_GRAN, Original_TyLeLYM, Original_TyLeMONO, Original_TyLeGRAN, Original_HGB, Original_RBC, Original_HTC, Original_MCV, Original_MCH, Original_MCHC, Original_RDW_CV, Original_PLT, Original_MPV, Original_PDW, Original_PCT, Original_Na, Original_K, Original_Cl, Original_Ca);
+            return this.Update(MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca, Original_ID, Original_MaBn, Original_NamSinh, Original_NgayKham, Original_TieuDuong, Original_Cholesterol, Original_HDL_Cholesterol, Original_Triglyceride, Original_LDL_Cholesterol, Original_SGOT, Original_SGPT, Original_Urea, Original_WBC, Original_LYM, Original_MONO, Original_GRAN, Original_TyLeLYM, Original_TyLeMONO, Original_TyLeGRAN, Original_HGB, Original_RBC, Original_HTC, Original_MCV, Original_MCH, Original_MCHC, Original_RDW_CV, Original_PLT, Original_MPV, Original_PDW, Original_PCT, Original_Na, Original_K, Original_Cl, Original_Ca, Original_ID);
         }
     }
     
@@ -14290,6 +14449,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "DataSetTemp";
+            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("MaBn", "MaBn");
             tableMapping.ColumnMappings.Add("HoTen", "HoTen");
             tableMapping.ColumnMappings.Add("NamSinh", "NamSinh");
@@ -14328,47 +14488,48 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DataSetTemp] WHERE (([MaBn] = @Original_MaBn) AND ((@IsNull_Na" +
-                "mSinh = 1 AND [NamSinh] IS NULL) OR ([NamSinh] = @Original_NamSinh)) AND ((@IsNu" +
-                "ll_NgayKham = 1 AND [NgayKham] IS NULL) OR ([NgayKham] = @Original_NgayKham)) AN" +
-                "D ((@IsNull_TieuDuong = 1 AND [TieuDuong] IS NULL) OR ([TieuDuong] = @Original_T" +
-                "ieuDuong)) AND ((@IsNull_Cholesterol = 1 AND [Cholesterol] IS NULL) OR ([Cholest" +
-                "erol] = @Original_Cholesterol)) AND ((@IsNull_HDL_Cholesterol = 1 AND [HDL_Chole" +
-                "sterol] IS NULL) OR ([HDL_Cholesterol] = @Original_HDL_Cholesterol)) AND ((@IsNu" +
-                "ll_Triglyceride = 1 AND [Triglyceride] IS NULL) OR ([Triglyceride] = @Original_T" +
-                "riglyceride)) AND ((@IsNull_LDL_Cholesterol = 1 AND [LDL_Cholesterol] IS NULL) O" +
-                "R ([LDL_Cholesterol] = @Original_LDL_Cholesterol)) AND ((@IsNull_SGOT = 1 AND [S" +
-                "GOT] IS NULL) OR ([SGOT] = @Original_SGOT)) AND ((@IsNull_SGPT = 1 AND [SGPT] IS" +
-                " NULL) OR ([SGPT] = @Original_SGPT)) AND ((@IsNull_Urea = 1 AND [Urea] IS NULL) " +
-                "OR ([Urea] = @Original_Urea)) AND ((@IsNull_WBC = 1 AND [WBC] IS NULL) OR ([WBC]" +
-                " = @Original_WBC)) AND ((@IsNull_LYM = 1 AND [LYM] IS NULL) OR ([LYM] = @Origina" +
-                "l_LYM)) AND ((@IsNull_MONO = 1 AND [MONO] IS NULL) OR ([MONO] = @Original_MONO))" +
-                " AND ((@IsNull_GRAN = 1 AND [GRAN] IS NULL) OR ([GRAN] = @Original_GRAN)) AND ((" +
-                "@IsNull_TyLeLYM = 1 AND [TyLeLYM] IS NULL) OR ([TyLeLYM] = @Original_TyLeLYM)) A" +
-                "ND ((@IsNull_TyLeMONO = 1 AND [TyLeMONO] IS NULL) OR ([TyLeMONO] = @Original_TyL" +
-                "eMONO)) AND ((@IsNull_TyLeGRAN = 1 AND [TyLeGRAN] IS NULL) OR ([TyLeGRAN] = @Ori" +
-                "ginal_TyLeGRAN)) AND ((@IsNull_HGB = 1 AND [HGB] IS NULL) OR ([HGB] = @Original_" +
-                "HGB)) AND ((@IsNull_RBC = 1 AND [RBC] IS NULL) OR ([RBC] = @Original_RBC)) AND (" +
-                "(@IsNull_HTC = 1 AND [HTC] IS NULL) OR ([HTC] = @Original_HTC)) AND ((@IsNull_MC" +
-                "V = 1 AND [MCV] IS NULL) OR ([MCV] = @Original_MCV)) AND ((@IsNull_MCH = 1 AND [" +
-                "MCH] IS NULL) OR ([MCH] = @Original_MCH)) AND ((@IsNull_MCHC = 1 AND [MCHC] IS N" +
-                "ULL) OR ([MCHC] = @Original_MCHC)) AND ((@IsNull_RDW_CV = 1 AND [RDW_CV] IS NULL" +
-                ") OR ([RDW_CV] = @Original_RDW_CV)) AND ((@IsNull_PLT = 1 AND [PLT] IS NULL) OR " +
-                "([PLT] = @Original_PLT)) AND ((@IsNull_MPV = 1 AND [MPV] IS NULL) OR ([MPV] = @O" +
-                "riginal_MPV)) AND ((@IsNull_PDW = 1 AND [PDW] IS NULL) OR ([PDW] = @Original_PDW" +
-                ")) AND ((@IsNull_PCT = 1 AND [PCT] IS NULL) OR ([PCT] = @Original_PCT)) AND ((@I" +
-                "sNull_Na = 1 AND [Na] IS NULL) OR ([Na] = @Original_Na)) AND ((@IsNull_K = 1 AND" +
-                " [K] IS NULL) OR ([K] = @Original_K)) AND ((@IsNull_Cl = 1 AND [Cl] IS NULL) OR " +
-                "([Cl] = @Original_Cl)) AND ((@IsNull_Ca = 1 AND [Ca] IS NULL) OR ([Ca] = @Origin" +
-                "al_Ca)))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[DataSetTemp] WHERE (([ID] = @Original_ID) AND ([MaBn] = @Origi" +
+                "nal_MaBn) AND ((@IsNull_NamSinh = 1 AND [NamSinh] IS NULL) OR ([NamSinh] = @Orig" +
+                "inal_NamSinh)) AND ((@IsNull_NgayKham = 1 AND [NgayKham] IS NULL) OR ([NgayKham]" +
+                " = @Original_NgayKham)) AND ((@IsNull_TieuDuong = 1 AND [TieuDuong] IS NULL) OR " +
+                "([TieuDuong] = @Original_TieuDuong)) AND ((@IsNull_Cholesterol = 1 AND [Choleste" +
+                "rol] IS NULL) OR ([Cholesterol] = @Original_Cholesterol)) AND ((@IsNull_HDL_Chol" +
+                "esterol = 1 AND [HDL_Cholesterol] IS NULL) OR ([HDL_Cholesterol] = @Original_HDL" +
+                "_Cholesterol)) AND ((@IsNull_Triglyceride = 1 AND [Triglyceride] IS NULL) OR ([T" +
+                "riglyceride] = @Original_Triglyceride)) AND ((@IsNull_LDL_Cholesterol = 1 AND [L" +
+                "DL_Cholesterol] IS NULL) OR ([LDL_Cholesterol] = @Original_LDL_Cholesterol)) AND" +
+                " ((@IsNull_SGOT = 1 AND [SGOT] IS NULL) OR ([SGOT] = @Original_SGOT)) AND ((@IsN" +
+                "ull_SGPT = 1 AND [SGPT] IS NULL) OR ([SGPT] = @Original_SGPT)) AND ((@IsNull_Ure" +
+                "a = 1 AND [Urea] IS NULL) OR ([Urea] = @Original_Urea)) AND ((@IsNull_WBC = 1 AN" +
+                "D [WBC] IS NULL) OR ([WBC] = @Original_WBC)) AND ((@IsNull_LYM = 1 AND [LYM] IS " +
+                "NULL) OR ([LYM] = @Original_LYM)) AND ((@IsNull_MONO = 1 AND [MONO] IS NULL) OR " +
+                "([MONO] = @Original_MONO)) AND ((@IsNull_GRAN = 1 AND [GRAN] IS NULL) OR ([GRAN]" +
+                " = @Original_GRAN)) AND ((@IsNull_TyLeLYM = 1 AND [TyLeLYM] IS NULL) OR ([TyLeLY" +
+                "M] = @Original_TyLeLYM)) AND ((@IsNull_TyLeMONO = 1 AND [TyLeMONO] IS NULL) OR (" +
+                "[TyLeMONO] = @Original_TyLeMONO)) AND ((@IsNull_TyLeGRAN = 1 AND [TyLeGRAN] IS N" +
+                "ULL) OR ([TyLeGRAN] = @Original_TyLeGRAN)) AND ((@IsNull_HGB = 1 AND [HGB] IS NU" +
+                "LL) OR ([HGB] = @Original_HGB)) AND ((@IsNull_RBC = 1 AND [RBC] IS NULL) OR ([RB" +
+                "C] = @Original_RBC)) AND ((@IsNull_HTC = 1 AND [HTC] IS NULL) OR ([HTC] = @Origi" +
+                "nal_HTC)) AND ((@IsNull_MCV = 1 AND [MCV] IS NULL) OR ([MCV] = @Original_MCV)) A" +
+                "ND ((@IsNull_MCH = 1 AND [MCH] IS NULL) OR ([MCH] = @Original_MCH)) AND ((@IsNul" +
+                "l_MCHC = 1 AND [MCHC] IS NULL) OR ([MCHC] = @Original_MCHC)) AND ((@IsNull_RDW_C" +
+                "V = 1 AND [RDW_CV] IS NULL) OR ([RDW_CV] = @Original_RDW_CV)) AND ((@IsNull_PLT " +
+                "= 1 AND [PLT] IS NULL) OR ([PLT] = @Original_PLT)) AND ((@IsNull_MPV = 1 AND [MP" +
+                "V] IS NULL) OR ([MPV] = @Original_MPV)) AND ((@IsNull_PDW = 1 AND [PDW] IS NULL)" +
+                " OR ([PDW] = @Original_PDW)) AND ((@IsNull_PCT = 1 AND [PCT] IS NULL) OR ([PCT] " +
+                "= @Original_PCT)) AND ((@IsNull_Na = 1 AND [Na] IS NULL) OR ([Na] = @Original_Na" +
+                ")) AND ((@IsNull_K = 1 AND [K] IS NULL) OR ([K] = @Original_K)) AND ((@IsNull_Cl" +
+                " = 1 AND [Cl] IS NULL) OR ([Cl] = @Original_Cl)) AND ((@IsNull_Ca = 1 AND [Ca] I" +
+                "S NULL) OR ([Ca] = @Original_Ca)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaBn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBn", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NamSinh", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NamSinh", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NamSinh", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "NamSinh", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NgayKham", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NgayKham", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Cholesterol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cholesterol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cholesterol", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HDL_Cholesterol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -14430,13 +14591,13 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[DataSetTemp] ([MaBn], [HoTen], [NamSinh], [NgayKham], [TieuDuong], [GioiTinh], [Cholesterol], [HDL_Cholesterol], [Triglyceride], [LDL_Cholesterol], [SGOT], [SGPT], [Urea], [WBC], [LYM], [MONO], [GRAN], [TyLeLYM], [TyLeMONO], [TyLeGRAN], [HGB], [RBC], [HTC], [MCV], [MCH], [MCHC], [RDW_CV], [PLT], [MPV], [PDW], [PCT], [Na], [K], [Cl], [Ca]) VALUES (@MaBn, @HoTen, @NamSinh, @NgayKham, @TieuDuong, @GioiTinh, @Cholesterol, @HDL_Cholesterol, @Triglyceride, @LDL_Cholesterol, @SGOT, @SGPT, @Urea, @WBC, @LYM, @MONO, @GRAN, @TyLeLYM, @TyLeMONO, @TyLeGRAN, @HGB, @RBC, @HTC, @MCV, @MCH, @MCHC, @RDW_CV, @PLT, @MPV, @PDW, @PCT, @Na, @K, @Cl, @Ca);
-SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM DataSetTemp WHERE (MaBn = @MaBn)";
+SELECT ID, MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM DataSetTemp WHERE (ID = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoTen", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NamSinh", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "NamSinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NgayKham", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GioiTinh", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GioiTinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HDL_Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -14477,49 +14638,49 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                 "GRAN, [TyLeLYM] = @TyLeLYM, [TyLeMONO] = @TyLeMONO, [TyLeGRAN] = @TyLeGRAN, [HGB" +
                 "] = @HGB, [RBC] = @RBC, [HTC] = @HTC, [MCV] = @MCV, [MCH] = @MCH, [MCHC] = @MCHC" +
                 ", [RDW_CV] = @RDW_CV, [PLT] = @PLT, [MPV] = @MPV, [PDW] = @PDW, [PCT] = @PCT, [N" +
-                "a] = @Na, [K] = @K, [Cl] = @Cl, [Ca] = @Ca WHERE (([MaBn] = @Original_MaBn) AND " +
-                "((@IsNull_NamSinh = 1 AND [NamSinh] IS NULL) OR ([NamSinh] = @Original_NamSinh))" +
-                " AND ((@IsNull_NgayKham = 1 AND [NgayKham] IS NULL) OR ([NgayKham] = @Original_N" +
-                "gayKham)) AND ((@IsNull_TieuDuong = 1 AND [TieuDuong] IS NULL) OR ([TieuDuong] =" +
-                " @Original_TieuDuong)) AND ((@IsNull_Cholesterol = 1 AND [Cholesterol] IS NULL) " +
-                "OR ([Cholesterol] = @Original_Cholesterol)) AND ((@IsNull_HDL_Cholesterol = 1 AN" +
-                "D [HDL_Cholesterol] IS NULL) OR ([HDL_Cholesterol] = @Original_HDL_Cholesterol))" +
-                " AND ((@IsNull_Triglyceride = 1 AND [Triglyceride] IS NULL) OR ([Triglyceride] =" +
-                " @Original_Triglyceride)) AND ((@IsNull_LDL_Cholesterol = 1 AND [LDL_Cholesterol" +
-                "] IS NULL) OR ([LDL_Cholesterol] = @Original_LDL_Cholesterol)) AND ((@IsNull_SGO" +
-                "T = 1 AND [SGOT] IS NULL) OR ([SGOT] = @Original_SGOT)) AND ((@IsNull_SGPT = 1 A" +
-                "ND [SGPT] IS NULL) OR ([SGPT] = @Original_SGPT)) AND ((@IsNull_Urea = 1 AND [Ure" +
-                "a] IS NULL) OR ([Urea] = @Original_Urea)) AND ((@IsNull_WBC = 1 AND [WBC] IS NUL" +
-                "L) OR ([WBC] = @Original_WBC)) AND ((@IsNull_LYM = 1 AND [LYM] IS NULL) OR ([LYM" +
-                "] = @Original_LYM)) AND ((@IsNull_MONO = 1 AND [MONO] IS NULL) OR ([MONO] = @Ori" +
-                "ginal_MONO)) AND ((@IsNull_GRAN = 1 AND [GRAN] IS NULL) OR ([GRAN] = @Original_G" +
-                "RAN)) AND ((@IsNull_TyLeLYM = 1 AND [TyLeLYM] IS NULL) OR ([TyLeLYM] = @Original" +
-                "_TyLeLYM)) AND ((@IsNull_TyLeMONO = 1 AND [TyLeMONO] IS NULL) OR ([TyLeMONO] = @" +
-                "Original_TyLeMONO)) AND ((@IsNull_TyLeGRAN = 1 AND [TyLeGRAN] IS NULL) OR ([TyLe" +
-                "GRAN] = @Original_TyLeGRAN)) AND ((@IsNull_HGB = 1 AND [HGB] IS NULL) OR ([HGB] " +
-                "= @Original_HGB)) AND ((@IsNull_RBC = 1 AND [RBC] IS NULL) OR ([RBC] = @Original" +
-                "_RBC)) AND ((@IsNull_HTC = 1 AND [HTC] IS NULL) OR ([HTC] = @Original_HTC)) AND " +
-                "((@IsNull_MCV = 1 AND [MCV] IS NULL) OR ([MCV] = @Original_MCV)) AND ((@IsNull_M" +
-                "CH = 1 AND [MCH] IS NULL) OR ([MCH] = @Original_MCH)) AND ((@IsNull_MCHC = 1 AND" +
-                " [MCHC] IS NULL) OR ([MCHC] = @Original_MCHC)) AND ((@IsNull_RDW_CV = 1 AND [RDW" +
-                "_CV] IS NULL) OR ([RDW_CV] = @Original_RDW_CV)) AND ((@IsNull_PLT = 1 AND [PLT] " +
-                "IS NULL) OR ([PLT] = @Original_PLT)) AND ((@IsNull_MPV = 1 AND [MPV] IS NULL) OR" +
-                " ([MPV] = @Original_MPV)) AND ((@IsNull_PDW = 1 AND [PDW] IS NULL) OR ([PDW] = @" +
-                "Original_PDW)) AND ((@IsNull_PCT = 1 AND [PCT] IS NULL) OR ([PCT] = @Original_PC" +
-                "T)) AND ((@IsNull_Na = 1 AND [Na] IS NULL) OR ([Na] = @Original_Na)) AND ((@IsNu" +
-                "ll_K = 1 AND [K] IS NULL) OR ([K] = @Original_K)) AND ((@IsNull_Cl = 1 AND [Cl] " +
-                "IS NULL) OR ([Cl] = @Original_Cl)) AND ((@IsNull_Ca = 1 AND [Ca] IS NULL) OR ([C" +
-                "a] = @Original_Ca)));\r\nSELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTin" +
-                "h, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea" +
-                ", WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MC" +
-                "HC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM DataSetTemp WHERE (MaBn = @Ma" +
-                "Bn)";
+                "a] = @Na, [K] = @K, [Cl] = @Cl, [Ca] = @Ca WHERE (([ID] = @Original_ID) AND ([Ma" +
+                "Bn] = @Original_MaBn) AND ((@IsNull_NamSinh = 1 AND [NamSinh] IS NULL) OR ([NamS" +
+                "inh] = @Original_NamSinh)) AND ((@IsNull_NgayKham = 1 AND [NgayKham] IS NULL) OR" +
+                " ([NgayKham] = @Original_NgayKham)) AND ((@IsNull_TieuDuong = 1 AND [TieuDuong] " +
+                "IS NULL) OR ([TieuDuong] = @Original_TieuDuong)) AND ((@IsNull_Cholesterol = 1 A" +
+                "ND [Cholesterol] IS NULL) OR ([Cholesterol] = @Original_Cholesterol)) AND ((@IsN" +
+                "ull_HDL_Cholesterol = 1 AND [HDL_Cholesterol] IS NULL) OR ([HDL_Cholesterol] = @" +
+                "Original_HDL_Cholesterol)) AND ((@IsNull_Triglyceride = 1 AND [Triglyceride] IS " +
+                "NULL) OR ([Triglyceride] = @Original_Triglyceride)) AND ((@IsNull_LDL_Cholestero" +
+                "l = 1 AND [LDL_Cholesterol] IS NULL) OR ([LDL_Cholesterol] = @Original_LDL_Chole" +
+                "sterol)) AND ((@IsNull_SGOT = 1 AND [SGOT] IS NULL) OR ([SGOT] = @Original_SGOT)" +
+                ") AND ((@IsNull_SGPT = 1 AND [SGPT] IS NULL) OR ([SGPT] = @Original_SGPT)) AND (" +
+                "(@IsNull_Urea = 1 AND [Urea] IS NULL) OR ([Urea] = @Original_Urea)) AND ((@IsNul" +
+                "l_WBC = 1 AND [WBC] IS NULL) OR ([WBC] = @Original_WBC)) AND ((@IsNull_LYM = 1 A" +
+                "ND [LYM] IS NULL) OR ([LYM] = @Original_LYM)) AND ((@IsNull_MONO = 1 AND [MONO] " +
+                "IS NULL) OR ([MONO] = @Original_MONO)) AND ((@IsNull_GRAN = 1 AND [GRAN] IS NULL" +
+                ") OR ([GRAN] = @Original_GRAN)) AND ((@IsNull_TyLeLYM = 1 AND [TyLeLYM] IS NULL)" +
+                " OR ([TyLeLYM] = @Original_TyLeLYM)) AND ((@IsNull_TyLeMONO = 1 AND [TyLeMONO] I" +
+                "S NULL) OR ([TyLeMONO] = @Original_TyLeMONO)) AND ((@IsNull_TyLeGRAN = 1 AND [Ty" +
+                "LeGRAN] IS NULL) OR ([TyLeGRAN] = @Original_TyLeGRAN)) AND ((@IsNull_HGB = 1 AND" +
+                " [HGB] IS NULL) OR ([HGB] = @Original_HGB)) AND ((@IsNull_RBC = 1 AND [RBC] IS N" +
+                "ULL) OR ([RBC] = @Original_RBC)) AND ((@IsNull_HTC = 1 AND [HTC] IS NULL) OR ([H" +
+                "TC] = @Original_HTC)) AND ((@IsNull_MCV = 1 AND [MCV] IS NULL) OR ([MCV] = @Orig" +
+                "inal_MCV)) AND ((@IsNull_MCH = 1 AND [MCH] IS NULL) OR ([MCH] = @Original_MCH)) " +
+                "AND ((@IsNull_MCHC = 1 AND [MCHC] IS NULL) OR ([MCHC] = @Original_MCHC)) AND ((@" +
+                "IsNull_RDW_CV = 1 AND [RDW_CV] IS NULL) OR ([RDW_CV] = @Original_RDW_CV)) AND ((" +
+                "@IsNull_PLT = 1 AND [PLT] IS NULL) OR ([PLT] = @Original_PLT)) AND ((@IsNull_MPV" +
+                " = 1 AND [MPV] IS NULL) OR ([MPV] = @Original_MPV)) AND ((@IsNull_PDW = 1 AND [P" +
+                "DW] IS NULL) OR ([PDW] = @Original_PDW)) AND ((@IsNull_PCT = 1 AND [PCT] IS NULL" +
+                ") OR ([PCT] = @Original_PCT)) AND ((@IsNull_Na = 1 AND [Na] IS NULL) OR ([Na] = " +
+                "@Original_Na)) AND ((@IsNull_K = 1 AND [K] IS NULL) OR ([K] = @Original_K)) AND " +
+                "((@IsNull_Cl = 1 AND [Cl] IS NULL) OR ([Cl] = @Original_Cl)) AND ((@IsNull_Ca = " +
+                "1 AND [Ca] IS NULL) OR ([Ca] = @Original_Ca)));\r\nSELECT ID, MaBn, HoTen, NamSinh" +
+                ", NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL" +
+                "_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRA" +
+                "N, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM" +
+                " DataSetTemp WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBn", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoTen", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NamSinh", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "NamSinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NgayKham", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GioiTinh", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GioiTinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HDL_Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -14550,13 +14711,14 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@K", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 1, "K", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cl", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ca", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Ca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaBn", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBn", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NamSinh", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NamSinh", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NamSinh", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "NamSinh", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NgayKham", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NgayKham", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NgayKham", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TieuDuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Cholesterol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cholesterol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cholesterol", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cholesterol", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_HDL_Cholesterol", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -14615,6 +14777,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cl", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "Cl", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Ca", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ca", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ca", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "Ca", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14630,7 +14793,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM dbo.DataSetTemp";
+            this._commandCollection[0].CommandText = @"SELECT ID, MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM dbo.DataSetTemp";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -14692,10 +14855,11 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
         public virtual int Delete(
+                    decimal Original_ID, 
                     decimal Original_MaBn, 
                     global::System.Nullable<decimal> Original_NamSinh, 
                     global::System.Nullable<global::System.DateTime> Original_NgayKham, 
-                    global::System.Nullable<bool> Original_TieuDuong, 
+                    global::System.Nullable<int> Original_TieuDuong, 
                     global::System.Nullable<decimal> Original_Cholesterol, 
                     global::System.Nullable<decimal> Original_HDL_Cholesterol, 
                     global::System.Nullable<decimal> Original_Triglyceride, 
@@ -14725,262 +14889,263 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> Original_K, 
                     global::System.Nullable<decimal> Original_Cl, 
                     global::System.Nullable<decimal> Original_Ca) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((decimal)(Original_MaBn));
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((decimal)(Original_ID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((decimal)(Original_MaBn));
             if ((Original_NamSinh.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_NamSinh.Value));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((decimal)(Original_NamSinh.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((Original_NgayKham.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((System.DateTime)(Original_NgayKham.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((System.DateTime)(Original_NgayKham.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             if ((Original_TieuDuong.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((bool)(Original_TieuDuong.Value));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_TieuDuong.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             if ((Original_Cholesterol.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((decimal)(Original_Cholesterol.Value));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((decimal)(Original_Cholesterol.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[8].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             if ((Original_HDL_Cholesterol.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((decimal)(Original_HDL_Cholesterol.Value));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((decimal)(Original_HDL_Cholesterol.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             if ((Original_Triglyceride.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_Triglyceride.Value));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((decimal)(Original_Triglyceride.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             if ((Original_LDL_Cholesterol.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((decimal)(Original_LDL_Cholesterol.Value));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((decimal)(Original_LDL_Cholesterol.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             if ((Original_SGOT.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((decimal)(Original_SGOT.Value));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((decimal)(Original_SGOT.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             if ((Original_SGPT.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((decimal)(Original_SGPT.Value));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((decimal)(Original_SGPT.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             if ((Original_Urea.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((decimal)(Original_Urea.Value));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((decimal)(Original_Urea.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             if ((Original_WBC.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((decimal)(Original_WBC.Value));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((decimal)(Original_WBC.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             if ((Original_LYM.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((decimal)(Original_LYM.Value));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((decimal)(Original_LYM.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             if ((Original_MONO.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((decimal)(Original_MONO.Value));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((decimal)(Original_MONO.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             if ((Original_GRAN.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[28].Value = ((decimal)(Original_GRAN.Value));
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((decimal)(Original_GRAN.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeLYM.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[30].Value = ((decimal)(Original_TyLeLYM.Value));
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[31].Value = ((decimal)(Original_TyLeLYM.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[30].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeMONO.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[32].Value = ((decimal)(Original_TyLeMONO.Value));
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[33].Value = ((decimal)(Original_TyLeMONO.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeGRAN.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[34].Value = ((decimal)(Original_TyLeGRAN.Value));
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[35].Value = ((decimal)(Original_TyLeGRAN.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             if ((Original_HGB.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[36].Value = ((decimal)(Original_HGB.Value));
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[37].Value = ((decimal)(Original_HGB.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[36].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             if ((Original_RBC.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[38].Value = ((decimal)(Original_RBC.Value));
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[39].Value = ((decimal)(Original_RBC.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[38].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
             if ((Original_HTC.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[40].Value = ((decimal)(Original_HTC.Value));
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[41].Value = ((decimal)(Original_HTC.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
             if ((Original_MCV.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[42].Value = ((decimal)(Original_MCV.Value));
+                this.Adapter.DeleteCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[43].Value = ((decimal)(Original_MCV.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[42].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
             if ((Original_MCH.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[44].Value = ((decimal)(Original_MCH.Value));
+                this.Adapter.DeleteCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[45].Value = ((decimal)(Original_MCH.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[44].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
             if ((Original_MCHC.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[46].Value = ((decimal)(Original_MCHC.Value));
+                this.Adapter.DeleteCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[47].Value = ((decimal)(Original_MCHC.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[46].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
             if ((Original_RDW_CV.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[48].Value = ((decimal)(Original_RDW_CV.Value));
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[49].Value = ((decimal)(Original_RDW_CV.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[47].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[48].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[49].Value = global::System.DBNull.Value;
             }
             if ((Original_PLT.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[50].Value = ((decimal)(Original_PLT.Value));
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[51].Value = ((decimal)(Original_PLT.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[49].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[50].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[50].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[51].Value = global::System.DBNull.Value;
             }
             if ((Original_MPV.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[52].Value = ((decimal)(Original_MPV.Value));
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[53].Value = ((decimal)(Original_MPV.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[51].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[52].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[52].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[53].Value = global::System.DBNull.Value;
             }
             if ((Original_PDW.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[54].Value = ((decimal)(Original_PDW.Value));
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[55].Value = ((decimal)(Original_PDW.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[53].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[54].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[54].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[55].Value = global::System.DBNull.Value;
             }
             if ((Original_PCT.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[56].Value = ((decimal)(Original_PCT.Value));
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[57].Value = ((decimal)(Original_PCT.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[55].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[56].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[56].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[57].Value = global::System.DBNull.Value;
             }
             if ((Original_Na.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[58].Value = ((decimal)(Original_Na.Value));
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[59].Value = ((decimal)(Original_Na.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[57].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[58].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[58].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[59].Value = global::System.DBNull.Value;
             }
             if ((Original_K.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[60].Value = ((decimal)(Original_K.Value));
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[61].Value = ((decimal)(Original_K.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[59].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[60].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[60].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[61].Value = global::System.DBNull.Value;
             }
             if ((Original_Cl.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[62].Value = ((decimal)(Original_Cl.Value));
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[63].Value = ((decimal)(Original_Cl.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[61].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[62].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[62].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[63].Value = global::System.DBNull.Value;
             }
             if ((Original_Ca.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[63].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[64].Value = ((decimal)(Original_Ca.Value));
+                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[65].Value = ((decimal)(Original_Ca.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[63].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[64].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[64].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[65].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -15007,7 +15172,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     string HoTen, 
                     global::System.Nullable<decimal> NamSinh, 
                     global::System.Nullable<global::System.DateTime> NgayKham, 
-                    global::System.Nullable<bool> TieuDuong, 
+                    global::System.Nullable<int> TieuDuong, 
                     string GioiTinh, 
                     global::System.Nullable<decimal> Cholesterol, 
                     global::System.Nullable<decimal> HDL_Cholesterol, 
@@ -15058,7 +15223,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((TieuDuong.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(TieuDuong.Value));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(TieuDuong.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -15268,7 +15433,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     string HoTen, 
                     global::System.Nullable<decimal> NamSinh, 
                     global::System.Nullable<global::System.DateTime> NgayKham, 
-                    global::System.Nullable<bool> TieuDuong, 
+                    global::System.Nullable<int> TieuDuong, 
                     string GioiTinh, 
                     global::System.Nullable<decimal> Cholesterol, 
                     global::System.Nullable<decimal> HDL_Cholesterol, 
@@ -15299,10 +15464,11 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> K, 
                     global::System.Nullable<decimal> Cl, 
                     global::System.Nullable<decimal> Ca, 
+                    decimal Original_ID, 
                     decimal Original_MaBn, 
                     global::System.Nullable<decimal> Original_NamSinh, 
                     global::System.Nullable<global::System.DateTime> Original_NgayKham, 
-                    global::System.Nullable<bool> Original_TieuDuong, 
+                    global::System.Nullable<int> Original_TieuDuong, 
                     global::System.Nullable<decimal> Original_Cholesterol, 
                     global::System.Nullable<decimal> Original_HDL_Cholesterol, 
                     global::System.Nullable<decimal> Original_Triglyceride, 
@@ -15331,7 +15497,8 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> Original_Na, 
                     global::System.Nullable<decimal> Original_K, 
                     global::System.Nullable<decimal> Original_Cl, 
-                    global::System.Nullable<decimal> Original_Ca) {
+                    global::System.Nullable<decimal> Original_Ca, 
+                    decimal ID) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((decimal)(MaBn));
             if ((HoTen == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -15352,7 +15519,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             if ((TieuDuong.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(TieuDuong.Value));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(TieuDuong.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
@@ -15537,263 +15704,265 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             else {
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[35].Value = ((decimal)(Original_MaBn));
+            this.Adapter.UpdateCommand.Parameters[35].Value = ((decimal)(Original_ID));
+            this.Adapter.UpdateCommand.Parameters[36].Value = ((decimal)(Original_MaBn));
             if ((Original_NamSinh.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((decimal)(Original_NamSinh.Value));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((decimal)(Original_NamSinh.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
             if ((Original_NgayKham.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((System.DateTime)(Original_NgayKham.Value));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((System.DateTime)(Original_NgayKham.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
             if ((Original_TieuDuong.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((bool)(Original_TieuDuong.Value));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((int)(Original_TieuDuong.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
             if ((Original_Cholesterol.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((decimal)(Original_Cholesterol.Value));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((decimal)(Original_Cholesterol.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
             }
             if ((Original_HDL_Cholesterol.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((decimal)(Original_HDL_Cholesterol.Value));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((decimal)(Original_HDL_Cholesterol.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
             }
             if ((Original_Triglyceride.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((decimal)(Original_Triglyceride.Value));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((decimal)(Original_Triglyceride.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
             }
             if ((Original_LDL_Cholesterol.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((decimal)(Original_LDL_Cholesterol.Value));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[50].Value = ((decimal)(Original_LDL_Cholesterol.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
             }
             if ((Original_SGOT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((decimal)(Original_SGOT.Value));
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[52].Value = ((decimal)(Original_SGOT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[51].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
             }
             if ((Original_SGPT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[53].Value = ((decimal)(Original_SGPT.Value));
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[54].Value = ((decimal)(Original_SGPT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[53].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[53].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[54].Value = global::System.DBNull.Value;
             }
             if ((Original_Urea.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[55].Value = ((decimal)(Original_Urea.Value));
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[56].Value = ((decimal)(Original_Urea.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[54].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[55].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[55].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[56].Value = global::System.DBNull.Value;
             }
             if ((Original_WBC.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[57].Value = ((decimal)(Original_WBC.Value));
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[58].Value = ((decimal)(Original_WBC.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[56].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[57].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[57].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[58].Value = global::System.DBNull.Value;
             }
             if ((Original_LYM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[59].Value = ((decimal)(Original_LYM.Value));
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[60].Value = ((decimal)(Original_LYM.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[58].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[59].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[59].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[60].Value = global::System.DBNull.Value;
             }
             if ((Original_MONO.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[61].Value = ((decimal)(Original_MONO.Value));
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[62].Value = ((decimal)(Original_MONO.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[60].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[61].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[61].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[62].Value = global::System.DBNull.Value;
             }
             if ((Original_GRAN.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[63].Value = ((decimal)(Original_GRAN.Value));
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[64].Value = ((decimal)(Original_GRAN.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[62].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[63].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[63].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[64].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeLYM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[65].Value = ((decimal)(Original_TyLeLYM.Value));
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[66].Value = ((decimal)(Original_TyLeLYM.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[64].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[65].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[65].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[66].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeMONO.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[67].Value = ((decimal)(Original_TyLeMONO.Value));
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[68].Value = ((decimal)(Original_TyLeMONO.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[66].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[67].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[67].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[68].Value = global::System.DBNull.Value;
             }
             if ((Original_TyLeGRAN.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[69].Value = ((decimal)(Original_TyLeGRAN.Value));
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[70].Value = ((decimal)(Original_TyLeGRAN.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[68].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[69].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[69].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[70].Value = global::System.DBNull.Value;
             }
             if ((Original_HGB.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[71].Value = ((decimal)(Original_HGB.Value));
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[72].Value = ((decimal)(Original_HGB.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[70].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[71].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[71].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[72].Value = global::System.DBNull.Value;
             }
             if ((Original_RBC.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[73].Value = ((decimal)(Original_RBC.Value));
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[74].Value = ((decimal)(Original_RBC.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[72].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[73].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[73].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[74].Value = global::System.DBNull.Value;
             }
             if ((Original_HTC.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[75].Value = ((decimal)(Original_HTC.Value));
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[76].Value = ((decimal)(Original_HTC.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[74].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[75].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[75].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[76].Value = global::System.DBNull.Value;
             }
             if ((Original_MCV.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[77].Value = ((decimal)(Original_MCV.Value));
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[78].Value = ((decimal)(Original_MCV.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[76].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[77].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[77].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[78].Value = global::System.DBNull.Value;
             }
             if ((Original_MCH.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[79].Value = ((decimal)(Original_MCH.Value));
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[80].Value = ((decimal)(Original_MCH.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[78].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[79].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[79].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[80].Value = global::System.DBNull.Value;
             }
             if ((Original_MCHC.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[81].Value = ((decimal)(Original_MCHC.Value));
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[82].Value = ((decimal)(Original_MCHC.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[80].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[81].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[81].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[82].Value = global::System.DBNull.Value;
             }
             if ((Original_RDW_CV.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[83].Value = ((decimal)(Original_RDW_CV.Value));
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[84].Value = ((decimal)(Original_RDW_CV.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[82].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[83].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[83].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[84].Value = global::System.DBNull.Value;
             }
             if ((Original_PLT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[85].Value = ((decimal)(Original_PLT.Value));
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[86].Value = ((decimal)(Original_PLT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[84].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[85].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[85].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[86].Value = global::System.DBNull.Value;
             }
             if ((Original_MPV.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[87].Value = ((decimal)(Original_MPV.Value));
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[88].Value = ((decimal)(Original_MPV.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[86].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[87].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[87].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[88].Value = global::System.DBNull.Value;
             }
             if ((Original_PDW.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[89].Value = ((decimal)(Original_PDW.Value));
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[90].Value = ((decimal)(Original_PDW.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[88].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[89].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[89].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[90].Value = global::System.DBNull.Value;
             }
             if ((Original_PCT.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[91].Value = ((decimal)(Original_PCT.Value));
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[92].Value = ((decimal)(Original_PCT.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[90].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[91].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[91].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[92].Value = global::System.DBNull.Value;
             }
             if ((Original_Na.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[92].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[93].Value = ((decimal)(Original_Na.Value));
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[94].Value = ((decimal)(Original_Na.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[92].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[93].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[93].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[94].Value = global::System.DBNull.Value;
             }
             if ((Original_K.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[94].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[95].Value = ((decimal)(Original_K.Value));
+                this.Adapter.UpdateCommand.Parameters[95].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[96].Value = ((decimal)(Original_K.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[94].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[95].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[95].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[96].Value = global::System.DBNull.Value;
             }
             if ((Original_Cl.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[97].Value = ((decimal)(Original_Cl.Value));
+                this.Adapter.UpdateCommand.Parameters[97].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[98].Value = ((decimal)(Original_Cl.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[96].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[97].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[97].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[98].Value = global::System.DBNull.Value;
             }
             if ((Original_Ca.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[98].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[99].Value = ((decimal)(Original_Ca.Value));
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[100].Value = ((decimal)(Original_Ca.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[98].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[99].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[99].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[100].Value = global::System.DBNull.Value;
             }
+            this.Adapter.UpdateCommand.Parameters[101].Value = ((decimal)(ID));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -15815,10 +15984,11 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(
+                    decimal MaBn, 
                     string HoTen, 
                     global::System.Nullable<decimal> NamSinh, 
                     global::System.Nullable<global::System.DateTime> NgayKham, 
-                    global::System.Nullable<bool> TieuDuong, 
+                    global::System.Nullable<int> TieuDuong, 
                     string GioiTinh, 
                     global::System.Nullable<decimal> Cholesterol, 
                     global::System.Nullable<decimal> HDL_Cholesterol, 
@@ -15849,10 +16019,11 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> K, 
                     global::System.Nullable<decimal> Cl, 
                     global::System.Nullable<decimal> Ca, 
+                    decimal Original_ID, 
                     decimal Original_MaBn, 
                     global::System.Nullable<decimal> Original_NamSinh, 
                     global::System.Nullable<global::System.DateTime> Original_NgayKham, 
-                    global::System.Nullable<bool> Original_TieuDuong, 
+                    global::System.Nullable<int> Original_TieuDuong, 
                     global::System.Nullable<decimal> Original_Cholesterol, 
                     global::System.Nullable<decimal> Original_HDL_Cholesterol, 
                     global::System.Nullable<decimal> Original_Triglyceride, 
@@ -15882,7 +16053,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     global::System.Nullable<decimal> Original_K, 
                     global::System.Nullable<decimal> Original_Cl, 
                     global::System.Nullable<decimal> Original_Ca) {
-            return this.Update(Original_MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca, Original_MaBn, Original_NamSinh, Original_NgayKham, Original_TieuDuong, Original_Cholesterol, Original_HDL_Cholesterol, Original_Triglyceride, Original_LDL_Cholesterol, Original_SGOT, Original_SGPT, Original_Urea, Original_WBC, Original_LYM, Original_MONO, Original_GRAN, Original_TyLeLYM, Original_TyLeMONO, Original_TyLeGRAN, Original_HGB, Original_RBC, Original_HTC, Original_MCV, Original_MCH, Original_MCHC, Original_RDW_CV, Original_PLT, Original_MPV, Original_PDW, Original_PCT, Original_Na, Original_K, Original_Cl, Original_Ca);
+            return this.Update(MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca, Original_ID, Original_MaBn, Original_NamSinh, Original_NgayKham, Original_TieuDuong, Original_Cholesterol, Original_HDL_Cholesterol, Original_Triglyceride, Original_LDL_Cholesterol, Original_SGOT, Original_SGPT, Original_Urea, Original_WBC, Original_LYM, Original_MONO, Original_GRAN, Original_TyLeLYM, Original_TyLeMONO, Original_TyLeGRAN, Original_HGB, Original_RBC, Original_HTC, Original_MCV, Original_MCH, Original_MCHC, Original_RDW_CV, Original_PLT, Original_MPV, Original_PDW, Original_PCT, Original_Na, Original_K, Original_Cl, Original_Ca, Original_ID);
         }
     }
     
@@ -16007,6 +16178,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "ResultSet";
+            tableMapping.ColumnMappings.Add("MaBN", "MaBN");
             tableMapping.ColumnMappings.Add("HoTen", "HoTen");
             tableMapping.ColumnMappings.Add("Tuoi", "Tuoi");
             tableMapping.ColumnMappings.Add("TieuDuong", "TieuDuong");
@@ -16043,8 +16215,9 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ResultSet] ([HoTen], [Tuoi], [TieuDuong], [GioiTinh], [Cholesterol], [HDL_Cholesterol], [Triglyceride], [LDL_Cholesterol], [SGOT], [SGPT], [Urea], [WBC], [LYM], [MONO], [GRAN], [TyLeLYM], [TyLeMONO], [TyLeGRAN], [HGB], [RBC], [HTC], [MCV], [MCH], [MCHC], [RDW_CV], [PLT], [MPV], [PDW], [PCT], [Na], [K], [Cl], [Ca]) VALUES (@HoTen, @Tuoi, @TieuDuong, @GioiTinh, @Cholesterol, @HDL_Cholesterol, @Triglyceride, @LDL_Cholesterol, @SGOT, @SGPT, @Urea, @WBC, @LYM, @MONO, @GRAN, @TyLeLYM, @TyLeMONO, @TyLeGRAN, @HGB, @RBC, @HTC, @MCV, @MCH, @MCHC, @RDW_CV, @PLT, @MPV, @PDW, @PCT, @Na, @K, @Cl, @Ca)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ResultSet] ([MaBN], [HoTen], [Tuoi], [TieuDuong], [GioiTinh], [Cholesterol], [HDL_Cholesterol], [Triglyceride], [LDL_Cholesterol], [SGOT], [SGPT], [Urea], [WBC], [LYM], [MONO], [GRAN], [TyLeLYM], [TyLeMONO], [TyLeGRAN], [HGB], [RBC], [HTC], [MCV], [MCH], [MCHC], [RDW_CV], [PLT], [MPV], [PDW], [PCT], [Na], [K], [Cl], [Ca]) VALUES (@MaBN, @HoTen, @Tuoi, @TieuDuong, @GioiTinh, @Cholesterol, @HDL_Cholesterol, @Triglyceride, @LDL_Cholesterol, @SGOT, @SGPT, @Urea, @WBC, @LYM, @MONO, @GRAN, @TyLeLYM, @TyLeMONO, @TyLeGRAN, @HGB, @RBC, @HTC, @MCV, @MCH, @MCHC, @RDW_CV, @PLT, @MPV, @PDW, @PCT, @Na, @K, @Cl, @Ca)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBN", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoTen", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tuoi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tuoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -16093,7 +16266,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT HoTen, Tuoi, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM dbo.ResultSet";
+            this._commandCollection[0].CommandText = @"SELECT MaBN, HoTen, Tuoi, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM dbo.ResultSet";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -16155,6 +16328,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
+                    global::System.Nullable<decimal> MaBN, 
                     string HoTen, 
                     string Tuoi, 
                     global::System.Nullable<bool> TieuDuong, 
@@ -16188,203 +16362,209 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     string K, 
                     string Cl, 
                     string Ca) {
-            if ((HoTen == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            if ((MaBN.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((decimal)(MaBN.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(HoTen));
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((Tuoi == null)) {
+            if ((HoTen == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Tuoi));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(HoTen));
             }
-            if ((TieuDuong.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(TieuDuong.Value));
-            }
-            else {
+            if ((Tuoi == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((GioiTinh == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Tuoi));
+            }
+            if ((TieuDuong.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(TieuDuong.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(GioiTinh));
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Cholesterol == null)) {
+            if ((GioiTinh == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Cholesterol));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(GioiTinh));
             }
-            if ((HDL_Cholesterol == null)) {
+            if ((Cholesterol == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(HDL_Cholesterol));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Cholesterol));
             }
-            if ((Triglyceride == null)) {
+            if ((HDL_Cholesterol == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Triglyceride));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(HDL_Cholesterol));
             }
-            if ((LDL_Cholesterol == null)) {
+            if ((Triglyceride == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(LDL_Cholesterol));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Triglyceride));
             }
-            if ((SGOT == null)) {
+            if ((LDL_Cholesterol == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(SGOT));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(LDL_Cholesterol));
             }
-            if ((SGPT == null)) {
+            if ((SGOT == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(SGPT));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(SGOT));
             }
-            if ((Urea == null)) {
+            if ((SGPT == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Urea));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(SGPT));
             }
-            if ((WBC == null)) {
+            if ((Urea == null)) {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(WBC));
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Urea));
             }
-            if ((LYM == null)) {
+            if ((WBC == null)) {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(LYM));
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(WBC));
             }
-            if ((MONO == null)) {
+            if ((LYM == null)) {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(MONO));
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(LYM));
             }
-            if ((GRAN == null)) {
+            if ((MONO == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(GRAN));
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(MONO));
             }
-            if ((TyLeLYM == null)) {
+            if ((GRAN == null)) {
                 this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(TyLeLYM));
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(GRAN));
             }
-            if ((TyLeMONO == null)) {
+            if ((TyLeLYM == null)) {
                 this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(TyLeMONO));
+                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(TyLeLYM));
             }
-            if ((TyLeGRAN == null)) {
+            if ((TyLeMONO == null)) {
                 this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(TyLeGRAN));
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(TyLeMONO));
             }
-            if ((HGB == null)) {
+            if ((TyLeGRAN == null)) {
                 this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(HGB));
+                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(TyLeGRAN));
             }
-            if ((RBC == null)) {
+            if ((HGB == null)) {
                 this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(RBC));
+                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(HGB));
             }
-            if ((HTC == null)) {
+            if ((RBC == null)) {
                 this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[20].Value = ((string)(HTC));
+                this.Adapter.InsertCommand.Parameters[20].Value = ((string)(RBC));
             }
-            if ((MCV == null)) {
+            if ((HTC == null)) {
                 this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[21].Value = ((string)(MCV));
+                this.Adapter.InsertCommand.Parameters[21].Value = ((string)(HTC));
             }
-            if ((MCH == null)) {
+            if ((MCV == null)) {
                 this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[22].Value = ((string)(MCH));
+                this.Adapter.InsertCommand.Parameters[22].Value = ((string)(MCV));
             }
-            if ((MCHC == null)) {
+            if ((MCH == null)) {
                 this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[23].Value = ((string)(MCHC));
+                this.Adapter.InsertCommand.Parameters[23].Value = ((string)(MCH));
             }
-            if ((RDW_CV == null)) {
+            if ((MCHC == null)) {
                 this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[24].Value = ((string)(RDW_CV));
+                this.Adapter.InsertCommand.Parameters[24].Value = ((string)(MCHC));
             }
-            if ((PLT == null)) {
+            if ((RDW_CV == null)) {
                 this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[25].Value = ((string)(PLT));
+                this.Adapter.InsertCommand.Parameters[25].Value = ((string)(RDW_CV));
             }
-            if ((MPV == null)) {
+            if ((PLT == null)) {
                 this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(MPV));
+                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(PLT));
             }
-            if ((PDW == null)) {
+            if ((MPV == null)) {
                 this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(PDW));
+                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(MPV));
             }
-            if ((PCT == null)) {
+            if ((PDW == null)) {
                 this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(PCT));
+                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(PDW));
             }
-            if ((Na == null)) {
+            if ((PCT == null)) {
                 this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(Na));
+                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(PCT));
             }
-            if ((K == null)) {
+            if ((Na == null)) {
                 this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[30].Value = ((string)(K));
+                this.Adapter.InsertCommand.Parameters[30].Value = ((string)(Na));
             }
-            if ((Cl == null)) {
+            if ((K == null)) {
                 this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[31].Value = ((string)(Cl));
+                this.Adapter.InsertCommand.Parameters[31].Value = ((string)(K));
             }
-            if ((Ca == null)) {
+            if ((Cl == null)) {
                 this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[32].Value = ((string)(Ca));
+                this.Adapter.InsertCommand.Parameters[32].Value = ((string)(Cl));
+            }
+            if ((Ca == null)) {
+                this.Adapter.InsertCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[33].Value = ((string)(Ca));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -16524,6 +16704,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "TestSet";
+            tableMapping.ColumnMappings.Add("MaBN", "MaBN");
             tableMapping.ColumnMappings.Add("HoTen", "HoTen");
             tableMapping.ColumnMappings.Add("Tuoi", "Tuoi");
             tableMapping.ColumnMappings.Add("TieuDuong", "TieuDuong");
@@ -16560,8 +16741,9 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TestSet] ([HoTen], [Tuoi], [TieuDuong], [GioiTinh], [Cholesterol], [HDL_Cholesterol], [Triglyceride], [LDL_Cholesterol], [SGOT], [SGPT], [Urea], [WBC], [LYM], [MONO], [GRAN], [TyLeLYM], [TyLeMONO], [TyLeGRAN], [HGB], [RBC], [HTC], [MCV], [MCH], [MCHC], [RDW_CV], [PLT], [MPV], [PDW], [PCT], [Na], [K], [Cl], [Ca]) VALUES (@HoTen, @Tuoi, @TieuDuong, @GioiTinh, @Cholesterol, @HDL_Cholesterol, @Triglyceride, @LDL_Cholesterol, @SGOT, @SGPT, @Urea, @WBC, @LYM, @MONO, @GRAN, @TyLeLYM, @TyLeMONO, @TyLeGRAN, @HGB, @RBC, @HTC, @MCV, @MCH, @MCHC, @RDW_CV, @PLT, @MPV, @PDW, @PCT, @Na, @K, @Cl, @Ca)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[TestSet] ([MaBN], [HoTen], [Tuoi], [TieuDuong], [GioiTinh], [Cholesterol], [HDL_Cholesterol], [Triglyceride], [LDL_Cholesterol], [SGOT], [SGPT], [Urea], [WBC], [LYM], [MONO], [GRAN], [TyLeLYM], [TyLeMONO], [TyLeGRAN], [HGB], [RBC], [HTC], [MCV], [MCH], [MCHC], [RDW_CV], [PLT], [MPV], [PDW], [PCT], [Na], [K], [Cl], [Ca]) VALUES (@MaBN, @HoTen, @Tuoi, @TieuDuong, @GioiTinh, @Cholesterol, @HDL_Cholesterol, @Triglyceride, @LDL_Cholesterol, @SGOT, @SGPT, @Urea, @WBC, @LYM, @MONO, @GRAN, @TyLeLYM, @TyLeMONO, @TyLeGRAN, @HGB, @RBC, @HTC, @MCV, @MCH, @MCHC, @RDW_CV, @PLT, @MPV, @PDW, @PCT, @Na, @K, @Cl, @Ca)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBN", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HoTen", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HoTen", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tuoi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tuoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -16610,7 +16792,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT HoTen, Tuoi, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM dbo.TestSet";
+            this._commandCollection[0].CommandText = @"SELECT MaBN, HoTen, Tuoi, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM dbo.TestSet";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -16672,6 +16854,7 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
+                    global::System.Nullable<decimal> MaBN, 
                     string HoTen, 
                     string Tuoi, 
                     global::System.Nullable<bool> TieuDuong, 
@@ -16705,203 +16888,209 @@ SELECT MaBn, HoTen, NamSinh, NgayKham, TieuDuong, GioiTinh, Cholesterol, HDL_Cho
                     string K, 
                     string Cl, 
                     string Ca) {
-            if ((HoTen == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            if ((MaBN.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((decimal)(MaBN.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(HoTen));
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((Tuoi == null)) {
+            if ((HoTen == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Tuoi));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(HoTen));
             }
-            if ((TieuDuong.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(TieuDuong.Value));
-            }
-            else {
+            if ((Tuoi == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((GioiTinh == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Tuoi));
+            }
+            if ((TieuDuong.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(TieuDuong.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(GioiTinh));
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Cholesterol == null)) {
+            if ((GioiTinh == null)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Cholesterol));
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(GioiTinh));
             }
-            if ((HDL_Cholesterol == null)) {
+            if ((Cholesterol == null)) {
                 this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(HDL_Cholesterol));
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Cholesterol));
             }
-            if ((Triglyceride == null)) {
+            if ((HDL_Cholesterol == null)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Triglyceride));
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(HDL_Cholesterol));
             }
-            if ((LDL_Cholesterol == null)) {
+            if ((Triglyceride == null)) {
                 this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(LDL_Cholesterol));
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Triglyceride));
             }
-            if ((SGOT == null)) {
+            if ((LDL_Cholesterol == null)) {
                 this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(SGOT));
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(LDL_Cholesterol));
             }
-            if ((SGPT == null)) {
+            if ((SGOT == null)) {
                 this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(SGPT));
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(SGOT));
             }
-            if ((Urea == null)) {
+            if ((SGPT == null)) {
                 this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Urea));
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(SGPT));
             }
-            if ((WBC == null)) {
+            if ((Urea == null)) {
                 this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(WBC));
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(Urea));
             }
-            if ((LYM == null)) {
+            if ((WBC == null)) {
                 this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(LYM));
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(WBC));
             }
-            if ((MONO == null)) {
+            if ((LYM == null)) {
                 this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(MONO));
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(LYM));
             }
-            if ((GRAN == null)) {
+            if ((MONO == null)) {
                 this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(GRAN));
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(MONO));
             }
-            if ((TyLeLYM == null)) {
+            if ((GRAN == null)) {
                 this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(TyLeLYM));
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(GRAN));
             }
-            if ((TyLeMONO == null)) {
+            if ((TyLeLYM == null)) {
                 this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(TyLeMONO));
+                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(TyLeLYM));
             }
-            if ((TyLeGRAN == null)) {
+            if ((TyLeMONO == null)) {
                 this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(TyLeGRAN));
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(TyLeMONO));
             }
-            if ((HGB == null)) {
+            if ((TyLeGRAN == null)) {
                 this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(HGB));
+                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(TyLeGRAN));
             }
-            if ((RBC == null)) {
+            if ((HGB == null)) {
                 this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(RBC));
+                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(HGB));
             }
-            if ((HTC == null)) {
+            if ((RBC == null)) {
                 this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[20].Value = ((string)(HTC));
+                this.Adapter.InsertCommand.Parameters[20].Value = ((string)(RBC));
             }
-            if ((MCV == null)) {
+            if ((HTC == null)) {
                 this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[21].Value = ((string)(MCV));
+                this.Adapter.InsertCommand.Parameters[21].Value = ((string)(HTC));
             }
-            if ((MCH == null)) {
+            if ((MCV == null)) {
                 this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[22].Value = ((string)(MCH));
+                this.Adapter.InsertCommand.Parameters[22].Value = ((string)(MCV));
             }
-            if ((MCHC == null)) {
+            if ((MCH == null)) {
                 this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[23].Value = ((string)(MCHC));
+                this.Adapter.InsertCommand.Parameters[23].Value = ((string)(MCH));
             }
-            if ((RDW_CV == null)) {
+            if ((MCHC == null)) {
                 this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[24].Value = ((string)(RDW_CV));
+                this.Adapter.InsertCommand.Parameters[24].Value = ((string)(MCHC));
             }
-            if ((PLT == null)) {
+            if ((RDW_CV == null)) {
                 this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[25].Value = ((string)(PLT));
+                this.Adapter.InsertCommand.Parameters[25].Value = ((string)(RDW_CV));
             }
-            if ((MPV == null)) {
+            if ((PLT == null)) {
                 this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(MPV));
+                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(PLT));
             }
-            if ((PDW == null)) {
+            if ((MPV == null)) {
                 this.Adapter.InsertCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(PDW));
+                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(MPV));
             }
-            if ((PCT == null)) {
+            if ((PDW == null)) {
                 this.Adapter.InsertCommand.Parameters[28].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(PCT));
+                this.Adapter.InsertCommand.Parameters[28].Value = ((string)(PDW));
             }
-            if ((Na == null)) {
+            if ((PCT == null)) {
                 this.Adapter.InsertCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(Na));
+                this.Adapter.InsertCommand.Parameters[29].Value = ((string)(PCT));
             }
-            if ((K == null)) {
+            if ((Na == null)) {
                 this.Adapter.InsertCommand.Parameters[30].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[30].Value = ((string)(K));
+                this.Adapter.InsertCommand.Parameters[30].Value = ((string)(Na));
             }
-            if ((Cl == null)) {
+            if ((K == null)) {
                 this.Adapter.InsertCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[31].Value = ((string)(Cl));
+                this.Adapter.InsertCommand.Parameters[31].Value = ((string)(K));
             }
-            if ((Ca == null)) {
+            if ((Cl == null)) {
                 this.Adapter.InsertCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[32].Value = ((string)(Ca));
+                this.Adapter.InsertCommand.Parameters[32].Value = ((string)(Cl));
+            }
+            if ((Ca == null)) {
+                this.Adapter.InsertCommand.Parameters[33].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[33].Value = ((string)(Ca));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
