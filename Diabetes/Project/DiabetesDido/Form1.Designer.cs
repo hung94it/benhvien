@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.Label iDKhamBenhLabel;
             System.Windows.Forms.Label maBNLabel;
             System.Windows.Forms.Label hoTenLabel;
@@ -43,22 +42,23 @@
             System.Windows.Forms.Label tenPhongKhamLabel;
             System.Windows.Forms.Label chuanDoanLabel;
             System.Windows.Forms.Label tieuDuongLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.diabetesDataSet = new DiabetesDido.DiabetesDataSet();
             this.benhNhanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.benhNhanTableAdapter = new DiabetesDido.DiabetesDataSetTableAdapters.BenhNhanTableAdapter();
             this.tableAdapterManager = new DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager();
             this.benhNhanBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.benhNhanBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.iDKhamBenhTextBox = new System.Windows.Forms.TextBox();
             this.maBNTextBox = new System.Windows.Forms.TextBox();
@@ -107,6 +107,123 @@
             ((System.ComponentModel.ISupportInitialize)(this.benhNhanDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
+            // iDKhamBenhLabel
+            // 
+            iDKhamBenhLabel.AutoSize = true;
+            iDKhamBenhLabel.Location = new System.Drawing.Point(326, 38);
+            iDKhamBenhLabel.Name = "iDKhamBenhLabel";
+            iDKhamBenhLabel.Size = new System.Drawing.Size(76, 13);
+            iDKhamBenhLabel.TabIndex = 1;
+            iDKhamBenhLabel.Text = "IDKham Benh:";
+            // 
+            // maBNLabel
+            // 
+            maBNLabel.AutoSize = true;
+            maBNLabel.Location = new System.Drawing.Point(326, 64);
+            maBNLabel.Name = "maBNLabel";
+            maBNLabel.Size = new System.Drawing.Size(43, 13);
+            maBNLabel.TabIndex = 3;
+            maBNLabel.Text = "Ma BN:";
+            // 
+            // hoTenLabel
+            // 
+            hoTenLabel.AutoSize = true;
+            hoTenLabel.Location = new System.Drawing.Point(326, 90);
+            hoTenLabel.Name = "hoTenLabel";
+            hoTenLabel.Size = new System.Drawing.Size(46, 13);
+            hoTenLabel.TabIndex = 5;
+            hoTenLabel.Text = "Ho Ten:";
+            // 
+            // namSinhLabel
+            // 
+            namSinhLabel.AutoSize = true;
+            namSinhLabel.Location = new System.Drawing.Point(326, 116);
+            namSinhLabel.Name = "namSinhLabel";
+            namSinhLabel.Size = new System.Drawing.Size(56, 13);
+            namSinhLabel.TabIndex = 7;
+            namSinhLabel.Text = "Nam Sinh:";
+            // 
+            // thonLabel
+            // 
+            thonLabel.AutoSize = true;
+            thonLabel.Location = new System.Drawing.Point(326, 142);
+            thonLabel.Name = "thonLabel";
+            thonLabel.Size = new System.Drawing.Size(35, 13);
+            thonLabel.TabIndex = 9;
+            thonLabel.Text = "Thon:";
+            // 
+            // tenXaLabel
+            // 
+            tenXaLabel.AutoSize = true;
+            tenXaLabel.Location = new System.Drawing.Point(326, 168);
+            tenXaLabel.Name = "tenXaLabel";
+            tenXaLabel.Size = new System.Drawing.Size(45, 13);
+            tenXaLabel.TabIndex = 11;
+            tenXaLabel.Text = "Ten Xa:";
+            // 
+            // tenQuanLabel
+            // 
+            tenQuanLabel.AutoSize = true;
+            tenQuanLabel.Location = new System.Drawing.Point(326, 194);
+            tenQuanLabel.Name = "tenQuanLabel";
+            tenQuanLabel.Size = new System.Drawing.Size(58, 13);
+            tenQuanLabel.TabIndex = 13;
+            tenQuanLabel.Text = "Ten Quan:";
+            // 
+            // tenThiTranLabel
+            // 
+            tenThiTranLabel.AutoSize = true;
+            tenThiTranLabel.Location = new System.Drawing.Point(326, 220);
+            tenThiTranLabel.Name = "tenThiTranLabel";
+            tenThiTranLabel.Size = new System.Drawing.Size(72, 13);
+            tenThiTranLabel.TabIndex = 15;
+            tenThiTranLabel.Text = "Ten Thi Tran:";
+            // 
+            // tenNgheNghiepLabel
+            // 
+            tenNgheNghiepLabel.AutoSize = true;
+            tenNgheNghiepLabel.Location = new System.Drawing.Point(326, 246);
+            tenNgheNghiepLabel.Name = "tenNgheNghiepLabel";
+            tenNgheNghiepLabel.Size = new System.Drawing.Size(95, 13);
+            tenNgheNghiepLabel.TabIndex = 17;
+            tenNgheNghiepLabel.Text = "Ten Nghe Nghiep:";
+            // 
+            // ngayKhamLabel
+            // 
+            ngayKhamLabel.AutoSize = true;
+            ngayKhamLabel.Location = new System.Drawing.Point(326, 273);
+            ngayKhamLabel.Name = "ngayKhamLabel";
+            ngayKhamLabel.Size = new System.Drawing.Size(65, 13);
+            ngayKhamLabel.TabIndex = 19;
+            ngayKhamLabel.Text = "Ngay Kham:";
+            // 
+            // tenPhongKhamLabel
+            // 
+            tenPhongKhamLabel.AutoSize = true;
+            tenPhongKhamLabel.Location = new System.Drawing.Point(326, 298);
+            tenPhongKhamLabel.Name = "tenPhongKhamLabel";
+            tenPhongKhamLabel.Size = new System.Drawing.Size(93, 13);
+            tenPhongKhamLabel.TabIndex = 21;
+            tenPhongKhamLabel.Text = "Ten Phong Kham:";
+            // 
+            // chuanDoanLabel
+            // 
+            chuanDoanLabel.AutoSize = true;
+            chuanDoanLabel.Location = new System.Drawing.Point(326, 324);
+            chuanDoanLabel.Name = "chuanDoanLabel";
+            chuanDoanLabel.Size = new System.Drawing.Size(70, 13);
+            chuanDoanLabel.TabIndex = 23;
+            chuanDoanLabel.Text = "Chuan Doan:";
+            // 
+            // tieuDuongLabel
+            // 
+            tieuDuongLabel.AutoSize = true;
+            tieuDuongLabel.Location = new System.Drawing.Point(326, 352);
+            tieuDuongLabel.Name = "tieuDuongLabel";
+            tieuDuongLabel.Size = new System.Drawing.Size(66, 13);
+            tieuDuongLabel.TabIndex = 25;
+            tieuDuongLabel.Text = "Tieu Duong:";
+            // 
             // diabetesDataSet
             // 
             this.diabetesDataSet.DataSetName = "DiabetesDataSet";
@@ -125,6 +242,11 @@
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.BenhNhanTableAdapter = this.benhNhanTableAdapter;
+            this.tableAdapterManager.DataSetTableAdapter = null;
+            this.tableAdapterManager.DataSetTempTableAdapter = null;
+            this.tableAdapterManager.ResultSetTableAdapter = null;
+            this.tableAdapterManager.TestSetTableAdapter = null;
+            this.tableAdapterManager.TrainingSetTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.XetNghiemTableAdapter = null;
             // 
@@ -158,6 +280,31 @@
             this.benhNhanBindingNavigator.TabIndex = 0;
             this.benhNhanBindingNavigator.Text = "bindingNavigator1";
             // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
+            // 
             // bindingNavigatorMoveFirstItem
             // 
             this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -190,17 +337,10 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 15);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 6);
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -208,7 +348,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 20);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             // 
             // bindingNavigatorMoveLastItem
@@ -217,49 +357,22 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 6);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 20);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // benhNhanBindingNavigatorSaveItem
             // 
             this.benhNhanBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.benhNhanBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("benhNhanBindingNavigatorSaveItem.Image")));
             this.benhNhanBindingNavigatorSaveItem.Name = "benhNhanBindingNavigatorSaveItem";
-            this.benhNhanBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 23);
+            this.benhNhanBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
             this.benhNhanBindingNavigatorSaveItem.Text = "Save Data";
             this.benhNhanBindingNavigatorSaveItem.Click += new System.EventHandler(this.benhNhanBindingNavigatorSaveItem_Click);
-            // 
-            // iDKhamBenhLabel
-            // 
-            iDKhamBenhLabel.AutoSize = true;
-            iDKhamBenhLabel.Location = new System.Drawing.Point(326, 38);
-            iDKhamBenhLabel.Name = "iDKhamBenhLabel";
-            iDKhamBenhLabel.Size = new System.Drawing.Size(76, 13);
-            iDKhamBenhLabel.TabIndex = 1;
-            iDKhamBenhLabel.Text = "IDKham Benh:";
             // 
             // iDKhamBenhTextBox
             // 
@@ -269,15 +382,6 @@
             this.iDKhamBenhTextBox.Size = new System.Drawing.Size(200, 20);
             this.iDKhamBenhTextBox.TabIndex = 2;
             // 
-            // maBNLabel
-            // 
-            maBNLabel.AutoSize = true;
-            maBNLabel.Location = new System.Drawing.Point(326, 64);
-            maBNLabel.Name = "maBNLabel";
-            maBNLabel.Size = new System.Drawing.Size(43, 13);
-            maBNLabel.TabIndex = 3;
-            maBNLabel.Text = "Ma BN:";
-            // 
             // maBNTextBox
             // 
             this.maBNTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.benhNhanBindingSource, "MaBN", true));
@@ -285,15 +389,6 @@
             this.maBNTextBox.Name = "maBNTextBox";
             this.maBNTextBox.Size = new System.Drawing.Size(200, 20);
             this.maBNTextBox.TabIndex = 4;
-            // 
-            // hoTenLabel
-            // 
-            hoTenLabel.AutoSize = true;
-            hoTenLabel.Location = new System.Drawing.Point(326, 90);
-            hoTenLabel.Name = "hoTenLabel";
-            hoTenLabel.Size = new System.Drawing.Size(46, 13);
-            hoTenLabel.TabIndex = 5;
-            hoTenLabel.Text = "Ho Ten:";
             // 
             // hoTenTextBox
             // 
@@ -303,15 +398,6 @@
             this.hoTenTextBox.Size = new System.Drawing.Size(200, 20);
             this.hoTenTextBox.TabIndex = 6;
             // 
-            // namSinhLabel
-            // 
-            namSinhLabel.AutoSize = true;
-            namSinhLabel.Location = new System.Drawing.Point(326, 116);
-            namSinhLabel.Name = "namSinhLabel";
-            namSinhLabel.Size = new System.Drawing.Size(56, 13);
-            namSinhLabel.TabIndex = 7;
-            namSinhLabel.Text = "Nam Sinh:";
-            // 
             // namSinhTextBox
             // 
             this.namSinhTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.benhNhanBindingSource, "NamSinh", true));
@@ -319,15 +405,6 @@
             this.namSinhTextBox.Name = "namSinhTextBox";
             this.namSinhTextBox.Size = new System.Drawing.Size(200, 20);
             this.namSinhTextBox.TabIndex = 8;
-            // 
-            // thonLabel
-            // 
-            thonLabel.AutoSize = true;
-            thonLabel.Location = new System.Drawing.Point(326, 142);
-            thonLabel.Name = "thonLabel";
-            thonLabel.Size = new System.Drawing.Size(35, 13);
-            thonLabel.TabIndex = 9;
-            thonLabel.Text = "Thon:";
             // 
             // thonTextBox
             // 
@@ -337,15 +414,6 @@
             this.thonTextBox.Size = new System.Drawing.Size(200, 20);
             this.thonTextBox.TabIndex = 10;
             // 
-            // tenXaLabel
-            // 
-            tenXaLabel.AutoSize = true;
-            tenXaLabel.Location = new System.Drawing.Point(326, 168);
-            tenXaLabel.Name = "tenXaLabel";
-            tenXaLabel.Size = new System.Drawing.Size(45, 13);
-            tenXaLabel.TabIndex = 11;
-            tenXaLabel.Text = "Ten Xa:";
-            // 
             // tenXaTextBox
             // 
             this.tenXaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.benhNhanBindingSource, "TenXa", true));
@@ -353,15 +421,6 @@
             this.tenXaTextBox.Name = "tenXaTextBox";
             this.tenXaTextBox.Size = new System.Drawing.Size(200, 20);
             this.tenXaTextBox.TabIndex = 12;
-            // 
-            // tenQuanLabel
-            // 
-            tenQuanLabel.AutoSize = true;
-            tenQuanLabel.Location = new System.Drawing.Point(326, 194);
-            tenQuanLabel.Name = "tenQuanLabel";
-            tenQuanLabel.Size = new System.Drawing.Size(58, 13);
-            tenQuanLabel.TabIndex = 13;
-            tenQuanLabel.Text = "Ten Quan:";
             // 
             // tenQuanTextBox
             // 
@@ -371,15 +430,6 @@
             this.tenQuanTextBox.Size = new System.Drawing.Size(200, 20);
             this.tenQuanTextBox.TabIndex = 14;
             // 
-            // tenThiTranLabel
-            // 
-            tenThiTranLabel.AutoSize = true;
-            tenThiTranLabel.Location = new System.Drawing.Point(326, 220);
-            tenThiTranLabel.Name = "tenThiTranLabel";
-            tenThiTranLabel.Size = new System.Drawing.Size(72, 13);
-            tenThiTranLabel.TabIndex = 15;
-            tenThiTranLabel.Text = "Ten Thi Tran:";
-            // 
             // tenThiTranTextBox
             // 
             this.tenThiTranTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.benhNhanBindingSource, "TenThiTran", true));
@@ -387,15 +437,6 @@
             this.tenThiTranTextBox.Name = "tenThiTranTextBox";
             this.tenThiTranTextBox.Size = new System.Drawing.Size(200, 20);
             this.tenThiTranTextBox.TabIndex = 16;
-            // 
-            // tenNgheNghiepLabel
-            // 
-            tenNgheNghiepLabel.AutoSize = true;
-            tenNgheNghiepLabel.Location = new System.Drawing.Point(326, 246);
-            tenNgheNghiepLabel.Name = "tenNgheNghiepLabel";
-            tenNgheNghiepLabel.Size = new System.Drawing.Size(95, 13);
-            tenNgheNghiepLabel.TabIndex = 17;
-            tenNgheNghiepLabel.Text = "Ten Nghe Nghiep:";
             // 
             // tenNgheNghiepTextBox
             // 
@@ -405,15 +446,6 @@
             this.tenNgheNghiepTextBox.Size = new System.Drawing.Size(200, 20);
             this.tenNgheNghiepTextBox.TabIndex = 18;
             // 
-            // ngayKhamLabel
-            // 
-            ngayKhamLabel.AutoSize = true;
-            ngayKhamLabel.Location = new System.Drawing.Point(326, 273);
-            ngayKhamLabel.Name = "ngayKhamLabel";
-            ngayKhamLabel.Size = new System.Drawing.Size(65, 13);
-            ngayKhamLabel.TabIndex = 19;
-            ngayKhamLabel.Text = "Ngay Kham:";
-            // 
             // ngayKhamDateTimePicker
             // 
             this.ngayKhamDateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.benhNhanBindingSource, "NgayKham", true));
@@ -421,15 +453,6 @@
             this.ngayKhamDateTimePicker.Name = "ngayKhamDateTimePicker";
             this.ngayKhamDateTimePicker.Size = new System.Drawing.Size(200, 20);
             this.ngayKhamDateTimePicker.TabIndex = 20;
-            // 
-            // tenPhongKhamLabel
-            // 
-            tenPhongKhamLabel.AutoSize = true;
-            tenPhongKhamLabel.Location = new System.Drawing.Point(326, 298);
-            tenPhongKhamLabel.Name = "tenPhongKhamLabel";
-            tenPhongKhamLabel.Size = new System.Drawing.Size(93, 13);
-            tenPhongKhamLabel.TabIndex = 21;
-            tenPhongKhamLabel.Text = "Ten Phong Kham:";
             // 
             // tenPhongKhamTextBox
             // 
@@ -439,36 +462,19 @@
             this.tenPhongKhamTextBox.Size = new System.Drawing.Size(200, 20);
             this.tenPhongKhamTextBox.TabIndex = 22;
             // 
-            // chuanDoanLabel
-            // 
-            chuanDoanLabel.AutoSize = true;
-            chuanDoanLabel.Location = new System.Drawing.Point(326, 324);
-            chuanDoanLabel.Name = "chuanDoanLabel";
-            chuanDoanLabel.Size = new System.Drawing.Size(70, 13);
-            chuanDoanLabel.TabIndex = 23;
-            chuanDoanLabel.Text = "Chuan Doan:";
-            // 
             // chuanDoanTextBox
             // 
+            this.chuanDoanTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.chuanDoanTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.benhNhanBindingSource, "ChuanDoan", true));
             this.chuanDoanTextBox.Location = new System.Drawing.Point(427, 321);
             this.chuanDoanTextBox.Name = "chuanDoanTextBox";
-            this.chuanDoanTextBox.Size = new System.Drawing.Size(200, 20);
+            this.chuanDoanTextBox.Size = new System.Drawing.Size(200, 13);
             this.chuanDoanTextBox.TabIndex = 24;
-            // 
-            // tieuDuongLabel
-            // 
-            tieuDuongLabel.AutoSize = true;
-            tieuDuongLabel.Location = new System.Drawing.Point(326, 352);
-            tieuDuongLabel.Name = "tieuDuongLabel";
-            tieuDuongLabel.Size = new System.Drawing.Size(66, 13);
-            tieuDuongLabel.TabIndex = 25;
-            tieuDuongLabel.Text = "Tieu Duong:";
             // 
             // tieuDuongCheckBox
             // 
             this.tieuDuongCheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.benhNhanBindingSource, "TieuDuong", true));
-            this.tieuDuongCheckBox.Location = new System.Drawing.Point(427, 347);
+            this.tieuDuongCheckBox.Location = new System.Drawing.Point(427, 341);
             this.tieuDuongCheckBox.Name = "tieuDuongCheckBox";
             this.tieuDuongCheckBox.Size = new System.Drawing.Size(200, 24);
             this.tieuDuongCheckBox.TabIndex = 26;
