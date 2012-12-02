@@ -35,11 +35,14 @@ namespace DiabetesDido
         {
             Function xuLy = new Function();
             List<decimal> danhSachTrungLap = new List<decimal>();
+            int tongBoDuLieu=dataSetTableAdapter.GetData().Count;
             xuLy.LamSachDuLieu(dataSetTableAdapter.GetData(), danhSachTrungLap);
             for (int i = 0; i < danhSachTrungLap.Count; i++)
             {
                 MessageBox.Show(danhSachTrungLap[i].ToString());
             }
+            MessageBox.Show("Số bộ dữ liệu đã quét: " + tongBoDuLieu.ToString() + "\nSố bộ dữ liệu trùng lặp: " + danhSachTrungLap.Count.ToString(), "Kết quả làm sạch dữ liệu", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            
         }
     }
 }
