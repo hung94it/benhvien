@@ -36,6 +36,27 @@ namespace DiabetesDido
                 }
             }
         }
+        public void RoiRacHoaTuoi(decimal namSinh, String doTuoi)
+        {
+            if (namSinh < 10)
+                doTuoi = "<10";
+            else if (namSinh < 20)
+                doTuoi = "10_20";
+            else if (namSinh < 30)
+                doTuoi = "20_30";
+            else if (namSinh < 40)
+                doTuoi = "30_40";
+            else if (namSinh < 50)
+                doTuoi = "40_50";
+            else if (namSinh < 60)
+                doTuoi = "50_60";
+            else if (namSinh < 70)
+                doTuoi = "60_70";
+            else if (namSinh < 80)
+                doTuoi = "70_80";
+            else
+                doTuoi = "80>";
+        }
         
     }
 }

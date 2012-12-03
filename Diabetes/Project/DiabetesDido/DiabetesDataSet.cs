@@ -1,3 +1,17 @@
+<<<<<<< .mine
+﻿namespace DiabetesDido {
+    
+    
+    public partial class DiabetesDataSet {
+    }
+}
+
+
+
+
+
+
+=======
 ﻿namespace DiabetesDido {
     
     
@@ -11,3 +25,4 @@ namespace DiabetesDido.DiabetesDataSetTableAdapters {
     public partial class BenhNhanTableAdapter {
     }
 }
+>>>>>>> .r272

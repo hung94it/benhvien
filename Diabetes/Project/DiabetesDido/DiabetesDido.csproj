@@ -46,6 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DiabetesDataSet.cs">
+      <DependentUpon>DiabetesDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="DiabetesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -60,6 +64,12 @@
     <Compile Include="Function.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoiRacHoaDuLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoiRacHoaDuLieu.Designer.cs">
+      <DependentUpon>RoiRacHoaDuLieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="TienXuDuLieu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +88,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RoiRacHoaDuLieu.resx">
+      <DependentUpon>RoiRacHoaDuLieu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TienXuDuLieu.resx">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </EmbeddedResource>
