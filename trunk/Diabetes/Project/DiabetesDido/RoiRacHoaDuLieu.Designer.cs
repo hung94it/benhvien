@@ -82,6 +82,12 @@
             this.dataGridViewTextBoxColumn31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn33 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboThuocTinh = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtKhoang = new System.Windows.Forms.MaskedTextBox();
+            this.btnRoiRacHoa = new System.Windows.Forms.Button();
+            this.prBar = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.diabetesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingNavigator)).BeginInit();
@@ -121,6 +127,7 @@
             this.dataSetTempBindingNavigator.BindingSource = this.dataSetTempBindingSource;
             this.dataSetTempBindingNavigator.CountItem = this.bindingNavigatorCountItem;
             this.dataSetTempBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.dataSetTempBindingNavigator.Enabled = false;
             this.dataSetTempBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -281,7 +288,7 @@
             this.dataSetTempDataGridView.DataSource = this.dataSetTempBindingSource;
             this.dataSetTempDataGridView.Location = new System.Drawing.Point(12, 28);
             this.dataSetTempDataGridView.Name = "dataSetTempDataGridView";
-            this.dataSetTempDataGridView.Size = new System.Drawing.Size(744, 220);
+            this.dataSetTempDataGridView.Size = new System.Drawing.Size(696, 220);
             this.dataSetTempDataGridView.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
@@ -489,11 +496,70 @@
             this.dataGridViewTextBoxColumn33.HeaderText = "Ca";
             this.dataGridViewTextBoxColumn33.Name = "dataGridViewTextBoxColumn33";
             // 
+            // cboThuocTinh
+            // 
+            this.cboThuocTinh.FormattingEnabled = true;
+            this.cboThuocTinh.Location = new System.Drawing.Point(714, 39);
+            this.cboThuocTinh.Name = "cboThuocTinh";
+            this.cboThuocTinh.Size = new System.Drawing.Size(121, 21);
+            this.cboThuocTinh.TabIndex = 2;
+            this.cboThuocTinh.SelectedIndexChanged += new System.EventHandler(this.cboThuocTinh_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(711, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(113, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Thuộc tính cần rời rạc";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(711, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Khoảng";
+            // 
+            // txtKhoang
+            // 
+            this.txtKhoang.Location = new System.Drawing.Point(714, 80);
+            this.txtKhoang.Mask = "00";
+            this.txtKhoang.Name = "txtKhoang";
+            this.txtKhoang.Size = new System.Drawing.Size(100, 20);
+            this.txtKhoang.TabIndex = 4;
+            // 
+            // btnRoiRacHoa
+            // 
+            this.btnRoiRacHoa.Location = new System.Drawing.Point(714, 107);
+            this.btnRoiRacHoa.Name = "btnRoiRacHoa";
+            this.btnRoiRacHoa.Size = new System.Drawing.Size(75, 23);
+            this.btnRoiRacHoa.TabIndex = 5;
+            this.btnRoiRacHoa.Text = "Rời rạc hóa";
+            this.btnRoiRacHoa.UseVisualStyleBackColor = true;
+            this.btnRoiRacHoa.Click += new System.EventHandler(this.btnRoiRacHoa_Click);
+            // 
+            // prBar
+            // 
+            this.prBar.Location = new System.Drawing.Point(12, 254);
+            this.prBar.Name = "prBar";
+            this.prBar.Size = new System.Drawing.Size(100, 23);
+            this.prBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.prBar.TabIndex = 6;
+            // 
             // RoiRacHoaDuLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 321);
+            this.ClientSize = new System.Drawing.Size(847, 282);
+            this.Controls.Add(this.prBar);
+            this.Controls.Add(this.btnRoiRacHoa);
+            this.Controls.Add(this.txtKhoang);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cboThuocTinh);
             this.Controls.Add(this.dataSetTempDataGridView);
             this.Controls.Add(this.dataSetTempBindingNavigator);
             this.Name = "RoiRacHoaDuLieu";
@@ -565,5 +631,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn31;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn32;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn33;
+        private System.Windows.Forms.ComboBox cboThuocTinh;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MaskedTextBox txtKhoang;
+        private System.Windows.Forms.Button btnRoiRacHoa;
+        private System.Windows.Forms.ProgressBar prBar;
     }
 }

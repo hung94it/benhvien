@@ -14577,7 +14577,7 @@ SELECT ID, MaBN, Tuoi, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Trigly
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = @"SELECT ID, MaBN, Tuoi, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca FROM dbo.DataSetTemp";
@@ -14588,8 +14588,14 @@ SELECT ID, MaBN, Tuoi, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Trigly
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT COUNT(*) FROM DataSetTemp";
+            this._commandCollection[2].CommandText = "--Lấy một dòng dữ liệu bằng mã bệnh nhân--\r\nSELECT * FROM DATASETTEMP WHERE MABN=" +
+                "@MABN";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MABN", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "MaBN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT COUNT(*) FROM DataSetTemp";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14611,6 +14617,23 @@ SELECT ID, MaBN, Tuoi, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Trigly
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DiabetesDataSet.DataSetTempDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DiabetesDataSet.DataSetTempDataTable dataTable = new DiabetesDataSet.DataSetTempDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DiabetesDataSet.DataSetTempDataTable GetDataByOne(global::System.Nullable<decimal> MABN) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((MABN.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((decimal)(MABN.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
             DiabetesDataSet.DataSetTempDataTable dataTable = new DiabetesDataSet.DataSetTempDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -15280,7 +15303,7 @@ SELECT ID, MaBN, Tuoi, TieuDuong, GioiTinh, Cholesterol, HDL_Cholesterol, Trigly
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         public virtual global::System.Nullable<int> RowCount() {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
