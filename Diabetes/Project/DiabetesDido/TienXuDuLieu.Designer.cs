@@ -125,6 +125,7 @@
             this.dataSetBindingNavigator.BindingSource = this.dataSetBindingSource;
             this.dataSetBindingNavigator.CountItem = this.bindingNavigatorCountItem;
             this.dataSetBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
+            this.dataSetBindingNavigator.Enabled = false;
             this.dataSetBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,

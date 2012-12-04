@@ -36,27 +36,66 @@ namespace DiabetesDido
                 }
             }
         }
-        public void RoiRacHoaTuoi(decimal namSinh, String doTuoi)
+        public String RoiRacHoaTuoi(decimal namSinh)
         {
             if (namSinh < 10)
-                doTuoi = "<10";
+                return "<10";
             else if (namSinh < 20)
-                doTuoi = "10_20";
+                return "10_20";
             else if (namSinh < 30)
-                doTuoi = "20_30";
+                return "20_30";
             else if (namSinh < 40)
-                doTuoi = "30_40";
+                return "30_40";
             else if (namSinh < 50)
-                doTuoi = "40_50";
+                return "40_50";
             else if (namSinh < 60)
-                doTuoi = "50_60";
+                return "50_60";
             else if (namSinh < 70)
-                doTuoi = "60_70";
+                return "60_70";
             else if (namSinh < 80)
-                doTuoi = "70_80";
+                return "70_80";
             else
-                doTuoi = "80>";
+                return "80>";
         }
-        
+        public decimal TinhTrungBinhKhoang(DataTable dataTable,String colName, int khoang)
+        {
+            decimal minValue = Convert.ToDecimal(dataTable.Compute("min(" + colName + ")", string.Empty));
+            decimal maxValue = Convert.ToDecimal(dataTable.Compute("max(" + colName + ")", string.Empty));
+            decimal giaTriTrungBinh = Math.Round((minValue + maxValue) / khoang, 3);
+            return giaTriTrungBinh;
+        }
+        public String TinhGiaTriRoiRac(decimal giaTri, decimal giaTriTrungBinh, int khoang)
+        {
+            int i = 1;
+            decimal giaTriBanDau = giaTriTrungBinh;
+            do
+            {
+
+                if (giaTriTrungBinh < giaTri)
+                {
+                    giaTriTrungBinh += giaTriTrungBinh;
+                    i++;
+                }
+            }
+            while (giaTriTrungBinh < giaTri);
+            if (i == 1)
+                return "<" + giaTriTrungBinh.ToString();
+            else if (i == khoang)
+                return giaTriTrungBinh.ToString() + ">";
+            else
+                return (giaTriBanDau * (i - 1)).ToString() + "_" + giaTriTrungBinh.ToString();
+        }
+        public void CapNhapBangSauKhiRoiRacHoa(DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA, decimal maBN, String colName, String giaTri)
+        {
+            DataTable dataSetTempTable = dataSetTempTA.GetDataByOne(maBN);
+            DataRow newRow = dataSetTempTable.NewRow();
+            foreach(DataRow dtRow in dataSetTempTable.Rows)
+            {
+                newRow = dtRow;
+            }
+            int colIndex = dataSetTempTA.GetData().Columns.IndexOf(colName);
+            newRow[colIndex] = giaTri;
+            dataSetTempTA.Update(newRow);
+        }
     }
 }

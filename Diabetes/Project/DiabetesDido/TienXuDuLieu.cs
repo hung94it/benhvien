@@ -60,12 +60,17 @@ namespace DiabetesDido
                     DataTable dataSetTable = dataSetTA.GetData();
                     foreach (DataRow i in dataSetTable.Rows)
                     {
-                        dataSetTempTA.Insert(Convert.ToDecimal(i[1]),i[3].ToString(), Convert.ToBoolean(i[5]), i[6].ToString(), i[7].ToString(), i[8].ToString(), i[9].ToString(), i[10].ToString(), i[11].ToString(),
+                        decimal namSinh = DateTime.Now.Year - Convert.ToDecimal(i[3]);
+                        String doTuoi = "";
+                        Function funtion = new Function();
+                        doTuoi = funtion.RoiRacHoaTuoi(namSinh);
+                        dataSetTempTA.Insert(Convert.ToDecimal(i[1]),doTuoi, Convert.ToBoolean(i[5]), i[6].ToString(), i[7].ToString(), i[8].ToString(), i[9].ToString(), i[10].ToString(), i[11].ToString(),
                                                        i[12].ToString(), i[13].ToString(), i[14].ToString(), i[15].ToString(), i[16].ToString(), i[17].ToString(), i[18].ToString(), i[19].ToString(),
                                                        i[20].ToString(), i[21].ToString(), i[22].ToString(), i[23].ToString(), i[24].ToString(), i[25].ToString(), i[26].ToString(), i[27].ToString(),
                                                        i[28].ToString(), i[29].ToString(), i[30].ToString(), i[31].ToString(), i[32].ToString(), i[33].ToString(), i[34].ToString(), i[35].ToString());
                     }
                 }
+
             }
             else
             {
@@ -73,7 +78,11 @@ namespace DiabetesDido
                 DataTable dataSetTable = dataSetTA.GetData();
                 foreach (DataRow i in dataSetTable.Rows)
                 {
-                    dataSetTempTA.Insert(Convert.ToDecimal(i[1]), i[3].ToString(), Convert.ToBoolean(i[5]), i[6].ToString(), i[7].ToString(), i[8].ToString(), i[9].ToString(), i[10].ToString(), i[11].ToString(),
+                    decimal namSinh = DateTime.Now.Year - Convert.ToDecimal(i[3]);
+                    String doTuoi = "";
+                    Function funtion = new Function();
+                    doTuoi = funtion.RoiRacHoaTuoi(namSinh);
+                    dataSetTempTA.Insert(Convert.ToDecimal(i[1]), doTuoi, Convert.ToBoolean(i[5]), i[6].ToString(), i[7].ToString(), i[8].ToString(), i[9].ToString(), i[10].ToString(), i[11].ToString(),
                                                    i[12].ToString(), i[13].ToString(), i[14].ToString(), i[15].ToString(), i[16].ToString(), i[17].ToString(), i[18].ToString(), i[19].ToString(),
                                                    i[20].ToString(), i[21].ToString(), i[22].ToString(), i[23].ToString(), i[24].ToString(), i[25].ToString(), i[26].ToString(), i[27].ToString(),
                                                    i[28].ToString(), i[29].ToString(), i[30].ToString(), i[31].ToString(), i[32].ToString(), i[33].ToString(), i[34].ToString(), i[35].ToString());
