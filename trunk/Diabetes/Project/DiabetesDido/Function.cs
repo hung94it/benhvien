@@ -66,24 +66,24 @@ namespace DiabetesDido
         }
         public String TinhGiaTriRoiRac(decimal giaTri, decimal giaTriTrungBinh, int khoang)
         {
-            int i = 1;
+            int i = 0;
             decimal giaTriBanDau = giaTriTrungBinh;
             do
             {
 
                 if (giaTriTrungBinh < giaTri)
                 {
-                    giaTriTrungBinh += giaTriTrungBinh;
+                    giaTriTrungBinh += giaTriBanDau;
                     i++;
                 }
             }
             while (giaTriTrungBinh < giaTri);
-            if (i == 1)
+            if (i == 0)
                 return "<" + giaTriTrungBinh.ToString();
             else if (i == khoang)
                 return giaTriTrungBinh.ToString() + ">";
             else
-                return (giaTriBanDau * (i - 1)).ToString() + "_" + giaTriTrungBinh.ToString();
+                return (giaTriBanDau * i).ToString() + "_" + giaTriTrungBinh.ToString();
         }
         public void CapNhapBangSauKhiRoiRacHoa(DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA, decimal maBN, String colName, String giaTri)
         {
@@ -96,6 +96,35 @@ namespace DiabetesDido
             int colIndex = dataSetTempTA.GetData().Columns.IndexOf(colName);
             newRow[colIndex] = giaTri;
             dataSetTempTA.Update(newRow);
+        }
+        //Hàm dùng để đếm số lần xuất hiện của khoảng của một phân lớp
+        public int DemSoLuongKhoang(String tenThuocTinh,String khoangRoiRac,Boolean tieuDuong)
+        {
+            int soLuong = 0;
+            DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtAdapter = new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            DataTable dt = dtAdapter.GetData();
+            soLuong = dt.Select("TenThuocTinh='" + tenThuocTinh + "' and KhoangRoiRac='" + khoangRoiRac + "' and tieuDuong=" + tieuDuong + "").Count();
+            return soLuong;
+        }
+        //Hàm dùng để huấn luyện dữ liệu dành cho thuật toán Naive Bayes
+        public void HuanLuyenBayes()
+        {
+            DiabetesDataSetTableAdapters.BayesObjectTableAdapter dtBayesAdapter = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtSetTempAdapter = new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            DataTable dtBayes = dtBayesAdapter.GetData();
+            DataTable dtSetTemp = dtSetTempAdapter.GetData();
+            foreach (DataRow dtRow in dtBayes.Rows)
+            {
+                String colName = dtRow[1].ToString();
+                String khoangRoiRac = dtRow[2].ToString();
+                Boolean tieuDuong = Convert.ToBoolean(dtRow[4]);
+                String iQuery = "" + colName + "='" + khoangRoiRac + "' and TieuDuong=" + tieuDuong + "";
+                int soLuong = dtSetTemp.Select(iQuery).Count();
+                DataRow newRow = dtBayes.NewRow();
+                newRow = dtRow;
+                newRow[3] = soLuong;
+                dtBayesAdapter.Update(newRow);
+            }
         }
     }
 }
