@@ -88,6 +88,7 @@
             this.txtKhoang = new System.Windows.Forms.MaskedTextBox();
             this.btnRoiRacHoa = new System.Windows.Forms.Button();
             this.prBar = new System.Windows.Forms.ProgressBar();
+            this.btnTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.diabetesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingNavigator)).BeginInit();
@@ -112,6 +113,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BayesObjectTableAdapter = null;
             this.tableAdapterManager.BenhNhanTableAdapter = null;
             this.tableAdapterManager.DataSetTableAdapter = null;
             this.tableAdapterManager.DataSetTempTableAdapter = this.dataSetTempTableAdapter;
@@ -549,11 +551,22 @@
             this.prBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.prBar.TabIndex = 6;
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(714, 182);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 7;
+            this.btnTest.Text = "Testing";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // RoiRacHoaDuLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 282);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.prBar);
             this.Controls.Add(this.btnRoiRacHoa);
             this.Controls.Add(this.txtKhoang);
@@ -637,5 +650,6 @@
         private System.Windows.Forms.MaskedTextBox txtKhoang;
         private System.Windows.Forms.Button btnRoiRacHoa;
         private System.Windows.Forms.ProgressBar prBar;
+        private System.Windows.Forms.Button btnTest;
     }
 }

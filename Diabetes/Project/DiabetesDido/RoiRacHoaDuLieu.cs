@@ -61,23 +61,36 @@ namespace DiabetesDido
                 int khoangRoiRac = Convert.ToInt16(txtKhoang.Text);
                 DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
                 DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA= new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+                DiabetesDataSetTableAdapters.BayesObjectTableAdapter dataBayesTA = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
                 DataTable dataSetTable=dataSetTA.GetData();
                 Function function = new Function();
                 decimal giaTriTrungBinh = function.TinhTrungBinhKhoang(dataSetTable, colName, khoangRoiRac);
                 int dataSetColIndex = dataSetTable.Columns.IndexOf(colName);
                 prBar.Minimum = 1;
                 prBar.Maximum = dataSetTable.Rows.Count;
+                dataBayesTA.DeleteByOne(colName);
                 foreach (DataRow dtRow in dataSetTable.Rows)
                 {
                     decimal giaTri = Convert.ToDecimal(dtRow[dataSetColIndex]);
+                    decimal id = Convert.ToDecimal(dtRow[0]);
                     String giaTriRoiRac = function.TinhGiaTriRoiRac(giaTri, giaTriTrungBinh, khoangRoiRac);
                     decimal maBN = Convert.ToDecimal(dtRow[1]);
                     function.CapNhapBangSauKhiRoiRacHoa(dataSetTempTA, maBN, colName, giaTriRoiRac);
+                    Boolean tieuDuong = Convert.ToBoolean(dtRow[5]);
+                    int iCount = dataBayesTA.GetData().Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + giaTriRoiRac + "' and tieuDuong=" + tieuDuong + "").Count();
+                    if(iCount==0)
+                        dataBayesTA.Insert(colName,giaTriRoiRac,0,tieuDuong);
                     prBar.Minimum++;
                 }
                 prBar.Refresh();
                 this.dataSetTempTableAdapter.Fill(this.diabetesDataSet.DataSetTemp);
             }
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            Function function = new Function();
+            function.HuanLuyenBayes();
         }
 
     }
