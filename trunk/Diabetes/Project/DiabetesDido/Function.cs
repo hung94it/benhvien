@@ -57,35 +57,66 @@ namespace DiabetesDido
             else
                 return "80>";
         }
-        public decimal TinhTrungBinhKhoang(DataTable dataTable,String colName, int khoang)
+        //Hàm dùng để tính phương sai của một cột
+        public static decimal TinhDoLechChuan(DataTable dt, String colName)
         {
-            decimal minValue = Convert.ToDecimal(dataTable.Compute("min(" + colName + ")", string.Empty));
-            decimal maxValue = Convert.ToDecimal(dataTable.Compute("max(" + colName + ")", string.Empty));
-            decimal giaTriTrungBinh = Math.Round((minValue + maxValue) / khoang, 3);
-            return giaTriTrungBinh;
-        }
-        public String TinhGiaTriRoiRac(decimal giaTri, decimal giaTriTrungBinh, int khoang)
-        {
-            int i = 0;
-            decimal giaTriBanDau = giaTriTrungBinh;
-            do
+            Double phuongSai = 0;
+            Double doLechChuan=0;
+            Double tienPhuongSai = 0;
+            Double soLuongDuLieu = Convert.ToDouble(dt.Compute("count(" + colName + ")", string.Empty));
+            Double giaTriTrungTinh = Convert.ToDouble(dt.Compute("avg(" + colName + ")", string.Empty));
+            giaTriTrungTinh = Math.Round(giaTriTrungTinh, 3);
+            int colIndex = dt.Columns.IndexOf(colName);
+            foreach (DataRow dtRow in dt.Rows)
             {
-
-                if (giaTriTrungBinh < giaTri)
-                {
-                    giaTriTrungBinh += giaTriBanDau;
-                    i++;
-                }
+                tienPhuongSai = tienPhuongSai + Math.Round(Math.Pow((Convert.ToDouble(dtRow[colIndex]) - giaTriTrungTinh),2),3);
             }
-            while (giaTriTrungBinh < giaTri);
-            if (i == 0)
-                return "<" + giaTriTrungBinh.ToString();
-            else if (i == khoang)
-                return giaTriTrungBinh.ToString() + ">";
-            else
-                return (giaTriBanDau * i).ToString() + "_" + giaTriTrungBinh.ToString();
+            phuongSai = tienPhuongSai / (soLuongDuLieu - 1);
+            doLechChuan = Math.Round(Math.Sqrt(phuongSai), 2);
+            return Convert.ToDecimal(doLechChuan);
         }
-        public void CapNhapBangSauKhiRoiRacHoa(DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA, decimal maBN, String colName, String giaTri)
+        //Hàm dùng để rời rạc giá trị của cột trong bảng dữ liệu
+        public static String TinhGiaTriRoiRac(decimal giaTri,decimal giaTriTrungBinh,decimal doLechChuan, int khoang)
+        {
+            String giaTriRoiRac = "";
+            int iCount=1;
+            doLechChuan = Math.Round(doLechChuan, 0);
+            decimal giaTriMoi = giaTriTrungBinh + doLechChuan;
+            while (giaTriMoi < giaTri)
+            {
+                iCount++;
+                if (iCount == khoang) break;
+                giaTriMoi = giaTriMoi + doLechChuan;
+                
+            };
+            if (iCount == 1)
+                giaTriRoiRac = "<" + giaTriMoi.ToString();
+            else if (iCount == khoang)
+                giaTriRoiRac = "" + giaTriMoi.ToString() + "" + ">";
+            else
+                giaTriRoiRac = (giaTriMoi - doLechChuan).ToString() + "_" + giaTriMoi.ToString();
+            return giaTriRoiRac;
+        }
+        //Hàm dùng để tại ra các khoảng giá trị đã rời rạc
+        public static void TaoBayesObject(String colName,int khoang, decimal giaTriTrungBinh, decimal doLechChuan)
+        {
+            DiabetesDataSetTableAdapters.BayesObjectTableAdapter BayesObjectTA = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            decimal giaTriMoi=giaTriTrungBinh+doLechChuan;
+            for (int i = 1; i <= khoang; i++)
+            {
+                String khoangRoiRac="";
+                if (i == 1)
+                    khoangRoiRac = "<" + giaTriMoi.ToString();
+                else if (i == khoang)
+                    khoangRoiRac = giaTriMoi.ToString() + ">";
+                else
+                    khoangRoiRac = (giaTriMoi - doLechChuan).ToString() + "_" + giaTriMoi.ToString();
+                BayesObjectTA.Insert(colName, khoangRoiRac, 0, false);
+                BayesObjectTA.Insert(colName, khoangRoiRac, 0, true);
+                giaTriMoi = giaTriMoi + doLechChuan;
+            }
+        }
+        public static void CapNhapBangSauKhiRoiRacHoa(DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA, decimal maBN, String colName, String giaTriRoiRac)
         {
             DataTable dataSetTempTable = dataSetTempTA.GetDataByOne(maBN);
             DataRow newRow = dataSetTempTable.NewRow();
@@ -94,8 +125,43 @@ namespace DiabetesDido
                 newRow = dtRow;
             }
             int colIndex = dataSetTempTA.GetData().Columns.IndexOf(colName);
-            newRow[colIndex] = giaTri;
+            newRow[colIndex] = giaTriRoiRac;
             dataSetTempTA.Update(newRow);
+        }
+        //Hàm dùng để chia dữ liệu theo tỉ lệ nhập vào
+        public void ChiaDuLieu(int phanTramDuLieu)
+        {
+            DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
+            DiabetesDataSetTableAdapters.ResultSetTableAdapter resultSetTA = new DiabetesDataSetTableAdapters.ResultSetTableAdapter();
+            DiabetesDataSetTableAdapters.TestSetTableAdapter testSetTA = new DiabetesDataSetTableAdapters.TestSetTableAdapter();
+            DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            DataTable dtSetTemp=dataSetTempTA.GetData();
+            int luongDuLieu = dtSetTemp.Rows.Count * phanTramDuLieu / 100;
+            int iCount = 0;
+            trainingSetTA.DeleteAll();
+            resultSetTA.DeleteAll();
+            testSetTA.DeleteAll();
+            foreach (DataRow dtRow in dtSetTemp.Rows)
+            {
+                
+                if (iCount < luongDuLieu)
+                {
+                    trainingSetTA.Insert(dtRow[2].ToString(),Convert.ToBoolean(dtRow[3]),dtRow[4].ToString(),dtRow[5].ToString(),dtRow[6].ToString(),dtRow[7].ToString(),dtRow[8].ToString(),dtRow[9].ToString(),dtRow[10].ToString(),dtRow[11].ToString(),
+                                         dtRow[12].ToString(),dtRow[13].ToString(),dtRow[14].ToString(),dtRow[15].ToString(),dtRow[16].ToString(),dtRow[17].ToString(),dtRow[18].ToString(),dtRow[19].ToString(),dtRow[20].ToString(),dtRow[21].ToString(),
+                                         dtRow[22].ToString(), dtRow[23].ToString(), dtRow[24].ToString(), dtRow[25].ToString(), dtRow[26].ToString(), dtRow[27].ToString(), dtRow[28].ToString(), dtRow[29].ToString(), dtRow[30].ToString(), dtRow[31].ToString(), dtRow[32].ToString(), dtRow[33].ToString());
+                }
+                else
+                {
+                    testSetTA.Insert(Convert.ToDecimal(dtRow[1]),dtRow[2].ToString(), false, dtRow[4].ToString(), dtRow[5].ToString(), dtRow[6].ToString(), dtRow[7].ToString(), dtRow[8].ToString(), dtRow[9].ToString(), dtRow[10].ToString(), dtRow[11].ToString(),
+                                         dtRow[12].ToString(), dtRow[13].ToString(), dtRow[14].ToString(), dtRow[15].ToString(), dtRow[16].ToString(), dtRow[17].ToString(), dtRow[18].ToString(), dtRow[19].ToString(), dtRow[20].ToString(), dtRow[21].ToString(),
+                                         dtRow[22].ToString(), dtRow[23].ToString(), dtRow[24].ToString(), dtRow[25].ToString(), dtRow[26].ToString(), dtRow[27].ToString(), dtRow[28].ToString(), dtRow[29].ToString(), dtRow[30].ToString(), dtRow[31].ToString(), dtRow[32].ToString(), dtRow[33].ToString());
+                    resultSetTA.Insert(Convert.ToDecimal(dtRow[1]), dtRow[2].ToString(), Convert.ToBoolean(dtRow[3]), dtRow[4].ToString(), dtRow[5].ToString(), dtRow[6].ToString(), dtRow[7].ToString(), dtRow[8].ToString(), dtRow[9].ToString(), dtRow[10].ToString(), dtRow[11].ToString(),
+                                         dtRow[12].ToString(), dtRow[13].ToString(), dtRow[14].ToString(), dtRow[15].ToString(), dtRow[16].ToString(), dtRow[17].ToString(), dtRow[18].ToString(), dtRow[19].ToString(), dtRow[20].ToString(), dtRow[21].ToString(),
+                                         dtRow[22].ToString(), dtRow[23].ToString(), dtRow[24].ToString(), dtRow[25].ToString(), dtRow[26].ToString(), dtRow[27].ToString(), dtRow[28].ToString(), dtRow[29].ToString(), dtRow[30].ToString(), dtRow[31].ToString(), dtRow[32].ToString(), dtRow[33].ToString());
+                }
+                iCount++;
+            }
+
         }
         //Hàm dùng để đếm số lần xuất hiện của khoảng của một phân lớp
         public int DemSoLuongKhoang(String tenThuocTinh,String khoangRoiRac,Boolean tieuDuong)

@@ -89,6 +89,9 @@
             this.btnRoiRacHoa = new System.Windows.Forms.Button();
             this.prBar = new System.Windows.Forms.ProgressBar();
             this.btnTest = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtPhanTramDuLieu = new System.Windows.Forms.MaskedTextBox();
+            this.btnChiaDuLieu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.diabetesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingNavigator)).BeginInit();
@@ -503,7 +506,7 @@
             this.cboThuocTinh.FormattingEnabled = true;
             this.cboThuocTinh.Location = new System.Drawing.Point(714, 39);
             this.cboThuocTinh.Name = "cboThuocTinh";
-            this.cboThuocTinh.Size = new System.Drawing.Size(121, 21);
+            this.cboThuocTinh.Size = new System.Drawing.Size(100, 21);
             this.cboThuocTinh.TabIndex = 2;
             this.cboThuocTinh.SelectedIndexChanged += new System.EventHandler(this.cboThuocTinh_SelectedIndexChanged);
             // 
@@ -553,7 +556,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(714, 182);
+            this.btnTest.Location = new System.Drawing.Point(714, 225);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 7;
@@ -561,11 +564,41 @@
             this.btnTest.UseVisualStyleBackColor = true;
             this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(715, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(133, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Phần trăm dữ liệu cần chia";
+            // 
+            // txtPhanTramDuLieu
+            // 
+            this.txtPhanTramDuLieu.Location = new System.Drawing.Point(718, 154);
+            this.txtPhanTramDuLieu.Mask = "00";
+            this.txtPhanTramDuLieu.Name = "txtPhanTramDuLieu";
+            this.txtPhanTramDuLieu.Size = new System.Drawing.Size(96, 20);
+            this.txtPhanTramDuLieu.TabIndex = 9;
+            // 
+            // btnChiaDuLieu
+            // 
+            this.btnChiaDuLieu.Location = new System.Drawing.Point(718, 181);
+            this.btnChiaDuLieu.Name = "btnChiaDuLieu";
+            this.btnChiaDuLieu.Size = new System.Drawing.Size(75, 23);
+            this.btnChiaDuLieu.TabIndex = 10;
+            this.btnChiaDuLieu.Text = "Chia dữ liệu";
+            this.btnChiaDuLieu.UseVisualStyleBackColor = true;
+            this.btnChiaDuLieu.Click += new System.EventHandler(this.btnChiaDuLieu_Click);
+            // 
             // RoiRacHoaDuLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 282);
+            this.Controls.Add(this.btnChiaDuLieu);
+            this.Controls.Add(this.txtPhanTramDuLieu);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.prBar);
             this.Controls.Add(this.btnRoiRacHoa);
@@ -651,5 +684,8 @@
         private System.Windows.Forms.Button btnRoiRacHoa;
         private System.Windows.Forms.ProgressBar prBar;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.MaskedTextBox txtPhanTramDuLieu;
+        private System.Windows.Forms.Button btnChiaDuLieu;
     }
 }

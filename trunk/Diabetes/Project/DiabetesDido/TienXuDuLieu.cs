@@ -90,7 +90,6 @@ namespace DiabetesDido
             }
             this.Hide();
             roiRacHoaDuLieu.Show();
-            
         }
     }
 }
