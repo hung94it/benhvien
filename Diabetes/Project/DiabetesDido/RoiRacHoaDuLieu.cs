@@ -64,7 +64,10 @@ namespace DiabetesDido
                 DiabetesDataSetTableAdapters.BayesObjectTableAdapter dataBayesTA = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
                 DataTable dataSetTable=dataSetTA.GetData();
                 Function function = new Function();
-                decimal giaTriTrungBinh = function.TinhTrungBinhKhoang(dataSetTable, colName, khoangRoiRac);
+                decimal giaTriTrungBinh = Convert.ToDecimal(dataSetTable.Compute("avg(" + colName + ")", string.Empty));
+                giaTriTrungBinh = Math.Round(giaTriTrungBinh, 3);
+                decimal doLechChuan = Function.TinhDoLechChuan(dataSetTable, colName);
+                doLechChuan = Math.Round(doLechChuan, 0);
                 int dataSetColIndex = dataSetTable.Columns.IndexOf(colName);
                 prBar.Minimum = 1;
                 prBar.Maximum = dataSetTable.Rows.Count;
@@ -73,15 +76,13 @@ namespace DiabetesDido
                 {
                     decimal giaTri = Convert.ToDecimal(dtRow[dataSetColIndex]);
                     decimal id = Convert.ToDecimal(dtRow[0]);
-                    String giaTriRoiRac = function.TinhGiaTriRoiRac(giaTri, giaTriTrungBinh, khoangRoiRac);
+                    String giaTriRoiRac = Function.TinhGiaTriRoiRac(giaTri, giaTriTrungBinh, doLechChuan, khoangRoiRac);
                     decimal maBN = Convert.ToDecimal(dtRow[1]);
-                    function.CapNhapBangSauKhiRoiRacHoa(dataSetTempTA, maBN, colName, giaTriRoiRac);
                     Boolean tieuDuong = Convert.ToBoolean(dtRow[5]);
-                    int iCount = dataBayesTA.GetData().Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + giaTriRoiRac + "' and tieuDuong=" + tieuDuong + "").Count();
-                    if(iCount==0)
-                        dataBayesTA.Insert(colName,giaTriRoiRac,0,tieuDuong);
+                    Function.CapNhapBangSauKhiRoiRacHoa(dataSetTempTA, maBN, colName, giaTriRoiRac);
                     prBar.Minimum++;
                 }
+                Function.TaoBayesObject(colName, khoangRoiRac, giaTriTrungBinh, doLechChuan);
                 prBar.Refresh();
                 this.dataSetTempTableAdapter.Fill(this.diabetesDataSet.DataSetTemp);
             }
@@ -89,8 +90,36 @@ namespace DiabetesDido
 
         private void btnTest_Click(object sender, EventArgs e)
         {
+            DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+        }
+
+        private void btnChiaDuLieu_Click(object sender, EventArgs e)
+        {
             Function function = new Function();
-            function.HuanLuyenBayes();
+            if (txtPhanTramDuLieu.Text == "")
+            {
+                MessageBox.Show("Chưa nhập lượng dữ liệu cần chia", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                int phanTramDuLieu = Convert.ToInt16(txtPhanTramDuLieu.Text);
+                DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
+                if (trainingSetTA.GetData().Count > 0)
+                {
+                    DialogResult dR = MessageBox.Show("Hiện đã có một tập dữ liệu huấn luyện trong Cơ sở dữ liệu. Bạn có muốn thay mới?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dR == DialogResult.Yes)
+                    {
+                        function.ChiaDuLieu(phanTramDuLieu);
+                        MessageBox.Show("Chia dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    function.ChiaDuLieu(phanTramDuLieu);
+                    MessageBox.Show("Chia dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            txtPhanTramDuLieu.Text = "";
         }
 
     }
