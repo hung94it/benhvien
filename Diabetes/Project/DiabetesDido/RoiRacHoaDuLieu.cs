@@ -79,7 +79,7 @@ namespace DiabetesDido
                     String giaTriRoiRac = Function.TinhGiaTriRoiRac(giaTri, giaTriTrungBinh, doLechChuan, khoangRoiRac);
                     decimal maBN = Convert.ToDecimal(dtRow[1]);
                     Boolean tieuDuong = Convert.ToBoolean(dtRow[5]);
-                    Function.CapNhapBangSauKhiRoiRacHoa(dataSetTempTA, maBN, colName, giaTriRoiRac);
+                    Function.CapNhapDataSetTemp(dataSetTempTA, maBN, colName, giaTriRoiRac);
                     prBar.Minimum++;
                 }
                 Function.TaoBayesObject(colName, khoangRoiRac, giaTriTrungBinh, doLechChuan);
@@ -120,6 +120,20 @@ namespace DiabetesDido
                 }
             }
             txtPhanTramDuLieu.Text = "";
+        }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            if (cboThuocTinh.SelectedIndex == -1)
+            {
+                MessageBox.Show("Bạn chưa chọn thuộc tính để xem thống kê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                String colName = cboThuocTinh.Text;
+                ThongKeDuLieuRoiRac thongKe = new ThongKeDuLieuRoiRac(colName);
+                thongKe.Show();
+            }
         }
 
     }

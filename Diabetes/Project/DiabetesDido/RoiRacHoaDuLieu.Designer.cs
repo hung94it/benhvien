@@ -92,6 +92,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtPhanTramDuLieu = new System.Windows.Forms.MaskedTextBox();
             this.btnChiaDuLieu = new System.Windows.Forms.Button();
+            this.btnThongKe = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.diabetesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingNavigator)).BeginInit();
@@ -153,7 +154,7 @@
             this.dataSetTempBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.dataSetTempBindingNavigator.Name = "dataSetTempBindingNavigator";
             this.dataSetTempBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.dataSetTempBindingNavigator.Size = new System.Drawing.Size(847, 25);
+            this.dataSetTempBindingNavigator.Size = new System.Drawing.Size(868, 25);
             this.dataSetTempBindingNavigator.TabIndex = 0;
             this.dataSetTempBindingNavigator.Text = "bindingNavigator1";
             // 
@@ -506,7 +507,7 @@
             this.cboThuocTinh.FormattingEnabled = true;
             this.cboThuocTinh.Location = new System.Drawing.Point(714, 39);
             this.cboThuocTinh.Name = "cboThuocTinh";
-            this.cboThuocTinh.Size = new System.Drawing.Size(100, 21);
+            this.cboThuocTinh.Size = new System.Drawing.Size(134, 21);
             this.cboThuocTinh.TabIndex = 2;
             this.cboThuocTinh.SelectedIndexChanged += new System.EventHandler(this.cboThuocTinh_SelectedIndexChanged);
             // 
@@ -533,7 +534,7 @@
             this.txtKhoang.Location = new System.Drawing.Point(714, 80);
             this.txtKhoang.Mask = "00";
             this.txtKhoang.Name = "txtKhoang";
-            this.txtKhoang.Size = new System.Drawing.Size(100, 20);
+            this.txtKhoang.Size = new System.Drawing.Size(41, 20);
             this.txtKhoang.TabIndex = 4;
             // 
             // btnRoiRacHoa
@@ -578,7 +579,7 @@
             this.txtPhanTramDuLieu.Location = new System.Drawing.Point(718, 154);
             this.txtPhanTramDuLieu.Mask = "00";
             this.txtPhanTramDuLieu.Name = "txtPhanTramDuLieu";
-            this.txtPhanTramDuLieu.Size = new System.Drawing.Size(96, 20);
+            this.txtPhanTramDuLieu.Size = new System.Drawing.Size(37, 20);
             this.txtPhanTramDuLieu.TabIndex = 9;
             // 
             // btnChiaDuLieu
@@ -591,11 +592,22 @@
             this.btnChiaDuLieu.UseVisualStyleBackColor = true;
             this.btnChiaDuLieu.Click += new System.EventHandler(this.btnChiaDuLieu_Click);
             // 
+            // btnThongKe
+            // 
+            this.btnThongKe.Location = new System.Drawing.Point(788, 107);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(75, 23);
+            this.btnThongKe.TabIndex = 11;
+            this.btnThongKe.Text = "Thống kê";
+            this.btnThongKe.UseVisualStyleBackColor = true;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+            // 
             // RoiRacHoaDuLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 282);
+            this.ClientSize = new System.Drawing.Size(868, 282);
+            this.Controls.Add(this.btnThongKe);
             this.Controls.Add(this.btnChiaDuLieu);
             this.Controls.Add(this.txtPhanTramDuLieu);
             this.Controls.Add(this.label3);
@@ -609,7 +621,7 @@
             this.Controls.Add(this.dataSetTempDataGridView);
             this.Controls.Add(this.dataSetTempBindingNavigator);
             this.Name = "RoiRacHoaDuLieu";
-            this.Text = "RoiRacHoaDuLieucs";
+            this.Text = "Rời rạc hóa dữ liệu";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RoiRacHoaDuLieu_FormClosed);
             this.Load += new System.EventHandler(this.RoiRacHoaDuLieucs_Load);
             ((System.ComponentModel.ISupportInitialize)(this.diabetesDataSet)).EndInit();
@@ -687,5 +699,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.MaskedTextBox txtPhanTramDuLieu;
         private System.Windows.Forms.Button btnChiaDuLieu;
+        private System.Windows.Forms.Button btnThongKe;
     }
 }

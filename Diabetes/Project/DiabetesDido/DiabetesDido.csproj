@@ -70,6 +70,12 @@
     <Compile Include="RoiRacHoaDuLieu.Designer.cs">
       <DependentUpon>RoiRacHoaDuLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ThongKeDuLieuRoiRac.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKeDuLieuRoiRac.Designer.cs">
+      <DependentUpon>ThongKeDuLieuRoiRac.cs</DependentUpon>
+    </Compile>
     <Compile Include="TienXuDuLieu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </Compile>
     <EmbeddedResource Include="RoiRacHoaDuLieu.resx">
       <DependentUpon>RoiRacHoaDuLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKeDuLieuRoiRac.resx">
+      <DependentUpon>ThongKeDuLieuRoiRac.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TienXuDuLieu.resx">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>

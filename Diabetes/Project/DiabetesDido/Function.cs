@@ -116,7 +116,8 @@ namespace DiabetesDido
                 giaTriMoi = giaTriMoi + doLechChuan;
             }
         }
-        public static void CapNhapBangSauKhiRoiRacHoa(DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA, decimal maBN, String colName, String giaTriRoiRac)
+        //Hàm dùng để cập nhập lại bảng DataSetTemp sau khi rời rạc hóa một thuộc tính
+        public static void CapNhapDataSetTemp(DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA, decimal maBN, String colName, String giaTriRoiRac)
         {
             DataTable dataSetTempTable = dataSetTempTA.GetDataByOne(maBN);
             DataRow newRow = dataSetTempTable.NewRow();
@@ -127,6 +128,11 @@ namespace DiabetesDido
             int colIndex = dataSetTempTA.GetData().Columns.IndexOf(colName);
             newRow[colIndex] = giaTriRoiRac;
             dataSetTempTA.Update(newRow);
+        }
+        //Hàm dùng để huấn luyện dữ liệu cho thuật toán Bayes
+        public static void HuyenLuyenBayes()
+        { 
+            
         }
         //Hàm dùng để chia dữ liệu theo tỉ lệ nhập vào
         public void ChiaDuLieu(int phanTramDuLieu)
@@ -162,15 +168,6 @@ namespace DiabetesDido
                 iCount++;
             }
 
-        }
-        //Hàm dùng để đếm số lần xuất hiện của khoảng của một phân lớp
-        public int DemSoLuongKhoang(String tenThuocTinh,String khoangRoiRac,Boolean tieuDuong)
-        {
-            int soLuong = 0;
-            DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtAdapter = new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
-            DataTable dt = dtAdapter.GetData();
-            soLuong = dt.Select("TenThuocTinh='" + tenThuocTinh + "' and KhoangRoiRac='" + khoangRoiRac + "' and tieuDuong=" + tieuDuong + "").Count();
-            return soLuong;
         }
         //Hàm dùng để huấn luyện dữ liệu dành cho thuật toán Naive Bayes
         public void HuanLuyenBayes()

@@ -110,6 +110,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.BayesObjectTableAdapter = null;
             this.tableAdapterManager.BenhNhanTableAdapter = null;
             this.tableAdapterManager.DataSetTableAdapter = this.dataSetTableAdapter;
             this.tableAdapterManager.DataSetTempTableAdapter = null;
@@ -538,7 +539,7 @@
             this.Controls.Add(this.dataSetDataGridView);
             this.Controls.Add(this.dataSetBindingNavigator);
             this.Name = "TienXuDuLieu";
-            this.Text = "TienXuDuLieu";
+            this.Text = "Tiền xử lý dữ liệu";
             this.Load += new System.EventHandler(this.TienXuDuLieu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.diabetesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).EndInit();
