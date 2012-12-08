@@ -36,6 +36,10 @@ namespace DiabetesDido
                 if (i > 4)
                     cboThuocTinh.Items.Add(dataSetTempTalbe.Columns[i].ColumnName);
             }
+            lblDoLechChuan.Text = lblDoLechChuan.Text + " 0";
+            lblLonNhat.Text = lblLonNhat.Text + " 0";
+            lblNhoNhat.Text = lblNhoNhat.Text + " 0";
+            lblTrungBinh.Text = lblTrungBinh.Text + " 0";
         }
 
         private void RoiRacHoaDuLieu_FormClosed(object sender, FormClosedEventArgs e)
@@ -46,7 +50,35 @@ namespace DiabetesDido
 
         private void cboThuocTinh_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+            DataTable dt = dataSetTA.GetData();
+            decimal giaTriTrungBinh = 0;
+            decimal doLechChuan = 0;
+            decimal giaTriLonNhat = 0;
+            decimal giaTriNhoNhat = 0;
             txtKhoang.Text = "";
+            if (cboThuocTinh.SelectedIndex == -1)
+            {
+                lblDoLechChuan.Text = lblDoLechChuan.Text + " 0";
+                lblLonNhat.Text = lblLonNhat.Text + " 0";
+                lblNhoNhat.Text = lblNhoNhat.Text + " 0";
+                lblTrungBinh.Text = lblTrungBinh.Text + " 0";
+            }
+            else
+            {
+                String colName = cboThuocTinh.Text;
+                doLechChuan = Convert.ToDecimal(dt.Compute("STDEV("+colName+")",string.Empty));
+                doLechChuan = Math.Round(doLechChuan, 3);
+                giaTriTrungBinh=Convert.ToDecimal(dt.Compute("avg("+colName+")",string.Empty));
+                giaTriTrungBinh = Math.Round(giaTriTrungBinh, 3);
+                giaTriLonNhat = Convert.ToInt16(dt.Compute("max("+colName+")", string.Empty));
+                giaTriNhoNhat = Convert.ToInt16(dt.Compute("min(" + colName + ")", string.Empty));
+
+                lblDoLechChuan.Text = "Độ lệch chuẩn: " + doLechChuan.ToString();
+                lblLonNhat.Text = "Giá trị lớn nhất: " + giaTriLonNhat.ToString();
+                lblNhoNhat.Text = "Giá trị nhỏ nhất: " + giaTriNhoNhat.ToString();
+                lblTrungBinh.Text = "Giá trị trung bình: " + giaTriTrungBinh.ToString();
+            }
         }
 
         private void btnRoiRacHoa_Click(object sender, EventArgs e)
@@ -64,10 +96,6 @@ namespace DiabetesDido
                 DiabetesDataSetTableAdapters.BayesObjectTableAdapter dataBayesTA = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
                 DataTable dataSetTable=dataSetTA.GetData();
                 Function function = new Function();
-                decimal giaTriTrungBinh = Convert.ToDecimal(dataSetTable.Compute("avg(" + colName + ")", string.Empty));
-                giaTriTrungBinh = Math.Round(giaTriTrungBinh, 3);
-                decimal doLechChuan = Function.TinhDoLechChuan(dataSetTable, colName);
-                doLechChuan = Math.Round(doLechChuan, 0);
                 int dataSetColIndex = dataSetTable.Columns.IndexOf(colName);
                 prBar.Minimum = 1;
                 prBar.Maximum = dataSetTable.Rows.Count;
@@ -76,13 +104,13 @@ namespace DiabetesDido
                 {
                     decimal giaTri = Convert.ToDecimal(dtRow[dataSetColIndex]);
                     decimal id = Convert.ToDecimal(dtRow[0]);
-                    String giaTriRoiRac = Function.TinhGiaTriRoiRac(giaTri, giaTriTrungBinh, doLechChuan, khoangRoiRac);
+                    String giaTriRoiRac = Function.TinhGiaTriRoiRac(giaTri, colName, khoangRoiRac);
                     decimal maBN = Convert.ToDecimal(dtRow[1]);
                     Boolean tieuDuong = Convert.ToBoolean(dtRow[5]);
                     Function.CapNhapDataSetTemp(dataSetTempTA, maBN, colName, giaTriRoiRac);
                     prBar.Minimum++;
                 }
-                Function.TaoBayesObject(colName, khoangRoiRac, giaTriTrungBinh, doLechChuan);
+                Function.TaoBayesObject(colName, khoangRoiRac);
                 prBar.Refresh();
                 this.dataSetTempTableAdapter.Fill(this.diabetesDataSet.DataSetTemp);
             }
@@ -134,6 +162,12 @@ namespace DiabetesDido
                 ThongKeDuLieuRoiRac thongKe = new ThongKeDuLieuRoiRac(colName);
                 thongKe.Show();
             }
+        }
+
+        private void btnHuyenLuyen_Click(object sender, EventArgs e)
+        {
+            DuLieuHuanLuyen huanLuyen = new DuLieuHuanLuyen();
+            huanLuyen.Show();
         }
 
     }
