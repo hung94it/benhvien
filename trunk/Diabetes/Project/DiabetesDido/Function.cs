@@ -76,17 +76,22 @@ namespace DiabetesDido
             return Convert.ToDecimal(doLechChuan);
         }
         //Hàm dùng để rời rạc giá trị của cột trong bảng dữ liệu
-        public static String TinhGiaTriRoiRac(decimal giaTri,decimal giaTriTrungBinh,decimal doLechChuan, int khoang)
+        public static String TinhGiaTriRoiRac(decimal giaTri,String colName, int khoang)
         {
+            DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+            DataTable dt = dataSetTA.GetData();
+            decimal minValue = Convert.ToDecimal(dt.Compute("min(" + colName + ")", string.Empty));
+            decimal maxValue = Convert.ToDecimal(dt.Compute("max(" + colName + ")", string.Empty));
+            decimal giaTriMoi=Math.Round((minValue+maxValue)/khoang,3);
+            decimal giaTriTrungBinhKhoang = giaTriMoi;
             String giaTriRoiRac = "";
             int iCount=1;
-            doLechChuan = Math.Round(doLechChuan, 0);
-            decimal giaTriMoi = giaTriTrungBinh + doLechChuan;
+
             while (giaTriMoi < giaTri)
             {
                 iCount++;
                 if (iCount == khoang) break;
-                giaTriMoi = giaTriMoi + doLechChuan;
+                giaTriMoi = giaTriMoi + giaTriTrungBinhKhoang;
                 
             };
             if (iCount == 1)
@@ -94,14 +99,19 @@ namespace DiabetesDido
             else if (iCount == khoang)
                 giaTriRoiRac = "" + giaTriMoi.ToString() + "" + ">";
             else
-                giaTriRoiRac = (giaTriMoi - doLechChuan).ToString() + "_" + giaTriMoi.ToString();
+                giaTriRoiRac = (giaTriMoi - giaTriTrungBinhKhoang).ToString() + "_" + giaTriMoi.ToString();
             return giaTriRoiRac;
         }
         //Hàm dùng để tại ra các khoảng giá trị đã rời rạc
-        public static void TaoBayesObject(String colName,int khoang, decimal giaTriTrungBinh, decimal doLechChuan)
+        public static void TaoBayesObject(String colName,int khoang)
         {
             DiabetesDataSetTableAdapters.BayesObjectTableAdapter BayesObjectTA = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-            decimal giaTriMoi=giaTriTrungBinh+doLechChuan;
+            DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+            DataTable dt = dataSetTA.GetData();
+            decimal minValue = Convert.ToDecimal(dt.Compute("min(" + colName + ")", string.Empty));
+            decimal maxValue = Convert.ToDecimal(dt.Compute("max(" + colName + ")", string.Empty));
+            decimal giaTriMoi=Math.Round((minValue+maxValue)/khoang,3);
+            decimal giaTriTrungBinhKhoang = giaTriMoi;
             for (int i = 1; i <= khoang; i++)
             {
                 String khoangRoiRac="";
@@ -110,10 +120,11 @@ namespace DiabetesDido
                 else if (i == khoang)
                     khoangRoiRac = giaTriMoi.ToString() + ">";
                 else
-                    khoangRoiRac = (giaTriMoi - doLechChuan).ToString() + "_" + giaTriMoi.ToString();
+                    khoangRoiRac = (giaTriMoi - giaTriTrungBinhKhoang).ToString() + "_" + giaTriMoi.ToString();
                 BayesObjectTA.Insert(colName, khoangRoiRac, 0, false);
                 BayesObjectTA.Insert(colName, khoangRoiRac, 0, true);
-                giaTriMoi = giaTriMoi + doLechChuan;
+                if (i != khoang - 1)
+                    giaTriMoi = giaTriMoi + giaTriTrungBinhKhoang;
             }
         }
         //Hàm dùng để cập nhập lại bảng DataSetTemp sau khi rời rạc hóa một thuộc tính
