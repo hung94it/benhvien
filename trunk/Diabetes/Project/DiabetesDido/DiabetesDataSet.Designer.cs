@@ -5946,8 +5946,6 @@ namespace DiabetesDido {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DatasourceDataTable : global::System.Data.TypedTableBase<DatasourceRow> {
             
-            private global::System.Data.DataColumn columnGioiTinh;
-            
             private global::System.Data.DataColumn columnCholesterol;
             
             private global::System.Data.DataColumn columnHDL_Cholesterol;
@@ -6041,14 +6039,6 @@ namespace DiabetesDido {
             protected DatasourceDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GioiTinhColumn {
-                get {
-                    return this.columnGioiTinh;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6337,7 +6327,6 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DatasourceRow AddDatasourceRow(
-                        string GioiTinh, 
                         decimal Cholesterol, 
                         decimal HDL_Cholesterol, 
                         decimal Triglyceride, 
@@ -6371,7 +6360,6 @@ namespace DiabetesDido {
                         bool TieuDuong) {
                 DatasourceRow rowDatasourceRow = ((DatasourceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        GioiTinh,
                         Cholesterol,
                         HDL_Cholesterol,
                         Triglyceride,
@@ -6425,7 +6413,6 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnGioiTinh = base.Columns["GioiTinh"];
                 this.columnCholesterol = base.Columns["Cholesterol"];
                 this.columnHDL_Cholesterol = base.Columns["HDL_Cholesterol"];
                 this.columnTriglyceride = base.Columns["Triglyceride"];
@@ -6462,8 +6449,6 @@ namespace DiabetesDido {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnGioiTinh = new global::System.Data.DataColumn("GioiTinh", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGioiTinh);
                 this.columnCholesterol = new global::System.Data.DataColumn("Cholesterol", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCholesterol);
                 this.columnHDL_Cholesterol = new global::System.Data.DataColumn("HDL_Cholesterol", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -6526,7 +6511,6 @@ namespace DiabetesDido {
                 base.Columns.Add(this.columnCa);
                 this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTieuDuong);
-                this.columnGioiTinh.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12903,22 +12887,6 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string GioiTinh {
-                get {
-                    try {
-                        return ((string)(this[this.tableDatasource.GioiTinhColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GioiTinh\' in table \'Datasource\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDatasource.GioiTinhColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal Cholesterol {
                 get {
                     try {
@@ -13411,18 +13379,6 @@ namespace DiabetesDido {
                 set {
                     this[this.tableDatasource.TieuDuongColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGioiTinhNull() {
-                return this.IsNull(this.tableDatasource.GioiTinhColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGioiTinhNull() {
-                this[this.tableDatasource.GioiTinhColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21386,7 +21342,6 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "Datasource";
-            tableMapping.ColumnMappings.Add("GioiTinh", "GioiTinh");
             tableMapping.ColumnMappings.Add("Cholesterol", "Cholesterol");
             tableMapping.ColumnMappings.Add("HDL_Cholesterol", "HDL_Cholesterol");
             tableMapping.ColumnMappings.Add("Triglyceride", "Triglyceride");
@@ -21431,36 +21386,50 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        XetNghiem.GioiTinh, XetNghiem.Cholesterol, XetNghiem.HDL_Cholestero" +
-                "l, XetNghiem.Triglyceride, XetNghiem.LDL_Cholesterol, XetNghiem.Glucose, \r\n     " +
-                "                    XetNghiem.SGOT, XetNghiem.SGPT, XetNghiem.Urea, XetNghiem.WB" +
-                "C, XetNghiem.LYM, XetNghiem.MONO, XetNghiem.GRAN, XetNghiem.TyLeLYM, \r\n         " +
-                "                XetNghiem.TyLeMONO, XetNghiem.TyLeGRAN, XetNghiem.HGB, XetNghiem" +
-                ".RBC, XetNghiem.HTC, XetNghiem.MCV, XetNghiem.MCH, XetNghiem.MCHC, \r\n           " +
-                "              XetNghiem.RDW_CV, XetNghiem.PLT, XetNghiem.MPV, XetNghiem.PDW, Xet" +
-                "Nghiem.PCT, XetNghiem.Na, XetNghiem.K, XetNghiem.Cl, XetNghiem.Ca, \r\n           " +
-                "              BenhNhan.TieuDuong\r\nFROM            BenhNhan INNER JOIN\r\n         " +
-                "                XetNghiem ON BenhNhan.MaBN = XetNghiem.MaBn\r\nWHERE        (XetNg" +
-                "hiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol IS NOT NULL) AND (X" +
-                "etNghiem.Triglyceride IS NOT NULL) AND \r\n                         (XetNghiem.LDL" +
-                "_Cholesterol IS NOT NULL) AND (XetNghiem.Glucose IS NOT NULL) AND (XetNghiem.SGO" +
-                "T IS NOT NULL) AND \r\n                         (XetNghiem.SGPT IS NOT NULL) AND (" +
-                "XetNghiem.Urea IS NOT NULL) AND (XetNghiem.WBC IS NOT NULL) AND (XetNghiem.LYM I" +
-                "S NOT NULL) AND \r\n                         (XetNghiem.MONO IS NOT NULL) AND (Xet" +
-                "Nghiem.GRAN IS NOT NULL) AND (XetNghiem.TyLeLYM IS NOT NULL) AND (XetNghiem.TyLe" +
-                "MONO IS NOT NULL) \r\n                         AND (XetNghiem.TyLeGRAN IS NOT NULL" +
-                ") AND (XetNghiem.HGB IS NOT NULL) AND (XetNghiem.RBC IS NOT NULL) AND (XetNghiem" +
-                ".HTC IS NOT NULL) AND \r\n                         (XetNghiem.MCV IS NOT NULL) AND" +
-                " (XetNghiem.MCH IS NOT NULL) AND (XetNghiem.MCHC IS NOT NULL) AND (XetNghiem.RDW" +
-                "_CV IS NOT NULL) AND \r\n                         (XetNghiem.PLT IS NOT NULL) AND " +
-                "(XetNghiem.MPV IS NOT NULL) AND (XetNghiem.PDW IS NOT NULL) AND (XetNghiem.PCT I" +
-                "S NOT NULL) AND \r\n                         (XetNghiem.Na IS NOT NULL) AND (XetNg" +
-                "hiem.K IS NOT NULL) AND (XetNghiem.Cl IS NOT NULL) AND (XetNghiem.Ca IS NOT NULL" +
-                ")";
+            this._commandCollection[0].CommandText = "SELECT        XetNghiem.Cholesterol, XetNghiem.HDL_Cholesterol, XetNghiem.Triglyc" +
+                "eride, XetNghiem.LDL_Cholesterol, XetNghiem.Glucose, XetNghiem.SGOT, \r\n         " +
+                "                XetNghiem.SGPT, XetNghiem.Urea, XetNghiem.WBC, XetNghiem.LYM, Xe" +
+                "tNghiem.MONO, XetNghiem.GRAN, XetNghiem.TyLeLYM, XetNghiem.TyLeMONO, \r\n         " +
+                "                XetNghiem.TyLeGRAN, XetNghiem.HGB, XetNghiem.RBC, XetNghiem.HTC," +
+                " XetNghiem.MCV, XetNghiem.MCH, XetNghiem.MCHC, XetNghiem.RDW_CV, \r\n             " +
+                "            XetNghiem.PLT, XetNghiem.MPV, XetNghiem.PDW, XetNghiem.PCT, XetNghie" +
+                "m.Na, XetNghiem.K, XetNghiem.Cl, XetNghiem.Ca, BenhNhan.TieuDuong\r\nFROM         " +
+                "   BenhNhan INNER JOIN\r\n                         XetNghiem ON BenhNhan.MaBN = Xe" +
+                "tNghiem.MaBn\r\nWHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HD" +
+                "L_Cholesterol IS NOT NULL) AND (XetNghiem.Triglyceride IS NOT NULL) AND \r\n      " +
+                "                   (XetNghiem.LDL_Cholesterol IS NOT NULL) AND (XetNghiem.Glucos" +
+                "e IS NOT NULL) AND (XetNghiem.SGOT IS NOT NULL) AND \r\n                         (" +
+                "XetNghiem.SGPT IS NOT NULL) AND (XetNghiem.Urea IS NOT NULL) AND (XetNghiem.WBC " +
+                "IS NOT NULL) AND (XetNghiem.LYM IS NOT NULL) AND \r\n                         (Xet" +
+                "Nghiem.MONO IS NOT NULL) AND (XetNghiem.GRAN IS NOT NULL) AND (XetNghiem.TyLeLYM" +
+                " IS NOT NULL) AND (XetNghiem.TyLeMONO IS NOT NULL) \r\n                         AN" +
+                "D (XetNghiem.TyLeGRAN IS NOT NULL) AND (XetNghiem.HGB IS NOT NULL) AND (XetNghie" +
+                "m.RBC IS NOT NULL) AND (XetNghiem.HTC IS NOT NULL) AND \r\n                       " +
+                "  (XetNghiem.MCV IS NOT NULL) AND (XetNghiem.MCH IS NOT NULL) AND (XetNghiem.MCH" +
+                "C IS NOT NULL) AND (XetNghiem.RDW_CV IS NOT NULL) AND \r\n                        " +
+                " (XetNghiem.PLT IS NOT NULL) AND (XetNghiem.MPV IS NOT NULL) AND (XetNghiem.PDW " +
+                "IS NOT NULL) AND (XetNghiem.PCT IS NOT NULL) AND \r\n                         (Xet" +
+                "Nghiem.Na IS NOT NULL) AND (XetNghiem.K IS NOT NULL) AND (XetNghiem.Cl IS NOT NU" +
+                "LL) AND (XetNghiem.Ca IS NOT NULL)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        COUNT(*) AS Expr1
+FROM            BenhNhan INNER JOIN
+                         XetNghiem ON BenhNhan.MaBN = XetNghiem.MaBn
+WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol IS NOT NULL) AND (XetNghiem.Triglyceride IS NOT NULL) AND 
+                         (XetNghiem.LDL_Cholesterol IS NOT NULL) AND (XetNghiem.Glucose IS NOT NULL) AND (XetNghiem.SGOT IS NOT NULL) AND 
+                         (XetNghiem.SGPT IS NOT NULL) AND (XetNghiem.Urea IS NOT NULL) AND (XetNghiem.WBC IS NOT NULL) AND (XetNghiem.LYM IS NOT NULL) AND 
+                         (XetNghiem.MONO IS NOT NULL) AND (XetNghiem.GRAN IS NOT NULL) AND (XetNghiem.TyLeLYM IS NOT NULL) AND (XetNghiem.TyLeMONO IS NOT NULL) 
+                         AND (XetNghiem.TyLeGRAN IS NOT NULL) AND (XetNghiem.HGB IS NOT NULL) AND (XetNghiem.RBC IS NOT NULL) AND (XetNghiem.HTC IS NOT NULL) AND 
+                         (XetNghiem.MCV IS NOT NULL) AND (XetNghiem.MCH IS NOT NULL) AND (XetNghiem.MCHC IS NOT NULL) AND (XetNghiem.RDW_CV IS NOT NULL) AND 
+                         (XetNghiem.PLT IS NOT NULL) AND (XetNghiem.MPV IS NOT NULL) AND (XetNghiem.PDW IS NOT NULL) AND (XetNghiem.PCT IS NOT NULL) AND 
+                         (XetNghiem.Na IS NOT NULL) AND (XetNghiem.K IS NOT NULL) AND (XetNghiem.Cl IS NOT NULL) AND (XetNghiem.Ca IS NOT NULL) AND 
+                         (BenhNhan.TieuDuong = 'true')";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21485,6 +21454,34 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
             DiabetesDataSet.DatasourceDataTable dataTable = new DiabetesDataSet.DatasourceDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual global::System.Nullable<int> CountDiabetesPatients() {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            object returnValue;
+            try {
+                returnValue = command.ExecuteScalar();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            if (((returnValue == null) 
+                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
+                return new global::System.Nullable<int>();
+            }
+            else {
+                return new global::System.Nullable<int>(((int)(returnValue)));
+            }
         }
     }
     

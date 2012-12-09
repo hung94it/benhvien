@@ -1209,14 +1209,13 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DatasourceTableAdapter" GeneratorDataComponentClassName="DatasourceTableAdapter" Name="Datasource" UserDataComponentName="DatasourceTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        XetNghiem.GioiTinh, XetNghiem.Cholesterol, XetNghiem.HDL_Cholesterol, XetNghiem.Triglyceride, XetNghiem.LDL_Cholesterol, XetNghiem.Glucose, 
-                         XetNghiem.SGOT, XetNghiem.SGPT, XetNghiem.Urea, XetNghiem.WBC, XetNghiem.LYM, XetNghiem.MONO, XetNghiem.GRAN, XetNghiem.TyLeLYM, 
-                         XetNghiem.TyLeMONO, XetNghiem.TyLeGRAN, XetNghiem.HGB, XetNghiem.RBC, XetNghiem.HTC, XetNghiem.MCV, XetNghiem.MCH, XetNghiem.MCHC, 
-                         XetNghiem.RDW_CV, XetNghiem.PLT, XetNghiem.MPV, XetNghiem.PDW, XetNghiem.PCT, XetNghiem.Na, XetNghiem.K, XetNghiem.Cl, XetNghiem.Ca, 
-                         BenhNhan.TieuDuong
+                    <CommandText>SELECT        XetNghiem.Cholesterol, XetNghiem.HDL_Cholesterol, XetNghiem.Triglyceride, XetNghiem.LDL_Cholesterol, XetNghiem.Glucose, XetNghiem.SGOT, 
+                         XetNghiem.SGPT, XetNghiem.Urea, XetNghiem.WBC, XetNghiem.LYM, XetNghiem.MONO, XetNghiem.GRAN, XetNghiem.TyLeLYM, XetNghiem.TyLeMONO, 
+                         XetNghiem.TyLeGRAN, XetNghiem.HGB, XetNghiem.RBC, XetNghiem.HTC, XetNghiem.MCV, XetNghiem.MCH, XetNghiem.MCHC, XetNghiem.RDW_CV, 
+                         XetNghiem.PLT, XetNghiem.MPV, XetNghiem.PDW, XetNghiem.PCT, XetNghiem.Na, XetNghiem.K, XetNghiem.Cl, XetNghiem.Ca, BenhNhan.TieuDuong
 FROM            BenhNhan INNER JOIN
                          XetNghiem ON BenhNhan.MaBN = XetNghiem.MaBn
 WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol IS NOT NULL) AND (XetNghiem.Triglyceride IS NOT NULL) AND 
@@ -1233,7 +1232,6 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="GioiTinh" DataSetColumn="GioiTinh" />
               <Mapping SourceColumn="Cholesterol" DataSetColumn="Cholesterol" />
               <Mapping SourceColumn="HDL_Cholesterol" DataSetColumn="HDL_Cholesterol" />
               <Mapping SourceColumn="Triglyceride" DataSetColumn="Triglyceride" />
@@ -1266,7 +1264,27 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
               <Mapping SourceColumn="Ca" DataSetColumn="Ca" />
               <Mapping SourceColumn="TieuDuong" DataSetColumn="TieuDuong" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CountDiabetesPatients" Modifier="Public" Name="CountDiabetesPatients" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="CountDiabetesPatients">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COUNT(*) AS Expr1
+FROM            BenhNhan INNER JOIN
+                         XetNghiem ON BenhNhan.MaBN = XetNghiem.MaBn
+WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol IS NOT NULL) AND (XetNghiem.Triglyceride IS NOT NULL) AND 
+                         (XetNghiem.LDL_Cholesterol IS NOT NULL) AND (XetNghiem.Glucose IS NOT NULL) AND (XetNghiem.SGOT IS NOT NULL) AND 
+                         (XetNghiem.SGPT IS NOT NULL) AND (XetNghiem.Urea IS NOT NULL) AND (XetNghiem.WBC IS NOT NULL) AND (XetNghiem.LYM IS NOT NULL) AND 
+                         (XetNghiem.MONO IS NOT NULL) AND (XetNghiem.GRAN IS NOT NULL) AND (XetNghiem.TyLeLYM IS NOT NULL) AND (XetNghiem.TyLeMONO IS NOT NULL) 
+                         AND (XetNghiem.TyLeGRAN IS NOT NULL) AND (XetNghiem.HGB IS NOT NULL) AND (XetNghiem.RBC IS NOT NULL) AND (XetNghiem.HTC IS NOT NULL) AND 
+                         (XetNghiem.MCV IS NOT NULL) AND (XetNghiem.MCH IS NOT NULL) AND (XetNghiem.MCHC IS NOT NULL) AND (XetNghiem.RDW_CV IS NOT NULL) AND 
+                         (XetNghiem.PLT IS NOT NULL) AND (XetNghiem.MPV IS NOT NULL) AND (XetNghiem.PDW IS NOT NULL) AND (XetNghiem.PCT IS NOT NULL) AND 
+                         (XetNghiem.Na IS NOT NULL) AND (XetNghiem.K IS NOT NULL) AND (XetNghiem.Cl IS NOT NULL) AND (XetNghiem.Ca IS NOT NULL) AND 
+                         (BenhNhan.TieuDuong = 'true')</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -1276,7 +1294,7 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
   <xs:element name="DiabetesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DiabetesDataSet" msprop:Generator_UserDSName="DiabetesDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="BenhNhan" msprop:Generator_TableClassName="BenhNhanDataTable" msprop:Generator_TableVarName="tableBenhNhan" msprop:Generator_RowChangedName="BenhNhanRowChanged" msprop:Generator_TablePropName="BenhNhan" msprop:Generator_RowDeletingName="BenhNhanRowDeleting" msprop:Generator_RowChangingName="BenhNhanRowChanging" msprop:Generator_RowEvHandlerName="BenhNhanRowChangeEventHandler" msprop:Generator_RowDeletedName="BenhNhanRowDeleted" msprop:Generator_RowClassName="BenhNhanRow" msprop:Generator_UserTableName="BenhNhan" msprop:Generator_RowEvArgName="BenhNhanRowChangeEvent">
+        <xs:element name="BenhNhan" msprop:Generator_TableClassName="BenhNhanDataTable" msprop:Generator_TableVarName="tableBenhNhan" msprop:Generator_TablePropName="BenhNhan" msprop:Generator_RowDeletingName="BenhNhanRowDeleting" msprop:Generator_RowChangingName="BenhNhanRowChanging" msprop:Generator_RowEvHandlerName="BenhNhanRowChangeEventHandler" msprop:Generator_RowDeletedName="BenhNhanRowDeleted" msprop:Generator_UserTableName="BenhNhan" msprop:Generator_RowChangedName="BenhNhanRowChanged" msprop:Generator_RowEvArgName="BenhNhanRowChangeEvent" msprop:Generator_RowClassName="BenhNhanRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IDKhamBenh" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIDKhamBenh" msprop:Generator_ColumnPropNameInRow="IDKhamBenh" msprop:Generator_ColumnPropNameInTable="IDKhamBenhColumn" msprop:Generator_UserColumnName="IDKhamBenh" type="xs:long" />
@@ -1343,7 +1361,7 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataSet" msprop:Generator_TableClassName="DataSetDataTable" msprop:Generator_TableVarName="tableDataSet" msprop:Generator_RowChangedName="DataSetRowChanged" msprop:Generator_TablePropName="DataSet" msprop:Generator_RowDeletingName="DataSetRowDeleting" msprop:Generator_RowChangingName="DataSetRowChanging" msprop:Generator_RowEvHandlerName="DataSetRowChangeEventHandler" msprop:Generator_RowDeletedName="DataSetRowDeleted" msprop:Generator_RowClassName="DataSetRow" msprop:Generator_UserTableName="DataSet" msprop:Generator_RowEvArgName="DataSetRowChangeEvent">
+        <xs:element name="DataSet" msprop:Generator_TableClassName="DataSetDataTable" msprop:Generator_TableVarName="tableDataSet" msprop:Generator_TablePropName="DataSet" msprop:Generator_RowDeletingName="DataSetRowDeleting" msprop:Generator_RowChangingName="DataSetRowChanging" msprop:Generator_RowEvHandlerName="DataSetRowChangeEventHandler" msprop:Generator_RowDeletedName="DataSetRowDeleted" msprop:Generator_UserTableName="DataSet" msprop:Generator_RowChangedName="DataSetRowChanged" msprop:Generator_RowEvArgName="DataSetRowChangeEvent" msprop:Generator_RowClassName="DataSetRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:decimal" />
@@ -1397,7 +1415,7 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataSetTemp" msprop:Generator_TableClassName="DataSetTempDataTable" msprop:Generator_TableVarName="tableDataSetTemp" msprop:Generator_RowChangedName="DataSetTempRowChanged" msprop:Generator_TablePropName="DataSetTemp" msprop:Generator_RowDeletingName="DataSetTempRowDeleting" msprop:Generator_RowChangingName="DataSetTempRowChanging" msprop:Generator_RowEvHandlerName="DataSetTempRowChangeEventHandler" msprop:Generator_RowDeletedName="DataSetTempRowDeleted" msprop:Generator_RowClassName="DataSetTempRow" msprop:Generator_UserTableName="DataSetTemp" msprop:Generator_RowEvArgName="DataSetTempRowChangeEvent">
+        <xs:element name="DataSetTemp" msprop:Generator_TableClassName="DataSetTempDataTable" msprop:Generator_TableVarName="tableDataSetTemp" msprop:Generator_TablePropName="DataSetTemp" msprop:Generator_RowDeletingName="DataSetTempRowDeleting" msprop:Generator_RowChangingName="DataSetTempRowChanging" msprop:Generator_RowEvHandlerName="DataSetTempRowChangeEventHandler" msprop:Generator_RowDeletedName="DataSetTempRowDeleted" msprop:Generator_UserTableName="DataSetTemp" msprop:Generator_RowChangedName="DataSetTempRowChanged" msprop:Generator_RowEvArgName="DataSetTempRowChangeEvent" msprop:Generator_RowClassName="DataSetTempRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:decimal" />
@@ -1623,7 +1641,7 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TrainingSet" msprop:Generator_TableClassName="TrainingSetDataTable" msprop:Generator_TableVarName="tableTrainingSet" msprop:Generator_RowChangedName="TrainingSetRowChanged" msprop:Generator_TablePropName="TrainingSet" msprop:Generator_RowDeletingName="TrainingSetRowDeleting" msprop:Generator_RowChangingName="TrainingSetRowChanging" msprop:Generator_RowEvHandlerName="TrainingSetRowChangeEventHandler" msprop:Generator_RowDeletedName="TrainingSetRowDeleted" msprop:Generator_RowClassName="TrainingSetRow" msprop:Generator_UserTableName="TrainingSet" msprop:Generator_RowEvArgName="TrainingSetRowChangeEvent">
+        <xs:element name="TrainingSet" msprop:Generator_TableClassName="TrainingSetDataTable" msprop:Generator_TableVarName="tableTrainingSet" msprop:Generator_TablePropName="TrainingSet" msprop:Generator_RowDeletingName="TrainingSetRowDeleting" msprop:Generator_RowChangingName="TrainingSetRowChanging" msprop:Generator_RowEvHandlerName="TrainingSetRowChangeEventHandler" msprop:Generator_RowDeletedName="TrainingSetRowDeleted" msprop:Generator_UserTableName="TrainingSet" msprop:Generator_RowChangedName="TrainingSetRowChanged" msprop:Generator_RowEvArgName="TrainingSetRowChangeEvent" msprop:Generator_RowClassName="TrainingSetRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Tuoi" msprop:Generator_ColumnVarNameInTable="columnTuoi" msprop:Generator_ColumnPropNameInRow="Tuoi" msprop:Generator_ColumnPropNameInTable="TuoiColumn" msprop:Generator_UserColumnName="Tuoi" minOccurs="0">
@@ -1847,7 +1865,7 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="XetNghiem" msprop:Generator_TableClassName="XetNghiemDataTable" msprop:Generator_TableVarName="tableXetNghiem" msprop:Generator_RowChangedName="XetNghiemRowChanged" msprop:Generator_TablePropName="XetNghiem" msprop:Generator_RowDeletingName="XetNghiemRowDeleting" msprop:Generator_RowChangingName="XetNghiemRowChanging" msprop:Generator_RowEvHandlerName="XetNghiemRowChangeEventHandler" msprop:Generator_RowDeletedName="XetNghiemRowDeleted" msprop:Generator_RowClassName="XetNghiemRow" msprop:Generator_UserTableName="XetNghiem" msprop:Generator_RowEvArgName="XetNghiemRowChangeEvent">
+        <xs:element name="XetNghiem" msprop:Generator_TableClassName="XetNghiemDataTable" msprop:Generator_TableVarName="tableXetNghiem" msprop:Generator_TablePropName="XetNghiem" msprop:Generator_RowDeletingName="XetNghiemRowDeleting" msprop:Generator_RowChangingName="XetNghiemRowChanging" msprop:Generator_RowEvHandlerName="XetNghiemRowChangeEventHandler" msprop:Generator_RowDeletedName="XetNghiemRowDeleted" msprop:Generator_UserTableName="XetNghiem" msprop:Generator_RowChangedName="XetNghiemRowChanged" msprop:Generator_RowEvArgName="XetNghiemRowChangeEvent" msprop:Generator_RowClassName="XetNghiemRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IDXetNghiem" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIDXetNghiem" msprop:Generator_ColumnPropNameInRow="IDXetNghiem" msprop:Generator_ColumnPropNameInTable="IDXetNghiemColumn" msprop:Generator_UserColumnName="IDXetNghiem" type="xs:long" />
@@ -1901,7 +1919,7 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="BayesObject" msprop:Generator_TableClassName="BayesObjectDataTable" msprop:Generator_TableVarName="tableBayesObject" msprop:Generator_RowChangedName="BayesObjectRowChanged" msprop:Generator_TablePropName="BayesObject" msprop:Generator_RowDeletingName="BayesObjectRowDeleting" msprop:Generator_RowChangingName="BayesObjectRowChanging" msprop:Generator_RowEvHandlerName="BayesObjectRowChangeEventHandler" msprop:Generator_RowDeletedName="BayesObjectRowDeleted" msprop:Generator_RowClassName="BayesObjectRow" msprop:Generator_UserTableName="BayesObject" msprop:Generator_RowEvArgName="BayesObjectRowChangeEvent">
+        <xs:element name="BayesObject" msprop:Generator_TableClassName="BayesObjectDataTable" msprop:Generator_TableVarName="tableBayesObject" msprop:Generator_TablePropName="BayesObject" msprop:Generator_RowDeletingName="BayesObjectRowDeleting" msprop:Generator_RowChangingName="BayesObjectRowChanging" msprop:Generator_RowEvHandlerName="BayesObjectRowChangeEventHandler" msprop:Generator_RowDeletedName="BayesObjectRowDeleted" msprop:Generator_UserTableName="BayesObject" msprop:Generator_RowChangedName="BayesObjectRowChanged" msprop:Generator_RowEvArgName="BayesObjectRowChangeEvent" msprop:Generator_RowClassName="BayesObjectRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:decimal" />
@@ -1924,7 +1942,7 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="TestSet" msprop:Generator_TableClassName="TestSetDataTable" msprop:Generator_TableVarName="tableTestSet" msprop:Generator_RowChangedName="TestSetRowChanged" msprop:Generator_TablePropName="TestSet" msprop:Generator_RowDeletingName="TestSetRowDeleting" msprop:Generator_RowChangingName="TestSetRowChanging" msprop:Generator_RowEvHandlerName="TestSetRowChangeEventHandler" msprop:Generator_RowDeletedName="TestSetRowDeleted" msprop:Generator_RowClassName="TestSetRow" msprop:Generator_UserTableName="TestSet" msprop:Generator_RowEvArgName="TestSetRowChangeEvent">
+        <xs:element name="TestSet" msprop:Generator_TableClassName="TestSetDataTable" msprop:Generator_TableVarName="tableTestSet" msprop:Generator_TablePropName="TestSet" msprop:Generator_RowDeletingName="TestSetRowDeleting" msprop:Generator_RowChangingName="TestSetRowChanging" msprop:Generator_RowEvHandlerName="TestSetRowChangeEventHandler" msprop:Generator_RowDeletedName="TestSetRowDeleted" msprop:Generator_UserTableName="TestSet" msprop:Generator_RowChangedName="TestSetRowChanged" msprop:Generator_RowEvArgName="TestSetRowChangeEvent" msprop:Generator_RowClassName="TestSetRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaBN" msprop:Generator_ColumnVarNameInTable="columnMaBN" msprop:Generator_ColumnPropNameInRow="MaBN" msprop:Generator_ColumnPropNameInTable="MaBNColumn" msprop:Generator_UserColumnName="MaBN" type="xs:decimal" minOccurs="0" />
@@ -2149,7 +2167,7 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ResultSet" msprop:Generator_TableClassName="ResultSetDataTable" msprop:Generator_TableVarName="tableResultSet" msprop:Generator_RowChangedName="ResultSetRowChanged" msprop:Generator_TablePropName="ResultSet" msprop:Generator_RowDeletingName="ResultSetRowDeleting" msprop:Generator_RowChangingName="ResultSetRowChanging" msprop:Generator_RowEvHandlerName="ResultSetRowChangeEventHandler" msprop:Generator_RowDeletedName="ResultSetRowDeleted" msprop:Generator_RowClassName="ResultSetRow" msprop:Generator_UserTableName="ResultSet" msprop:Generator_RowEvArgName="ResultSetRowChangeEvent">
+        <xs:element name="ResultSet" msprop:Generator_TableClassName="ResultSetDataTable" msprop:Generator_TableVarName="tableResultSet" msprop:Generator_TablePropName="ResultSet" msprop:Generator_RowDeletingName="ResultSetRowDeleting" msprop:Generator_RowChangingName="ResultSetRowChanging" msprop:Generator_RowEvHandlerName="ResultSetRowChangeEventHandler" msprop:Generator_RowDeletedName="ResultSetRowDeleted" msprop:Generator_UserTableName="ResultSet" msprop:Generator_RowChangedName="ResultSetRowChanged" msprop:Generator_RowEvArgName="ResultSetRowChangeEvent" msprop:Generator_RowClassName="ResultSetRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaBN" msprop:Generator_ColumnVarNameInTable="columnMaBN" msprop:Generator_ColumnPropNameInRow="MaBN" msprop:Generator_ColumnPropNameInTable="MaBNColumn" msprop:Generator_UserColumnName="MaBN" type="xs:decimal" minOccurs="0" />
@@ -2374,16 +2392,9 @@ WHERE        (XetNghiem.Cholesterol IS NOT NULL) AND (XetNghiem.HDL_Cholesterol 
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Datasource" msprop:Generator_TableClassName="DatasourceDataTable" msprop:Generator_TableVarName="tableDatasource" msprop:Generator_TablePropName="Datasource" msprop:Generator_RowDeletingName="DatasourceRowDeleting" msprop:Generator_RowChangingName="DatasourceRowChanging" msprop:Generator_RowEvHandlerName="DatasourceRowChangeEventHandler" msprop:Generator_RowDeletedName="DatasourceRowDeleted" msprop:Generator_UserTableName="Datasource" msprop:Generator_RowChangedName="DatasourceRowChanged" msprop:Generator_RowEvArgName="DatasourceRowChangeEvent" msprop:Generator_RowClassName="DatasourceRow">
+        <xs:element name="Datasource" msprop:Generator_TableClassName="DatasourceDataTable" msprop:Generator_TableVarName="tableDatasource" msprop:Generator_RowChangedName="DatasourceRowChanged" msprop:Generator_TablePropName="Datasource" msprop:Generator_RowDeletingName="DatasourceRowDeleting" msprop:Generator_RowChangingName="DatasourceRowChanging" msprop:Generator_RowEvHandlerName="DatasourceRowChangeEventHandler" msprop:Generator_RowDeletedName="DatasourceRowDeleted" msprop:Generator_RowClassName="DatasourceRow" msprop:Generator_UserTableName="Datasource" msprop:Generator_RowEvArgName="DatasourceRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="GioiTinh" msprop:Generator_ColumnVarNameInTable="columnGioiTinh" msprop:Generator_ColumnPropNameInRow="GioiTinh" msprop:Generator_ColumnPropNameInTable="GioiTinhColumn" msprop:Generator_UserColumnName="GioiTinh" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="2147483647" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
               <xs:element name="Cholesterol" msprop:Generator_ColumnVarNameInTable="columnCholesterol" msprop:Generator_ColumnPropNameInRow="Cholesterol" msprop:Generator_ColumnPropNameInTable="CholesterolColumn" msprop:Generator_UserColumnName="Cholesterol" type="xs:decimal" minOccurs="0" />
               <xs:element name="HDL_Cholesterol" msprop:Generator_ColumnVarNameInTable="columnHDL_Cholesterol" msprop:Generator_ColumnPropNameInRow="HDL_Cholesterol" msprop:Generator_ColumnPropNameInTable="HDL_CholesterolColumn" msprop:Generator_UserColumnName="HDL_Cholesterol" type="xs:decimal" minOccurs="0" />
               <xs:element name="Triglyceride" msprop:Generator_ColumnVarNameInTable="columnTriglyceride" msprop:Generator_ColumnPropNameInRow="Triglyceride" msprop:Generator_ColumnPropNameInTable="TriglycerideColumn" msprop:Generator_UserColumnName="Triglyceride" type="xs:decimal" minOccurs="0" />
