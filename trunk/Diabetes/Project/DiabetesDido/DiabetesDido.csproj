@@ -113,8 +113,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Accord.NET\Framework\Release\Accord.Vision.dll</HintPath>
     </Reference>
-    <Reference Include="DiabetesDido, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <ExecutableExtension>.exe</ExecutableExtension>
+    <Reference Include="AForge">
+      <HintPath>C:\Program Files (x86)\Accord.NET\Framework\Externals\AForge.NET\AForge.dll</HintPath>
     </Reference>
     <Reference Include="SlimDX, Version=4.0.12.43, Culture=neutral, PublicKeyToken=b1b0c32fd1ffe4f9, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -138,7 +138,6 @@
   <ItemGroup>
     <Compile Include="DiabetesDataSet.cs">
       <DependentUpon>DiabetesDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DiabetesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -157,10 +156,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\Form2.cs">
+    <Compile Include="View\Form2.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Form2.Designer.cs">
+    <Compile Include="View\Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Function.cs" />
@@ -190,13 +189,19 @@
     <Compile Include="TienXuDuLieu.Designer.cs">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Tree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Tree.Designer.cs">
+      <DependentUpon>Tree.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DuLieuHuanLuyen.resx">
       <DependentUpon>DuLieuHuanLuyen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Form2.resx">
+    <EmbeddedResource Include="View\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NaiveBayes.resx">
@@ -219,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TienXuDuLieu.resx">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Tree.resx">
+      <DependentUpon>Tree.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="DiabetesDataSet.xsc">

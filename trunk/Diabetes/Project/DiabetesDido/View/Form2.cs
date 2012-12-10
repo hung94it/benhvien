@@ -14,7 +14,7 @@ using Accord.Statistics.Distributions.Univariate;
 using Accord.Statistics.Formats;
 using ZedGraph;
 
-namespace DiabetesDido
+namespace DiabetesDido.View
 {
     public partial class Form2 : Form
     {
