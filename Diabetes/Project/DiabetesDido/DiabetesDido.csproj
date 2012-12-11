@@ -138,6 +138,7 @@
   <ItemGroup>
     <Compile Include="DiabetesDataSet.cs">
       <DependentUpon>DiabetesDataSet.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="DiabetesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -149,12 +150,6 @@
     </Compile>
     <Compile Include="DuLieuHuanLuyen.Designer.cs">
       <DependentUpon>DuLieuHuanLuyen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Form2.cs">
       <SubType>Form</SubType>
@@ -189,6 +184,12 @@
     <Compile Include="TienXuDuLieu.Designer.cs">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Tree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,9 +198,6 @@
     </Compile>
     <EmbeddedResource Include="DuLieuHuanLuyen.resx">
       <DependentUpon>DuLieuHuanLuyen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
@@ -224,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TienXuDuLieu.resx">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\test.resx">
+      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Tree.resx">
       <DependentUpon>Tree.cs</DependentUpon>
