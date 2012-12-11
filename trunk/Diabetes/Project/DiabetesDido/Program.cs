@@ -15,7 +15,7 @@ namespace DiabetesDido
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DiabetesDido.View.Tree());
+            Application.Run(new DiabetesDido.View.test());
         }
     }
 }
