@@ -30,22 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TienXuDuLieu));
+            this.btnLamSachDuLieu = new System.Windows.Forms.Button();
+            this.btnRoiRacHoa = new System.Windows.Forms.Button();
             this.diabetesDataSet = new DiabetesDido.DiabetesDataSet();
             this.dataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetTableAdapter = new DiabetesDido.DiabetesDataSetTableAdapters.DataSetTableAdapter();
             this.tableAdapterManager = new DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager();
             this.dataSetBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
             this.dataSetBindingNavigatorSaveItem = new System.Windows.Forms.ToolStripButton();
             this.dataSetDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -84,14 +86,33 @@
             this.dataGridViewTextBoxColumn34 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLamSachDuLieu = new System.Windows.Forms.Button();
-            this.btnRoiRacHoa = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.diabetesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetBindingNavigator)).BeginInit();
             this.dataSetBindingNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetDataGridView)).BeginInit();
             this.SuspendLayout();
+            // 
+            // btnLamSachDuLieu
+            // 
+            this.btnLamSachDuLieu.Location = new System.Drawing.Point(749, 28);
+            this.btnLamSachDuLieu.Name = "btnLamSachDuLieu";
+            this.btnLamSachDuLieu.Size = new System.Drawing.Size(110, 23);
+            this.btnLamSachDuLieu.TabIndex = 2;
+            this.btnLamSachDuLieu.Text = "Làm sạch dữ liệu";
+            this.btnLamSachDuLieu.UseVisualStyleBackColor = true;
+            this.btnLamSachDuLieu.Click += new System.EventHandler(this.btnLamSachDuLieu_Click);
+            // 
+            // btnRoiRacHoa
+            // 
+            this.btnRoiRacHoa.Location = new System.Drawing.Point(750, 58);
+            this.btnRoiRacHoa.Name = "btnRoiRacHoa";
+            this.btnRoiRacHoa.Size = new System.Drawing.Size(109, 23);
+            this.btnRoiRacHoa.TabIndex = 3;
+            this.btnRoiRacHoa.Text = "Rời rạc hóa dữ liệu";
+            this.btnRoiRacHoa.UseVisualStyleBackColor = true;
+            this.btnRoiRacHoa.Click += new System.EventHandler(this.btnRoiRacHoa_Click);
             // 
             // diabetesDataSet
             // 
@@ -114,7 +135,7 @@
             this.tableAdapterManager.BenhNhanTableAdapter = null;
             this.tableAdapterManager.DataSetTableAdapter = this.dataSetTableAdapter;
             this.tableAdapterManager.DataSetTempTableAdapter = null;
-            this.tableAdapterManager.ResultSetTableAdapter = null;
+            this.tableAdapterManager.KhoangRoiRacTableAdapter = null;
             this.tableAdapterManager.TestSetTableAdapter = null;
             this.tableAdapterManager.TrainingSetTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
@@ -126,7 +147,6 @@
             this.dataSetBindingNavigator.BindingSource = this.dataSetBindingSource;
             this.dataSetBindingNavigator.CountItem = this.bindingNavigatorCountItem;
             this.dataSetBindingNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.dataSetBindingNavigator.Enabled = false;
             this.dataSetBindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -147,34 +167,9 @@
             this.dataSetBindingNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.dataSetBindingNavigator.Name = "dataSetBindingNavigator";
             this.dataSetBindingNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.dataSetBindingNavigator.Size = new System.Drawing.Size(859, 25);
-            this.dataSetBindingNavigator.TabIndex = 0;
+            this.dataSetBindingNavigator.Size = new System.Drawing.Size(879, 25);
+            this.dataSetBindingNavigator.TabIndex = 4;
             this.dataSetBindingNavigator.Text = "bindingNavigator1";
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -208,10 +203,17 @@
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 15);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 6);
             // 
             // bindingNavigatorMoveNextItem
             // 
@@ -219,7 +221,7 @@
             this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
             this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
             this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 20);
             this.bindingNavigatorMoveNextItem.Text = "Move next";
             // 
             // bindingNavigatorMoveLastItem
@@ -228,22 +230,40 @@
             this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
             this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
             this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 20);
             this.bindingNavigatorMoveLastItem.Text = "Move last";
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 6);
+            // 
+            // bindingNavigatorAddNewItem
+            // 
+            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
+            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
+            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorAddNewItem.Text = "Add new";
+            // 
+            // bindingNavigatorDeleteItem
+            // 
+            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
+            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
+            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 20);
+            this.bindingNavigatorDeleteItem.Text = "Delete";
             // 
             // dataSetBindingNavigatorSaveItem
             // 
             this.dataSetBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.dataSetBindingNavigatorSaveItem.Image = ((System.Drawing.Image)(resources.GetObject("dataSetBindingNavigatorSaveItem.Image")));
             this.dataSetBindingNavigatorSaveItem.Name = "dataSetBindingNavigatorSaveItem";
-            this.dataSetBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 22);
+            this.dataSetBindingNavigatorSaveItem.Size = new System.Drawing.Size(23, 23);
             this.dataSetBindingNavigatorSaveItem.Text = "Save Data";
-            this.dataSetBindingNavigatorSaveItem.Click += new System.EventHandler(this.dataSetBindingNavigatorSaveItem_Click);
+            this.dataSetBindingNavigatorSaveItem.Click += new System.EventHandler(this.dataSetBindingNavigatorSaveItem_Click_1);
             // 
             // dataSetDataGridView
             // 
@@ -285,12 +305,13 @@
             this.dataGridViewTextBoxColumn33,
             this.dataGridViewTextBoxColumn34,
             this.dataGridViewTextBoxColumn35,
-            this.dataGridViewTextBoxColumn36});
+            this.dataGridViewTextBoxColumn36,
+            this.dataGridViewTextBoxColumn37});
             this.dataSetDataGridView.DataSource = this.dataSetBindingSource;
-            this.dataSetDataGridView.Location = new System.Drawing.Point(0, 28);
+            this.dataSetDataGridView.Location = new System.Drawing.Point(12, 28);
             this.dataSetDataGridView.Name = "dataSetDataGridView";
-            this.dataSetDataGridView.Size = new System.Drawing.Size(743, 220);
-            this.dataSetDataGridView.TabIndex = 1;
+            this.dataSetDataGridView.Size = new System.Drawing.Size(732, 220);
+            this.dataSetDataGridView.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -325,38 +346,38 @@
             // 
             // dataGridViewTextBoxColumn6
             // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "TieuDuong";
-            this.dataGridViewTextBoxColumn6.HeaderText = "TieuDuong";
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "GioiTinh";
+            this.dataGridViewTextBoxColumn6.HeaderText = "GioiTinh";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
             // dataGridViewTextBoxColumn7
             // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "GioiTinh";
-            this.dataGridViewTextBoxColumn7.HeaderText = "GioiTinh";
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Cholesterol";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Cholesterol";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             // 
             // dataGridViewTextBoxColumn8
             // 
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "Cholesterol";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Cholesterol";
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "HDL_Cholesterol";
+            this.dataGridViewTextBoxColumn8.HeaderText = "HDL_Cholesterol";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             // 
             // dataGridViewTextBoxColumn9
             // 
-            this.dataGridViewTextBoxColumn9.DataPropertyName = "HDL_Cholesterol";
-            this.dataGridViewTextBoxColumn9.HeaderText = "HDL_Cholesterol";
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Triglyceride";
+            this.dataGridViewTextBoxColumn9.HeaderText = "Triglyceride";
             this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
             // 
             // dataGridViewTextBoxColumn10
             // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "Triglyceride";
-            this.dataGridViewTextBoxColumn10.HeaderText = "Triglyceride";
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "LDL_Cholesterol";
+            this.dataGridViewTextBoxColumn10.HeaderText = "LDL_Cholesterol";
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             // 
             // dataGridViewTextBoxColumn11
             // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "LDL_Cholesterol";
-            this.dataGridViewTextBoxColumn11.HeaderText = "LDL_Cholesterol";
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "Glucose";
+            this.dataGridViewTextBoxColumn11.HeaderText = "Glucose";
             this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
             // 
             // dataGridViewTextBoxColumn12
@@ -509,35 +530,21 @@
             this.dataGridViewTextBoxColumn36.HeaderText = "Ca";
             this.dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
             // 
-            // btnLamSachDuLieu
+            // dataGridViewTextBoxColumn37
             // 
-            this.btnLamSachDuLieu.Location = new System.Drawing.Point(749, 28);
-            this.btnLamSachDuLieu.Name = "btnLamSachDuLieu";
-            this.btnLamSachDuLieu.Size = new System.Drawing.Size(110, 23);
-            this.btnLamSachDuLieu.TabIndex = 2;
-            this.btnLamSachDuLieu.Text = "Làm sạch dữ liệu";
-            this.btnLamSachDuLieu.UseVisualStyleBackColor = true;
-            this.btnLamSachDuLieu.Click += new System.EventHandler(this.btnLamSachDuLieu_Click);
-            // 
-            // btnRoiRacHoa
-            // 
-            this.btnRoiRacHoa.Location = new System.Drawing.Point(750, 58);
-            this.btnRoiRacHoa.Name = "btnRoiRacHoa";
-            this.btnRoiRacHoa.Size = new System.Drawing.Size(109, 23);
-            this.btnRoiRacHoa.TabIndex = 3;
-            this.btnRoiRacHoa.Text = "Rời rạc hóa dữ liệu";
-            this.btnRoiRacHoa.UseVisualStyleBackColor = true;
-            this.btnRoiRacHoa.Click += new System.EventHandler(this.btnRoiRacHoa_Click);
+            this.dataGridViewTextBoxColumn37.DataPropertyName = "TieuDuong";
+            this.dataGridViewTextBoxColumn37.HeaderText = "TieuDuong";
+            this.dataGridViewTextBoxColumn37.Name = "dataGridViewTextBoxColumn37";
             // 
             // TienXuDuLieu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 332);
-            this.Controls.Add(this.btnRoiRacHoa);
-            this.Controls.Add(this.btnLamSachDuLieu);
+            this.ClientSize = new System.Drawing.Size(879, 332);
             this.Controls.Add(this.dataSetDataGridView);
             this.Controls.Add(this.dataSetBindingNavigator);
+            this.Controls.Add(this.btnRoiRacHoa);
+            this.Controls.Add(this.btnLamSachDuLieu);
             this.Name = "TienXuDuLieu";
             this.Text = "Tiền xử lý dữ liệu";
             this.Load += new System.EventHandler(this.TienXuDuLieu_Load);
@@ -554,6 +561,8 @@
 
         #endregion
 
+        private System.Windows.Forms.Button btnLamSachDuLieu;
+        private System.Windows.Forms.Button btnRoiRacHoa;
         private DiabetesDataSet diabetesDataSet;
         private System.Windows.Forms.BindingSource dataSetBindingSource;
         private DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTableAdapter;
@@ -608,7 +617,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
-        private System.Windows.Forms.Button btnLamSachDuLieu;
-        private System.Windows.Forms.Button btnRoiRacHoa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
     }
 }

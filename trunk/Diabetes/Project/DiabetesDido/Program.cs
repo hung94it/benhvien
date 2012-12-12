@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DiabetesDido.View;
 
 namespace DiabetesDido
 {
@@ -15,7 +16,7 @@ namespace DiabetesDido
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DiabetesDido.View.test());
+            Application.Run(new TienXuDuLieu());
         }
     }
 }

@@ -28,12 +28,14 @@ namespace DiabetesDido
         {
             // TODO: This line of code loads data into the 'diabetesDataSet.DataSetTemp' table. You can move, or remove it, as needed.
             this.dataSetTempTableAdapter.Fill(this.diabetesDataSet.DataSetTemp);
+            // TODO: This line of code loads data into the 'diabetesDataSet.DataSetTemp' table. You can move, or remove it, as needed.
+            this.dataSetTempTableAdapter.Fill(this.diabetesDataSet.DataSetTemp);
             cboThuocTinh.Items.Clear();
             cboThuocTinh.SelectedIndex = -1;
             DataTable dataSetTempTalbe = dataSetTempTableAdapter.GetData();
-            for (int i = 0; i < dataSetTempTalbe.Columns.Count; i++)
+            for (int i = 0; i < dataSetTempTalbe.Columns.Count - 1; i++)
             {
-                if (i > 4)
+                if (i > 1)
                     cboThuocTinh.Items.Add(dataSetTempTalbe.Columns[i].ColumnName);
             }
             lblDoLechChuan.Text = lblDoLechChuan.Text + " 0";
@@ -57,21 +59,23 @@ namespace DiabetesDido
             decimal giaTriLonNhat = 0;
             decimal giaTriNhoNhat = 0;
             txtKhoang.Text = "";
-            if (cboThuocTinh.SelectedIndex == -1)
+            if (cboThuocTinh.SelectedIndex <2)
             {
-                lblDoLechChuan.Text = lblDoLechChuan.Text + " 0";
-                lblLonNhat.Text = lblLonNhat.Text + " 0";
-                lblNhoNhat.Text = lblNhoNhat.Text + " 0";
-                lblTrungBinh.Text = lblTrungBinh.Text + " 0";
+                lblDoLechChuan.Text = "Độ lệch chuẩn: 0";
+                lblLonNhat.Text = "Giá trị lớn nhất: 0";
+                lblNhoNhat.Text = "Giá trị nhỏ nhất: 0";
+                lblTrungBinh.Text = "Giá trị trung bình: 0";
+                btnRoiRacHoa.Enabled = false;
             }
             else
             {
+                btnRoiRacHoa.Enabled = true;
                 String colName = cboThuocTinh.Text;
-                doLechChuan = Convert.ToDecimal(dt.Compute("STDEV("+colName+")",string.Empty));
+                doLechChuan = Convert.ToDecimal(dt.Compute("STDEV(" + colName + ")", string.Empty));
                 doLechChuan = Math.Round(doLechChuan, 3);
-                giaTriTrungBinh=Convert.ToDecimal(dt.Compute("avg("+colName+")",string.Empty));
+                giaTriTrungBinh = Convert.ToDecimal(dt.Compute("avg(" + colName + ")", string.Empty));
                 giaTriTrungBinh = Math.Round(giaTriTrungBinh, 3);
-                giaTriLonNhat = Convert.ToInt16(dt.Compute("max("+colName+")", string.Empty));
+                giaTriLonNhat = Convert.ToInt16(dt.Compute("max(" + colName + ")", string.Empty));
                 giaTriNhoNhat = Convert.ToInt16(dt.Compute("min(" + colName + ")", string.Empty));
 
                 lblDoLechChuan.Text = "Độ lệch chuẩn: " + doLechChuan.ToString();
@@ -106,7 +110,7 @@ namespace DiabetesDido
                     decimal id = Convert.ToDecimal(dtRow[0]);
                     String giaTriRoiRac = Function.TinhGiaTriRoiRac(giaTri, colName, khoangRoiRac);
                     decimal maBN = Convert.ToDecimal(dtRow[1]);
-                    Boolean tieuDuong = Convert.ToBoolean(dtRow[5]);
+                    String tieuDuong = dtRow[5].ToString();
                     Function.CapNhapDataSetTemp(dataSetTempTA, maBN, colName, giaTriRoiRac);
                     prBar.Minimum++;
                 }
@@ -124,6 +128,7 @@ namespace DiabetesDido
         private void btnChiaDuLieu_Click(object sender, EventArgs e)
         {
             Function function = new Function();
+            DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
             if (txtPhanTramDuLieu.Text == "")
             {
                 MessageBox.Show("Chưa nhập lượng dữ liệu cần chia", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -131,7 +136,6 @@ namespace DiabetesDido
             else
             {
                 int phanTramDuLieu = Convert.ToInt16(txtPhanTramDuLieu.Text);
-                DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
                 if (trainingSetTA.GetData().Count > 0)
                 {
                     DialogResult dR = MessageBox.Show("Hiện đã có một tập dữ liệu huấn luyện trong Cơ sở dữ liệu. Bạn có muốn thay mới?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -166,9 +170,24 @@ namespace DiabetesDido
 
         private void btnHuyenLuyen_Click(object sender, EventArgs e)
         {
-            DuLieuHuanLuyen huanLuyen = new DuLieuHuanLuyen();
-            huanLuyen.Show();
+            DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
+            if (trainingSetTA.GetData().Count > 0)
+            {
+                DuLieuHuanLuyen huanLuyen = new DuLieuHuanLuyen();
+                huanLuyen.Show();
+            }
+            else
+            {
+                MessageBox.Show("Bạn chưa thực hiện chia dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void dataSetTempBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.dataSetTempBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.diabetesDataSet);
+
+        }
     }
 }
