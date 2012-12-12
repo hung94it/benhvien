@@ -11,6 +11,7 @@ namespace DiabetesDido
 {
     public partial class TienXuDuLieu : Form
     {
+        DiabetesDataSetTableAdapters.KhoangRoiRacTableAdapter khoangRoiRacTA = new DiabetesDataSetTableAdapters.KhoangRoiRacTableAdapter();
         public TienXuDuLieu()
         {
             InitializeComponent();
@@ -26,6 +27,8 @@ namespace DiabetesDido
 
         private void TienXuDuLieu_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'diabetesDataSet.DataSet' table. You can move, or remove it, as needed.
+            this.dataSetTableAdapter.Fill(this.diabetesDataSet.DataSet);
             // TODO: This line of code loads data into the 'diabetesDataSet.DataSet' table. You can move, or remove it, as needed.
             this.dataSetTableAdapter.Fill(this.diabetesDataSet.DataSet);
 
@@ -49,7 +52,7 @@ namespace DiabetesDido
         {
             RoiRacHoaDuLieu roiRacHoaDuLieu = new RoiRacHoaDuLieu();
             DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
-            int iCount = Convert.ToInt16(dataSetTempTA.RowCount());
+            int iCount = Convert.ToInt16(dataSetTempTA.GetData().Rows.Count);
             if (iCount > 0)
             {
                 DialogResult dialogResult = MessageBox.Show("Hiện đã có một bảng dữ liệu đã được rời rạc hóa sẵn. Bạn có muốn tiếp tục với bảng dữ liệu này không?", "Thông báo", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
@@ -64,13 +67,9 @@ namespace DiabetesDido
                         String doTuoi = "";
                         Function funtion = new Function();
                         doTuoi = funtion.RoiRacHoaTuoi(namSinh);
-                        dataSetTempTA.Insert(Convert.ToDecimal(i[1]),doTuoi, Convert.ToBoolean(i[5]), i[6].ToString(), i[7].ToString(), i[8].ToString(), i[9].ToString(), i[10].ToString(), i[11].ToString(),
-                                                       i[12].ToString(), i[13].ToString(), i[14].ToString(), i[15].ToString(), i[16].ToString(), i[17].ToString(), i[18].ToString(), i[19].ToString(),
-                                                       i[20].ToString(), i[21].ToString(), i[22].ToString(), i[23].ToString(), i[24].ToString(), i[25].ToString(), i[26].ToString(), i[27].ToString(),
-                                                       i[28].ToString(), i[29].ToString(), i[30].ToString(), i[31].ToString(), i[32].ToString(), i[33].ToString(), i[34].ToString(), i[35].ToString());
+                        dataSetTempTA.Insert(Convert.ToDecimal(i[1]), doTuoi, i[5].ToString(), i[6].ToString(),i[7].ToString(),i[8].ToString(),i[9].ToString(),i[10].ToString(),i[11].ToString(),i[12].ToString(),i[13].ToString(),i[14].ToString(),i[15].ToString(),i[16].ToString(),i[17].ToString(),i[18].ToString(),i[19].ToString(),i[20].ToString(),i[21].ToString(),i[22].ToString(),i[23].ToString(),i[24].ToString(),i[25].ToString(),i[26].ToString(),i[27].ToString(),i[28].ToString(),i[29].ToString(),i[30].ToString(),i[31].ToString(),i[32].ToString(),i[33].ToString(),i[34].ToString(),i[35].ToString(),i[36].ToString());
                     }
                 }
-
             }
             else
             {
@@ -82,14 +81,19 @@ namespace DiabetesDido
                     String doTuoi = "";
                     Function funtion = new Function();
                     doTuoi = funtion.RoiRacHoaTuoi(namSinh);
-                    dataSetTempTA.Insert(Convert.ToDecimal(i[1]), doTuoi, Convert.ToBoolean(i[5]), i[6].ToString(), i[7].ToString(), i[8].ToString(), i[9].ToString(), i[10].ToString(), i[11].ToString(),
-                                                   i[12].ToString(), i[13].ToString(), i[14].ToString(), i[15].ToString(), i[16].ToString(), i[17].ToString(), i[18].ToString(), i[19].ToString(),
-                                                   i[20].ToString(), i[21].ToString(), i[22].ToString(), i[23].ToString(), i[24].ToString(), i[25].ToString(), i[26].ToString(), i[27].ToString(),
-                                                   i[28].ToString(), i[29].ToString(), i[30].ToString(), i[31].ToString(), i[32].ToString(), i[33].ToString(), i[34].ToString(), i[35].ToString());
+                    dataSetTempTA.Insert(Convert.ToDecimal(i[1]), doTuoi, i[5].ToString(), i[6].ToString(), i[7].ToString(), i[8].ToString(), i[9].ToString(), i[10].ToString(), i[11].ToString(), i[12].ToString(), i[13].ToString(), i[14].ToString(), i[15].ToString(), i[16].ToString(), i[17].ToString(), i[18].ToString(), i[19].ToString(), i[20].ToString(), i[21].ToString(), i[22].ToString(), i[23].ToString(), i[24].ToString(), i[25].ToString(), i[26].ToString(), i[27].ToString(), i[28].ToString(), i[29].ToString(), i[30].ToString(), i[31].ToString(), i[32].ToString(), i[33].ToString(), i[34].ToString(), i[35].ToString(), i[36].ToString());
                 }
             }
             this.Hide();
             roiRacHoaDuLieu.Show();
+        }
+
+        private void dataSetBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.dataSetBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.diabetesDataSet);
+
         }
     }
 }

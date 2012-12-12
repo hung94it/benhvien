@@ -35,9 +35,9 @@ namespace DiabetesDido
             {
                 String tenThuocTinh = bayesRow[1].ToString();
                 String khoangRoiRac = bayesRow[2].ToString();
-                Boolean tieuDuong = Convert.ToBoolean(bayesRow[4]);
+                String tieuDuong = bayesRow[4].ToString();
                 int tongSoLuong = 0;
-                String iQuery = "" + tenThuocTinh + "='" + khoangRoiRac + "' and TieuDuong=" + tieuDuong + "";
+                String iQuery = "" + tenThuocTinh + "='" + khoangRoiRac + "' and TieuDuong='" + tieuDuong + "'";
                 tongSoLuong = dtSetTemp.Select(iQuery).Count();
                 DataRow newRow = dtBayes.NewRow();
                 iCount++;

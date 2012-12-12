@@ -122,7 +122,6 @@
             this.tableAdapterManager.BenhNhanTableAdapter = null;
             this.tableAdapterManager.DataSetTableAdapter = null;
             this.tableAdapterManager.DataSetTempTableAdapter = null;
-            this.tableAdapterManager.ResultSetTableAdapter = null;
             this.tableAdapterManager.TestSetTableAdapter = null;
             this.tableAdapterManager.TrainingSetTableAdapter = this.trainingSetTableAdapter;
             this.tableAdapterManager.UpdateOrder = DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
