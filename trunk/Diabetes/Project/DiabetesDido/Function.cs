@@ -191,5 +191,37 @@ namespace DiabetesDido
                 dtBayesAdapter.Update(newRow);
             }
         }
+        //Hàm dùng để tính kết quả của một bảng trong bộ thử nghiệm
+        public static DataTable NaiveBayes( DataTable dtTestSet)
+        {
+            DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA= new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DataTable dtBayes = bayesTA.GetData();
+            int possiveNumber = dtTestSet.Select("TieuDuong='Yes'").Count();
+            int negativeNumber = dtTestSet.Select("TieuDuong='No'").Count();
+            int allNumber = possiveNumber + negativeNumber;
+            foreach (DataRow dtRow in dtTestSet.Rows)
+            {
+                Decimal pYes = 1;
+                Decimal pNo = 1;
+                for (int i = 1; i < dtTestSet.Columns.Count-1; i++)
+                {
+                    String colName = dtTestSet.Columns[i].ColumnName;
+                    String khoangRoiRac = dtRow[i].ToString();
+                    DataRow possiveRow = dtBayes.Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + khoangRoiRac + "' and TieuDuong='Yes'")[0];
+                    DataRow negativeRow = dtBayes.Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + khoangRoiRac + "' and TieuDuong='No'")[0];
+                    Decimal _pYes = Convert.ToDecimal(possiveRow[3]);
+                    Decimal _pNo = Convert.ToDecimal(negativeRow[3]);
+                    pYes = pYes * _pYes;
+                    pNo = pNo * _pNo;
+                }
+                pYes = pYes * possiveNumber / allNumber;
+                pNo = pNo * negativeNumber / allNumber;
+                if (pYes > pNo)
+                    dtRow[33] = "Yes";
+                else
+                    dtRow[33] = "No";
+            }
+            return dtTestSet;
+        }
     }
 }

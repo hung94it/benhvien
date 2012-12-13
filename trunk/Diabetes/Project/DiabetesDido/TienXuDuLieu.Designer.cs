@@ -135,7 +135,6 @@
             this.tableAdapterManager.BenhNhanTableAdapter = null;
             this.tableAdapterManager.DataSetTableAdapter = this.dataSetTableAdapter;
             this.tableAdapterManager.DataSetTempTableAdapter = null;
-            this.tableAdapterManager.KhoangRoiRacTableAdapter = null;
             this.tableAdapterManager.TestSetTableAdapter = null;
             this.tableAdapterManager.TrainingSetTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
