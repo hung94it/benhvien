@@ -11,7 +11,6 @@ namespace DiabetesDido
 {
     public partial class TienXuDuLieu : Form
     {
-        DiabetesDataSetTableAdapters.KhoangRoiRacTableAdapter khoangRoiRacTA = new DiabetesDataSetTableAdapters.KhoangRoiRacTableAdapter();
         public TienXuDuLieu()
         {
             InitializeComponent();
@@ -27,8 +26,6 @@ namespace DiabetesDido
 
         private void TienXuDuLieu_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'diabetesDataSet.DataSet' table. You can move, or remove it, as needed.
-            this.dataSetTableAdapter.Fill(this.diabetesDataSet.DataSet);
             // TODO: This line of code loads data into the 'diabetesDataSet.DataSet' table. You can move, or remove it, as needed.
             this.dataSetTableAdapter.Fill(this.diabetesDataSet.DataSet);
 
@@ -93,7 +90,6 @@ namespace DiabetesDido
             this.Validate();
             this.dataSetBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.diabetesDataSet);
-
         }
     }
 }

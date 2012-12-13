@@ -4886,7 +4886,7 @@ namespace DiabetesDido {
             
             private global::System.Data.DataColumn columnKhoangRoiRac;
             
-            private global::System.Data.DataColumn columnTongSoLuong;
+            private global::System.Data.DataColumn columnGiaTri;
             
             private global::System.Data.DataColumn columnTieuDuong;
             
@@ -4949,9 +4949,9 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TongSoLuongColumn {
+            public global::System.Data.DataColumn GiaTriColumn {
                 get {
-                    return this.columnTongSoLuong;
+                    return this.columnGiaTri;
                 }
             }
             
@@ -5000,13 +5000,13 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BayesObjectRow AddBayesObjectRow(string TenThuocTinh, string KhoangRoiRac, int TongSoLuong, string TieuDuong) {
+            public BayesObjectRow AddBayesObjectRow(string TenThuocTinh, string KhoangRoiRac, decimal GiaTri, string TieuDuong) {
                 BayesObjectRow rowBayesObjectRow = ((BayesObjectRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         TenThuocTinh,
                         KhoangRoiRac,
-                        TongSoLuong,
+                        GiaTri,
                         TieuDuong};
                 rowBayesObjectRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBayesObjectRow);
@@ -5040,7 +5040,7 @@ namespace DiabetesDido {
                 this.columnID = base.Columns["ID"];
                 this.columnTenThuocTinh = base.Columns["TenThuocTinh"];
                 this.columnKhoangRoiRac = base.Columns["KhoangRoiRac"];
-                this.columnTongSoLuong = base.Columns["TongSoLuong"];
+                this.columnGiaTri = base.Columns["GiaTri"];
                 this.columnTieuDuong = base.Columns["TieuDuong"];
             }
             
@@ -5053,8 +5053,8 @@ namespace DiabetesDido {
                 base.Columns.Add(this.columnTenThuocTinh);
                 this.columnKhoangRoiRac = new global::System.Data.DataColumn("KhoangRoiRac", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnKhoangRoiRac);
-                this.columnTongSoLuong = new global::System.Data.DataColumn("TongSoLuong", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTongSoLuong);
+                this.columnGiaTri = new global::System.Data.DataColumn("GiaTri", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGiaTri);
                 this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTieuDuong);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
@@ -10534,17 +10534,17 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int TongSoLuong {
+            public decimal GiaTri {
                 get {
                     try {
-                        return ((int)(this[this.tableBayesObject.TongSoLuongColumn]));
+                        return ((decimal)(this[this.tableBayesObject.GiaTriColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TongSoLuong\' in table \'BayesObject\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'GiaTri\' in table \'BayesObject\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableBayesObject.TongSoLuongColumn] = value;
+                    this[this.tableBayesObject.GiaTriColumn] = value;
                 }
             }
             
@@ -10585,14 +10585,14 @@ namespace DiabetesDido {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTongSoLuongNull() {
-                return this.IsNull(this.tableBayesObject.TongSoLuongColumn);
+            public bool IsGiaTriNull() {
+                return this.IsNull(this.tableBayesObject.GiaTriColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTongSoLuongNull() {
-                this[this.tableBayesObject.TongSoLuongColumn] = global::System.Convert.DBNull;
+            public void SetGiaTriNull() {
+                this[this.tableBayesObject.GiaTriColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -17172,39 +17172,40 @@ SELECT IDXetNghiem, MaBn, HoTen, GioiTinh, NgayLayMau, Cholesterol, HDL_Choleste
             tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("TenThuocTinh", "TenThuocTinh");
             tableMapping.ColumnMappings.Add("KhoangRoiRac", "KhoangRoiRac");
-            tableMapping.ColumnMappings.Add("TongSoLuong", "TongSoLuong");
+            tableMapping.ColumnMappings.Add("GiaTri", "GiaTri");
             tableMapping.ColumnMappings.Add("TieuDuong", "TieuDuong");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[BayesObject] WHERE (([ID] = @Original_ID) AND ((@IsNull_TongSo" +
-                "Luong = 1 AND [TongSoLuong] IS NULL) OR ([TongSoLuong] = @Original_TongSoLuong))" +
-                ")";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[BayesObject] WHERE (([ID] = @Original_ID) AND ((@IsNull_GiaTri" +
+                " = 1 AND [GiaTri] IS NULL) OR ([GiaTri] = @Original_GiaTri)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TongSoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TongSoLuong", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TongSoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TongSoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_GiaTri", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GiaTri", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GiaTri", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 3, "GiaTri", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[BayesObject] ([TenThuocTinh], [KhoangRoiRac], [TongSoLuong], [TieuDuong]) VALUES (@TenThuocTinh, @KhoangRoiRac, @TongSoLuong, @TieuDuong);
-SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[BayesObject] ([TenThuocTinh], [KhoangRoiRac], [GiaTri], [TieuD" +
+                "uong]) VALUES (@TenThuocTinh, @KhoangRoiRac, @GiaTri, @TieuDuong);\r\nSELECT ID, T" +
+                "enThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE (ID = SCOPE_" +
+                "IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenThuocTinh", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenThuocTinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KhoangRoiRac", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KhoangRoiRac", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TongSoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TongSoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GiaTri", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 3, "GiaTri", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[BayesObject] SET [TenThuocTinh] = @TenThuocTinh, [KhoangRoiRac] = @KhoangRoiRac, [TongSoLuong] = @TongSoLuong, [TieuDuong] = @TieuDuong WHERE (([ID] = @Original_ID) AND ((@IsNull_TongSoLuong = 1 AND [TongSoLuong] IS NULL) OR ([TongSoLuong] = @Original_TongSoLuong)));
-SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[BayesObject] SET [TenThuocTinh] = @TenThuocTinh, [KhoangRoiRac] = @KhoangRoiRac, [GiaTri] = @GiaTri, [TieuDuong] = @TieuDuong WHERE (([ID] = @Original_ID) AND ((@IsNull_GiaTri = 1 AND [GiaTri] IS NULL) OR ([GiaTri] = @Original_GiaTri)));
+SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE (ID = @ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TenThuocTinh", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TenThuocTinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@KhoangRoiRac", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "KhoangRoiRac", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TongSoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TongSoLuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GiaTri", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 3, "GiaTri", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TongSoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TongSoLuong", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TongSoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TongSoLuong", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_GiaTri", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GiaTri", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_GiaTri", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 3, "GiaTri", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -17218,11 +17219,10 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM dbo.BayesObjec" +
-                "t";
+            this._commandCollection[0].CommandText = "SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM dbo.BayesObject";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -17233,11 +17233,6 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
             this._commandCollection[2].CommandText = "DELETE FROM BAYESOBJECT WHERE TENTHUOCTINH=@TENTHUOCTINH";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TENTHUOCTINH", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TenThuocTinh", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT COUNT(*)/2 FROM BayesObject WHERE TENTHUOCTINH=@TENTHUOCTINH";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TENTHUOCTINH", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "TenThuocTinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17297,11 +17292,11 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(decimal Original_ID, global::System.Nullable<int> Original_TongSoLuong) {
+        public virtual int Delete(decimal Original_ID, global::System.Nullable<decimal> Original_GiaTri) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((decimal)(Original_ID));
-            if ((Original_TongSoLuong.HasValue == true)) {
+            if ((Original_GiaTri.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_TongSoLuong.Value));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_GiaTri.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -17327,7 +17322,7 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string TenThuocTinh, string KhoangRoiRac, global::System.Nullable<int> TongSoLuong, string TieuDuong) {
+        public virtual int Insert(string TenThuocTinh, string KhoangRoiRac, global::System.Nullable<decimal> GiaTri, string TieuDuong) {
             if ((TenThuocTinh == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -17340,8 +17335,8 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(KhoangRoiRac));
             }
-            if ((TongSoLuong.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(TongSoLuong.Value));
+            if ((GiaTri.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((decimal)(GiaTri.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -17372,7 +17367,7 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string TenThuocTinh, string KhoangRoiRac, global::System.Nullable<int> TongSoLuong, string TieuDuong, decimal Original_ID, global::System.Nullable<int> Original_TongSoLuong, decimal ID) {
+        public virtual int Update(string TenThuocTinh, string KhoangRoiRac, global::System.Nullable<decimal> GiaTri, string TieuDuong, decimal Original_ID, global::System.Nullable<decimal> Original_GiaTri, decimal ID) {
             if ((TenThuocTinh == null)) {
                 this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -17385,8 +17380,8 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(KhoangRoiRac));
             }
-            if ((TongSoLuong.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(TongSoLuong.Value));
+            if ((GiaTri.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((decimal)(GiaTri.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
@@ -17398,9 +17393,9 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(TieuDuong));
             }
             this.Adapter.UpdateCommand.Parameters[4].Value = ((decimal)(Original_ID));
-            if ((Original_TongSoLuong.HasValue == true)) {
+            if ((Original_GiaTri.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_TongSoLuong.Value));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(Original_GiaTri.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
@@ -17427,8 +17422,8 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string TenThuocTinh, string KhoangRoiRac, global::System.Nullable<int> TongSoLuong, string TieuDuong, decimal Original_ID, global::System.Nullable<int> Original_TongSoLuong) {
-            return this.Update(TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong, Original_ID, Original_TongSoLuong, Original_ID);
+        public virtual int Update(string TenThuocTinh, string KhoangRoiRac, global::System.Nullable<decimal> GiaTri, string TieuDuong, decimal Original_ID, global::System.Nullable<decimal> Original_GiaTri) {
+            return this.Update(TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong, Original_ID, Original_GiaTri, Original_ID);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17481,40 +17476,6 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, TongSoLuong, TieuDuong FROM BayesObject W
                 }
             }
             return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual global::System.Nullable<int> GetSymbol(string TENTHUOCTINH) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
-            if ((TENTHUOCTINH == null)) {
-                command.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            else {
-                command.Parameters[0].Value = ((string)(TENTHUOCTINH));
-            }
-            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
-            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                command.Connection.Open();
-            }
-            object returnValue;
-            try {
-                returnValue = command.ExecuteScalar();
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    command.Connection.Close();
-                }
-            }
-            if (((returnValue == null) 
-                        || (returnValue.GetType() == typeof(global::System.DBNull)))) {
-                return new global::System.Nullable<int>();
-            }
-            else {
-                return new global::System.Nullable<int>(((int)(returnValue)));
-            }
         }
     }
     
