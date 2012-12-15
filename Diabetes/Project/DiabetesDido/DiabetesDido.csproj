@@ -105,6 +105,18 @@
     <Compile Include="DuLieuHuanLuyen.Designer.cs">
       <DependentUpon>DuLieuHuanLuyen.cs</DependentUpon>
     </Compile>
+    <Compile Include="RoiRacHoaDuLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoiRacHoaDuLieu.Designer.cs">
+      <DependentUpon>RoiRacHoaDuLieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TienXuDuLieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TienXuDuLieu.Designer.cs">
+      <DependentUpon>TienXuDuLieu.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormViewTree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +152,12 @@
     </Compile>
     <EmbeddedResource Include="DuLieuHuanLuyen.resx">
       <DependentUpon>DuLieuHuanLuyen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoiRacHoaDuLieu.resx">
+      <DependentUpon>RoiRacHoaDuLieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TienXuDuLieu.resx">
+      <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormViewTree.resx">
       <DependentUpon>FormViewTree.cs</DependentUpon>
