@@ -101,13 +101,13 @@
     <Compile Include="DuLieuHuanLuyen.Designer.cs">
       <DependentUpon>DuLieuHuanLuyen.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\BayesTest.cs">
+    <Compile Include="UI\FormViewTree.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\BayesTest.Designer.cs">
-      <DependentUpon>BayesTest.cs</DependentUpon>
+    <Compile Include="UI\FormViewTree.Designer.cs">
+      <DependentUpon>FormViewTree.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Form2.cs">
+    <Compile Include="UI\TreeX.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\TreeX.Designer.cs">
@@ -125,11 +125,11 @@
     <EmbeddedResource Include="DuLieuHuanLuyen.resx">
       <DependentUpon>DuLieuHuanLuyen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\BayesTest.resx">
-      <DependentUpon>BayesTest.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormViewTree.resx">
+      <DependentUpon>FormViewTree.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="UI\TreeX.resx">
+      <DependentUpon>TreeX.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

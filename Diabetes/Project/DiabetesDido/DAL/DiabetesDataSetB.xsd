@@ -97,56 +97,6 @@ FROM            TrainingSet</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CountDiscreteValueTableAdapter" GeneratorDataComponentClassName="CountDiscreteValueTableAdapter" Name="CountDiscreteValueDataTable" UserDataComponentName="CountDiscreteValueTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        count(distinct Tuoi), count(distinct GioiTinh), count(distinct Cholesterol), count(distinct HDL_Cholesterol), count(distinct Triglyceride), count(distinct LDL_Cholesterol), count(distinct Glucose), count(distinct SGOT), count(distinct SGPT), count(distinct Urea), count(distinct WBC), count(distinct LYM), count(distinct MONO), count(distinct GRAN), count(distinct TyLeLYM), count(distinct TyLeMONO), count(distinct 
-                         TyLeGRAN), count(distinct HGB), count(distinct RBC), count(distinct HTC), count(distinct MCV), count(distinct MCH), count(distinct MCHC), count(distinct RDW_CV), count(distinct PLT), count(distinct MPV), count(distinct PDW), count(distinct PCT), count(distinct Na), count(distinct K), count(distinct Cl), count(distinct Ca), count(distinct TieuDuong)
-FROM            TrainingSet</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Column1" DataSetColumn="Tuoi" />
-              <Mapping SourceColumn="Column2" DataSetColumn="GioiTinh" />
-              <Mapping SourceColumn="Column3" DataSetColumn="Cholesterol" />
-              <Mapping SourceColumn="Column4" DataSetColumn="HDL_Cholesterol" />
-              <Mapping SourceColumn="Column5" DataSetColumn="Triglyceride" />
-              <Mapping SourceColumn="Column6" DataSetColumn="LDL_Cholesterol" />
-              <Mapping SourceColumn="Column7" DataSetColumn="Glucose" />
-              <Mapping SourceColumn="Column8" DataSetColumn="SGOT" />
-              <Mapping SourceColumn="Column9" DataSetColumn="SGPT" />
-              <Mapping SourceColumn="Column10" DataSetColumn="Urea" />
-              <Mapping SourceColumn="Column11" DataSetColumn="WBC" />
-              <Mapping SourceColumn="Column12" DataSetColumn="LYM" />
-              <Mapping SourceColumn="Column13" DataSetColumn="MONO" />
-              <Mapping SourceColumn="Column14" DataSetColumn="GRAN" />
-              <Mapping SourceColumn="Column15" DataSetColumn="TyLeLYM" />
-              <Mapping SourceColumn="Column16" DataSetColumn="TyLeMONO" />
-              <Mapping SourceColumn="Column17" DataSetColumn="TyLeGRAN" />
-              <Mapping SourceColumn="Column18" DataSetColumn="HGB" />
-              <Mapping SourceColumn="Column19" DataSetColumn="RBC" />
-              <Mapping SourceColumn="Column20" DataSetColumn="HTC" />
-              <Mapping SourceColumn="Column21" DataSetColumn="MCV" />
-              <Mapping SourceColumn="Column22" DataSetColumn="MCH" />
-              <Mapping SourceColumn="Column23" DataSetColumn="MCHC" />
-              <Mapping SourceColumn="Column24" DataSetColumn="RDW_CV" />
-              <Mapping SourceColumn="Column25" DataSetColumn="PLT" />
-              <Mapping SourceColumn="Column26" DataSetColumn="MPV" />
-              <Mapping SourceColumn="Column27" DataSetColumn="PDW" />
-              <Mapping SourceColumn="Column28" DataSetColumn="PCT" />
-              <Mapping SourceColumn="Column29" DataSetColumn="Na" />
-              <Mapping SourceColumn="Column30" DataSetColumn="K" />
-              <Mapping SourceColumn="Column31" DataSetColumn="Cl" />
-              <Mapping SourceColumn="Column32" DataSetColumn="Ca" />
-              <Mapping SourceColumn="Column33" DataSetColumn="TieuDuong" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TestSetTableAdapter" GeneratorDataComponentClassName="TestSetTableAdapter" Name="TestSet" UserDataComponentName="TestSetTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="BenhVien.dbo.TestSet" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -245,7 +195,7 @@ FROM            TestSet</CommandText>
   <xs:element name="DiabetesDataSetB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DiabetesDataSetB" msprop:Generator_UserDSName="DiabetesDataSetB">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="TrainingSet" msprop:Generator_TableClassName="TrainingSetDataTable" msprop:Generator_TableVarName="tableTrainingSet" msprop:Generator_TablePropName="TrainingSet" msprop:Generator_RowDeletingName="TrainingSetRowDeleting" msprop:Generator_RowChangingName="TrainingSetRowChanging" msprop:Generator_RowEvHandlerName="TrainingSetRowChangeEventHandler" msprop:Generator_RowDeletedName="TrainingSetRowDeleted" msprop:Generator_UserTableName="TrainingSet" msprop:Generator_RowChangedName="TrainingSetRowChanged" msprop:Generator_RowEvArgName="TrainingSetRowChangeEvent" msprop:Generator_RowClassName="TrainingSetRow">
+        <xs:element name="TrainingSet" msprop:Generator_TableClassName="TrainingSetDataTable" msprop:Generator_TableVarName="tableTrainingSet" msprop:Generator_RowChangedName="TrainingSetRowChanged" msprop:Generator_TablePropName="TrainingSet" msprop:Generator_RowDeletingName="TrainingSetRowDeleting" msprop:Generator_RowChangingName="TrainingSetRowChanging" msprop:Generator_RowEvHandlerName="TrainingSetRowChangeEventHandler" msprop:Generator_RowDeletedName="TrainingSetRowDeleted" msprop:Generator_RowClassName="TrainingSetRow" msprop:Generator_UserTableName="TrainingSet" msprop:Generator_RowEvArgName="TrainingSetRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Tuoi" msprop:Generator_ColumnVarNameInTable="columnTuoi" msprop:Generator_ColumnPropNameInRow="Tuoi" msprop:Generator_ColumnPropNameInTable="TuoiColumn" msprop:Generator_UserColumnName="Tuoi" minOccurs="0">
@@ -482,46 +432,7 @@ FROM            TestSet</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="CountDiscreteValueDataTable" msprop:Generator_TableClassName="CountDiscreteValueDataTableDataTable" msprop:Generator_TableVarName="tableCountDiscreteValueDataTable" msprop:Generator_TablePropName="CountDiscreteValueDataTable" msprop:Generator_RowDeletingName="CountDiscreteValueDataTableRowDeleting" msprop:Generator_RowChangingName="CountDiscreteValueDataTableRowChanging" msprop:Generator_RowEvHandlerName="CountDiscreteValueDataTableRowChangeEventHandler" msprop:Generator_RowDeletedName="CountDiscreteValueDataTableRowDeleted" msprop:Generator_UserTableName="CountDiscreteValueDataTable" msprop:Generator_RowChangedName="CountDiscreteValueDataTableRowChanged" msprop:Generator_RowEvArgName="CountDiscreteValueDataTableRowChangeEvent" msprop:Generator_RowClassName="CountDiscreteValueDataTableRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Tuoi" msdata:ReadOnly="true" msdata:Caption="Column1" msprop:Generator_ColumnVarNameInTable="columnTuoi" msprop:Generator_ColumnPropNameInRow="Tuoi" msprop:Generator_ColumnPropNameInTable="TuoiColumn" msprop:Generator_UserColumnName="Tuoi" type="xs:int" minOccurs="0" />
-              <xs:element name="GioiTinh" msdata:ReadOnly="true" msdata:Caption="Column2" msprop:Generator_ColumnVarNameInTable="columnGioiTinh" msprop:Generator_ColumnPropNameInRow="GioiTinh" msprop:Generator_ColumnPropNameInTable="GioiTinhColumn" msprop:Generator_UserColumnName="GioiTinh" type="xs:int" minOccurs="0" />
-              <xs:element name="Cholesterol" msdata:ReadOnly="true" msdata:Caption="Column3" msprop:Generator_ColumnVarNameInTable="columnCholesterol" msprop:Generator_ColumnPropNameInRow="Cholesterol" msprop:Generator_ColumnPropNameInTable="CholesterolColumn" msprop:Generator_UserColumnName="Cholesterol" type="xs:int" minOccurs="0" />
-              <xs:element name="HDL_Cholesterol" msdata:ReadOnly="true" msdata:Caption="Column4" msprop:Generator_ColumnVarNameInTable="columnHDL_Cholesterol" msprop:Generator_ColumnPropNameInRow="HDL_Cholesterol" msprop:Generator_ColumnPropNameInTable="HDL_CholesterolColumn" msprop:Generator_UserColumnName="HDL_Cholesterol" type="xs:int" minOccurs="0" />
-              <xs:element name="Triglyceride" msdata:ReadOnly="true" msdata:Caption="Column5" msprop:Generator_ColumnVarNameInTable="columnTriglyceride" msprop:Generator_ColumnPropNameInRow="Triglyceride" msprop:Generator_ColumnPropNameInTable="TriglycerideColumn" msprop:Generator_UserColumnName="Triglyceride" type="xs:int" minOccurs="0" />
-              <xs:element name="LDL_Cholesterol" msdata:ReadOnly="true" msdata:Caption="Column6" msprop:Generator_ColumnVarNameInTable="columnLDL_Cholesterol" msprop:Generator_ColumnPropNameInRow="LDL_Cholesterol" msprop:Generator_ColumnPropNameInTable="LDL_CholesterolColumn" msprop:Generator_UserColumnName="LDL_Cholesterol" type="xs:int" minOccurs="0" />
-              <xs:element name="Glucose" msdata:ReadOnly="true" msdata:Caption="Column7" msprop:Generator_ColumnVarNameInTable="columnGlucose" msprop:Generator_ColumnPropNameInRow="Glucose" msprop:Generator_ColumnPropNameInTable="GlucoseColumn" msprop:Generator_UserColumnName="Glucose" type="xs:int" minOccurs="0" />
-              <xs:element name="SGOT" msdata:ReadOnly="true" msdata:Caption="Column8" msprop:Generator_ColumnVarNameInTable="columnSGOT" msprop:Generator_ColumnPropNameInRow="SGOT" msprop:Generator_ColumnPropNameInTable="SGOTColumn" msprop:Generator_UserColumnName="SGOT" type="xs:int" minOccurs="0" />
-              <xs:element name="SGPT" msdata:ReadOnly="true" msdata:Caption="Column9" msprop:Generator_ColumnVarNameInTable="columnSGPT" msprop:Generator_ColumnPropNameInRow="SGPT" msprop:Generator_ColumnPropNameInTable="SGPTColumn" msprop:Generator_UserColumnName="SGPT" type="xs:int" minOccurs="0" />
-              <xs:element name="Urea" msdata:ReadOnly="true" msdata:Caption="Column10" msprop:Generator_ColumnVarNameInTable="columnUrea" msprop:Generator_ColumnPropNameInRow="Urea" msprop:Generator_ColumnPropNameInTable="UreaColumn" msprop:Generator_UserColumnName="Urea" type="xs:int" minOccurs="0" />
-              <xs:element name="WBC" msdata:ReadOnly="true" msdata:Caption="Column11" msprop:Generator_ColumnVarNameInTable="columnWBC" msprop:Generator_ColumnPropNameInRow="WBC" msprop:Generator_ColumnPropNameInTable="WBCColumn" msprop:Generator_UserColumnName="WBC" type="xs:int" minOccurs="0" />
-              <xs:element name="LYM" msdata:ReadOnly="true" msdata:Caption="Column12" msprop:Generator_ColumnVarNameInTable="columnLYM" msprop:Generator_ColumnPropNameInRow="LYM" msprop:Generator_ColumnPropNameInTable="LYMColumn" msprop:Generator_UserColumnName="LYM" type="xs:int" minOccurs="0" />
-              <xs:element name="MONO" msdata:ReadOnly="true" msdata:Caption="Column13" msprop:Generator_ColumnVarNameInTable="columnMONO" msprop:Generator_ColumnPropNameInRow="MONO" msprop:Generator_ColumnPropNameInTable="MONOColumn" msprop:Generator_UserColumnName="MONO" type="xs:int" minOccurs="0" />
-              <xs:element name="GRAN" msdata:ReadOnly="true" msdata:Caption="Column14" msprop:Generator_ColumnVarNameInTable="columnGRAN" msprop:Generator_ColumnPropNameInRow="GRAN" msprop:Generator_ColumnPropNameInTable="GRANColumn" msprop:Generator_UserColumnName="GRAN" type="xs:int" minOccurs="0" />
-              <xs:element name="TyLeLYM" msdata:ReadOnly="true" msdata:Caption="Column15" msprop:Generator_ColumnVarNameInTable="columnTyLeLYM" msprop:Generator_ColumnPropNameInRow="TyLeLYM" msprop:Generator_ColumnPropNameInTable="TyLeLYMColumn" msprop:Generator_UserColumnName="TyLeLYM" type="xs:int" minOccurs="0" />
-              <xs:element name="TyLeMONO" msdata:ReadOnly="true" msdata:Caption="Column16" msprop:Generator_ColumnVarNameInTable="columnTyLeMONO" msprop:Generator_ColumnPropNameInRow="TyLeMONO" msprop:Generator_ColumnPropNameInTable="TyLeMONOColumn" msprop:Generator_UserColumnName="TyLeMONO" type="xs:int" minOccurs="0" />
-              <xs:element name="TyLeGRAN" msdata:ReadOnly="true" msdata:Caption="Column17" msprop:Generator_ColumnVarNameInTable="columnTyLeGRAN" msprop:Generator_ColumnPropNameInRow="TyLeGRAN" msprop:Generator_ColumnPropNameInTable="TyLeGRANColumn" msprop:Generator_UserColumnName="TyLeGRAN" type="xs:int" minOccurs="0" />
-              <xs:element name="HGB" msdata:ReadOnly="true" msdata:Caption="Column18" msprop:Generator_ColumnVarNameInTable="columnHGB" msprop:Generator_ColumnPropNameInRow="HGB" msprop:Generator_ColumnPropNameInTable="HGBColumn" msprop:Generator_UserColumnName="HGB" type="xs:int" minOccurs="0" />
-              <xs:element name="RBC" msdata:ReadOnly="true" msdata:Caption="Column19" msprop:Generator_ColumnVarNameInTable="columnRBC" msprop:Generator_ColumnPropNameInRow="RBC" msprop:Generator_ColumnPropNameInTable="RBCColumn" msprop:Generator_UserColumnName="RBC" type="xs:int" minOccurs="0" />
-              <xs:element name="HTC" msdata:ReadOnly="true" msdata:Caption="Column20" msprop:Generator_ColumnVarNameInTable="columnHTC" msprop:Generator_ColumnPropNameInRow="HTC" msprop:Generator_ColumnPropNameInTable="HTCColumn" msprop:Generator_UserColumnName="HTC" type="xs:int" minOccurs="0" />
-              <xs:element name="MCV" msdata:ReadOnly="true" msdata:Caption="Column21" msprop:Generator_ColumnVarNameInTable="columnMCV" msprop:Generator_ColumnPropNameInRow="MCV" msprop:Generator_ColumnPropNameInTable="MCVColumn" msprop:Generator_UserColumnName="MCV" type="xs:int" minOccurs="0" />
-              <xs:element name="MCH" msdata:ReadOnly="true" msdata:Caption="Column22" msprop:Generator_ColumnVarNameInTable="columnMCH" msprop:Generator_ColumnPropNameInRow="MCH" msprop:Generator_ColumnPropNameInTable="MCHColumn" msprop:Generator_UserColumnName="MCH" type="xs:int" minOccurs="0" />
-              <xs:element name="MCHC" msdata:ReadOnly="true" msdata:Caption="Column23" msprop:Generator_ColumnVarNameInTable="columnMCHC" msprop:Generator_ColumnPropNameInRow="MCHC" msprop:Generator_ColumnPropNameInTable="MCHCColumn" msprop:Generator_UserColumnName="MCHC" type="xs:int" minOccurs="0" />
-              <xs:element name="RDW_CV" msdata:ReadOnly="true" msdata:Caption="Column24" msprop:Generator_ColumnVarNameInTable="columnRDW_CV" msprop:Generator_ColumnPropNameInRow="RDW_CV" msprop:Generator_ColumnPropNameInTable="RDW_CVColumn" msprop:Generator_UserColumnName="RDW_CV" type="xs:int" minOccurs="0" />
-              <xs:element name="PLT" msdata:ReadOnly="true" msdata:Caption="Column25" msprop:Generator_ColumnVarNameInTable="columnPLT" msprop:Generator_ColumnPropNameInRow="PLT" msprop:Generator_ColumnPropNameInTable="PLTColumn" msprop:Generator_UserColumnName="PLT" type="xs:int" minOccurs="0" />
-              <xs:element name="MPV" msdata:ReadOnly="true" msdata:Caption="Column26" msprop:Generator_ColumnVarNameInTable="columnMPV" msprop:Generator_ColumnPropNameInRow="MPV" msprop:Generator_ColumnPropNameInTable="MPVColumn" msprop:Generator_UserColumnName="MPV" type="xs:int" minOccurs="0" />
-              <xs:element name="PDW" msdata:ReadOnly="true" msdata:Caption="Column27" msprop:Generator_ColumnVarNameInTable="columnPDW" msprop:Generator_ColumnPropNameInRow="PDW" msprop:Generator_ColumnPropNameInTable="PDWColumn" msprop:Generator_UserColumnName="PDW" type="xs:int" minOccurs="0" />
-              <xs:element name="PCT" msdata:ReadOnly="true" msdata:Caption="Column28" msprop:Generator_ColumnVarNameInTable="columnPCT" msprop:Generator_ColumnPropNameInRow="PCT" msprop:Generator_ColumnPropNameInTable="PCTColumn" msprop:Generator_UserColumnName="PCT" type="xs:int" minOccurs="0" />
-              <xs:element name="Na" msdata:ReadOnly="true" msdata:Caption="Column29" msprop:Generator_ColumnVarNameInTable="columnNa" msprop:Generator_ColumnPropNameInRow="Na" msprop:Generator_ColumnPropNameInTable="NaColumn" msprop:Generator_UserColumnName="Na" type="xs:int" minOccurs="0" />
-              <xs:element name="K" msdata:ReadOnly="true" msdata:Caption="Column30" msprop:Generator_ColumnVarNameInTable="columnK" msprop:Generator_ColumnPropNameInRow="K" msprop:Generator_ColumnPropNameInTable="KColumn" msprop:Generator_UserColumnName="K" type="xs:int" minOccurs="0" />
-              <xs:element name="Cl" msdata:ReadOnly="true" msdata:Caption="Column31" msprop:Generator_ColumnVarNameInTable="columnCl" msprop:Generator_ColumnPropNameInRow="Cl" msprop:Generator_ColumnPropNameInTable="ClColumn" msprop:Generator_UserColumnName="Cl" type="xs:int" minOccurs="0" />
-              <xs:element name="Ca" msdata:ReadOnly="true" msdata:Caption="Column32" msprop:Generator_ColumnVarNameInTable="columnCa" msprop:Generator_ColumnPropNameInRow="Ca" msprop:Generator_ColumnPropNameInTable="CaColumn" msprop:Generator_UserColumnName="Ca" type="xs:int" minOccurs="0" />
-              <xs:element name="TieuDuong" msdata:ReadOnly="true" msdata:Caption="Column33" msprop:Generator_ColumnVarNameInTable="columnTieuDuong" msprop:Generator_ColumnPropNameInRow="TieuDuong" msprop:Generator_ColumnPropNameInTable="TieuDuongColumn" msprop:Generator_UserColumnName="TieuDuong" type="xs:int" minOccurs="0" />
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="TestSet" msprop:Generator_TableClassName="TestSetDataTable" msprop:Generator_TableVarName="tableTestSet" msprop:Generator_TablePropName="TestSet" msprop:Generator_RowDeletingName="TestSetRowDeleting" msprop:Generator_RowChangingName="TestSetRowChanging" msprop:Generator_RowEvHandlerName="TestSetRowChangeEventHandler" msprop:Generator_RowDeletedName="TestSetRowDeleted" msprop:Generator_UserTableName="TestSet" msprop:Generator_RowChangedName="TestSetRowChanged" msprop:Generator_RowEvArgName="TestSetRowChangeEvent" msprop:Generator_RowClassName="TestSetRow">
+        <xs:element name="TestSet" msprop:Generator_TableClassName="TestSetDataTable" msprop:Generator_TableVarName="tableTestSet" msprop:Generator_RowChangedName="TestSetRowChanged" msprop:Generator_TablePropName="TestSet" msprop:Generator_RowDeletingName="TestSetRowDeleting" msprop:Generator_RowChangingName="TestSetRowChanging" msprop:Generator_RowEvHandlerName="TestSetRowChangeEventHandler" msprop:Generator_RowDeletedName="TestSetRowDeleted" msprop:Generator_RowClassName="TestSetRow" msprop:Generator_UserTableName="TestSet" msprop:Generator_RowEvArgName="TestSetRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Tuoi" msprop:Generator_ColumnVarNameInTable="columnTuoi" msprop:Generator_ColumnPropNameInRow="Tuoi" msprop:Generator_ColumnPropNameInTable="TuoiColumn" msprop:Generator_UserColumnName="Tuoi" minOccurs="0">

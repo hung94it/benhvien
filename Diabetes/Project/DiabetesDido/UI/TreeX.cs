@@ -17,7 +17,6 @@ namespace DiabetesDido.UI
 {
     public partial class TreeX : Form
     {
-        private DAL.DiabetesDataSetBTableAdapters.CountDiscreteValueTableAdapter countDiscreteValueTableAdapter;
         private DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter;
         private DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter testSetTableAdapter;
 
@@ -28,12 +27,11 @@ namespace DiabetesDido.UI
         {
             InitializeComponent();
 
-            this.countDiscreteValueTableAdapter = new DAL.DiabetesDataSetBTableAdapters.CountDiscreteValueTableAdapter();
             this.trainingSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter();
             this.testSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter();
         }
 
-        private void DecisionTree_Load(object sender, EventArgs e)
+        private void TreeX_Load(object sender, EventArgs e)
         {
             this.dataGridView1.DataSource = trainingSetTableAdapter.GetData();
 
@@ -56,52 +54,39 @@ namespace DiabetesDido.UI
             }
 
             // Get input form discrete data 
-            double[][] inputs = discreteDataTableTemp.ToArray(columnNames.ToArray());
+            int[][] inputs = discreteDataTableTemp.ToIntArray(columnNames.ToArray());
 
             // Get output
             string lastColumnName = discreteDataTable.Columns[discreteDataTable.Columns.Count - 1].ColumnName;
-
             int[] outputs = discreteDataTableTemp.ToIntArray(lastColumnName).GetColumn(0);
 
+            // Create DecisionVariable[] for tree
             List<DecisionVariable> attributes = new List<DecisionVariable>();
 
-            DataTable countDiscreteAttributesDataTable = countDiscreteValueTableAdapter.GetData();
-            int discreteValue;
-            lastColumnName = 
-                countDiscreteAttributesDataTable.Columns[countDiscreteAttributesDataTable.Columns.Count - 1].ColumnName;
-            int numberOfClass = 0;
+            int lastIndex = codificationTemp.Columns.Count - 1;
+            int numberOfClass = codificationTemp[lastIndex].Symbols;
 
-            foreach (DataColumn column in countDiscreteAttributesDataTable.Columns)
+            for (int indexColumn = 0; indexColumn < lastIndex; indexColumn++)
             {
-                if (column.Equals(countDiscreteAttributesDataTable.Columns[lastColumnName]))
-                {
-                    numberOfClass = (int)countDiscreteAttributesDataTable.Rows[0][column];
-                    continue;
-                }
-                discreteValue = (int)countDiscreteAttributesDataTable.Rows[0][column];
-                attributes.Add(new DecisionVariable(column.ColumnName, discreteValue));
+                attributes.Add(new DecisionVariable(codificationTemp.Columns[indexColumn].ColumnName,
+                    codificationTemp[indexColumn].Symbols));
             }
-
+            
             // Create the Decision tree
             tree = new DecisionTree(attributes.ToArray(), numberOfClass);
 
-            C45Learning c45;
-            // Creates a new instance of the C4.5 learning algorithm
-            c45 = new C45Learning(tree);
+            //C45Learning c45;
+            //// Creates a new instance of the C4.5 learning algorithm
+            //c45 = new C45Learning(tree);
 
-            // Learn the decision tree
-            double error = c45.Run(inputs, outputs);
+            //// Learn the decision tree
+            //double error = c45.Run(inputs, outputs);
 
-            // Show the learned tree in the view
-            decisionTreeView1.TreeSource = tree;
+            // Create a new instance of the ID3 algorithm
+            ID3Learning id3learning = new ID3Learning(tree);
 
-            //// Create a new instance of the ID3 algorithm
-            //ID3Learning id3learning = new ID3Learning(tree);
-
-            //// Learn the training instances!
-            //id3learning.Run(inputs, outputs);
-
-
+            // Learn the training instances!
+            id3learning.Run(inputs, outputs);
 
         }
 
@@ -125,19 +110,37 @@ namespace DiabetesDido.UI
             double[][] inputs = discreteDataTableTemp.ToArray(columnNames.ToArray());
             
             // Compute the machine outputs
-            int[] output = new int[inputs.Length];
+            int[] predicted = new int[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
-                output[i] = tree.Compute(inputs[i]);
+                predicted[i] = tree.Compute(inputs[i]);
 
             // Get expected
             string lastColumnName = discreteDataTable.Columns[discreteDataTable.Columns.Count - 1].ColumnName;
-
             int[] expected = discreteDataTableTemp.ToIntArray(lastColumnName).GetColumn(0);
 
 
             // Use confusion matrix to compute some statistics.
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(output, expected, 0, 1);
+            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
             dataGridView2.DataSource = new List<ConfusionMatrix> { confusionMatrix };
         }
+
+        private void buttonViewModel_Click(object sender, EventArgs e)
+        {
+            if (tree == null)
+                MessageBox.Show("Tạo mô hình đi ku!", "Lỗi nặng rồi", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            else
+                (new FormViewTree(tree)).Show();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    enum Algorithm
+    { 
+        ID3,
+        C45,
     }
 }
