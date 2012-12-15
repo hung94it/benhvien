@@ -117,11 +117,17 @@
     <Compile Include="TienXuDuLieu.Designer.cs">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\FormViewTree.cs">
+    <Compile Include="UI\FormDecisionTree.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormViewTree.Designer.cs">
-      <DependentUpon>FormViewTree.cs</DependentUpon>
+    <Compile Include="UI\FormDecisionTree.Designer.cs">
+      <DependentUpon>FormDecisionTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormNaiveBayes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormNaiveBayes.Designer.cs">
+      <DependentUpon>FormNaiveBayes.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\TreeX.cs">
       <SubType>Form</SubType>
@@ -159,8 +165,11 @@
     <EmbeddedResource Include="TienXuDuLieu.resx">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormViewTree.resx">
-      <DependentUpon>FormViewTree.cs</DependentUpon>
+    <EmbeddedResource Include="UI\FormDecisionTree.resx">
+      <DependentUpon>FormDecisionTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormNaiveBayes.resx">
+      <DependentUpon>FormNaiveBayes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TreeX.resx">
       <DependentUpon>TreeX.cs</DependentUpon>
