@@ -33,9 +33,10 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonViewModel = new System.Windows.Forms.Button();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButtonC45 = new System.Windows.Forms.RadioButton();
+            this.radioButtonID3 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonNaiveBayes = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -85,6 +86,7 @@
             // 
             // buttonViewModel
             // 
+            this.buttonViewModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonViewModel.Location = new System.Drawing.Point(687, 152);
             this.buttonViewModel.Name = "buttonViewModel";
             this.buttonViewModel.Size = new System.Drawing.Size(75, 23);
@@ -93,41 +95,54 @@
             this.buttonViewModel.UseVisualStyleBackColor = true;
             this.buttonViewModel.Click += new System.EventHandler(this.buttonViewModel_Click);
             // 
-            // radioButton1
+            // radioButtonC45
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(47, 17);
-            this.radioButton1.TabIndex = 8;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "C4.5";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioButtonC45.AutoSize = true;
+            this.radioButtonC45.Checked = true;
+            this.radioButtonC45.Location = new System.Drawing.Point(6, 19);
+            this.radioButtonC45.Name = "radioButtonC45";
+            this.radioButtonC45.Size = new System.Drawing.Size(47, 17);
+            this.radioButtonC45.TabIndex = 8;
+            this.radioButtonC45.TabStop = true;
+            this.radioButtonC45.Text = "C4.5";
+            this.radioButtonC45.UseVisualStyleBackColor = true;
+            this.radioButtonC45.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
-            // radioButton2
+            // radioButtonID3
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 43);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(42, 17);
-            this.radioButton2.TabIndex = 9;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "ID3";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButtonID3.AutoSize = true;
+            this.radioButtonID3.Location = new System.Drawing.Point(6, 43);
+            this.radioButtonID3.Name = "radioButtonID3";
+            this.radioButtonID3.Size = new System.Drawing.Size(42, 17);
+            this.radioButtonID3.TabIndex = 9;
+            this.radioButtonID3.Text = "ID3";
+            this.radioButtonID3.UseVisualStyleBackColor = true;
+            this.radioButtonID3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.radioButtonNaiveBayes);
             this.groupBox1.Controls.Add(this.buttonCreate);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.radioButtonID3);
+            this.groupBox1.Controls.Add(this.radioButtonC45);
             this.groupBox1.Location = new System.Drawing.Point(681, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 134);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chọn mô hình";
+            // 
+            // radioButtonNaiveBayes
+            // 
+            this.radioButtonNaiveBayes.AutoSize = true;
+            this.radioButtonNaiveBayes.Location = new System.Drawing.Point(6, 66);
+            this.radioButtonNaiveBayes.Name = "radioButtonNaiveBayes";
+            this.radioButtonNaiveBayes.Size = new System.Drawing.Size(82, 17);
+            this.radioButtonNaiveBayes.TabIndex = 10;
+            this.radioButtonNaiveBayes.Text = "NaiveBayes";
+            this.radioButtonNaiveBayes.UseVisualStyleBackColor = true;
+            this.radioButtonNaiveBayes.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // TreeX
             // 
@@ -157,8 +172,9 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonViewModel;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButtonC45;
+        private System.Windows.Forms.RadioButton radioButtonID3;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton radioButtonNaiveBayes;
     }
 }
