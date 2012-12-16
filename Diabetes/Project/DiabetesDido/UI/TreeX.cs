@@ -25,7 +25,32 @@ namespace DiabetesDido.UI
 
         LearningAlgorithm learningAlgorithm;
 
+        private TrainningData trainningDataForAlgorithm;
 
+        internal TrainningData TrainningDataForAlgorithm
+        {
+            get { return trainningDataForAlgorithm; }
+            private set { trainningDataForAlgorithm = value; }
+        }
+
+        public DecisionTree DecisionTree
+        {
+            get { return decisionTree; }
+            private set { decisionTree = value; }
+        }
+        
+        public NaiveBayes NaiveBayes
+        {
+            get { return naiveBayes; }
+            private set { naiveBayes = value; }
+        }
+        
+        internal LearningAlgorithm LearningAlgorithm
+        {
+            get { return learningAlgorithm; }
+            private set { learningAlgorithm = value; }
+        }
+        
         public TreeX()
         {
             InitializeComponent();
@@ -40,38 +65,44 @@ namespace DiabetesDido.UI
         private void TreeX_Load(object sender, EventArgs e)
         {
             this.dataGridView1.DataSource = trainingSetTableAdapter.GetData();
-
+            
         }
 
         //Create model
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable discreteDataTable = trainingSetTableAdapter.GetData();
+            this.TrainningDataForAlgorithm = new TrainningData(this.dataGridView1.DataSource as DataTable);
+            Codification codification = this.TrainningDataForAlgorithm.DiscreteCodification;
+            double[][] inputs = this.TrainningDataForAlgorithm.DoubleTrainningAttributes;
+            int[] outputs = this.TrainningDataForAlgorithm.ClassifierAttribute;
 
-            // Create a new codification to convert strings into integer symbols
-            Codification codification = new Codification(discreteDataTable);
-            DataTable IntergerDiscreteDataTable = codification.Apply(discreteDataTable);
+            //DataTable discreteDataTable = trainingSetTableAdapter.GetData();
 
-            List<string> columnNames = new List<string>();
+            //// Create a new codification to convert strings into integer symbols
+            //Codification codification = new Codification(discreteDataTable);
+            //DataTable IntergerDiscreteDataTable = codification.Apply(discreteDataTable);
 
-            // Get column's name of training data
-            for (int columnIndex = 0; columnIndex < discreteDataTable.Columns.Count - 1; columnIndex++)
-            {
-                columnNames.Add(discreteDataTable.Columns[columnIndex].ColumnName);
-            }
+            //List<string> columnNames = new List<string>();
 
-            // Create input data for algorithm 
-            double[][] inputs = IntergerDiscreteDataTable.ToArray(columnNames.ToArray());
+            //// Get column's name of training data
 
-            // Create classification data for algorithm
-            string lastColumnName = discreteDataTable.Columns[discreteDataTable.Columns.Count - 1].ColumnName;
-            int[] outputs = IntergerDiscreteDataTable.ToIntArray(lastColumnName).GetColumn(0);
+            //for (int columnIndex = 0; columnIndex < discreteDataTable.Columns.Count - 1; columnIndex++)
+            //{
+            //    columnNames.Add(discreteDataTable.Columns[columnIndex].ColumnName);
+            //}
+
+            //// Create input data for algorithm 
+            //double[][] inputs = IntergerDiscreteDataTable.ToArray(columnNames.ToArray());
+
+            //// Create classification data for algorithm
+            //string lastColumnName = IntergerDiscreteDataTable.Columns[IntergerDiscreteDataTable.Columns.Count - 1].ColumnName;
+            //int[] outputs = IntergerDiscreteDataTable.ToIntArray(lastColumnName).GetColumn(0);
 
             // Run selected algorithm
             switch (this.learningAlgorithm)
             {
                 case LearningAlgorithm.C45:
-                    CreateDecisionTree(codification);
+                    this.DecisionTree = CreateDecisionTree(codification);
                     C45Learning c45;
                     // Creates a new instance of the C4.5 learning algorithm
                     c45 = new C45Learning(this.decisionTree);
@@ -81,7 +112,7 @@ namespace DiabetesDido.UI
                     break;
 
                 case LearningAlgorithm.ID3:
-                    CreateDecisionTree(codification);
+                    this.DecisionTree = CreateDecisionTree(codification);
                     // Create a new instance of the ID3 algorithm
                     ID3Learning id3learning = new ID3Learning(this.decisionTree);
 
@@ -104,12 +135,11 @@ namespace DiabetesDido.UI
                     naiveBayes.Estimate(inputs.ToInt32(), outputs);
 
                     break;
-
             }
         }
 
         // Create Decision tree
-        private void CreateDecisionTree(Codification codification)
+        private DecisionTree CreateDecisionTree(Codification codification)
         {
             int lastIndex = codification.Columns.Count - 1;
             int numberOfClass = codification[lastIndex].Symbols;
@@ -122,7 +152,7 @@ namespace DiabetesDido.UI
                     codification[indexColumn].Symbols));
             }
 
-            this.decisionTree = new DecisionTree(attributes.ToArray(), numberOfClass);
+            return new DecisionTree(attributes.ToArray(), numberOfClass);            
         }
 
         // Test data

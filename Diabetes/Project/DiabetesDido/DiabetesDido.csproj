@@ -129,6 +129,13 @@
     <Compile Include="UI\FormNaiveBayes.Designer.cs">
       <DependentUpon>FormNaiveBayes.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\test.Designer.cs">
+      <DependentUpon>test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\TrainningData.cs" />
     <Compile Include="UI\TreeX.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormNaiveBayes.resx">
       <DependentUpon>FormNaiveBayes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\test.resx">
+      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\TreeX.resx">
       <DependentUpon>TreeX.cs</DependentUpon>
