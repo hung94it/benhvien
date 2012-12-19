@@ -13,6 +13,7 @@ using Accord.Math;
 using Accord.Statistics.Analysis;
 using Accord.Statistics.Distributions.Univariate;
 using Accord.Statistics.Filters;
+using DiabetesDido.ClassificationLogic;
 
 namespace DiabetesDido.UI
 {
@@ -37,7 +38,7 @@ namespace DiabetesDido.UI
             this.testTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestTableAdapter();
             this.dataTAble1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter();
 
-            this.learningAlgorithm = LearningAlgorithm.C45;
+            //this.learningAlgorithm = LearningAlgorithm.C45;
         }
 
         private void test_Load(object sender, EventArgs e)

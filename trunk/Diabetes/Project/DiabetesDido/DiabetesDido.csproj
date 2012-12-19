@@ -85,6 +85,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassificationLogic\C45Model.cs" />
+    <Compile Include="ClassificationLogic\ICreateClassificationModel.cs" />
     <Compile Include="DAL\DiabetesDataSetB.cs">
       <DependentUpon>DiabetesDataSetB.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -117,6 +119,8 @@
     <Compile Include="TienXuDuLieu.Designer.cs">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClassificationLogic\ClassificationModel.cs" />
+    <Compile Include="ClassificationLogic\ClassificationModelType.cs" />
     <Compile Include="UI\FormDecisionTree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,7 +139,7 @@
     <Compile Include="UI\test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TrainningData.cs" />
+    <Compile Include="ClassificationLogic\ClassificationData.cs" />
     <Compile Include="UI\TreeX.cs">
       <SubType>Form</SubType>
     </Compile>

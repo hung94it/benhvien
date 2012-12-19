@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Accord.Controls;
 using Accord.MachineLearning.Bayes;
 using Accord.MachineLearning.DecisionTrees;
 using Accord.MachineLearning.DecisionTrees.Learning;
@@ -12,6 +13,7 @@ using Accord.Math;
 using Accord.Statistics.Analysis;
 using Accord.Statistics.Distributions.Univariate;
 using Accord.Statistics.Filters;
+using DiabetesDido.ClassificationLogic;
 
 namespace DiabetesDido.UI
 {
@@ -23,14 +25,28 @@ namespace DiabetesDido.UI
         private DecisionTree decisionTree;
         private NaiveBayes naiveBayes;
 
-        LearningAlgorithm learningAlgorithm;
+        private LearningAlgorithm learningAlgorithm;
 
-        private TrainningData trainningDataForAlgorithm;
+        private ClassificationData classificationDataForApp;
 
-        internal TrainningData TrainningDataForAlgorithm
+        private ClassificationModel classificationModelForApp;
+
+        internal ClassificationData ClassificationDataForApp
         {
-            get { return trainningDataForAlgorithm; }
-            private set { trainningDataForAlgorithm = value; }
+            get { return classificationDataForApp; }
+            set { classificationDataForApp = value; }
+        }
+
+        internal ClassificationModel ClassificationModelForApp
+        {
+            get { return classificationModelForApp; }
+            set { classificationModelForApp = value; }
+        }
+
+        internal ClassificationData TrainningDataForAlgorithm
+        {
+            get { return classificationDataForApp; }
+            set { classificationDataForApp = value; }
         }
 
         public DecisionTree DecisionTree
@@ -38,19 +54,19 @@ namespace DiabetesDido.UI
             get { return decisionTree; }
             private set { decisionTree = value; }
         }
-        
+
         public NaiveBayes NaiveBayes
         {
             get { return naiveBayes; }
             private set { naiveBayes = value; }
         }
-        
+
         internal LearningAlgorithm LearningAlgorithm
         {
             get { return learningAlgorithm; }
             private set { learningAlgorithm = value; }
         }
-        
+
         public TreeX()
         {
             InitializeComponent();
@@ -59,119 +75,42 @@ namespace DiabetesDido.UI
             this.testSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter();
 
             this.radioButtonC45.Checked = true;
-            this.learningAlgorithm = LearningAlgorithm.C45;
+            //this.learningAlgorithm = LearningAlgorithm.C45;
+
+            this.ClassificationModelForApp = new ClassificationModel();
+            this.ClassificationModelForApp.ActiveLearningAlgorithm = LearningAlgorithm.C45;
         }
 
         private void TreeX_Load(object sender, EventArgs e)
         {
-            this.dataGridView1.DataSource = trainingSetTableAdapter.GetData();
-            
+            DataTable trainningDataTable = trainingSetTableAdapter.GetData();
+            this.dataGridView1.DataSource = trainningDataTable;
+            this.classificationDataForApp = new ClassificationData(this.dataGridView1.DataSource as DataTable);
         }
 
         //Create model
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCreateModel_Click(object sender, EventArgs e)
         {
-            this.TrainningDataForAlgorithm = new TrainningData(this.dataGridView1.DataSource as DataTable);
-            Codification codification = this.TrainningDataForAlgorithm.DiscreteCodification;
-            double[][] inputs = this.TrainningDataForAlgorithm.DoubleTrainningAttributes;
-            int[] outputs = this.TrainningDataForAlgorithm.ClassifierAttribute;
-
-            //DataTable discreteDataTable = trainingSetTableAdapter.GetData();
-
-            //// Create a new codification to convert strings into integer symbols
-            //Codification codification = new Codification(discreteDataTable);
-            //DataTable IntergerDiscreteDataTable = codification.Apply(discreteDataTable);
-
-            //List<string> columnNames = new List<string>();
-
-            //// Get column's name of training data
-
-            //for (int columnIndex = 0; columnIndex < discreteDataTable.Columns.Count - 1; columnIndex++)
-            //{
-            //    columnNames.Add(discreteDataTable.Columns[columnIndex].ColumnName);
-            //}
-
-            //// Create input data for algorithm 
-            //double[][] inputs = IntergerDiscreteDataTable.ToArray(columnNames.ToArray());
-
-            //// Create classification data for algorithm
-            //string lastColumnName = IntergerDiscreteDataTable.Columns[IntergerDiscreteDataTable.Columns.Count - 1].ColumnName;
-            //int[] outputs = IntergerDiscreteDataTable.ToIntArray(lastColumnName).GetColumn(0);
-
-            // Run selected algorithm
-            switch (this.learningAlgorithm)
+            DialogResult dialogResult;
+            if (this.ClassificationModelForApp.haveModel())
             {
-                case LearningAlgorithm.C45:
-                    this.DecisionTree = CreateDecisionTree(codification);
-                    C45Learning c45;
-                    // Creates a new instance of the C4.5 learning algorithm
-                    c45 = new C45Learning(this.decisionTree);
-
-                    // Learn the decision tree
-                    double error = c45.Run(inputs, outputs);
-                    break;
-
-                case LearningAlgorithm.ID3:
-                    this.DecisionTree = CreateDecisionTree(codification);
-                    // Create a new instance of the ID3 algorithm
-                    ID3Learning id3learning = new ID3Learning(this.decisionTree);
-
-                    // Learn the training instances!
-                    id3learning.Run(inputs.ToInt32(), outputs);
-                    break;
-                case LearningAlgorithm.NaiveBayes:
-                    int lastIndex = codification.Columns.Count - 1;
-                    int numberOfClass = codification[lastIndex].Symbols;
-
-                    List<int> symbolCounts = new List<int>();
-
-                    for (int indexColumn = 0; indexColumn < lastIndex; indexColumn++)
-                    {
-                        symbolCounts.Add(codification[indexColumn].Symbols);
-                    }
-
-                    naiveBayes = new NaiveBayes(numberOfClass, symbolCounts.ToArray());
-
-                    naiveBayes.Estimate(inputs.ToInt32(), outputs);
-
-                    break;
+                dialogResult = MessageBox.Show("Model này đã có. Bạn có muốn tạo mô hình mới", "Tạo mới", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == System.Windows.Forms.DialogResult.Yes)
+                {
+                    this.ClassificationModelForApp.CreateModel(this.ClassificationDataForApp);
+                }
             }
-        }
-
-        // Create Decision tree
-        private DecisionTree CreateDecisionTree(Codification codification)
-        {
-            int lastIndex = codification.Columns.Count - 1;
-            int numberOfClass = codification[lastIndex].Symbols;
-
-            List<DecisionVariable> attributes = new List<DecisionVariable>();
-
-            for (int indexColumn = 0; indexColumn < lastIndex; indexColumn++)
+            else
             {
-                attributes.Add(new DecisionVariable(codification.Columns[indexColumn].ColumnName,
-                    codification[indexColumn].Symbols));
+                this.ClassificationModelForApp.CreateModel(this.ClassificationDataForApp);
             }
 
-            return new DecisionTree(attributes.ToArray(), numberOfClass);            
         }
 
         // Test data
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonTestModel_Click(object sender, EventArgs e)
         {
-            bool haveModel = false;
-
-            switch (this.learningAlgorithm)
-            { 
-                case LearningAlgorithm.C45:
-                case LearningAlgorithm.ID3:
-                    haveModel = (this.decisionTree != null ? true : false);
-                    break;
-                case LearningAlgorithm.NaiveBayes:
-                    haveModel = (this.naiveBayes != null ? true : false);
-                    break;
-            }
-
-            if (!haveModel)
+            if (this.ClassificationModelForApp.haveModel())
             {
                 MessageBox.Show("Chọn thuật toán rồi tạo mô hình đi ku", "Vậy mà cũng ko biết", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -201,7 +140,7 @@ namespace DiabetesDido.UI
 
             // Compute predicted value with selected algorithm
             switch (this.learningAlgorithm)
-            { 
+            {
                 case LearningAlgorithm.C45:
                 case LearningAlgorithm.ID3:
                     for (int i = 0; i < inputs.Length; i++)
@@ -212,7 +151,7 @@ namespace DiabetesDido.UI
                         predicted[i] = this.naiveBayes.Compute(inputs[i].ToInt32());
                     break;
             }
-            
+
             // Get expected
             string lastColumnName = discreteDataTable.Columns[discreteDataTable.Columns.Count - 1].ColumnName;
             int[] expected = discreteDataTableTemp.ToIntArray(lastColumnName).GetColumn(0);
@@ -227,46 +166,39 @@ namespace DiabetesDido.UI
         // View model
         private void buttonViewModel_Click(object sender, EventArgs e)
         {
-            if (decisionTree == null)
-                MessageBox.Show("Tạo mô hình đi ku!", "Lỗi nặng rồi", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            if (this.ClassificationModelForApp.haveModel())
+            {
+                switch (this.ClassificationModelForApp.ActiveLearningAlgorithm)
+                {
+
+                    case LearningAlgorithm.C45:
+                    case LearningAlgorithm.ID3:
+                        new FormDecisionTree(this.ClassificationModelForApp.GetModel() as DecisionTree).Show();
+                        break;
+                    case LearningAlgorithm.NaiveBayes:
+                        MessageBox.Show("Chưa làm");
+                        break;
+
+                }
+            }
             else
-                (new FormDecisionTree(decisionTree)).Show();
+            {
+                MessageBox.Show("Chưa có model cho thuật toán này");
+            }
         }
 
-        // Get selected learning algorithm
+        // Get selected learning algorithm from user
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             RadioButton checkedRadioButton = sender as RadioButton;
 
-            if (checkedRadioButton == null)
-            {
-                MessageBox.Show("Sender is not a RadioButton");
-                return;
-            }
-
             // Ensure that the RadioButton.Checked property changed to true.             
             if (checkedRadioButton.Checked)
             {
-                switch (checkedRadioButton.Text)
-                {
-                    case "C4.5":
-                        this.learningAlgorithm = LearningAlgorithm.C45;
-                        break;
-                    case "ID3":
-                        this.learningAlgorithm = LearningAlgorithm.ID3;
-                        break;
-                    case "NaiveBayes":
-                        this.learningAlgorithm = LearningAlgorithm.NaiveBayes;
-                        break;
-                }
+                this.ClassificationModelForApp.ActiveLearningAlgorithm =
+                    (LearningAlgorithm)Enum.Parse(typeof(LearningAlgorithm), checkedRadioButton.Tag as string);
             }
         }
     }
 
-    enum LearningAlgorithm
-    {
-        ID3,
-        C45,
-        NaiveBayes,
-    }
 }

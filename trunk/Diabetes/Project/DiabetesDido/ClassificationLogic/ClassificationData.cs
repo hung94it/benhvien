@@ -6,22 +6,29 @@ using System.Data;
 using Accord.Statistics.Filters;
 using Accord.Math;
 
-namespace DiabetesDido.UI
+namespace DiabetesDido.ClassificationLogic
 {
-    class TrainningData
+    class ClassificationData
     {
         private DataTable integerDiscreteDatatable;
         private Codification discreteCodification;
         private double[][] doubleTrainningAttributes;
         private int[][] intTrainningAttributes;
-        private int[] classifierAttribute;     
+        private int[] classifierAttribute;
+        private string[] columnNames;
+
+        public string[] ColumnNames
+        {
+            get { return columnNames; }
+            set { columnNames = value; }
+        }
 
         public int[][] IntTrainningAttributes
         {
             get { return intTrainningAttributes; }
             private set { intTrainningAttributes = value; }
         }
-          
+
         public int[] ClassifierAttribute
         {
             get { return classifierAttribute; }
@@ -46,13 +53,13 @@ namespace DiabetesDido.UI
             private set { integerDiscreteDatatable = value; }
         }
 
-        public TrainningData(DataTable dataTable)
+        public ClassificationData(DataTable dataTable)
         {
             Initialize(dataTable);
         }
 
         private void Initialize(DataTable dataTable)
-        {            
+        {
             this.DiscreteCodification = new Codification(dataTable);
             this.IntegerDiscreteDatatable = this.DiscreteCodification.Apply(dataTable);
 
@@ -64,14 +71,16 @@ namespace DiabetesDido.UI
                 columnNames.Add(IntegerDiscreteDatatable.Columns[columnIndex].ColumnName);
             }
 
+            this.ColumnNames = columnNames.ToArray();
+
             // Create input data
-            this.DoubleTrainningAttributes= IntegerDiscreteDatatable.ToArray(columnNames.ToArray());
+            this.DoubleTrainningAttributes = IntegerDiscreteDatatable.ToArray(this.ColumnNames);
             this.IntTrainningAttributes = this.DoubleTrainningAttributes.ToInt32();
 
             // Create classifier data for trainning
             string lastColumnName = IntegerDiscreteDatatable.Columns[IntegerDiscreteDatatable.Columns.Count - 1].ColumnName;
             this.ClassifierAttribute = IntegerDiscreteDatatable.ToIntArray(lastColumnName).GetColumn(0);
-            
+
         }
 
 
