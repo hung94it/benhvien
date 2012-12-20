@@ -83,7 +83,10 @@ namespace DiabetesDido.UI
 
         private void TreeX_Load(object sender, EventArgs e)
         {
-            DataTable trainningDataTable = trainingSetTableAdapter.GetData();
+            DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter();
+            DataTable trainningDataTable = testSet1TableAdapter.GetData();
+
+            //DataTable trainningDataTable = trainingSetTableAdapter.GetData();
             this.dataGridView1.DataSource = trainningDataTable;
             this.classificationDataForApp = new ClassificationData(this.dataGridView1.DataSource as DataTable);
         }
@@ -110,15 +113,18 @@ namespace DiabetesDido.UI
         // Test data
         private void buttonTestModel_Click(object sender, EventArgs e)
         {
-            if (this.ClassificationModelForApp.haveModel())
-            {
-                MessageBox.Show("Chọn thuật toán rồi tạo mô hình đi ku", "Vậy mà cũng ko biết", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return;
-            }
+            //if (this.ClassificationModelForApp.haveModel())
+            //{
+            //    MessageBox.Show("Chọn thuật toán rồi tạo mô hình đi ku", "Vậy mà cũng ko biết", MessageBoxButtons.OK,
+            //        MessageBoxIcon.Error);
+            //    return;
+            //}
+
+            DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter();
+            DataTable discreteDataTable = testSet1TableAdapter.GetData();
 
             //DataTable discreteDataTable = testSetTableAdapter.GetData();
-            DataTable discreteDataTable = trainingSetTableAdapter.GetData();
+            //DataTable discreteDataTable = trainingSetTableAdapter.GetData();
 
             // Create a new codification codebook to convert strings into integer symbols
             Codification codificationTemp = new Codification(discreteDataTable);
@@ -139,16 +145,16 @@ namespace DiabetesDido.UI
             int[] predicted = new int[inputs.Length];
 
             // Compute predicted value with selected algorithm
-            switch (this.learningAlgorithm)
+            switch (this.ClassificationModelForApp.ActiveLearningAlgorithm)
             {
                 case LearningAlgorithm.C45:
                 case LearningAlgorithm.ID3:
                     for (int i = 0; i < inputs.Length; i++)
-                        predicted[i] = this.decisionTree.Compute(inputs[i]);
+                        predicted[i] = (this.ClassificationModelForApp.GetModel() as DecisionTree).Compute(inputs[i]);
                     break;
                 case LearningAlgorithm.NaiveBayes:
                     for (int i = 0; i < inputs.Length; i++)
-                        predicted[i] = this.naiveBayes.Compute(inputs[i].ToInt32());
+                        predicted[i] = (this.ClassificationModelForApp.GetModel() as NaiveBayes).Compute(inputs[i].ToInt32());
                     break;
             }
 

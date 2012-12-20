@@ -90,6 +90,7 @@ namespace DiabetesDido.View
 
             target.Estimate(inputs, outputs);
             traingResult = target.Distributions;
+            int ggh = traingResult.Length;
             for (int i = 0; i < classCount; i++)
             {
                 String iTieuDuong = "Yes";
@@ -115,17 +116,17 @@ namespace DiabetesDido.View
         {
             
             DataTable dtResultSet = testSetTA.GetData();
-            DataTable dtTestSet = Function.NaiveBayes(testSetTA.GetData());
+            DataTable dtTestSet = Form2.NaiveBayes(testSetTA.GetData());
             dataGridView1.DataSource = dtTestSet;
             dataGridView2.DataSource = dtResultSet;
-            Dictionary<String, int> iDictionary = Function.TinhThongSo(dtTestSet, dtResultSet);
+            Dictionary<String, int> iDictionary = Form2.TinhThongSo(dtTestSet, dtResultSet);
             int iTruePossive = iDictionary["TruePossive"];
             int iFalseNegative = iDictionary["FalseNegative"];
             int iTrueNegative = iDictionary["TrueNegative"];
             int iFalsePossive = iDictionary["FalsePossive"];
-            decimal iRecall = Function.Recall(iTruePossive, iFalseNegative);
-            decimal iPrecision = Function.Precision(iTruePossive, iFalsePossive);
-            decimal iAccuracy = Function.Accuracy(iTruePossive, iTrueNegative, iFalsePossive, iFalseNegative);
+            decimal iRecall = Form2.Recall(iTruePossive, iFalseNegative);
+            decimal iPrecision = Form2.Precision(iTruePossive, iFalsePossive);
+            decimal iAccuracy = Form2.Accuracy(iTruePossive, iTrueNegative, iFalsePossive, iFalseNegative);
             /*
             // Creates a matrix from the source data table
             double[,] sourceMatrix = datasourceTableAdapter.GetData().ToMatrix();
@@ -163,6 +164,117 @@ namespace DiabetesDido.View
             this.tableAdapterManager.UpdateAll(this.diabetesDataSet);
         }
 
-
-    }
+         //Hàm dùng để tính kết quả của một bảng trong bộ thử nghiệm
+        public static DataTable NaiveBayes( DataTable dtTestSet)
+        {
+            DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA= new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DataTable dtBayes = bayesTA.GetData();
+            int possiveNumber = dtTestSet.Select("TieuDuong='Yes'").Count();
+            int negativeNumber = dtTestSet.Select("TieuDuong='No'").Count();
+            int allNumber = possiveNumber + negativeNumber;
+            foreach (DataRow dtRow in dtTestSet.Rows)
+            {
+                Decimal pYes = 1;
+                Decimal pNo = 1;
+                for (int i = 1; i < dtTestSet.Columns.Count-1; i++)
+                {
+                    String colName = dtTestSet.Columns[i].ColumnName;
+                    String khoangRoiRac = dtRow[i].ToString();
+                    DataRow possiveRow = dtBayes.Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + khoangRoiRac + "' and TieuDuong='Yes'")[0];
+                    DataRow negativeRow = dtBayes.Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + khoangRoiRac + "' and TieuDuong='No'")[0];
+                    Decimal _pYes = Convert.ToDecimal(possiveRow[3]);
+                    Decimal _pNo = Convert.ToDecimal(negativeRow[3]);
+                    pYes = pYes * _pYes;
+                    pNo = pNo * _pNo;
+                }
+                pYes = pYes * possiveNumber / allNumber;
+                pNo = pNo * negativeNumber / allNumber;
+                if (pYes > pNo)
+                    dtRow[33] = "Yes";
+                else
+                    dtRow[33] = "No";
+            }
+            return dtTestSet;
+        }
+        //Hàm dùng để tính độ bao phủ Recall (Độ nhạy Sensitivity)
+        public static decimal Recall(int truePossive, int falseNegative)
+        {
+            decimal iRecall = 1;
+            decimal iTruePossive = Convert.ToDecimal(truePossive);
+            decimal iFalseNegative = Convert.ToDecimal(falseNegative);
+            iRecall = iTruePossive / (iTruePossive + iFalseNegative);
+            iRecall = Math.Round(iRecall, 3);
+            return iRecall;
+        }
+        //Hàm  dùng để tính độ chính xác Precision
+        public static decimal Precision(int truePossive, int falsePossive)
+        {
+            decimal iPrecision = 1;
+            decimal iTruePossive = Convert.ToDecimal(truePossive);
+            decimal iFalsePossive = Convert.ToDecimal(falsePossive);
+            iPrecision = iTruePossive / (iTruePossive + iFalsePossive);
+            iPrecision = Math.Round(iPrecision, 3);
+            return iPrecision;
+        }
+        //Hàm dùng để tính độ chính xác Accuracy
+        public static decimal Accuracy(int truePossive, int trueNegative, int falsePossive, int falseNegative)
+        {
+            decimal iAccuracy = 1;
+            decimal iTruePossive = Convert.ToDecimal(truePossive);
+            decimal iFalseNegative = Convert.ToDecimal(falseNegative);
+            decimal iTrueNegative = Convert.ToDecimal(trueNegative);
+            decimal iFalsePossive = Convert.ToDecimal(falsePossive);
+            iAccuracy = (iTrueNegative + iTruePossive) / (iTruePossive + iTrueNegative + iFalseNegative + iFalsePossive);
+            iAccuracy = Math.Round(iAccuracy, 3);
+            return iAccuracy;
+        }
+        //Hàm dùng để tính độ đó F1
+        public static decimal F1(decimal iRecall, decimal iPrecision)
+        {
+            decimal iF1 = 0;
+            iF1 = 2 * iPrecision * iRecall / (iRecall + iPrecision);
+            iF1 = Math.Round(iF1, 3);
+            return iF1;
+        }
+        //Hàm dùng để trả về các thông số dùng để đánh giá một giải thuật máy học gồm: true possive, false possive, true negative, false negative
+        public static Dictionary<String, int> TinhThongSo(DataTable dtTest, DataTable dtResult)
+        {
+            Dictionary<String, int> iDictionary = new Dictionary<string, int>();
+            int iTruePossive = 0;
+            int iFalsePossive = 0;
+            int iTrueNegative = 0;
+            int iFalseNegative = 0;
+            int iCount = dtTest.Columns.Count;
+            for (int i = 0; i < dtTest.Rows.Count; i++)
+            {
+                //2 biến dùng để chứa cột "TieuDuong" của table
+                String iTest = dtTest.Rows[i][iCount - 1].ToString();
+                String iResult = dtResult.Rows[i][iCount - 1].ToString();
+                switch (iResult)
+                {
+                    case "Yes":
+                        {
+                            if (iTest == "Yes")
+                                iTruePossive++;
+                            else
+                                iFalseNegative++;
+                            break;
+                        }
+                    case "No":
+                        {
+                            if (iTest == "Yes")
+                                iFalsePossive++;
+                            else
+                                iTrueNegative++;
+                            break;
+                        }
+                }
+            }
+            iDictionary.Add("TruePossive", iTruePossive);
+            iDictionary.Add("FalseNegative", iFalseNegative);
+            iDictionary.Add("TrueNegative", iTrueNegative);
+            iDictionary.Add("FalsePossive", iFalsePossive);
+            return iDictionary;
+        }
+    }    
 }
