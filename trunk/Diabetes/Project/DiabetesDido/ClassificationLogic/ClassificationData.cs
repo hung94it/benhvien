@@ -8,7 +8,7 @@ using Accord.Math;
 
 namespace DiabetesDido.ClassificationLogic
 {
-    class ClassificationData
+    public class ClassificationData
     {
         private DataTable integerDiscreteDatatable;
         private Codification discreteCodification;

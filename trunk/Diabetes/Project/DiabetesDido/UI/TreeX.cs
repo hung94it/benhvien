@@ -20,16 +20,23 @@ namespace DiabetesDido.UI
     public partial class TreeX : Form
     {
         private DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter;
-        private DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter testSetTableAdapter;
-
-        private DecisionTree decisionTree;
-        private NaiveBayes naiveBayes;
-
-        private LearningAlgorithm learningAlgorithm;
-
         private ClassificationData classificationDataForApp;
+        // Active model
+        private LearningAlgorithm activeLearningAlgorithm;
+        // Dictionary contains model
+        private Dictionary<LearningAlgorithm, ModelType> modelList;
 
-        private ClassificationModel classificationModelForApp;
+        internal Dictionary<LearningAlgorithm, ModelType> ModelList
+        {
+            get { return modelList; }
+            set { modelList = value; }
+        }
+
+        internal LearningAlgorithm ActiveLearningAlgorithm
+        {
+            get { return activeLearningAlgorithm; }
+            set { activeLearningAlgorithm = value; }
+        }
 
         internal ClassificationData ClassificationDataForApp
         {
@@ -37,161 +44,96 @@ namespace DiabetesDido.UI
             set { classificationDataForApp = value; }
         }
 
-        internal ClassificationModel ClassificationModelForApp
-        {
-            get { return classificationModelForApp; }
-            set { classificationModelForApp = value; }
-        }
-
-        internal ClassificationData TrainningDataForAlgorithm
-        {
-            get { return classificationDataForApp; }
-            set { classificationDataForApp = value; }
-        }
-
-        public DecisionTree DecisionTree
-        {
-            get { return decisionTree; }
-            private set { decisionTree = value; }
-        }
-
-        public NaiveBayes NaiveBayes
-        {
-            get { return naiveBayes; }
-            private set { naiveBayes = value; }
-        }
-
-        internal LearningAlgorithm LearningAlgorithm
-        {
-            get { return learningAlgorithm; }
-            private set { learningAlgorithm = value; }
-        }
-
         public TreeX()
         {
             InitializeComponent();
 
-            this.trainingSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter();
-            this.testSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter();
+            this.trainingSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter();                              
 
+            //this.ClassificationModelForApp = new ClassificationModel();
             this.radioButtonC45.Checked = true;
-            //this.learningAlgorithm = LearningAlgorithm.C45;
-
-            this.ClassificationModelForApp = new ClassificationModel();
-            this.ClassificationModelForApp.ActiveLearningAlgorithm = LearningAlgorithm.C45;
+            this.ActiveLearningAlgorithm = LearningAlgorithm.C45;
+            this.ModelList = new Dictionary<LearningAlgorithm, ModelType>();
+            
         }
 
         private void TreeX_Load(object sender, EventArgs e)
         {
-            DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter();
-            DataTable trainningDataTable = testSet1TableAdapter.GetData();
+            //DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter();
+            //DataTable trainningDataTable = testSet1TableAdapter.GetData();
 
-            //DataTable trainningDataTable = trainingSetTableAdapter.GetData();
+            DataTable trainningDataTable = trainingSetTableAdapter.GetData();
             this.dataGridView1.DataSource = trainningDataTable;
             this.classificationDataForApp = new ClassificationData(this.dataGridView1.DataSource as DataTable);
         }
 
-        //Create model
+        // buttonCreateModel click event
         private void buttonCreateModel_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
-            if (this.ClassificationModelForApp.haveModel())
+
+            // Ask user what to do when selected model already exists
+            if (this.haveModel())
             {
                 dialogResult = MessageBox.Show("Model này đã có. Bạn có muốn tạo mô hình mới", "Tạo mới", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
-                    this.ClassificationModelForApp.CreateModel(this.ClassificationDataForApp);
+                    this.CreateModel(this.ClassificationDataForApp);
                 }
             }
-            else
+            else // If selected model not exists then create new model
             {
-                this.ClassificationModelForApp.CreateModel(this.ClassificationDataForApp);
+                this.CreateModel(this.ClassificationDataForApp);
             }
 
         }
 
-        // Test data
+        // buttonTestModel click event
         private void buttonTestModel_Click(object sender, EventArgs e)
         {
-            //if (this.ClassificationModelForApp.haveModel())
-            //{
-            //    MessageBox.Show("Chọn thuật toán rồi tạo mô hình đi ku", "Vậy mà cũng ko biết", MessageBoxButtons.OK,
-            //        MessageBoxIcon.Error);
-            //    return;
-            //}
-
-            DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter();
-            DataTable discreteDataTable = testSet1TableAdapter.GetData();
-
-            //DataTable discreteDataTable = testSetTableAdapter.GetData();
-            //DataTable discreteDataTable = trainingSetTableAdapter.GetData();
-
-            // Create a new codification codebook to convert strings into integer symbols
-            Codification codificationTemp = new Codification(discreteDataTable);
-            DataTable discreteDataTableTemp = codificationTemp.Apply(discreteDataTable);
-
-            List<string> columnNames = new List<string>();
-
-            // Get column's name for learning's input
-            for (int columnIndex = 0; columnIndex < discreteDataTable.Columns.Count - 1; columnIndex++)
+            if (!this.haveModel())
             {
-                columnNames.Add(discreteDataTable.Columns[columnIndex].ColumnName);
+                MessageBox.Show("Chọn thuật toán rồi tạo mô hình đi ku", "Vậy mà cũng ko biết", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
             }
 
-            // Get input form discrete data 
-            double[][] inputs = discreteDataTableTemp.ToArray(columnNames.ToArray());
+            //DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter();
+            //DataTable discreteDataTable = testSet1TableAdapter.GetData();
 
-            // Compute the machine outputs
-            int[] predicted = new int[inputs.Length];
+            DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter testSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter();
+            DataTable discreteDataTable = testSetTableAdapter.GetData();
 
-            // Compute predicted value with selected algorithm
-            switch (this.ClassificationModelForApp.ActiveLearningAlgorithm)
-            {
-                case LearningAlgorithm.C45:
-                case LearningAlgorithm.ID3:
-                    for (int i = 0; i < inputs.Length; i++)
-                        predicted[i] = (this.ClassificationModelForApp.GetModel() as DecisionTree).Compute(inputs[i]);
-                    break;
-                case LearningAlgorithm.NaiveBayes:
-                    for (int i = 0; i < inputs.Length; i++)
-                        predicted[i] = (this.ClassificationModelForApp.GetModel() as NaiveBayes).Compute(inputs[i].ToInt32());
-                    break;
-            }
+            //DataTable discreteDataTable = trainingSetTableAdapter.GetData();    
 
-            // Get expected
-            string lastColumnName = discreteDataTable.Columns[discreteDataTable.Columns.Count - 1].ColumnName;
-            int[] expected = discreteDataTableTemp.ToIntArray(lastColumnName).GetColumn(0);
+            ClassificationData data = new ClassificationData(discreteDataTable);
 
-
-            // Use confusion matrix to compute some statistics.
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
-            dataGridView2.DataSource = new List<ConfusionMatrix> { confusionMatrix };
+            dataGridView2.DataSource = this.ModelList[ActiveLearningAlgorithm].TestModel(data);
         }
 
 
-        // View model
+        // buttonViewModel click event
         private void buttonViewModel_Click(object sender, EventArgs e)
         {
-            if (this.ClassificationModelForApp.haveModel())
-            {
-                switch (this.ClassificationModelForApp.ActiveLearningAlgorithm)
+            if (this.haveModel())
+            {                
+                switch (this.ActiveLearningAlgorithm)
                 {
 
                     case LearningAlgorithm.C45:
                     case LearningAlgorithm.ID3:
-                        new FormDecisionTree(this.ClassificationModelForApp.GetModel() as DecisionTree).Show();
+                        new FormDecisionTree((this.GetModel() as DecisionTreeModel).Tree).Show();
                         break;
                     case LearningAlgorithm.NaiveBayes:
                         MessageBox.Show("Chưa làm");
                         break;
-
                 }
             }
             else
             {
                 MessageBox.Show("Chưa có model cho thuật toán này");
             }
-        }
+        }        
 
         // Get selected learning algorithm from user
         private void radioButton_CheckedChanged(object sender, EventArgs e)
@@ -201,9 +143,37 @@ namespace DiabetesDido.UI
             // Ensure that the RadioButton.Checked property changed to true.             
             if (checkedRadioButton.Checked)
             {
-                this.ClassificationModelForApp.ActiveLearningAlgorithm =
+                this.ActiveLearningAlgorithm =
                     (LearningAlgorithm)Enum.Parse(typeof(LearningAlgorithm), checkedRadioButton.Tag as string);
             }
+        }
+
+        public ModelType GetModel()
+        {
+            return this.ModelList[this.ActiveLearningAlgorithm];
+        }
+
+        // Create model base on active learning algorithm
+        private void CreateModel(ClassificationData classificationData)
+        {
+            // Check dictionary already have active model. If not add new model
+            if (!this.ModelList.ContainsKey(this.ActiveLearningAlgorithm))
+            {
+                this.ModelList.Add(this.ActiveLearningAlgorithm, ModelType.CreateModel(this.ActiveLearningAlgorithm));
+            }
+
+            // Trainning model
+            this.ModelList[ActiveLearningAlgorithm].TrainningModel(classificationData);
+        }
+
+        // Check activeAlgorithm already have model or not
+        public bool haveModel()
+        {
+            if (!this.ModelList.ContainsKey(this.ActiveLearningAlgorithm))
+            {
+                return false;
+            }
+            return (this.ModelList[this.ActiveLearningAlgorithm] != null ? true : false);
         }
     }
 

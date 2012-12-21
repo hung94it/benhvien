@@ -86,7 +86,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassificationLogic\C45Model.cs" />
-    <Compile Include="ClassificationLogic\ICreateClassificationModel.cs" />
+    <Compile Include="ClassificationLogic\DecisionTreeModel.cs" />
+    <Compile Include="ClassificationLogic\ID3Model.cs" />
+    <Compile Include="ClassificationLogic\NaiveBayesModel.cs" />
     <Compile Include="DAL\DiabetesDataSetB.cs">
       <DependentUpon>DiabetesDataSetB.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -119,8 +121,13 @@
     <Compile Include="TienXuDuLieu.Designer.cs">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClassificationLogic\ClassificationModel.cs" />
-    <Compile Include="ClassificationLogic\ClassificationModelType.cs" />
+    <Compile Include="ClassificationLogic\ModelType.cs" />
+    <Compile Include="UI\c45test.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\c45test.Designer.cs">
+      <DependentUpon>c45test.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormDecisionTree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +183,9 @@
     <EmbeddedResource Include="TienXuDuLieu.resx">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\c45test.resx">
+      <DependentUpon>c45test.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormDecisionTree.resx">
       <DependentUpon>FormDecisionTree.cs</DependentUpon>
     </EmbeddedResource>
@@ -207,6 +217,7 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="DiabetesDataSet.xsc">
       <DependentUpon>DiabetesDataSet.xsd</DependentUpon>
       <SubType>Designer</SubType>
