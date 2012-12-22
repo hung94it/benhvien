@@ -12,7 +12,6 @@ using Accord.Math;
 using Accord.Statistics.Analysis;
 using Accord.Statistics.Distributions.Univariate;
 using Accord.Statistics.Formats;
-using ZedGraph;
 using Accord.Statistics.Filters;
 
 namespace DiabetesDido.View

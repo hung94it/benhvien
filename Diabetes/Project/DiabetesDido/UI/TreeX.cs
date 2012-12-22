@@ -19,12 +19,12 @@ namespace DiabetesDido.UI
 {
     public partial class TreeX : Form
     {
-        private DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter;
-        private ClassificationData classificationDataForApp;
         // Active model
         private LearningAlgorithm activeLearningAlgorithm;
         // Dictionary contains model
         private Dictionary<LearningAlgorithm, ModelType> modelList;
+        private DataTable trainningData;
+        private DataTable testData;
 
         internal Dictionary<LearningAlgorithm, ModelType> ModelList
         {
@@ -38,39 +38,37 @@ namespace DiabetesDido.UI
             set { activeLearningAlgorithm = value; }
         }
 
-        internal ClassificationData ClassificationDataForApp
-        {
-            get { return classificationDataForApp; }
-            set { classificationDataForApp = value; }
-        }
-
         public TreeX()
         {
-            InitializeComponent();
-
-            this.trainingSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter();                              
-
-            //this.ClassificationModelForApp = new ClassificationModel();
+            InitializeComponent();            
+            
             this.radioButtonC45.Checked = true;
             this.ActiveLearningAlgorithm = LearningAlgorithm.C45;
             this.ModelList = new Dictionary<LearningAlgorithm, ModelType>();
-            
-        }
 
-        private void TreeX_Load(object sender, EventArgs e)
-        {
-            //DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter();
-            //DataTable trainningDataTable = testSet1TableAdapter.GetData();
+            // TrainningSet & TestSet without Na, K, Cl, Ca
+            DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter dataTable1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter();
+            this.trainningData = dataTable1TableAdapter.GetData();            
+            DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter();
+            this.testData = testSet1TableAdapter.GetData();
 
-            DataTable trainningDataTable = trainingSetTableAdapter.GetData();
-            this.dataGridView1.DataSource = trainningDataTable;
-            this.classificationDataForApp = new ClassificationData(this.dataGridView1.DataSource as DataTable);
+            //// TrainningSet & TestSet with Na, K, Cl, Ca
+            //DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter();
+            //this.trainningData = trainingSetTableAdapter.GetData();
+            //DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter testSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter();
+            //this.testData = testSetTableAdapter.GetData();
+
+            //// Test data same as trainning data
+            //this.testData = this.trainningData;
+
+            this.dataGridView1.DataSource = this.trainningData;
         }
 
         // buttonCreateModel click event
         private void buttonCreateModel_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
+            ClassificationData classificationData = new ClassificationData(this.trainningData);
 
             // Ask user what to do when selected model already exists
             if (this.haveModel())
@@ -78,12 +76,12 @@ namespace DiabetesDido.UI
                 dialogResult = MessageBox.Show("Model này đã có. Bạn có muốn tạo mô hình mới", "Tạo mới", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
-                    this.CreateModel(this.ClassificationDataForApp);
+                    this.CreateModel(classificationData);
                 }
             }
             else // If selected model not exists then create new model
             {
-                this.CreateModel(this.ClassificationDataForApp);
+                this.CreateModel(classificationData);
             }
 
         }
@@ -96,18 +94,10 @@ namespace DiabetesDido.UI
                 MessageBox.Show("Chọn thuật toán rồi tạo mô hình đi ku", "Vậy mà cũng ko biết", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
-            }
+            }               
 
-            //DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter();
-            //DataTable discreteDataTable = testSet1TableAdapter.GetData();
-
-            DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter testSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter();
-            DataTable discreteDataTable = testSetTableAdapter.GetData();
-
-            //DataTable discreteDataTable = trainingSetTableAdapter.GetData();    
-
-            ClassificationData data = new ClassificationData(discreteDataTable);
-
+            ClassificationData data = new ClassificationData(this.testData);
+            // Show test result
             dataGridView2.DataSource = this.ModelList[ActiveLearningAlgorithm].TestModel(data);
         }
 
