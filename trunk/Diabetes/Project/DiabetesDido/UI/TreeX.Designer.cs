@@ -159,7 +159,6 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "TreeX";
             this.Text = "DecisionTree";
-            this.Load += new System.EventHandler(this.TreeX_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.groupBox1.ResumeLayout(false);

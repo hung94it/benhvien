@@ -79,10 +79,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Accord.NET\Framework\Release\ZedGraph.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassificationLogic\C45Model.cs" />
@@ -217,7 +213,6 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="DiabetesDataSet.xsc">
       <DependentUpon>DiabetesDataSet.xsd</DependentUpon>
       <SubType>Designer</SubType>

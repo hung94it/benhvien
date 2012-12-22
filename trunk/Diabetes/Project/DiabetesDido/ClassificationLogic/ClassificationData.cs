@@ -73,7 +73,7 @@ namespace DiabetesDido.ClassificationLogic
 
             this.ColumnNames = columnNames.ToArray();
 
-            // Create input data
+            // Create trainning data
             this.DoubleTrainningAttributes = IntegerDiscreteDatatable.ToArray(this.ColumnNames);
             this.IntTrainningAttributes = this.DoubleTrainningAttributes.ToInt32();
 

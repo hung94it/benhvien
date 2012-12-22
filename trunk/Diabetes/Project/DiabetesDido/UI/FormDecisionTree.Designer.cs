@@ -29,33 +29,48 @@
         private void InitializeComponent()
         {
             this.decisionTreeView1 = new Accord.Controls.DecisionTreeView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // decisionTreeView1
             // 
-            this.decisionTreeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.decisionTreeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.decisionTreeView1.Location = new System.Drawing.Point(12, 12);
             this.decisionTreeView1.Name = "decisionTreeView1";
-            this.decisionTreeView1.Size = new System.Drawing.Size(460, 437);
+            this.decisionTreeView1.Size = new System.Drawing.Size(326, 437);
             this.decisionTreeView1.TabIndex = 0;
             this.decisionTreeView1.TreeSource = null;
             // 
-            // FormViewTree
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(344, 12);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(403, 437);
+            this.textBox1.TabIndex = 1;
+            // 
+            // FormDecisionTree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 461);
+            this.ClientSize = new System.Drawing.Size(759, 461);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.decisionTreeView1);
-            this.Name = "FormViewTree";
+            this.Name = "FormDecisionTree";
             this.Text = "Decision Tree";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private Accord.Controls.DecisionTreeView decisionTreeView1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
