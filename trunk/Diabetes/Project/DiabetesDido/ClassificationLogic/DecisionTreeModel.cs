@@ -41,7 +41,7 @@ namespace DiabetesDido.ClassificationLogic
             for (int i = 0; i < inputs.Length; i++)
                 predicted[i] = this.Tree.Compute(inputs[i]);
 
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
+            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 1, 0);
             return new List<ConfusionMatrix> { confusionMatrix };
         }
     }

@@ -23,6 +23,7 @@ namespace DiabetesDido.UI
         private LearningAlgorithm activeLearningAlgorithm;
         // Dictionary contains model
         private Dictionary<LearningAlgorithm, ModelType> modelList;
+        private ClassificationData classificationData;
         private DataTable trainningData;
         private DataTable testData;
 
@@ -68,20 +69,20 @@ namespace DiabetesDido.UI
         private void buttonCreateModel_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
-            ClassificationData classificationData = new ClassificationData(this.trainningData);
+            this.classificationData = new ClassificationData(this.trainningData);
 
             // Ask user what to do when selected model already exists
-            if (this.haveModel())
+            if (this.HaveModel())
             {
                 dialogResult = MessageBox.Show("Model này đã có. Bạn có muốn tạo mô hình mới", "Tạo mới", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
-                    this.CreateModel(classificationData);
+                    this.CreateModel(this.classificationData);
                 }
             }
             else // If selected model not exists then create new model
             {
-                this.CreateModel(classificationData);
+                this.CreateModel(this.classificationData);
             }
 
         }
@@ -89,7 +90,7 @@ namespace DiabetesDido.UI
         // buttonTestModel click event
         private void buttonTestModel_Click(object sender, EventArgs e)
         {
-            if (!this.haveModel())
+            if (!this.HaveModel())
             {
                 MessageBox.Show("Chọn thuật toán rồi tạo mô hình đi ku", "Vậy mà cũng ko biết", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -105,14 +106,14 @@ namespace DiabetesDido.UI
         // buttonViewModel click event
         private void buttonViewModel_Click(object sender, EventArgs e)
         {
-            if (this.haveModel())
+            if (this.HaveModel())
             {                
                 switch (this.ActiveLearningAlgorithm)
                 {
 
                     case LearningAlgorithm.C45:
                     case LearningAlgorithm.ID3:
-                        new FormDecisionTree((this.GetModel() as DecisionTreeModel).Tree).Show();
+                        new FormDecisionTree((this.GetModel() as DecisionTreeModel).Tree, this.classificationData).Show();
                         break;
                     case LearningAlgorithm.NaiveBayes:
                         MessageBox.Show("Chưa làm");
@@ -138,6 +139,7 @@ namespace DiabetesDido.UI
             }
         }
 
+        // Get active model
         public ModelType GetModel()
         {
             return this.ModelList[this.ActiveLearningAlgorithm];
@@ -157,7 +159,7 @@ namespace DiabetesDido.UI
         }
 
         // Check activeAlgorithm already have model or not
-        public bool haveModel()
+        public bool HaveModel()
         {
             if (!this.ModelList.ContainsKey(this.ActiveLearningAlgorithm))
             {
