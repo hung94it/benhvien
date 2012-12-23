@@ -7,48 +7,60 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Accord.MachineLearning.DecisionTrees;
+using DiabetesDido.ClassificationLogic;
 
 namespace DiabetesDido.UI
 {
     public partial class FormDecisionTree : Form
     {
+        private ClassificationData classificationData;
+
         private FormDecisionTree()
         {
             InitializeComponent();
         }
 
-        public FormDecisionTree(DecisionTree tree)
+        public FormDecisionTree(DecisionTree tree, ClassificationData data)
             : this()
         {
+            this.classificationData = data;
+
             // Show the learned tree in the view
             decisionTreeView1.TreeSource = tree;
+            decisionTreeView1.SetNodeName(this.classificationData);
             
-            //TreeNode node = decisionTreeView1.no
-
-            //textBox1.Text 
             if (tree != null && tree.Root != null)
-                convert(tree.Root, "");
+                CreateRuleList(tree.Root, "");
         }
 
-
-
-
-        private TreeNode convert(DecisionNode node, string stringTemp)
+        private void CreateRuleList(DecisionNode node, string stringTemp)
         {
-            TreeNode treeNode = new TreeNode(node.ToString());
+            string attributeName;
+            string attributeValue;
+            string connectSymbol = "";
 
             if (node.IsLeaf)
             {
-                treeNode.Nodes.Add(new TreeNode(node.Output.ToString()));
-                textBox1.Text += stringTemp + Environment.NewLine + Environment.NewLine;
+                attributeName = this.classificationData.LastColumnName;
+                attributeValue = this.classificationData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Output));
+
+                if (node.Output.HasValue)
+                {
+                    textBox1.Text += stringTemp + " ==> " + attributeValue + Environment.NewLine + Environment.NewLine;                    
+                }
             }
             else
             {
                 foreach (var child in node.Branches)
-                    treeNode.Nodes.Add(convert(child, stringTemp + " & " + child.ToString()));
-            }
+                {
+                    attributeName = child.Owner.Attributes[child.Parent.Branches.AttributeIndex].Name;
+                    attributeValue = this.classificationData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(child.Value));
 
-            return treeNode;
+                    connectSymbol = stringTemp.Equals("") ? "" : " & ";
+
+                    CreateRuleList(child, stringTemp + connectSymbol + attributeName + " = " + attributeValue);                   
+                }
+            }
         }
     }
 }

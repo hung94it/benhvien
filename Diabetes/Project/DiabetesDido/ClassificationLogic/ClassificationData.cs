@@ -16,11 +16,18 @@ namespace DiabetesDido.ClassificationLogic
         private int[][] intTrainningAttributes;
         private int[] classifierAttribute;
         private string[] columnNames;
+        private string lastColumnName;
+
+        public string LastColumnName
+        {
+            get { return lastColumnName; }
+            private set { lastColumnName = value; }
+        }
 
         public string[] ColumnNames
         {
             get { return columnNames; }
-            set { columnNames = value; }
+            private set { columnNames = value; }
         }
 
         public int[][] IntTrainningAttributes
@@ -47,7 +54,7 @@ namespace DiabetesDido.ClassificationLogic
             private set { discreteCodification = value; }
         }
 
-        public DataTable IntegerDiscreteDatatable
+        public DataTable IntergerDiscreteDatatable
         {
             get { return integerDiscreteDatatable; }
             private set { integerDiscreteDatatable = value; }
@@ -61,25 +68,26 @@ namespace DiabetesDido.ClassificationLogic
         private void Initialize(DataTable dataTable)
         {
             this.DiscreteCodification = new Codification(dataTable);
-            this.IntegerDiscreteDatatable = this.DiscreteCodification.Apply(dataTable);
+            this.IntergerDiscreteDatatable = this.DiscreteCodification.Apply(dataTable);
 
             List<string> columnNames = new List<string>();
 
             // Get column's name of training data
-            for (int columnIndex = 0; columnIndex < IntegerDiscreteDatatable.Columns.Count - 1; columnIndex++)
+            for (int columnIndex = 0; columnIndex < IntergerDiscreteDatatable.Columns.Count - 1; columnIndex++)
             {
-                columnNames.Add(IntegerDiscreteDatatable.Columns[columnIndex].ColumnName);
+                columnNames.Add(IntergerDiscreteDatatable.Columns[columnIndex].ColumnName);
             }
-
+          
             this.ColumnNames = columnNames.ToArray();
+            this.lastColumnName = this.IntergerDiscreteDatatable.Columns[this.IntergerDiscreteDatatable.Columns.Count - 1].ColumnName;
 
             // Create trainning data
-            this.DoubleTrainningAttributes = IntegerDiscreteDatatable.ToArray(this.ColumnNames);
+            this.DoubleTrainningAttributes = IntergerDiscreteDatatable.ToArray(this.ColumnNames);
             this.IntTrainningAttributes = this.DoubleTrainningAttributes.ToInt32();
 
             // Create classifier data for trainning
-            string lastColumnName = IntegerDiscreteDatatable.Columns[IntegerDiscreteDatatable.Columns.Count - 1].ColumnName;
-            this.ClassifierAttribute = IntegerDiscreteDatatable.ToIntArray(lastColumnName).GetColumn(0);
+            string lastColumnName = IntergerDiscreteDatatable.Columns[IntergerDiscreteDatatable.Columns.Count - 1].ColumnName;
+            this.ClassifierAttribute = IntergerDiscreteDatatable.ToIntArray(lastColumnName).GetColumn(0);
 
         }
 

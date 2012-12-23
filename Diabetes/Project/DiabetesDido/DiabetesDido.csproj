@@ -124,6 +124,12 @@
     <Compile Include="UI\c45test.Designer.cs">
       <DependentUpon>c45test.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\DecisionTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\DecisionTreeView.Designer.cs">
+      <DependentUpon>DecisionTreeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormDecisionTree.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\c45test.resx">
       <DependentUpon>c45test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\DecisionTreeView.resx">
+      <DependentUpon>DecisionTreeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormDecisionTree.resx">
       <DependentUpon>FormDecisionTree.cs</DependentUpon>
