@@ -124,18 +124,26 @@ namespace DiabetesDido.UI
                                     
             if (node.IsLeaf)
             {
-                attributeName = this.classificationData.LastColumnName;
-                attributeValue = this.classificationData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Output));
-
                 if (node.Output.HasValue)
                 {
+                    attributeName = this.classificationData.LastColumnName;
+                    attributeValue = this.classificationData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Output));
+
                     treeNode.Nodes.Add(new TreeNode(attributeValue));
+                }
+                else
+                { 
+                    treeNode.Nodes.Add(new TreeNode(node.Output.ToString()));
                 }
             }
             else
             {
                 foreach (var child in node.Branches)
+                {
+                    //if (child.IsLeaf && !child.Output.HasValue)
+                    //    break;
                     treeNode.Nodes.Add(CreateRuleList(child));
+                }
             }
 
             return treeNode;
