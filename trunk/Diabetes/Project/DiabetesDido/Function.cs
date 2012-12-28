@@ -78,7 +78,7 @@ namespace DiabetesDido
         //Hàm dùng để rời rạc giá trị của cột trong bảng dữ liệu
         public static String TinhGiaTriRoiRac(decimal giaTri,String colName, int khoang)
         {
-            DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
             DataTable dt = dataSetTA.GetData();
             decimal minValue = Convert.ToDecimal(dt.Compute("min(" + colName + ")", string.Empty));
             decimal maxValue = Convert.ToDecimal(dt.Compute("max(" + colName + ")", string.Empty));
@@ -95,18 +95,18 @@ namespace DiabetesDido
                 
             };
             if (iCount == 1)
-                giaTriRoiRac = "<" + giaTriMoi.ToString();
+                giaTriRoiRac = "(0," + giaTriMoi.ToString()+")";
             else if (iCount == khoang)
-                giaTriRoiRac = "" + giaTriMoi.ToString() + "" + ">";
+                giaTriRoiRac = "[" + giaTriMoi.ToString() + ",+)";
             else
-                giaTriRoiRac = (giaTriMoi - giaTriTrungBinhKhoang).ToString() + "_" + giaTriMoi.ToString();
+                giaTriRoiRac ="["+ (giaTriMoi - giaTriTrungBinhKhoang).ToString() + "," + giaTriMoi.ToString() + ")";
             return giaTriRoiRac;
         }
         //Hàm dùng để tại ra các khoảng giá trị đã rời rạc
         public static void TaoBayesObject(String colName,int khoang)
         {
-            DiabetesDataSetTableAdapters.BayesObjectTableAdapter BayesObjectTA = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-            DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter BayesObjectTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
             DataTable dt = dataSetTA.GetData();
             decimal minValue = Convert.ToDecimal(dt.Compute("min(" + colName + ")", string.Empty));
             decimal maxValue = Convert.ToDecimal(dt.Compute("max(" + colName + ")", string.Empty));
@@ -128,7 +128,7 @@ namespace DiabetesDido
             }
         }
         //Hàm dùng để cập nhập lại bảng DataSetTemp sau khi rời rạc hóa một thuộc tính
-        public static void CapNhapDataSetTemp(DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA, decimal maBN, String colName, String giaTriRoiRac)
+        public static void CapNhapDataSetTemp(DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA, decimal maBN, String colName, String giaTriRoiRac)
         {
             DataTable dataSetTempTable = dataSetTempTA.GetDataByOne(maBN);
             DataRow newRow = dataSetTempTable.NewRow();
@@ -148,9 +148,9 @@ namespace DiabetesDido
         //Hàm dùng để chia dữ liệu theo tỉ lệ nhập vào
         public void ChiaDuLieu(int phanTramDuLieu)
         {
-            DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
-            DiabetesDataSetTableAdapters.TestSetTableAdapter testSetTA = new DiabetesDataSetTableAdapters.TestSetTableAdapter();
-            DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.TestSetTableAdapter testSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TestSetTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
             DataTable dtSetTemp=dataSetTempTA.GetData();
             int luongDuLieu = dtSetTemp.Rows.Count * phanTramDuLieu / 100;
             int iCount = 0;
@@ -174,8 +174,8 @@ namespace DiabetesDido
         //Hàm dùng để huấn luyện dữ liệu dành cho thuật toán Naive Bayes
         public void HuanLuyenBayes()
         {
-            DiabetesDataSetTableAdapters.BayesObjectTableAdapter dtBayesAdapter = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-            DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtSetTempAdapter = new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter dtBayesAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtSetTempAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
             DataTable dtBayes = dtBayesAdapter.GetData();
             DataTable dtSetTemp = dtSetTempAdapter.GetData();
             foreach (DataRow dtRow in dtBayes.Rows)
@@ -194,7 +194,7 @@ namespace DiabetesDido
         //Hàm dùng để tính kết quả của một bảng trong bộ thử nghiệm
         public static DataTable NaiveBayes( DataTable dtTestSet)
         {
-            DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA= new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA= new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
             DataTable dtBayes = bayesTA.GetData();
             int possiveNumber = dtTestSet.Select("TieuDuong='Yes'").Count();
             int negativeNumber = dtTestSet.Select("TieuDuong='No'").Count();

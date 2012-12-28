@@ -1,4 +1,5 @@
-﻿namespace DiabetesDido.View
+﻿using DiabetesDido.DAL;
+namespace DiabetesDido.View
 {
     partial class Form2
     {
@@ -32,11 +33,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.diabetesDataSet = new DiabetesDido.DiabetesDataSet();
+            this.diabetesDataSet = new DiabetesDido.DAL.DiabetesDataSet();
             this.trainingSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.trainingSetTableAdapter = new DiabetesDido.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
-            this.tableAdapterManager = new DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager();
-            this.testSetTableAdapter = new DiabetesDido.DiabetesDataSetTableAdapters.TestSetTableAdapter();
+            this.trainingSetTableAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
+            this.tableAdapterManager = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TableAdapterManager();
+            this.testSetTableAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TestSetTableAdapter();
             this.trainingSetBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -122,7 +123,7 @@
             this.dataGridViewTextBoxColumn73 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn74 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bayesObjectBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bayesObjectTableAdapter = new DiabetesDido.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            this.bayesObjectTableAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
             this.bayesObjectDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn36 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn37 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -190,7 +191,7 @@
             this.tableAdapterManager.DataSetTempTableAdapter = null;
             this.tableAdapterManager.TestSetTableAdapter = this.testSetTableAdapter;
             this.tableAdapterManager.TrainingSetTableAdapter = this.trainingSetTableAdapter;
-            this.tableAdapterManager.UpdateOrder = DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = DiabetesDido.DAL.DiabetesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.XetNghiemTableAdapter = null;
             // 
             // testSetTableAdapter
@@ -945,8 +946,8 @@
         private System.Windows.Forms.Button button2;
         private DiabetesDataSet diabetesDataSet;
         private System.Windows.Forms.BindingSource trainingSetBindingSource;
-        private DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter;
-        private DiabetesDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter;
+        private DiabetesDido.DAL.DiabetesDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingNavigator trainingSetBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
@@ -996,7 +997,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn34;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn35;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn39;
-        private DiabetesDataSetTableAdapters.TestSetTableAdapter testSetTableAdapter;
+        private DiabetesDido.DAL.DiabetesDataSetTableAdapters.TestSetTableAdapter testSetTableAdapter;
         private System.Windows.Forms.BindingSource testSetBindingSource;
         private System.Windows.Forms.DataGridView testSetDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn41;
@@ -1034,7 +1035,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn73;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn74;
         private System.Windows.Forms.BindingSource bayesObjectBindingSource;
-        private DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTableAdapter;
+        private DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTableAdapter;
         private System.Windows.Forms.DataGridView bayesObjectDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn36;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn37;
