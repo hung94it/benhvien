@@ -52,7 +52,7 @@ namespace DiabetesDido
 
         private void cboThuocTinh_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
             DataTable dt = dataSetTA.GetData();
             decimal giaTriTrungBinh = 0;
             decimal doLechChuan = 0;
@@ -95,14 +95,13 @@ namespace DiabetesDido
             {
                 String colName = cboThuocTinh.Text;
                 int khoangRoiRac = Convert.ToInt16(txtKhoang.Text);
-                DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
-                DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA= new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
-                DiabetesDataSetTableAdapters.BayesObjectTableAdapter dataBayesTA = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+                DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
+                DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA= new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+                DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter dataBayesTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
                 DataTable dataSetTable=dataSetTA.GetData();
                 Function function = new Function();
                 int dataSetColIndex = dataSetTable.Columns.IndexOf(colName);
-                prBar.Minimum = 1;
-                prBar.Maximum = dataSetTable.Rows.Count;
+
                 dataBayesTA.DeleteByOne(colName);
                 foreach (DataRow dtRow in dataSetTable.Rows)
                 {
@@ -112,23 +111,23 @@ namespace DiabetesDido
                     decimal maBN = Convert.ToDecimal(dtRow[1]);
                     String tieuDuong = dtRow[5].ToString();
                     Function.CapNhapDataSetTemp(dataSetTempTA, maBN, colName, giaTriRoiRac);
-                    prBar.Minimum++;
+
                 }
                 Function.TaoBayesObject(colName, khoangRoiRac);
-                prBar.Refresh();
+
                 this.dataSetTempTableAdapter.Fill(this.diabetesDataSet.DataSetTemp);
             }
         }
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
         }
 
         private void btnChiaDuLieu_Click(object sender, EventArgs e)
         {
             Function function = new Function();
-            DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
             if (txtPhanTramDuLieu.Text == "")
             {
                 MessageBox.Show("Chưa nhập lượng dữ liệu cần chia", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -165,20 +164,6 @@ namespace DiabetesDido
                 String colName = cboThuocTinh.Text;
                 ThongKeDuLieuRoiRac thongKe = new ThongKeDuLieuRoiRac(colName);
                 thongKe.Show();
-            }
-        }
-
-        private void btnHuyenLuyen_Click(object sender, EventArgs e)
-        {
-            DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
-            if (trainingSetTA.GetData().Count > 0)
-            {
-                DuLieuHuanLuyen huanLuyen = new DuLieuHuanLuyen();
-                huanLuyen.Show();
-            }
-            else
-            {
-                MessageBox.Show("Bạn chưa thực hiện chia dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

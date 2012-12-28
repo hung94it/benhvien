@@ -28,7 +28,7 @@ namespace DiabetesDido
         {
             // TODO: This line of code loads data into the 'diabetesDataSet.TrainingSet' table. You can move, or remove it, as needed.
             this.trainingSetTableAdapter.Fill(this.diabetesDataSet.TrainingSet);
-            DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
             DataTable dt = trainingSetTA.GetData();
             int soThuocTinh = dt.Columns.Count;
             int soMacBenh = dt.Select("TieuDuong=True").Count();

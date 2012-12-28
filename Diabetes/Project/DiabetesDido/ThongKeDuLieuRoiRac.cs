@@ -24,8 +24,8 @@ namespace DiabetesDido
         private void ThongKeDuLieuRoiRac_Load(object sender, EventArgs e)
         {
             this.Text = "Bảng thống kê dữ liệu của thuộc tính: " + ColName;
-            DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
-            DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
             DataRow[] bayesRows=bayesTA.GetData().Select("TenThuocTinh='"+ColName+"'");
             DataTable dtBayes = bayesTA.GetData();
             DataTable dtSetTemp = dataSetTempTA.GetData();

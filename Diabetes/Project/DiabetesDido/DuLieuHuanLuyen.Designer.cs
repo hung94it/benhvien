@@ -1,4 +1,5 @@
-﻿namespace DiabetesDido
+﻿using DiabetesDido.DAL;
+namespace DiabetesDido
 {
     partial class DuLieuHuanLuyen
     {
@@ -30,10 +31,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DuLieuHuanLuyen));
-            this.diabetesDataSet = new DiabetesDido.DiabetesDataSet();
+            this.diabetesDataSet = new DiabetesDido.DAL.DiabetesDataSet();
             this.trainingSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.trainingSetTableAdapter = new DiabetesDido.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
-            this.tableAdapterManager = new DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager();
+            this.trainingSetTableAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
+            this.tableAdapterManager = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TableAdapterManager();
             this.trainingSetBindingNavigator = new System.Windows.Forms.BindingNavigator(this.components);
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -124,7 +125,7 @@
             this.tableAdapterManager.DataSetTempTableAdapter = null;
             this.tableAdapterManager.TestSetTableAdapter = null;
             this.tableAdapterManager.TrainingSetTableAdapter = this.trainingSetTableAdapter;
-            this.tableAdapterManager.UpdateOrder = DiabetesDido.DiabetesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.UpdateOrder = DiabetesDido.DAL.DiabetesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.XetNghiemTableAdapter = null;
             // 
             // trainingSetBindingNavigator
@@ -625,8 +626,8 @@
 
         private DiabetesDataSet diabetesDataSet;
         private System.Windows.Forms.BindingSource trainingSetBindingSource;
-        private DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter;
-        private DiabetesDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter;
+        private DiabetesDido.DAL.DiabetesDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.BindingNavigator trainingSetBindingNavigator;
         private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;

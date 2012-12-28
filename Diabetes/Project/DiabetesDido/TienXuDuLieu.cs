@@ -48,7 +48,7 @@ namespace DiabetesDido
         private void btnRoiRacHoa_Click(object sender, EventArgs e)
         {
             RoiRacHoaDuLieu roiRacHoaDuLieu = new RoiRacHoaDuLieu();
-            DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
             int iCount = Convert.ToInt16(dataSetTempTA.GetData().Rows.Count);
             if (iCount > 0)
             {
@@ -56,7 +56,7 @@ namespace DiabetesDido
                 if (dialogResult == DialogResult.No)
                 {
                     dataSetTempTA.DeleteAllData();
-                    DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+                    DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
                     DataTable dataSetTable = dataSetTA.GetData();
                     foreach (DataRow i in dataSetTable.Rows)
                     {
@@ -70,7 +70,7 @@ namespace DiabetesDido
             }
             else
             {
-                DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDataSetTableAdapters.DataSetTableAdapter();
+                DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
                 DataTable dataSetTable = dataSetTA.GetData();
                 foreach (DataRow i in dataSetTable.Rows)
                 {

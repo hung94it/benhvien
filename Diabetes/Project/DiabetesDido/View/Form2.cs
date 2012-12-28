@@ -18,9 +18,9 @@ namespace DiabetesDido.View
 {
     public partial class Form2 : Form
     {
-        DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
-        DiabetesDataSetTableAdapters.BayesObjectTableAdapter BayesTA = new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-        DiabetesDataSetTableAdapters.TestSetTableAdapter testSetTA = new DiabetesDataSetTableAdapters.TestSetTableAdapter();
+        DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
+        DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter BayesTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+        DiabetesDido.DAL.DiabetesDataSetTableAdapters.TestSetTableAdapter testSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TestSetTableAdapter();
         double[,][] traingResult;
         public Form2()
         {
@@ -166,7 +166,7 @@ namespace DiabetesDido.View
          //Hàm dùng để tính kết quả của một bảng trong bộ thử nghiệm
         public static DataTable NaiveBayes( DataTable dtTestSet)
         {
-            DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA= new DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA= new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
             DataTable dtBayes = bayesTA.GetData();
             int possiveNumber = dtTestSet.Select("TieuDuong='Yes'").Count();
             int negativeNumber = dtTestSet.Select("TieuDuong='No'").Count();

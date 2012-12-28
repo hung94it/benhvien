@@ -69,6 +69,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Accord.NET\Framework\Externals\AForge.NET\AForge.dll</HintPath>
     </Reference>
+    <Reference Include="DevComponents.DotNetBar.Schedule, Version=10.9.0.10, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=10.9.0.10, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.DotNetBar2, Version=10.9.0.10, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
+    <Reference Include="DevComponents.Instrumentation, Version=10.9.0.10, Culture=neutral, PublicKeyToken=f90dc37c26666a67" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -89,7 +93,7 @@
       <DependentUpon>DiabetesDataSetB.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DiabetesDataSet.Designer.cs">
+    <Compile Include="DAL\DiabetesDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DiabetesDataSet.xsd</DependentUpon>
@@ -135,6 +139,15 @@
     </Compile>
     <Compile Include="UI\FormDecisionTree.Designer.cs">
       <DependentUpon>FormDecisionTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\FormMainTabCreateModel.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\FormNaiveBayes.cs">
       <SubType>Form</SubType>
@@ -194,6 +207,9 @@
     <EmbeddedResource Include="UI\FormDecisionTree.resx">
       <DependentUpon>FormDecisionTree.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormNaiveBayes.resx">
       <DependentUpon>FormNaiveBayes.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,16 +238,16 @@
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="DiabetesDataSet.xsc">
+    <None Include="DAL\DiabetesDataSet.xsc">
       <DependentUpon>DiabetesDataSet.xsd</DependentUpon>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DiabetesDataSet.xsd">
+    <None Include="DAL\DiabetesDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>DiabetesDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DiabetesDataSet.xss">
+    <None Include="DAL\DiabetesDataSet.xss">
       <DependentUpon>DiabetesDataSet.xsd</DependentUpon>
     </None>
     <None Include="DAL\DiabetesDataSetB.xsc">
