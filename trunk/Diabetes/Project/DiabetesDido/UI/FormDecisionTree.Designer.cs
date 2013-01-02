@@ -28,64 +28,113 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.decisionTreeView1 = new DiabetesDido.UI.DecisionTreeView();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxYesRules = new System.Windows.Forms.TextBox();
+            this.textBoxNoRules = new System.Windows.Forms.TextBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.decisionTreeView = new DiabetesDido.UI.DecisionTreeView();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxYesRules
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(344, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(403, 183);
-            this.textBox1.TabIndex = 1;
+            this.textBoxYesRules.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxYesRules.Location = new System.Drawing.Point(0, 0);
+            this.textBoxYesRules.Multiline = true;
+            this.textBoxYesRules.Name = "textBoxYesRules";
+            this.textBoxYesRules.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxYesRules.Size = new System.Drawing.Size(394, 227);
+            this.textBoxYesRules.TabIndex = 1;
             // 
-            // decisionTreeView1
+            // textBoxNoRules
             // 
-            this.decisionTreeView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
-            this.decisionTreeView1.Location = new System.Drawing.Point(12, 12);
-            this.decisionTreeView1.Name = "decisionTreeView1";
-            this.decisionTreeView1.Size = new System.Drawing.Size(326, 437);
-            this.decisionTreeView1.TabIndex = 2;
-            this.decisionTreeView1.TreeSource = null;
+            this.textBoxNoRules.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxNoRules.Location = new System.Drawing.Point(0, 0);
+            this.textBoxNoRules.Multiline = true;
+            this.textBoxNoRules.Name = "textBoxNoRules";
+            this.textBoxNoRules.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxNoRules.Size = new System.Drawing.Size(394, 230);
+            this.textBoxNoRules.TabIndex = 3;
             // 
-            // textBox2
+            // splitContainer1
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(344, 201);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox2.Size = new System.Drawing.Size(403, 248);
-            this.textBox2.TabIndex = 3;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.decisionTreeView);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(759, 461);
+            this.splitContainer1.SplitterDistance = 361;
+            this.splitContainer1.TabIndex = 4;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.textBoxYesRules);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.textBoxNoRules);
+            this.splitContainer2.Size = new System.Drawing.Size(394, 461);
+            this.splitContainer2.SplitterDistance = 227;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // decisionTreeView
+            // 
+            this.decisionTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.decisionTreeView.Location = new System.Drawing.Point(0, 0);
+            this.decisionTreeView.Name = "decisionTreeView";
+            this.decisionTreeView.Size = new System.Drawing.Size(361, 461);
+            this.decisionTreeView.TabIndex = 2;
+            this.decisionTreeView.TreeSource = null;
             // 
             // FormDecisionTree
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 461);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.decisionTreeView1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.splitContainer1);
             this.Name = "FormDecisionTree";
             this.Text = "Decision Tree";
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private DecisionTreeView decisionTreeView1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxYesRules;
+        private DecisionTreeView decisionTreeView;
+        private System.Windows.Forms.TextBox textBoxNoRules;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
     }
 }
