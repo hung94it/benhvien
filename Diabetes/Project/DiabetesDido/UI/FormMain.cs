@@ -6,16 +6,20 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
 
 namespace DiabetesDido.UI
 {
     public partial class FormMain : DevComponents.DotNetBar.Metro.MetroForm
     {
+        
+
         public FormMain()
         {
             InitializeComponent();
 
             InitializeTabCreateModel();
+            
         }
 
     }

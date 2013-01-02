@@ -36,6 +36,7 @@ namespace DiabetesDido
                 }
             }
         }
+
         public String RoiRacHoaTuoi(decimal namSinh)
         {
             if (namSinh < 10)

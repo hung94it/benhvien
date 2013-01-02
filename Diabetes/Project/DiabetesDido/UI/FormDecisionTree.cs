@@ -26,8 +26,8 @@ namespace DiabetesDido.UI
             this.classificationData = data;
 
             // Show the learned tree in the view
-            decisionTreeView1.TreeSource = tree;
-            decisionTreeView1.SetNodeName(this.classificationData);
+            decisionTreeView.TreeSource = tree;
+            decisionTreeView.SetNodeName(this.classificationData);
             
             if (tree != null && tree.Root != null)
                 CreateRuleList(tree.Root, "");
@@ -46,7 +46,14 @@ namespace DiabetesDido.UI
 
                 if (node.Output.HasValue)
                 {
-                    textBox1.Text += stringTemp + " ==> " + attributeValue + Environment.NewLine + Environment.NewLine;                    
+                    if (attributeValue.Equals("Yes"))
+                    {
+                        textBoxYesRules.Text += stringTemp + " ==> " + attributeValue + Environment.NewLine + Environment.NewLine;
+                    }
+                    else
+                    {
+                        textBoxNoRules.Text += stringTemp + " ==> " + attributeValue + Environment.NewLine + Environment.NewLine;
+                    }
                 }
             }
             else

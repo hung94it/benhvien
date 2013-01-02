@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Linq;
+//using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using DevComponents.DotNetBar;
 using Accord.Controls;
 using Accord.MachineLearning.Bayes;
 using Accord.MachineLearning.DecisionTrees;
 using Accord.MachineLearning.DecisionTrees.Learning;
 using Accord.Math;
 using Accord.Statistics.Analysis;
-using Accord.Statistics.Distributions.Univariate;
+//using Accord.Statistics.Distributions.Univariate;
 using Accord.Statistics.Filters;
-using DiabetesDido.ClassificationLogic;
+using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
+using DiabetesDido.ClassificationLogic;
+using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
 
 namespace DiabetesDido.UI
 {
     public partial class FormMain
     {
+        private TrainningDataTableAdapter trainningDataTAbleAdapter;
         // Active model
         private LearningAlgorithm activeLearningAlgorithm;
         // Dictionary contains model
@@ -28,11 +31,12 @@ namespace DiabetesDido.UI
         private ClassificationData classificationData;
         private DataTable trainningData;
         private DataTable testData;
+        
 
         internal Dictionary<LearningAlgorithm, ModelType> ModelList
         {
             get { return modelList; }
-            set { modelList = value; }
+            private set { modelList = value; }
         }
 
         internal LearningAlgorithm ActiveLearningAlgorithm
@@ -42,34 +46,76 @@ namespace DiabetesDido.UI
         }
 
         public void InitializeTabCreateModel()
-        {                      
+        {            
             this.checkBoxXNaiveBayes.Checked = true;
             this.ActiveLearningAlgorithm = LearningAlgorithm.NaiveBayes;
             this.ModelList = new Dictionary<LearningAlgorithm, ModelType>();
 
-            // TrainningSet & TestSet without Na, K, Cl, Ca
-            DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter dataTable1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter();
-            this.trainningData = dataTable1TableAdapter.GetData();            
-            DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter testSet1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSet1TableAdapter();
-            this.testData = testSet1TableAdapter.GetData();
+            trainningDataTAbleAdapter = new TrainningDataTableAdapter();            
+            this.trainningData = trainningDataTAbleAdapter.GetData();
+            
+            //// TrainningSet & TestSet without Na, K, Cl, Ca
+            //DataTable1TableAdapter dataTable1TableAdapter = new DataTable1TableAdapter();
+            //this.trainningData = dataTable1TableAdapter.GetData();            
+            //TestSet1TableAdapter testSet1TableAdapter = new TestSet1TableAdapter();
+            //this.testData = testSet1TableAdapter.GetData();
 
             //// TrainningSet & TestSet with Na, K, Cl, Ca
-            //DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter();
+            //TrainingSetTableAdapter trainingSetTableAdapter = new TrainingSetTableAdapter();
             //this.trainningData = trainingSetTableAdapter.GetData();
-            //DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter testSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter();
+            //TestSetTableAdapter testSetTableAdapter = new TestSetTableAdapter();
             //this.testData = testSetTableAdapter.GetData();
 
-            //// Test data same as trainning data
-            //this.testData = this.trainningData;
+            // Test data same as trainning data
+            this.testData = this.trainningData;
 
-            this.dataGridViewX1.DataSource = this.trainningData;
+            this.dataGridViewXTrainning.DataSource = this.trainningData;
+
+            List<Percent> percent = new List<Percent>();
+            //percent.Add(new Percent("50%", 50));
+            //percent.Add(new Percent("60%", 60));
+            //percent.Add(new Percent("70%", 70));
+            //percent.Add(new Percent("80%", 80));
+            percent.Add(new Percent("90%", 90));
+            percent.Add(new Percent("100%", 0));
+
+            comboBoxExTrainningDataPercent.DataSource = percent;
+            comboBoxExTrainningDataPercent.DisplayMember = "Name";
+            comboBoxExTrainningDataPercent.ValueMember = "Value";
+            if (this.comboBoxExTrainningDataPercent.Items.Count > 0)
+            {
+                this.comboBoxExTrainningDataPercent.SelectedIndex = 0;
+            }
         }
 
-        // buttonCreateModel click event
+        // buttonXCreateModel click event
         private void buttonXCreateModel_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
-            this.classificationData = new ClassificationData(this.trainningData);
+            DataTable trainningTable = this.trainningData.Clone();
+            int countTrainningData = 0;
+
+            if (this.comboBoxExTrainningDataPercent.SelectedValue != null)
+            {
+                countTrainningData = Convert.ToInt32(Math.Truncate((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * this.trainningData.Rows.Count / 100));
+            }
+
+            var query = this.trainningData.Rows.Cast<DataRow>().Skip(countTrainningData);
+            this.testData = query.CopyToDataTable<DataRow>();
+
+            if (countTrainningData == 0)
+            {
+                trainningTable = this.trainningData;
+            }
+            else
+            {
+                query = this.trainningData.Rows.Cast<DataRow>().Take(countTrainningData);
+                trainningTable = query.CopyToDataTable<DataRow>();
+            }
+            
+            this.classificationData = new ClassificationData(trainningTable);
+
+            //this.classificationData = new ClassificationData(this.trainningData);
 
             // Ask user what to do when selected model already exists
             if (this.HaveModel())
@@ -87,8 +133,8 @@ namespace DiabetesDido.UI
 
         }
 
-        // buttonTestModel click event
-        private void buttonX1_Click(object sender, EventArgs e)
+        // buttonXTestModel click event
+        private void buttonXTestModel_Click(object sender, EventArgs e)
         {
             if (!this.HaveModel())
             {
@@ -99,12 +145,12 @@ namespace DiabetesDido.UI
 
             ClassificationData data = new ClassificationData(this.testData);
             // Show test result
-            dataGridViewX2.DataSource = this.ModelList[ActiveLearningAlgorithm].TestModel(data);
+            dataGridViewXTrainningResult.DataSource = this.ModelList[ActiveLearningAlgorithm].TestModel(data);
         }
 
 
-        // buttonViewModel click event
-        private void buttonX3_Click(object sender, EventArgs e)
+        // buttonXViewModel click event
+        private void buttonXViewModel_Click(object sender, EventArgs e)
         {
             if (this.HaveModel())
             {                
@@ -167,5 +213,6 @@ namespace DiabetesDido.UI
             }
             return (this.ModelList[this.ActiveLearningAlgorithm] != null ? true : false);
         }
+
     }
 }
