@@ -19,10 +19,7 @@ namespace DiabetesDido.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter();  
-            DataTable trainningDataTable = trainingSetTableAdapter.GetData();
-            this.dataGridView1.DataSource = trainningDataTable;
-            ClassificationData classificationDataForApp = new ClassificationData(this.dataGridView1.DataSource as DataTable);
+
         }
     }
 }
