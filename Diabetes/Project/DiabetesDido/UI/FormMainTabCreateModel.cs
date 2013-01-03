@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-//using System.ComponentModel;
+using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
@@ -12,7 +12,6 @@ using Accord.MachineLearning.DecisionTrees;
 using Accord.MachineLearning.DecisionTrees.Learning;
 using Accord.Math;
 using Accord.Statistics.Analysis;
-//using Accord.Statistics.Distributions.Univariate;
 using Accord.Statistics.Filters;
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
@@ -54,20 +53,8 @@ namespace DiabetesDido.UI
             trainningDataTAbleAdapter = new TrainningDataTableAdapter();            
             this.trainningData = trainningDataTAbleAdapter.GetData();
             
-            //// TrainningSet & TestSet without Na, K, Cl, Ca
-            //DataTable1TableAdapter dataTable1TableAdapter = new DataTable1TableAdapter();
-            //this.trainningData = dataTable1TableAdapter.GetData();            
-            //TestSet1TableAdapter testSet1TableAdapter = new TestSet1TableAdapter();
-            //this.testData = testSet1TableAdapter.GetData();
-
-            //// TrainningSet & TestSet with Na, K, Cl, Ca
-            //TrainingSetTableAdapter trainingSetTableAdapter = new TrainingSetTableAdapter();
-            //this.trainningData = trainingSetTableAdapter.GetData();
-            //TestSetTableAdapter testSetTableAdapter = new TestSetTableAdapter();
-            //this.testData = testSetTableAdapter.GetData();
-
-            // Test data same as trainning data
-            this.testData = this.trainningData;
+            //// Test data same as trainning data
+            //this.testData = this.trainningData;
 
             this.dataGridViewXTrainning.DataSource = this.trainningData;
 
@@ -120,7 +107,7 @@ namespace DiabetesDido.UI
             // Ask user what to do when selected model already exists
             if (this.HaveModel())
             {
-                dialogResult = MessageBox.Show("Model này đã có. Bạn có muốn tạo mô hình mới", "Tạo mới", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                dialogResult = MessageBox.Show("Model này đã có. Bạn có muốn tạo mô hình mới?", "Tạo mới model", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
                     this.CreateModel(this.classificationData);
@@ -138,7 +125,7 @@ namespace DiabetesDido.UI
         {
             if (!this.HaveModel())
             {
-                MessageBox.Show("Chọn thuật toán rồi tạo mô hình đi ku", "Vậy mà cũng ko biết", MessageBoxButtons.OK,
+                MessageBox.Show("Tạo model cho thuật toán đã!", "Chưa có thuật toán", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return;
             }               

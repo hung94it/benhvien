@@ -19,10 +19,7 @@ namespace DiabetesDido.UI
 {
     public partial class test : Form
     {
-        private DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter trainingSetTableAdapter;
-        private DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter testSetTableAdapter;
         private DAL.DiabetesDataSetBTableAdapters.TestTableAdapter testTableAdapter;
-        private DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter dataTAble1TableAdapter;
 
         private DecisionTree decisionTree;
         private NaiveBayes naiveBayes;
@@ -33,10 +30,7 @@ namespace DiabetesDido.UI
         {
             InitializeComponent();
 
-            this.trainingSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TrainingSetTableAdapter();
-            this.testSetTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestSetTableAdapter();
             this.testTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestTableAdapter();
-            this.dataTAble1TableAdapter = new DAL.DiabetesDataSetBTableAdapters.DataTable1TableAdapter();
 
             //this.learningAlgorithm = LearningAlgorithm.C45;
         }
@@ -44,13 +38,13 @@ namespace DiabetesDido.UI
         private void test_Load(object sender, EventArgs e)
         {
 
-            this.dataGridView1.DataSource = this.dataTAble1TableAdapter.GetData();
+            this.dataGridView1.DataSource = this.testTableAdapter.GetData();
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable continuousAttributeTable = this.dataTAble1TableAdapter.GetData();
+            DataTable continuousAttributeTable = this.testTableAdapter.GetData();
 
             Discretization a = new Discretization();
             a.Detect(continuousAttributeTable);

@@ -49,6 +49,7 @@ namespace DiabetesDido
         {
             RoiRacHoaDuLieu roiRacHoaDuLieu = new RoiRacHoaDuLieu();
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            //int convert to int16??
             int iCount = Convert.ToInt16(dataSetTempTA.GetData().Rows.Count);
             if (iCount > 0)
             {
