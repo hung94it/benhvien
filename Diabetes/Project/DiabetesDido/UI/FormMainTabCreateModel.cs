@@ -27,9 +27,9 @@ namespace DiabetesDido.UI
         private LearningAlgorithm activeLearningAlgorithm;
         // Dictionary contains model
         private Dictionary<LearningAlgorithm, ModelType> modelList;
-        private ClassificationData classificationData;
-        private DataTable trainningData;
-        private DataTable testData;
+        private TrainningData trainningData;
+        private DataTable orginalTrainningTable;
+        private DataTable testTable;
         
 
         internal Dictionary<LearningAlgorithm, ModelType> ModelList
@@ -51,12 +51,12 @@ namespace DiabetesDido.UI
             this.ModelList = new Dictionary<LearningAlgorithm, ModelType>();
 
             trainningDataTAbleAdapter = new TrainningDataTableAdapter();            
-            this.trainningData = trainningDataTAbleAdapter.GetData();
+            this.orginalTrainningTable = trainningDataTAbleAdapter.GetData();
             
             //// Test data same as trainning data
             //this.testData = this.trainningData;
 
-            this.dataGridViewXTrainning.DataSource = this.trainningData;
+            this.dataGridViewXTrainning.DataSource = this.orginalTrainningTable;
 
             List<Percent> percent = new List<Percent>();
             //percent.Add(new Percent("50%", 50));
@@ -79,30 +79,31 @@ namespace DiabetesDido.UI
         private void buttonXCreateModel_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
-            DataTable trainningTable = this.trainningData.Clone();
-            int countTrainningData = 0;
-
+            DataTable tableForTrainning = this.orginalTrainningTable.Clone();
+            int numberOfTrainningRows = 0;
+            
+            // Get number of row form percent
             if (this.comboBoxExTrainningDataPercent.SelectedValue != null)
             {
-                countTrainningData = Convert.ToInt32(Math.Truncate((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * this.trainningData.Rows.Count / 100));
+                numberOfTrainningRows = Convert.ToInt32(Math.Truncate(((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * this.orginalTrainningTable.Rows.Count) / 100));
             }
 
-            var query = this.trainningData.Rows.Cast<DataRow>().Skip(countTrainningData);
-            this.testData = query.CopyToDataTable<DataRow>();
+            // Set test data
+            var query = this.orginalTrainningTable.Rows.Cast<DataRow>().Skip(numberOfTrainningRows);
+            this.testTable = query.CopyToDataTable<DataRow>();
 
-            if (countTrainningData == 0)
+            // Set trainning data
+            if (numberOfTrainningRows == 0)
             {
-                trainningTable = this.trainningData;
+                tableForTrainning = this.orginalTrainningTable;
             }
             else
             {
-                query = this.trainningData.Rows.Cast<DataRow>().Take(countTrainningData);
-                trainningTable = query.CopyToDataTable<DataRow>();
+                query = this.orginalTrainningTable.Rows.Cast<DataRow>().Take(numberOfTrainningRows);
+                tableForTrainning = query.CopyToDataTable<DataRow>();
             }
             
-            this.classificationData = new ClassificationData(trainningTable);
-
-            //this.classificationData = new ClassificationData(this.trainningData);
+            this.trainningData = new TrainningData(tableForTrainning);            
 
             // Ask user what to do when selected model already exists
             if (this.HaveModel())
@@ -110,12 +111,12 @@ namespace DiabetesDido.UI
                 dialogResult = MessageBox.Show("Model này đã có. Bạn có muốn tạo mô hình mới?", "Tạo mới model", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
-                    this.CreateModel(this.classificationData);
+                    this.CreateModel(this.trainningData);
                 }
             }
             else // If selected model not exists then create new model
             {
-                this.CreateModel(this.classificationData);
+                this.CreateModel(this.trainningData);
             }
 
         }
@@ -130,7 +131,7 @@ namespace DiabetesDido.UI
                 return;
             }               
 
-            ClassificationData data = new ClassificationData(this.testData);
+            TrainningData data = new TrainningData(this.testTable);
             // Show test result
             dataGridViewXTrainningResult.DataSource = this.ModelList[ActiveLearningAlgorithm].TestModel(data);
         }
@@ -146,7 +147,7 @@ namespace DiabetesDido.UI
 
                     case LearningAlgorithm.C45:
                     case LearningAlgorithm.ID3:
-                        new FormDecisionTree((this.GetModel() as DecisionTreeModel).Tree, this.classificationData).Show();
+                        new FormDecisionTree((this.GetModel() as DecisionTreeModel).Tree, this.trainningData).Show();
                         break;
                     case LearningAlgorithm.NaiveBayes:
                         MessageBox.Show("Chưa làm");
@@ -179,7 +180,7 @@ namespace DiabetesDido.UI
         }
 
         // Create model base on active learning algorithm
-        private void CreateModel(ClassificationData classificationData)
+        private void CreateModel(TrainningData trainningData)
         {
             // Check dictionary already have active model. If not add new model
             if (!this.ModelList.ContainsKey(this.ActiveLearningAlgorithm))
@@ -188,7 +189,7 @@ namespace DiabetesDido.UI
             }
 
             // Trainning model
-            this.ModelList[ActiveLearningAlgorithm].TrainningModel(classificationData);
+            this.ModelList[ActiveLearningAlgorithm].TrainningModel(trainningData);
         }
 
         // Check activeAlgorithm already have model or not

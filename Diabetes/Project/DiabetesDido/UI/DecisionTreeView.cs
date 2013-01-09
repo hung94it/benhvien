@@ -35,7 +35,7 @@ namespace DiabetesDido.UI
     {
         private DecisionTree treeSource;
 
-        private ClassificationData classificationData;
+        private TrainningData trainningData;
 
         /// <summary>
         ///   Initializes a new instance of the <see cref="DecisionTreeView"/> class.
@@ -93,9 +93,9 @@ namespace DiabetesDido.UI
             return treeNode;
         }
 
-        public void SetNodeName(ClassificationData data)
+        public void SetNodeName(TrainningData data)
         {
-            this.classificationData = data;
+            this.trainningData = data;
 
             treeView1.Nodes.Clear();
 
@@ -117,7 +117,7 @@ namespace DiabetesDido.UI
             else
             {
                 attributeName = node.Owner.Attributes[node.Parent.Branches.AttributeIndex].Name;
-                attributeValue = this.classificationData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Value));
+                attributeValue = this.trainningData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Value));
 
                 treeNode = new TreeNode(attributeName + " = " + attributeValue);
             }
@@ -126,8 +126,8 @@ namespace DiabetesDido.UI
             {
                 if (node.Output.HasValue)
                 {
-                    attributeName = this.classificationData.LastColumnName;
-                    attributeValue = this.classificationData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Output));
+                    attributeName = this.trainningData.LastColumnName;
+                    attributeValue = this.trainningData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Output));
 
                     treeNode.Nodes.Add(new TreeNode(attributeValue));
                 }

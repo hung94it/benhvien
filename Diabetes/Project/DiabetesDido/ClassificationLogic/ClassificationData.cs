@@ -8,7 +8,7 @@ using Accord.Math;
 
 namespace DiabetesDido.ClassificationLogic
 {
-    public class ClassificationData
+    public class TrainningData
     {
         private DataTable integerDiscreteDatatable;
         private Codification discreteCodification;
@@ -17,6 +17,13 @@ namespace DiabetesDido.ClassificationLogic
         private int[] classifierAttribute;
         private string[] columnNames;
         private string lastColumnName;
+        private int[] classifierAttributeForSVM;
+
+        public int[] ClassifierAttributeForSVM
+        {
+            get { return classifierAttributeForSVM; }
+            private set { classifierAttributeForSVM = value; }
+        }
 
         public string LastColumnName
         {
@@ -54,40 +61,49 @@ namespace DiabetesDido.ClassificationLogic
             private set { discreteCodification = value; }
         }
 
-        public DataTable IntergerDiscreteDatatable
+        public DataTable IntegerDiscreteDatatable
         {
             get { return integerDiscreteDatatable; }
             private set { integerDiscreteDatatable = value; }
         }
 
-        public ClassificationData(DataTable dataTable)
+        public TrainningData(DataTable dataTable)
         {
             Initialize(dataTable);
         }
 
         private void Initialize(DataTable dataTable)
         {
-            this.DiscreteCodification = new Codification(dataTable);
-            this.IntergerDiscreteDatatable = this.DiscreteCodification.Apply(dataTable);
+            this.discreteCodification = new Codification(dataTable);
+            this.integerDiscreteDatatable = this.discreteCodification.Apply(dataTable);
 
             List<string> columnNames = new List<string>();
 
             // Get column's name of training data
-            for (int columnIndex = 0; columnIndex < IntergerDiscreteDatatable.Columns.Count - 1; columnIndex++)
+            for (int columnIndex = 0; columnIndex < this.integerDiscreteDatatable.Columns.Count - 1; columnIndex++)
             {
-                columnNames.Add(IntergerDiscreteDatatable.Columns[columnIndex].ColumnName);
+                columnNames.Add(this.integerDiscreteDatatable.Columns[columnIndex].ColumnName);
             }
           
             this.ColumnNames = columnNames.ToArray();
-            this.lastColumnName = this.IntergerDiscreteDatatable.Columns[this.IntergerDiscreteDatatable.Columns.Count - 1].ColumnName;
+            this.lastColumnName = this.integerDiscreteDatatable.Columns[this.integerDiscreteDatatable.Columns.Count - 1].ColumnName;
 
             // Create trainning data
-            this.DoubleTrainningAttributes = IntergerDiscreteDatatable.ToArray(this.ColumnNames);
-            this.IntTrainningAttributes = this.DoubleTrainningAttributes.ToInt32();
+            this.doubleTrainningAttributes = this.integerDiscreteDatatable.ToArray(this.ColumnNames);
+            this.intTrainningAttributes = this.doubleTrainningAttributes.ToInt32();
 
             // Create classifier data for trainning
-            string lastColumnName = IntergerDiscreteDatatable.Columns[IntergerDiscreteDatatable.Columns.Count - 1].ColumnName;
-            this.ClassifierAttribute = IntergerDiscreteDatatable.ToIntArray(lastColumnName).GetColumn(0);
+            string lastColumnName = this.integerDiscreteDatatable.Columns[integerDiscreteDatatable.Columns.Count - 1].ColumnName;
+            this.classifierAttribute = this.integerDiscreteDatatable.ToIntArray(lastColumnName).GetColumn(0);
+
+            this.classifierAttributeForSVM = new int[this.classifierAttribute.Length];
+            for (int index = 0; index < this.classifierAttribute.Length; index++)
+            {
+                if (this.classifierAttribute[index] == 0)
+                    this.classifierAttributeForSVM[index] = -1;
+                else
+                    this.classifierAttributeForSVM[index] = 1;
+            }
 
         }
 
