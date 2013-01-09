@@ -90,6 +90,7 @@
     <Compile Include="ClassificationLogic\ID3Model.cs" />
     <Compile Include="ClassificationLogic\NaiveBayesModel.cs" />
     <Compile Include="ClassificationLogic\Percent.cs" />
+    <Compile Include="ClassificationLogic\SVMModel.cs" />
     <Compile Include="DAL\DiabetesDataSetB.cs">
       <DependentUpon>DiabetesDataSetB.xsd</DependentUpon>
       <SubType>Component</SubType>

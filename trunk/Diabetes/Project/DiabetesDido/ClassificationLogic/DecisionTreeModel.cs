@@ -32,10 +32,10 @@ namespace DiabetesDido.ClassificationLogic
         }
 
         // Test decision tree
-        public override List<Accord.Statistics.Analysis.ConfusionMatrix> TestModel(ClassificationData classificationData)
+        public override List<Accord.Statistics.Analysis.ConfusionMatrix> TestModel(TrainningData trainningData)
         {
-            int[] expected = classificationData.ClassifierAttribute;
-            double[][] inputs = classificationData.DoubleTrainningAttributes;
+            int[] expected = trainningData.ClassifierAttribute;
+            double[][] inputs = trainningData.DoubleTrainningAttributes;
             int[] predicted = new int[inputs.Length];
 
             for (int i = 0; i < inputs.Length; i++)

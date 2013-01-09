@@ -11,11 +11,11 @@ namespace DiabetesDido.ClassificationLogic
     public class C45Model : DecisionTreeModel
     {
         // Trainning decision tree with C4.5 algorithm
-        public override void TrainningModel(ClassificationData classificationData)
+        public override void TrainningModel(TrainningData trainningData)
         {
-            Codification codification = classificationData.DiscreteCodification;
-            double[][] inputs = classificationData.DoubleTrainningAttributes;
-            int[] outputs = classificationData.ClassifierAttribute;            
+            Codification codification = trainningData.DiscreteCodification;
+            double[][] inputs = trainningData.DoubleTrainningAttributes;
+            int[] outputs = trainningData.ClassifierAttribute;            
 
             // Create tree
             this.Tree = this.CreateDecisionTree(codification);            

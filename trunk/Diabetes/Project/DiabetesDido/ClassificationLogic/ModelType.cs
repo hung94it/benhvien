@@ -11,6 +11,7 @@ namespace DiabetesDido.ClassificationLogic
         ID3,
         C45,
         NaiveBayes,
+        SVM,
     }
 
     public abstract class ModelType
@@ -27,13 +28,15 @@ namespace DiabetesDido.ClassificationLogic
                     return new ID3Model();
                     
                 case LearningAlgorithm.NaiveBayes:
-                    return new NaiveBayesModel();                    
+                    return new NaiveBayesModel();        
+                case LearningAlgorithm.SVM:
+                    return new SVMModel();
                 default :
                     throw new ArgumentException("Not yet implement model");
             }
         }
 
-        abstract public void TrainningModel(ClassificationData classificationData);
-        abstract public List<ConfusionMatrix> TestModel(ClassificationData classificationData);
+        abstract public void TrainningModel(TrainningData trainningData);
+        abstract public List<ConfusionMatrix> TestModel(TrainningData trainningData);
     }
 }

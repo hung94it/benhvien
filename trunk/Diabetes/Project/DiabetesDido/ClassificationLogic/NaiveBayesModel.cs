@@ -19,11 +19,11 @@ namespace DiabetesDido.ClassificationLogic
             private set { bayes = value; }
         }
 
-        public override void TrainningModel(ClassificationData classificationData)
+        public override void TrainningModel(TrainningData trainningData)
         {
-            Codification codification = classificationData.DiscreteCodification;
-            int[][] inputs = classificationData.IntTrainningAttributes;
-            int[] outputs = classificationData.ClassifierAttribute;
+            Codification codification = trainningData.DiscreteCodification;
+            int[][] inputs = trainningData.IntTrainningAttributes;
+            int[] outputs = trainningData.ClassifierAttribute;
 
             int lastIndex = codification.Columns.Count - 1;
             int numberOfClass = codification[lastIndex].Symbols;
@@ -39,10 +39,10 @@ namespace DiabetesDido.ClassificationLogic
             this.Bayes.Estimate(inputs, outputs); 
         }
 
-        public override List<ConfusionMatrix> TestModel(ClassificationData classificationData)
+        public override List<ConfusionMatrix> TestModel(TrainningData trainningData)
         {
-            int[] expected = classificationData.ClassifierAttribute;
-            double[][] inputs = classificationData.DoubleTrainningAttributes;
+            int[] expected = trainningData.ClassifierAttribute;
+            double[][] inputs = trainningData.DoubleTrainningAttributes;
             int[] predicted = new int[inputs.Length];
 
             for (int i = 0; i < inputs.Length; i++)

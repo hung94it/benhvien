@@ -13,21 +13,21 @@ namespace DiabetesDido.UI
 {
     public partial class FormDecisionTree : Form
     {
-        private ClassificationData classificationData;
+        private TrainningData trainningData;
 
         private FormDecisionTree()
         {
             InitializeComponent();
         }
 
-        public FormDecisionTree(DecisionTree tree, ClassificationData data)
+        public FormDecisionTree(DecisionTree tree, TrainningData data)
             : this()
         {
-            this.classificationData = data;
+            this.trainningData = data;
 
             // Show the learned tree in the view
             decisionTreeView.TreeSource = tree;
-            decisionTreeView.SetNodeName(this.classificationData);
+            decisionTreeView.SetNodeName(this.trainningData);
             
             if (tree != null && tree.Root != null)
                 CreateRuleList(tree.Root, "");
@@ -41,8 +41,8 @@ namespace DiabetesDido.UI
 
             if (node.IsLeaf)
             {
-                attributeName = this.classificationData.LastColumnName;
-                attributeValue = this.classificationData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Output));
+                attributeName = this.trainningData.LastColumnName;
+                attributeValue = this.trainningData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Output));
 
                 if (node.Output.HasValue)
                 {
@@ -61,7 +61,7 @@ namespace DiabetesDido.UI
                 foreach (var child in node.Branches)
                 {
                     attributeName = child.Owner.Attributes[child.Parent.Branches.AttributeIndex].Name;
-                    attributeValue = this.classificationData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(child.Value));
+                    attributeValue = this.trainningData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(child.Value));
 
                     connectSymbol = stringTemp.Equals("") ? "" : " & ";
 

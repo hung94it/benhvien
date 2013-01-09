@@ -12,12 +12,12 @@ namespace DiabetesDido.ClassificationLogic
     public class ID3Model : DecisionTreeModel
     {
         // Trainning decision tree with ID3 algorithm
-        public override void TrainningModel(ClassificationData classificationData)
+        public override void TrainningModel(TrainningData trainningData)
         {
             // Get data for trainning tree
-            Codification codification = classificationData.DiscreteCodification;
-            int[][] inputs = classificationData.IntTrainningAttributes;
-            int[] outputs = classificationData.ClassifierAttribute;
+            Codification codification = trainningData.DiscreteCodification;
+            int[][] inputs = trainningData.IntTrainningAttributes;
+            int[] outputs = trainningData.ClassifierAttribute;
 
             // Create tree
             this.Tree = this.CreateDecisionTree(codification);
