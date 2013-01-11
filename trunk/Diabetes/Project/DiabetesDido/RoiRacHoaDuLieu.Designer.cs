@@ -36,9 +36,6 @@ namespace DiabetesDido
             this.label2 = new System.Windows.Forms.Label();
             this.txtKhoang = new System.Windows.Forms.MaskedTextBox();
             this.btnRoiRacHoa = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtPhanTramDuLieu = new System.Windows.Forms.MaskedTextBox();
-            this.btnChiaDuLieu = new System.Windows.Forms.Button();
             this.btnThongKe = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -46,7 +43,6 @@ namespace DiabetesDido
             this.lblLonNhat = new System.Windows.Forms.Label();
             this.lblDoLechChuan = new System.Windows.Forms.Label();
             this.lblTrungBinh = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.diabetesDataSet = new DiabetesDido.DAL.DiabetesDataSet();
             this.dataSetTempBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSetTempTableAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
@@ -102,7 +98,6 @@ namespace DiabetesDido
             this.dataGridViewTextBoxColumn35 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diabetesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingNavigator)).BeginInit();
@@ -154,33 +149,6 @@ namespace DiabetesDido
             this.btnRoiRacHoa.Text = "Rời rạc hóa";
             this.btnRoiRacHoa.UseVisualStyleBackColor = true;
             this.btnRoiRacHoa.Click += new System.EventHandler(this.btnRoiRacHoa_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 16);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(230, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Phần trăm dữ liệu cần chia (Dữ liệu huấn luyện)";
-            // 
-            // txtPhanTramDuLieu
-            // 
-            this.txtPhanTramDuLieu.Location = new System.Drawing.Point(14, 32);
-            this.txtPhanTramDuLieu.Mask = "00";
-            this.txtPhanTramDuLieu.Name = "txtPhanTramDuLieu";
-            this.txtPhanTramDuLieu.Size = new System.Drawing.Size(37, 20);
-            this.txtPhanTramDuLieu.TabIndex = 9;
-            // 
-            // btnChiaDuLieu
-            // 
-            this.btnChiaDuLieu.Location = new System.Drawing.Point(14, 58);
-            this.btnChiaDuLieu.Name = "btnChiaDuLieu";
-            this.btnChiaDuLieu.Size = new System.Drawing.Size(75, 23);
-            this.btnChiaDuLieu.TabIndex = 10;
-            this.btnChiaDuLieu.Text = "Chia dữ liệu";
-            this.btnChiaDuLieu.UseVisualStyleBackColor = true;
-            this.btnChiaDuLieu.Click += new System.EventHandler(this.btnChiaDuLieu_Click);
             // 
             // btnThongKe
             // 
@@ -257,18 +225,6 @@ namespace DiabetesDido
             this.lblTrungBinh.Size = new System.Drawing.Size(61, 13);
             this.lblTrungBinh.TabIndex = 0;
             this.lblTrungBinh.Text = "Trung bình:";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.txtPhanTramDuLieu);
-            this.groupBox3.Controls.Add(this.btnChiaDuLieu);
-            this.groupBox3.Location = new System.Drawing.Point(714, 175);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(335, 85);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Chia dữ liệu huấn luyện và kiểm thử";
             // 
             // diabetesDataSet
             // 
@@ -464,7 +420,7 @@ namespace DiabetesDido
             this.dataSetTempDataGridView.DataSource = this.dataSetTempBindingSource;
             this.dataSetTempDataGridView.Location = new System.Drawing.Point(0, 24);
             this.dataSetTempDataGridView.Name = "dataSetTempDataGridView";
-            this.dataSetTempDataGridView.Size = new System.Drawing.Size(708, 220);
+            this.dataSetTempDataGridView.Size = new System.Drawing.Size(708, 355);
             this.dataSetTempDataGridView.TabIndex = 15;
             // 
             // dataGridViewTextBoxColumn1
@@ -682,10 +638,9 @@ namespace DiabetesDido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1069, 271);
+            this.ClientSize = new System.Drawing.Size(1069, 391);
             this.Controls.Add(this.dataSetTempDataGridView);
             this.Controls.Add(this.dataSetTempBindingNavigator);
-            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Name = "RoiRacHoaDuLieu";
             this.Text = "Rời rạc hóa dữ liệu";
@@ -695,8 +650,6 @@ namespace DiabetesDido
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.diabetesDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSetTempBindingNavigator)).EndInit();
@@ -715,15 +668,11 @@ namespace DiabetesDido
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox txtKhoang;
         private System.Windows.Forms.Button btnRoiRacHoa;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox txtPhanTramDuLieu;
-        private System.Windows.Forms.Button btnChiaDuLieu;
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblDoLechChuan;
         private System.Windows.Forms.Label lblTrungBinh;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label lblNhoNhat;
         private System.Windows.Forms.Label lblLonNhat;
         private DiabetesDataSet diabetesDataSet;

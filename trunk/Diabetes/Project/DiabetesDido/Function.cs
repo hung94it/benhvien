@@ -117,13 +117,13 @@ namespace DiabetesDido
             {
                 String khoangRoiRac="";
                 if (i == 1)
-                    khoangRoiRac = "<" + giaTriMoi.ToString();
+                    khoangRoiRac = "(0," + giaTriMoi.ToString() + ")";
                 else if (i == khoang)
-                    khoangRoiRac = giaTriMoi.ToString() + ">";
+                    khoangRoiRac = "[" + giaTriMoi.ToString() + ",+)";
                 else
-                    khoangRoiRac = (giaTriMoi - giaTriTrungBinhKhoang).ToString() + "_" + giaTriMoi.ToString();
-                BayesObjectTA.Insert(colName, khoangRoiRac, 0, "Yes");
-                BayesObjectTA.Insert(colName, khoangRoiRac, 0, "No");
+                    khoangRoiRac = "[" + (giaTriMoi - giaTriTrungBinhKhoang).ToString() + "," + giaTriMoi.ToString() + ")";
+                BayesObjectTA.Insert(colName, khoangRoiRac, 0, "TRUE");
+                BayesObjectTA.Insert(colName, khoangRoiRac, 0, "FALSE");
                 if (i != khoang - 1)
                     giaTriMoi = giaTriMoi + giaTriTrungBinhKhoang;
             }
