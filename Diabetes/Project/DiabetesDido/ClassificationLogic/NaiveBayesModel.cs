@@ -46,7 +46,11 @@ namespace DiabetesDido.ClassificationLogic
             int[] predicted = new int[inputs.Length];
 
             for (int i = 0; i < inputs.Length; i++)
-                predicted[i] = this.Bayes.Compute(inputs[i].ToInt32());
+                try
+                {
+                    predicted[i] = this.Bayes.Compute(inputs[i].ToInt32());
+                }
+                catch { }
             
             ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
             return new List<ConfusionMatrix> { confusionMatrix };
