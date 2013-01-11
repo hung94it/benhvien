@@ -61,8 +61,8 @@ namespace DiabetesDido.UI
             List<Percent> percent = new List<Percent>();
             //percent.Add(new Percent("50%", 50));
             //percent.Add(new Percent("60%", 60));
-            //percent.Add(new Percent("70%", 70));
-            //percent.Add(new Percent("80%", 80));
+            percent.Add(new Percent("70%", 70));
+            percent.Add(new Percent("80%", 80));
             percent.Add(new Percent("90%", 90));
             percent.Add(new Percent("100%", 0));
 
