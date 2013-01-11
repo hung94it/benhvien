@@ -17,6 +17,10 @@
 }
 
 namespace DiabetesDido.DAL.DiabetesDataSetBTableAdapters {
+    partial class OrginalDataTableAdapter
+    {
+    }
+
     partial class TrainingSetTableAdapter
     {
     }

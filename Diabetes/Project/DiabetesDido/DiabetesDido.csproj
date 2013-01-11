@@ -124,12 +124,6 @@
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassificationLogic\ModelType.cs" />
-    <Compile Include="UI\c45test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\c45test.Designer.cs">
-      <DependentUpon>c45test.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\DecisionTreeView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -196,9 +190,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TienXuDuLieu.resx">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\c45test.resx">
-      <DependentUpon>c45test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DecisionTreeView.resx">
       <DependentUpon>DecisionTreeView.cs</DependentUpon>

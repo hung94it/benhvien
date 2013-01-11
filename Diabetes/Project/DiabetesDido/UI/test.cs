@@ -14,12 +14,17 @@ using Accord.Statistics.Analysis;
 using Accord.Statistics.Distributions.Univariate;
 using Accord.Statistics.Filters;
 using DiabetesDido.ClassificationLogic;
+using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
+using System.Collections;
 
 namespace DiabetesDido.UI
 {
     public partial class test : Form
     {
-        private DAL.DiabetesDataSetBTableAdapters.TestTableAdapter testTableAdapter;
+        private TestTableAdapter testTableAdapter;
+        private TestEliminationTableAdapter testEliminationTableAdapter;
+
+        DataTable datatable;
 
         private DecisionTree decisionTree;
         private NaiveBayes naiveBayes;
@@ -30,62 +35,64 @@ namespace DiabetesDido.UI
         {
             InitializeComponent();
 
-            this.testTableAdapter = new DAL.DiabetesDataSetBTableAdapters.TestTableAdapter();
+            this.testTableAdapter = new TestTableAdapter();
+            this.testEliminationTableAdapter = new TestEliminationTableAdapter();
 
             //this.learningAlgorithm = LearningAlgorithm.C45;
         }
 
         private void test_Load(object sender, EventArgs e)
         {
-
-            this.dataGridView1.DataSource = this.testTableAdapter.GetData();
+            this.datatable = this.testEliminationTableAdapter.GetData();
+            //this.dataGridView1.DataSource = this.testTableAdapter.GetData();
+            this.dataGridView1.DataSource = this.datatable;
 
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataTable continuousAttributeTable = this.testTableAdapter.GetData();
-
-            Discretization a = new Discretization();
-            a.Detect(continuousAttributeTable);
-
-            DataTable temp = continuousAttributeTable.Copy();
-            temp.Columns.RemoveAt(temp.Columns.Count - 1);
-
-            DataTable b = a.Apply(temp);
-
-            //Codification codification2 = new Codification(b);
-            //DataTable ef = codification2.Apply(b);
-
-            this.dataGridView2.DataSource = b;
-
-            string[] sourceColumns;
-            double[,] sourceMatrix = continuousAttributeTable.ToMatrix(out sourceColumns);
-            // Get only the input vector values
-            double[][] inputs = sourceMatrix.Submatrix(null, 0, continuousAttributeTable.Columns.Count - 2).ToArray();
-
-            //Get only the label outputs
-            int[] outputs = sourceMatrix.GetColumn(continuousAttributeTable.Columns.Count - 1).ToInt32();
-
-            List<DecisionVariable> attributes = new List<DecisionVariable>();
-            int lastIndex = continuousAttributeTable.Columns.Count - 1;
-
-            for (int indexColumn = 0; indexColumn < lastIndex; indexColumn++)
-            {
-                attributes.Add(new DecisionVariable(continuousAttributeTable.Columns[indexColumn].ColumnName,
-                    DecisionAttributeKind.Continuous));
+            List<string> list = new List<string>();
+            //ArrayList array = new ArrayList();
+            foreach (DataColumn column in datatable.Columns)
+            { 
+                if (column.DataType == typeof(System.Decimal))
+                    list.Add(column.ColumnName);
             }
 
-            this.decisionTree = new DecisionTree(attributes.ToArray(), 2);
 
-            C45Learning c45;
-            // Creates a new instance of the C4.5 learning algorithm
-            c45 = new C45Learning(this.decisionTree);
+            Elimination elimination = new Elimination(list.ToArray()); 
+            //elimination.Detect(this.datatable);
+            dataGridView2.DataSource = elimination.Apply(this.datatable);
+            label1.Text = (dataGridView2.DataSource as DataTable).Rows.Count.ToString();
+            //DataTable continuousAttributeTable = this.testTableAdapter.GetData();          
 
-            // Learn the decision tree
-            double error = c45.Run(inputs, outputs);
+            //string[] sourceColumns;
+            //double[,] sourceMatrix = continuousAttributeTable.ToMatrix(out sourceColumns);
+            //// Get only the input vector values
+            //double[][] inputs = sourceMatrix.Submatrix(null, 0, continuousAttributeTable.Columns.Count - 2).ToArray();
 
-            decisionTreeView1.TreeSource = decisionTree;
+            ////Get only the label outputs
+            //int[] outputs = sourceMatrix.GetColumn(continuousAttributeTable.Columns.Count - 1).ToInt32();
+
+            //List<DecisionVariable> attributes = new List<DecisionVariable>();
+            //int lastIndex = continuousAttributeTable.Columns.Count - 1;
+
+            //for (int indexColumn = 0; indexColumn < lastIndex; indexColumn++)
+            //{
+            //    attributes.Add(new DecisionVariable(continuousAttributeTable.Columns[indexColumn].ColumnName,
+            //        DecisionAttributeKind.Continuous));
+            //}
+
+            //this.decisionTree = new DecisionTree(attributes.ToArray(), 2);
+
+            //C45Learning c45;
+            //// Creates a new instance of the C4.5 learning algorithm
+            //c45 = new C45Learning(this.decisionTree);
+
+            //// Learn the decision tree
+            //double error = c45.Run(inputs, outputs);
+
+            //decisionTreeView1.TreeSource = decisionTree;
         }
     }
 }
