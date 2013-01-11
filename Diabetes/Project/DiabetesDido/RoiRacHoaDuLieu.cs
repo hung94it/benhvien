@@ -122,37 +122,7 @@ namespace DiabetesDido
         private void btnTest_Click(object sender, EventArgs e)
         {
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
-        }
-
-        private void btnChiaDuLieu_Click(object sender, EventArgs e)
-        {
-            Function function = new Function();
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
-            if (txtPhanTramDuLieu.Text == "")
-            {
-                MessageBox.Show("Chưa nhập lượng dữ liệu cần chia", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                int phanTramDuLieu = Convert.ToInt16(txtPhanTramDuLieu.Text);
-                if (trainingSetTA.GetData().Count > 0)
-                {
-                    DialogResult dR = MessageBox.Show("Hiện đã có một tập dữ liệu huấn luyện trong Cơ sở dữ liệu. Bạn có muốn thay mới?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dR == DialogResult.Yes)
-                    {
-                        function.ChiaDuLieu(phanTramDuLieu);
-                        MessageBox.Show("Chia dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                {
-                    function.ChiaDuLieu(phanTramDuLieu);
-                    MessageBox.Show("Chia dữ liệu thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            txtPhanTramDuLieu.Text = "";
-        }
-
+        }     
         private void btnThongKe_Click(object sender, EventArgs e)
         {
             if (cboThuocTinh.SelectedIndex == -1)
