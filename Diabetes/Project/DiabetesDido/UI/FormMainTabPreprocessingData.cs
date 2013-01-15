@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
+using Accord.Statistics.Analysis;
 using Accord.Statistics.Filters;
+using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
+using Accord.Math;
 
 namespace DiabetesDido.UI
 {
@@ -15,35 +17,56 @@ namespace DiabetesDido.UI
     {
         private OrginalDataTableAdapter orginalDataTableAdapter;
         private DataTable orginalData;
+        DescriptiveAnalysis analysis;
 
         public void InitializeTabPreprocessingData()
         {
-            this.orginalDataTableAdapter = new OrginalDataTableAdapter();
+            
 
+            this.orginalDataTableAdapter = new OrginalDataTableAdapter();
+            
             this.bindingSourcePreprocessingData.DataSource = this.orginalDataTableAdapter.GetData();
             this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
-            this.bindingNavigatorEx1.BindingSource = this.bindingSourcePreprocessingData;
+            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
 
-            this.orginalData = this.orginalDataTableAdapter.GetData();
-            //this.dataGridViewXPreProcessingData.DataSource = this.orginalData;
+            string[] columnNames;
+            double[,] data = (this.bindingSourcePreprocessingData.DataSource as DataTable).ToMatrix(out columnNames);
+
+            this.analysis = new DescriptiveAnalysis(data, columnNames);
+            this.analysis.Compute();
+                        
         }
 
         private void buttonXCleaningData_Click(object sender, EventArgs e)
         {
+            string[] acolumnNames;
+
+            this.orginalData = this.bindingSourcePreprocessingData.DataSource as DataTable;
+
             // Get columns's name
-            List<string> columnNames = new List<string>();
+            List<string> listColumnNames = new List<string>();
             
             foreach (DataColumn column in orginalData.Columns)
             {
                 if (column.DataType == typeof(System.Decimal))
-                    columnNames.Add(column.ColumnName);
+                    listColumnNames.Add(column.ColumnName);
             }
 
             // Remove rows which have null value
-            Elimination elimination = new Elimination(columnNames.ToArray());            
-            this.orginalData = elimination.Apply(this.orginalData);
+            Elimination elimination = new Elimination(listColumnNames.ToArray());
+                                    
+            this.bindingSourcePreprocessingData.DataSource = elimination.Apply(this.orginalData);
 
-            this.dataGridViewXPreProcessingData.DataSource = this.orginalData;
+            double[,] data = (this.bindingSourcePreprocessingData.DataSource as DataTable).ToMatrix(out acolumnNames);
+
+            this.analysis = new DescriptiveAnalysis(data, acolumnNames);
+            this.analysis.Compute();
+
+            //double[,] temp = new double[this.analysis.Variables, 0];
+
+            //temp = temp.InsertColumn<double>(this.analysis.Distinct.ToDouble());
+            //temp = temp.InsertColumn<double>(this.analysis.Sums);
+            
         }
 
         private void buttonXDiscretizationData_Click(object sender, EventArgs e)

@@ -1844,16 +1844,6 @@ namespace DiabetesDido.DAL {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class OrginalDataDataTable : global::System.Data.TypedTableBase<OrginalDataRow> {
             
-            private global::System.Data.DataColumn columnMaBN;
-            
-            private global::System.Data.DataColumn columnHoTen;
-            
-            private global::System.Data.DataColumn columnNamSinh;
-            
-            private global::System.Data.DataColumn columnGioiTinh;
-            
-            private global::System.Data.DataColumn columnNgayKham;
-            
             private global::System.Data.DataColumn columnCholesterol;
             
             private global::System.Data.DataColumn columnHDL_Cholesterol;
@@ -1947,46 +1937,6 @@ namespace DiabetesDido.DAL {
             protected OrginalDataDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MaBNColumn {
-                get {
-                    return this.columnMaBN;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HoTenColumn {
-                get {
-                    return this.columnHoTen;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NamSinhColumn {
-                get {
-                    return this.columnNamSinh;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GioiTinhColumn {
-                get {
-                    return this.columnGioiTinh;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NgayKhamColumn {
-                get {
-                    return this.columnNgayKham;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2275,11 +2225,6 @@ namespace DiabetesDido.DAL {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public OrginalDataRow AddOrginalDataRow(
-                        decimal MaBN, 
-                        string HoTen, 
-                        decimal NamSinh, 
-                        string GioiTinh, 
-                        System.DateTime NgayKham, 
                         decimal Cholesterol, 
                         decimal HDL_Cholesterol, 
                         decimal Triglyceride, 
@@ -2313,11 +2258,6 @@ namespace DiabetesDido.DAL {
                         bool TieuDuong) {
                 OrginalDataRow rowOrginalDataRow = ((OrginalDataRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        MaBN,
-                        HoTen,
-                        NamSinh,
-                        GioiTinh,
-                        NgayKham,
                         Cholesterol,
                         HDL_Cholesterol,
                         Triglyceride,
@@ -2371,11 +2311,6 @@ namespace DiabetesDido.DAL {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnMaBN = base.Columns["MaBN"];
-                this.columnHoTen = base.Columns["HoTen"];
-                this.columnNamSinh = base.Columns["NamSinh"];
-                this.columnGioiTinh = base.Columns["GioiTinh"];
-                this.columnNgayKham = base.Columns["NgayKham"];
                 this.columnCholesterol = base.Columns["Cholesterol"];
                 this.columnHDL_Cholesterol = base.Columns["HDL_Cholesterol"];
                 this.columnTriglyceride = base.Columns["Triglyceride"];
@@ -2412,16 +2347,6 @@ namespace DiabetesDido.DAL {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnMaBN = new global::System.Data.DataColumn("MaBN", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMaBN);
-                this.columnHoTen = new global::System.Data.DataColumn("HoTen", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHoTen);
-                this.columnNamSinh = new global::System.Data.DataColumn("NamSinh", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNamSinh);
-                this.columnGioiTinh = new global::System.Data.DataColumn("GioiTinh", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGioiTinh);
-                this.columnNgayKham = new global::System.Data.DataColumn("NgayKham", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNgayKham);
                 this.columnCholesterol = new global::System.Data.DataColumn("Cholesterol", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCholesterol);
                 this.columnHDL_Cholesterol = new global::System.Data.DataColumn("HDL_Cholesterol", typeof(decimal), null, global::System.Data.MappingType.Element);
@@ -2484,8 +2409,6 @@ namespace DiabetesDido.DAL {
                 base.Columns.Add(this.columnCa);
                 this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTieuDuong);
-                this.columnHoTen.MaxLength = 2147483647;
-                this.columnGioiTinh.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5223,86 +5146,6 @@ namespace DiabetesDido.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal MaBN {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableOrginalData.MaBNColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MaBN\' in table \'OrginalData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOrginalData.MaBNColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string HoTen {
-                get {
-                    try {
-                        return ((string)(this[this.tableOrginalData.HoTenColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'HoTen\' in table \'OrginalData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOrginalData.HoTenColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal NamSinh {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableOrginalData.NamSinhColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NamSinh\' in table \'OrginalData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOrginalData.NamSinhColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string GioiTinh {
-                get {
-                    try {
-                        return ((string)(this[this.tableOrginalData.GioiTinhColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GioiTinh\' in table \'OrginalData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOrginalData.GioiTinhColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime NgayKham {
-                get {
-                    try {
-                        return ((global::System.DateTime)(this[this.tableOrginalData.NgayKhamColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'NgayKham\' in table \'OrginalData\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableOrginalData.NgayKhamColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal Cholesterol {
                 get {
                     try {
@@ -5795,66 +5638,6 @@ namespace DiabetesDido.DAL {
                 set {
                     this[this.tableOrginalData.TieuDuongColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMaBNNull() {
-                return this.IsNull(this.tableOrginalData.MaBNColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMaBNNull() {
-                this[this.tableOrginalData.MaBNColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHoTenNull() {
-                return this.IsNull(this.tableOrginalData.HoTenColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHoTenNull() {
-                this[this.tableOrginalData.HoTenColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNamSinhNull() {
-                return this.IsNull(this.tableOrginalData.NamSinhColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNamSinhNull() {
-                this[this.tableOrginalData.NamSinhColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGioiTinhNull() {
-                return this.IsNull(this.tableOrginalData.GioiTinhColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGioiTinhNull() {
-                this[this.tableOrginalData.GioiTinhColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNgayKhamNull() {
-                return this.IsNull(this.tableOrginalData.NgayKhamColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNgayKhamNull() {
-                this[this.tableOrginalData.NgayKhamColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9736,11 +9519,6 @@ FROM            DataSetTemp";
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "OrginalData";
-            tableMapping.ColumnMappings.Add("MaBN", "MaBN");
-            tableMapping.ColumnMappings.Add("HoTen", "HoTen");
-            tableMapping.ColumnMappings.Add("NamSinh", "NamSinh");
-            tableMapping.ColumnMappings.Add("GioiTinh", "GioiTinh");
-            tableMapping.ColumnMappings.Add("NgayKham", "NgayKham");
             tableMapping.ColumnMappings.Add("Cholesterol", "Cholesterol");
             tableMapping.ColumnMappings.Add("HDL_Cholesterol", "HDL_Cholesterol");
             tableMapping.ColumnMappings.Add("Triglyceride", "Triglyceride");
@@ -9788,11 +9566,10 @@ FROM            DataSetTemp";
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT        BenhNhan.MaBN, BenhNhan.HoTen, BenhNhan.NamSinh, BenhNhan.NgayKham, XetNghiem.GioiTinh, XetNghiem.Cholesterol, XetNghiem.HDL_Cholesterol, 
-                         XetNghiem.Triglyceride, XetNghiem.LDL_Cholesterol, XetNghiem.Glucose, XetNghiem.SGOT, XetNghiem.SGPT, XetNghiem.Urea, XetNghiem.WBC, 
-                         XetNghiem.LYM, XetNghiem.MONO, XetNghiem.GRAN, XetNghiem.TyLeLYM, XetNghiem.TyLeMONO, XetNghiem.TyLeGRAN, XetNghiem.HGB, 
-                         XetNghiem.RBC, XetNghiem.HTC, XetNghiem.MCV, XetNghiem.MCH, XetNghiem.MCHC, XetNghiem.RDW_CV, XetNghiem.PLT, XetNghiem.MPV, 
-                         XetNghiem.PDW, XetNghiem.PCT, XetNghiem.Na, XetNghiem.K, XetNghiem.Cl, XetNghiem.Ca, BenhNhan.TieuDuong
+            this._commandCollection[0].CommandText = @"SELECT        XetNghiem.Cholesterol, XetNghiem.HDL_Cholesterol, XetNghiem.Triglyceride, XetNghiem.LDL_Cholesterol, XetNghiem.Glucose, XetNghiem.SGOT, 
+                         XetNghiem.SGPT, XetNghiem.Urea, XetNghiem.WBC, XetNghiem.LYM, XetNghiem.MONO, XetNghiem.GRAN, XetNghiem.TyLeLYM, XetNghiem.TyLeMONO, 
+                         XetNghiem.TyLeGRAN, XetNghiem.HGB, XetNghiem.RBC, XetNghiem.HTC, XetNghiem.MCV, XetNghiem.MCH, XetNghiem.MCHC, XetNghiem.RDW_CV, 
+                         XetNghiem.PLT, XetNghiem.MPV, XetNghiem.PDW, XetNghiem.PCT, XetNghiem.Na, XetNghiem.K, XetNghiem.Cl, XetNghiem.Ca, BenhNhan.TieuDuong
 FROM            BenhNhan INNER JOIN
                          XetNghiem ON BenhNhan.MaBN = XetNghiem.MaBn AND CAST(XetNghiem.NgayLayMau AS date) = CAST(BenhNhan.NgayKham AS date)
 ORDER BY BenhNhan.MaBN";
