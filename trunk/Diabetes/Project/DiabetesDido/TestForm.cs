@@ -1,22 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Data;
+using System.Windows.Forms;
+using DiabetesDido.DAL;
 
-namespace DiabetesDido.UI
+namespace DiabetesDido
 {
-    public partial class FormMain
+    public partial class TestForm : Form
     {
         Function function = new Function();
         static DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter datasetTA = new DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter datasetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-        public void InitializeTabDiagnosis()
+        public TestForm()
         {
-        
+            InitializeComponent();
         }
-        //Hàm dùng để rời rác hóa dataset trước khi thực hiện chẩn đoán
+
+        private void TestForm_Load(object sender, EventArgs e)
+        {
+            DataTable dtDataSet = datasetTA.GetData();
+            DataTable dt = datasetTA.GetData();
+            dt.Clear();
+
+            for (int i = 0; i < dtDataSet.Rows.Count-10; i++)
+            {
+                dtDataSet.Rows[i].Delete();
+            }
+            dtDataSet.AcceptChanges();
+            int j = dtDataSet.Rows.Count;
+            dtViewDataSet.DataSource = dtDataSet;
+            dtViewDataSetTemp.DataSource = DataDiscretization(dtDataSet);
+        }
         public DataTable DataDiscretization(DataTable dt)
         {
             DataTable dtDataSetTemp = datasetTempTA.GetData();
@@ -30,8 +49,8 @@ namespace DiabetesDido.UI
                 foreach (DataColumn dtCol in dt.Columns)
                 {
                     String colName = dtCol.ColumnName;
-                    int colIndex = dt.Columns.IndexOf(colName);
-                    switch (colName)
+                    int colIndex=dt.Columns.IndexOf(colName);
+                    switch(colName)
                     {
                         case "ID":
                             break;
