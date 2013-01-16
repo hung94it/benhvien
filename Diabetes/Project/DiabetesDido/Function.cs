@@ -76,6 +76,16 @@ namespace DiabetesDido
             doLechChuan = Math.Round(Math.Sqrt(phuongSai), 2);
             return Convert.ToDecimal(doLechChuan);
         }
+        //Hàm dùng để xác định khoảng rời rạc của một cột dữ liệu
+        public static int XacDinhKhoang(String colName)
+        {
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DataTable dtBayesObject = bayesObjectTA.GetData();
+            DataRow[] dtRow = dtBayesObject.Select("TenThuocTinh='" + colName + "'");
+            int khoang = 0;
+            khoang = dtRow.Count()/2;
+            return khoang;
+        }
         //Hàm dùng để rời rạc giá trị của cột trong bảng dữ liệu
         public static String TinhGiaTriRoiRac(decimal giaTri,String colName, int khoang)
         {
