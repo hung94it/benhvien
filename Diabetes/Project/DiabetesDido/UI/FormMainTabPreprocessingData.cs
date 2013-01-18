@@ -18,7 +18,7 @@ namespace DiabetesDido.UI
     {
         private OrginalDataTableAdapter orginalDataTableAdapter;
         private DataTable orginalData;
-        DescriptiveAnalysis analysis;
+        
 
         public void InitializeTabPreprocessingData()
         {
@@ -46,31 +46,55 @@ namespace DiabetesDido.UI
             this.orginalData = elimination.Apply(this.orginalData);
             this.bindingSourcePreprocessingData.DataSource = this.orginalData;
 
+            AnalysisData();
+        }
+
+        private void AnalysisData()
+        {
+            DescriptiveAnalysis analysis;
+            string[] columnNames;
+
             double[,] arrayData = (this.orginalData.ToMatrix(out columnNames)).Submatrix<double>(null, 0, this.orginalData.Columns.Count - 2);
 
             columnNames = columnNames.RemoveAt<string>(columnNames.Length - 1);
 
             // Analysis Data
-            this.analysis = new DescriptiveAnalysis(arrayData, columnNames);
-            this.analysis.Compute();
+            analysis = new DescriptiveAnalysis(arrayData, columnNames);
+            analysis.Compute();
 
             double[,] analysisData = new double[0, arrayData.GetLength(1)];
 
-            analysisData = analysisData.InsertRow<double>(this.analysis.Distinct.ToDouble(), analysisData.GetLength(0));
-            analysisData = analysisData.InsertRow<double>(this.analysis.Means, analysisData.GetLength(0));
-            analysisData = analysisData.InsertRow<double>(this.analysis.Medians, analysisData.GetLength(0));
-            analysisData = analysisData.InsertRow<double>(this.analysis.Modes, analysisData.GetLength(0));
-            analysisData = analysisData.InsertRow<double>(this.analysis.StandardDeviations, analysisData.GetLength(0));
-            analysisData = analysisData.InsertRow<double>(this.analysis.Variances, analysisData.GetLength(0));
-            analysisData = analysisData.InsertRow<double>(this.analysis.Sums, analysisData.GetLength(0));
-
-            string[] rowNames = { "Distinct", "Means", "Medians", "Modes", "StandardDeviations", "Variances", "Sums" };            
+            analysisData = analysisData.InsertRow<double>(analysis.Distinct.ToDouble(), analysisData.GetLength(0));
+            analysisData = analysisData.InsertRow<double>(analysis.Means, analysisData.GetLength(0));
+            analysisData = analysisData.InsertRow<double>(analysis.Medians, analysisData.GetLength(0));
+            analysisData = analysisData.InsertRow<double>(analysis.Modes, analysisData.GetLength(0));
+            analysisData = analysisData.InsertRow<double>(analysis.StandardDeviations, analysisData.GetLength(0));
+            analysisData = analysisData.InsertRow<double>(analysis.Variances, analysisData.GetLength(0));
+            analysisData = analysisData.InsertRow<double>(analysis.Sums, analysisData.GetLength(0));
+            
+            string[] rowNames = { "Distinct", "Means", "Medians", "Modes", "StandardDeviations", "Variances", "Sums" };
 
             ArrayDataView arrayDataView = new ArrayDataView(analysisData, columnNames, rowNames);
-            dataGridViewXDescriptiveData.DataSource = arrayDataView;
+            this.dataGridViewXDescriptiveData.DataSource = arrayDataView;
         }
 
         private void buttonXDiscretizationData_Click(object sender, EventArgs e)
+        {
+            (new RoiRacHoaDuLieu()).ShowDialog();
+        }
+
+        private void buttonXDataCleaningView_Click(object sender, EventArgs e)
+        {
+            this.bindingSourcePreprocessingData.DataSource = this.orginalDataTableAdapter.GetData();
+        }
+
+
+        private void buttonXDataCleaningStatistics_Click(object sender, EventArgs e)
+        {
+            this.AnalysisData();
+        }
+
+        private void buttonXDataDiscretizationDataView_Click(object sender, EventArgs e)
         {
 
         }
