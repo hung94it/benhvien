@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Accord.Statistics.Analysis;
 using Accord.Statistics.Filters;
 using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
+using DiabetesDido.DAL.DiabetesDataSetTableAdapters;
 using Accord.Math;
 using Accord.Controls;
 
@@ -18,18 +19,23 @@ namespace DiabetesDido.UI
     {
         private OrginalDataTableAdapter orginalDataTableAdapter;
         private DataTable orginalData;
-        
+        private DataTable dtDataSetTempForPreProcessing;
+        private DataTable dtDataSetForPreProcessing;
 
         public void InitializeTabPreprocessingData()
         {
 
 
             this.orginalDataTableAdapter = new OrginalDataTableAdapter();
-
             this.bindingSourcePreprocessingData.DataSource = this.orginalDataTableAdapter.GetData();
             this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
             this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
 
+            buttonXDiscretizationDataStatistics.Enabled = false;
+            buttonXDataDiscretizationRun.Enabled = false;
+            integerInputIntervalDiscretization.Enabled = false;
+            checkBoxXDiscreteAllColumn.Enabled = false;
+            checkedListBoxColumnName.Enabled = false;
         }
 
         private void buttonXCleaningData_Click(object sender, EventArgs e)
@@ -80,12 +86,68 @@ namespace DiabetesDido.UI
 
         private void buttonXDiscretizationData_Click(object sender, EventArgs e)
         {
-            (new RoiRacHoaDuLieu()).ShowDialog();
+            ListBox listBoxSelectedField = new ListBox();
+            dtDataSetForPreProcessing = datasetTA.GetData();
+            int InputInterval = 0;//Biến dùng để chứa khoảng rời rạc mà người dùng nhập vào
+            int Count = 0;//Biến dùng để kiếm tra xem người dùng có phải chỉ chọn 2 Field Tuoi & GioiTinh hay không
+            int dataSetColIndex = 0;//Biến dùng để lưu lại index của Field cần rời rạc
+            if (checkedListBoxColumnName.CheckedItems.Count == 0)
+                MessageBox.Show("Chưa chọn thuộc tính để thực hiện rời rạc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                for (int i = 0; i < checkedListBoxColumnName.CheckedItems.Count; i++)
+                {
+                    String checkedValue = checkedListBoxColumnName.CheckedItems[i].ToString();
+                    if (checkedValue != "Tuoi" && checkedValue != "GioiTinh")
+                        listBoxSelectedField.Items.Add(checkedValue);
+                    else
+                        Count++;
+                }
+                if (Count == checkedListBoxColumnName.CheckedItems.Count)
+                    MessageBox.Show("Thuộc tính Tuoi và GioiTinh không cần thực hiện rời rạc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    InputInterval = integerInputIntervalDiscretization.Value;
+                    for (int i = 0; i < listBoxSelectedField.Items.Count; i++)
+                    {
+                        String colName = listBoxSelectedField.Items[i].ToString();
+                        dataSetColIndex = dtDataSetForPreProcessing.Columns.IndexOf(colName);
+                        bayesObjectTA.DeleteByOne(colName);
+
+                        foreach (DataRow dtRow in dtDataSetForPreProcessing.Rows)
+                        {
+                            decimal currentValue = Convert.ToDecimal(dtRow[dataSetColIndex]);
+                            decimal id = Convert.ToDecimal(dtRow[0]);
+                            String discreteValue = Function.DataDiscretization(currentValue, colName, InputInterval);
+                            decimal maBN = Convert.ToDecimal(dtRow[1]);
+                            String tieuDuong = dtRow[36].ToString();
+                            Function.CapNhapDataSetTemp(datasetTempTA, maBN, colName, discreteValue);
+                        }
+                        Function.TaoBayesObject(colName, InputInterval);
+                    }
+                }
+                dtDataSetTempForPreProcessing.Clear();
+                dtDataSetTempForPreProcessing = datasetTempTA.GetData();
+                this.bindingSourcePreprocessingData.DataSource = this.dtDataSetTempForPreProcessing;
+                this.dataGridViewXPreProcessingData.DataSource = this.dtDataSetTempForPreProcessing;
+                this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
+            }
+            
         }
 
         private void buttonXDataCleaningView_Click(object sender, EventArgs e)
         {
             this.bindingSourcePreprocessingData.DataSource = this.orginalDataTableAdapter.GetData();
+            this.dataGridViewXPreProcessingData.DataSource = this.orginalDataTableAdapter.GetData();
+
+            buttonXDataCleaningRun.Enabled = true;
+            buttonXDataCleaningStatistics.Enabled = true;
+
+            buttonXDiscretizationDataStatistics.Enabled = false;
+            buttonXDataDiscretizationRun.Enabled = false;
+            integerInputIntervalDiscretization.Enabled = false;
+            checkBoxXDiscreteAllColumn.Enabled = false;
+            checkedListBoxColumnName.Enabled = false;
         }
 
 
@@ -96,7 +158,46 @@ namespace DiabetesDido.UI
 
         private void buttonXDataDiscretizationDataView_Click(object sender, EventArgs e)
         {
+            dtDataSetTempForPreProcessing = datasetTempTA.GetData();
+            this.bindingSourcePreprocessingData.DataSource = this.dtDataSetTempForPreProcessing;
+            this.dataGridViewXPreProcessingData.DataSource = this.dtDataSetTempForPreProcessing;
+            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
+            if (checkedListBoxColumnName.Items.Count > 0)
+                checkedListBoxColumnName.Items.Clear();
+            for (int i = 2; i < dtDataSetTempForPreProcessing.Columns.Count - 1; i++)
+            {
+                String colName = dtDataSetTempForPreProcessing.Columns[i].ColumnName;
+                checkedListBoxColumnName.Items.Add(colName, false);
+            }
 
+            buttonXDataCleaningRun.Enabled = false;
+            buttonXDataCleaningStatistics.Enabled = false;
+
+            buttonXDiscretizationDataStatistics.Enabled = true;
+            buttonXDataDiscretizationRun.Enabled = true;
+            integerInputIntervalDiscretization.Enabled = true;
+            checkBoxXDiscreteAllColumn.Enabled = true;
+            checkedListBoxColumnName.Enabled = true;
+        }
+        private void checkBoxXDiscreteAllColumn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxXDiscreteAllColumn.Checked == true)
+                for (int i = 0; i < checkedListBoxColumnName.Items.Count; i++)
+                    checkedListBoxColumnName.SetItemChecked(i, true);
+            else
+                for (int i = 0; i < checkedListBoxColumnName.Items.Count; i++)
+                    checkedListBoxColumnName.SetItemChecked(i, false);
+        }
+        private void buttonXDiscretizationDataStatistics_Click(object sender, EventArgs e)
+        {
+            if (checkedListBoxColumnName.SelectedIndex == -1)
+                MessageBox.Show("Chưa chọn thuộc tính để xem thống kê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                String colName = checkedListBoxColumnName.SelectedItem.ToString();
+                FormDiscretizationDataStatistics newFormDiscretizationDataStatistics = new FormDiscretizationDataStatistics(colName);
+                newFormDiscretizationDataStatistics.Show();
+            }
         }
     }
 }

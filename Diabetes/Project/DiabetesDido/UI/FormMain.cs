@@ -15,12 +15,15 @@ namespace DiabetesDido.UI
         public FormMain()
         {
             InitializeComponent();
-
             InitializeTabPreprocessingData();
             InitializeTabCreateModel();
             InitializeTabDiagnosis();
             
         }
+
+        
+
+
  
     }
 }

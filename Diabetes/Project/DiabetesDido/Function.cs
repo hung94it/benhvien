@@ -87,7 +87,7 @@ namespace DiabetesDido
             return khoang;
         }
         //Hàm dùng để rời rạc giá trị của cột trong bảng dữ liệu
-        public static String TinhGiaTriRoiRac(decimal giaTri,String colName, int khoang)
+        public static String DataDiscretization(decimal giaTri,String colName, int khoang)
         {
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
             DataTable dt = dataSetTA.GetData();
