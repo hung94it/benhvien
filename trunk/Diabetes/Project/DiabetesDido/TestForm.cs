@@ -76,7 +76,7 @@ namespace DiabetesDido
                         default:
                             decimal colValue = Convert.ToDecimal(dtRow[colName]);
                             int khoang = Function.XacDinhKhoang(colName);
-                            String giaTriRoiRac = Function.TinhGiaTriRoiRac(colValue, colName, khoang);
+                            String giaTriRoiRac = Function.DataDiscretization(colValue, colName, khoang);
                             newRow[colName] = giaTriRoiRac;
                             break;
                     }

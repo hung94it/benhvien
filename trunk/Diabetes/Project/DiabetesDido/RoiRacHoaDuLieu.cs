@@ -107,7 +107,7 @@ namespace DiabetesDido
                 {
                     decimal giaTri = Convert.ToDecimal(dtRow[dataSetColIndex]);
                     decimal id = Convert.ToDecimal(dtRow[0]);
-                    String giaTriRoiRac = Function.TinhGiaTriRoiRac(giaTri, colName, khoangRoiRac);
+                    String giaTriRoiRac = Function.DataDiscretization(giaTri, colName, khoangRoiRac);
                     decimal maBN = Convert.ToDecimal(dtRow[1]);
                     String tieuDuong = dtRow[5].ToString();
                     Function.CapNhapDataSetTemp(dataSetTempTA, maBN, colName, giaTriRoiRac);
