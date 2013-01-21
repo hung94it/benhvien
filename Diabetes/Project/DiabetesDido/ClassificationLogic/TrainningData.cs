@@ -12,8 +12,7 @@ namespace DiabetesDido.ClassificationLogic
     {
         private DataTable integerDiscreteDatatable;
         private Codification discreteCodification;
-        private double[][] doubleTrainningAttributes;
-        private int[][] intTrainningAttributes;
+        private double[][] trainningAttributes;        
         private int[] classifierAttribute;
         private string[] columnNames;
         private string lastColumnName;
@@ -37,22 +36,16 @@ namespace DiabetesDido.ClassificationLogic
             private set { columnNames = value; }
         }
 
-        public int[][] IntTrainningAttributes
-        {
-            get { return intTrainningAttributes; }
-            private set { intTrainningAttributes = value; }
-        }
-
         public int[] ClassifierAttribute
         {
             get { return classifierAttribute; }
             private set { classifierAttribute = value; }
         }
 
-        public double[][] DoubleTrainningAttributes
+        public double[][] TrainningAttributes
         {
-            get { return doubleTrainningAttributes; }
-            private set { doubleTrainningAttributes = value; }
+            get { return trainningAttributes; }
+            private set { trainningAttributes = value; }
         }
 
         public Codification DiscreteCodification
@@ -89,8 +82,7 @@ namespace DiabetesDido.ClassificationLogic
             this.lastColumnName = this.integerDiscreteDatatable.Columns[this.integerDiscreteDatatable.Columns.Count - 1].ColumnName;
 
             // Create trainning data
-            this.doubleTrainningAttributes = this.integerDiscreteDatatable.ToArray(this.ColumnNames);
-            this.intTrainningAttributes = this.doubleTrainningAttributes.ToInt32();
+            this.trainningAttributes = this.integerDiscreteDatatable.ToArray(this.ColumnNames);            
 
             // Create classifier data for trainning
             string lastColumnName = this.integerDiscreteDatatable.Columns[integerDiscreteDatatable.Columns.Count - 1].ColumnName;
@@ -104,7 +96,6 @@ namespace DiabetesDido.ClassificationLogic
                 else
                     this.classifierAttributeForSVM[index] = 1;
             }
-
         }
 
 

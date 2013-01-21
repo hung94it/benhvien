@@ -38,5 +38,6 @@ namespace DiabetesDido.ClassificationLogic
 
         abstract public void TrainningModel(TrainningData trainningData);
         abstract public List<ConfusionMatrix> TestModel(TrainningData trainningData);
+        abstract public int[] ComputeModel(double[][] inputs);
     }
 }

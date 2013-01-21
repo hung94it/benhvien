@@ -18,12 +18,9 @@ namespace DiabetesDido.UI
             InitializeTabPreprocessingData();
             InitializeTabCreateModel();
             InitializeTabDiagnosis();
-            
+
         }
 
-        
-
-
- 
+               
     }
 }

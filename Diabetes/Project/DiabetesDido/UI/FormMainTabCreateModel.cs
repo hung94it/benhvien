@@ -22,7 +22,7 @@ namespace DiabetesDido.UI
 {
     public partial class FormMain
     {
-        private TrainningDataTableAdapter trainningDataTAbleAdapter;
+        private TrainningDataTableAdapter trainningDataTableAdapter;
         // Active model
         private LearningAlgorithm activeLearningAlgorithm;
         // Dictionary contains model
@@ -50,8 +50,8 @@ namespace DiabetesDido.UI
             this.ActiveLearningAlgorithm = LearningAlgorithm.NaiveBayes;
             this.ModelList = new Dictionary<LearningAlgorithm, ModelType>();
 
-            trainningDataTAbleAdapter = new TrainningDataTableAdapter();            
-            this.orginalTrainningTable = trainningDataTAbleAdapter.GetData();
+            trainningDataTableAdapter = new TrainningDataTableAdapter();            
+            this.orginalTrainningTable = trainningDataTableAdapter.GetData();
             
             //// Test data same as trainning data
             //this.testData = this.trainningData;
