@@ -136,17 +136,17 @@
     <Compile Include="UI\DecisionTreeView.Designer.cs">
       <DependentUpon>DecisionTreeView.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FormCustomDataDiscretization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormCustomDataDiscretization.Designer.cs">
+      <DependentUpon>FormCustomDataDiscretization.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormDecisionTree.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\FormDecisionTree.Designer.cs">
       <DependentUpon>FormDecisionTree.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FormDiscretizationDataStatistics.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FormDiscretizationDataStatistics.Designer.cs">
-      <DependentUpon>FormDiscretizationDataStatistics.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormMain.cs">
       <SubType>Form</SubType>
@@ -212,11 +212,11 @@
     <EmbeddedResource Include="UI\DecisionTreeView.resx">
       <DependentUpon>DecisionTreeView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormCustomDataDiscretization.resx">
+      <DependentUpon>FormCustomDataDiscretization.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormDecisionTree.resx">
       <DependentUpon>FormDecisionTree.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormDiscretizationDataStatistics.resx">
-      <DependentUpon>FormDiscretizationDataStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
