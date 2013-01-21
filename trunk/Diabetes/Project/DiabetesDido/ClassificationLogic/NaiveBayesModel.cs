@@ -22,7 +22,7 @@ namespace DiabetesDido.ClassificationLogic
         public override void TrainningModel(TrainningData trainningData)
         {
             Codification codification = trainningData.DiscreteCodification;
-            int[][] inputs = trainningData.IntTrainningAttributes;
+            int[][] inputs = trainningData.TrainningAttributes.ToInt32();
             int[] outputs = trainningData.ClassifierAttribute;
 
             int lastIndex = codification.Columns.Count - 1;
@@ -41,8 +41,15 @@ namespace DiabetesDido.ClassificationLogic
 
         public override List<ConfusionMatrix> TestModel(TrainningData trainningData)
         {
-            int[] expected = trainningData.ClassifierAttribute;
-            double[][] inputs = trainningData.DoubleTrainningAttributes;
+            int[] expected = trainningData.ClassifierAttribute;            
+            int[] predicted = ComputeModel(trainningData.TrainningAttributes);
+            
+            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
+            return new List<ConfusionMatrix> { confusionMatrix };
+        }
+
+        public override int[] ComputeModel(double[][] inputs)
+        {
             int[] predicted = new int[inputs.Length];
 
             for (int i = 0; i < inputs.Length; i++)
@@ -51,9 +58,7 @@ namespace DiabetesDido.ClassificationLogic
                     predicted[i] = this.Bayes.Compute(inputs[i].ToInt32());
                 }
                 catch { }
-            
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
-            return new List<ConfusionMatrix> { confusionMatrix };
+            return predicted;
         }
     }
 }

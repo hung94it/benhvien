@@ -142,6 +142,12 @@
     <Compile Include="UI\FormDecisionTree.Designer.cs">
       <DependentUpon>FormDecisionTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FormDiscretizationDataStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormDiscretizationDataStatistics.Designer.cs">
+      <DependentUpon>FormDiscretizationDataStatistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,7 +175,7 @@
     <Compile Include="UI\test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClassificationLogic\ClassificationData.cs" />
+    <Compile Include="ClassificationLogic\TrainningData.cs" />
     <Compile Include="Function.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormDecisionTree.resx">
       <DependentUpon>FormDecisionTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormDiscretizationDataStatistics.resx">
+      <DependentUpon>FormDiscretizationDataStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>

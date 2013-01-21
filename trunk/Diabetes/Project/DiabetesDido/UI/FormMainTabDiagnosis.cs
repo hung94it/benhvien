@@ -3,19 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
+using DiabetesDido.ClassificationLogic;
+using Accord.Math;
 
 namespace DiabetesDido.UI
 {
     public partial class FormMain
     {
+
         Function function = new Function();
         static DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter datasetTA = new DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter datasetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+
         public void InitializeTabDiagnosis()
         {
-        
+            this.dataGridViewXDiagnosis.DataSource = this.trainningDataTableAdapter.GetData();
         }
+
+        private void buttonXDiagnosis_Click(object sender, EventArgs e)
+        {
+            TrainningData trainningData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
+
+            int[,] result = new int[trainningData.TrainningAttributes.GetLength(0), 0];
+
+            foreach (var model in this.modelList)
+            {
+                //int[] temp = model.Value.ComputeModel(trainningData.TrainningAttributes);
+                //result = result.InsertColumn<int>(temp);
+                result = result.InsertColumn<int>(model.Value.ComputeModel(trainningData.TrainningAttributes));
+            }
+
+            
+
+            this.dataGridViewXDiagnosisResult.DataSource = result.ToDouble().ToTable();
+        }
+
         //Hàm dùng để rời rác hóa dataset trước khi thực hiện chẩn đoán
         public DataTable DataDiscretization(DataTable dt)
         {

@@ -22,7 +22,7 @@ namespace DiabetesDido.ClassificationLogic
         public override void TrainningModel(TrainningData trainningData)
         {
             Codification codification = trainningData.DiscreteCodification;
-            double[][] inputs = trainningData.DoubleTrainningAttributes;
+            double[][] inputs = trainningData.TrainningAttributes;
             int[] outputs = trainningData.ClassifierAttributeForSVM;
 
             // Create a Support Vector Machine for the given inputs
@@ -41,15 +41,20 @@ namespace DiabetesDido.ClassificationLogic
 
         public override List<Accord.Statistics.Analysis.ConfusionMatrix> TestModel(TrainningData trainningData)
         {
-            int[] expected = trainningData.ClassifierAttributeForSVM;
-            double[][] inputs = trainningData.DoubleTrainningAttributes;
+            int[] expected = trainningData.ClassifierAttributeForSVM;            
+            int[] predicted = ComputeModel(trainningData.TrainningAttributes);
+
+            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, -1, 1);
+            return new List<ConfusionMatrix> { confusionMatrix };
+        }
+
+        public override int[] ComputeModel(double[][] inputs)
+        {
             int[] predicted = new int[inputs.Length];
 
             for (int i = 0; i < inputs.Length; i++)
                 predicted[i] = System.Math.Sign(svm.Compute(inputs[0]));
-
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, -1, 1);
-            return new List<ConfusionMatrix> { confusionMatrix };
+            return predicted;
         }
     }
 }

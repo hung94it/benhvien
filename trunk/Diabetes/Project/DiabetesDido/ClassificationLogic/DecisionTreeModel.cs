@@ -35,7 +35,14 @@ namespace DiabetesDido.ClassificationLogic
         public override List<Accord.Statistics.Analysis.ConfusionMatrix> TestModel(TrainningData trainningData)
         {
             int[] expected = trainningData.ClassifierAttribute;
-            double[][] inputs = trainningData.DoubleTrainningAttributes;
+            int[] predicted = ComputeModel(trainningData.TrainningAttributes);
+
+            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
+            return new List<ConfusionMatrix> { confusionMatrix };
+        }
+
+        public override int[] ComputeModel(double[][] inputs)
+        {
             int[] predicted = new int[inputs.Length];
 
             for (int i = 0; i < inputs.Length; i++)
@@ -43,11 +50,10 @@ namespace DiabetesDido.ClassificationLogic
                 {
                     predicted[i] = this.Tree.Compute(inputs[i]);
                 }
-                catch { 
+                catch
+                {
                 }
-
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
-            return new List<ConfusionMatrix> { confusionMatrix };
+            return predicted;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace DiabetesDido.ClassificationLogic
         public override void TrainningModel(TrainningData trainningData)
         {
             Codification codification = trainningData.DiscreteCodification;
-            double[][] inputs = trainningData.DoubleTrainningAttributes;
+            double[][] inputs = trainningData.TrainningAttributes;
             int[] outputs = trainningData.ClassifierAttribute;            
 
             // Create tree
@@ -25,19 +25,5 @@ namespace DiabetesDido.ClassificationLogic
             // Learn the decision tree
             double error = c45.Run(inputs, outputs);
         }
-
-        //// Test decision tree
-        //public override List<Accord.Statistics.Analysis.ConfusionMatrix> TestModel(ClassificationData classificationData)
-        //{
-        //    int[] expected = classificationData.ClassifierAttribute;
-        //    double[][] inputs = classificationData.DoubleTrainningAttributes;
-        //    int[] predicted = new int[inputs.Length];
-
-        //    for (int i = 0; i < inputs.Length; i++)
-        //        predicted[i] = this.Tree.Compute(inputs[i]);
-
-        //    ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
-        //    return new List<ConfusionMatrix> { confusionMatrix };
-        //}
     }
 }
