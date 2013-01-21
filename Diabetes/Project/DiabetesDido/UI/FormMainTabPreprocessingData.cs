@@ -138,7 +138,8 @@ namespace DiabetesDido.UI
         private void buttonXDataCleaningView_Click(object sender, EventArgs e)
         {
             this.bindingSourcePreprocessingData.DataSource = this.orginalDataTableAdapter.GetData();
-            this.dataGridViewXPreProcessingData.DataSource = this.orginalDataTableAdapter.GetData();
+            this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
+            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
 
             buttonXDataCleaningRun.Enabled = true;
             buttonXDataCleaningStatistics.Enabled = true;
@@ -159,8 +160,8 @@ namespace DiabetesDido.UI
         private void buttonXDataDiscretizationDataView_Click(object sender, EventArgs e)
         {
             dtDataSetTempForPreProcessing = datasetTempTA.GetData();
-            this.bindingSourcePreprocessingData.DataSource = this.dtDataSetTempForPreProcessing;
-            this.dataGridViewXPreProcessingData.DataSource = this.dtDataSetTempForPreProcessing;
+            this.bindingSourcePreprocessingData.DataSource = datasetTempTA.GetData();
+            this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
             this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
             if (checkedListBoxColumnName.Items.Count > 0)
                 checkedListBoxColumnName.Items.Clear();
@@ -195,8 +196,46 @@ namespace DiabetesDido.UI
             else
             {
                 String colName = checkedListBoxColumnName.SelectedItem.ToString();
-                FormDiscretizationDataStatistics newFormDiscretizationDataStatistics = new FormDiscretizationDataStatistics(colName);
-                newFormDiscretizationDataStatistics.Show();
+                BayesObjectTableAdapter bayesObjectTableAdapter = new BayesObjectTableAdapter();
+                DataSetTempTableAdapter dataSetTempTableAdapter = new DataSetTempTableAdapter();
+                DataTable dtBayesForStatistics = bayesObjectTableAdapter.GetData();
+                DataTable dtSetTempForStatistics = dataSetTempTableAdapter.GetData();
+                DataRow[] bayesRows = bayesObjectTableAdapter.GetData().Select("TenThuocTinh='" + colName + "'");
+                dtBayesForStatistics.Clear();
+                int iCount = 0;
+                foreach (DataRow bayesRow in bayesRows)
+                {
+
+                    String tenThuocTinh = bayesRow["TenThuocTinh"].ToString();
+                    String khoangRoiRac = bayesRow["KhoangRoiRac"].ToString();
+                    String tieuDuong = bayesRow["TieuDuong"].ToString();
+                    int tongSoLuong = 0;
+                    String iQuery = "" + tenThuocTinh + "='" + khoangRoiRac + "' and TieuDuong='" + tieuDuong + "'";
+                    tongSoLuong = dtSetTempForStatistics.Select(iQuery).Count();
+                    DataRow newRow = dtBayesForStatistics.NewRow();
+                    iCount++;
+                    newRow[0] = iCount;
+                    newRow[1] = tenThuocTinh;
+                    newRow[2] = khoangRoiRac;
+                    newRow[3] = tongSoLuong;
+                    newRow[4] = tieuDuong;
+                    dtBayesForStatistics.Rows.Add(newRow);
+                }
+                dataGridViewXDescriptiveData.DataSource = dtBayesForStatistics;
+                dataGridViewXDescriptiveData.Columns["ID"].Visible = true;
+            }
+        }
+        private void buttonXCustomDataDiscretization_Click(object sender, EventArgs e)
+        {
+            if (checkedListBoxColumnName.SelectedIndex == -1)
+                MessageBox.Show("Chưa chọn thuộc tính để xem thống kê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                String colName = checkedListBoxColumnName.SelectedItem.ToString();
+                int interval = integerInputIntervalDiscretization.Value;
+                FormCustomDataDiscretization newFormCustomDataDiscretization = new FormCustomDataDiscretization(colName,interval);
+                newFormCustomDataDiscretization.FormClosed += buttonXDataDiscretizationDataView_Click;
+                newFormCustomDataDiscretization.Show();
             }
         }
     }
