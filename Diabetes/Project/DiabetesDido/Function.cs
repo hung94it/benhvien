@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-
+using DiabetesDido.UI;
 namespace DiabetesDido
 {
     public class Function
@@ -85,6 +85,38 @@ namespace DiabetesDido
             int khoang = 0;
             khoang = dtRow.Count()/2;
             return khoang;
+        }
+        //Hàm dùng để rời rạc giá trị của cột trong bảng dữ liệu chẩn đoán
+        public static String DataDiscretizationForDiagnosis(decimal colValue, String colName)
+        {
+            
+            List<double> listIntervalValues = GetListIntervalValue(colName);
+            String DiscretizationValue = FormCustomDataDiscretization.DataDiscretization(colValue, listIntervalValues);
+            return DiscretizationValue;
+        }
+        //Hàm dùng để lấy một tập gồm các khoảng rời rạc của một cột
+        public static List<double> GetListIntervalValue(String colName)
+        {
+            List<double> listIntervalValues = new List<double>();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTableAdapter = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DataRow[] dtIntervalValue = bayesObjectTableAdapter.GetData().Select("TenThuocTinh='" + colName + "'");
+            foreach (DataRow dtRow in dtIntervalValue)
+            {
+                String[] listString = dtRow[2].ToString().Split(',');
+                String str = listString[0].Substring(1, listString[0].Length - 1);
+                double intervalValue = Convert.ToDouble(str);
+                if (!listIntervalValues.Contains(intervalValue))
+                    listIntervalValues.Add(intervalValue);
+                //Dành cho trường hợp thuộc tính chỉ có 1 khoảng
+                if (dtIntervalValue.Count() == 2)
+                {
+                    String secondStr = listString[1].Substring(0, listString[1].Length - 1);
+                    double secondIntervalValue = Convert.ToDouble(secondStr);
+                    if (!listIntervalValues.Contains(secondIntervalValue))
+                        listIntervalValues.Add(secondIntervalValue);
+                }
+            }
+            return listIntervalValues;
         }
         //Hàm dùng để rời rạc giá trị của cột trong bảng dữ liệu
         public static String DataDiscretization(decimal giaTri,String colName, int khoang)
