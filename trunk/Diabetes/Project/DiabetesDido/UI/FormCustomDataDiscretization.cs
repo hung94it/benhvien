@@ -51,6 +51,7 @@ namespace DiabetesDido.UI
 
         private void buttonXInputIntervalValue_Click(object sender, EventArgs e)
         {
+
             int selectedIndex = comboBoxExInterval.SelectedIndex;
             double inputValue = doubleInputIntervalValue.Value;
             if (selectedIndex != -1)
@@ -104,7 +105,7 @@ namespace DiabetesDido.UI
             newRow[colName] = discretizationValue;
             dataSetTempTableAdapter.Update(newRow);
         }
-        private String DataDiscretization(decimal colValue, List<double> listInputIntervalValue)
+        public static String DataDiscretization(decimal colValue, List<double> listInputIntervalValue)
         {
             String DiscretizationValue = "";
             for (int i = 0; i < listInputIntervalValue.Count; i++)
