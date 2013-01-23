@@ -43,15 +43,15 @@ namespace DiabetesDido.UI
         {
             OpenFileDialog ofd = new OpenFileDialog();
             textBoxXFilePath.Text = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
-            if (!ValidInput())
+            if (!ValidInput(textBoxXFilePath.Text))
                 return;
-            dtForDiagnosis = ReadDataFromExcelFile();
+            dtForDiagnosis = ReadDataFromExcelFile(textBoxXFilePath.Text);
             dataGridViewXDiagnosis.DataSource = dtForDiagnosis;
         }
         //Hàm dùng để kiếm tra đường dẫn tới file excel
-        private bool ValidInput()
+        private bool ValidInput(String filePath)
         {
-            if (textBoxXFilePath.Text.Trim() == "")
+            if (filePath.Trim() == "")
             {
                 MessageBox.Show("Chưa chọn tập tin cần nạp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //MessageBox.Show(ex.ToString());
@@ -60,9 +60,9 @@ namespace DiabetesDido.UI
             return true;
         }
         //Hàm dùng để đọc file excel ** Lưu ý: Chỉ đọc file .xls
-        private DataTable ReadDataFromExcelFile()
+        private DataTable ReadDataFromExcelFile(String filePath)
         {
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + textBoxXFilePath.Text.Trim() + ";Extended Properties=Excel 8.0";
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath.Trim() + ";Extended Properties=Excel 8.0";
             // Tạo đối tượng kết nối
             OleDbConnection oledbConn = new OleDbConnection(connectionString);
             DataTable data = null;

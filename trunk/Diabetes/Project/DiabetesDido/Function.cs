@@ -40,23 +40,23 @@ namespace DiabetesDido
         public String RoiRacHoaTuoi(decimal namSinh)
         {
             if (namSinh < 10)
-                return "<10";
+                return "[0,10)";
             else if (namSinh < 20)
-                return "10_20";
+                return "[10,20)";
             else if (namSinh < 30)
-                return "20_30";
+                return "[20,30)";
             else if (namSinh < 40)
-                return "30_40";
+                return "[30,40)";
             else if (namSinh < 50)
-                return "40_50";
+                return "[40,50)";
             else if (namSinh < 60)
-                return "50_60";
+                return "[50,60)";
             else if (namSinh < 70)
-                return "60_70";
+                return "[60,70)";
             else if (namSinh < 80)
-                return "70_80";
+                return "[70,80)";
             else
-                return "80>";
+                return "[80,+)";
         }
         //Hàm dùng để tính phương sai của một cột
         public static decimal TinhDoLechChuan(DataTable dt, String colName)
@@ -98,22 +98,25 @@ namespace DiabetesDido
         public static List<double> GetListIntervalValue(String colName)
         {
             List<double> listIntervalValues = new List<double>();
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTableAdapter = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-            DataRow[] dtIntervalValue = bayesObjectTableAdapter.GetData().Select("TenThuocTinh='" + colName + "'");
-            foreach (DataRow dtRow in dtIntervalValue)
+            if (colName != "GioiTinh")
             {
-                String[] listString = dtRow[2].ToString().Split(',');
-                String str = listString[0].Substring(1, listString[0].Length - 1);
-                double intervalValue = Convert.ToDouble(str);
-                if (!listIntervalValues.Contains(intervalValue))
-                    listIntervalValues.Add(intervalValue);
-                //Dành cho trường hợp thuộc tính chỉ có 1 khoảng
-                if (dtIntervalValue.Count() == 2)
+                DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTableAdapter = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+                DataRow[] dtIntervalValue = bayesObjectTableAdapter.GetData().Select("TenThuocTinh='" + colName + "'");
+                foreach (DataRow dtRow in dtIntervalValue)
                 {
-                    String secondStr = listString[1].Substring(0, listString[1].Length - 1);
-                    double secondIntervalValue = Convert.ToDouble(secondStr);
-                    if (!listIntervalValues.Contains(secondIntervalValue))
-                        listIntervalValues.Add(secondIntervalValue);
+                    String[] listString = dtRow[2].ToString().Split(',');
+                    String str = listString[0].Substring(1, listString[0].Length - 1);
+                    double intervalValue = Convert.ToDouble(str);
+                    if (!listIntervalValues.Contains(intervalValue))
+                        listIntervalValues.Add(intervalValue);
+                    //Dành cho trường hợp thuộc tính chỉ có 1 khoảng
+                    if (dtIntervalValue.Count() == 2)
+                    {
+                        String secondStr = listString[1].Substring(0, listString[1].Length - 1);
+                        double secondIntervalValue = Convert.ToDouble(secondStr);
+                        if (!listIntervalValues.Contains(secondIntervalValue))
+                            listIntervalValues.Add(secondIntervalValue);
+                    }
                 }
             }
             return listIntervalValues;
