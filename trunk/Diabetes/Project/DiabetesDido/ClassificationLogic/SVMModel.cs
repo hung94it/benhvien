@@ -21,7 +21,7 @@ namespace DiabetesDido.ClassificationLogic
 
         public override void TrainningModel(TrainningData trainningData)
         {
-            Codification codification = trainningData.DiscreteCodification;
+            Codification codification = trainningData.CodificationData;
             double[][] inputs = trainningData.TrainningAttributes;
             int[] outputs = trainningData.ClassifierAttributeForSVM;
 
@@ -49,9 +49,13 @@ namespace DiabetesDido.ClassificationLogic
         }
 
         public override int[] ComputeModel(double[][] inputs)
-        {
-            int[] predicted = new int[inputs.Length];
+        {            
+            double[] temp = new double[inputs.Length];
 
+            for (int i = 0; i < inputs.Length; i++)
+                temp[i] = svm.Compute(inputs[0]);
+
+            int[] predicted = new int[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
                 predicted[i] = System.Math.Sign(svm.Compute(inputs[0]));
             return predicted;

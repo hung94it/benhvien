@@ -130,11 +130,11 @@
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassificationLogic\ModelType.cs" />
-    <Compile Include="UI\DecisionTreeView.cs">
+    <Compile Include="UI\DecisionTreeViewDiabetes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\DecisionTreeView.Designer.cs">
-      <DependentUpon>DecisionTreeView.cs</DependentUpon>
+    <Compile Include="UI\DecisionTreeViewDiabetes.Designer.cs">
+      <DependentUpon>DecisionTreeViewDiabetes.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormCustomDataDiscretization.cs">
       <SubType>Form</SubType>
@@ -209,8 +209,8 @@
     <EmbeddedResource Include="TienXuDuLieu.resx">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\DecisionTreeView.resx">
-      <DependentUpon>DecisionTreeView.cs</DependentUpon>
+    <EmbeddedResource Include="UI\DecisionTreeViewDiabetes.resx">
+      <DependentUpon>DecisionTreeViewDiabetes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormCustomDataDiscretization.resx">
       <DependentUpon>FormCustomDataDiscretization.cs</DependentUpon>

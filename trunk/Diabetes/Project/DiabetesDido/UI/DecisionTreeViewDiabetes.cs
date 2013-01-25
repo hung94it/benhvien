@@ -31,17 +31,16 @@ namespace DiabetesDido.UI
     ///   Decision Tree (DT) Viewer.
     /// </summary>
     /// 
-    public partial class DecisionTreeView : UserControl
+    public partial class DecisionTreeViewDiabetes : UserControl
     {
         private DecisionTree treeSource;
-
         private TrainningData trainningData;
 
         /// <summary>
-        ///   Initializes a new instance of the <see cref="DecisionTreeView"/> class.
+        ///   Initializes a new instance of the <see cref="DecisionTreeViewDiabetes"/> class.
         /// </summary>
         /// 
-        public DecisionTreeView()
+        public DecisionTreeViewDiabetes()
         {
             InitializeComponent();
 
@@ -57,19 +56,17 @@ namespace DiabetesDido.UI
         public DecisionTree TreeSource
         {
             get { return treeSource; }
-            set
+            private set
             {
-                if (treeSource != value)
-                {
                     treeSource = value;
-                    update();
-                }
             }
         }
 
-
-        private void update()
+        public void SetTree(DecisionTree tree, TrainningData data)
         {
+            this.treeSource = tree;
+            this.trainningData = data;
+
             treeView1.Nodes.Clear();
 
             if (treeSource != null && treeSource.Root != null)
@@ -77,33 +74,6 @@ namespace DiabetesDido.UI
         }
 
         private TreeNode convert(DecisionNode node)
-        {
-            TreeNode treeNode = new TreeNode(node.ToString());
-
-            if (node.IsLeaf)
-            {
-                treeNode.Nodes.Add(new TreeNode(node.Output.ToString()));
-            }
-            else
-            {
-                foreach (var child in node.Branches)
-                    treeNode.Nodes.Add(convert(child));
-            }
-
-            return treeNode;
-        }
-
-        public void SetNodeName(TrainningData data)
-        {
-            this.trainningData = data;
-
-            treeView1.Nodes.Clear();
-
-            if (treeSource != null && treeSource.Root != null)
-                treeView1.Nodes.Add(CreateRuleList(TreeSource.Root));
-        }
-
-        private TreeNode CreateRuleList(DecisionNode node)
         {
             string attributeName;
             string attributeValue;
@@ -117,7 +87,7 @@ namespace DiabetesDido.UI
             else
             {
                 attributeName = node.Owner.Attributes[node.Parent.Branches.AttributeIndex].Name;
-                attributeValue = this.trainningData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Value));
+                attributeValue = this.trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(node.Value));
 
                 treeNode = new TreeNode(attributeName + " = " + attributeValue);
             }
@@ -127,7 +97,7 @@ namespace DiabetesDido.UI
                 if (node.Output.HasValue)
                 {
                     attributeName = this.trainningData.LastColumnName;
-                    attributeValue = this.trainningData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Output));
+                    attributeValue = this.trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(node.Output));
 
                     treeNode.Nodes.Add(new TreeNode(attributeValue));
                 }
@@ -140,9 +110,7 @@ namespace DiabetesDido.UI
             {
                 foreach (var child in node.Branches)
                 {
-                    //if (child.IsLeaf && !child.Output.HasValue)
-                    //    break;
-                    treeNode.Nodes.Add(CreateRuleList(child));
+                    treeNode.Nodes.Add(convert(child));
                 }
             }
 

@@ -13,7 +13,7 @@ namespace DiabetesDido.ClassificationLogic
         // Trainning decision tree with C4.5 algorithm
         public override void TrainningModel(TrainningData trainningData)
         {
-            Codification codification = trainningData.DiscreteCodification;
+            Codification codification = trainningData.CodificationData;
             double[][] inputs = trainningData.TrainningAttributes;
             int[] outputs = trainningData.ClassifierAttribute;            
 

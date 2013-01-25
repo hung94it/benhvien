@@ -32,7 +32,7 @@
             this.textBoxNoRules = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.decisionTreeView = new DiabetesDido.UI.DecisionTreeView();
+            this.decisionTreeView = new DiabetesDido.UI.DecisionTreeViewDiabetes();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -105,7 +105,6 @@
             this.decisionTreeView.Name = "decisionTreeView";
             this.decisionTreeView.Size = new System.Drawing.Size(361, 461);
             this.decisionTreeView.TabIndex = 2;
-            this.decisionTreeView.TreeSource = null;
             // 
             // FormDecisionTree
             // 
@@ -132,7 +131,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBoxYesRules;
-        private DecisionTreeView decisionTreeView;
+        private DecisionTreeViewDiabetes decisionTreeView;
         private System.Windows.Forms.TextBox textBoxNoRules;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
