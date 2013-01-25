@@ -22,23 +22,40 @@ namespace DiabetesDido.UI
 
         public void InitializeTabDiagnosis()
         {
-            
+            this.dataGridViewXDiagnosis.DataSource = this.trainningDataTableAdapter.GetData();
         }
 
         private void buttonXDiagnosis_Click(object sender, EventArgs e)
         {
-            TrainningData trainningData = new TrainningData(this.trainningDataTableAdapter.GetData());
+            TrainningData trainningData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
 
             int[,] result = new int[trainningData.TrainningAttributes.GetLength(0), 0];
 
             foreach (var model in this.modelList)
             {
-                //int[] temp = model.Value.ComputeModel(trainningData.TrainningAttributes);
-                //result = result.InsertColumn<int>(temp);
                 result = result.InsertColumn<int>(model.Value.ComputeModel(trainningData.TrainningAttributes));
             }
             this.dataGridViewXDiagnosisResult.DataSource = result.ToDouble().ToTable();
         }
+
+        private void dataGridViewXDiagnosis_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            {
+                int index = dataGridViewXDiagnosis.FirstDisplayedScrollingRowIndex;
+                dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex = index;
+            }
+        }
+
+        private void dataGridViewXDiagnosisResult_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            {
+                int index = dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex;
+                dataGridViewXDiagnosis.FirstDisplayedScrollingRowIndex = index;
+            }
+        }
+
         private void buttonXImportData_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();

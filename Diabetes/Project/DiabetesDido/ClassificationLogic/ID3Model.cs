@@ -15,7 +15,7 @@ namespace DiabetesDido.ClassificationLogic
         public override void TrainningModel(TrainningData trainningData)
         {
             // Get data for trainning tree
-            Codification codification = trainningData.DiscreteCodification;
+            Codification codification = trainningData.CodificationData;
             int[][] inputs = trainningData.TrainningAttributes.ToInt32();
             int[] outputs = trainningData.ClassifierAttribute;
 

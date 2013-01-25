@@ -22,7 +22,7 @@
 
 namespace DiabetesDido.UI
 {
-    partial class DecisionTreeView
+    partial class DecisionTreeViewDiabetes
     {
         /// <summary> 
         /// Required designer variable.

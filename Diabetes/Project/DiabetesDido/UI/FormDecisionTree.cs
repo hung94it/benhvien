@@ -25,9 +25,8 @@ namespace DiabetesDido.UI
         {
             this.trainningData = data;
 
-            // Show the learned tree in the view
-            decisionTreeView.TreeSource = tree;
-            decisionTreeView.SetNodeName(this.trainningData);
+            // Show the learned tree in the view            
+            decisionTreeView.SetTree(tree, this.trainningData);
             
             if (tree != null && tree.Root != null)
                 CreateRuleList(tree.Root, "");
@@ -42,11 +41,11 @@ namespace DiabetesDido.UI
             if (node.IsLeaf)
             {
                 attributeName = this.trainningData.LastColumnName;
-                attributeValue = this.trainningData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(node.Output));
+                attributeValue = this.trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(node.Output));
 
                 if (node.Output.HasValue)
                 {
-                    if (attributeValue.Equals("Yes"))
+                    if (attributeValue.Equals("TRUE"))
                     {
                         textBoxYesRules.Text += stringTemp + " ==> " + attributeValue + Environment.NewLine + Environment.NewLine;
                     }
@@ -61,7 +60,7 @@ namespace DiabetesDido.UI
                 foreach (var child in node.Branches)
                 {
                     attributeName = child.Owner.Attributes[child.Parent.Branches.AttributeIndex].Name;
-                    attributeValue = this.trainningData.DiscreteCodification.Translate(attributeName, Convert.ToInt32(child.Value));
+                    attributeValue = this.trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(child.Value));
 
                     connectSymbol = stringTemp.Equals("") ? "" : " & ";
 

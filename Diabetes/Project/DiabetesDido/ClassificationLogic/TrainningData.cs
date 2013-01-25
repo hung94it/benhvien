@@ -11,7 +11,7 @@ namespace DiabetesDido.ClassificationLogic
     public class TrainningData
     {
         private DataTable integerDiscreteDatatable;
-        private Codification discreteCodification;
+        private Codification codificationData;
         private double[][] trainningAttributes;        
         private int[] classifierAttribute;
         private string[] columnNames;
@@ -48,16 +48,10 @@ namespace DiabetesDido.ClassificationLogic
             private set { trainningAttributes = value; }
         }
 
-        public Codification DiscreteCodification
+        public Codification CodificationData
         {
-            get { return discreteCodification; }
-            private set { discreteCodification = value; }
-        }
-
-        public DataTable IntegerDiscreteDatatable
-        {
-            get { return integerDiscreteDatatable; }
-            private set { integerDiscreteDatatable = value; }
+            get { return codificationData; }
+            private set { codificationData = value; }
         }
 
         public TrainningData(DataTable dataTable)
@@ -67,8 +61,8 @@ namespace DiabetesDido.ClassificationLogic
 
         private void Initialize(DataTable dataTable)
         {
-            this.discreteCodification = new Codification(dataTable);
-            this.integerDiscreteDatatable = this.discreteCodification.Apply(dataTable);
+            this.codificationData = new Codification(dataTable);
+            this.integerDiscreteDatatable = this.codificationData.Apply(dataTable);
 
             List<string> columnNames = new List<string>();
 
