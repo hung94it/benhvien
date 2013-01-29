@@ -10,13 +10,42 @@ namespace DiabetesDido.ClassificationLogic
 {
     public class TrainningData
     {
-        private DataTable integerDiscreteDatatable;
+        private DataTable discreteValueDatatable;
         private Codification codificationData;
-        private double[][] trainningAttributes;        
+        private double[][] trainningAttributes;
         private int[] classifierAttribute;
         private string[] columnNames;
         private string lastColumnName;
         private int[] classifierAttributeForSVM;
+        private int positiveValue;
+        private int negativeValue;
+        private int negativeValueForSVM;
+        private int positiveValueForSVM;
+
+        public int PositiveValueForSVM
+        {
+            get { return positiveValueForSVM; }
+            set { positiveValueForSVM = value; }
+        }
+
+        public int NegativeValueForSVM
+        {
+            get { return negativeValueForSVM; }
+            set { negativeValueForSVM = value; }
+        }
+
+        public int NegativeValue
+        {
+            get { return negativeValue; }
+            set { negativeValue = value; }
+        }
+
+        public int PositiveValue
+        {
+            get { return positiveValue; }
+            set { positiveValue = value; }
+        }
+
 
         public int[] ClassifierAttributeForSVM
         {
@@ -62,26 +91,27 @@ namespace DiabetesDido.ClassificationLogic
         private void Initialize(DataTable dataTable)
         {
             this.codificationData = new Codification(dataTable);
-            this.integerDiscreteDatatable = this.codificationData.Apply(dataTable);
+            this.discreteValueDatatable = this.codificationData.Apply(dataTable);
 
             List<string> columnNames = new List<string>();
 
             // Get column's name of training data
-            for (int columnIndex = 0; columnIndex < this.integerDiscreteDatatable.Columns.Count - 1; columnIndex++)
+            for (int columnIndex = 0; columnIndex < this.discreteValueDatatable.Columns.Count - 1; columnIndex++)
             {
-                columnNames.Add(this.integerDiscreteDatatable.Columns[columnIndex].ColumnName);
+                columnNames.Add(this.discreteValueDatatable.Columns[columnIndex].ColumnName);
             }
-          
+
             this.ColumnNames = columnNames.ToArray();
-            this.lastColumnName = this.integerDiscreteDatatable.Columns[this.integerDiscreteDatatable.Columns.Count - 1].ColumnName;
+            this.lastColumnName = this.discreteValueDatatable.Columns[this.discreteValueDatatable.Columns.Count - 1].ColumnName;
 
             // Create trainning data
-            this.trainningAttributes = this.integerDiscreteDatatable.ToArray(this.ColumnNames);            
+            this.trainningAttributes = this.discreteValueDatatable.ToArray(this.ColumnNames);
 
             // Create classifier data for trainning
-            string lastColumnName = this.integerDiscreteDatatable.Columns[integerDiscreteDatatable.Columns.Count - 1].ColumnName;
-            this.classifierAttribute = this.integerDiscreteDatatable.ToIntArray(lastColumnName).GetColumn(0);
+            string lastColumnName = this.discreteValueDatatable.Columns[discreteValueDatatable.Columns.Count - 1].ColumnName;
+            this.classifierAttribute = this.discreteValueDatatable.ToIntArray(lastColumnName).GetColumn(0);
 
+            // Create classifier attribute for SVM (-1 or 1)
             this.classifierAttributeForSVM = new int[this.classifierAttribute.Length];
             for (int index = 0; index < this.classifierAttribute.Length; index++)
             {
@@ -90,8 +120,21 @@ namespace DiabetesDido.ClassificationLogic
                 else
                     this.classifierAttributeForSVM[index] = 1;
             }
+
+            this.positiveValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.positiveValue];
+            this.negativeValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.negativeValue];
+
+            if (this.positiveValue == 1)
+            {
+                this.positiveValueForSVM = 1;
+                this.negativeValueForSVM = -1;
+            }
+            else
+            {
+                this.positiveValueForSVM = -1;
+                this.negativeValueForSVM = 1;
+            }
+
         }
-
-
     }
 }

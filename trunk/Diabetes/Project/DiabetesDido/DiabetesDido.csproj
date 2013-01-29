@@ -129,7 +129,7 @@
     <Compile Include="TienXuDuLieu.Designer.cs">
       <DependentUpon>TienXuDuLieu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClassificationLogic\ModelType.cs" />
+    <Compile Include="ClassificationLogic\ClassificationModel.cs" />
     <Compile Include="UI\DecisionTreeViewDiabetes.cs">
       <SubType>UserControl</SubType>
     </Compile>

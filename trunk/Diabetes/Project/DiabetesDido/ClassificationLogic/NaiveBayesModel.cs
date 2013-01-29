@@ -9,7 +9,7 @@ using Accord.Statistics.Filters;
 
 namespace DiabetesDido.ClassificationLogic
 {
-    public class NaiveBayesModel : ModelType
+    public class NaiveBayesModel : ClassificationModel
     {
         private NaiveBayes bayes;
 
@@ -39,14 +39,14 @@ namespace DiabetesDido.ClassificationLogic
             this.Bayes.Estimate(inputs, outputs); 
         }
 
-        public override List<ConfusionMatrix> TestModel(TrainningData trainningData)
-        {
-            int[] expected = trainningData.ClassifierAttribute;            
-            int[] predicted = ComputeModel(trainningData.TrainningAttributes);
+        //public override List<ConfusionMatrix> TestModel(TrainningData trainningData)
+        //{
+        //    int[] expected = trainningData.ClassifierAttribute;            
+        //    int[] predicted = ComputeModel(trainningData.TrainningAttributes);
             
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
-            return new List<ConfusionMatrix> { confusionMatrix };
-        }
+        //    ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
+        //    return new List<ConfusionMatrix> { confusionMatrix };
+        //}
 
         public override int[] ComputeModel(double[][] inputs)
         {

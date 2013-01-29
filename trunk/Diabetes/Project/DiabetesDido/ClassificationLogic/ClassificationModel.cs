@@ -14,10 +14,10 @@ namespace DiabetesDido.ClassificationLogic
         SVM,
     }
 
-    public abstract class ModelType
+    public abstract class ClassificationModel
     {
         // Factory method return new ModelType
-        public static ModelType CreateModel(LearningAlgorithm learningAlgorithm)
+        public static ClassificationModel CreateModel(LearningAlgorithm learningAlgorithm)
         {
             switch (learningAlgorithm)
             { 
@@ -36,8 +36,18 @@ namespace DiabetesDido.ClassificationLogic
             }
         }
 
-        abstract public void TrainningModel(TrainningData trainningData);
-        abstract public List<ConfusionMatrix> TestModel(TrainningData trainningData);
-        abstract public int[] ComputeModel(double[][] inputs);
+        public abstract void TrainningModel(TrainningData trainningData);       
+        public abstract int[] ComputeModel(double[][] inputs);
+
+        public virtual List<ConfusionMatrix> TestModel(TrainningData trainningData)
+        {
+            int[] expected = trainningData.ClassifierAttribute;
+            int[] predicted = ComputeModel(trainningData.TrainningAttributes);
+            int positiveValue = trainningData.PositiveValue;
+            int negativeValue = trainningData.NegativeValue;
+
+            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, positiveValue, negativeValue);
+            return new List<ConfusionMatrix> { confusionMatrix };
+        }
     }
 }

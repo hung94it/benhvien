@@ -9,7 +9,7 @@ using Accord.Statistics.Analysis;
 
 namespace DiabetesDido.ClassificationLogic
 {
-    class SVMModel : ModelType
+    class SVMModel : ClassificationModel
     {
         private SupportVectorMachine svm;
 
@@ -43,8 +43,10 @@ namespace DiabetesDido.ClassificationLogic
         {
             int[] expected = trainningData.ClassifierAttributeForSVM;            
             int[] predicted = ComputeModel(trainningData.TrainningAttributes);
+            int positiveValue = trainningData.PositiveValueForSVM;
+            int negativeValue = trainningData.NegativeValueForSVM;
 
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, -1, 1);
+            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, positiveValue, negativeValue);
             return new List<ConfusionMatrix> { confusionMatrix };
         }
 
