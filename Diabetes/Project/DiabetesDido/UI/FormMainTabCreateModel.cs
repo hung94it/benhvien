@@ -26,13 +26,13 @@ namespace DiabetesDido.UI
         // Active model
         private LearningAlgorithm activeLearningAlgorithm;
         // Dictionary contains model
-        private Dictionary<LearningAlgorithm, ModelType> modelList;
+        private Dictionary<LearningAlgorithm, ClassificationModel> modelList;
         private TrainningData trainningData;
         private DataTable orginalTrainningTable;
         private DataTable testTable;
         
 
-        internal Dictionary<LearningAlgorithm, ModelType> ModelList
+        internal Dictionary<LearningAlgorithm, ClassificationModel> ModelList
         {
             get { return modelList; }
             private set { modelList = value; }
@@ -48,7 +48,7 @@ namespace DiabetesDido.UI
         {            
             this.checkBoxXNaiveBayes.Checked = true;
             this.ActiveLearningAlgorithm = LearningAlgorithm.NaiveBayes;
-            this.ModelList = new Dictionary<LearningAlgorithm, ModelType>();
+            this.ModelList = new Dictionary<LearningAlgorithm, ClassificationModel>();
 
             trainningDataTableAdapter = new TrainningDataTableAdapter();            
             this.orginalTrainningTable = trainningDataTableAdapter.GetData();
@@ -174,7 +174,7 @@ namespace DiabetesDido.UI
         }
 
         // Get active model
-        public ModelType GetModel()
+        public ClassificationModel GetModel()
         {
             return this.ModelList[this.ActiveLearningAlgorithm];
         }
@@ -185,7 +185,7 @@ namespace DiabetesDido.UI
             // Check dictionary already have active model. If not add new model
             if (!this.ModelList.ContainsKey(this.ActiveLearningAlgorithm))
             {
-                this.ModelList.Add(this.ActiveLearningAlgorithm, ModelType.CreateModel(this.ActiveLearningAlgorithm));
+                this.ModelList.Add(this.ActiveLearningAlgorithm, ClassificationModel.CreateModel(this.ActiveLearningAlgorithm));
             }
 
             // Trainning model

@@ -13,12 +13,14 @@ namespace DiabetesDido.ClassificationLogic
         // Trainning decision tree with C4.5 algorithm
         public override void TrainningModel(TrainningData trainningData)
         {
+            // Get data for trainning tree
             Codification codification = trainningData.CodificationData;
             double[][] inputs = trainningData.TrainningAttributes;
-            int[] outputs = trainningData.ClassifierAttribute;            
+            int[] outputs = trainningData.ClassifierAttribute;
 
             // Create tree
-            this.Tree = this.CreateDecisionTree(codification);            
+            this.Tree = this.CreateDecisionTree(codification); 
+           
             // Creates a new instance of the C4.5 learning algorithm
             C45Learning c45 = new C45Learning(this.Tree);
 

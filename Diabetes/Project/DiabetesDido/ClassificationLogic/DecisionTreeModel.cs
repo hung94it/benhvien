@@ -5,7 +5,7 @@ using Accord.Statistics.Filters;
 
 namespace DiabetesDido.ClassificationLogic
 {
-    public abstract class DecisionTreeModel : ModelType
+    public abstract class DecisionTreeModel : ClassificationModel
     {
         private DecisionTree tree;
 
@@ -14,6 +14,7 @@ namespace DiabetesDido.ClassificationLogic
             get { return tree; }
             protected set { tree = value; }
         }        
+
         // Create decision tree
         protected DecisionTree CreateDecisionTree(Codification codification)
         {
@@ -31,15 +32,15 @@ namespace DiabetesDido.ClassificationLogic
             return new DecisionTree(attributes.ToArray(), numberOfClass);
         }
 
-        // Test decision tree
-        public override List<Accord.Statistics.Analysis.ConfusionMatrix> TestModel(TrainningData trainningData)
-        {
-            int[] expected = trainningData.ClassifierAttribute;
-            int[] predicted = ComputeModel(trainningData.TrainningAttributes);
+        //// Test decision tree
+        //public override List<Accord.Statistics.Analysis.ConfusionMatrix> TestModel(TrainningData trainningData)
+        //{
+        //    int[] expected = trainningData.ClassifierAttribute;
+        //    int[] predicted = ComputeModel(trainningData.TrainningAttributes);
 
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
-            return new List<ConfusionMatrix> { confusionMatrix };
-        }
+        //    ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
+        //    return new List<ConfusionMatrix> { confusionMatrix };
+        //}
 
         public override int[] ComputeModel(double[][] inputs)
         {
