@@ -27,5 +27,10 @@ namespace DiabetesDido.ClassificationLogic
             // Learn the decision tree
             double error = c45.Run(inputs, outputs);
         }
+
+        public override string ToString()
+        {
+            return "C4.5";
+        }
     }
 }

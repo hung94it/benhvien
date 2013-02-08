@@ -16,23 +16,8 @@ namespace DiabetesDido.ClassificationLogic
         private int[] classifierAttribute;
         private string[] columnNames;
         private string lastColumnName;
-        private int[] classifierAttributeForSVM;
         private int positiveValue;
         private int negativeValue;
-        private int negativeValueForSVM;
-        private int positiveValueForSVM;
-
-        public int PositiveValueForSVM
-        {
-            get { return positiveValueForSVM; }
-            set { positiveValueForSVM = value; }
-        }
-
-        public int NegativeValueForSVM
-        {
-            get { return negativeValueForSVM; }
-            set { negativeValueForSVM = value; }
-        }
 
         public int NegativeValue
         {
@@ -44,13 +29,6 @@ namespace DiabetesDido.ClassificationLogic
         {
             get { return positiveValue; }
             set { positiveValue = value; }
-        }
-
-
-        public int[] ClassifierAttributeForSVM
-        {
-            get { return classifierAttributeForSVM; }
-            private set { classifierAttributeForSVM = value; }
         }
 
         public string LastColumnName
@@ -111,30 +89,9 @@ namespace DiabetesDido.ClassificationLogic
             string lastColumnName = this.discreteValueDatatable.Columns[discreteValueDatatable.Columns.Count - 1].ColumnName;
             this.classifierAttribute = this.discreteValueDatatable.ToIntArray(lastColumnName).GetColumn(0);
 
-            // Create classifier attribute for SVM (-1 or 1)
-            this.classifierAttributeForSVM = new int[this.classifierAttribute.Length];
-            for (int index = 0; index < this.classifierAttribute.Length; index++)
-            {
-                if (this.classifierAttribute[index] == 0)
-                    this.classifierAttributeForSVM[index] = -1;
-                else
-                    this.classifierAttributeForSVM[index] = 1;
-            }
-
-            this.positiveValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.positiveValue];
-            this.negativeValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.negativeValue];
-
-            if (this.positiveValue == 1)
-            {
-                this.positiveValueForSVM = 1;
-                this.negativeValueForSVM = -1;
-            }
-            else
-            {
-                this.positiveValueForSVM = -1;
-                this.negativeValueForSVM = 1;
-            }
-
+            // Set positive, negative value to test model
+            this.positiveValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.positiveString];
+            this.negativeValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.negativeString];
         }
     }
 }

@@ -36,24 +36,24 @@ namespace DiabetesDido.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("TRUE")]
-        public string positiveValue {
+        public string positiveString {
             get {
-                return ((string)(this["positiveValue"]));
+                return ((string)(this["positiveString"]));
             }
             set {
-                this["positiveValue"] = value;
+                this["positiveString"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("FALSE")]
-        public string negativeValue {
+        public string negativeString {
             get {
-                return ((string)(this["negativeValue"]));
+                return ((string)(this["negativeString"]));
             }
             set {
-                this["negativeValue"] = value;
+                this["negativeString"] = value;
             }
         }
     }

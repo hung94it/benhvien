@@ -8,6 +8,7 @@ using DiabetesDido.ClassificationLogic;
 using Accord.Math;
 using System.Data.OleDb;
 using System.Windows.Forms;
+using Accord.MachineLearning.DecisionTrees;
 
 namespace DiabetesDido.UI
 {
@@ -21,29 +22,52 @@ namespace DiabetesDido.UI
         static DataTable dtForDiagnosis = new DataTable();
 
         public void InitializeTabDiagnosis()
-        {
+        {            
             this.dataGridViewXDiagnosis.DataSource = this.trainningDataTableAdapter.GetData();
         }
 
         private void buttonXDiagnosis_Click(object sender, EventArgs e)
         {
             TrainningData trainningData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
+            DataTable resultTable = new DataTable();
+            List<int[]> modelResults = new List<int[]>();
+            string columnName = trainningData.LastColumnName;
+            DataRow row;
 
-            int[,] result = new int[trainningData.TrainningAttributes.GetLength(0), 0];
-
+            // Add column
             foreach (var model in this.modelList)
             {
-                result = result.InsertColumn<int>(model.Value.ComputeModel(trainningData.TrainningAttributes));
+                resultTable.Columns.Add(model.Value.ToString(), typeof(String));
+                modelResults.Add(model.Value.ComputeModel(trainningData.TrainningAttributes));
             }
-            this.dataGridViewXDiagnosisResult.DataSource = result.ToDouble().ToTable();
+
+            // Add row
+            int columnIndex;
+            for (int rowIndex = 0; rowIndex < modelResults[0].Length; rowIndex++)
+            {                
+                row = resultTable.NewRow();
+                columnIndex = 0;
+                foreach (DataColumn column in resultTable.Columns)
+                {
+                    row[column] = trainningData.CodificationData.Translate(columnName, modelResults[columnIndex++][rowIndex]);                    
+                }
+                resultTable.Rows.Add(row);
+            }
+
+            this.dataGridViewXDiagnosisResult.DataSource = resultTable;
+
         }
 
+        // Scrolling two gridviews
         private void dataGridViewXDiagnosis_Scroll(object sender, ScrollEventArgs e)
         {
             if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
             {
                 int index = dataGridViewXDiagnosis.FirstDisplayedScrollingRowIndex;
-                dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex = index;
+                if (dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex != -1)
+                {
+                    dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex = index;
+                }
             }
         }
 
@@ -54,6 +78,56 @@ namespace DiabetesDido.UI
                 int index = dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex;
                 dataGridViewXDiagnosis.FirstDisplayedScrollingRowIndex = index;
             }
+        }
+
+        public int Compute(double[] input, DecisionTree tree)
+        {
+            DecisionNode Root = tree.Root;
+
+            if (Root == null)
+                throw new InvalidOperationException();
+
+            DecisionNode current = Root;
+
+            // Start reasoning
+            while (current != null)
+            {
+                // Check if this is a leaf
+                if (current.IsLeaf)
+                {
+                    // This is a leaf node. The decision
+                    // proccess thus should stop here.
+
+                    return current.Output.Value;
+                }
+
+                // This node is not a leaf. Continue the
+                // decisioning proccess following the childs
+
+                // Get the next attribute to guide reasoning
+                int attribute = current.Branches.AttributeIndex;
+
+                // Check which child is responsible for dealing
+                // which the particular value of the attribute
+                DecisionNode nextNode = null;
+
+                foreach (DecisionNode branch in current.Branches)
+                {
+                    if (branch.Compute(input[attribute]))
+                    {
+                        // This is the child node responsible for dealing
+                        // which this particular attribute value. Choose it
+                        // to continue reasoning.
+
+                        nextNode = branch; break;
+                    }
+                }
+
+                current = nextNode;
+            }
+
+            // Normal execution should not reach here.
+            throw new InvalidOperationException("The tree is degenerated.");
         }
 
         private void buttonXImportData_Click(object sender, EventArgs e)
@@ -119,8 +193,9 @@ namespace DiabetesDido.UI
         //Hàm dùng để rời rác hóa dataset trước khi thực hiện chẩn đoán
         public DataTable DataDiscretization(DataTable dt)
         {
-            DataTable dtDataSetTemp = datasetTempTA.GetData();
-            dtDataSetTemp.Clear();
+            DAL.DiabetesDataSet.DataSetDataTable dtDataSetTemp = new DAL.DiabetesDataSet.DataSetDataTable();
+            //DataTable dtDataSetTemp = datasetTempTA.GetData();
+            //dtDataSetTemp.Clear();
             DataTable dtBayesObject = bayesObjectTA.GetData();
             int Count = 1;
             try
