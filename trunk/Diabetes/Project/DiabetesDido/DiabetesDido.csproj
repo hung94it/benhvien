@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassificationLogic\C45Model.cs" />
+    <Compile Include="ClassificationLogic\ClassificationStatics.cs" />
     <Compile Include="ClassificationLogic\DecisionTreeModel.cs" />
     <Compile Include="ClassificationLogic\ID3Model.cs" />
     <Compile Include="ClassificationLogic\NaiveBayesModel.cs" />

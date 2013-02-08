@@ -29,5 +29,9 @@ namespace DiabetesDido.ClassificationLogic
             id3learning.Run(inputs, outputs);
         }
 
+        public override string ToString()
+        {
+            return "ID3";
+        }
     }
 }

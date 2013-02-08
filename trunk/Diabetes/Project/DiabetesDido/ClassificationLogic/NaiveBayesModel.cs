@@ -39,15 +39,6 @@ namespace DiabetesDido.ClassificationLogic
             this.Bayes.Estimate(inputs, outputs); 
         }
 
-        //public override List<ConfusionMatrix> TestModel(TrainningData trainningData)
-        //{
-        //    int[] expected = trainningData.ClassifierAttribute;            
-        //    int[] predicted = ComputeModel(trainningData.TrainningAttributes);
-            
-        //    ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, 0, 1);
-        //    return new List<ConfusionMatrix> { confusionMatrix };
-        //}
-
         public override int[] ComputeModel(double[][] inputs)
         {
             int[] predicted = new int[inputs.Length];
@@ -59,6 +50,11 @@ namespace DiabetesDido.ClassificationLogic
                 }
                 catch { }
             return predicted;
+        }
+
+        public override string ToString()
+        {
+            return "Naive Bayes";
         }
     }
 }

@@ -23,7 +23,16 @@ namespace DiabetesDido.ClassificationLogic
         {
             Codification codification = trainningData.CodificationData;
             double[][] inputs = trainningData.TrainningAttributes;
-            int[] outputs = trainningData.ClassifierAttributeForSVM;
+            int[] outputs = (int[])trainningData.ClassifierAttribute.Clone();
+
+            // Create output for SVM (-1 or 1)
+            for (int index = 0; index < outputs.Length; index++)
+            {
+                if (outputs[index] == 0)
+                {
+                    outputs[index] = -1;
+                }
+            }
 
             // Create a Support Vector Machine for the given inputs
             this.svm = new SupportVectorMachine(inputs[0].Length);
@@ -36,20 +45,9 @@ namespace DiabetesDido.ClassificationLogic
 
             // Run the learning algorithm 
             double error = smo.Run();
+        } 
 
-        }
-
-        public override List<Accord.Statistics.Analysis.ConfusionMatrix> TestModel(TrainningData trainningData)
-        {
-            int[] expected = trainningData.ClassifierAttributeForSVM;            
-            int[] predicted = ComputeModel(trainningData.TrainningAttributes);
-            int positiveValue = trainningData.PositiveValueForSVM;
-            int negativeValue = trainningData.NegativeValueForSVM;
-
-            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, positiveValue, negativeValue);
-            return new List<ConfusionMatrix> { confusionMatrix };
-        }
-
+        // Compute given input
         public override int[] ComputeModel(double[][] inputs)
         {            
             double[] temp = new double[inputs.Length];
@@ -59,8 +57,20 @@ namespace DiabetesDido.ClassificationLogic
 
             int[] predicted = new int[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
+            {
                 predicted[i] = System.Math.Sign(svm.Compute(inputs[0]));
+                // Change output back to (0 or 1)
+                if (predicted[i] == -1)
+                {
+                    predicted[i] = 0;
+                }
+            }
             return predicted;
+        }
+
+        public override string ToString()
+        {
+            return "SVM";
         }
     }
 }
