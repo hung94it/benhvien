@@ -9,6 +9,7 @@ using Accord.Math;
 using System.Data.OleDb;
 using System.Windows.Forms;
 using Accord.MachineLearning.DecisionTrees;
+using DevComponents.AdvTree;
 
 namespace DiabetesDido.UI
 {
@@ -80,9 +81,19 @@ namespace DiabetesDido.UI
             }
         }
 
-        public int Compute(double[] input, DecisionTree tree)
+        private void buttonX1_Click(object sender, EventArgs e)
+        {
+            TrainningData trainningData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
+            textBoxXDiagnosis.Text = Compute(trainningData.TrainningAttributes[0], (this.modelList[LearningAlgorithm.C45] as C45Model).Tree);
+            
+        }
+
+        public string Compute(double[] input, DecisionTree tree)
         {
             DecisionNode Root = tree.Root;
+            string attributeName;
+            string attributeValue;
+            string rule = "";
 
             if (Root == null)
                 throw new InvalidOperationException();
@@ -98,7 +109,8 @@ namespace DiabetesDido.UI
                     // This is a leaf node. The decision
                     // proccess thus should stop here.
 
-                    return current.Output.Value;
+                    //this.advTree1.Nodes.Add(new Node(current.Output.Value.ToString()));
+                    return rule;
                 }
 
                 // This node is not a leaf. Continue the
@@ -119,7 +131,12 @@ namespace DiabetesDido.UI
                         // which this particular attribute value. Choose it
                         // to continue reasoning.
 
-                        nextNode = branch; break;
+                        nextNode = branch;
+                        attributeName = nextNode.Owner.Attributes[nextNode.Parent.Branches.AttributeIndex].Name;
+                        attributeValue = trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(nextNode.Value));
+                        rule += attributeName + " = " + attributeValue + " ";
+                        //this.advTree1.Nodes.Add(new Node(attributeName + " = " + attributeValue));
+                        break;
                     }
                 }
 

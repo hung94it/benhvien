@@ -20,6 +20,8 @@ namespace DiabetesDido.UI
             InitializeTabDiagnosis();
 
         }
+
+
            
     }
 }
