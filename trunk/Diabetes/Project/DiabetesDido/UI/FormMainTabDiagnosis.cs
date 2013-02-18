@@ -21,25 +21,27 @@ namespace DiabetesDido.UI
         static DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter datasetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
         static DataTable dtForDiagnosis = new DataTable();
+        private TrainningData diagnosisData;
 
         public void InitializeTabDiagnosis()
         {            
             this.dataGridViewXDiagnosis.DataSource = this.trainningDataTableAdapter.GetData();
+
+            this.diagnosisData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
         }
 
         private void buttonXDiagnosis_Click(object sender, EventArgs e)
-        {
-            TrainningData trainningData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
+        {            
             DataTable resultTable = new DataTable();
             List<int[]> modelResults = new List<int[]>();
-            string columnName = trainningData.LastColumnName;
+            string columnName = this.diagnosisData.LastColumnName;
             DataRow row;
 
             // Add column
             foreach (var model in this.modelList)
             {
                 resultTable.Columns.Add(model.Value.ToString(), typeof(String));
-                modelResults.Add(model.Value.ComputeModel(trainningData.TrainningAttributes));
+                modelResults.Add(model.Value.ComputeModel(this.diagnosisData.TrainningAttributes));
             }
 
             // Add row
@@ -50,7 +52,7 @@ namespace DiabetesDido.UI
                 columnIndex = 0;
                 foreach (DataColumn column in resultTable.Columns)
                 {
-                    row[column] = trainningData.CodificationData.Translate(columnName, modelResults[columnIndex++][rowIndex]);                    
+                    row[column] = this.diagnosisData.CodificationData.Translate(columnName, modelResults[columnIndex++][rowIndex]);                    
                 }
                 resultTable.Rows.Add(row);
             }
@@ -64,10 +66,10 @@ namespace DiabetesDido.UI
         {
             if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
             {
-                int index = dataGridViewXDiagnosis.FirstDisplayedScrollingRowIndex;
-                if (dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex != -1)
+                int index = this.dataGridViewXDiagnosis.FirstDisplayedScrollingRowIndex;
+                if (this.dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex != -1)
                 {
-                    dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex = index;
+                    this.dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex = index;
                 }
             }
         }
@@ -76,15 +78,16 @@ namespace DiabetesDido.UI
         {
             if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
             {
-                int index = dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex;
-                dataGridViewXDiagnosis.FirstDisplayedScrollingRowIndex = index;
+                int index = this.dataGridViewXDiagnosisResult.FirstDisplayedScrollingRowIndex;
+                this.dataGridViewXDiagnosis.FirstDisplayedScrollingRowIndex = index;
             }
         }
 
-        private void buttonX1_Click(object sender, EventArgs e)
-        {
-            TrainningData trainningData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
-            textBoxXDiagnosis.Text = Compute(trainningData.TrainningAttributes[0], (this.modelList[LearningAlgorithm.C45] as C45Model).Tree);
+        private void buttonXGetRule_Click(object sender, EventArgs e)
+        {            
+            int rowIndex = this.dataGridViewXDiagnosis.CurrentCell.RowIndex;
+            textBoxXDiagnosis.Text = Compute(this.diagnosisData.TrainningAttributes[rowIndex],
+                (this.modelList[LearningAlgorithm.C45] as C45Model).Tree);
             
         }
 
@@ -107,9 +110,7 @@ namespace DiabetesDido.UI
                 if (current.IsLeaf)
                 {
                     // This is a leaf node. The decision
-                    // proccess thus should stop here.
-
-                    //this.advTree1.Nodes.Add(new Node(current.Output.Value.ToString()));
+                    // proccess thus should stop here.                    
                     return rule;
                 }
 
