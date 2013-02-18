@@ -89,7 +89,7 @@ namespace DiabetesDido.UI
             }
 
             // Set test data
-            var query = this.orginalTrainningTable.Rows.Cast<DataRow>().Skip(numberOfTrainningRows);
+            var query = this.orginalTrainningTable.AsEnumerable().Skip(numberOfTrainningRows);
             this.testTable = query.CopyToDataTable<DataRow>();
 
             // Set trainning data
@@ -99,7 +99,7 @@ namespace DiabetesDido.UI
             }
             else
             {
-                query = this.orginalTrainningTable.Rows.Cast<DataRow>().Take(numberOfTrainningRows);
+                query = this.orginalTrainningTable.AsEnumerable().Take(numberOfTrainningRows);
                 tableForTrainning = query.CopyToDataTable<DataRow>();
             }
             
