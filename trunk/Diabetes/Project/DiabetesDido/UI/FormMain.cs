@@ -21,5 +21,17 @@ namespace DiabetesDido.UI
 
         }
 
+        private void superTabControlMain_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
+        {
+            switch ((sender as SuperTabControl).SelectedTabIndex)
+            { 
+                case 1:
+                    refreshTabCreateModel();
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 }

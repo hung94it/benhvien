@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
-using System.Data;
-using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
-using DiabetesDido.ClassificationLogic;
-using Accord.Math;
-using System.Data.OleDb;
 using System.Windows.Forms;
 using Accord.MachineLearning.DecisionTrees;
-using DevComponents.AdvTree;
+using DiabetesDido.ClassificationLogic;
 
 namespace DiabetesDido.UI
 {
@@ -30,6 +27,7 @@ namespace DiabetesDido.UI
             this.diagnosisData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
         }
 
+        // View diagnosis result
         private void buttonXDiagnosis_Click(object sender, EventArgs e)
         {            
             DataTable resultTable = new DataTable();
@@ -42,6 +40,12 @@ namespace DiabetesDido.UI
             {
                 resultTable.Columns.Add(model.Value.ToString(), typeof(String));
                 modelResults.Add(model.Value.ComputeModel(this.diagnosisData.TrainningAttributes));
+            }
+
+            if (modelResults.Count == 0)
+            {
+                MessageBox.Show("Chưa có mô hình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             // Add row
@@ -58,7 +62,6 @@ namespace DiabetesDido.UI
             }
 
             this.dataGridViewXDiagnosisResult.DataSource = resultTable;
-
         }
 
         // Scrolling two gridviews
@@ -83,11 +86,33 @@ namespace DiabetesDido.UI
             }
         }
 
+        private void dataGridViewXDiagnosis_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (this.dataGridViewXDiagnosisResult.RowCount > 1)
+            {
+                int rowIndex = this.dataGridViewXDiagnosis.SelectedRows[0].Index;
+                this.dataGridViewXDiagnosisResult.Rows[rowIndex].Selected = true;
+                //this.dataGridViewXDiagnosisResult.Rows[0].Cells[0].
+            }
+        }
+
+        // View rule at selected row
         private void buttonXGetRule_Click(object sender, EventArgs e)
         {            
             int rowIndex = this.dataGridViewXDiagnosis.CurrentCell.RowIndex;
-            textBoxXDiagnosis.Text = Compute(this.diagnosisData.TrainningAttributes[rowIndex],
-                (this.modelList[LearningAlgorithm.C45] as C45Model).Tree);
+            ClassificationModel treeModel;
+
+            if (this.modelList.ContainsKey(LearningAlgorithm.C45))
+            {
+                treeModel = this.modelList[LearningAlgorithm.C45];
+            }
+            else
+            {
+                MessageBox.Show("Chưa có mô hình C45!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            textBoxXDiagnosis.Text = Compute(this.diagnosisData.TrainningAttributes[rowIndex], (treeModel as C45Model).Tree);
             
         }
 
@@ -135,8 +160,7 @@ namespace DiabetesDido.UI
                         nextNode = branch;
                         attributeName = nextNode.Owner.Attributes[nextNode.Parent.Branches.AttributeIndex].Name;
                         attributeValue = trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(nextNode.Value));
-                        rule += attributeName + " = " + attributeValue + " ";
-                        //this.advTree1.Nodes.Add(new Node(attributeName + " = " + attributeValue));
+                        rule += attributeName + " = " + attributeValue + " ";                        
                         break;
                     }
                 }
