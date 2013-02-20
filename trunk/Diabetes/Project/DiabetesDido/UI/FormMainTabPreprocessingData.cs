@@ -175,7 +175,7 @@ namespace DiabetesDido.UI
             this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
             if (checkedListBoxColumnName.Items.Count > 0)
                 checkedListBoxColumnName.Items.Clear();
-            for (int i = 2; i < dtDataSetTempForPreProcessing.Columns.Count - 1; i++)
+            for (int i = 1; i < dtDataSetTempForPreProcessing.Columns.Count - 2; i++)
             {
                 String colName = dtDataSetTempForPreProcessing.Columns[i].ColumnName;
                 checkedListBoxColumnName.Items.Add(colName, false);
