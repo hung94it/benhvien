@@ -1,19 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Text;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
-using Accord.Controls;
-using Accord.MachineLearning.Bayes;
-using Accord.MachineLearning.DecisionTrees;
-using Accord.MachineLearning.DecisionTrees.Learning;
-using Accord.Math;
-using Accord.Statistics.Analysis;
-using Accord.Statistics.Filters;
-using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Controls;
 using DiabetesDido.ClassificationLogic;
 using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
@@ -28,27 +20,13 @@ namespace DiabetesDido.UI
         // Dictionary contains model
         private Dictionary<LearningAlgorithm, ClassificationModel> modelList;
         private TrainningData trainningData;
-        private DataTable orginalTrainningTable;
-        private DataTable testTable;
-        
-
-        internal Dictionary<LearningAlgorithm, ClassificationModel> ModelList
-        {
-            get { return modelList; }
-            private set { modelList = value; }
-        }
-
-        internal LearningAlgorithm ActiveLearningAlgorithm
-        {
-            get { return activeLearningAlgorithm; }
-            set { activeLearningAlgorithm = value; }
-        }
+        private DataTable orginalTrainningTable;                
 
         public void InitializeTabCreateModel()
         {            
             this.checkBoxXNaiveBayes.Checked = true;
-            this.ActiveLearningAlgorithm = LearningAlgorithm.NaiveBayes;
-            this.ModelList = new Dictionary<LearningAlgorithm, ClassificationModel>();
+            this.activeLearningAlgorithm = LearningAlgorithm.NaiveBayes;
+            this.modelList = new Dictionary<LearningAlgorithm, ClassificationModel>();
 
             trainningDataTableAdapter = new TrainningDataTableAdapter();            
             this.orginalTrainningTable = trainningDataTableAdapter.GetData();
@@ -85,12 +63,9 @@ namespace DiabetesDido.UI
             // Get number of row form percent
             if (this.comboBoxExTrainningDataPercent.SelectedValue != null)
             {
-                numberOfTrainningRows = Convert.ToInt32(Math.Truncate(((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * this.orginalTrainningTable.Rows.Count) / 100));
+                numberOfTrainningRows = Convert.ToInt32(Math.Truncate(
+                    ((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * this.orginalTrainningTable.Rows.Count) / 100));
             }
-
-            // Set test data
-            var query = this.orginalTrainningTable.AsEnumerable().Skip(numberOfTrainningRows);
-            this.testTable = query.CopyToDataTable<DataRow>();
 
             // Set trainning data
             if (numberOfTrainningRows == 0)
@@ -99,7 +74,7 @@ namespace DiabetesDido.UI
             }
             else
             {
-                query = this.orginalTrainningTable.AsEnumerable().Take(numberOfTrainningRows);
+                var query = this.orginalTrainningTable.AsEnumerable().Take(numberOfTrainningRows);
                 tableForTrainning = query.CopyToDataTable<DataRow>();
             }
             
@@ -108,41 +83,60 @@ namespace DiabetesDido.UI
             // Ask user what to do when selected model already exists
             if (this.HaveModel())
             {
-                dialogResult = MessageBox.Show("Model này đã có. Bạn có muốn tạo mô hình mới?", "Tạo mới model", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (dialogResult == System.Windows.Forms.DialogResult.Yes)
+                dialogResult = MessageBox.Show("Mô hình này đã có. Bạn có muốn tạo mô hình mới?", "Lỗi",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dialogResult == DialogResult.No || dialogResult == DialogResult.Cancel)
                 {
-                    this.CreateModel(this.trainningData);
+                    return;
                 }
             }
-            else // If selected model not exists then create new model
+
+            // Check dictionary already have active model. If not add new model
+            if (!this.modelList.ContainsKey(this.activeLearningAlgorithm))
             {
-                this.CreateModel(this.trainningData);
+                this.modelList.Add(this.activeLearningAlgorithm, ClassificationModel.CreateModel(this.activeLearningAlgorithm));
             }
 
+            // Trainning model
+            this.modelList[activeLearningAlgorithm].TrainningModel(this.trainningData);
+            
         }
 
         // buttonXTestModel click event
         private void buttonXTestModel_Click(object sender, EventArgs e)
         {
-            if (!this.HaveModel())
+            int numberOfTrainningRows = 0;
+            DataTable testTable;
+
+            // Get number of row form percent
+            if (this.comboBoxExTrainningDataPercent.SelectedValue != null)
             {
-                MessageBox.Show("Tạo model cho thuật toán đã!", "Chưa có thuật toán", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                numberOfTrainningRows = Convert.ToInt32(Math.Truncate(
+                    ((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * this.orginalTrainningTable.Rows.Count) / 100));
+            }
+
+            // Set test data
+            var query = this.orginalTrainningTable.AsEnumerable().Skip(numberOfTrainningRows);
+            testTable = query.CopyToDataTable<DataRow>();
+
+            if (!HaveModel())
+            {
+                MessageBox.Show("Chưa có mô hình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }               
 
-            TrainningData data = new TrainningData(this.testTable);
+            TrainningData data = new TrainningData(testTable);
             // Show test result
-            dataGridViewXTrainningResult.DataSource = this.ModelList[ActiveLearningAlgorithm].TestModel(data);
+            dataGridViewXTrainningResult.DataSource = this.modelList[activeLearningAlgorithm].TestModel(data);
         }
 
 
         // buttonXViewModel click event
         private void buttonXViewModel_Click(object sender, EventArgs e)
         {
-            if (this.HaveModel())
+            if (HaveModel())
             {                
-                switch (this.ActiveLearningAlgorithm)
+                switch (this.activeLearningAlgorithm)
                 {
 
                     case LearningAlgorithm.C45:
@@ -150,13 +144,14 @@ namespace DiabetesDido.UI
                         new FormDecisionTree((this.GetModel() as DecisionTreeModel).Tree, this.trainningData).Show();
                         break;
                     case LearningAlgorithm.NaiveBayes:
+                    default:
                         MessageBox.Show("Chưa làm");
                         break;
                 }
             }
             else
             {
-                MessageBox.Show("Chưa có model cho thuật toán này");
+                MessageBox.Show("Chưa có mô hình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);                
             }
         }        
 
@@ -168,38 +163,71 @@ namespace DiabetesDido.UI
             // Ensure that the RadioButton.Checked property changed to true.             
             if (checkedRadioButton.Checked)
             {
-                this.ActiveLearningAlgorithm =
-                    (LearningAlgorithm)Enum.Parse(typeof(LearningAlgorithm), checkedRadioButton.Tag as string);
+                Enum.TryParse<LearningAlgorithm>(checkedRadioButton.Tag as string, out this.activeLearningAlgorithm);
             }
         }
 
         // Get active model
         public ClassificationModel GetModel()
         {
-            return this.ModelList[this.ActiveLearningAlgorithm];
-        }
-
-        // Create model base on active learning algorithm
-        private void CreateModel(TrainningData trainningData)
-        {
-            // Check dictionary already have active model. If not add new model
-            if (!this.ModelList.ContainsKey(this.ActiveLearningAlgorithm))
-            {
-                this.ModelList.Add(this.ActiveLearningAlgorithm, ClassificationModel.CreateModel(this.ActiveLearningAlgorithm));
-            }
-
-            // Trainning model
-            this.ModelList[ActiveLearningAlgorithm].TrainningModel(trainningData);
+            return this.modelList[this.activeLearningAlgorithm];
         }
 
         // Check activeAlgorithm already have model or not
         public bool HaveModel()
         {
-            if (!this.ModelList.ContainsKey(this.ActiveLearningAlgorithm))
+            if (!this.modelList.ContainsKey(this.activeLearningAlgorithm))
             {
                 return false;
             }
-            return (this.ModelList[this.ActiveLearningAlgorithm] != null ? true : false);
+            return (this.modelList[this.activeLearningAlgorithm] != null ? true : false);
+        }
+
+        private void buttonXSave_Click(object sender, EventArgs e)
+        {
+            // Check selected algothrim have model yet, if not return
+            if (!HaveModel())
+            {
+                MessageBox.Show("Chưa có mô hình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string fileName = this.modelList[this.activeLearningAlgorithm].ToString();
+
+            saveFileDialogMain.FileName = fileName;            
+            DialogResult result = saveFileDialogMain.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                Stream stream = saveFileDialogMain.OpenFile();
+                IFormatter formatter = new BinaryFormatter();
+                // Serialize active model to file stream
+                formatter.Serialize(stream, this.modelList[this.activeLearningAlgorithm]);
+                stream.Close();
+            }            
+        }
+
+        private void buttonXLoad_Click(object sender, EventArgs e)
+        {
+            DialogResult result = openFileDialogMain.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                if (HaveModel())
+                {
+                    DialogResult dialogResult = MessageBox.Show("Mô hình này đã có. Bạn có muốn nạp mô hình mới?", "Lỗi",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.No || dialogResult == DialogResult.Cancel)
+                    {
+                        return;
+                    }
+                }
+
+                IFormatter formatter = new BinaryFormatter();
+                Stream stream = openFileDialogMain.OpenFile();
+                this.modelList[this.activeLearningAlgorithm] = (ClassificationModel)formatter.Deserialize(stream);
+                stream.Close();
+            }
         }
 
     }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Accord.MachineLearning.DecisionTrees.Learning;
-using Accord.Statistics.Analysis;
 using Accord.Statistics.Filters;
 
 namespace DiabetesDido.ClassificationLogic
 {
+    [Serializable]
     public class C45Model : DecisionTreeModel
     {
         // Trainning decision tree with C4.5 algorithm
@@ -30,7 +30,7 @@ namespace DiabetesDido.ClassificationLogic
 
         public override string ToString()
         {
-            return "C4.5";
+            return "C45";
         }
     }
 }

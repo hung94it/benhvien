@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Accord.MachineLearning.DecisionTrees;
-using Accord.Statistics.Analysis;
 using Accord.Statistics.Filters;
 
 namespace DiabetesDido.ClassificationLogic
 {
+    [Serializable]
     public abstract class DecisionTreeModel : ClassificationModel
     {
         private DecisionTree tree;
