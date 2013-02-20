@@ -9,6 +9,7 @@ using Accord.Statistics.Filters;
 
 namespace DiabetesDido.ClassificationLogic
 {
+    [Serializable]
     public class NaiveBayesModel : ClassificationModel
     {
         private NaiveBayes bayes;

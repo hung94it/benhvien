@@ -5,10 +5,10 @@ using System.Text;
 using Accord.MachineLearning.VectorMachines;
 using Accord.Statistics.Filters;
 using Accord.MachineLearning.VectorMachines.Learning;
-using Accord.Statistics.Analysis;
 
 namespace DiabetesDido.ClassificationLogic
 {
+    [Serializable]
     class SVMModel : ClassificationModel
     {
         private SupportVectorMachine svm;
@@ -16,7 +16,7 @@ namespace DiabetesDido.ClassificationLogic
         public SupportVectorMachine SVM
         {
             get { return svm; }
-            set { svm = value; }
+            private set { svm = value; }
         }
 
         public override void TrainningModel(TrainningData trainningData)

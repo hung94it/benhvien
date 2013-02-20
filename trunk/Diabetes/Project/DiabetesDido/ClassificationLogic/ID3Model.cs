@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using Accord.MachineLearning.DecisionTrees.Learning;
 using Accord.Math;
-using Accord.Statistics.Analysis;
 using Accord.Statistics.Filters;
 
 namespace DiabetesDido.ClassificationLogic

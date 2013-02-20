@@ -14,6 +14,7 @@ namespace DiabetesDido.ClassificationLogic
         SVM,
     }
 
+    [Serializable]
     public abstract class ClassificationModel
     {
         // Factory method return new ModelType
