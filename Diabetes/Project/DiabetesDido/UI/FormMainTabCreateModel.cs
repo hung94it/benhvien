@@ -20,7 +20,7 @@ namespace DiabetesDido.UI
         // Dictionary contains model
         private Dictionary<LearningAlgorithm, ClassificationModel> modelList;
         private TrainningData trainningData;
-        private DataTable orginalTrainningTable;                
+        //private DataTable orginalTrainningTable;                
 
         public void InitializeTabCreateModel()
         {            
@@ -28,13 +28,9 @@ namespace DiabetesDido.UI
             this.activeLearningAlgorithm = LearningAlgorithm.NaiveBayes;
             this.modelList = new Dictionary<LearningAlgorithm, ClassificationModel>();
 
-            trainningDataTableAdapter = new TrainningDataTableAdapter();            
-            this.orginalTrainningTable = trainningDataTableAdapter.GetData();
-            
-            //// Test data same as trainning data
-            //this.testData = this.trainningData;
-
-            this.dataGridViewXTrainning.DataSource = this.orginalTrainningTable;
+            this.trainningDataTableAdapter = new TrainningDataTableAdapter();            
+            //this.orginalTrainningTable = trainningDataTableAdapter.GetData();
+            refreshTabCreateModel();
 
             List<Percent> percent = new List<Percent>();
             //percent.Add(new Percent("50%", 50));
@@ -53,28 +49,34 @@ namespace DiabetesDido.UI
             }
         }
 
+        private void refreshTabCreateModel()
+        {
+            this.dataGridViewXTrainning.DataSource = this.trainningDataTableAdapter.GetData();
+        }
+
         // buttonXCreateModel click event
         private void buttonXCreateModel_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult;
-            DataTable tableForTrainning = this.orginalTrainningTable.Clone();
+            DataTable orginalTrainningTable = this.dataGridViewXTrainning.DataSource as DataTable;
+            DataTable tableForTrainning;
             int numberOfTrainningRows = 0;
             
             // Get number of row form percent
             if (this.comboBoxExTrainningDataPercent.SelectedValue != null)
             {
                 numberOfTrainningRows = Convert.ToInt32(Math.Truncate(
-                    ((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * this.orginalTrainningTable.Rows.Count) / 100));
+                    ((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * orginalTrainningTable.Rows.Count) / 100));
             }
 
             // Set trainning data
             if (numberOfTrainningRows == 0)
             {
-                tableForTrainning = this.orginalTrainningTable;
+                tableForTrainning = orginalTrainningTable;
             }
             else
             {
-                var query = this.orginalTrainningTable.AsEnumerable().Take(numberOfTrainningRows);
+                var query = orginalTrainningTable.AsEnumerable().Take(numberOfTrainningRows);
                 tableForTrainning = query.CopyToDataTable<DataRow>();
             }
             
@@ -106,17 +108,18 @@ namespace DiabetesDido.UI
         private void buttonXTestModel_Click(object sender, EventArgs e)
         {
             int numberOfTrainningRows = 0;
+            DataTable orginalTrainningTable = this.dataGridViewXTrainning.DataSource as DataTable;
             DataTable testTable;
 
             // Get number of row form percent
             if (this.comboBoxExTrainningDataPercent.SelectedValue != null)
             {
                 numberOfTrainningRows = Convert.ToInt32(Math.Truncate(
-                    ((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * this.orginalTrainningTable.Rows.Count) / 100));
+                    ((int)comboBoxExTrainningDataPercent.SelectedValue * 1.0 * orginalTrainningTable.Rows.Count) / 100));
             }
 
             // Set test data
-            var query = this.orginalTrainningTable.AsEnumerable().Skip(numberOfTrainningRows);
+            var query = orginalTrainningTable.AsEnumerable().Skip(numberOfTrainningRows);
             testTable = query.CopyToDataTable<DataRow>();
 
             if (!HaveModel())
