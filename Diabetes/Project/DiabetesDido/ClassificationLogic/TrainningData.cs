@@ -10,7 +10,7 @@ namespace DiabetesDido.ClassificationLogic
 {
     public class TrainningData
     {
-        private DataTable discreteValueDatatable;
+        public DataTable discreteValueDatatable;
         private Codification codificationData;
         private double[][] trainningAttributes;
         private int[] classifierAttribute;

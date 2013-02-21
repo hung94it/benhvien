@@ -12,6 +12,7 @@ namespace DiabetesDido.ClassificationLogic
         C45,
         NaiveBayes,
         SVM,
+        NaiveBayesS,
     }
 
     [Serializable]
@@ -25,8 +26,8 @@ namespace DiabetesDido.ClassificationLogic
                 case LearningAlgorithm.C45:
                     return new C45Model();
                     
-                case LearningAlgorithm.ID3:
-                    return new ID3Model();
+                case LearningAlgorithm.NaiveBayesS:
+                    return new NaiveBayesSModel();
                     
                 case LearningAlgorithm.NaiveBayes:
                     return new NaiveBayesModel();        
