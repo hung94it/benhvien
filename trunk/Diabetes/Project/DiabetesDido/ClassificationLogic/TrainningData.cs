@@ -10,7 +10,7 @@ namespace DiabetesDido.ClassificationLogic
 {
     public class TrainningData
     {
-        public DataTable discreteValueDatatable;
+        private DataTable discreteValueDatatable;
         private Codification codificationData;
         private double[][] trainningAttributes;
         private int[] classifierAttribute;
@@ -18,6 +18,12 @@ namespace DiabetesDido.ClassificationLogic
         private string lastColumnName;
         private int positiveValue;
         private int negativeValue;
+
+        public DataTable DiscreteValueDatatable
+        {
+            get { return discreteValueDatatable; }
+            set { discreteValueDatatable = value; }
+        }
 
         public int NegativeValue
         {

@@ -192,6 +192,7 @@ namespace DiabetesDido.UI
             }
             return true;
         }
+
         //Hàm dùng để đọc file excel ** Lưu ý: Chỉ đọc file .xls
         private DataTable ReadDataFromExcelFile(String filePath)
         {
@@ -232,6 +233,7 @@ namespace DiabetesDido.UI
             }
             return data;
         }
+
         //Hàm dùng để rời rác hóa dataset trước khi thực hiện chẩn đoán
         public DataTable DataDiscretization(DataTable dt)
         {
@@ -270,7 +272,7 @@ namespace DiabetesDido.UI
                             case "NamSinh":
                                 int namSinh = Convert.ToInt16(dtRow[colName]);
                                 int tuoiHienTai = DateTime.Now.Year - namSinh;
-                                String Tuoi = function.RoiRacHoaTuoi(tuoiHienTai);
+                                String Tuoi = Function.RoiRacHoaTuoi(tuoiHienTai);
                                 newRow["Tuoi"] = Tuoi;
                                 break;
                             default:

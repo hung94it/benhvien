@@ -8,6 +8,24 @@ namespace DiabetesDido.ClassificationLogic
 {
     class ClassificationStatics
     {
+        //Hàm dùng để tính phương sai của một cột
+        public static decimal TinhDoLechChuan(DataTable dt, String colName)
+        {
+            Double phuongSai = 0;
+            Double doLechChuan = 0;
+            Double tienPhuongSai = 0;
+            Double soLuongDuLieu = Convert.ToDouble(dt.Compute("count(" + colName + ")", string.Empty));
+            Double giaTriTrungTinh = Convert.ToDouble(dt.Compute("avg(" + colName + ")", string.Empty));
+            giaTriTrungTinh = Math.Round(giaTriTrungTinh, 3);
+            int colIndex = dt.Columns.IndexOf(colName);
+            foreach (DataRow dtRow in dt.Rows)
+            {
+                tienPhuongSai = tienPhuongSai + Math.Round(Math.Pow((Convert.ToDouble(dtRow[colIndex]) - giaTriTrungTinh), 2), 3);
+            }
+            phuongSai = tienPhuongSai / (soLuongDuLieu - 1);
+            doLechChuan = Math.Round(Math.Sqrt(phuongSai), 2);
+            return Convert.ToDecimal(doLechChuan);
+        }
         //Hàm dùng để tính độ bao phủ Recall (Độ nhạy Sensitivity)
         public static decimal Recall(int truePossive, int falseNegative)
         {
