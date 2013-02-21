@@ -167,8 +167,8 @@ namespace DiabetesDido
                     khoangRoiRac = "[" + giaTriMoi.ToString() + ",+)";
                 else
                     khoangRoiRac = "[" + (giaTriMoi - giaTriTrungBinhKhoang).ToString() + "," + giaTriMoi.ToString() + ")";
-                BayesObjectTA.Insert(colName, khoangRoiRac, 0, "TRUE");
-                BayesObjectTA.Insert(colName, khoangRoiRac, 0, "FALSE");
+                BayesObjectTA.Insert(colName, khoangRoiRac, 0, "True");
+                BayesObjectTA.Insert(colName, khoangRoiRac, 0, "False");
                 if (i != khoang - 1)
                     giaTriMoi = giaTriMoi + giaTriTrungBinhKhoang;
             }
@@ -218,19 +218,20 @@ namespace DiabetesDido
 
         }
         //Hàm dùng để huấn luyện dữ liệu dành cho thuật toán Naive Bayes
-        public void HuanLuyenBayes()
+        public static void HuanLuyenBayes(DataTable trainingData)
         {
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter dtBayesAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtSetTempAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtSetTempTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            int rowCount = trainingData.Rows.Count;
+            DataTable dataForTraining = dtSetTempTA.GetDataByNumber(rowCount);
             DataTable dtBayes = dtBayesAdapter.GetData();
-            DataTable dtSetTemp = dtSetTempAdapter.GetData();
             foreach (DataRow dtRow in dtBayes.Rows)
             {
                 String colName = dtRow[1].ToString();
                 String khoangRoiRac = dtRow[2].ToString();
-                Boolean tieuDuong = Convert.ToBoolean(dtRow[4]);
-                String iQuery = "" + colName + "='" + khoangRoiRac + "' and TieuDuong=" + tieuDuong + "";
-                int soLuong = dtSetTemp.Select(iQuery).Count();
+                String tieuDuong = dtRow[4].ToString();
+                String iQuery = "" + colName + "='" + khoangRoiRac + "' and TieuDuong='" + tieuDuong + "'";
+                int soLuong = dataForTraining.Select(iQuery).Count();
                 DataRow newRow = dtBayes.NewRow();
                 newRow = dtRow;
                 newRow[3] = soLuong;
@@ -241,31 +242,33 @@ namespace DiabetesDido
         public static DataTable NaiveBayes( DataTable dtTestSet)
         {
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA= new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            int dataForTrainingRowsCount = dataSetTempTA.GetData().Rows.Count - dtTestSet.Rows.Count;
             DataTable dtBayes = bayesTA.GetData();
-            int possiveNumber = dtTestSet.Select("TieuDuong='Yes'").Count();
-            int negativeNumber = dtTestSet.Select("TieuDuong='No'").Count();
+            int possiveNumber = dataSetTempTA.GetDataByNumber(dataForTrainingRowsCount).Select("TieuDuong='True'").Count();
+            int negativeNumber = dataSetTempTA.GetDataByNumber(dataForTrainingRowsCount).Select("TieuDuong='False'").Count();
             int allNumber = possiveNumber + negativeNumber;
             foreach (DataRow dtRow in dtTestSet.Rows)
             {
-                Decimal pYes = 1;
-                Decimal pNo = 1;
-                for (int i = 1; i < dtTestSet.Columns.Count-1; i++)
+                Decimal pColTrue = 1;
+                Decimal pColFalse = 1;
+                for (int i = 1; i < dtTestSet.Columns.Count-2; i++)
                 {
                     String colName = dtTestSet.Columns[i].ColumnName;
                     String khoangRoiRac = dtRow[i].ToString();
-                    DataRow possiveRow = dtBayes.Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + khoangRoiRac + "' and TieuDuong='Yes'")[0];
-                    DataRow negativeRow = dtBayes.Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + khoangRoiRac + "' and TieuDuong='No'")[0];
-                    Decimal _pYes = Convert.ToDecimal(possiveRow[3]);
-                    Decimal _pNo = Convert.ToDecimal(negativeRow[3]);
-                    pYes = pYes * _pYes;
-                    pNo = pNo * _pNo;
+                    DataRow possiveRow = dtBayes.Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + khoangRoiRac + "' and TieuDuong='True'")[0];
+                    DataRow negativeRow = dtBayes.Select("TenThuocTinh='" + colName + "' and KhoangRoiRac='" + khoangRoiRac + "' and TieuDuong='False'")[0];
+                    Decimal ColPossiveNumber = Convert.ToDecimal(possiveRow[3]);
+                    Decimal ColNegativeNumber = Convert.ToDecimal(negativeRow[3]);
+                    pColTrue = pColTrue * ColPossiveNumber / possiveNumber;
+                    pColFalse = pColFalse * ColNegativeNumber / negativeNumber;
                 }
-                pYes = pYes * possiveNumber / allNumber;
-                pNo = pNo * negativeNumber / allNumber;
-                if (pYes > pNo)
-                    dtRow[33] = "Yes";
+                Decimal pRowTrue = pColTrue * possiveNumber / allNumber;
+                Decimal pRowFalse = pColTrue * negativeNumber / allNumber;
+                if (pRowTrue > pRowFalse)
+                    dtRow[33] = "True";
                 else
-                    dtRow[33] = "No";
+                    dtRow[33] = "False";
             }
             return dtTestSet;
         }

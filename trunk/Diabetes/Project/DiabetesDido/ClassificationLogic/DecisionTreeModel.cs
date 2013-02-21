@@ -9,7 +9,7 @@ namespace DiabetesDido.ClassificationLogic
     public abstract class DecisionTreeModel : ClassificationModel
     {
         private DecisionTree tree;
-
+        public int negativeValue = 0;
         public DecisionTree Tree
         {
             get { return tree; }
@@ -44,6 +44,7 @@ namespace DiabetesDido.ClassificationLogic
                 }
                 catch
                 {
+                    predicted[i] = Properties.Settings.Default.negativeValue;
                 }
             return predicted;
         }

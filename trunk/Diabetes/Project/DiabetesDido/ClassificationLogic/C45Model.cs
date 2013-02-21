@@ -10,6 +10,7 @@ namespace DiabetesDido.ClassificationLogic
     [Serializable]
     public class C45Model : DecisionTreeModel
     {
+
         // Trainning decision tree with C4.5 algorithm
         public override void TrainningModel(TrainningData trainningData)
         {

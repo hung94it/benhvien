@@ -13,7 +13,6 @@ namespace DiabetesDido.ClassificationLogic
     public class NaiveBayesModel : ClassificationModel
     {
         private NaiveBayes bayes;
-
         public NaiveBayes Bayes
         {
             get { return bayes; }
@@ -49,7 +48,10 @@ namespace DiabetesDido.ClassificationLogic
                 {
                     predicted[i] = this.Bayes.Compute(inputs[i].ToInt32());
                 }
-                catch { }
+                catch {
+                    predicted[i] = Properties.Settings.Default.negativeValue;
+                }
+                //predicted[i] = this.Bayes.Compute(inputs[i].ToInt32());
             return predicted;
         }
 

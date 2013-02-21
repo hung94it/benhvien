@@ -90,6 +90,7 @@
     <Compile Include="ClassificationLogic\ClassificationStatics.cs" />
     <Compile Include="ClassificationLogic\DecisionTreeModel.cs" />
     <Compile Include="ClassificationLogic\ID3Model.cs" />
+    <Compile Include="ClassificationLogic\NaiveBayesSModel.cs" />
     <Compile Include="ClassificationLogic\NaiveBayesModel.cs" />
     <Compile Include="ClassificationLogic\Percent.cs" />
     <Compile Include="ClassificationLogic\SVMModel.cs" />

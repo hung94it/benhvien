@@ -41,7 +41,7 @@ namespace DiabetesDido.ClassificationLogic
             SequentialMinimalOptimization smo = new SequentialMinimalOptimization(svm, inputs, outputs);
 
             // Set up the learning algorithm
-            smo.Complexity = 1.0;
+            smo.Complexity = 10.0;
 
             // Run the learning algorithm 
             double error = smo.Run();
@@ -61,9 +61,9 @@ namespace DiabetesDido.ClassificationLogic
                 predicted[i] = System.Math.Sign(svm.Compute(inputs[0]));
                 // Change output back to (0 or 1)
                 if (predicted[i] == -1)
-                {
                     predicted[i] = 0;
-                }
+                else
+                    predicted[i] = 1;
             }
             return predicted;
         }
