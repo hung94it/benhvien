@@ -287,11 +287,10 @@ namespace DiabetesDido.UI
             this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
         }
         public static void InsertDataSetTempRow(DataRow dt)
-        {
-            Function function=new Function();
+        {            
             decimal MaBn = Convert.ToDecimal(dt["MaBn"]);
             decimal TuoiHienTai = DateTime.Now.Year - Convert.ToDecimal(dt["NamSinh"]);
-            String Tuoi = function.RoiRacHoaTuoi(TuoiHienTai);
+            String Tuoi = Function.RoiRacHoaTuoi(TuoiHienTai);
             String GioiTinh = dt["GioiTinh"].ToString();
             String Cholesterol = dt["Cholesterol"].ToString();
             String HDL_Cholesterol = dt["HDL_Cholesterol"].ToString();

@@ -70,7 +70,7 @@ namespace DiabetesDido
                         case "NamSinh":
                             int namSinh = Convert.ToInt16(dtRow[colName]);
                             int tuoiHienTai = DateTime.Now.Year - namSinh;
-                            String Tuoi = function.RoiRacHoaTuoi(tuoiHienTai);
+                            String Tuoi = Function.RoiRacHoaTuoi(tuoiHienTai);
                             newRow["Tuoi"] = Tuoi;
                             break;
                         default:
