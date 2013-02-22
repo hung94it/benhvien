@@ -96,10 +96,22 @@ namespace DiabetesDido.ClassificationLogic
             this.classifierAttribute = this.discreteValueDatatable.ToIntArray(lastColumnName).GetColumn(0);
 
             // Set positive, negative value to test model
-            this.positiveValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.positiveString];
-            //this.positiveValue = 1;
-            this.negativeValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.negativeString];
-            //this.negativeValue = 0;
+            try
+            {
+                this.positiveValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.positiveString];
+            }
+            catch
+            {
+                this.positiveValue = 1;
+            }
+            try
+            {
+                this.negativeValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.negativeString];
+            }
+            catch
+            {
+                this.negativeValue = 0;
+            }
         }
     }
 }
