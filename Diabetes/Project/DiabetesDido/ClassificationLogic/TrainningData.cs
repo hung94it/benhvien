@@ -16,8 +16,8 @@ namespace DiabetesDido.ClassificationLogic
         private int[] classifierAttribute;
         private string[] columnNames;
         private string lastColumnName;
-        private int positiveValue;
-        private int negativeValue;
+        private int positiveValue = 1;
+        private int negativeValue = 0;
 
         public DataTable DiscreteValueDatatable
         {
@@ -95,23 +95,33 @@ namespace DiabetesDido.ClassificationLogic
             string lastColumnName = this.discreteValueDatatable.Columns[discreteValueDatatable.Columns.Count - 1].ColumnName;
             this.classifierAttribute = this.discreteValueDatatable.ToIntArray(lastColumnName).GetColumn(0);
 
-            // Set positive, negative value to test model
-            try
+            // Set positive, negative value to test model            
+            if (this.codificationData.Columns[this.lastColumnName].Mapping.ContainsKey(Properties.Settings.Default.positiveString))
             {
-                this.positiveValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.positiveString];
+                this.positiveValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.positiveString];
             }
-            catch
+
+            if (this.codificationData.Columns[this.lastColumnName].Mapping.ContainsKey(Properties.Settings.Default.negativeString))
             {
-                this.positiveValue = 1;
+                this.negativeValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.negativeString];
             }
-            try
-            {
-                this.negativeValue = this.codificationData.Columns[this.codificationData.Columns.Count - 1].Mapping[Properties.Settings.Default.negativeString];
-            }
-            catch
-            {
-                this.negativeValue = 0;
-            }
+
+            //try
+            //{
+            //    this.positiveValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.positiveString];
+            //}
+            //catch
+            //{
+            //    this.positiveValue = 1;
+            //}
+            //try
+            //{
+            //    this.negativeValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.negativeString];
+            //}
+            //catch
+            //{
+            //    this.negativeValue = 0;
+            //}
         }
     }
 }

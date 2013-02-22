@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DiabetesDido.DAL;
+using DiabetesDido.ClassificationLogic;
 
 namespace DiabetesDido
 {
     public partial class TestForm : Form
-    {
-        Function function = new Function();
+    {        
         static DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter datasetTA = new DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter datasetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();

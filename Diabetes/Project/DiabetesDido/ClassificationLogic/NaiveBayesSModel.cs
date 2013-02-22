@@ -23,7 +23,7 @@ namespace DiabetesDido.ClassificationLogic
         public override int[] ComputeModel(double[][] inputs)
         {
             //inputs.GetLength(0);
-            //DataTable temp = inputs.ToTable();
+            DataTable temp = inputs.ToTable();
             int[] predicted = new int[inputs.Length];
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
             var query = dataSetTempTA.GetData().AsEnumerable().Skip(dataSetTempTA.GetData().Rows.Count - inputs.Length);
