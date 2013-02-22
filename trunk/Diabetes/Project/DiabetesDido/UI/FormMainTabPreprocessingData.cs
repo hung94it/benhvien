@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using Accord.Controls;
+using Accord.Math;
 using Accord.Statistics.Analysis;
 using Accord.Statistics.Filters;
+using DiabetesDido.ClassificationLogic;
 using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
 using DiabetesDido.DAL.DiabetesDataSetTableAdapters;
-using Accord.Math;
-using Accord.Controls;
 
 namespace DiabetesDido.UI
 {
