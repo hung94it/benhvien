@@ -7,13 +7,12 @@ using System.Text;
 using System.Windows.Forms;
 using Accord.MachineLearning.DecisionTrees;
 using DiabetesDido.ClassificationLogic;
+using DiabetesDido.DAL;
 
 namespace DiabetesDido.UI
 {
     public partial class FormMain
-    {
-
-        Function function = new Function();
+    {        
         static DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter datasetTA = new DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter datasetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
@@ -22,16 +21,29 @@ namespace DiabetesDido.UI
 
         public void InitializeTabDiagnosis()
         {            
-            this.dataGridViewXDiagnosis.DataSource = this.trainningDataTableAdapter.GetData();
+            //this.dataGridViewXDiagnosis.DataSource = this.trainningDataTableAdapter.GetData();
 
-            this.diagnosisData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
+            //this.diagnosisData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
         }
 
         // View diagnosis result
         private void buttonXDiagnosis_Click(object sender, EventArgs e)
-        {            
+        {
+            DataTable discreteDataTable;
+
+            if (this.dataGridViewXDiagnosis.DataSource != null)
+            {
+                discreteDataTable = DataDiscretization(this.dataGridViewXDiagnosis.DataSource as DataTable);
+                this.dataGridViewXDiagnosis.DataSource = discreteDataTable;
+            }
+            else {
+                MessageBox.Show("Chưa có dữ liệu để chuẩn đoán", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            this.diagnosisData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
+            
             DataTable resultTable = new DataTable();
-            List<int[]> modelResults = new List<int[]>();
+            List<int[]> modelResults = new List<int[]>();            
             string columnName = this.diagnosisData.LastColumnName;
             DataRow row;
 
@@ -237,32 +249,31 @@ namespace DiabetesDido.UI
         //Hàm dùng để rời rác hóa dataset trước khi thực hiện chẩn đoán
         public DataTable DataDiscretization(DataTable dt)
         {
-            DAL.DiabetesDataSet.DataSetDataTable dtDataSetTemp = new DAL.DiabetesDataSet.DataSetDataTable();
-            //DataTable dtDataSetTemp = datasetTempTA.GetData();
-            //dtDataSetTemp.Clear();
+            DiabetesDataSetB.TrainningDataDataTable dtDataSetTemp = new DiabetesDataSetB.TrainningDataDataTable();
             DataTable dtBayesObject = bayesObjectTA.GetData();
-            int Count = 1;
+            //int Count = 1;
+
             try
             {
                 foreach (DataRow dtRow in dt.Rows)
                 {
                     DataRow newRow = dtDataSetTemp.NewRow();
-                    newRow[0] = Count;
+                    //newRow[0] = Count;
                     foreach (DataColumn dtCol in dt.Columns)
                     {
                         String colName = dtCol.ColumnName;
-                        int colIndex = dt.Columns.IndexOf(colName);
+                        //int colIndex = dt.Columns.IndexOf(colName);
                         switch (colName)
                         {
-                            //case "ID":
-                            //    break;
-                            case "MaBn":
-                                newRow[colName] = dtRow[colName].ToString();
+                            case "ID":
                                 break;
-                            //case "NgayKham":
-                            //    break;
-                            //case "HoTen":
-                            //    break;
+                            case "MaBn":
+                                //newRow[colName] = dtRow[colName].ToString();
+                                break;
+                            case "NgayKham":
+                                break;
+                            case "HoTen":
+                                break;                                
                             case "TieuDuong":
                                 newRow[colName] = Convert.ToBoolean(dtRow[colName]);
                                 break;
@@ -283,7 +294,7 @@ namespace DiabetesDido.UI
                                 break;
                         }
                     }
-                    Count++;
+                    //Count++;
                     dtDataSetTemp.Rows.Add(newRow);
                 }
             }

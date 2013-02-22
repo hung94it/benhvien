@@ -23,7 +23,7 @@ namespace DiabetesDido.ClassificationLogic
         public override int[] ComputeModel(double[][] inputs)
         {
             //inputs.GetLength(0);
-            DataTable temp = inputs.ToTable();
+            //DataTable temp = inputs.ToTable();
             int[] predicted = new int[inputs.Length];
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
             var query = dataSetTempTA.GetData().AsEnumerable().Skip(dataSetTempTA.GetData().Rows.Count - inputs.Length);
@@ -101,9 +101,9 @@ namespace DiabetesDido.ClassificationLogic
                 Decimal pRowTrue = pColTrue * possiveNumber / allNumber;
                 Decimal pRowFalse = pColTrue * negativeNumber / allNumber;
                 if (pRowTrue > pRowFalse)
-                    dtRow[indexLastColumn] = "True";
+                    dtRow["TieuDuong"] = "True";
                 else
-                    dtRow[indexLastColumn] = "False";
+                    dtRow["TieuDuong"] = "False";
             }
             return dtTestSet;
         }
