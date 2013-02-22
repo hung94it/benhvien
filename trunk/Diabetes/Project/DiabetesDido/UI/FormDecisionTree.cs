@@ -45,7 +45,7 @@ namespace DiabetesDido.UI
 
                 if (node.Output.HasValue)
                 {
-                    if (attributeValue.Equals("True"))
+                    if (attributeValue.Equals(Properties.Settings.Default.positiveString))
                     {
                         textBoxYesRules.Text += stringTemp + " ==> " + attributeValue + Environment.NewLine + Environment.NewLine;
                     }
