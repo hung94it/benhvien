@@ -29,6 +29,12 @@ namespace DiabetesDido.UI
         // View diagnosis result
         private void buttonXDiagnosis_Click(object sender, EventArgs e)
         {
+            if (this.modelList.Count < 1)
+            {
+                MessageBox.Show("Chưa có mô hình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             DataTable discreteDataTable;
 
             if (this.dataGridViewXDiagnosis.DataSource != null)
@@ -52,13 +58,7 @@ namespace DiabetesDido.UI
             {
                 resultTable.Columns.Add(model.Value.ToString(), typeof(String));
                 modelResults.Add(model.Value.ComputeModel(this.diagnosisData.TrainningAttributes));
-            }
-
-            if (modelResults.Count == 0)
-            {
-                MessageBox.Show("Chưa có mô hình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            }            
 
             // Add row
             int columnIndex;
@@ -159,7 +159,7 @@ namespace DiabetesDido.UI
 
                 // Check which child is responsible for dealing
                 // which the particular value of the attribute
-                DecisionNode nextNode = null;
+                DecisionNode nextNode = null;                
 
                 foreach (DecisionNode branch in current.Branches)
                 {
@@ -175,7 +175,7 @@ namespace DiabetesDido.UI
                         rule += attributeName + " = " + attributeValue + " ";                        
                         break;
                     }
-                }
+                }                
 
                 current = nextNode;
             }
@@ -266,13 +266,15 @@ namespace DiabetesDido.UI
                         switch (colName)
                         {
                             case "ID":
-                                break;
                             case "MaBn":
-                                //newRow[colName] = dtRow[colName].ToString();
-                                break;
                             case "NgayKham":
-                                break;
                             case "HoTen":
+                            case "GRAN":
+                            case "TyLeGRAN":
+                            case "Na":
+                            case "K":
+                            case "Cl":
+                            case "Ca":
                                 break;                                
                             case "TieuDuong":
                                 newRow[colName] = Convert.ToBoolean(dtRow[colName]);
