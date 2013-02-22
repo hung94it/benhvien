@@ -80,8 +80,9 @@ namespace DiabetesDido.UI
                 tableForTrainning = query.CopyToDataTable<DataRow>();
             }
             
-            this.trainningData = new TrainningData(tableForTrainning);            
+            this.trainningData = new TrainningData(tableForTrainning);
 
+            Properties.Settings.Default.negativeValue = trainningData.NegativeValue;
             // Ask user what to do when selected model already exists
             if (this.HaveModel())
             {
