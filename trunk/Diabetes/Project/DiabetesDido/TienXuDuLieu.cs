@@ -34,7 +34,6 @@ namespace DiabetesDido
 
         private void btnLamSachDuLieu_Click(object sender, EventArgs e)
         {
-            Function xuLy = new Function();
             List<decimal> danhSachTrungLap = new List<decimal>();
             int tongBoDuLieu=dataSetTableAdapter.GetData().Count;
             Function.LamSachDuLieu(dataSetTableAdapter.GetData(), danhSachTrungLap);

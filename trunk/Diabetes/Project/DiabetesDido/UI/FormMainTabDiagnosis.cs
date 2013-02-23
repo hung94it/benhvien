@@ -16,6 +16,7 @@ namespace DiabetesDido.UI
         static DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter datasetTA = new DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter datasetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
         static DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+        static DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter newDataSetTempTA = new DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter();
         static DataTable dtForDiagnosis = new DataTable();
         private TrainningData diagnosisData;
 
@@ -56,8 +57,11 @@ namespace DiabetesDido.UI
             // Add column
             foreach (var model in this.modelList)
             {
-                resultTable.Columns.Add(model.Value.ToString(), typeof(String));
-                modelResults.Add(model.Value.ComputeModel(this.diagnosisData.TrainningAttributes));
+                if (model.Value.ToString() != "NaiveBayesS")
+                {
+                    resultTable.Columns.Add(model.Value.ToString(), typeof(String));
+                    modelResults.Add(model.Value.ComputeModel(this.diagnosisData.TrainningAttributes));
+                }
             }            
 
             // Add row
