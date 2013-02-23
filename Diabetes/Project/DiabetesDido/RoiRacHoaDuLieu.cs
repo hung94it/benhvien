@@ -100,7 +100,6 @@ namespace DiabetesDido
                 DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA= new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
                 DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter dataBayesTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
                 DataTable dataSetTable=dataSetTA.GetData();
-                Function function = new Function();
                 int dataSetColIndex = dataSetTable.Columns.IndexOf(colName);
 
                 dataBayesTA.DeleteByOne(colName);
@@ -108,13 +107,13 @@ namespace DiabetesDido
                 {
                     decimal giaTri = Convert.ToDecimal(dtRow[dataSetColIndex]);
                     decimal id = Convert.ToDecimal(dtRow[0]);
-                    String giaTriRoiRac = Function.DataDiscretization(giaTri, colName, khoangRoiRac);
+                    String giaTriRoiRac = ClassificationLogic.Function.DataDiscretization(giaTri, colName, khoangRoiRac);
                     decimal maBN = Convert.ToDecimal(dtRow[1]);
                     String tieuDuong = dtRow[5].ToString();
-                    Function.CapNhapDataSetTemp(dataSetTempTA, maBN, colName, giaTriRoiRac);
+                    ClassificationLogic.Function.CapNhapDataSetTemp(dataSetTempTA, maBN, colName, giaTriRoiRac);
 
                 }
-                Function.TaoBayesObject(colName, khoangRoiRac);
+                ClassificationLogic.Function.TaoBayesObject(colName, khoangRoiRac);
 
                 this.dataSetTempTableAdapter.Fill(this.diabetesDataSet.DataSetTemp);
             }

@@ -38,6 +38,8 @@ namespace DiabetesDido.DAL {
         
         private BayesObjectDataTable tableBayesObject;
         
+        private NewDataSetTempDataTable tableNewDataSetTemp;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -86,6 +88,9 @@ namespace DiabetesDido.DAL {
                 }
                 if ((ds.Tables["BayesObject"] != null)) {
                     base.Tables.Add(new BayesObjectDataTable(ds.Tables["BayesObject"]));
+                }
+                if ((ds.Tables["NewDataSetTemp"] != null)) {
+                    base.Tables.Add(new NewDataSetTempDataTable(ds.Tables["NewDataSetTemp"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -177,6 +182,16 @@ namespace DiabetesDido.DAL {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public NewDataSetTempDataTable NewDataSetTemp {
+            get {
+                return this.tableNewDataSetTemp;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -263,6 +278,9 @@ namespace DiabetesDido.DAL {
                 if ((ds.Tables["BayesObject"] != null)) {
                     base.Tables.Add(new BayesObjectDataTable(ds.Tables["BayesObject"]));
                 }
+                if ((ds.Tables["NewDataSetTemp"] != null)) {
+                    base.Tables.Add(new NewDataSetTempDataTable(ds.Tables["NewDataSetTemp"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -338,6 +356,12 @@ namespace DiabetesDido.DAL {
                     this.tableBayesObject.InitVars();
                 }
             }
+            this.tableNewDataSetTemp = ((NewDataSetTempDataTable)(base.Tables["NewDataSetTemp"]));
+            if ((initTable == true)) {
+                if ((this.tableNewDataSetTemp != null)) {
+                    this.tableNewDataSetTemp.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -362,6 +386,8 @@ namespace DiabetesDido.DAL {
             base.Tables.Add(this.tableXetNghiem);
             this.tableBayesObject = new BayesObjectDataTable();
             base.Tables.Add(this.tableBayesObject);
+            this.tableNewDataSetTemp = new NewDataSetTempDataTable();
+            base.Tables.Add(this.tableNewDataSetTemp);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -403,6 +429,12 @@ namespace DiabetesDido.DAL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeBayesObject() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeNewDataSetTemp() {
             return false;
         }
         
@@ -481,6 +513,9 @@ namespace DiabetesDido.DAL {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void BayesObjectRowChangeEventHandler(object sender, BayesObjectRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void NewDataSetTempRowChangeEventHandler(object sender, NewDataSetTempRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -1761,13 +1796,9 @@ namespace DiabetesDido.DAL {
             
             private global::System.Data.DataColumn columnMONO;
             
-            private global::System.Data.DataColumn columnGRAN;
-            
             private global::System.Data.DataColumn columnTyLeLYM;
             
             private global::System.Data.DataColumn columnTyLeMONO;
-            
-            private global::System.Data.DataColumn columnTyLeGRAN;
             
             private global::System.Data.DataColumn columnHGB;
             
@@ -1791,6 +1822,14 @@ namespace DiabetesDido.DAL {
             
             private global::System.Data.DataColumn columnPCT;
             
+            private global::System.Data.DataColumn columnTieuDuong;
+            
+            private global::System.Data.DataColumn columnID;
+            
+            private global::System.Data.DataColumn columnGRAN;
+            
+            private global::System.Data.DataColumn columnTyLeGRAN;
+            
             private global::System.Data.DataColumn columnNa;
             
             private global::System.Data.DataColumn columnK;
@@ -1798,10 +1837,6 @@ namespace DiabetesDido.DAL {
             private global::System.Data.DataColumn columnCl;
             
             private global::System.Data.DataColumn columnCa;
-            
-            private global::System.Data.DataColumn columnTieuDuong;
-            
-            private global::System.Data.DataColumn columnID;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1950,14 +1985,6 @@ namespace DiabetesDido.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn GRANColumn {
-                get {
-                    return this.columnGRAN;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn TyLeLYMColumn {
                 get {
                     return this.columnTyLeLYM;
@@ -1969,14 +1996,6 @@ namespace DiabetesDido.DAL {
             public global::System.Data.DataColumn TyLeMONOColumn {
                 get {
                     return this.columnTyLeMONO;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TyLeGRANColumn {
-                get {
-                    return this.columnTyLeGRAN;
                 }
             }
             
@@ -2070,6 +2089,38 @@ namespace DiabetesDido.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TieuDuongColumn {
+                get {
+                    return this.columnTieuDuong;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IDColumn {
+                get {
+                    return this.columnID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GRANColumn {
+                get {
+                    return this.columnGRAN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TyLeGRANColumn {
+                get {
+                    return this.columnTyLeGRAN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn NaColumn {
                 get {
                     return this.columnNa;
@@ -2097,22 +2148,6 @@ namespace DiabetesDido.DAL {
             public global::System.Data.DataColumn CaColumn {
                 get {
                     return this.columnCa;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TieuDuongColumn {
-                get {
-                    return this.columnTieuDuong;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
                 }
             }
             
@@ -2168,10 +2203,8 @@ namespace DiabetesDido.DAL {
                         string WBC, 
                         string LYM, 
                         string MONO, 
-                        string GRAN, 
                         string TyLeLYM, 
                         string TyLeMONO, 
-                        string TyLeGRAN, 
                         string HGB, 
                         string RBC, 
                         string HTC, 
@@ -2183,11 +2216,13 @@ namespace DiabetesDido.DAL {
                         string MPV, 
                         string PDW, 
                         string PCT, 
+                        string TieuDuong, 
+                        string GRAN, 
+                        string TyLeGRAN, 
                         string Na, 
                         string K, 
                         string Cl, 
-                        string Ca, 
-                        string TieuDuong) {
+                        string Ca) {
                 DataSetTempRow rowDataSetTempRow = ((DataSetTempRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         MaBN,
@@ -2204,10 +2239,8 @@ namespace DiabetesDido.DAL {
                         WBC,
                         LYM,
                         MONO,
-                        GRAN,
                         TyLeLYM,
                         TyLeMONO,
-                        TyLeGRAN,
                         HGB,
                         RBC,
                         HTC,
@@ -2219,12 +2252,14 @@ namespace DiabetesDido.DAL {
                         MPV,
                         PDW,
                         PCT,
+                        TieuDuong,
+                        null,
+                        GRAN,
+                        TyLeGRAN,
                         Na,
                         K,
                         Cl,
-                        Ca,
-                        TieuDuong,
-                        null};
+                        Ca};
                 rowDataSetTempRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataSetTempRow);
                 return rowDataSetTempRow;
@@ -2268,10 +2303,8 @@ namespace DiabetesDido.DAL {
                 this.columnWBC = base.Columns["WBC"];
                 this.columnLYM = base.Columns["LYM"];
                 this.columnMONO = base.Columns["MONO"];
-                this.columnGRAN = base.Columns["GRAN"];
                 this.columnTyLeLYM = base.Columns["TyLeLYM"];
                 this.columnTyLeMONO = base.Columns["TyLeMONO"];
-                this.columnTyLeGRAN = base.Columns["TyLeGRAN"];
                 this.columnHGB = base.Columns["HGB"];
                 this.columnRBC = base.Columns["RBC"];
                 this.columnHTC = base.Columns["HTC"];
@@ -2283,12 +2316,14 @@ namespace DiabetesDido.DAL {
                 this.columnMPV = base.Columns["MPV"];
                 this.columnPDW = base.Columns["PDW"];
                 this.columnPCT = base.Columns["PCT"];
+                this.columnTieuDuong = base.Columns["TieuDuong"];
+                this.columnID = base.Columns["ID"];
+                this.columnGRAN = base.Columns["GRAN"];
+                this.columnTyLeGRAN = base.Columns["TyLeGRAN"];
                 this.columnNa = base.Columns["Na"];
                 this.columnK = base.Columns["K"];
                 this.columnCl = base.Columns["Cl"];
                 this.columnCa = base.Columns["Ca"];
-                this.columnTieuDuong = base.Columns["TieuDuong"];
-                this.columnID = base.Columns["ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2322,14 +2357,10 @@ namespace DiabetesDido.DAL {
                 base.Columns.Add(this.columnLYM);
                 this.columnMONO = new global::System.Data.DataColumn("MONO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMONO);
-                this.columnGRAN = new global::System.Data.DataColumn("GRAN", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnGRAN);
                 this.columnTyLeLYM = new global::System.Data.DataColumn("TyLeLYM", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTyLeLYM);
                 this.columnTyLeMONO = new global::System.Data.DataColumn("TyLeMONO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTyLeMONO);
-                this.columnTyLeGRAN = new global::System.Data.DataColumn("TyLeGRAN", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTyLeGRAN);
                 this.columnHGB = new global::System.Data.DataColumn("HGB", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHGB);
                 this.columnRBC = new global::System.Data.DataColumn("RBC", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2352,6 +2383,14 @@ namespace DiabetesDido.DAL {
                 base.Columns.Add(this.columnPDW);
                 this.columnPCT = new global::System.Data.DataColumn("PCT", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPCT);
+                this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTieuDuong);
+                this.columnID = new global::System.Data.DataColumn("ID", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnID);
+                this.columnGRAN = new global::System.Data.DataColumn("GRAN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGRAN);
+                this.columnTyLeGRAN = new global::System.Data.DataColumn("TyLeGRAN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyLeGRAN);
                 this.columnNa = new global::System.Data.DataColumn("Na", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNa);
                 this.columnK = new global::System.Data.DataColumn("K", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2360,10 +2399,6 @@ namespace DiabetesDido.DAL {
                 base.Columns.Add(this.columnCl);
                 this.columnCa = new global::System.Data.DataColumn("Ca", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCa);
-                this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTieuDuong);
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnID}, true));
                 this.columnTuoi.MaxLength = 2147483647;
@@ -2379,10 +2414,8 @@ namespace DiabetesDido.DAL {
                 this.columnWBC.MaxLength = 2147483647;
                 this.columnLYM.MaxLength = 2147483647;
                 this.columnMONO.MaxLength = 2147483647;
-                this.columnGRAN.MaxLength = 2147483647;
                 this.columnTyLeLYM.MaxLength = 2147483647;
                 this.columnTyLeMONO.MaxLength = 2147483647;
-                this.columnTyLeGRAN.MaxLength = 2147483647;
                 this.columnHGB.MaxLength = 2147483647;
                 this.columnRBC.MaxLength = 2147483647;
                 this.columnHTC.MaxLength = 2147483647;
@@ -2394,10 +2427,6 @@ namespace DiabetesDido.DAL {
                 this.columnMPV.MaxLength = 2147483647;
                 this.columnPDW.MaxLength = 2147483647;
                 this.columnPCT.MaxLength = 2147483647;
-                this.columnNa.MaxLength = 2147483647;
-                this.columnK.MaxLength = 2147483647;
-                this.columnCl.MaxLength = 2147483647;
-                this.columnCa.MaxLength = 2147483647;
                 this.columnTieuDuong.AllowDBNull = false;
                 this.columnTieuDuong.MaxLength = 2147483647;
                 this.columnID.AutoIncrement = true;
@@ -2406,6 +2435,12 @@ namespace DiabetesDido.DAL {
                 this.columnID.AllowDBNull = false;
                 this.columnID.ReadOnly = true;
                 this.columnID.Unique = true;
+                this.columnGRAN.MaxLength = 2147483647;
+                this.columnTyLeGRAN.MaxLength = 2147483647;
+                this.columnNa.MaxLength = 2147483647;
+                this.columnK.MaxLength = 2147483647;
+                this.columnCl.MaxLength = 2147483647;
+                this.columnCa.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5196,6 +5231,687 @@ namespace DiabetesDido.DAL {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class NewDataSetTempDataTable : global::System.Data.TypedTableBase<NewDataSetTempRow> {
+            
+            private global::System.Data.DataColumn columnMaBN;
+            
+            private global::System.Data.DataColumn columnTuoi;
+            
+            private global::System.Data.DataColumn columnGioiTinh;
+            
+            private global::System.Data.DataColumn columnCholesterol;
+            
+            private global::System.Data.DataColumn columnHDL_Cholesterol;
+            
+            private global::System.Data.DataColumn columnTriglyceride;
+            
+            private global::System.Data.DataColumn columnLDL_Cholesterol;
+            
+            private global::System.Data.DataColumn columnGlucose;
+            
+            private global::System.Data.DataColumn columnSGOT;
+            
+            private global::System.Data.DataColumn columnSGPT;
+            
+            private global::System.Data.DataColumn columnUrea;
+            
+            private global::System.Data.DataColumn columnWBC;
+            
+            private global::System.Data.DataColumn columnLYM;
+            
+            private global::System.Data.DataColumn columnMONO;
+            
+            private global::System.Data.DataColumn columnTyLeLYM;
+            
+            private global::System.Data.DataColumn columnTyLeMONO;
+            
+            private global::System.Data.DataColumn columnHGB;
+            
+            private global::System.Data.DataColumn columnRBC;
+            
+            private global::System.Data.DataColumn columnHTC;
+            
+            private global::System.Data.DataColumn columnMCV;
+            
+            private global::System.Data.DataColumn columnMCH;
+            
+            private global::System.Data.DataColumn columnMCHC;
+            
+            private global::System.Data.DataColumn columnRDW_CV;
+            
+            private global::System.Data.DataColumn columnPLT;
+            
+            private global::System.Data.DataColumn columnMPV;
+            
+            private global::System.Data.DataColumn columnPDW;
+            
+            private global::System.Data.DataColumn columnPCT;
+            
+            private global::System.Data.DataColumn columnTieuDuong;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NewDataSetTempDataTable() {
+                this.TableName = "NewDataSetTemp";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NewDataSetTempDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected NewDataSetTempDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MaBNColumn {
+                get {
+                    return this.columnMaBN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TuoiColumn {
+                get {
+                    return this.columnTuoi;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GioiTinhColumn {
+                get {
+                    return this.columnGioiTinh;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CholesterolColumn {
+                get {
+                    return this.columnCholesterol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HDL_CholesterolColumn {
+                get {
+                    return this.columnHDL_Cholesterol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TriglycerideColumn {
+                get {
+                    return this.columnTriglyceride;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LDL_CholesterolColumn {
+                get {
+                    return this.columnLDL_Cholesterol;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn GlucoseColumn {
+                get {
+                    return this.columnGlucose;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SGOTColumn {
+                get {
+                    return this.columnSGOT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SGPTColumn {
+                get {
+                    return this.columnSGPT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UreaColumn {
+                get {
+                    return this.columnUrea;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn WBCColumn {
+                get {
+                    return this.columnWBC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LYMColumn {
+                get {
+                    return this.columnLYM;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MONOColumn {
+                get {
+                    return this.columnMONO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TyLeLYMColumn {
+                get {
+                    return this.columnTyLeLYM;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TyLeMONOColumn {
+                get {
+                    return this.columnTyLeMONO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HGBColumn {
+                get {
+                    return this.columnHGB;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RBCColumn {
+                get {
+                    return this.columnRBC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HTCColumn {
+                get {
+                    return this.columnHTC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MCVColumn {
+                get {
+                    return this.columnMCV;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MCHColumn {
+                get {
+                    return this.columnMCH;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MCHCColumn {
+                get {
+                    return this.columnMCHC;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RDW_CVColumn {
+                get {
+                    return this.columnRDW_CV;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PLTColumn {
+                get {
+                    return this.columnPLT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MPVColumn {
+                get {
+                    return this.columnMPV;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PDWColumn {
+                get {
+                    return this.columnPDW;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PCTColumn {
+                get {
+                    return this.columnPCT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TieuDuongColumn {
+                get {
+                    return this.columnTieuDuong;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NewDataSetTempRow this[int index] {
+                get {
+                    return ((NewDataSetTempRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NewDataSetTempRowChangeEventHandler NewDataSetTempRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NewDataSetTempRowChangeEventHandler NewDataSetTempRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NewDataSetTempRowChangeEventHandler NewDataSetTempRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event NewDataSetTempRowChangeEventHandler NewDataSetTempRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddNewDataSetTempRow(NewDataSetTempRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NewDataSetTempRow AddNewDataSetTempRow(
+                        decimal MaBN, 
+                        string Tuoi, 
+                        string GioiTinh, 
+                        string Cholesterol, 
+                        string HDL_Cholesterol, 
+                        string Triglyceride, 
+                        string LDL_Cholesterol, 
+                        string Glucose, 
+                        string SGOT, 
+                        string SGPT, 
+                        string Urea, 
+                        string WBC, 
+                        string LYM, 
+                        string MONO, 
+                        string TyLeLYM, 
+                        string TyLeMONO, 
+                        string HGB, 
+                        string RBC, 
+                        string HTC, 
+                        string MCV, 
+                        string MCH, 
+                        string MCHC, 
+                        string RDW_CV, 
+                        string PLT, 
+                        string MPV, 
+                        string PDW, 
+                        string PCT, 
+                        string TieuDuong) {
+                NewDataSetTempRow rowNewDataSetTempRow = ((NewDataSetTempRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        MaBN,
+                        Tuoi,
+                        GioiTinh,
+                        Cholesterol,
+                        HDL_Cholesterol,
+                        Triglyceride,
+                        LDL_Cholesterol,
+                        Glucose,
+                        SGOT,
+                        SGPT,
+                        Urea,
+                        WBC,
+                        LYM,
+                        MONO,
+                        TyLeLYM,
+                        TyLeMONO,
+                        HGB,
+                        RBC,
+                        HTC,
+                        MCV,
+                        MCH,
+                        MCHC,
+                        RDW_CV,
+                        PLT,
+                        MPV,
+                        PDW,
+                        PCT,
+                        TieuDuong};
+                rowNewDataSetTempRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowNewDataSetTempRow);
+                return rowNewDataSetTempRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                NewDataSetTempDataTable cln = ((NewDataSetTempDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new NewDataSetTempDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnMaBN = base.Columns["MaBN"];
+                this.columnTuoi = base.Columns["Tuoi"];
+                this.columnGioiTinh = base.Columns["GioiTinh"];
+                this.columnCholesterol = base.Columns["Cholesterol"];
+                this.columnHDL_Cholesterol = base.Columns["HDL_Cholesterol"];
+                this.columnTriglyceride = base.Columns["Triglyceride"];
+                this.columnLDL_Cholesterol = base.Columns["LDL_Cholesterol"];
+                this.columnGlucose = base.Columns["Glucose"];
+                this.columnSGOT = base.Columns["SGOT"];
+                this.columnSGPT = base.Columns["SGPT"];
+                this.columnUrea = base.Columns["Urea"];
+                this.columnWBC = base.Columns["WBC"];
+                this.columnLYM = base.Columns["LYM"];
+                this.columnMONO = base.Columns["MONO"];
+                this.columnTyLeLYM = base.Columns["TyLeLYM"];
+                this.columnTyLeMONO = base.Columns["TyLeMONO"];
+                this.columnHGB = base.Columns["HGB"];
+                this.columnRBC = base.Columns["RBC"];
+                this.columnHTC = base.Columns["HTC"];
+                this.columnMCV = base.Columns["MCV"];
+                this.columnMCH = base.Columns["MCH"];
+                this.columnMCHC = base.Columns["MCHC"];
+                this.columnRDW_CV = base.Columns["RDW_CV"];
+                this.columnPLT = base.Columns["PLT"];
+                this.columnMPV = base.Columns["MPV"];
+                this.columnPDW = base.Columns["PDW"];
+                this.columnPCT = base.Columns["PCT"];
+                this.columnTieuDuong = base.Columns["TieuDuong"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnMaBN = new global::System.Data.DataColumn("MaBN", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMaBN);
+                this.columnTuoi = new global::System.Data.DataColumn("Tuoi", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTuoi);
+                this.columnGioiTinh = new global::System.Data.DataColumn("GioiTinh", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGioiTinh);
+                this.columnCholesterol = new global::System.Data.DataColumn("Cholesterol", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCholesterol);
+                this.columnHDL_Cholesterol = new global::System.Data.DataColumn("HDL_Cholesterol", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHDL_Cholesterol);
+                this.columnTriglyceride = new global::System.Data.DataColumn("Triglyceride", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTriglyceride);
+                this.columnLDL_Cholesterol = new global::System.Data.DataColumn("LDL_Cholesterol", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLDL_Cholesterol);
+                this.columnGlucose = new global::System.Data.DataColumn("Glucose", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnGlucose);
+                this.columnSGOT = new global::System.Data.DataColumn("SGOT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSGOT);
+                this.columnSGPT = new global::System.Data.DataColumn("SGPT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSGPT);
+                this.columnUrea = new global::System.Data.DataColumn("Urea", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUrea);
+                this.columnWBC = new global::System.Data.DataColumn("WBC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnWBC);
+                this.columnLYM = new global::System.Data.DataColumn("LYM", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLYM);
+                this.columnMONO = new global::System.Data.DataColumn("MONO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMONO);
+                this.columnTyLeLYM = new global::System.Data.DataColumn("TyLeLYM", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyLeLYM);
+                this.columnTyLeMONO = new global::System.Data.DataColumn("TyLeMONO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTyLeMONO);
+                this.columnHGB = new global::System.Data.DataColumn("HGB", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHGB);
+                this.columnRBC = new global::System.Data.DataColumn("RBC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRBC);
+                this.columnHTC = new global::System.Data.DataColumn("HTC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHTC);
+                this.columnMCV = new global::System.Data.DataColumn("MCV", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMCV);
+                this.columnMCH = new global::System.Data.DataColumn("MCH", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMCH);
+                this.columnMCHC = new global::System.Data.DataColumn("MCHC", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMCHC);
+                this.columnRDW_CV = new global::System.Data.DataColumn("RDW_CV", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRDW_CV);
+                this.columnPLT = new global::System.Data.DataColumn("PLT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPLT);
+                this.columnMPV = new global::System.Data.DataColumn("MPV", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMPV);
+                this.columnPDW = new global::System.Data.DataColumn("PDW", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPDW);
+                this.columnPCT = new global::System.Data.DataColumn("PCT", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPCT);
+                this.columnTieuDuong = new global::System.Data.DataColumn("TieuDuong", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTieuDuong);
+                this.columnTuoi.MaxLength = 2147483647;
+                this.columnGioiTinh.MaxLength = 2147483647;
+                this.columnCholesterol.MaxLength = 2147483647;
+                this.columnHDL_Cholesterol.MaxLength = 2147483647;
+                this.columnTriglyceride.MaxLength = 2147483647;
+                this.columnLDL_Cholesterol.MaxLength = 2147483647;
+                this.columnGlucose.MaxLength = 2147483647;
+                this.columnSGOT.MaxLength = 2147483647;
+                this.columnSGPT.MaxLength = 2147483647;
+                this.columnUrea.MaxLength = 2147483647;
+                this.columnWBC.MaxLength = 2147483647;
+                this.columnLYM.MaxLength = 2147483647;
+                this.columnMONO.MaxLength = 2147483647;
+                this.columnTyLeLYM.MaxLength = 2147483647;
+                this.columnTyLeMONO.MaxLength = 2147483647;
+                this.columnHGB.MaxLength = 2147483647;
+                this.columnRBC.MaxLength = 2147483647;
+                this.columnHTC.MaxLength = 2147483647;
+                this.columnMCV.MaxLength = 2147483647;
+                this.columnMCH.MaxLength = 2147483647;
+                this.columnMCHC.MaxLength = 2147483647;
+                this.columnRDW_CV.MaxLength = 2147483647;
+                this.columnPLT.MaxLength = 2147483647;
+                this.columnMPV.MaxLength = 2147483647;
+                this.columnPDW.MaxLength = 2147483647;
+                this.columnPCT.MaxLength = 2147483647;
+                this.columnTieuDuong.AllowDBNull = false;
+                this.columnTieuDuong.MaxLength = 2147483647;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NewDataSetTempRow NewNewDataSetTempRow() {
+                return ((NewDataSetTempRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new NewDataSetTempRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(NewDataSetTempRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.NewDataSetTempRowChanged != null)) {
+                    this.NewDataSetTempRowChanged(this, new NewDataSetTempRowChangeEvent(((NewDataSetTempRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.NewDataSetTempRowChanging != null)) {
+                    this.NewDataSetTempRowChanging(this, new NewDataSetTempRowChangeEvent(((NewDataSetTempRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.NewDataSetTempRowDeleted != null)) {
+                    this.NewDataSetTempRowDeleted(this, new NewDataSetTempRowChangeEvent(((NewDataSetTempRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.NewDataSetTempRowDeleting != null)) {
+                    this.NewDataSetTempRowDeleting(this, new NewDataSetTempRowChangeEvent(((NewDataSetTempRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveNewDataSetTempRow(NewDataSetTempRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                DiabetesDataSet ds = new DiabetesDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "NewDataSetTempDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class BenhNhanRow : global::System.Data.DataRow {
@@ -6814,22 +7530,6 @@ namespace DiabetesDido.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string GRAN {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataSetTemp.GRANColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'GRAN\' in table \'DataSetTemp\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataSetTemp.GRANColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string TyLeLYM {
                 get {
                     try {
@@ -6857,22 +7557,6 @@ namespace DiabetesDido.DAL {
                 }
                 set {
                     this[this.tableDataSetTemp.TyLeMONOColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TyLeGRAN {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataSetTemp.TyLeGRANColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TyLeGRAN\' in table \'DataSetTemp\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataSetTemp.TyLeGRANColumn] = value;
                 }
             }
             
@@ -7054,6 +7738,60 @@ namespace DiabetesDido.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TieuDuong {
+                get {
+                    return ((string)(this[this.tableDataSetTemp.TieuDuongColumn]));
+                }
+                set {
+                    this[this.tableDataSetTemp.TieuDuongColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal ID {
+                get {
+                    return ((decimal)(this[this.tableDataSetTemp.IDColumn]));
+                }
+                set {
+                    this[this.tableDataSetTemp.IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GRAN {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataSetTemp.GRANColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GRAN\' in table \'DataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataSetTemp.GRANColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TyLeGRAN {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataSetTemp.TyLeGRANColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TyLeGRAN\' in table \'DataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataSetTemp.TyLeGRANColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Na {
                 get {
                     try {
@@ -7113,28 +7851,6 @@ namespace DiabetesDido.DAL {
                 }
                 set {
                     this[this.tableDataSetTemp.CaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TieuDuong {
-                get {
-                    return ((string)(this[this.tableDataSetTemp.TieuDuongColumn]));
-                }
-                set {
-                    this[this.tableDataSetTemp.TieuDuongColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal ID {
-                get {
-                    return ((decimal)(this[this.tableDataSetTemp.IDColumn]));
-                }
-                set {
-                    this[this.tableDataSetTemp.IDColumn] = value;
                 }
             }
             
@@ -7308,18 +8024,6 @@ namespace DiabetesDido.DAL {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsGRANNull() {
-                return this.IsNull(this.tableDataSetTemp.GRANColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetGRANNull() {
-                this[this.tableDataSetTemp.GRANColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTyLeLYMNull() {
                 return this.IsNull(this.tableDataSetTemp.TyLeLYMColumn);
             }
@@ -7340,18 +8044,6 @@ namespace DiabetesDido.DAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTyLeMONONull() {
                 this[this.tableDataSetTemp.TyLeMONOColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTyLeGRANNull() {
-                return this.IsNull(this.tableDataSetTemp.TyLeGRANColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTyLeGRANNull() {
-                this[this.tableDataSetTemp.TyLeGRANColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7484,6 +8176,30 @@ namespace DiabetesDido.DAL {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetPCTNull() {
                 this[this.tableDataSetTemp.PCTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGRANNull() {
+                return this.IsNull(this.tableDataSetTemp.GRANColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGRANNull() {
+                this[this.tableDataSetTemp.GRANColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTyLeGRANNull() {
+                return this.IsNull(this.tableDataSetTemp.TyLeGRANColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTyLeGRANNull() {
+                this[this.tableDataSetTemp.TyLeGRANColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10597,6 +11313,788 @@ namespace DiabetesDido.DAL {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class NewDataSetTempRow : global::System.Data.DataRow {
+            
+            private NewDataSetTempDataTable tableNewDataSetTemp;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal NewDataSetTempRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableNewDataSetTemp = ((NewDataSetTempDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal MaBN {
+                get {
+                    try {
+                        return ((decimal)(this[this.tableNewDataSetTemp.MaBNColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MaBN\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.MaBNColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Tuoi {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.TuoiColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Tuoi\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.TuoiColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string GioiTinh {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.GioiTinhColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'GioiTinh\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.GioiTinhColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Cholesterol {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.CholesterolColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Cholesterol\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.CholesterolColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HDL_Cholesterol {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.HDL_CholesterolColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HDL_Cholesterol\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.HDL_CholesterolColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Triglyceride {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.TriglycerideColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Triglyceride\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.TriglycerideColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string LDL_Cholesterol {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.LDL_CholesterolColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LDL_Cholesterol\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.LDL_CholesterolColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Glucose {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.GlucoseColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Glucose\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.GlucoseColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SGOT {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.SGOTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SGOT\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.SGOTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SGPT {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.SGPTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SGPT\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.SGPTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Urea {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.UreaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Urea\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.UreaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string WBC {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.WBCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'WBC\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.WBCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string LYM {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.LYMColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'LYM\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.LYMColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MONO {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.MONOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MONO\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.MONOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TyLeLYM {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.TyLeLYMColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TyLeLYM\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.TyLeLYMColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TyLeMONO {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.TyLeMONOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TyLeMONO\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.TyLeMONOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HGB {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.HGBColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HGB\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.HGBColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RBC {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.RBCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RBC\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.RBCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HTC {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.HTCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HTC\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.HTCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MCV {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.MCVColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MCV\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.MCVColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MCH {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.MCHColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MCH\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.MCHColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MCHC {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.MCHCColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MCHC\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.MCHCColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RDW_CV {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.RDW_CVColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RDW_CV\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.RDW_CVColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PLT {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.PLTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PLT\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.PLTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string MPV {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.MPVColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MPV\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.MPVColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PDW {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.PDWColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PDW\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.PDWColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PCT {
+                get {
+                    try {
+                        return ((string)(this[this.tableNewDataSetTemp.PCTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PCT\' in table \'NewDataSetTemp\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableNewDataSetTemp.PCTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TieuDuong {
+                get {
+                    return ((string)(this[this.tableNewDataSetTemp.TieuDuongColumn]));
+                }
+                set {
+                    this[this.tableNewDataSetTemp.TieuDuongColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMaBNNull() {
+                return this.IsNull(this.tableNewDataSetTemp.MaBNColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMaBNNull() {
+                this[this.tableNewDataSetTemp.MaBNColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTuoiNull() {
+                return this.IsNull(this.tableNewDataSetTemp.TuoiColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTuoiNull() {
+                this[this.tableNewDataSetTemp.TuoiColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGioiTinhNull() {
+                return this.IsNull(this.tableNewDataSetTemp.GioiTinhColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGioiTinhNull() {
+                this[this.tableNewDataSetTemp.GioiTinhColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCholesterolNull() {
+                return this.IsNull(this.tableNewDataSetTemp.CholesterolColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCholesterolNull() {
+                this[this.tableNewDataSetTemp.CholesterolColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHDL_CholesterolNull() {
+                return this.IsNull(this.tableNewDataSetTemp.HDL_CholesterolColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHDL_CholesterolNull() {
+                this[this.tableNewDataSetTemp.HDL_CholesterolColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTriglycerideNull() {
+                return this.IsNull(this.tableNewDataSetTemp.TriglycerideColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTriglycerideNull() {
+                this[this.tableNewDataSetTemp.TriglycerideColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLDL_CholesterolNull() {
+                return this.IsNull(this.tableNewDataSetTemp.LDL_CholesterolColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLDL_CholesterolNull() {
+                this[this.tableNewDataSetTemp.LDL_CholesterolColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsGlucoseNull() {
+                return this.IsNull(this.tableNewDataSetTemp.GlucoseColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetGlucoseNull() {
+                this[this.tableNewDataSetTemp.GlucoseColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSGOTNull() {
+                return this.IsNull(this.tableNewDataSetTemp.SGOTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSGOTNull() {
+                this[this.tableNewDataSetTemp.SGOTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSGPTNull() {
+                return this.IsNull(this.tableNewDataSetTemp.SGPTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSGPTNull() {
+                this[this.tableNewDataSetTemp.SGPTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUreaNull() {
+                return this.IsNull(this.tableNewDataSetTemp.UreaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUreaNull() {
+                this[this.tableNewDataSetTemp.UreaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsWBCNull() {
+                return this.IsNull(this.tableNewDataSetTemp.WBCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetWBCNull() {
+                this[this.tableNewDataSetTemp.WBCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLYMNull() {
+                return this.IsNull(this.tableNewDataSetTemp.LYMColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLYMNull() {
+                this[this.tableNewDataSetTemp.LYMColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMONONull() {
+                return this.IsNull(this.tableNewDataSetTemp.MONOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMONONull() {
+                this[this.tableNewDataSetTemp.MONOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTyLeLYMNull() {
+                return this.IsNull(this.tableNewDataSetTemp.TyLeLYMColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTyLeLYMNull() {
+                this[this.tableNewDataSetTemp.TyLeLYMColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTyLeMONONull() {
+                return this.IsNull(this.tableNewDataSetTemp.TyLeMONOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTyLeMONONull() {
+                this[this.tableNewDataSetTemp.TyLeMONOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHGBNull() {
+                return this.IsNull(this.tableNewDataSetTemp.HGBColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHGBNull() {
+                this[this.tableNewDataSetTemp.HGBColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRBCNull() {
+                return this.IsNull(this.tableNewDataSetTemp.RBCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRBCNull() {
+                this[this.tableNewDataSetTemp.RBCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHTCNull() {
+                return this.IsNull(this.tableNewDataSetTemp.HTCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHTCNull() {
+                this[this.tableNewDataSetTemp.HTCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMCVNull() {
+                return this.IsNull(this.tableNewDataSetTemp.MCVColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMCVNull() {
+                this[this.tableNewDataSetTemp.MCVColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMCHNull() {
+                return this.IsNull(this.tableNewDataSetTemp.MCHColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMCHNull() {
+                this[this.tableNewDataSetTemp.MCHColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMCHCNull() {
+                return this.IsNull(this.tableNewDataSetTemp.MCHCColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMCHCNull() {
+                this[this.tableNewDataSetTemp.MCHCColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRDW_CVNull() {
+                return this.IsNull(this.tableNewDataSetTemp.RDW_CVColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRDW_CVNull() {
+                this[this.tableNewDataSetTemp.RDW_CVColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPLTNull() {
+                return this.IsNull(this.tableNewDataSetTemp.PLTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPLTNull() {
+                this[this.tableNewDataSetTemp.PLTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMPVNull() {
+                return this.IsNull(this.tableNewDataSetTemp.MPVColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMPVNull() {
+                this[this.tableNewDataSetTemp.MPVColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPDWNull() {
+                return this.IsNull(this.tableNewDataSetTemp.PDWColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPDWNull() {
+                this[this.tableNewDataSetTemp.PDWColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPCTNull() {
+                return this.IsNull(this.tableNewDataSetTemp.PCTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPCTNull() {
+                this[this.tableNewDataSetTemp.PCTColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -10820,6 +12318,40 @@ namespace DiabetesDido.DAL {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BayesObjectRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class NewDataSetTempRowChangeEvent : global::System.EventArgs {
+            
+            private NewDataSetTempRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NewDataSetTempRowChangeEvent(NewDataSetTempRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NewDataSetTempRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -13359,10 +14891,8 @@ SELECT ID, MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholestero
             tableMapping.ColumnMappings.Add("WBC", "WBC");
             tableMapping.ColumnMappings.Add("LYM", "LYM");
             tableMapping.ColumnMappings.Add("MONO", "MONO");
-            tableMapping.ColumnMappings.Add("GRAN", "GRAN");
             tableMapping.ColumnMappings.Add("TyLeLYM", "TyLeLYM");
             tableMapping.ColumnMappings.Add("TyLeMONO", "TyLeMONO");
-            tableMapping.ColumnMappings.Add("TyLeGRAN", "TyLeGRAN");
             tableMapping.ColumnMappings.Add("HGB", "HGB");
             tableMapping.ColumnMappings.Add("RBC", "RBC");
             tableMapping.ColumnMappings.Add("HTC", "HTC");
@@ -13374,12 +14904,14 @@ SELECT ID, MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholestero
             tableMapping.ColumnMappings.Add("MPV", "MPV");
             tableMapping.ColumnMappings.Add("PDW", "PDW");
             tableMapping.ColumnMappings.Add("PCT", "PCT");
+            tableMapping.ColumnMappings.Add("TieuDuong", "TieuDuong");
+            tableMapping.ColumnMappings.Add("ID", "ID");
+            tableMapping.ColumnMappings.Add("GRAN", "GRAN");
+            tableMapping.ColumnMappings.Add("TyLeGRAN", "TyLeGRAN");
             tableMapping.ColumnMappings.Add("Na", "Na");
             tableMapping.ColumnMappings.Add("K", "K");
             tableMapping.ColumnMappings.Add("Cl", "Cl");
             tableMapping.ColumnMappings.Add("Ca", "Ca");
-            tableMapping.ColumnMappings.Add("TieuDuong", "TieuDuong");
-            tableMapping.ColumnMappings.Add("ID", "ID");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
@@ -13483,7 +15015,7 @@ SELECT ID, MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholestero
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"SELECT ID, MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca, TieuDuong FROM DataSetTemp";
+            this._commandCollection[0].CommandText = "SELECT * FROM DataSetTemp";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -13491,7 +15023,7 @@ SELECT ID, MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholestero
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "select top(@SoLuong) * from datasettemp";
+            this._commandCollection[2].CommandText = "SELECT TOP (@SoLuong) * FROM DataSetTemp";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SoLuong", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
@@ -17516,6 +19048,833 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class NewDataSetTempTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public NewDataSetTempTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "NewDataSetTemp";
+            tableMapping.ColumnMappings.Add("MaBN", "MaBN");
+            tableMapping.ColumnMappings.Add("Tuoi", "Tuoi");
+            tableMapping.ColumnMappings.Add("GioiTinh", "GioiTinh");
+            tableMapping.ColumnMappings.Add("Cholesterol", "Cholesterol");
+            tableMapping.ColumnMappings.Add("HDL_Cholesterol", "HDL_Cholesterol");
+            tableMapping.ColumnMappings.Add("Triglyceride", "Triglyceride");
+            tableMapping.ColumnMappings.Add("LDL_Cholesterol", "LDL_Cholesterol");
+            tableMapping.ColumnMappings.Add("Glucose", "Glucose");
+            tableMapping.ColumnMappings.Add("SGOT", "SGOT");
+            tableMapping.ColumnMappings.Add("SGPT", "SGPT");
+            tableMapping.ColumnMappings.Add("Urea", "Urea");
+            tableMapping.ColumnMappings.Add("WBC", "WBC");
+            tableMapping.ColumnMappings.Add("LYM", "LYM");
+            tableMapping.ColumnMappings.Add("MONO", "MONO");
+            tableMapping.ColumnMappings.Add("TyLeLYM", "TyLeLYM");
+            tableMapping.ColumnMappings.Add("TyLeMONO", "TyLeMONO");
+            tableMapping.ColumnMappings.Add("HGB", "HGB");
+            tableMapping.ColumnMappings.Add("RBC", "RBC");
+            tableMapping.ColumnMappings.Add("HTC", "HTC");
+            tableMapping.ColumnMappings.Add("MCV", "MCV");
+            tableMapping.ColumnMappings.Add("MCH", "MCH");
+            tableMapping.ColumnMappings.Add("MCHC", "MCHC");
+            tableMapping.ColumnMappings.Add("RDW_CV", "RDW_CV");
+            tableMapping.ColumnMappings.Add("PLT", "PLT");
+            tableMapping.ColumnMappings.Add("MPV", "MPV");
+            tableMapping.ColumnMappings.Add("PDW", "PDW");
+            tableMapping.ColumnMappings.Add("PCT", "PCT");
+            tableMapping.ColumnMappings.Add("TieuDuong", "TieuDuong");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [datasettemp] WHERE (([ID] = @Original_ID) AND ((@IsNull_MaBN = 1 AND" +
+                " [MaBN] IS NULL) OR ([MaBN] = @Original_MaBN)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaBN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaBN", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaBN", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [DataSetTemp] ([MaBN], [Tuoi], [GioiTinh], [Cholesterol], [HDL_Cholesterol], [Triglyceride], [LDL_Cholesterol], [Glucose], [SGOT], [SGPT], [Urea], [WBC], [LYM], [MONO], [TyLeLYM], [TyLeMONO], [HGB], [RBC], [HTC], [MCV], [MCH], [MCHC], [RDW_CV], [PLT], [MPV], [PDW], [PCT], [TieuDuong]) VALUES (@MaBN, @Tuoi, @GioiTinh, @Cholesterol, @HDL_Cholesterol, @Triglyceride, @LDL_Cholesterol, @Glucose, @SGOT, @SGPT, @Urea, @WBC, @LYM, @MONO, @TyLeLYM, @TyLeMONO, @HGB, @RBC, @HTC, @MCV, @MCH, @MCHC, @RDW_CV, @PLT, @MPV, @PDW, @PCT, @TieuDuong)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBN", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tuoi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tuoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GioiTinh", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GioiTinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cholesterol", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HDL_Cholesterol", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Triglyceride", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Triglyceride", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LDL_Cholesterol", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LDL_Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Glucose", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Glucose", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SGOT", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SGOT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SGPT", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SGPT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Urea", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Urea", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WBC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WBC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LYM", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LYM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MONO", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MONO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyLeLYM", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyLeLYM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyLeMONO", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyLeMONO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HGB", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HGB", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RBC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RBC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HTC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HTC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MCV", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MCV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MCH", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MCH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MCHC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MCHC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RDW_CV", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RDW_CV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PLT", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PLT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MPV", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MPV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PDW", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PDW", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PCT", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PCT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [datasettemp] SET [MaBN] = @MaBN, [Tuoi] = @Tuoi, [GioiTinh] = @GioiTinh, [Cholesterol] = @Cholesterol, [HDL_Cholesterol] = @HDL_Cholesterol, [Triglyceride] = @Triglyceride, [LDL_Cholesterol] = @LDL_Cholesterol, [Glucose] = @Glucose, [SGOT] = @SGOT, [SGPT] = @SGPT, [Urea] = @Urea, [WBC] = @WBC, [LYM] = @LYM, [MONO] = @MONO, [GRAN] = @GRAN, [TyLeLYM] = @TyLeLYM, [TyLeMONO] = @TyLeMONO, [TyLeGRAN] = @TyLeGRAN, [HGB] = @HGB, [RBC] = @RBC, [HTC] = @HTC, [MCV] = @MCV, [MCH] = @MCH, [MCHC] = @MCHC, [RDW_CV] = @RDW_CV, [PLT] = @PLT, [MPV] = @MPV, [PDW] = @PDW, [PCT] = @PCT, [Na] = @Na, [K] = @K, [Cl] = @Cl, [Ca] = @Ca, [TieuDuong] = @TieuDuong WHERE (([ID] = @Original_ID) AND ((@IsNull_MaBN = 1 AND [MaBN] IS NULL) OR ([MaBN] = @Original_MaBN)));
+SELECT ID, MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Ca, TieuDuong FROM DataSetTemp WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaBN", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Tuoi", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Tuoi", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GioiTinh", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GioiTinh", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cholesterol", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HDL_Cholesterol", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HDL_Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Triglyceride", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Triglyceride", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LDL_Cholesterol", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LDL_Cholesterol", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Glucose", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Glucose", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SGOT", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SGOT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SGPT", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SGPT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Urea", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Urea", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@WBC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "WBC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LYM", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LYM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MONO", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MONO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@GRAN", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "GRAN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyLeLYM", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyLeLYM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyLeMONO", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyLeMONO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TyLeGRAN", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TyLeGRAN", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HGB", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HGB", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RBC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RBC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@HTC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "HTC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MCV", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MCV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MCH", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MCH", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MCHC", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MCHC", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RDW_CV", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RDW_CV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PLT", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PLT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MPV", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MPV", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PDW", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PDW", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PCT", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PCT", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Na", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Na", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@K", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "K", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cl", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cl", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ca", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ca", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@TieuDuong", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TieuDuong", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MaBN", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaBN", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaBN", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 0, "MaBN", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::DiabetesDido.Properties.Settings.Default.testConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Chol" +
+                "esterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, TyLeLYM, TyLeMONO, HGB, RBC," +
+                " HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, TieuDuong FROM DataSetTemp";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(DiabetesDataSet.NewDataSetTempDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual DiabetesDataSet.NewDataSetTempDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            DiabetesDataSet.NewDataSetTempDataTable dataTable = new DiabetesDataSet.NewDataSetTempDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DiabetesDataSet.NewDataSetTempDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(DiabetesDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "NewDataSetTemp");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(decimal Original_ID, global::System.Nullable<decimal> Original_MaBN) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((decimal)(Original_ID));
+            if ((Original_MaBN.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((decimal)(Original_MaBN.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(
+                    global::System.Nullable<decimal> MaBN, 
+                    string Tuoi, 
+                    string GioiTinh, 
+                    string Cholesterol, 
+                    string HDL_Cholesterol, 
+                    string Triglyceride, 
+                    string LDL_Cholesterol, 
+                    string Glucose, 
+                    string SGOT, 
+                    string SGPT, 
+                    string Urea, 
+                    string WBC, 
+                    string LYM, 
+                    string MONO, 
+                    string TyLeLYM, 
+                    string TyLeMONO, 
+                    string HGB, 
+                    string RBC, 
+                    string HTC, 
+                    string MCV, 
+                    string MCH, 
+                    string MCHC, 
+                    string RDW_CV, 
+                    string PLT, 
+                    string MPV, 
+                    string PDW, 
+                    string PCT, 
+                    string TieuDuong) {
+            if ((MaBN.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((decimal)(MaBN.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Tuoi == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Tuoi));
+            }
+            if ((GioiTinh == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(GioiTinh));
+            }
+            if ((Cholesterol == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Cholesterol));
+            }
+            if ((HDL_Cholesterol == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(HDL_Cholesterol));
+            }
+            if ((Triglyceride == null)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((string)(Triglyceride));
+            }
+            if ((LDL_Cholesterol == null)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(LDL_Cholesterol));
+            }
+            if ((Glucose == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Glucose));
+            }
+            if ((SGOT == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(SGOT));
+            }
+            if ((SGPT == null)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((string)(SGPT));
+            }
+            if ((Urea == null)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(Urea));
+            }
+            if ((WBC == null)) {
+                this.Adapter.InsertCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[11].Value = ((string)(WBC));
+            }
+            if ((LYM == null)) {
+                this.Adapter.InsertCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[12].Value = ((string)(LYM));
+            }
+            if ((MONO == null)) {
+                this.Adapter.InsertCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[13].Value = ((string)(MONO));
+            }
+            if ((TyLeLYM == null)) {
+                this.Adapter.InsertCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[14].Value = ((string)(TyLeLYM));
+            }
+            if ((TyLeMONO == null)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(TyLeMONO));
+            }
+            if ((HGB == null)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(HGB));
+            }
+            if ((RBC == null)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(RBC));
+            }
+            if ((HTC == null)) {
+                this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[18].Value = ((string)(HTC));
+            }
+            if ((MCV == null)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(MCV));
+            }
+            if ((MCH == null)) {
+                this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[20].Value = ((string)(MCH));
+            }
+            if ((MCHC == null)) {
+                this.Adapter.InsertCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[21].Value = ((string)(MCHC));
+            }
+            if ((RDW_CV == null)) {
+                this.Adapter.InsertCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[22].Value = ((string)(RDW_CV));
+            }
+            if ((PLT == null)) {
+                this.Adapter.InsertCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[23].Value = ((string)(PLT));
+            }
+            if ((MPV == null)) {
+                this.Adapter.InsertCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[24].Value = ((string)(MPV));
+            }
+            if ((PDW == null)) {
+                this.Adapter.InsertCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[25].Value = ((string)(PDW));
+            }
+            if ((PCT == null)) {
+                this.Adapter.InsertCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[26].Value = ((string)(PCT));
+            }
+            if ((TieuDuong == null)) {
+                throw new global::System.ArgumentNullException("TieuDuong");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[27].Value = ((string)(TieuDuong));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    global::System.Nullable<decimal> MaBN, 
+                    string Tuoi, 
+                    string GioiTinh, 
+                    string Cholesterol, 
+                    string HDL_Cholesterol, 
+                    string Triglyceride, 
+                    string LDL_Cholesterol, 
+                    string Glucose, 
+                    string SGOT, 
+                    string SGPT, 
+                    string Urea, 
+                    string WBC, 
+                    string LYM, 
+                    string MONO, 
+                    string GRAN, 
+                    string TyLeLYM, 
+                    string TyLeMONO, 
+                    string TyLeGRAN, 
+                    string HGB, 
+                    string RBC, 
+                    string HTC, 
+                    string MCV, 
+                    string MCH, 
+                    string MCHC, 
+                    string RDW_CV, 
+                    string PLT, 
+                    string MPV, 
+                    string PDW, 
+                    string PCT, 
+                    string Na, 
+                    string K, 
+                    string Cl, 
+                    string Ca, 
+                    string TieuDuong, 
+                    decimal Original_ID, 
+                    global::System.Nullable<decimal> Original_MaBN, 
+                    decimal ID) {
+            if ((MaBN.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((decimal)(MaBN.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((Tuoi == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Tuoi));
+            }
+            if ((GioiTinh == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(GioiTinh));
+            }
+            if ((Cholesterol == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Cholesterol));
+            }
+            if ((HDL_Cholesterol == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(HDL_Cholesterol));
+            }
+            if ((Triglyceride == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Triglyceride));
+            }
+            if ((LDL_Cholesterol == null)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(LDL_Cholesterol));
+            }
+            if ((Glucose == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Glucose));
+            }
+            if ((SGOT == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(SGOT));
+            }
+            if ((SGPT == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(SGPT));
+            }
+            if ((Urea == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Urea));
+            }
+            if ((WBC == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((string)(WBC));
+            }
+            if ((LYM == null)) {
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(LYM));
+            }
+            if ((MONO == null)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((string)(MONO));
+            }
+            if ((GRAN == null)) {
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((string)(GRAN));
+            }
+            if ((TyLeLYM == null)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(TyLeLYM));
+            }
+            if ((TyLeMONO == null)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(TyLeMONO));
+            }
+            if ((TyLeGRAN == null)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(TyLeGRAN));
+            }
+            if ((HGB == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(HGB));
+            }
+            if ((RBC == null)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(RBC));
+            }
+            if ((HTC == null)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(HTC));
+            }
+            if ((MCV == null)) {
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(MCV));
+            }
+            if ((MCH == null)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(MCH));
+            }
+            if ((MCHC == null)) {
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(MCHC));
+            }
+            if ((RDW_CV == null)) {
+                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(RDW_CV));
+            }
+            if ((PLT == null)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(PLT));
+            }
+            if ((MPV == null)) {
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(MPV));
+            }
+            if ((PDW == null)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(PDW));
+            }
+            if ((PCT == null)) {
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(PCT));
+            }
+            if ((Na == null)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Na));
+            }
+            if ((K == null)) {
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(K));
+            }
+            if ((Cl == null)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Cl));
+            }
+            if ((Ca == null)) {
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Ca));
+            }
+            if ((TieuDuong == null)) {
+                throw new global::System.ArgumentNullException("TieuDuong");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(TieuDuong));
+            }
+            this.Adapter.UpdateCommand.Parameters[34].Value = ((decimal)(Original_ID));
+            if ((Original_MaBN.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((decimal)(Original_MaBN.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[37].Value = ((decimal)(ID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -17540,6 +19899,8 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
         private XetNghiemTableAdapter _xetNghiemTableAdapter;
         
         private BayesObjectTableAdapter _bayesObjectTableAdapter;
+        
+        private NewDataSetTempTableAdapter _newDataSetTempTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -17656,6 +20017,20 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public NewDataSetTempTableAdapter NewDataSetTempTableAdapter {
+            get {
+                return this._newDataSetTempTableAdapter;
+            }
+            set {
+                this._newDataSetTempTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -17701,6 +20076,10 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                             && (this._bayesObjectTableAdapter.Connection != null))) {
                     return this._bayesObjectTableAdapter.Connection;
                 }
+                if (((this._newDataSetTempTableAdapter != null) 
+                            && (this._newDataSetTempTableAdapter.Connection != null))) {
+                    return this._newDataSetTempTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -17735,6 +20114,9 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                 if ((this._bayesObjectTableAdapter != null)) {
                     count = (count + 1);
                 }
+                if ((this._newDataSetTempTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 return count;
             }
         }
@@ -17746,6 +20128,15 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(DiabetesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._xetNghiemTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.XetNghiem.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._xetNghiemTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._trainingSetTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.TrainingSet.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -17755,12 +20146,12 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._xetNghiemTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.XetNghiem.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._newDataSetTempTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.NewDataSetTemp.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._xetNghiemTableAdapter.Update(updatedRows));
+                    result = (result + this._newDataSetTempTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -17773,12 +20164,12 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._testSetTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.TestSet.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._dataSetTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.DataSet.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._testSetTableAdapter.Update(updatedRows));
+                    result = (result + this._dataSetTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -17791,12 +20182,12 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._dataSetTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.DataSet.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._testSetTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.TestSet.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._dataSetTableAdapter.Update(updatedRows));
+                    result = (result + this._testSetTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -17819,6 +20210,14 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(DiabetesDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._xetNghiemTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.XetNghiem.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._xetNghiemTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._trainingSetTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.TrainingSet.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -17827,11 +20226,11 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._xetNghiemTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.XetNghiem.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._newDataSetTempTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.NewDataSetTemp.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._xetNghiemTableAdapter.Update(addedRows));
+                    result = (result + this._newDataSetTempTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -17843,11 +20242,11 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._testSetTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.TestSet.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._dataSetTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.DataSet.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._testSetTableAdapter.Update(addedRows));
+                    result = (result + this._dataSetTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -17859,11 +20258,11 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._dataSetTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.DataSet.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._testSetTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.TestSet.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._dataSetTableAdapter.Update(addedRows));
+                    result = (result + this._testSetTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -17893,11 +20292,11 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._dataSetTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.DataSet.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._testSetTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.TestSet.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._dataSetTableAdapter.Update(deletedRows));
+                    result = (result + this._testSetTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -17909,11 +20308,11 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._testSetTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.TestSet.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._dataSetTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.DataSet.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._testSetTableAdapter.Update(deletedRows));
+                    result = (result + this._dataSetTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -17925,11 +20324,11 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._xetNghiemTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.XetNghiem.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._newDataSetTempTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.NewDataSetTemp.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._xetNghiemTableAdapter.Update(deletedRows));
+                    result = (result + this._newDataSetTempTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -17938,6 +20337,14 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._trainingSetTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._xetNghiemTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.XetNghiem.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._xetNghiemTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -18012,6 +20419,11 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
             }
             if (((this._bayesObjectTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._bayesObjectTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._newDataSetTempTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._newDataSetTempTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -18110,6 +20522,15 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                         adaptersWithAcceptChangesDuringUpdate.Add(this._bayesObjectTableAdapter.Adapter);
                     }
                 }
+                if ((this._newDataSetTempTableAdapter != null)) {
+                    revertConnections.Add(this._newDataSetTempTableAdapter, this._newDataSetTempTableAdapter.Connection);
+                    this._newDataSetTempTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._newDataSetTempTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._newDataSetTempTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._newDataSetTempTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._newDataSetTempTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -18195,6 +20616,10 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
                 if ((this._bayesObjectTableAdapter != null)) {
                     this._bayesObjectTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._bayesObjectTableAdapter]));
                     this._bayesObjectTableAdapter.Transaction = null;
+                }
+                if ((this._newDataSetTempTableAdapter != null)) {
+                    this._newDataSetTempTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._newDataSetTempTableAdapter]));
+                    this._newDataSetTempTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

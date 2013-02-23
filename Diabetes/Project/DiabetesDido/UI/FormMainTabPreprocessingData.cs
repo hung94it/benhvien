@@ -10,7 +10,7 @@ using Accord.Statistics.Filters;
 using DiabetesDido.ClassificationLogic;
 using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
 using DiabetesDido.DAL.DiabetesDataSetTableAdapters;
-
+using DiabetesDido.ClassificationLogic;
 namespace DiabetesDido.UI
 {
     public partial class FormMain
@@ -166,15 +166,16 @@ namespace DiabetesDido.UI
                     InsertDataSetTempRow(dtRow);
                 }
             }
-            dtDataSetTempForPreProcessing = datasetTempTA.GetData();
+            dtDataSetTempForPreProcessing = newDataSetTempTA.GetData();
             this.bindingSourcePreprocessingData.DataSource = null;
-            this.bindingSourcePreprocessingData.DataSource = datasetTempTA.GetData();
+            this.bindingSourcePreprocessingData.DataSource = newDataSetTempTA.GetData();
             this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
             this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
             if (checkedListBoxColumnName.Items.Count > 0)
                 checkedListBoxColumnName.Items.Clear();
-            for (int i = 1; i < dtDataSetTempForPreProcessing.Columns.Count - 2; i++)
+            for (int i = 1; i < dtDataSetTempForPreProcessing.Columns.Count - 1; i++)
             {
+                
                 String colName = dtDataSetTempForPreProcessing.Columns[i].ColumnName;
                 checkedListBoxColumnName.Items.Add(colName, false);
             }
@@ -387,16 +388,16 @@ namespace DiabetesDido.UI
                 {
                     intervalValue = "[" + currentValue.ToString() + ",+)";
                 }
-                bayesObjectTA.Insert("Tuoi", intervalValue, 0, "TRUE");
-                bayesObjectTA.Insert("Tuoi", intervalValue, 0, "FALSE");
+                bayesObjectTA.Insert("Tuoi", intervalValue, 0, "True");
+                bayesObjectTA.Insert("Tuoi", intervalValue, 0, "False");
             }
         }
         public static void GenderDiscretization()
         {
-            bayesObjectTA.Insert("GioiTinh", "Nam", 0, "TRUE");
-            bayesObjectTA.Insert("GioiTInh", "Nam", 0, "FALSE");
-            bayesObjectTA.Insert("GioiTinh", "Nữ", 0, "TRUE");
-            bayesObjectTA.Insert("GioiTInh", "Nữ", 0, "FALSE");
+            bayesObjectTA.Insert("GioiTinh", "Nam", 0, "True");
+            bayesObjectTA.Insert("GioiTInh", "Nam", 0, "False");
+            bayesObjectTA.Insert("GioiTinh", "Nữ", 0, "True");
+            bayesObjectTA.Insert("GioiTInh", "Nữ", 0, "False");
         }
     }
 }
