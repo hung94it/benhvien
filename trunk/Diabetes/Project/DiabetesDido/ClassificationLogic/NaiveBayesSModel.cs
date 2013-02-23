@@ -25,8 +25,8 @@ namespace DiabetesDido.ClassificationLogic
             //inputs.GetLength(0);
             //DataTable temp = inputs.ToTable();
             int[] predicted = new int[inputs.Length];
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
-            var query = dataSetTempTA.GetData().AsEnumerable().Skip(dataSetTempTA.GetData().Rows.Count - inputs.Length);
+            DiabetesDido.DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter newDataSetTempTA = new DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter();
+            var query = newDataSetTempTA.GetData().AsEnumerable().Skip(newDataSetTempTA.GetData().Rows.Count - inputs.Length);
             DataTable testData = query.CopyToDataTable<DataRow>();
             //DataTable testData = inputs.ToTable();
             DataTable predictData = NaiveBayes(testData);

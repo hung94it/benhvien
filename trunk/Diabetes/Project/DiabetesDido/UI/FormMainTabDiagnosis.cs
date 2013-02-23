@@ -190,12 +190,22 @@ namespace DiabetesDido.UI
 
         private void buttonXImportData_Click(object sender, EventArgs e)
         {
+            dataGridViewXDiagnosis.DataSource = null;
+            dataGridViewXDiagnosisResult.DataSource = null;
             OpenFileDialog ofd = new OpenFileDialog();
             textBoxXFilePath.Text = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
             if (!ValidInput(textBoxXFilePath.Text))
                 return;
             dtForDiagnosis = ReadDataFromExcelFile(textBoxXFilePath.Text);
             dataGridViewXDiagnosis.DataSource = dtForDiagnosis;
+            dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
+            dataGridViewXDiagnosis.Columns["GRAN"].Visible = false;
+            dataGridViewXDiagnosis.Columns["TyLeGRAN"].Visible = false;
+            dataGridViewXDiagnosis.Columns["Na"].Visible = false;
+            dataGridViewXDiagnosis.Columns["K"].Visible = false;
+            dataGridViewXDiagnosis.Columns["Ca"].Visible = false;
+            dataGridViewXDiagnosis.Columns["Cl"].Visible = false;
+            
         }
         //Hàm dùng để kiếm tra đường dẫn tới file excel
         private bool ValidInput(String filePath)
