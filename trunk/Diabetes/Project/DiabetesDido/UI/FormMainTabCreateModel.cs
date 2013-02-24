@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar.Controls;
 using DiabetesDido.ClassificationLogic;
 using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
+using Accord.Statistics.Filters;
 
 namespace DiabetesDido.UI
 {
@@ -20,6 +21,7 @@ namespace DiabetesDido.UI
         // Dictionary contains model
         private Dictionary<LearningAlgorithm, ClassificationModel> modelList;
         private TrainningData trainningData;
+        private Codification codification;
         //private DataTable orginalTrainningTable;                
 
         public void InitializeTabCreateModel()
@@ -79,8 +81,9 @@ namespace DiabetesDido.UI
                 var query = orginalTrainningTable.AsEnumerable().Take(numberOfTrainningRows);
                 tableForTrainning = query.CopyToDataTable<DataRow>();
             }
-            
-            this.trainningData = new TrainningData(tableForTrainning);
+
+            this.codification = new Codification(tableForTrainning);
+            this.trainningData = new TrainningData(tableForTrainning, this.codification);
 
             Properties.Settings.Default.negativeValue = trainningData.NegativeValue;
             // Ask user what to do when selected model already exists
@@ -127,9 +130,9 @@ namespace DiabetesDido.UI
             {
                 MessageBox.Show("Chưa có mô hình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }               
+            }
 
-            TrainningData data = new TrainningData(testTable);
+            TrainningData data = new TrainningData(testTable, this.codification);
             // Show test result
             dataGridViewXTrainningResult.DataSource = this.modelList[activeLearningAlgorithm].TestModel(data);
         }
@@ -145,7 +148,7 @@ namespace DiabetesDido.UI
 
                     case LearningAlgorithm.C45:
                     case LearningAlgorithm.ID3:
-                        new FormDecisionTree((this.GetModel() as DecisionTreeModel).Tree, this.trainningData).Show();
+                        new FormTreeView((this.GetModel() as DecisionTreeModel).Tree, this.trainningData).Show();                        
                         break;
                     case LearningAlgorithm.NaiveBayes:
                     default:
