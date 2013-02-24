@@ -62,6 +62,8 @@ namespace DiabetesDido.ClassificationLogic
                 String tieuDuong = dtRow[4].ToString();
                 String iQuery = "" + colName + "='" + khoangRoiRac + "' and TieuDuong='" + tieuDuong + "'";
                 int soLuong = dataForTraining.Select(iQuery).Count();
+                if (soLuong == 0)
+                    soLuong = 1;
                 DataRow newRow = dtBayes.NewRow();
                 newRow = dtRow;
                 newRow[3] = soLuong;
