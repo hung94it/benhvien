@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelDatabase = new DevComponents.DotNetBar.LabelX();
             this.textBoxDatabase = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -39,20 +40,22 @@
             this.comboBoxConnection = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.comboItem1 = new DevComponents.Editors.ComboItem();
             this.comboItem2 = new DevComponents.Editors.ComboItem();
-            this.buttonCheck = new DevComponents.DotNetBar.ButtonX();
             this.buttonClose = new DevComponents.DotNetBar.ButtonX();
             this.buttonSave = new DevComponents.DotNetBar.ButtonX();
             this.labelServer = new DevComponents.DotNetBar.LabelX();
             this.textBoxServer = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
             this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelDatabase
             // 
+            this.labelDatabase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.labelDatabase.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelDatabase.ForeColor = System.Drawing.Color.Black;
             this.labelDatabase.Location = new System.Drawing.Point(12, 41);
             this.labelDatabase.Name = "labelDatabase";
             this.labelDatabase.Size = new System.Drawing.Size(101, 23);
@@ -61,11 +64,13 @@
             // 
             // textBoxDatabase
             // 
+            this.textBoxDatabase.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.textBoxDatabase.Border.Class = "TextBoxBorder";
             this.textBoxDatabase.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxDatabase.ForeColor = System.Drawing.Color.Black;
             this.textBoxDatabase.Location = new System.Drawing.Point(119, 44);
             this.textBoxDatabase.Name = "textBoxDatabase";
             this.textBoxDatabase.Size = new System.Drawing.Size(299, 22);
@@ -73,7 +78,8 @@
             // 
             // groupPanel1
             // 
-            this.groupPanel1.CanvasColor = System.Drawing.SystemColors.Control;
+            this.groupPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.groupPanel1.CanvasColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.groupPanel1.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.groupPanel1.Controls.Add(this.labelPassword);
             this.groupPanel1.Controls.Add(this.textBoxPassword);
@@ -120,6 +126,7 @@
             // 
             // 
             this.labelPassword.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelPassword.ForeColor = System.Drawing.Color.Black;
             this.labelPassword.Location = new System.Drawing.Point(3, 32);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(71, 23);
@@ -128,11 +135,13 @@
             // 
             // textBoxPassword
             // 
+            this.textBoxPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.textBoxPassword.Border.Class = "TextBoxBorder";
             this.textBoxPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxPassword.ForeColor = System.Drawing.Color.Black;
             this.textBoxPassword.Location = new System.Drawing.Point(80, 35);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
@@ -146,6 +155,7 @@
             // 
             // 
             this.labelUsername.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelUsername.ForeColor = System.Drawing.Color.Black;
             this.labelUsername.Location = new System.Drawing.Point(3, 3);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(71, 23);
@@ -154,11 +164,13 @@
             // 
             // textBoxUsername
             // 
+            this.textBoxUsername.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.textBoxUsername.Border.Class = "TextBoxBorder";
             this.textBoxUsername.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxUsername.ForeColor = System.Drawing.Color.Black;
             this.textBoxUsername.Location = new System.Drawing.Point(80, 6);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(182, 22);
@@ -166,20 +178,23 @@
             // 
             // labelConnection
             // 
+            this.labelConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.labelConnection.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelConnection.ForeColor = System.Drawing.Color.Black;
             this.labelConnection.Location = new System.Drawing.Point(12, 70);
             this.labelConnection.Name = "labelConnection";
             this.labelConnection.Size = new System.Drawing.Size(101, 23);
             this.labelConnection.TabIndex = 17;
-            this.labelConnection.Text = "Kết nối:";
+            this.labelConnection.Text = "Kiểu kết nối:";
             // 
             // comboBoxConnection
             // 
             this.comboBoxConnection.DisplayMember = "Text";
             this.comboBoxConnection.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxConnection.ForeColor = System.Drawing.Color.Black;
             this.comboBoxConnection.FormattingEnabled = true;
             this.comboBoxConnection.ItemHeight = 16;
             this.comboBoxConnection.Items.AddRange(new object[] {
@@ -199,18 +214,6 @@
             // comboItem2
             // 
             this.comboItem2.Text = "Từ xa";
-            // 
-            // buttonCheck
-            // 
-            this.buttonCheck.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonCheck.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonCheck.Location = new System.Drawing.Point(12, 197);
-            this.buttonCheck.Name = "buttonCheck";
-            this.buttonCheck.Size = new System.Drawing.Size(75, 23);
-            this.buttonCheck.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonCheck.TabIndex = 16;
-            this.buttonCheck.Text = "Kiểm tra";
-            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
             // 
             // buttonClose
             // 
@@ -233,14 +236,17 @@
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.buttonSave.TabIndex = 14;
-            this.buttonSave.Text = "Lưu";
+            this.buttonSave.Text = "Kết nối";
+            this.buttonSave.Click += new System.EventHandler(this.buttonConnect_Click);
             // 
             // labelServer
             // 
+            this.labelServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.labelServer.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelServer.ForeColor = System.Drawing.Color.Black;
             this.labelServer.Location = new System.Drawing.Point(12, 12);
             this.labelServer.Name = "labelServer";
             this.labelServer.Size = new System.Drawing.Size(101, 23);
@@ -249,27 +255,34 @@
             // 
             // textBoxServer
             // 
+            this.textBoxServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             // 
             // 
             // 
             this.textBoxServer.Border.Class = "TextBoxBorder";
             this.textBoxServer.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxServer.ForeColor = System.Drawing.Color.Black;
             this.textBoxServer.Location = new System.Drawing.Point(119, 15);
             this.textBoxServer.Name = "textBoxServer";
             this.textBoxServer.Size = new System.Drawing.Size(299, 22);
             this.textBoxServer.TabIndex = 10;
+            // 
+            // styleManager1
+            // 
+            this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
+            this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242))))), System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(140)))), ((int)(((byte)(63))))));
             // 
             // FormDatabaseConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(433, 235);
+            this.ControlBox = false;
             this.Controls.Add(this.labelDatabase);
             this.Controls.Add(this.textBoxDatabase);
             this.Controls.Add(this.groupPanel1);
             this.Controls.Add(this.labelConnection);
             this.Controls.Add(this.comboBoxConnection);
-            this.Controls.Add(this.buttonCheck);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.labelServer);
@@ -277,7 +290,8 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormDatabaseConnection";
-            this.Text = "MetroForm";
+            this.Text = "Kết nối";
+            this.TitleText = "<h4><font color=\"#903C39\"><b>Database Server\r\n</b></font></h4>";
             this.groupPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -296,11 +310,11 @@
         private DevComponents.DotNetBar.Controls.ComboBoxEx comboBoxConnection;
         private DevComponents.Editors.ComboItem comboItem1;
         private DevComponents.Editors.ComboItem comboItem2;
-        private DevComponents.DotNetBar.ButtonX buttonCheck;
         private DevComponents.DotNetBar.ButtonX buttonClose;
         private DevComponents.DotNetBar.ButtonX buttonSave;
         private DevComponents.DotNetBar.LabelX labelServer;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxServer;
+        private DevComponents.DotNetBar.StyleManager styleManager1;
 
     }
 }

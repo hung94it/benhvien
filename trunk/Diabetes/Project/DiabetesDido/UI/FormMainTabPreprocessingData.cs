@@ -10,7 +10,7 @@ using Accord.Statistics.Filters;
 using DiabetesDido.ClassificationLogic;
 using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
 using DiabetesDido.DAL.DiabetesDataSetTableAdapters;
-using DiabetesDido.ClassificationLogic;
+
 namespace DiabetesDido.UI
 {
     public partial class FormMain
