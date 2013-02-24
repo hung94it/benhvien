@@ -19,20 +19,37 @@ namespace DiabetesDido.UI
         {
             InitializeComponent();
 
-            connectionBuilder = new SqlConnectionStringBuilder();
+            connectionBuilder = new SqlConnectionStringBuilder(Properties.Settings.Default.testConnectionString);
 
-            comboBoxConnection.SelectedIndex = 1;
+            comboBoxConnection.SelectedIndex = 0;
+
+            this.textBoxServer.Text = this.connectionBuilder.DataSource;
+            this.textBoxDatabase.Text = this.connectionBuilder.InitialCatalog;
         }
 
-        private void buttonSave_Click(object sender, EventArgs e)
+        private void buttonConnect_Click(object sender, EventArgs e)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            config.ConnectionStrings.ConnectionStrings["DiabetesDido.Properties.Settings.testConnectionString"].ConnectionString = getConnectionString();
-            config.Save(ConfigurationSaveMode.Modified, true);
-            ConfigurationManager.RefreshSection("connectionStrings");
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(getConnectionString()))
+                {
+                    connection.Open();                    
+                }
 
-            MessageBox.Show("Khởi động lại chương trình để kết nối mới có hiệu lực!");
-            this.Close();
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.ConnectionStrings.ConnectionStrings["DiabetesDido.Properties.Settings.testConnectionString"].ConnectionString = getConnectionString();
+                config.Save(ConfigurationSaveMode.Modified, true);
+                ConfigurationManager.RefreshSection("connectionStrings");
+
+                FormMain formMain = new FormMain();
+                formMain.FormClosed += new FormClosedEventHandler(formMain_FormClosed);
+                this.Hide();
+                formMain.Show();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Kiểm tra lại chuỗi kết nối", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }           
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -40,53 +57,42 @@ namespace DiabetesDido.UI
             this.Close();
         }
 
-        private void buttonCheck_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (SqlConnection connection = new SqlConnection(getConnectionString()))
-                {
-                    connection.Open();
-                    MessageBox.Show("Kết nối thành công!");
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Kiểm tra lại chuỗi kết nối", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void comboBoxConnection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxConnection.SelectedIndex == 0)
+            if (this.comboBoxConnection.SelectedIndex == 0)
             {
-                textBoxUsername.Enabled = false;
-                textBoxPassword.Enabled = false;
+                this.textBoxUsername.Enabled = false;
+                this.textBoxPassword.Enabled = false;
             }
             else
             {
-                textBoxUsername.Enabled = true;
-                textBoxPassword.Enabled = true;
+                this.textBoxUsername.Enabled = true;
+                this.textBoxPassword.Enabled = true;
             }
         }
 
         private string getConnectionString()
         {
-            connectionBuilder.DataSource = textBoxServer.Text;
-            connectionBuilder.InitialCatalog = textBoxDatabase.Text;
+            this.connectionBuilder.DataSource = textBoxServer.Text;
+            this.connectionBuilder.InitialCatalog = textBoxDatabase.Text;
 
-            if (comboBoxConnection.SelectedIndex == 0)
+            if (this.comboBoxConnection.SelectedIndex == 0)
             {
-                connectionBuilder.IntegratedSecurity = true;
+                this.connectionBuilder.IntegratedSecurity = true;
             }
             else
             {
-                connectionBuilder.IntegratedSecurity = false;
-                connectionBuilder.UserID = textBoxUsername.Text;
-                connectionBuilder.Password = textBoxPassword.Text;
+                this.connectionBuilder.IntegratedSecurity = false;
+                this.connectionBuilder.UserID = textBoxUsername.Text;
+                this.connectionBuilder.Password = textBoxPassword.Text;
             }
 
             return connectionBuilder.ConnectionString;
+        }
+
+        public void formMain_FormClosed(Object sender, FormClosedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
