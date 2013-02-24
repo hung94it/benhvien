@@ -67,14 +67,14 @@ namespace DiabetesDido.ClassificationLogic
             private set { codificationData = value; }
         }
 
-        public TrainningData(DataTable dataTable)
+        public TrainningData(DataTable dataTable, Codification codification)
         {
-            Initialize(dataTable);
+            Initialize(dataTable, codification);
         }
 
-        private void Initialize(DataTable dataTable)
+        private void Initialize(DataTable dataTable, Codification codification)
         {
-            this.codificationData = new Codification(dataTable);
+            this.codificationData = codification;
             this.discreteValueDatatable = this.codificationData.Apply(dataTable);
 
             List<string> columnNames = new List<string>();

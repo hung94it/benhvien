@@ -5,6 +5,7 @@ using System.Text;
 using Accord.MachineLearning.VectorMachines;
 using Accord.Statistics.Filters;
 using Accord.MachineLearning.VectorMachines.Learning;
+using Accord.Statistics.Kernels;
 
 namespace DiabetesDido.ClassificationLogic
 {
@@ -12,6 +13,7 @@ namespace DiabetesDido.ClassificationLogic
     class SVMModel : ClassificationModel
     {
         private SupportVectorMachine svm;
+        KernelSupportVectorMachine machine;
 
         public SupportVectorMachine SVM
         {
@@ -37,11 +39,14 @@ namespace DiabetesDido.ClassificationLogic
             // Create a Support Vector Machine for the given inputs
             this.svm = new SupportVectorMachine(inputs[0].Length);
 
+            // Create a Kernel Support Vector Machine for the given inputs
+            this.machine = new KernelSupportVectorMachine(new Gaussian(0.1), inputs[0].Length);
+
             // Instantiate a new learning algorithm for SVMs
-            SequentialMinimalOptimization smo = new SequentialMinimalOptimization(svm, inputs, outputs);
+            SequentialMinimalOptimization smo = new SequentialMinimalOptimization(machine, inputs, outputs);
 
             // Set up the learning algorithm
-            smo.Complexity = 10.0;
+            smo.Complexity = 1.0;
 
             // Run the learning algorithm 
             double error = smo.Run();
@@ -50,20 +55,20 @@ namespace DiabetesDido.ClassificationLogic
         // Compute given input
         public override int[] ComputeModel(double[][] inputs)
         {            
-            double[] temp = new double[inputs.Length];
+            //double[] temp = new double[inputs.Length];
 
-            for (int i = 0; i < inputs.Length; i++)
-                temp[i] = svm.Compute(inputs[0]);
+            //for (int i = 0; i < inputs.Length; i++)
+            //    temp[i] = machine.Compute(inputs[0]);
 
             int[] predicted = new int[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
             {
-                predicted[i] = System.Math.Sign(svm.Compute(inputs[0]));
+                predicted[i] = System.Math.Sign(this.machine.Compute(inputs[0]));
                 // Change output back to (0 or 1)
                 if (predicted[i] == -1)
                     predicted[i] = 0;
-                else
-                    predicted[i] = 1;
+                //else
+                //    predicted[i] = 1;
             }
             return predicted;
         }

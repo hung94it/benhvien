@@ -143,6 +143,12 @@
     <Compile Include="UI\DecisionTreeViewDiabetes.Designer.cs">
       <DependentUpon>DecisionTreeViewDiabetes.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FormTreeView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormTreeView.Designer.cs">
+      <DependentUpon>FormTreeView.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormCustomDataDiscretization.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DecisionTreeViewDiabetes.resx">
       <DependentUpon>DecisionTreeViewDiabetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormTreeView.resx">
+      <DependentUpon>FormTreeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormCustomDataDiscretization.resx">
       <DependentUpon>FormCustomDataDiscretization.cs</DependentUpon>
@@ -321,6 +330,7 @@
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

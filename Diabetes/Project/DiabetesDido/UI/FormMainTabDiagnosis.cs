@@ -47,7 +47,7 @@ namespace DiabetesDido.UI
                 MessageBox.Show("Chưa có dữ liệu để chuẩn đoán", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            this.diagnosisData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
+            this.diagnosisData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable, this.codification);
             
             DataTable resultTable = new DataTable();
             List<int[]> modelResults = new List<int[]>();            
@@ -175,7 +175,7 @@ namespace DiabetesDido.UI
 
                         nextNode = branch;
                         attributeName = nextNode.Owner.Attributes[nextNode.Parent.Branches.AttributeIndex].Name;
-                        attributeValue = trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(nextNode.Value));
+                        attributeValue = this.diagnosisData.CodificationData.Translate(attributeName, Convert.ToInt32(nextNode.Parent.Value));
                         rule += attributeName + " = " + attributeValue + " ";                        
                         break;
                     }
