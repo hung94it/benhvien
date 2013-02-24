@@ -99,11 +99,16 @@ namespace DiabetesDido.ClassificationLogic
                     pColFalse = pColFalse * ColNegativeNumber / negativeNumber;
                 }
                 Decimal pRowTrue = pColTrue * possiveNumber / allNumber;
-                Decimal pRowFalse = pColTrue * negativeNumber / allNumber;
-                if (pRowTrue > pRowFalse)
-                    dtRow["TieuDuong"] = "True";
-                else
+                Decimal pRowFalse = pColFalse * negativeNumber / allNumber;
+                if (pRowFalse == 0)
                     dtRow["TieuDuong"] = "False";
+                else
+                {
+                    if (pRowTrue > pRowFalse)
+                        dtRow["TieuDuong"] = "True";
+                    else
+                        dtRow["TieuDuong"] = "False";
+                }
             }
             return dtTestSet;
         }
