@@ -112,30 +112,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DiabetesDataSetB.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DuLieuHuanLuyen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DuLieuHuanLuyen.Designer.cs">
-      <DependentUpon>DuLieuHuanLuyen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RoiRacHoaDuLieu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RoiRacHoaDuLieu.Designer.cs">
-      <DependentUpon>RoiRacHoaDuLieu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="TienXuDuLieu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TienXuDuLieu.Designer.cs">
-      <DependentUpon>TienXuDuLieu.cs</DependentUpon>
-    </Compile>
     <Compile Include="ClassificationLogic\ClassificationModel.cs" />
     <Compile Include="UI\DecisionTreeViewDiabetes.cs">
       <SubType>UserControl</SubType>
@@ -154,12 +130,6 @@
     </Compile>
     <Compile Include="UI\FormCustomDataDiscretization.Designer.cs">
       <DependentUpon>FormCustomDataDiscretization.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\FormDecisionTree.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\FormDecisionTree.Designer.cs">
-      <DependentUpon>FormDecisionTree.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\FormMain.cs">
       <SubType>Form</SubType>
@@ -182,46 +152,10 @@
     <Compile Include="UI\FormNaiveBayes.Designer.cs">
       <DependentUpon>FormNaiveBayes.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\test.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\test.Designer.cs">
-      <DependentUpon>test.cs</DependentUpon>
-    </Compile>
     <Compile Include="ClassificationLogic\TrainningData.cs" />
     <Compile Include="ClassificationLogic\Function.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ThongKeDuLieuRoiRac.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ThongKeDuLieuRoiRac.Designer.cs">
-      <DependentUpon>ThongKeDuLieuRoiRac.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\BayesTest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\BayesTest.Designer.cs">
-      <DependentUpon>BayesTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="DuLieuHuanLuyen.resx">
-      <DependentUpon>DuLieuHuanLuyen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="RoiRacHoaDuLieu.resx">
-      <DependentUpon>RoiRacHoaDuLieu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TienXuDuLieu.resx">
-      <DependentUpon>TienXuDuLieu.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\DecisionTreeViewDiabetes.resx">
       <DependentUpon>DecisionTreeViewDiabetes.cs</DependentUpon>
     </EmbeddedResource>
@@ -231,17 +165,11 @@
     <EmbeddedResource Include="UI\FormCustomDataDiscretization.resx">
       <DependentUpon>FormCustomDataDiscretization.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\FormDecisionTree.resx">
-      <DependentUpon>FormDecisionTree.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormNaiveBayes.resx">
       <DependentUpon>FormNaiveBayes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\test.resx">
-      <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -252,15 +180,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ThongKeDuLieuRoiRac.resx">
-      <DependentUpon>ThongKeDuLieuRoiRac.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\BayesTest.resx">
-      <DependentUpon>BayesTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
