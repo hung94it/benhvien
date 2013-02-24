@@ -10,6 +10,7 @@ using DevComponents.DotNetBar.Controls;
 using DiabetesDido.ClassificationLogic;
 using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
 using Accord.Statistics.Filters;
+using DiabetesDido.DAL;
 
 namespace DiabetesDido.UI
 {
@@ -49,6 +50,8 @@ namespace DiabetesDido.UI
             {
                 this.comboBoxExTrainningDataPercent.SelectedIndex = 0;
             }
+
+            this.codification = new Codification(getCodification());
         }
 
         private void refreshTabCreateModel()
@@ -81,8 +84,7 @@ namespace DiabetesDido.UI
                 var query = orginalTrainningTable.AsEnumerable().Take(numberOfTrainningRows);
                 tableForTrainning = query.CopyToDataTable<DataRow>();
             }
-
-            this.codification = new Codification(tableForTrainning);
+            
             this.trainningData = new TrainningData(tableForTrainning, this.codification);
 
             Properties.Settings.Default.negativeValue = trainningData.NegativeValue;
@@ -235,6 +237,45 @@ namespace DiabetesDido.UI
                 this.modelList[this.activeLearningAlgorithm] = (ClassificationModel)formatter.Deserialize(stream);
                 stream.Close();
             }
+        }
+
+        private DataTable getCodification()
+        {
+            DiscreteIntervalTableAdapter discreteIntervalTableAdapter = new DiscreteIntervalTableAdapter();
+            int? maxRow = discreteIntervalTableAdapter.MaxRow();                        
+
+            DiabetesDataSetB.TrainningDataDataTable codificationTable = new DiabetesDataSetB.TrainningDataDataTable();
+            DataRow row;
+            DataTable attributeInterval;
+            int indexLastColumn = codificationTable.Columns.Count - 1;
+
+            for (int i = 0; i < maxRow; i++)
+            {
+                row = codificationTable.NewRow();
+                foreach (DataColumn column in codificationTable.Columns)
+                {
+                    attributeInterval = discreteIntervalTableAdapter.GetDataByTenThuocTinh(column.ColumnName);
+                    
+                    if (i < attributeInterval.Rows.Count)
+                    {
+                        row[column] = attributeInterval.Rows[i][1].ToString();
+                    }
+                    else
+                    {
+                        if (!column.ColumnName.Equals("TieuDuong"))
+                        {
+                            row[column] = attributeInterval.Rows[0][1].ToString();
+                        }                        
+                    }
+
+                    row[indexLastColumn] = Properties.Settings.Default.positiveString;                    
+                }
+                codificationTable.Rows.Add(row);
+            }
+
+            codificationTable.Rows[0][indexLastColumn] = Properties.Settings.Default.negativeString;
+
+            return codificationTable;
         }
 
     }

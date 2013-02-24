@@ -175,7 +175,7 @@ namespace DiabetesDido.UI
 
                         nextNode = branch;
                         attributeName = nextNode.Owner.Attributes[nextNode.Parent.Branches.AttributeIndex].Name;
-                        attributeValue = this.diagnosisData.CodificationData.Translate(attributeName, Convert.ToInt32(nextNode.Parent.Value));
+                        attributeValue = this.diagnosisData.CodificationData.Translate(attributeName, Convert.ToInt32(nextNode.Value));
                         rule += attributeName + " = " + attributeValue + " ";                        
                         break;
                     }
