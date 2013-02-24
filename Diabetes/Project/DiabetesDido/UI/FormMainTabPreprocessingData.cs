@@ -15,19 +15,13 @@ namespace DiabetesDido.UI
 {
     public partial class FormMain
     {
-        private OrginalDataTableAdapter orginalDataTableAdapter;
-        private DataTable orginalData;
+        private ContinuousDataTableAdapter continuousDataTableAdapter;
         private DataTable dtDataSetTempForPreProcessing;
         private DataTable dtDataSetForPreProcessing;
 
         public void InitializeTabPreprocessingData()
         {
-
-
-            this.orginalDataTableAdapter = new OrginalDataTableAdapter();
-            this.bindingSourcePreprocessingData.DataSource = this.orginalDataTableAdapter.GetData();
-            this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
-            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
+            this.continuousDataTableAdapter = new ContinuousDataTableAdapter();
 
             buttonXDiscretizationDataStatistics.Enabled = false;
             buttonXDataDiscretizationRun.Enabled = false;
@@ -38,29 +32,46 @@ namespace DiabetesDido.UI
 
         private void buttonXCleaningData_Click(object sender, EventArgs e)
         {
-            this.orginalData = this.bindingSourcePreprocessingData.DataSource as DataTable;
-
-            string[] columnNames = this.orginalData.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
+            //DataTable orginalData = this.bindingSourcePreprocessingData.DataSource as DataTable;
+            
+            //string[] columnNames = orginalData.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
                                                 
-            columnNames = columnNames.RemoveAt<string>(columnNames.Length - 1);
+            //columnNames = columnNames.RemoveAt<string>(columnNames.Length - 1);
 
-            // Remove rows which have null value
-            Elimination elimination = new Elimination(columnNames);
+            //// Remove rows which have null value
+            //Elimination elimination = new Elimination(columnNames);
 
-            this.orginalData = elimination.Apply(this.orginalData);
-            this.bindingSourcePreprocessingData.DataSource = this.orginalData;
-
-            AnalysisData();
+            //orginalData = elimination.Apply(orginalData);            
         }
 
-        private void AnalysisData()
+        private void buttonXDataCleaningView_Click(object sender, EventArgs e)
+        {            
+            this.bindingSourcePreprocessingData.DataSource = this.continuousDataTableAdapter.GetData();
+            this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
+            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
+
+            string[] columnNames = { "Cholesterol", "HDL_Cholesterol", "Triglyceride", "LDL_Cholesterol", "Glucose", "Urea",
+                                       "SGOT", "SGPT", "WBC", "LYM", "MONO", "TyLeLYM", "TyLeMONO", "HGB", "RBC", "HTC",
+                                       "MCV", "MCH", "MCHC", "RDW_CV", "PLT", "MPV", "PDW", "PCT" };
+            DataTable data = this.bindingSourcePreprocessingData.DataSource as DataTable;
+            data = data.DefaultView.ToTable(false, columnNames);
+            this.dataGridViewXDescriptiveData.DataSource = AnalysisData(data);
+            
+            buttonXImportDataSet.Enabled = true;
+
+            buttonXDiscretizationDataStatistics.Enabled = false;
+            buttonXDataDiscretizationRun.Enabled = false;
+            integerInputIntervalDiscretization.Enabled = false;
+            checkBoxXDiscreteAllColumn.Enabled = false;
+            checkedListBoxColumnName.Enabled = false;
+        }
+
+        private ArrayDataView AnalysisData(DataTable dataTable)
         {
             DescriptiveAnalysis analysis;
             string[] columnNames;
 
-            double[,] arrayData = (this.orginalData.ToMatrix(out columnNames)).Submatrix<double>(null, 0, this.orginalData.Columns.Count - 2);
-
-            columnNames = columnNames.RemoveAt<string>(columnNames.Length - 1);
+            double[,] arrayData = dataTable.ToMatrix(out columnNames);            
 
             // Analysis Data
             analysis = new DescriptiveAnalysis(arrayData, columnNames);
@@ -78,8 +89,7 @@ namespace DiabetesDido.UI
             
             string[] rowNames = { "Distinct", "Means", "Medians", "Modes", "StandardDeviations", "Variances", "Sums" };
 
-            ArrayDataView arrayDataView = new ArrayDataView(analysisData, columnNames, rowNames);
-            this.dataGridViewXDescriptiveData.DataSource = arrayDataView;
+            return new ArrayDataView(analysisData, columnNames, rowNames);            
         }
 
         private void buttonXDiscretizationData_Click(object sender, EventArgs e)
@@ -116,12 +126,12 @@ namespace DiabetesDido.UI
                         {
                             decimal currentValue = Convert.ToDecimal(dtRow[dataSetColIndex]);
                             decimal id = Convert.ToDecimal(dtRow[0]);
-                            String discreteValue = Function.DataDiscretization(currentValue, colName, InputInterval);
+                            String discreteValue = DiscretizationData.DataDiscretization(currentValue, colName, InputInterval);
                             decimal maBN = Convert.ToDecimal(dtRow[1]);
                             String tieuDuong = dtRow[36].ToString();
-                            Function.CapNhapDataSetTemp(datasetTempTA, maBN, colName, discreteValue);
+                            DiscretizationData.CapNhapDataSetTemp(datasetTempTA, maBN, colName, discreteValue);
                         }
-                        Function.TaoBayesObject(colName, InputInterval);
+                        DiscretizationData.TaoBayesObject(colName, InputInterval);
                     }
                 }
                 dtDataSetTempForPreProcessing.Clear();
@@ -131,29 +141,6 @@ namespace DiabetesDido.UI
                 this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
             }
             
-        }
-
-        private void buttonXDataCleaningView_Click(object sender, EventArgs e)
-        {
-            this.bindingSourcePreprocessingData.DataSource = this.orginalDataTableAdapter.GetData();
-            this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
-            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
-
-            buttonXDataCleaningRun.Enabled = true;
-            buttonXDataCleaningStatistics.Enabled = true;
-            buttonXImportDataSet.Enabled = true;
-
-            buttonXDiscretizationDataStatistics.Enabled = false;
-            buttonXDataDiscretizationRun.Enabled = false;
-            integerInputIntervalDiscretization.Enabled = false;
-            checkBoxXDiscreteAllColumn.Enabled = false;
-            checkedListBoxColumnName.Enabled = false;
-        }
-
-
-        private void buttonXDataCleaningStatistics_Click(object sender, EventArgs e)
-        {
-            this.AnalysisData();
         }
 
         private void buttonXDataDiscretizationDataView_Click(object sender, EventArgs e)
@@ -180,8 +167,6 @@ namespace DiabetesDido.UI
                 checkedListBoxColumnName.Items.Add(colName, false);
             }
 
-            buttonXDataCleaningRun.Enabled = false;
-            buttonXDataCleaningStatistics.Enabled = false;
             buttonXImportDataSet.Enabled = false;
 
             buttonXDiscretizationDataStatistics.Enabled = true;
@@ -289,7 +274,7 @@ namespace DiabetesDido.UI
         {            
             decimal MaBn = Convert.ToDecimal(dt["MaBn"]);
             decimal TuoiHienTai = DateTime.Now.Year - Convert.ToDecimal(dt["NamSinh"]);
-            String Tuoi = Function.RoiRacHoaTuoi(TuoiHienTai);
+            String Tuoi = DiscretizationData.RoiRacHoaTuoi(TuoiHienTai);
             String GioiTinh = dt["GioiTinh"].ToString();
             String Cholesterol = dt["Cholesterol"].ToString();
             String HDL_Cholesterol = dt["HDL_Cholesterol"].ToString();

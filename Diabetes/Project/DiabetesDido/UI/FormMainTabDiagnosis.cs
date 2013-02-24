@@ -19,6 +19,7 @@ namespace DiabetesDido.UI
         static DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter newDataSetTempTA = new DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter();
         static DataTable dtForDiagnosis = new DataTable();
         private TrainningData diagnosisData;
+        private bool isDiscrete = false;
 
         public void InitializeTabDiagnosis()
         {            
@@ -34,14 +35,14 @@ namespace DiabetesDido.UI
             {
                 MessageBox.Show("Chưa có mô hình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
-            }
-
-            DataTable discreteDataTable;
+            }            
 
             if (this.dataGridViewXDiagnosis.DataSource != null)
             {
-                discreteDataTable = DataDiscretization(this.dataGridViewXDiagnosis.DataSource as DataTable);
-                this.dataGridViewXDiagnosis.DataSource = discreteDataTable;
+                if (this.isDiscrete == false)
+                {
+                    this.dataGridViewXDiagnosis.DataSource = DataDiscretization(this.dataGridViewXDiagnosis.DataSource as DataTable);
+                }
             }
             else {
                 MessageBox.Show("Chưa có dữ liệu để chuẩn đoán", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -107,14 +108,27 @@ namespace DiabetesDido.UI
             if (this.dataGridViewXDiagnosisResult.RowCount > 1)
             {
                 int rowIndex = this.dataGridViewXDiagnosis.SelectedRows[0].Index;
-                this.dataGridViewXDiagnosisResult.Rows[rowIndex].Selected = true;
-                //this.dataGridViewXDiagnosisResult.Rows[0].Cells[0].
+                this.dataGridViewXDiagnosisResult.Rows[rowIndex].Selected = true;                
             }
         }
 
+        private void dataGridViewXDiagnosisResult_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int rowIndex = this.dataGridViewXDiagnosisResult.SelectedRows[0].Index;
+            this.dataGridViewXDiagnosis.Rows[rowIndex].Selected = true;
+        }
+
+
+
         // View rule at selected row
         private void buttonXGetRule_Click(object sender, EventArgs e)
-        {            
+        {
+            if (this.dataGridViewXDiagnosis.DataSource == null || this.dataGridViewXDiagnosisResult.DataSource == null)
+            {
+                MessageBox.Show("Chưa có dữ liệu hoặc dữ liệu chưa rời rạc", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             int rowIndex = this.dataGridViewXDiagnosis.CurrentCell.RowIndex;
             ClassificationModel treeModel;
 
@@ -198,14 +212,15 @@ namespace DiabetesDido.UI
                 return;
             dtForDiagnosis = ReadDataFromExcelFile(textBoxXFilePath.Text);
             dataGridViewXDiagnosis.DataSource = dtForDiagnosis;
-            //dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
+            dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
             dataGridViewXDiagnosis.Columns["GRAN"].Visible = false;
             dataGridViewXDiagnosis.Columns["TyLeGRAN"].Visible = false;
             dataGridViewXDiagnosis.Columns["Na"].Visible = false;
             dataGridViewXDiagnosis.Columns["K"].Visible = false;
             dataGridViewXDiagnosis.Columns["Ca"].Visible = false;
             dataGridViewXDiagnosis.Columns["Cl"].Visible = false;
-            
+
+            this.isDiscrete = false;
         }
         //Hàm dùng để kiếm tra đường dẫn tới file excel
         private bool ValidInput(String filePath)
@@ -247,7 +262,7 @@ namespace DiabetesDido.UI
 
                 data = ds.Tables[0];
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("Chương trình không đọc được dữ liệu!! Yêu cầu kiểm tra tập tin đã chọn!!","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 //MessageBox.Show(ex.ToString());
@@ -262,7 +277,7 @@ namespace DiabetesDido.UI
 
         //Hàm dùng để rời rác hóa dataset trước khi thực hiện chẩn đoán
         public DataTable DataDiscretization(DataTable dt)
-        {
+        {            
             DiabetesDataSetB.TrainningDataDataTable dtDataSetTemp = new DiabetesDataSetB.TrainningDataDataTable();
             DataTable dtBayesObject = bayesObjectTA.GetData();
             //int Count = 1;
@@ -272,11 +287,11 @@ namespace DiabetesDido.UI
                 foreach (DataRow dtRow in dt.Rows)
                 {
                     DataRow newRow = dtDataSetTemp.NewRow();
-                    //newRow[0] = Count;
+                    
                     foreach (DataColumn dtCol in dt.Columns)
                     {
-                        String colName = dtCol.ColumnName;
-                        //int colIndex = dt.Columns.IndexOf(colName);
+                        String colName = dtCol.ColumnName;        
+                
                         switch (colName)
                         {
                             case "ID":
@@ -299,25 +314,26 @@ namespace DiabetesDido.UI
                             case "NamSinh":
                                 int namSinh = Convert.ToInt16(dtRow[colName]);
                                 int tuoiHienTai = DateTime.Now.Year - namSinh;
-                                String Tuoi = Function.RoiRacHoaTuoi(tuoiHienTai);
+                                String Tuoi = DiscretizationData.RoiRacHoaTuoi(tuoiHienTai);
                                 newRow["Tuoi"] = Tuoi;
                                 break;
                             default:
-                                decimal colValue = Convert.ToDecimal(dtRow[colName]);
-                                //int khoang = Function.XacDinhKhoang(colName);
-                                String giaTriRoiRac = Function.DataDiscretizationForDiagnosis(colValue, colName);
+                                decimal colValue = Convert.ToDecimal(dtRow[colName]);                                
+                                String giaTriRoiRac = DiscretizationData.DataDiscretizationForDiagnosis(colValue, colName);
                                 newRow[colName] = giaTriRoiRac;
                                 break;
                         }
-                    }
-                    //Count++;
+                    }                    
                     dtDataSetTemp.Rows.Add(newRow);
                 }
-            }
+            }            
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            this.isDiscrete = true;
+
             return dtDataSetTemp;
         }
     }

@@ -106,7 +106,7 @@ namespace DiabetesDido.UI
             this.textBoxNoRules.Size = new System.Drawing.Size(324, 198);
             this.textBoxNoRules.TabIndex = 3;
             // 
-            // Form1
+            // FormTreeView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -114,8 +114,8 @@ namespace DiabetesDido.UI
             this.Controls.Add(this.splitContainer1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "Form1";
-            this.Text = "MetroForm";
+            this.Name = "FormTreeView";
+            this.Text = "Decision Tree";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
