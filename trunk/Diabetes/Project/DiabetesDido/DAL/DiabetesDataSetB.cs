@@ -2,6 +2,10 @@
     
     
     public partial class DiabetesDataSetB {
+        partial class ContinuousDataDataTable
+        {
+        }
+    
         partial class TrainingSetDataTable
         {
         }

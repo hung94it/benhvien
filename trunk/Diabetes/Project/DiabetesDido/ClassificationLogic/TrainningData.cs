@@ -105,23 +105,7 @@ namespace DiabetesDido.ClassificationLogic
             {
                 this.negativeValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.negativeString];
             }
-
-            //try
-            //{
-            //    this.positiveValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.positiveString];
-            //}
-            //catch
-            //{
-            //    this.positiveValue = 1;
-            //}
-            //try
-            //{
-            //    this.negativeValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.negativeString];
-            //}
-            //catch
-            //{
-            //    this.negativeValue = 0;
-            //}
+            
         }
     }
 }

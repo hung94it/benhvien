@@ -32,6 +32,5 @@ namespace DiabetesDido.UI
                     break;
             }
         }
-
     }
 }

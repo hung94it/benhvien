@@ -160,7 +160,7 @@
       <DependentUpon>FormNaiveBayes.cs</DependentUpon>
     </Compile>
     <Compile Include="ClassificationLogic\TrainningData.cs" />
-    <Compile Include="ClassificationLogic\Function.cs" />
+    <Compile Include="ClassificationLogic\DiscretizationData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="UI\DecisionTreeViewDiabetes.resx">
