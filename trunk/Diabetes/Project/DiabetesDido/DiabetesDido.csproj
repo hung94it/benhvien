@@ -74,6 +74,7 @@
     <Reference Include="DevComponents.DotNetBar2, Version=10.9.0.10, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="DevComponents.Instrumentation, Version=10.9.0.10, Culture=neutral, PublicKeyToken=f90dc37c26666a67" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -119,6 +120,12 @@
     <Compile Include="UI\DecisionTreeViewDiabetes.Designer.cs">
       <DependentUpon>DecisionTreeViewDiabetes.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\FormDatabaseConnection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormDatabaseConnection.Designer.cs">
+      <DependentUpon>FormDatabaseConnection.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormTreeView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +165,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="UI\DecisionTreeViewDiabetes.resx">
       <DependentUpon>DecisionTreeViewDiabetes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FormDatabaseConnection.resx">
+      <DependentUpon>FormDatabaseConnection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormTreeView.resx">
       <DependentUpon>FormTreeView.cs</DependentUpon>
