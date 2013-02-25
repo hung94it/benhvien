@@ -23,9 +23,7 @@ namespace DiabetesDido.UI
 
         public void InitializeTabDiagnosis()
         {            
-            //this.dataGridViewXDiagnosis.DataSource = this.trainningDataTableAdapter.GetData();
 
-            //this.diagnosisData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable);
         }
 
         // View diagnosis result

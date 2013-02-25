@@ -104,8 +104,7 @@ namespace DiabetesDido.ClassificationLogic
             if (this.codificationData.Columns[this.lastColumnName].Mapping.ContainsKey(Properties.Settings.Default.negativeString))
             {
                 this.negativeValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.negativeString];
-            }
-            
+            }            
         }
     }
 }
