@@ -13,7 +13,7 @@ namespace DiabetesDido.ClassificationLogic
     class SVMModel : ClassificationModel
     {
         private SupportVectorMachine svm;
-        KernelSupportVectorMachine machine;
+        private KernelSupportVectorMachine machine;
 
         public SupportVectorMachine SVM
         {
@@ -22,8 +22,7 @@ namespace DiabetesDido.ClassificationLogic
         }
 
         public override void TrainningModel(TrainningData trainningData)
-        {
-            Codification codification = trainningData.CodificationData;
+        {            
             double[][] inputs = trainningData.TrainningAttributes;
             int[] outputs = (int[])trainningData.ClassifierAttribute.Clone();
 
@@ -55,20 +54,13 @@ namespace DiabetesDido.ClassificationLogic
         // Compute given input
         public override int[] ComputeModel(double[][] inputs)
         {            
-            //double[] temp = new double[inputs.Length];
-
-            //for (int i = 0; i < inputs.Length; i++)
-            //    temp[i] = machine.Compute(inputs[0]);
-
             int[] predicted = new int[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
             {
                 predicted[i] = System.Math.Sign(this.machine.Compute(inputs[0]));
-                // Change output back to (0 or 1)
+                // Change output back to 0
                 if (predicted[i] == -1)
-                    predicted[i] = 0;
-                //else
-                //    predicted[i] = 1;
+                    predicted[i] = 0;                
             }
             return predicted;
         }

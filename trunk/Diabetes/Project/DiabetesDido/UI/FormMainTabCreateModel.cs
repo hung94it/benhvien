@@ -88,6 +88,7 @@ namespace DiabetesDido.UI
             this.trainningData = new TrainningData(tableForTrainning, this.codification);
 
             Properties.Settings.Default.negativeValue = trainningData.NegativeValue;
+
             // Ask user what to do when selected model already exists
             if (this.HaveModel())
             {
