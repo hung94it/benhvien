@@ -13,17 +13,9 @@ namespace DiabetesDido.UI
 {
     public partial class FormMain
     {        
-        static DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter datasetTA = new DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
-        static DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter datasetTempTA = new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
-        static DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-        static DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter newDataSetTempTA = new DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter();
-        static DataTable dtForDiagnosis = new DataTable();
-        private TrainningData diagnosisData;
-        private bool isDiscrete = false;
-
         public void InitializeTabDiagnosis()
-        {            
-
+        {
+            this.isDiscreteTabDianosis = false;
         }
 
         // View diagnosis result
@@ -37,20 +29,25 @@ namespace DiabetesDido.UI
 
             if (this.dataGridViewXDiagnosis.DataSource != null)
             {
-                if (this.isDiscrete == false)
+                if (this.isDiscreteTabDianosis == false)
                 {
                     this.dataGridViewXDiagnosis.DataSource = DataDiscretization(this.dataGridViewXDiagnosis.DataSource as DataTable);
+                    this.isDiscreteTabDianosis = true;
                 }
             }
             else {
                 MessageBox.Show("Chưa có dữ liệu để chuẩn đoán", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
-            this.diagnosisData = new TrainningData(this.dataGridViewXDiagnosis.DataSource as DataTable, this.codification);
+
+            DataTable diagnosisDataTable = (this.dataGridViewXDiagnosis.DataSource as DataTable).DefaultView.ToTable(false,
+                getAllColumnNames());
+            this.trainningDataTabDianosis = new TrainningData(diagnosisDataTable, this.codification);
             
             DataTable resultTable = new DataTable();
-            List<int[]> modelResults = new List<int[]>();            
-            string columnName = this.diagnosisData.LastColumnName;
+            List<int[]> modelResults = new List<int[]>();
+            string classColumnName = Properties.Settings.Default.ClassColumnName;
             DataRow row;
 
             // Add column
@@ -59,7 +56,7 @@ namespace DiabetesDido.UI
                 if (model.Value.ToString() != "NaiveBayesS")
                 {
                     resultTable.Columns.Add(model.Value.ToString(), typeof(String));
-                    modelResults.Add(model.Value.ComputeModel(this.diagnosisData.TrainningAttributes));
+                    modelResults.Add(model.Value.ComputeModel(this.trainningDataTabDianosis.TrainningAttributes));
                 }
             }            
 
@@ -71,7 +68,7 @@ namespace DiabetesDido.UI
                 columnIndex = 0;
                 foreach (DataColumn column in resultTable.Columns)
                 {
-                    row[column] = this.diagnosisData.CodificationData.Translate(columnName, modelResults[columnIndex++][rowIndex]);                    
+                    row[column] = this.trainningDataTabDianosis.CodificationData.Translate(classColumnName, modelResults[columnIndex++][rowIndex]);                    
                 }
                 resultTable.Rows.Add(row);
             }
@@ -116,8 +113,6 @@ namespace DiabetesDido.UI
             this.dataGridViewXDiagnosis.Rows[rowIndex].Selected = true;
         }
 
-
-
         // View rule at selected row
         private void buttonXGetRule_Click(object sender, EventArgs e)
         {
@@ -140,7 +135,7 @@ namespace DiabetesDido.UI
                 return;
             }
 
-            textBoxXDiagnosis.Text = Compute(this.diagnosisData.TrainningAttributes[rowIndex], (treeModel as C45Model).Tree);
+            textBoxXDiagnosis.Text = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex], (treeModel as C45Model).Tree);
             
         }
 
@@ -187,7 +182,7 @@ namespace DiabetesDido.UI
 
                         nextNode = branch;
                         attributeName = nextNode.Owner.Attributes[nextNode.Parent.Branches.AttributeIndex].Name;
-                        attributeValue = this.diagnosisData.CodificationData.Translate(attributeName, Convert.ToInt32(nextNode.Value));
+                        attributeValue = this.trainningDataTabDianosis.CodificationData.Translate(attributeName, Convert.ToInt32(nextNode.Value));
                         rule += attributeName + " = " + attributeValue + " ";                        
                         break;
                     }
@@ -206,11 +201,10 @@ namespace DiabetesDido.UI
             dataGridViewXDiagnosisResult.DataSource = null;
             OpenFileDialog ofd = new OpenFileDialog();
             textBoxXFilePath.Text = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
-            if (!ValidInput(textBoxXFilePath.Text))
+            if (textBoxXFilePath.Text.Equals(""))
                 return;
-            dtForDiagnosis = ReadDataFromExcelFile(textBoxXFilePath.Text);
-            dataGridViewXDiagnosis.DataSource = dtForDiagnosis;
-            dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
+            dataGridViewXDiagnosis.DataSource = ReadDataFromExcelFile(textBoxXFilePath.Text);            
+            //dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
             dataGridViewXDiagnosis.Columns["GRAN"].Visible = false;
             dataGridViewXDiagnosis.Columns["TyLeGRAN"].Visible = false;
             dataGridViewXDiagnosis.Columns["Na"].Visible = false;
@@ -218,18 +212,7 @@ namespace DiabetesDido.UI
             dataGridViewXDiagnosis.Columns["Ca"].Visible = false;
             dataGridViewXDiagnosis.Columns["Cl"].Visible = false;
 
-            this.isDiscrete = false;
-        }
-        //Hàm dùng để kiếm tra đường dẫn tới file excel
-        private bool ValidInput(String filePath)
-        {
-            if (filePath.Trim() == "")
-            {
-                MessageBox.Show("Chưa chọn tập tin cần nạp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //MessageBox.Show(ex.ToString());
-                return false;
-            }
-            return true;
+            this.isDiscreteTabDianosis = false;
         }
 
         //Hàm dùng để đọc file excel ** Lưu ý: Chỉ đọc file .xls
@@ -276,15 +259,17 @@ namespace DiabetesDido.UI
         //Hàm dùng để rời rác hóa dataset trước khi thực hiện chẩn đoán
         public DataTable DataDiscretization(DataTable dt)
         {            
-            DiabetesDataSetB.TrainningDataDataTable dtDataSetTemp = new DiabetesDataSetB.TrainningDataDataTable();
+            DiabetesDataSetB.TrainningDataTable trainningDataTable = new DiabetesDataSetB.TrainningDataTable();
+            trainningDataTable.Columns.Add("MaBn", typeof(decimal));
+            trainningDataTable.Columns["MaBn"].SetOrdinal(0);
+
             DataTable dtBayesObject = bayesObjectTA.GetData();
-            //int Count = 1;
 
             try
             {
                 foreach (DataRow dtRow in dt.Rows)
                 {
-                    DataRow newRow = dtDataSetTemp.NewRow();
+                    DataRow newRow = trainningDataTable.NewRow();
                     
                     foreach (DataColumn dtCol in dt.Columns)
                     {
@@ -292,8 +277,7 @@ namespace DiabetesDido.UI
                 
                         switch (colName)
                         {
-                            case "ID":
-                            case "MaBn":
+                            case "ID":                            
                             case "NgayKham":
                             case "HoTen":
                             case "GRAN":
@@ -302,7 +286,10 @@ namespace DiabetesDido.UI
                             case "K":
                             case "Cl":
                             case "Ca":
-                                break;                                
+                                break;
+                            case "MaBn":
+                                newRow[colName] = dtRow[colName];
+                                break;
                             case "TieuDuong":
                                 newRow[colName] = Convert.ToBoolean(dtRow[colName]);
                                 break;
@@ -322,7 +309,7 @@ namespace DiabetesDido.UI
                                 break;
                         }
                     }                    
-                    dtDataSetTemp.Rows.Add(newRow);
+                    trainningDataTable.Rows.Add(newRow);
                 }
             }            
             catch (Exception ex)
@@ -330,9 +317,9 @@ namespace DiabetesDido.UI
                 MessageBox.Show(ex.ToString());
             }
 
-            this.isDiscrete = true;
+            
 
-            return dtDataSetTemp;
+            return trainningDataTable;
         }
     }
 }

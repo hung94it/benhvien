@@ -13,9 +13,7 @@ namespace DiabetesDido.ClassificationLogic
         private DataTable discreteValueDatatable;
         private Codification codificationData;
         private double[][] trainningAttributes;
-        private int[] classifierAttribute;
-        private string[] columnNames;
-        private string lastColumnName;
+        private int[] classifierAttribute;        
         private int positiveValue = 1;
         private int negativeValue = 0;
 
@@ -35,18 +33,6 @@ namespace DiabetesDido.ClassificationLogic
         {
             get { return positiveValue; }
             set { positiveValue = value; }
-        }
-
-        public string LastColumnName
-        {
-            get { return lastColumnName; }
-            private set { lastColumnName = value; }
-        }
-
-        public string[] ColumnNames
-        {
-            get { return columnNames; }
-            private set { columnNames = value; }
         }
 
         public int[] ClassifierAttribute
@@ -83,27 +69,24 @@ namespace DiabetesDido.ClassificationLogic
             for (int columnIndex = 0; columnIndex < this.discreteValueDatatable.Columns.Count - 1; columnIndex++)
             {
                 columnNames.Add(this.discreteValueDatatable.Columns[columnIndex].ColumnName);
-            }
-
-            this.ColumnNames = columnNames.ToArray();
-            this.lastColumnName = this.discreteValueDatatable.Columns[this.discreteValueDatatable.Columns.Count - 1].ColumnName;
+            }  
 
             // Create trainning data
-            this.trainningAttributes = this.discreteValueDatatable.ToArray(this.ColumnNames);
+            this.trainningAttributes = this.discreteValueDatatable.ToArray(columnNames.ToArray());
 
             // Create classifier data for trainning
-            string lastColumnName = this.discreteValueDatatable.Columns[discreteValueDatatable.Columns.Count - 1].ColumnName;
-            this.classifierAttribute = this.discreteValueDatatable.ToIntArray(lastColumnName).GetColumn(0);
+            string classColumnName = Properties.Settings.Default.ClassColumnName;
+            this.classifierAttribute = this.discreteValueDatatable.ToIntArray(classColumnName).GetColumn(0);
 
             // Set positive, negative value to test model            
-            if (this.codificationData.Columns[this.lastColumnName].Mapping.ContainsKey(Properties.Settings.Default.positiveString))
+            if (this.codificationData.Columns[classColumnName].Mapping.ContainsKey(Properties.Settings.Default.positiveString))
             {
-                this.positiveValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.positiveString];
+                this.positiveValue = this.codificationData.Columns[classColumnName].Mapping[Properties.Settings.Default.positiveString];
             }
 
-            if (this.codificationData.Columns[this.lastColumnName].Mapping.ContainsKey(Properties.Settings.Default.negativeString))
+            if (this.codificationData.Columns[classColumnName].Mapping.ContainsKey(Properties.Settings.Default.negativeString))
             {
-                this.negativeValue = this.codificationData.Columns[this.lastColumnName].Mapping[Properties.Settings.Default.negativeString];
+                this.negativeValue = this.codificationData.Columns[classColumnName].Mapping[Properties.Settings.Default.negativeString];
             }            
         }
     }

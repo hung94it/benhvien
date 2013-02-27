@@ -15,14 +15,8 @@ namespace DiabetesDido.UI
 {
     public partial class FormMain
     {
-        private ContinuousDataTableAdapter continuousDataTableAdapter;
-        private DataTable dtDataSetTempForPreProcessing;
-        private DataTable dtDataSetForPreProcessing;
-
         public void InitializeTabPreprocessingData()
-        {
-            this.continuousDataTableAdapter = new ContinuousDataTableAdapter();
-
+        {            
             buttonXDiscretizationDataStatistics.Enabled = false;
             buttonXDataDiscretizationRun.Enabled = false;
             integerInputIntervalDiscretization.Enabled = false;
@@ -140,8 +134,7 @@ namespace DiabetesDido.UI
                 this.bindingSourcePreprocessingData.DataSource = this.dtDataSetTempForPreProcessing;
                 this.dataGridViewXPreProcessingData.DataSource = this.dtDataSetTempForPreProcessing;
                 this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
-            }
-            
+            }            
         }
 
         private void buttonXDataDiscretizationDataView_Click(object sender, EventArgs e)
@@ -247,7 +240,7 @@ namespace DiabetesDido.UI
         {
             OpenFileDialog ofd = new OpenFileDialog();
             String filePath = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
-            if (!ValidInput(filePath))
+            if (filePath.Equals(""))
                 return;
             DataTable dtNewDataSet = ReadDataFromExcelFile(filePath);
             if (datasetTA.GetData().Rows.Count > 0)
@@ -258,6 +251,8 @@ namespace DiabetesDido.UI
                     datasetTA.DeleteAllData();
                     datasetTempTA.DeleteAllData();
                     bayesObjectTA.DeleteAll();
+                    this.isDiscreteTabProcessingData = false;
+
                     foreach (DataRow dtRow in dtNewDataSet.Rows)
                     {
                         InsertDataSetRow(dtRow);

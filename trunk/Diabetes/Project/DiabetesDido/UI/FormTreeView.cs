@@ -40,7 +40,7 @@ namespace DiabetesDido.UI
 
             if (node.IsLeaf)
             {
-                attributeName = this.trainningData.LastColumnName;
+                attributeName = Properties.Settings.Default.ClassColumnName;
                 attributeValue = this.trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(node.Output));
 
                 if (node.Output.HasValue)
