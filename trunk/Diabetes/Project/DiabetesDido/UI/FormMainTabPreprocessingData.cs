@@ -45,7 +45,8 @@ namespace DiabetesDido.UI
         }
 
         private void buttonXDataCleaningView_Click(object sender, EventArgs e)
-        {            
+        {
+            this.bindingSourcePreprocessingData.DataSource = null;
             this.bindingSourcePreprocessingData.DataSource = this.continuousDataTableAdapter.GetData();
             this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
             this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
@@ -158,13 +159,14 @@ namespace DiabetesDido.UI
             this.bindingSourcePreprocessingData.DataSource = newDataSetTempTA.GetData();
             this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
             this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
+            this.dataGridViewXDescriptiveData.DataSource = null;
             if (checkedListBoxColumnName.Items.Count > 0)
                 checkedListBoxColumnName.Items.Clear();
             for (int i = 1; i < dtDataSetTempForPreProcessing.Columns.Count - 1; i++)
             {
                 
                 String colName = dtDataSetTempForPreProcessing.Columns[i].ColumnName;
-                checkedListBoxColumnName.Items.Add(colName, false);
+                checkedListBoxColumnName.Items.Add(colName, false);                
             }
 
             buttonXImportDataSet.Enabled = false;
@@ -222,15 +224,23 @@ namespace DiabetesDido.UI
         }
         private void buttonXCustomDataDiscretization_Click(object sender, EventArgs e)
         {
-            if (checkedListBoxColumnName.SelectedIndex == -1)
-                MessageBox.Show("Chưa chọn thuộc tính để xem thống kê", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            int selectedIndex = checkedListBoxColumnName.SelectedIndex;
+            if (selectedIndex == -1)
+                MessageBox.Show("Chưa chọn thuộc tính để rời rạc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                String colName = checkedListBoxColumnName.SelectedItem.ToString();
-                int interval = integerInputIntervalDiscretization.Value;
-                FormCustomDataDiscretization newFormCustomDataDiscretization = new FormCustomDataDiscretization(colName,interval);
-                newFormCustomDataDiscretization.FormClosed += buttonXDataDiscretizationDataView_Click;
-                newFormCustomDataDiscretization.Show();
+                if (checkedListBoxColumnName.Items[selectedIndex].ToString() == "Tuoi" || checkedListBoxColumnName.Items[selectedIndex].ToString() == "GioiTinh")
+                {
+                    MessageBox.Show("Thuộc tính Tuoi và GioiTinh không cần thực hiện rời rạc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    String colName = checkedListBoxColumnName.SelectedItem.ToString();
+                    int interval = integerInputIntervalDiscretization.Value;
+                    FormCustomDataDiscretization newFormCustomDataDiscretization = new FormCustomDataDiscretization(colName, interval);
+                    newFormCustomDataDiscretization.FormClosed += buttonXDataDiscretizationDataView_Click;
+                    newFormCustomDataDiscretization.Show();
+                }
             }
         }
         private void buttonXImportDataSet_Click(object sender, EventArgs e)
