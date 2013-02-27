@@ -143,8 +143,8 @@ namespace DiabetesDido.UI
                     nextValue = listInputIntervalValue[i + 1];
                     InputIntervalValue = "[" + currentValue.ToString() + "," + nextValue.ToString() + ")";
                 }
-                bayesObjectTableAdapter.Insert(colName, InputIntervalValue, 0, "TRUE");
-                bayesObjectTableAdapter.Insert(colName, InputIntervalValue, 0, "FALSE");
+                bayesObjectTableAdapter.Insert(colName, InputIntervalValue, 0, "True");
+                bayesObjectTableAdapter.Insert(colName, InputIntervalValue, 0, "False");
             }
         }
     }
