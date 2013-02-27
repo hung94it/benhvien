@@ -15,24 +15,13 @@ using DiabetesDido.DAL;
 namespace DiabetesDido.UI
 {
     public partial class FormMain
-    {
-        private TrainningDataTableAdapter trainningDataTableAdapter;
-        // Active model
-        private LearningAlgorithm activeLearningAlgorithm;
-        // Dictionary contains model
-        private Dictionary<LearningAlgorithm, ClassificationModel> modelList;
-        private TrainningData trainningData;
-        private Codification codification;
-        //private DataTable orginalTrainningTable;                
-
+    {            
         public void InitializeTabCreateModel()
         {            
             this.checkBoxXNaiveBayes.Checked = true;
             this.activeLearningAlgorithm = LearningAlgorithm.NaiveBayes;
-            this.modelList = new Dictionary<LearningAlgorithm, ClassificationModel>();
-
-            this.trainningDataTableAdapter = new TrainningDataTableAdapter();            
-            //this.orginalTrainningTable = trainningDataTableAdapter.GetData();
+            this.modelList = new Dictionary<LearningAlgorithm, ClassificationModel>();            
+            
             refreshTabCreateModel();
 
             List<Percent> percent = new List<Percent>();
@@ -49,14 +38,12 @@ namespace DiabetesDido.UI
             if (this.comboBoxExTrainningDataPercent.Items.Count > 0)
             {
                 this.comboBoxExTrainningDataPercent.SelectedIndex = 0;
-            }
-
-            this.codification = new Codification(getCodification());
+            }            
         }
 
         private void refreshTabCreateModel()
         {
-            this.dataGridViewXTrainning.DataSource = this.trainningDataTableAdapter.GetData();
+            this.dataGridViewXTrainning.DataSource = this.trainningTableAdapter.GetData();
         }
 
         // buttonXCreateModel click event
@@ -85,9 +72,9 @@ namespace DiabetesDido.UI
                 tableForTrainning = query.CopyToDataTable<DataRow>();
             }
             
-            this.trainningData = new TrainningData(tableForTrainning, this.codification);
+            this.trainningDataTabCreate = new TrainningData(tableForTrainning, this.codification);
 
-            Properties.Settings.Default.negativeValue = trainningData.NegativeValue;
+            Properties.Settings.Default.negativeValue = trainningDataTabCreate.NegativeValue;
 
             // Ask user what to do when selected model already exists
             if (this.HaveModel())
@@ -107,7 +94,7 @@ namespace DiabetesDido.UI
             }
 
             // Trainning model
-            this.modelList[activeLearningAlgorithm].TrainningModel(this.trainningData);
+            this.modelList[activeLearningAlgorithm].TrainningModel(this.trainningDataTabCreate);
             
         }
 
@@ -151,7 +138,7 @@ namespace DiabetesDido.UI
 
                     case LearningAlgorithm.C45:
                     case LearningAlgorithm.ID3:
-                        new FormTreeView((this.GetModel() as DecisionTreeModel).Tree, this.trainningData).Show();                        
+                        new FormTreeView((this.GetModel() as DecisionTreeModel).Tree, this.trainningDataTabCreate).Show();                        
                         break;
                     case LearningAlgorithm.NaiveBayes:
                     default:
@@ -245,33 +232,40 @@ namespace DiabetesDido.UI
             DiscreteIntervalTableAdapter discreteIntervalTableAdapter = new DiscreteIntervalTableAdapter();
             int? maxRow = discreteIntervalTableAdapter.MaxRow();                        
 
-            DiabetesDataSetB.TrainningDataDataTable codificationTable = new DiabetesDataSetB.TrainningDataDataTable();
-            DataRow row;
+            DiabetesDataSetB.TrainningDataTable codificationTable = new DiabetesDataSetB.TrainningDataTable();
+            
+            DataRow newRow;
             DataTable attributeInterval;
             int indexLastColumn = codificationTable.Columns.Count - 1;
 
             for (int i = 0; i < maxRow; i++)
             {
-                row = codificationTable.NewRow();
+                newRow = codificationTable.NewRow();
                 foreach (DataColumn column in codificationTable.Columns)
                 {
                     attributeInterval = discreteIntervalTableAdapter.GetDataByTenThuocTinh(column.ColumnName);
                     
                     if (i < attributeInterval.Rows.Count)
                     {
-                        row[column] = attributeInterval.Rows[i][1].ToString();
+                        newRow[column] = attributeInterval.Rows[i][1].ToString();
                     }
                     else
                     {
-                        if (!column.ColumnName.Equals("TieuDuong"))
+                        if (!column.ColumnName.Equals(Properties.Settings.Default.ClassColumnName))
                         {
-                            row[column] = attributeInterval.Rows[0][1].ToString();
+                            if (attributeInterval.Rows.Count < 1)
+                            {
+                                this.isDiscreteTabProcessingData = false;
+                                return null;
+                            }
+
+                            newRow[column] = attributeInterval.Rows[0][1].ToString();
                         }                        
                     }
 
-                    row[indexLastColumn] = Properties.Settings.Default.positiveString;                    
+                    newRow[indexLastColumn] = Properties.Settings.Default.positiveString;                    
                 }
-                codificationTable.Rows.Add(row);
+                codificationTable.Rows.Add(newRow);
             }
 
             codificationTable.Rows[0][indexLastColumn] = Properties.Settings.Default.negativeString;

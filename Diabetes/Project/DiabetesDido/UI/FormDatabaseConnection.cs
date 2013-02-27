@@ -35,6 +35,11 @@ namespace DiabetesDido.UI
                 {
                     connection.Open();                    
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Kiểm tra lại chuỗi kết nối", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
                 Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
                 config.ConnectionStrings.ConnectionStrings["DiabetesDido.Properties.Settings.testConnectionString"].ConnectionString = getConnectionString();
@@ -45,11 +50,7 @@ namespace DiabetesDido.UI
                 formMain.FormClosed += new FormClosedEventHandler(formMain_FormClosed);
                 this.Hide();
                 formMain.Show();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Kiểm tra lại chuỗi kết nối", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }           
+                       
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

@@ -34,3 +34,12 @@ namespace DiabetesDido.DAL.DiabetesDataSetBTableAdapters {
     {
     }
 }
+
+namespace DiabetesDido.DAL.DiabetesDataSetBTableAdapters
+{
+
+
+    public partial class TrainningTableAdapter
+    {
+    }
+}

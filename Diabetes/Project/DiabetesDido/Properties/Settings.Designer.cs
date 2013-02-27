@@ -68,5 +68,31 @@ namespace DiabetesDido.Properties {
                 return ((string)(this["testConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("TieuDuong")]
+        public string ClassColumnName {
+            get {
+                return ((string)(this["ClassColumnName"]));
+            }
+            set {
+                this["ClassColumnName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Tuoi,GioiTinh,Cholesterol,HDL_Cholesterol,Triglyceride,LDL_Cholesterol,Glucose,SG" +
+            "OT,SGPT,Urea,WBC,LYM,MONO,TyLeLYM,TyLeMONO,HGB,RBC,HTC,MCV,MCH,MCHC,RDW_CV,PLT,M" +
+            "PV,PDW,PCT")]
+        public string AttributeColumnNames {
+            get {
+                return ((string)(this["AttributeColumnNames"]));
+            }
+            set {
+                this["AttributeColumnNames"] = value;
+            }
+        }
     }
 }

@@ -161,7 +161,8 @@ namespace DiabetesDido.ClassificationLogic
         }
 
         //Hàm dùng để cập nhập lại bảng DataSetTemp sau khi rời rạc hóa một thuộc tính
-        public static void CapNhapDataSetTemp(DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA, decimal maBN, String colName, String giaTriRoiRac)
+        public static void CapNhapDataSetTemp(DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA,
+            decimal maBN, String colName, String giaTriRoiRac)
         {
             DataTable dataSetTempTable = dataSetTempTA.GetDataByOne(maBN);
             DataRow newRow = dataSetTempTable.NewRow();
@@ -169,6 +170,7 @@ namespace DiabetesDido.ClassificationLogic
             {
                 newRow = dtRow;
             }
+            int colIndex2 = dataSetTempTable.Columns[colName].Ordinal;
             int colIndex = dataSetTempTA.GetData().Columns.IndexOf(colName);
             newRow[colIndex] = giaTriRoiRac;
             dataSetTempTA.Update(newRow);
