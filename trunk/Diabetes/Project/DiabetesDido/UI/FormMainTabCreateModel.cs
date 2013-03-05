@@ -125,30 +125,29 @@ namespace DiabetesDido.UI
             TrainningData data = new TrainningData(testTable, this.codification);
             // Show test result
             dataGridViewXTrainningResult.DataSource = this.modelList[activeLearningAlgorithm].TestModel(data);
+            
+            List<int> hideColumns = new List<int>(new int[] { 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 });
+
+            for (int indexColum = 0; indexColum < this.dataGridViewXTrainningResult.Columns.Count; indexColum++)
+            {
+                if (hideColumns.Contains(indexColum))
+                {
+                    this.dataGridViewXTrainningResult.Columns[indexColum].Visible = false;
+                }
+            }
         }
 
 
         // buttonXViewModel click event
         private void buttonXViewModel_Click(object sender, EventArgs e)
         {
-            if (HaveModel())
-            {                
-                switch (this.activeLearningAlgorithm)
-                {
-
-                    case LearningAlgorithm.C45:
-                    case LearningAlgorithm.ID3:
-                        new FormTreeView((this.GetModel() as DecisionTreeModel).Tree, this.trainningDataTabCreate).Show();                        
-                        break;
-                    case LearningAlgorithm.NaiveBayes:
-                    default:
-                        MessageBox.Show("Chưa làm");
-                        break;
-                }
+            if (this.modelList.ContainsKey(LearningAlgorithm.C45))
+            {                                 
+                new FormTreeView((this.GetModel() as DecisionTreeModel).Tree, this.trainningDataTabCreate).Show();                                        
             }
             else
             {
-                MessageBox.Show("Chưa có mô hình!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);                
+                MessageBox.Show("Chưa có mô hình C4.5!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);                
             }
         }        
 
@@ -257,6 +256,9 @@ namespace DiabetesDido.UI
                             {
                                 this.isDiscreteTabProcessingData = false;
                                 return null;
+                            }
+                            else {
+                                this.isDiscreteTabProcessingData = true;
                             }
 
                             newRow[column] = attributeInterval.Rows[0][1].ToString();
