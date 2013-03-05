@@ -28,6 +28,7 @@ namespace DiabetesDido.UI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTreeView));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.decisionTreeView = new DiabetesDido.UI.DecisionTreeViewDiabetes();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -114,6 +115,7 @@ namespace DiabetesDido.UI
             this.Controls.Add(this.splitContainer1);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormTreeView";
             this.Text = "Decision Tree";
             this.splitContainer1.Panel1.ResumeLayout(false);

@@ -39,18 +39,13 @@ namespace DiabetesDido.UI
             catch (Exception)
             {
                 MessageBox.Show("Kiểm tra lại chuỗi kết nối", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-
-                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-                config.ConnectionStrings.ConnectionStrings["DiabetesDido.Properties.Settings.testConnectionString"].ConnectionString = getConnectionString();
-                config.Save(ConfigurationSaveMode.Modified, true);
-                ConfigurationManager.RefreshSection("connectionStrings");
 
                 FormMain formMain = new FormMain();
                 formMain.FormClosed += new FormClosedEventHandler(formMain_FormClosed);
                 this.Hide();
-                formMain.Show();
-                       
+                formMain.Show();                       
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -94,6 +89,29 @@ namespace DiabetesDido.UI
         public void formMain_FormClosed(Object sender, FormClosedEventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonXSaveConnection_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(getConnectionString()))
+                {
+                    connection.Open();
+                }
+
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.ConnectionStrings.ConnectionStrings["DiabetesDido.Properties.Settings.testConnectionString"].ConnectionString = getConnectionString();
+                config.Save(ConfigurationSaveMode.Modified, true);
+                ConfigurationManager.RefreshSection("connectionStrings");
+
+                MessageBox.Show("Khởi động lại chương trình để có hiệu lực", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Kiểm tra lại chuỗi kết nối", "Lỗi" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

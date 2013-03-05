@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDatabaseConnection));
             this.labelDatabase = new DevComponents.DotNetBar.LabelX();
             this.textBoxDatabase = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -45,6 +46,7 @@
             this.labelServer = new DevComponents.DotNetBar.LabelX();
             this.textBoxServer = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.styleManager1 = new DevComponents.DotNetBar.StyleManager(this.components);
+            this.buttonXSaveConnection = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -272,12 +274,25 @@
             this.styleManager1.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
             this.styleManager1.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242))))), System.Drawing.Color.FromArgb(((int)(((byte)(88)))), ((int)(((byte)(140)))), ((int)(((byte)(63))))));
             // 
+            // buttonXSaveConnection
+            // 
+            this.buttonXSaveConnection.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonXSaveConnection.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonXSaveConnection.Location = new System.Drawing.Point(12, 197);
+            this.buttonXSaveConnection.Name = "buttonXSaveConnection";
+            this.buttonXSaveConnection.Size = new System.Drawing.Size(75, 23);
+            this.buttonXSaveConnection.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonXSaveConnection.TabIndex = 20;
+            this.buttonXSaveConnection.Text = "Lưu kết nối";
+            this.buttonXSaveConnection.Click += new System.EventHandler(this.buttonXSaveConnection_Click);
+            // 
             // FormDatabaseConnection
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(433, 235);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonXSaveConnection);
             this.Controls.Add(this.labelDatabase);
             this.Controls.Add(this.textBoxDatabase);
             this.Controls.Add(this.groupPanel1);
@@ -289,6 +304,8 @@
             this.Controls.Add(this.textBoxServer);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDatabaseConnection";
             this.Text = "Kết nối";
             this.TitleText = "<h4><font color=\"#903C39\"><b>Database Server\r\n</b></font></h4>";
@@ -315,6 +332,7 @@
         private DevComponents.DotNetBar.LabelX labelServer;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxServer;
         private DevComponents.DotNetBar.StyleManager styleManager1;
+        private DevComponents.DotNetBar.ButtonX buttonXSaveConnection;
 
     }
 }
