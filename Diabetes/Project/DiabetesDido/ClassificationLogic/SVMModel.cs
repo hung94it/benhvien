@@ -13,7 +13,7 @@ namespace DiabetesDido.ClassificationLogic
     class SVMModel : ClassificationModel
     {
         private SupportVectorMachine svm;
-        private KernelSupportVectorMachine machine;
+        //private KernelSupportVectorMachine machine;
 
         public SupportVectorMachine SVM
         {
@@ -38,11 +38,11 @@ namespace DiabetesDido.ClassificationLogic
             // Create a Support Vector Machine for the given inputs
             this.svm = new SupportVectorMachine(inputs[0].Length);
 
-            // Create a Kernel Support Vector Machine for the given inputs
-            this.machine = new KernelSupportVectorMachine(new Gaussian(0.1), inputs[0].Length);
+            //// Create a Kernel Support Vector Machine for the given inputs
+            //this.machine = new KernelSupportVectorMachine(new Gaussian(0.1), inputs[0].Length);
 
             // Instantiate a new learning algorithm for SVMs
-            SequentialMinimalOptimization smo = new SequentialMinimalOptimization(machine, inputs, outputs);
+            SequentialMinimalOptimization smo = new SequentialMinimalOptimization(svm, inputs, outputs);
 
             // Set up the learning algorithm
             smo.Complexity = 1.0;
@@ -57,7 +57,7 @@ namespace DiabetesDido.ClassificationLogic
             int[] predicted = new int[inputs.Length];
             for (int i = 0; i < inputs.Length; i++)
             {
-                predicted[i] = System.Math.Sign(this.machine.Compute(inputs[0]));
+                predicted[i] = System.Math.Sign(this.svm.Compute(inputs[0]));
                 // Change output back to 0
                 if (predicted[i] == -1)
                     predicted[i] = 0;                
