@@ -57,12 +57,12 @@ namespace DiabetesDido.UI
                 var averageTrue = this.continuousDataTable.AsEnumerable()
                     .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>("TieuDuong") == "True" )
                     .Average(x => x.Field<decimal>(column.ColumnName));
-                averageTrue = Math.Round(averageTrue, 2);
+                averageTrue = Math.Round(averageTrue, 3);
 
                 var averageFalse = this.continuousDataTable.AsEnumerable()
                     .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>("TieuDuong") == "False")
                     .Average(x => x.Field<decimal>(column.ColumnName));
-                averageFalse = Math.Round(averageFalse, 2);
+                averageFalse = Math.Round(averageFalse, 3);
 
                 foreach (DataRow row in this.continuousDataTable.Rows)
                 {
