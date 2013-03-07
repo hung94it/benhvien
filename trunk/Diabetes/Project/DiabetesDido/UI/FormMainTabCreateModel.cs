@@ -30,7 +30,7 @@ namespace DiabetesDido.UI
             percent.Add(new Percent("70%", 70));
             percent.Add(new Percent("80%", 80));
             percent.Add(new Percent("90%", 90));
-            percent.Add(new Percent("100%", 0));
+            //percent.Add(new Percent("100%", 0));
 
             comboBoxExTrainningDataPercent.DataSource = percent;
             comboBoxExTrainningDataPercent.DisplayMember = "Name";
@@ -126,7 +126,7 @@ namespace DiabetesDido.UI
             // Show test result
             dataGridViewXTrainningResult.DataSource = this.modelList[activeLearningAlgorithm].TestModel(data);
             
-            List<int> hideColumns = new List<int>(new int[] { 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 });
+            List<int> hideColumns = new List<int>(new int[] { 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21 });
 
             for (int indexColum = 0; indexColum < this.dataGridViewXTrainningResult.Columns.Count; indexColum++)
             {
@@ -135,6 +135,8 @@ namespace DiabetesDido.UI
                     this.dataGridViewXTrainningResult.Columns[indexColum].Visible = false;
                 }
             }
+
+            this.dataGridViewXTrainningResult.Columns[23].Name = "F-Measure";
         }
 
 
