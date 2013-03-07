@@ -38,10 +38,56 @@ namespace DiabetesDido.UI
             //orginalData = elimination.Apply(orginalData);            
         }
 
-        private void buttonXDataCleaningView_Click(object sender, EventArgs e)
+        private void buttonXDataCleanning_Click(object sender, EventArgs e)
         {
+            if (this.continuousDataTable == null)
+            {
+                MessageBox.Show("Chưa có dữ liệu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            List<string> columnNames = new List<string>(this.getAttributeColumnNames());            
+
+            foreach (DataColumn column in this.continuousDataTable.Columns)
+            {
+                if (column.DataType != typeof(decimal) || !columnNames.Contains(column.ColumnName))
+                {                    
+                    continue;                    
+                }
+                var averageTrue = this.continuousDataTable.AsEnumerable()
+                    .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>("TieuDuong") == "True" )
+                    .Average(x => x.Field<decimal>(column.ColumnName));
+                averageTrue = Math.Round(averageTrue, 2);
+
+                var averageFalse = this.continuousDataTable.AsEnumerable()
+                    .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>("TieuDuong") == "False")
+                    .Average(x => x.Field<decimal>(column.ColumnName));
+                averageFalse = Math.Round(averageFalse, 2);
+
+                foreach (DataRow row in this.continuousDataTable.Rows)
+                {
+                    if ((decimal)row[column] == 0)
+                    {
+                        if (row["TieuDuong"].ToString().Equals("True"))
+                        {
+                            row[column] = averageTrue;
+                        }
+                        else {
+                            row[column] = averageFalse;
+                        } 
+                    }
+                }
+                 
+            }
+
+            //this.continuousDataTableAdapter.Update(
+        }
+
+        private void buttonXViewContinousData_Click(object sender, EventArgs e)
+        {
+            this.continuousDataTableAdapter.Fill(this.continuousDataTable);
             this.bindingSourcePreprocessingData.DataSource = null;
-            this.bindingSourcePreprocessingData.DataSource = this.continuousDataTableAdapter.GetData();
+            this.bindingSourcePreprocessingData.DataSource = this.continuousDataTable;
             this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
             this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
 
@@ -239,10 +285,10 @@ namespace DiabetesDido.UI
         private void buttonXImportDataSet_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            String filePath = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
-            if (filePath.Equals(""))
+            this.textBoxXFilePathPreprocessing.Text = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
+            if (this.textBoxXFilePathPreprocessing.Text.Equals(""))
                 return;
-            DataTable dtNewDataSet = ReadDataFromExcelFile(filePath);
+            DataTable dtNewDataSet = ReadDataFromExcelFile(this.textBoxXFilePathPreprocessing.Text);
             if (datasetTA.GetData().Rows.Count > 0)
             {
                 DialogResult dR = MessageBox.Show("Hiện đã có dữ liệu!! Bạn có muốn nạp mới dữ liệu??", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

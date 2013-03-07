@@ -197,13 +197,13 @@ namespace DiabetesDido.UI
 
         private void buttonXImportData_Click(object sender, EventArgs e)
         {
-            dataGridViewXDiagnosis.DataSource = null;
-            dataGridViewXDiagnosisResult.DataSource = null;
+            this.dataGridViewXDiagnosis.DataSource = null;
+            this.dataGridViewXDiagnosisResult.DataSource = null;
             OpenFileDialog ofd = new OpenFileDialog();
-            textBoxXFilePath.Text = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
-            if (textBoxXFilePath.Text.Equals(""))
+            this.textBoxXFilePathDiagnosis.Text = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
+            if (this.textBoxXFilePathDiagnosis.Text.Equals(""))
                 return;
-            dataGridViewXDiagnosis.DataSource = ReadDataFromExcelFile(textBoxXFilePath.Text);            
+            this.dataGridViewXDiagnosis.DataSource = ReadDataFromExcelFile(this.textBoxXFilePathDiagnosis.Text);            
             //dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
             dataGridViewXDiagnosis.Columns["GRAN"].Visible = false;
             dataGridViewXDiagnosis.Columns["TyLeGRAN"].Visible = false;

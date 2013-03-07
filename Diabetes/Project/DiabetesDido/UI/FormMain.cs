@@ -9,6 +9,7 @@ using Accord.Statistics.Filters;
 using DevComponents.DotNetBar;
 using DiabetesDido.ClassificationLogic;
 using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
+using DiabetesDido.DAL;
 
 namespace DiabetesDido.UI
 {
@@ -37,6 +38,7 @@ namespace DiabetesDido.UI
         // Tab Preprocessing Data's variables
         private bool isDiscreteTabProcessingData;
         private ContinuousDataTableAdapter continuousDataTableAdapter;
+        private DiabetesDataSetB.ContinuousDataDataTable continuousDataTable;
         private DataTable dtDataSetTempForPreProcessing;
         private DataTable dtDataSetForPreProcessing;
 
@@ -47,6 +49,7 @@ namespace DiabetesDido.UI
             this.isDiscreteTabProcessingData = true;
             this.continuousDataTableAdapter = new ContinuousDataTableAdapter();
             this.trainningTableAdapter = new TrainningTableAdapter();
+            this.continuousDataTable = new DiabetesDataSetB.ContinuousDataDataTable();
 
             InitializeTabPreprocessingData();
             InitializeTabCreateModel();
@@ -84,10 +87,13 @@ namespace DiabetesDido.UI
 
         private string[] getAllColumnNames()
         {
-            List<string> columnNamesList = new List<string>(getAttributeColumnNames());
+            List<string> columnNamesList = new List<string>();
+            columnNamesList.AddRange(new string[] { "Tuoi", "GioiTinh" });
+            columnNamesList.AddRange(getAttributeColumnNames());
             columnNamesList.Add(Properties.Settings.Default.ClassColumnName);
 
             return columnNamesList.ToArray();
         }
+
     }
 }
