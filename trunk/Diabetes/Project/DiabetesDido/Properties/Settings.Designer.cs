@@ -83,9 +83,8 @@ namespace DiabetesDido.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Tuoi,GioiTinh,Cholesterol,HDL_Cholesterol,Triglyceride,LDL_Cholesterol,Glucose,SG" +
-            "OT,SGPT,Urea,WBC,LYM,MONO,TyLeLYM,TyLeMONO,HGB,RBC,HTC,MCV,MCH,MCHC,RDW_CV,PLT,M" +
-            "PV,PDW,PCT")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Cholesterol,HDL_Cholesterol,Triglyceride,LDL_Cholesterol,Glucose,SGOT,SGPT,Urea,W" +
+            "BC,LYM,MONO,TyLeLYM,TyLeMONO,HGB,RBC,HTC,MCV,MCH,MCHC,RDW_CV,PLT,MPV,PDW,PCT")]
         public string AttributeColumnNames {
             get {
                 return ((string)(this["AttributeColumnNames"]));

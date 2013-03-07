@@ -16,7 +16,11 @@ namespace DiabetesDido.ClassificationLogic
         {
             this.possiveValue = trainningData.PositiveValue;
             this.negativeValue = trainningData.NegativeValue;
-            HuanLuyenBayes(trainningData.DiscreteValueDatatable);
+            int i2 = trainningData.DiscreteValueDatatable.Rows.Count;
+            //int i = trainningData.TrainningAttributes.GetLength(0);
+            //HuanLuyenBayes(trainningData.DiscreteValueDatatable);
+            HuanLuyenBayes(trainningData.TrainningAttributes.GetLength(0));
+            
             
         }
 
@@ -48,11 +52,13 @@ namespace DiabetesDido.ClassificationLogic
         }
 
         //Hàm dùng để huấn luyện dữ liệu dành cho thuật toán Naive Bayes
-        public static void HuanLuyenBayes(DataTable trainingData)
+        //public static void HuanLuyenBayes(DataTable trainingData)
+        public static void HuanLuyenBayes(int row)
         {
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter dtBayesAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtSetTempTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
-            int rowCount = trainingData.Rows.Count;
+            //int rowCount = trainingData.Rows.Count;
+            int rowCount = row;
             DataTable dataForTraining = dtSetTempTA.GetDataByNumber(rowCount);
             DataTable dtBayes = dtBayesAdapter.GetData();
             foreach (DataRow dtRow in dtBayes.Rows)

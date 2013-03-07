@@ -23,7 +23,7 @@
       <Value Profile="(Default)">TieuDuong</Value>
     </Setting>
     <Setting Name="AttributeColumnNames" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Tuoi,GioiTinh,Cholesterol,HDL_Cholesterol,Triglyceride,LDL_Cholesterol,Glucose,SGOT,SGPT,Urea,WBC,LYM,MONO,TyLeLYM,TyLeMONO,HGB,RBC,HTC,MCV,MCH,MCHC,RDW_CV,PLT,MPV,PDW,PCT</Value>
+      <Value Profile="(Default)">Cholesterol,HDL_Cholesterol,Triglyceride,LDL_Cholesterol,Glucose,SGOT,SGPT,Urea,WBC,LYM,MONO,TyLeLYM,TyLeMONO,HGB,RBC,HTC,MCV,MCH,MCHC,RDW_CV,PLT,MPV,PDW,PCT</Value>
     </Setting>
   </Settings>
 </SettingsFile>

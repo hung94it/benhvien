@@ -6,6 +6,7 @@ using Accord.MachineLearning.VectorMachines;
 using Accord.Statistics.Filters;
 using Accord.MachineLearning.VectorMachines.Learning;
 using Accord.Statistics.Kernels;
+using Accord.Math;
 
 namespace DiabetesDido.ClassificationLogic
 {
@@ -22,7 +23,9 @@ namespace DiabetesDido.ClassificationLogic
         }
 
         public override void TrainningModel(TrainningData trainningData)
-        {            
+        {
+            //double[][] inputs = trainningData.DiscreteValueDatatable.ToArray();
+            //inputs = inputs.RemoveColumn(
             double[][] inputs = trainningData.TrainningAttributes;
             int[] outputs = (int[])trainningData.ClassifierAttribute.Clone();
 
