@@ -16,5 +16,20 @@ namespace DiabetesDido.UI
             InitializeComponent();
         }
 
+        private void continuousDataBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.continuousDataBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.diabetesDataSetB);
+
+        }
+
+        private void Test_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'diabetesDataSetB.ContinuousData' table. You can move, or remove it, as needed.
+            this.continuousDataTableAdapter.Fill(this.diabetesDataSetB.ContinuousData);
+
+        }
+
     }
 }

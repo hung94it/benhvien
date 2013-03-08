@@ -207,7 +207,8 @@ namespace DiabetesDido.UI
 
         private void buttonXLoad_Click(object sender, EventArgs e)
         {
-            DialogResult result = openFileDialogMain.ShowDialog();
+            this.openFileDialogMain.Filter = "Model file (*.model)|*model";
+            DialogResult result = this.openFileDialogMain.ShowDialog();
 
             if (result == DialogResult.OK)
             {
