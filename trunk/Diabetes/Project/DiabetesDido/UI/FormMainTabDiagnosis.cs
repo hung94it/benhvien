@@ -199,10 +199,13 @@ namespace DiabetesDido.UI
         {
             this.dataGridViewXDiagnosis.DataSource = null;
             this.dataGridViewXDiagnosisResult.DataSource = null;
-            OpenFileDialog ofd = new OpenFileDialog();
-            this.textBoxXFilePathDiagnosis.Text = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
+
+            this.openFileDialogMain.Filter = "Excel file (*.xls)|*.xls";
+            this.textBoxXFilePathDiagnosis.Text = this.openFileDialogMain.ShowDialog() == DialogResult.OK
+                ? this.openFileDialogMain.FileName : "";
             if (this.textBoxXFilePathDiagnosis.Text.Equals(""))
                 return;
+
             this.dataGridViewXDiagnosis.DataSource = ReadDataFromExcelFile(this.textBoxXFilePathDiagnosis.Text);            
             //dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
             dataGridViewXDiagnosis.Columns["GRAN"].Visible = false;

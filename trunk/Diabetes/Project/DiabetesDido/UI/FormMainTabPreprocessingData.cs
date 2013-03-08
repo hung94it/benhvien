@@ -16,7 +16,10 @@ namespace DiabetesDido.UI
     public partial class FormMain
     {
         public void InitializeTabPreprocessingData()
-        {            
+        {
+            this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
+            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
+
             buttonXDiscretizationDataStatistics.Enabled = false;
             buttonXDataDiscretizationRun.Enabled = false;
             integerInputIntervalDiscretization.Enabled = false;
@@ -35,7 +38,7 @@ namespace DiabetesDido.UI
             //// Remove rows which have null value
             //Elimination elimination = new Elimination(columnNames);
 
-            //orginalData = elimination.Apply(orginalData);            
+            //orginalData = elimination.Apply(orginalData);           
         }
 
         private void buttonXDataCleanning_Click(object sender, EventArgs e)
@@ -46,21 +49,30 @@ namespace DiabetesDido.UI
                 return;
             }
 
+            // List of attribute column name
             List<string> columnNames = new List<string>(this.getAttributeColumnNames());            
 
             foreach (DataColumn column in this.continuousDataTable.Columns)
             {
-                if (column.DataType != typeof(decimal) || !columnNames.Contains(column.ColumnName))
+                // Only fill value of attribute column name
+                if (!columnNames.Contains(column.ColumnName))
                 {                    
                     continue;                    
                 }
+
+                // Get average of True value
                 var averageTrue = this.continuousDataTable.AsEnumerable()
-                    .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>("TieuDuong") == "True" )
+                    .Where(x => x.Field<decimal>(column.ColumnName) != 0 
+                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
+                        .Equals(Properties.Settings.Default.positiveString))
                     .Average(x => x.Field<decimal>(column.ColumnName));
                 averageTrue = Math.Round(averageTrue, 3);
 
+                // Get average of False value
                 var averageFalse = this.continuousDataTable.AsEnumerable()
-                    .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>("TieuDuong") == "False")
+                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
+                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
+                        .Equals(Properties.Settings.Default.negativeString))
                     .Average(x => x.Field<decimal>(column.ColumnName));
                 averageFalse = Math.Round(averageFalse, 3);
 
@@ -68,7 +80,7 @@ namespace DiabetesDido.UI
                 {
                     if ((decimal)row[column] == 0)
                     {
-                        if (row["TieuDuong"].ToString().Equals("True"))
+                        if (row["TieuDuong"].ToString().Equals(Properties.Settings.Default.positiveString))
                         {
                             row[column] = averageTrue;
                         }
@@ -76,11 +88,9 @@ namespace DiabetesDido.UI
                             row[column] = averageFalse;
                         } 
                     }
-                }
-                 
+                }                 
             }
-
-            //this.continuousDataTableAdapter.Update(
+            this.continuousDataTableAdapter.Update(this.continuousDataTable);            
         }
 
         private void buttonXViewContinousData_Click(object sender, EventArgs e)
@@ -88,14 +98,12 @@ namespace DiabetesDido.UI
             this.continuousDataTableAdapter.Fill(this.continuousDataTable);
             this.bindingSourcePreprocessingData.DataSource = null;
             this.bindingSourcePreprocessingData.DataSource = this.continuousDataTable;
-            this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
-            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
 
-            string[] columnNames = { "Cholesterol", "HDL_Cholesterol", "Triglyceride", "LDL_Cholesterol", "Glucose", "Urea",
-                                       "SGOT", "SGPT", "WBC", "LYM", "MONO", "TyLeLYM", "TyLeMONO", "HGB", "RBC", "HTC",
-                                       "MCV", "MCH", "MCHC", "RDW_CV", "PLT", "MPV", "PDW", "PCT" };
+            string[] columnNames = getAttributeColumnNames();
+
             DataTable data = this.bindingSourcePreprocessingData.DataSource as DataTable;
             data = data.DefaultView.ToTable(false, columnNames);
+
             this.dataGridViewXDescriptiveData.DataSource = AnalysisData(data);
             
             buttonXImportDataSet.Enabled = true;
@@ -177,9 +185,7 @@ namespace DiabetesDido.UI
                 }
                 dtDataSetTempForPreProcessing.Clear();
                 dtDataSetTempForPreProcessing = datasetTempTA.GetData();
-                this.bindingSourcePreprocessingData.DataSource = this.dtDataSetTempForPreProcessing;
-                this.dataGridViewXPreProcessingData.DataSource = this.dtDataSetTempForPreProcessing;
-                this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
+                this.bindingSourcePreprocessingData.DataSource = this.dtDataSetTempForPreProcessing;                
             }            
         }
 
@@ -196,8 +202,7 @@ namespace DiabetesDido.UI
             dtDataSetTempForPreProcessing = newDataSetTempTA.GetData();
             this.bindingSourcePreprocessingData.DataSource = null;
             this.bindingSourcePreprocessingData.DataSource = newDataSetTempTA.GetData();
-            this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
-            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
+            
             this.dataGridViewXDescriptiveData.DataSource = null;
             if (checkedListBoxColumnName.Items.Count > 0)
                 checkedListBoxColumnName.Items.Clear();
@@ -284,8 +289,9 @@ namespace DiabetesDido.UI
         }
         private void buttonXImportDataSet_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            this.textBoxXFilePathPreprocessing.Text = ofd.ShowDialog() == DialogResult.OK ? ofd.FileName : "";
+            this.openFileDialogMain.Filter = "Excel file (*.xls)|*.xls";
+            this.textBoxXFilePathPreprocessing.Text = this.openFileDialogMain.ShowDialog() == DialogResult.OK 
+                ? this.openFileDialogMain.FileName : "";
             if (this.textBoxXFilePathPreprocessing.Text.Equals(""))
                 return;
             DataTable dtNewDataSet = ReadDataFromExcelFile(this.textBoxXFilePathPreprocessing.Text);
@@ -318,8 +324,7 @@ namespace DiabetesDido.UI
             }
             this.bindingSourcePreprocessingData.DataSource = null;
             this.bindingSourcePreprocessingData.DataSource = dtNewDataSet;
-            this.dataGridViewXPreProcessingData.DataSource = this.bindingSourcePreprocessingData;
-            this.bindingNavigatorExPreprocessingData.BindingSource = this.bindingSourcePreprocessingData;
+            
         }
         public static void InsertDataSetTempRow(DataRow dt)
         {            

@@ -85,58 +85,6 @@ FROM            DataSetTemp</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OrginalDataTableAdapter" GeneratorDataComponentClassName="OrginalDataTableAdapter" Name="OrginalData" UserDataComponentName="OrginalDataTableAdapter">
-            <MainSource>
-              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        XetNghiem.Cholesterol, XetNghiem.HDL_Cholesterol, XetNghiem.Triglyceride, XetNghiem.LDL_Cholesterol, XetNghiem.Glucose, XetNghiem.SGOT, 
-                         XetNghiem.SGPT, XetNghiem.Urea, XetNghiem.WBC, XetNghiem.LYM, XetNghiem.MONO, XetNghiem.GRAN, XetNghiem.TyLeLYM, XetNghiem.TyLeMONO, 
-                         XetNghiem.TyLeGRAN, XetNghiem.HGB, XetNghiem.RBC, XetNghiem.HTC, XetNghiem.MCV, XetNghiem.MCH, XetNghiem.MCHC, XetNghiem.RDW_CV, 
-                         XetNghiem.PLT, XetNghiem.MPV, XetNghiem.PDW, XetNghiem.PCT, XetNghiem.Na, XetNghiem.K, XetNghiem.Cl, XetNghiem.Ca, BenhNhan.TieuDuong
-FROM            BenhNhan INNER JOIN
-                         XetNghiem ON BenhNhan.MaBN = XetNghiem.MaBn AND CAST(XetNghiem.NgayLayMau AS date) = CAST(BenhNhan.NgayKham AS date)
-ORDER BY BenhNhan.MaBN</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
-            </MainSource>
-            <Mappings>
-              <Mapping SourceColumn="Cholesterol" DataSetColumn="Cholesterol" />
-              <Mapping SourceColumn="HDL_Cholesterol" DataSetColumn="HDL_Cholesterol" />
-              <Mapping SourceColumn="Triglyceride" DataSetColumn="Triglyceride" />
-              <Mapping SourceColumn="LDL_Cholesterol" DataSetColumn="LDL_Cholesterol" />
-              <Mapping SourceColumn="Glucose" DataSetColumn="Glucose" />
-              <Mapping SourceColumn="SGOT" DataSetColumn="SGOT" />
-              <Mapping SourceColumn="SGPT" DataSetColumn="SGPT" />
-              <Mapping SourceColumn="Urea" DataSetColumn="Urea" />
-              <Mapping SourceColumn="WBC" DataSetColumn="WBC" />
-              <Mapping SourceColumn="LYM" DataSetColumn="LYM" />
-              <Mapping SourceColumn="MONO" DataSetColumn="MONO" />
-              <Mapping SourceColumn="GRAN" DataSetColumn="GRAN" />
-              <Mapping SourceColumn="TyLeLYM" DataSetColumn="TyLeLYM" />
-              <Mapping SourceColumn="TyLeMONO" DataSetColumn="TyLeMONO" />
-              <Mapping SourceColumn="TyLeGRAN" DataSetColumn="TyLeGRAN" />
-              <Mapping SourceColumn="HGB" DataSetColumn="HGB" />
-              <Mapping SourceColumn="RBC" DataSetColumn="RBC" />
-              <Mapping SourceColumn="HTC" DataSetColumn="HTC" />
-              <Mapping SourceColumn="MCV" DataSetColumn="MCV" />
-              <Mapping SourceColumn="MCH" DataSetColumn="MCH" />
-              <Mapping SourceColumn="MCHC" DataSetColumn="MCHC" />
-              <Mapping SourceColumn="RDW_CV" DataSetColumn="RDW_CV" />
-              <Mapping SourceColumn="PLT" DataSetColumn="PLT" />
-              <Mapping SourceColumn="MPV" DataSetColumn="MPV" />
-              <Mapping SourceColumn="PDW" DataSetColumn="PDW" />
-              <Mapping SourceColumn="PCT" DataSetColumn="PCT" />
-              <Mapping SourceColumn="Na" DataSetColumn="Na" />
-              <Mapping SourceColumn="K" DataSetColumn="K" />
-              <Mapping SourceColumn="Cl" DataSetColumn="Cl" />
-              <Mapping SourceColumn="Ca" DataSetColumn="Ca" />
-              <Mapping SourceColumn="TieuDuong" DataSetColumn="TieuDuong" />
-            </Mappings>
-            <Sources />
-          </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DiscreteIntervalTableAdapter" GeneratorDataComponentClassName="DiscreteIntervalTableAdapter" Name="DiscreteInterval" UserDataComponentName="DiscreteIntervalTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="benhvien.dbo.BayesObject" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
@@ -423,7 +371,7 @@ ORDER BY MaxRow DESC</CommandText>
   <xs:element name="DiabetesDataSetB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DiabetesDataSetB" msprop:Generator_UserDSName="DiabetesDataSetB">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Trainning" msprop:Generator_TableClassName="TrainningDataTable" msprop:Generator_TableVarName="tableTrainning" msprop:Generator_TablePropName="Trainning" msprop:Generator_RowDeletingName="TrainningRowDeleting" msprop:Generator_RowChangingName="TrainningRowChanging" msprop:Generator_RowEvHandlerName="TrainningRowChangeEventHandler" msprop:Generator_RowDeletedName="TrainningRowDeleted" msprop:Generator_UserTableName="Trainning" msprop:Generator_RowChangedName="TrainningRowChanged" msprop:Generator_RowEvArgName="TrainningRowChangeEvent" msprop:Generator_RowClassName="TrainningRow">
+        <xs:element name="Trainning" msprop:Generator_TableClassName="TrainningDataTable" msprop:Generator_TableVarName="tableTrainning" msprop:Generator_RowChangedName="TrainningRowChanged" msprop:Generator_TablePropName="Trainning" msprop:Generator_RowDeletingName="TrainningRowDeleting" msprop:Generator_RowChangingName="TrainningRowChanging" msprop:Generator_RowEvHandlerName="TrainningRowChangeEventHandler" msprop:Generator_RowDeletedName="TrainningRowDeleted" msprop:Generator_RowClassName="TrainningRow" msprop:Generator_UserTableName="Trainning" msprop:Generator_RowEvArgName="TrainningRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Tuoi" msprop:Generator_ColumnVarNameInTable="columnTuoi" msprop:Generator_ColumnPropNameInRow="Tuoi" msprop:Generator_ColumnPropNameInTable="TuoiColumn" msprop:Generator_UserColumnName="Tuoi" minOccurs="0">
@@ -618,7 +566,7 @@ ORDER BY MaxRow DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DiscreteInterval" msprop:Generator_TableClassName="DiscreteIntervalDataTable" msprop:Generator_TableVarName="tableDiscreteInterval" msprop:Generator_RowChangedName="DiscreteIntervalRowChanged" msprop:Generator_TablePropName="DiscreteInterval" msprop:Generator_RowDeletingName="DiscreteIntervalRowDeleting" msprop:Generator_RowChangingName="DiscreteIntervalRowChanging" msprop:Generator_RowEvHandlerName="DiscreteIntervalRowChangeEventHandler" msprop:Generator_RowDeletedName="DiscreteIntervalRowDeleted" msprop:Generator_RowClassName="DiscreteIntervalRow" msprop:Generator_UserTableName="DiscreteInterval" msprop:Generator_RowEvArgName="DiscreteIntervalRowChangeEvent">
+        <xs:element name="DiscreteInterval" msprop:Generator_TableClassName="DiscreteIntervalDataTable" msprop:Generator_TableVarName="tableDiscreteInterval" msprop:Generator_TablePropName="DiscreteInterval" msprop:Generator_RowDeletingName="DiscreteIntervalRowDeleting" msprop:Generator_RowChangingName="DiscreteIntervalRowChanging" msprop:Generator_RowEvHandlerName="DiscreteIntervalRowChangeEventHandler" msprop:Generator_RowDeletedName="DiscreteIntervalRowDeleted" msprop:Generator_UserTableName="DiscreteInterval" msprop:Generator_RowChangedName="DiscreteIntervalRowChanged" msprop:Generator_RowEvArgName="DiscreteIntervalRowChangeEvent" msprop:Generator_RowClassName="DiscreteIntervalRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TenThuocTinh" msprop:Generator_ColumnVarNameInTable="columnTenThuocTinh" msprop:Generator_ColumnPropNameInRow="TenThuocTinh" msprop:Generator_ColumnPropNameInTable="TenThuocTinhColumn" msprop:Generator_UserColumnName="TenThuocTinh" minOccurs="0">
@@ -638,7 +586,7 @@ ORDER BY MaxRow DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ContinuousData" msprop:Generator_TableClassName="ContinuousDataDataTable" msprop:Generator_TableVarName="tableContinuousData" msprop:Generator_TablePropName="ContinuousData" msprop:Generator_RowDeletingName="ContinuousDataRowDeleting" msprop:Generator_RowChangingName="ContinuousDataRowChanging" msprop:Generator_RowEvHandlerName="ContinuousDataRowChangeEventHandler" msprop:Generator_RowDeletedName="ContinuousDataRowDeleted" msprop:Generator_UserTableName="ContinuousData" msprop:Generator_RowChangedName="ContinuousDataRowChanged" msprop:Generator_RowEvArgName="ContinuousDataRowChangeEvent" msprop:Generator_RowClassName="ContinuousDataRow">
+        <xs:element name="ContinuousData" msprop:Generator_TableClassName="ContinuousDataDataTable" msprop:Generator_TableVarName="tableContinuousData" msprop:Generator_RowChangedName="ContinuousDataRowChanged" msprop:Generator_TablePropName="ContinuousData" msprop:Generator_RowDeletingName="ContinuousDataRowDeleting" msprop:Generator_RowChangingName="ContinuousDataRowChanging" msprop:Generator_RowEvHandlerName="ContinuousDataRowChangeEventHandler" msprop:Generator_RowDeletedName="ContinuousDataRowDeleted" msprop:Generator_RowClassName="ContinuousDataRow" msprop:Generator_UserTableName="ContinuousData" msprop:Generator_RowEvArgName="ContinuousDataRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:decimal" />
@@ -690,43 +638,6 @@ ORDER BY MaxRow DESC</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-        <xs:element name="OrginalData" msprop:Generator_TableClassName="OrginalDataDataTable" msprop:Generator_TableVarName="tableOrginalData" msprop:Generator_TablePropName="OrginalData" msprop:Generator_RowDeletingName="OrginalDataRowDeleting" msprop:Generator_RowChangingName="OrginalDataRowChanging" msprop:Generator_RowEvHandlerName="OrginalDataRowChangeEventHandler" msprop:Generator_RowDeletedName="OrginalDataRowDeleted" msprop:Generator_UserTableName="OrginalData" msprop:Generator_RowChangedName="OrginalDataRowChanged" msprop:Generator_RowEvArgName="OrginalDataRowChangeEvent" msprop:Generator_RowClassName="OrginalDataRow">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="Cholesterol" msprop:Generator_ColumnVarNameInTable="columnCholesterol" msprop:Generator_ColumnPropNameInRow="Cholesterol" msprop:Generator_ColumnPropNameInTable="CholesterolColumn" msprop:Generator_UserColumnName="Cholesterol" type="xs:decimal" minOccurs="0" />
-              <xs:element name="HDL_Cholesterol" msprop:Generator_ColumnVarNameInTable="columnHDL_Cholesterol" msprop:Generator_ColumnPropNameInRow="HDL_Cholesterol" msprop:Generator_ColumnPropNameInTable="HDL_CholesterolColumn" msprop:Generator_UserColumnName="HDL_Cholesterol" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Triglyceride" msprop:Generator_ColumnVarNameInTable="columnTriglyceride" msprop:Generator_ColumnPropNameInRow="Triglyceride" msprop:Generator_ColumnPropNameInTable="TriglycerideColumn" msprop:Generator_UserColumnName="Triglyceride" type="xs:decimal" minOccurs="0" />
-              <xs:element name="LDL_Cholesterol" msprop:Generator_ColumnVarNameInTable="columnLDL_Cholesterol" msprop:Generator_ColumnPropNameInRow="LDL_Cholesterol" msprop:Generator_ColumnPropNameInTable="LDL_CholesterolColumn" msprop:Generator_UserColumnName="LDL_Cholesterol" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Glucose" msprop:Generator_ColumnVarNameInTable="columnGlucose" msprop:Generator_ColumnPropNameInRow="Glucose" msprop:Generator_ColumnPropNameInTable="GlucoseColumn" msprop:Generator_UserColumnName="Glucose" type="xs:decimal" minOccurs="0" />
-              <xs:element name="SGOT" msprop:Generator_ColumnVarNameInTable="columnSGOT" msprop:Generator_ColumnPropNameInRow="SGOT" msprop:Generator_ColumnPropNameInTable="SGOTColumn" msprop:Generator_UserColumnName="SGOT" type="xs:decimal" minOccurs="0" />
-              <xs:element name="SGPT" msprop:Generator_ColumnVarNameInTable="columnSGPT" msprop:Generator_ColumnPropNameInRow="SGPT" msprop:Generator_ColumnPropNameInTable="SGPTColumn" msprop:Generator_UserColumnName="SGPT" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Urea" msprop:Generator_ColumnVarNameInTable="columnUrea" msprop:Generator_ColumnPropNameInRow="Urea" msprop:Generator_ColumnPropNameInTable="UreaColumn" msprop:Generator_UserColumnName="Urea" type="xs:decimal" minOccurs="0" />
-              <xs:element name="WBC" msprop:Generator_ColumnVarNameInTable="columnWBC" msprop:Generator_ColumnPropNameInRow="WBC" msprop:Generator_ColumnPropNameInTable="WBCColumn" msprop:Generator_UserColumnName="WBC" type="xs:decimal" minOccurs="0" />
-              <xs:element name="LYM" msprop:Generator_ColumnVarNameInTable="columnLYM" msprop:Generator_ColumnPropNameInRow="LYM" msprop:Generator_ColumnPropNameInTable="LYMColumn" msprop:Generator_UserColumnName="LYM" type="xs:decimal" minOccurs="0" />
-              <xs:element name="MONO" msprop:Generator_ColumnVarNameInTable="columnMONO" msprop:Generator_ColumnPropNameInRow="MONO" msprop:Generator_ColumnPropNameInTable="MONOColumn" msprop:Generator_UserColumnName="MONO" type="xs:decimal" minOccurs="0" />
-              <xs:element name="GRAN" msprop:Generator_ColumnVarNameInTable="columnGRAN" msprop:Generator_ColumnPropNameInRow="GRAN" msprop:Generator_ColumnPropNameInTable="GRANColumn" msprop:Generator_UserColumnName="GRAN" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TyLeLYM" msprop:Generator_ColumnVarNameInTable="columnTyLeLYM" msprop:Generator_ColumnPropNameInRow="TyLeLYM" msprop:Generator_ColumnPropNameInTable="TyLeLYMColumn" msprop:Generator_UserColumnName="TyLeLYM" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TyLeMONO" msprop:Generator_ColumnVarNameInTable="columnTyLeMONO" msprop:Generator_ColumnPropNameInRow="TyLeMONO" msprop:Generator_ColumnPropNameInTable="TyLeMONOColumn" msprop:Generator_UserColumnName="TyLeMONO" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TyLeGRAN" msprop:Generator_ColumnVarNameInTable="columnTyLeGRAN" msprop:Generator_ColumnPropNameInRow="TyLeGRAN" msprop:Generator_ColumnPropNameInTable="TyLeGRANColumn" msprop:Generator_UserColumnName="TyLeGRAN" type="xs:decimal" minOccurs="0" />
-              <xs:element name="HGB" msprop:Generator_ColumnVarNameInTable="columnHGB" msprop:Generator_ColumnPropNameInRow="HGB" msprop:Generator_ColumnPropNameInTable="HGBColumn" msprop:Generator_UserColumnName="HGB" type="xs:decimal" minOccurs="0" />
-              <xs:element name="RBC" msprop:Generator_ColumnVarNameInTable="columnRBC" msprop:Generator_ColumnPropNameInRow="RBC" msprop:Generator_ColumnPropNameInTable="RBCColumn" msprop:Generator_UserColumnName="RBC" type="xs:decimal" minOccurs="0" />
-              <xs:element name="HTC" msprop:Generator_ColumnVarNameInTable="columnHTC" msprop:Generator_ColumnPropNameInRow="HTC" msprop:Generator_ColumnPropNameInTable="HTCColumn" msprop:Generator_UserColumnName="HTC" type="xs:decimal" minOccurs="0" />
-              <xs:element name="MCV" msprop:Generator_ColumnVarNameInTable="columnMCV" msprop:Generator_ColumnPropNameInRow="MCV" msprop:Generator_ColumnPropNameInTable="MCVColumn" msprop:Generator_UserColumnName="MCV" type="xs:decimal" minOccurs="0" />
-              <xs:element name="MCH" msprop:Generator_ColumnVarNameInTable="columnMCH" msprop:Generator_ColumnPropNameInRow="MCH" msprop:Generator_ColumnPropNameInTable="MCHColumn" msprop:Generator_UserColumnName="MCH" type="xs:decimal" minOccurs="0" />
-              <xs:element name="MCHC" msprop:Generator_ColumnVarNameInTable="columnMCHC" msprop:Generator_ColumnPropNameInRow="MCHC" msprop:Generator_ColumnPropNameInTable="MCHCColumn" msprop:Generator_UserColumnName="MCHC" type="xs:decimal" minOccurs="0" />
-              <xs:element name="RDW_CV" msprop:Generator_ColumnVarNameInTable="columnRDW_CV" msprop:Generator_ColumnPropNameInRow="RDW_CV" msprop:Generator_ColumnPropNameInTable="RDW_CVColumn" msprop:Generator_UserColumnName="RDW_CV" type="xs:decimal" minOccurs="0" />
-              <xs:element name="PLT" msprop:Generator_ColumnVarNameInTable="columnPLT" msprop:Generator_ColumnPropNameInRow="PLT" msprop:Generator_ColumnPropNameInTable="PLTColumn" msprop:Generator_UserColumnName="PLT" type="xs:decimal" minOccurs="0" />
-              <xs:element name="MPV" msprop:Generator_ColumnVarNameInTable="columnMPV" msprop:Generator_ColumnPropNameInRow="MPV" msprop:Generator_ColumnPropNameInTable="MPVColumn" msprop:Generator_UserColumnName="MPV" type="xs:decimal" minOccurs="0" />
-              <xs:element name="PDW" msprop:Generator_ColumnVarNameInTable="columnPDW" msprop:Generator_ColumnPropNameInRow="PDW" msprop:Generator_ColumnPropNameInTable="PDWColumn" msprop:Generator_UserColumnName="PDW" type="xs:decimal" minOccurs="0" />
-              <xs:element name="PCT" msprop:Generator_ColumnVarNameInTable="columnPCT" msprop:Generator_ColumnPropNameInRow="PCT" msprop:Generator_ColumnPropNameInTable="PCTColumn" msprop:Generator_UserColumnName="PCT" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Na" msprop:Generator_ColumnVarNameInTable="columnNa" msprop:Generator_ColumnPropNameInRow="Na" msprop:Generator_ColumnPropNameInTable="NaColumn" msprop:Generator_UserColumnName="Na" type="xs:decimal" minOccurs="0" />
-              <xs:element name="K" msprop:Generator_ColumnVarNameInTable="columnK" msprop:Generator_ColumnPropNameInRow="K" msprop:Generator_ColumnPropNameInTable="KColumn" msprop:Generator_UserColumnName="K" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Cl" msprop:Generator_ColumnVarNameInTable="columnCl" msprop:Generator_ColumnPropNameInRow="Cl" msprop:Generator_ColumnPropNameInTable="ClColumn" msprop:Generator_UserColumnName="Cl" type="xs:decimal" minOccurs="0" />
-              <xs:element name="Ca" msprop:Generator_ColumnVarNameInTable="columnCa" msprop:Generator_ColumnPropNameInRow="Ca" msprop:Generator_ColumnPropNameInTable="CaColumn" msprop:Generator_UserColumnName="Ca" type="xs:decimal" minOccurs="0" />
-              <xs:element name="TieuDuong" msprop:Generator_ColumnVarNameInTable="columnTieuDuong" msprop:Generator_ColumnPropNameInRow="TieuDuong" msprop:Generator_ColumnPropNameInTable="TieuDuongColumn" msprop:Generator_UserColumnName="TieuDuong" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
