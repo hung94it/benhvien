@@ -60,13 +60,14 @@ namespace DiabetesDido.UI
 
         private void superTabControlMain_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
         {
+            DataTable codificationDatatable = getCodification();
             switch ((sender as SuperTabControl).SelectedTabIndex)
             { 
                 case 1:
                     if (this.isDiscreteTabProcessingData)
                     {
                         refreshTabCreateModel();
-                        this.codification = new Codification(getCodification());
+                        this.codification = new Codification(codificationDatatable);
                     }
                     else 
                     {
