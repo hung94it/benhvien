@@ -9,7 +9,7 @@ namespace DiabetesDido.ClassificationLogic
     public abstract class DecisionTreeModel : ClassificationModel
     {
         private DecisionTree tree;
-        public int negativeValue = 0;
+
         public DecisionTree Tree
         {
             get { return tree; }
@@ -19,8 +19,7 @@ namespace DiabetesDido.ClassificationLogic
         // Create decision tree
         protected DecisionTree CreateDecisionTree(Codification codification)
         {
-            int lastIndex = codification.Columns.Count - 1;
-            int numberOfClass = codification[lastIndex].Symbols;
+            int lastIndex = codification.Columns.Count - 1;            
 
             List<DecisionVariable> attributes = new List<DecisionVariable>();
 
@@ -30,7 +29,7 @@ namespace DiabetesDido.ClassificationLogic
                     codification[indexColumn].Symbols));
             }
 
-            return new DecisionTree(attributes.ToArray(), numberOfClass);
+            return new DecisionTree(attributes.ToArray(), 2);
         }
 
         public override int[] ComputeModel(double[][] inputs)

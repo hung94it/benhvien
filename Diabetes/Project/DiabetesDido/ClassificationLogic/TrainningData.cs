@@ -76,7 +76,8 @@ namespace DiabetesDido.ClassificationLogic
 
             // Create classifier data for trainning
             string classColumnName = Properties.Settings.Default.ClassColumnName;
-            this.classifierAttribute = this.discreteValueDatatable.ToIntArray(classColumnName).GetColumn(0);
+            //this.classifierAttribute = this.discreteValueDatatable.ToIntArray(classColumnName).GetColumn(0);
+            this.classifierAttribute = this.discreteValueDatatable.ToArray<int>(classColumnName);
 
             // Set positive, negative value to test model            
             if (this.codificationData.Columns[classColumnName].Mapping.ContainsKey(Properties.Settings.Default.positiveString))

@@ -30,9 +30,9 @@ namespace DiabetesDido.UI
         private void buttonXCleaningData_Click(object sender, EventArgs e)
         {
             //DataTable orginalData = this.bindingSourcePreprocessingData.DataSource as DataTable;
-            
+
             //string[] columnNames = orginalData.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
-                                                
+
             //columnNames = columnNames.RemoveAt<string>(columnNames.Length - 1);
 
             //// Remove rows which have null value
@@ -50,14 +50,14 @@ namespace DiabetesDido.UI
             }
 
             // List of attribute column name
-            List<string> columnNames = new List<string>(this.getAttributeColumnNames());            
+            List<string> columnNames = new List<string>(this.getContinuosColumnNames());
 
             foreach (DataColumn column in this.continuousDataTable.Columns)
             {
                 // Only fill value of attribute column name
                 if (!columnNames.Contains(column.ColumnName))
-                {                    
-                    continue;                    
+                {
+                    continue;
                 }
                 /*
                 // Fill database by average value
@@ -120,13 +120,13 @@ namespace DiabetesDido.UI
                 {
                     if ((decimal)row[column] == 0)
                     {
-                        Random rD=new Random();
+                        Random rD = new Random();
                         if (row["TieuDuong"].ToString().Equals(Properties.Settings.Default.positiveString))
                         {
                             decimal newValue = Convert.ToDecimal(rD.NextDouble()) * Math.Abs(maxTrue - minTrue) + minTrue;
                             newValue = Math.Round(newValue, 3);
                             row[column] = newValue;
-                                
+
                         }
                         else
                         {
@@ -137,7 +137,7 @@ namespace DiabetesDido.UI
                     }
                 }
             }
-            this.continuousDataTableAdapter.Update(this.continuousDataTable);            
+            this.continuousDataTableAdapter.Update(this.continuousDataTable);
         }
 
         private void buttonXViewContinousData_Click(object sender, EventArgs e)
@@ -146,13 +146,13 @@ namespace DiabetesDido.UI
             this.bindingSourcePreprocessingData.DataSource = null;
             this.bindingSourcePreprocessingData.DataSource = this.continuousDataTable;
 
-            string[] columnNames = getAttributeColumnNames();
+            string[] columnNames = getContinuosColumnNames();
 
             DataTable data = this.bindingSourcePreprocessingData.DataSource as DataTable;
             data = data.DefaultView.ToTable(false, columnNames);
 
             this.dataGridViewXDescriptiveData.DataSource = AnalysisData(data);
-            
+
             buttonXImportDataSet.Enabled = true;
 
             buttonXDiscretizationDataStatistics.Enabled = false;
@@ -167,7 +167,7 @@ namespace DiabetesDido.UI
             DescriptiveAnalysis analysis;
             string[] columnNames;
 
-            double[,] arrayData = dataTable.ToMatrix(out columnNames);            
+            double[,] arrayData = dataTable.ToMatrix(out columnNames);
 
             // Analysis Data
             analysis = new DescriptiveAnalysis(arrayData, columnNames);
@@ -182,10 +182,10 @@ namespace DiabetesDido.UI
             analysisData = analysisData.InsertRow<double>(analysis.StandardDeviations, analysisData.GetLength(0));
             analysisData = analysisData.InsertRow<double>(analysis.Variances, analysisData.GetLength(0));
             analysisData = analysisData.InsertRow<double>(analysis.Sums, analysisData.GetLength(0));
-            
+
             string[] rowNames = { "Distinct", "Means", "Medians", "Modes", "StandardDeviations", "Variances", "Sums" };
 
-            return new ArrayDataView(analysisData, columnNames, rowNames);            
+            return new ArrayDataView(analysisData, columnNames, rowNames);
         }
 
         private void buttonXDiscretizationData_Click(object sender, EventArgs e)
@@ -196,7 +196,8 @@ namespace DiabetesDido.UI
             int Count = 0;//Biến dùng để kiếm tra xem người dùng có phải chỉ chọn 2 Field Tuoi & GioiTinh hay không
             int dataSetColIndex = 0;//Biến dùng để lưu lại index của Field cần rời rạc
             if (checkedListBoxColumnName.CheckedItems.Count == 0)
-                MessageBox.Show("Chưa chọn thuộc tính để thực hiện rời rạc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Chưa chọn thuộc tính để thực hiện rời rạc", "Thông báo"
+                    , MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
                 for (int i = 0; i < checkedListBoxColumnName.CheckedItems.Count; i++)
@@ -208,7 +209,8 @@ namespace DiabetesDido.UI
                         Count++;
                 }
                 if (Count == checkedListBoxColumnName.CheckedItems.Count)
-                    MessageBox.Show("Thuộc tính Tuoi và GioiTinh không cần thực hiện rời rạc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Thuộc tính Tuoi và GioiTinh không cần thực hiện rời rạc", "Thông báo"
+                        , MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
                     InputInterval = integerInputIntervalDiscretization.Value;
@@ -232,8 +234,8 @@ namespace DiabetesDido.UI
                 }
                 dtDataSetTempForPreProcessing.Clear();
                 dtDataSetTempForPreProcessing = datasetTempTA.GetData();
-                this.bindingSourcePreprocessingData.DataSource = this.dtDataSetTempForPreProcessing;                
-            }            
+                this.bindingSourcePreprocessingData.DataSource = this.dtDataSetTempForPreProcessing;
+            }
         }
 
         private void buttonXDataDiscretizationDataView_Click(object sender, EventArgs e)
@@ -249,15 +251,15 @@ namespace DiabetesDido.UI
             dtDataSetTempForPreProcessing = newDataSetTempTA.GetData();
             this.bindingSourcePreprocessingData.DataSource = null;
             this.bindingSourcePreprocessingData.DataSource = newDataSetTempTA.GetData();
-            
+
             this.dataGridViewXDescriptiveData.DataSource = null;
             if (checkedListBoxColumnName.Items.Count > 0)
                 checkedListBoxColumnName.Items.Clear();
             for (int i = 1; i < dtDataSetTempForPreProcessing.Columns.Count - 1; i++)
             {
-                
+
                 String colName = dtDataSetTempForPreProcessing.Columns[i].ColumnName;
-                checkedListBoxColumnName.Items.Add(colName, false);                
+                checkedListBoxColumnName.Items.Add(colName, false);
             }
 
             buttonXImportDataSet.Enabled = false;
@@ -268,6 +270,7 @@ namespace DiabetesDido.UI
             checkBoxXDiscreteAllColumn.Enabled = true;
             checkedListBoxColumnName.Enabled = true;
         }
+
         private void checkBoxXDiscreteAllColumn_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxXDiscreteAllColumn.Checked == true)
@@ -277,6 +280,7 @@ namespace DiabetesDido.UI
                 for (int i = 0; i < checkedListBoxColumnName.Items.Count; i++)
                     checkedListBoxColumnName.SetItemChecked(i, false);
         }
+
         private void buttonXDiscretizationDataStatistics_Click(object sender, EventArgs e)
         {
             if (checkedListBoxColumnName.SelectedIndex == -1)
@@ -313,6 +317,7 @@ namespace DiabetesDido.UI
                 dataGridViewXDescriptiveData.Columns["ID"].Visible = true;
             }
         }
+
         private void buttonXCustomDataDiscretization_Click(object sender, EventArgs e)
         {
             int selectedIndex = checkedListBoxColumnName.SelectedIndex;
@@ -320,61 +325,63 @@ namespace DiabetesDido.UI
                 MessageBox.Show("Chưa chọn thuộc tính để rời rạc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
-                if (checkedListBoxColumnName.Items[selectedIndex].ToString() == "Tuoi" || checkedListBoxColumnName.Items[selectedIndex].ToString() == "GioiTinh")
+                if (checkedListBoxColumnName.Items[selectedIndex].ToString() == "Tuoi"
+                    || checkedListBoxColumnName.Items[selectedIndex].ToString() == "GioiTinh")
                 {
-                    MessageBox.Show("Thuộc tính Tuoi và GioiTinh không cần thực hiện rời rạc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Thuộc tính Tuoi và GioiTinh không cần thực hiện rời rạc"
+                        , "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
                     String colName = checkedListBoxColumnName.SelectedItem.ToString();
                     int interval = integerInputIntervalDiscretization.Value;
-                    FormCustomDataDiscretization newFormCustomDataDiscretization = new FormCustomDataDiscretization(colName, interval);
+                    FormCustomDataDiscretization newFormCustomDataDiscretization =
+                        new FormCustomDataDiscretization(colName, interval);
                     newFormCustomDataDiscretization.FormClosed += buttonXDataDiscretizationDataView_Click;
                     newFormCustomDataDiscretization.Show();
                 }
             }
         }
+
         private void buttonXImportDataSet_Click(object sender, EventArgs e)
         {
             this.openFileDialogMain.Filter = "Excel file (*.xls)|*.xls";
-            this.textBoxXFilePathPreprocessing.Text = this.openFileDialogMain.ShowDialog() == DialogResult.OK 
+            this.textBoxXFilePathPreprocessing.Text = this.openFileDialogMain.ShowDialog() == DialogResult.OK
                 ? this.openFileDialogMain.FileName : "";
             if (this.textBoxXFilePathPreprocessing.Text.Equals(""))
                 return;
             DataTable dtNewDataSet = ReadDataFromExcelFile(this.textBoxXFilePathPreprocessing.Text);
+
             if (datasetTA.GetData().Rows.Count > 0)
             {
-                DialogResult dR = MessageBox.Show("Hiện đã có dữ liệu!! Bạn có muốn nạp mới dữ liệu??", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (dR == DialogResult.Yes)
-                {                   
-                    datasetTA.DeleteAllData();
-                    datasetTempTA.DeleteAllData();
-                    bayesObjectTA.DeleteAll();
-                    this.isDiscreteTabProcessingData = false;
-
-                    foreach (DataRow dtRow in dtNewDataSet.Rows)
-                    {
-                        InsertDataSetRow(dtRow);
-                    }
-                    AgeDiscretization();
-                    GenderDiscretization();
-                }
-            }
-            else
-            {
-                foreach (DataRow dtRow in dtNewDataSet.Rows)
+                DialogResult dR = MessageBox.Show("Hiện đã có dữ liệu!! Bạn có muốn nạp mới dữ liệu??"
+                    , "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dR == DialogResult.No)
                 {
-                    InsertDataSetRow(dtRow);
+                    return;
                 }
-                AgeDiscretization();
-                GenderDiscretization();
             }
+
+            datasetTA.DeleteAllData();
+            datasetTempTA.DeleteAllData();
+            bayesObjectTA.DeleteAll();
+            
+            foreach (DataRow dtRow in dtNewDataSet.Rows)
+            {
+                InsertDataSetRow(dtRow);
+            }
+            AgeDiscretization();
+            GenderDiscretization();
+
             this.bindingSourcePreprocessingData.DataSource = null;
             this.bindingSourcePreprocessingData.DataSource = dtNewDataSet;
-            
+
+            this.codification = null;
+
         }
+
         public static void InsertDataSetTempRow(DataRow dt)
-        {            
+        {
             decimal MaBn = Convert.ToDecimal(dt["MaBn"]);
             decimal TuoiHienTai = DateTime.Now.Year - Convert.ToDecimal(dt["NamSinh"]);
             String Tuoi = DiscretizationData.RoiRacHoaTuoi(TuoiHienTai);
@@ -411,14 +418,17 @@ namespace DiabetesDido.UI
             String Ca = dt["Ca"].ToString();
             String TieuDuong = dt["TieuDuong"].ToString();
 
-            datasetTempTA.Insert(MaBn,Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Na, TieuDuong);
+            datasetTempTA.Insert(MaBn, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride
+                , LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN
+                , HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Na, TieuDuong);
         }
+
         public static void InsertDataSetRow(DataRow dt)
         {
             decimal MaBn = Convert.ToDecimal(dt["MaBn"]);
             String HoTen = dt["HoTen"].ToString();
             decimal NamSinh = Convert.ToDecimal(dt["NamSinh"]);
-            DateTime NgayKham= Convert.ToDateTime(dt["NgayKham"]);
+            DateTime NgayKham = Convert.ToDateTime(dt["NgayKham"]);
             String GioiTinh = dt["GioiTinh"].ToString();
             decimal Cholesterol = Convert.ToDecimal(dt["Cholesterol"]);
             decimal HDL_Cholesterol = Convert.ToDecimal(dt["HDL_Cholesterol"]);
@@ -452,8 +462,11 @@ namespace DiabetesDido.UI
             decimal Ca = Convert.ToDecimal(dt["Ca"]);
             String TieuDuong = dt["TieuDuong"].ToString();
 
-            datasetTA.Insert(MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Na, TieuDuong);
+            datasetTA.Insert(MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride
+                , LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB
+                , RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Na, TieuDuong);
         }
+
         //Hàm để tạo các khoảng rời rạc của tuổi và giới tính. Sử dụng khi nạp 1 data set mới
         public static void AgeDiscretization()
         {
@@ -466,7 +479,7 @@ namespace DiabetesDido.UI
             {
                 int currentValue = ListAge[i];
                 int nextValue = 0;
-                String intervalValue="";
+                String intervalValue = "";
                 if (i != ListAge.Count - 1)
                 {
                     nextValue = ListAge[i + 1];

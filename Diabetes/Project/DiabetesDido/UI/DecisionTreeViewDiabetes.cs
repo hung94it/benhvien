@@ -26,6 +26,7 @@ namespace DiabetesDido.UI
     using Accord.MachineLearning.DecisionTrees;
     using DiabetesDido.ClassificationLogic;
     using System;
+    using Accord.Statistics.Filters;
 
     /// <summary>
     ///   Decision Tree (DT) Viewer.
@@ -34,7 +35,8 @@ namespace DiabetesDido.UI
     public partial class DecisionTreeViewDiabetes : UserControl
     {
         private DecisionTree treeSource;
-        private TrainningData trainningData;
+        
+        private Codification codification;
 
         /// <summary>
         ///   Initializes a new instance of the <see cref="DecisionTreeViewDiabetes"/> class.
@@ -62,10 +64,11 @@ namespace DiabetesDido.UI
             }
         }
 
-        public void SetTree(DecisionTree tree, TrainningData data)
+        // Create tree
+        public void SetTree(DecisionTree tree, Codification codification)
         {
-            this.treeSource = tree;
-            this.trainningData = data;
+            this.treeSource = tree;            
+            this.codification = codification;
 
             treeView1.Nodes.Clear();
 
@@ -73,6 +76,7 @@ namespace DiabetesDido.UI
                 treeView1.Nodes.Add(convert(TreeSource.Root));
         }
 
+        // Regress tree
         private TreeNode convert(DecisionNode node)
         {
             string attributeName;
@@ -80,6 +84,7 @@ namespace DiabetesDido.UI
 
             TreeNode treeNode;
 
+            // Add root
             if (node.IsRoot)
             {
                 treeNode = new TreeNode(node.ToString());
@@ -87,25 +92,30 @@ namespace DiabetesDido.UI
             else
             {
                 attributeName = node.Owner.Attributes[node.Parent.Branches.AttributeIndex].Name;
-                attributeValue = this.trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(node.Value));
+                attributeValue = this.codification.Translate(attributeName, Convert.ToInt32(node.Value));
 
+                // Create new treeNode to TreeView
                 treeNode = new TreeNode(attributeName + " = " + attributeValue);
             }
                                     
+            // If node is leaf
             if (node.IsLeaf)
             {
+                // If node has value add classifier value
                 if (node.Output.HasValue)
                 {
                     attributeName = Properties.Settings.Default.ClassColumnName;
-                    attributeValue = this.trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(node.Output));
+                    attributeValue = this.codification.Translate(attributeName, Convert.ToInt32(node.Output));
 
                     treeNode.Nodes.Add(new TreeNode(attributeValue));
                 }
+                    // Add ""
                 else
                 { 
                     treeNode.Nodes.Add(new TreeNode(node.Output.ToString()));
                 }
             }
+                // Regress all child nodes
             else
             {
                 foreach (var child in node.Branches)

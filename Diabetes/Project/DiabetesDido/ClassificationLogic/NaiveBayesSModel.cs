@@ -16,23 +16,18 @@ namespace DiabetesDido.ClassificationLogic
         {
             this.possiveValue = trainningData.PositiveValue;
             this.negativeValue = trainningData.NegativeValue;
-            int i2 = trainningData.DiscreteValueDatatable.Rows.Count;
-            //int i = trainningData.TrainningAttributes.GetLength(0);
-            //HuanLuyenBayes(trainningData.DiscreteValueDatatable);
-            HuanLuyenBayes(trainningData.TrainningAttributes.GetLength(0));
-            
-            
+
+            HuanLuyenBayes(trainningData.TrainningAttributes.GetLength(0));                        
         }
 
         public override int[] ComputeModel(double[][] inputs)
         {
-            //inputs.GetLength(0);
-            //DataTable temp = inputs.ToTable();
+
             int[] predicted = new int[inputs.Length];
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter newDataSetTempTA = new DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter();
             var query = newDataSetTempTA.GetData().AsEnumerable().Skip(newDataSetTempTA.GetData().Rows.Count - inputs.Length);
             DataTable testData = query.CopyToDataTable<DataRow>();
-            //DataTable testData = inputs.ToTable();
+
             DataTable predictData = NaiveBayes(testData);
             for (int i = 0; i < predictData.Rows.Count - 1; i++)
             {
@@ -52,12 +47,11 @@ namespace DiabetesDido.ClassificationLogic
         }
 
         //Hàm dùng để huấn luyện dữ liệu dành cho thuật toán Naive Bayes
-        //public static void HuanLuyenBayes(DataTable trainingData)
         public static void HuanLuyenBayes(int row)
         {
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter dtBayesAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
             DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtSetTempTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
-            //int rowCount = trainingData.Rows.Count;
+
             int rowCount = row;
             DataTable dataForTraining = dtSetTempTA.GetDataByNumber(rowCount);
             DataTable dtBayes = dtBayesAdapter.GetData();

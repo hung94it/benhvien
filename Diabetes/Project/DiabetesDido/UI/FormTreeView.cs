@@ -8,25 +8,26 @@ using System.Windows.Forms;
 using DevComponents.DotNetBar;
 using DiabetesDido.ClassificationLogic;
 using Accord.MachineLearning.DecisionTrees;
+using Accord.Statistics.Filters;
 
 namespace DiabetesDido.UI
 {
     public partial class FormTreeView : DevComponents.DotNetBar.Metro.MetroForm
-    {
-        private TrainningData trainningData;
+    {        
+        private Codification codification;
 
         public FormTreeView()
         {
             InitializeComponent();
         }
 
-        public FormTreeView(DecisionTree tree, TrainningData data)
+        public FormTreeView(DecisionTree tree, Codification codification)
             : this()
         {
-            this.trainningData = data;
+            this.codification = codification;
 
             // Show the learned tree in the view            
-            decisionTreeView.SetTree(tree, this.trainningData);
+            decisionTreeView.SetTree(tree, codification);
             
             if (tree != null && tree.Root != null)
                 CreateRuleList(tree.Root, "");
@@ -41,7 +42,7 @@ namespace DiabetesDido.UI
             if (node.IsLeaf)
             {
                 attributeName = Properties.Settings.Default.ClassColumnName;
-                attributeValue = this.trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(node.Output));
+                attributeValue = this.codification.Translate(attributeName, Convert.ToInt32(node.Output));
 
                 if (node.Output.HasValue)
                 {
@@ -60,7 +61,7 @@ namespace DiabetesDido.UI
                 foreach (var child in node.Branches)
                 {
                     attributeName = child.Owner.Attributes[child.Parent.Branches.AttributeIndex].Name;
-                    attributeValue = this.trainningData.CodificationData.Translate(attributeName, Convert.ToInt32(child.Value));
+                    attributeValue = this.codification.Translate(attributeName, Convert.ToInt32(child.Value));
 
                     connectSymbol = stringTemp.Equals("") ? "" : " & ";
 
