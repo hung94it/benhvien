@@ -126,7 +126,7 @@ namespace DiabetesDido.UI
             // Show test result
             dataGridViewXTrainningResult.DataSource = this.modelList[activeLearningAlgorithm].TestModel(data);
             
-            List<int> hideColumns = new List<int>(new int[] { 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21 });
+            List<int> hideColumns = new List<int>(new int[] {});
 
             for (int indexColum = 0; indexColum < this.dataGridViewXTrainningResult.Columns.Count; indexColum++)
             {
