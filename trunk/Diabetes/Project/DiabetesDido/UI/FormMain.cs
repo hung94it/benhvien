@@ -21,23 +21,17 @@ namespace DiabetesDido.UI
         static DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter newDataSetTempTA = new DAL.DiabetesDataSetTableAdapters.NewDataSetTempTableAdapter();
 
         // All tab's variables
-        private Codification codification;
-        // Dictionary contains model
+        private Codification codification;        
         private Dictionary<LearningAlgorithm, ClassificationModel> modelList;
 
         // Tab Dianosis's variables
         private TrainningData trainningDataTabDianosis;
         private bool isDiscreteTabDianosis;
 
-        // Tab Create Model's variables
-        private TrainningTableAdapter trainningTableAdapter;
-        // Selecting model
-        private LearningAlgorithm activeLearningAlgorithm;        
-        private TrainningData trainningDataTabCreate;
+        // Tab Create Model's variables               
+        private LearningAlgorithm activeLearningAlgorithm;                
 
-        // Tab Preprocessing Data's variables
-        private bool isDiscreteTabProcessingData;
-        private ContinuousDataTableAdapter continuousDataTableAdapter;
+        // Tab Preprocessing Data's variables               
         private DiabetesDataSetB.ContinuousDataDataTable continuousDataTable;
         private DataTable dtDataSetTempForPreProcessing;
         private DataTable dtDataSetForPreProcessing;
@@ -45,16 +39,12 @@ namespace DiabetesDido.UI
         public FormMain()
         {
             InitializeComponent();
-
-            this.isDiscreteTabProcessingData = true;
-            this.continuousDataTableAdapter = new ContinuousDataTableAdapter();
-            this.trainningTableAdapter = new TrainningTableAdapter();
+                               
             this.continuousDataTable = new DiabetesDataSetB.ContinuousDataDataTable();
 
             InitializeTabPreprocessingData();
             InitializeTabCreateModel();
-            InitializeTabDiagnosis();
-            
+            InitializeTabDiagnosis();            
         }
 
         private void superTabControlMain_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
@@ -62,35 +52,62 @@ namespace DiabetesDido.UI
             switch ((sender as SuperTabControl).SelectedTabIndex)
             { 
                 case 1:
-                    DataTable codificationDatatable = getCodification();
+                    int totalAttributeFormDatabase = (int)discreteIntervalTableAdapter.TotalAttributes();
+                    int totalAttributeFromSetting = getColumnNames().Length;
 
-                    if (this.isDiscreteTabProcessingData)
+                    if (totalAttributeFormDatabase + 1== totalAttributeFromSetting)
                     {
                         refreshTabCreateModel();
-                        this.codification = new Codification(codificationDatatable);
+                        if (this.codification == null)
+                        {
+                            this.codification = new Codification(getDataTableForCodification());
+                        }
                     }
-                    else 
-                    {
+                    else {
                         (sender as SuperTabControl).SelectedTabIndex = 0;
                         MessageBox.Show("Chưa có dữ liệu rời rạc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
+
+
+                    //DataTable codificationDatatable = getDataTableForCodification();
+
+                    //if (this.isDiscreteTabProcessingData)
+                    //{
+                    //    refreshTabCreateModel();
+                    //    this.codification = new Codification(codificationDatatable);
+                    //}
+                    //else 
+                    //{
+                    //    (sender as SuperTabControl).SelectedTabIndex = 0;
+                    //    MessageBox.Show("Chưa có dữ liệu rời rạc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //    return;
+                    //}
                     break;
                 default:
                     break;
             }
         }
-
-        private string[] getAttributeColumnNames()
+        
+        // Include only attributes in test
+        private string[] getContinuosColumnNames()
         {
             return Properties.Settings.Default.AttributeColumnNames.Split(',');
         }
 
-        private string[] getAllColumnNames()
+        // Include other attributes for trainning
+        private string[] getTrainningColumnNames()
         {
-            List<string> columnNamesList = new List<string>();
-            columnNamesList.AddRange(new string[] { "Tuoi", "GioiTinh" });
-            columnNamesList.AddRange(getAttributeColumnNames());
+            List<string> columnNamesList = new List<string>(new string[] { "Tuoi", "GioiTinh" });            
+            columnNamesList.AddRange(getContinuosColumnNames());            
+
+            return columnNamesList.ToArray();
+        }
+
+        // Include all attributes
+        private string[] getColumnNames()
+        {
+            List<string> columnNamesList = new List<string>(getTrainningColumnNames());
             columnNamesList.Add(Properties.Settings.Default.ClassColumnName);
 
             return columnNamesList.ToArray();

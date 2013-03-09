@@ -3,40 +3,13 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using DiabetesDido.UI;
+using DiabetesDido.DAL;
+using DiabetesDido.DAL.DiabetesDataSetTableAdapters;
 
 namespace DiabetesDido.ClassificationLogic
 {
     public class DiscretizationData
-    {
-        //public static void LamSachDuLieu(DataTable dataSetDT,List<decimal> danhSachViTri)
-        //{
-        //    for (int i = 0; i < dataSetDT.Rows.Count-1; i++)
-        //    {
-        //        int Flag=0;
-        //        for (int j = 0; j < danhSachViTri.Count; j++)
-        //        {
-        //            decimal iD=Convert.ToDecimal(dataSetDT.Rows[i][0]);
-        //            if ( iD == danhSachViTri[j])
-        //            {
-        //                Flag = 1;
-        //                break;
-        //            }
-        //        }
-        //        if (Flag == 0)
-        //        {
-        //            for (int j = i + 1; j < dataSetDT.Rows.Count; j++)
-        //            {
-        //                decimal iMaBN = Convert.ToDecimal(dataSetDT.Rows[i][1]);
-        //                decimal jMaBN = Convert.ToDecimal(dataSetDT.Rows[j][1]);
-        //                if (iMaBN == jMaBN)
-        //                    danhSachViTri.Add(Convert.ToDecimal(dataSetDT.Rows[j][0]));
-        //                else
-        //                    break;
-        //            }
-        //        }
-        //    }
-        //}
-
+    {       
         public static String RoiRacHoaTuoi(decimal namSinh)
         {
             if (namSinh < 10)
@@ -176,38 +149,71 @@ namespace DiabetesDido.ClassificationLogic
             dataSetTempTA.Update(newRow);
         }
 
-        ////Hàm dùng để huấn luyện dữ liệu cho thuật toán Bayes
-        //public static void HuyenLuyenBayes()
-        //{ 
-            
-        //}
+        //Hàm dùng để rời rác hóa dataset trước khi thực hiện chẩn đoán
+        public static DataTable DataDiscretization(DataTable dt, BayesObjectTableAdapter bayesObjectTA)
+        {
+            DiabetesDataSetB.TrainningDataTable trainningDataTable = new DiabetesDataSetB.TrainningDataTable();
+            trainningDataTable.Columns.Add("MaBn", typeof(decimal));
+            trainningDataTable.Columns["MaBn"].SetOrdinal(0);
 
-        ////Hàm dùng để chia dữ liệu theo tỉ lệ nhập vào
-        //public void ChiaDuLieu(int phanTramDuLieu)
-        //{
-        //    DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter trainingSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TrainingSetTableAdapter();
-        //    DiabetesDido.DAL.DiabetesDataSetTableAdapters.TestSetTableAdapter testSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.TestSetTableAdapter();
-        //    DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
-        //    DataTable dtSetTemp=dataSetTempTA.GetData();
-        //    int luongDuLieu = dtSetTemp.Rows.Count * phanTramDuLieu / 100;
-        //    int iCount = 0;
-        //    trainingSetTA.DeleteAll();
-        //    testSetTA.DeleteAll();
-        //    foreach (DataRow dtRow in dtSetTemp.Rows)
-        //    {
+            DataTable dtBayesObject = bayesObjectTA.GetData();
+
+            try
+            {
+                foreach (DataRow dtRow in dt.Rows)
+                {
+                    DataRow newRow = trainningDataTable.NewRow();
+
+                    foreach (DataColumn dtCol in dt.Columns)
+                    {
+                        String colName = dtCol.ColumnName;
+
+                        switch (colName)
+                        {
+                            case "ID":
+                            case "NgayKham":
+                            case "HoTen":
+                            case "GRAN":
+                            case "TyLeGRAN":
+                            case "Na":
+                            case "K":
+                            case "Cl":
+                            case "Ca":
+                                break;
+                            case "MaBn":
+                                newRow[colName] = dtRow[colName];
+                                break;
+                            case "TieuDuong":
+                                newRow[colName] = Convert.ToBoolean(dtRow[colName]);
+                                break;
+                            case "GioiTinh":
+                                newRow[colName] = dtRow[colName].ToString();
+                                break;
+                            case "NamSinh":
+                                int namSinh = Convert.ToInt16(dtRow[colName]);
+                                int tuoiHienTai = DateTime.Now.Year - namSinh;
+                                String Tuoi = DiscretizationData.RoiRacHoaTuoi(tuoiHienTai);
+                                newRow["Tuoi"] = Tuoi;
+                                break;
+                            default:
+                                decimal colValue = Convert.ToDecimal(dtRow[colName]);
+                                String giaTriRoiRac = DiscretizationData.DataDiscretizationForDiagnosis(colValue, colName);
+                                newRow[colName] = giaTriRoiRac;
+                                break;
+                        }
+                    }
+                    trainningDataTable.Rows.Add(newRow);
+                }
+            }
+            catch (Exception)
+            {
                 
-        //        if (iCount < luongDuLieu)
-        //        {
-        //            trainingSetTA.Insert(Convert.ToDecimal(dtRow[1]),dtRow[2].ToString(), dtRow[3].ToString(), dtRow[4].ToString(), dtRow[5].ToString(), dtRow[6].ToString(), dtRow[7].ToString(), dtRow[8].ToString(), dtRow[9].ToString(), dtRow[10].ToString(), dtRow[11].ToString(), dtRow[12].ToString(), dtRow[13].ToString(), dtRow[14].ToString(), dtRow[15].ToString(), dtRow[16].ToString(), dtRow[17].ToString(), dtRow[18].ToString(), dtRow[19].ToString(), dtRow[20].ToString(), dtRow[21].ToString(), dtRow[22].ToString(), dtRow[23].ToString(), dtRow[24].ToString(), dtRow[25].ToString(), dtRow[26].ToString(), dtRow[27].ToString(), dtRow[28].ToString(), dtRow[29].ToString(), dtRow[30].ToString(), dtRow[31].ToString(), dtRow[32].ToString(), dtRow[33].ToString(),dtRow[34].ToString());
-        //        }
-        //        else
-        //        {
-        //            testSetTA.Insert(Convert.ToDecimal(dtRow[1]), dtRow[2].ToString(), dtRow[3].ToString(), dtRow[4].ToString(), dtRow[5].ToString(), dtRow[6].ToString(), dtRow[7].ToString(), dtRow[8].ToString(), dtRow[9].ToString(), dtRow[10].ToString(), dtRow[11].ToString(), dtRow[12].ToString(), dtRow[13].ToString(), dtRow[14].ToString(), dtRow[15].ToString(), dtRow[16].ToString(), dtRow[17].ToString(), dtRow[18].ToString(), dtRow[19].ToString(), dtRow[20].ToString(), dtRow[21].ToString(), dtRow[22].ToString(), dtRow[23].ToString(), dtRow[24].ToString(), dtRow[25].ToString(), dtRow[26].ToString(), dtRow[27].ToString(), dtRow[28].ToString(), dtRow[29].ToString(), dtRow[30].ToString(), dtRow[31].ToString(), dtRow[32].ToString(), dtRow[33].ToString(), dtRow[34].ToString());
-        //        }
-        //        iCount++;
-        //    }
+            }
 
-        //}        
+
+
+            return trainningDataTable;
+        }
         
     }
 }

@@ -24,7 +24,7 @@ namespace DiabetesDido.ClassificationLogic
             switch (learningAlgorithm)
             { 
                 case LearningAlgorithm.C45:
-                    return new C45Model();
+                    //return new C45Model();
                     
                 case LearningAlgorithm.NaiveBayesS:
                     return new NaiveBayesSModel();

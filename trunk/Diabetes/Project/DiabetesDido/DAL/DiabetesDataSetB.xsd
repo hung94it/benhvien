@@ -126,6 +126,15 @@ ORDER BY MaxRow DESC</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="TotalAttributes" Modifier="Public" Name="TotalAttributes" QueryType="Scalar" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy1" UserSourceName="TotalAttributes">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        COUNT(DISTINCT TenThuocTinh) AS Expr1
+FROM            BayesObject</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
             </Sources>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ContinuousDataTableAdapter" GeneratorDataComponentClassName="ContinuousDataTableAdapter" Name="ContinuousData" UserDataComponentName="ContinuousDataTableAdapter">
@@ -371,7 +380,7 @@ ORDER BY MaxRow DESC</CommandText>
   <xs:element name="DiabetesDataSetB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DiabetesDataSetB" msprop:Generator_UserDSName="DiabetesDataSetB">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Trainning" msprop:Generator_TableClassName="TrainningDataTable" msprop:Generator_TableVarName="tableTrainning" msprop:Generator_RowChangedName="TrainningRowChanged" msprop:Generator_TablePropName="Trainning" msprop:Generator_RowDeletingName="TrainningRowDeleting" msprop:Generator_RowChangingName="TrainningRowChanging" msprop:Generator_RowEvHandlerName="TrainningRowChangeEventHandler" msprop:Generator_RowDeletedName="TrainningRowDeleted" msprop:Generator_RowClassName="TrainningRow" msprop:Generator_UserTableName="Trainning" msprop:Generator_RowEvArgName="TrainningRowChangeEvent">
+        <xs:element name="Trainning" msprop:Generator_TableClassName="TrainningDataTable" msprop:Generator_TableVarName="tableTrainning" msprop:Generator_TablePropName="Trainning" msprop:Generator_RowDeletingName="TrainningRowDeleting" msprop:Generator_RowChangingName="TrainningRowChanging" msprop:Generator_RowEvHandlerName="TrainningRowChangeEventHandler" msprop:Generator_RowDeletedName="TrainningRowDeleted" msprop:Generator_UserTableName="Trainning" msprop:Generator_RowChangedName="TrainningRowChanged" msprop:Generator_RowEvArgName="TrainningRowChangeEvent" msprop:Generator_RowClassName="TrainningRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Tuoi" msprop:Generator_ColumnVarNameInTable="columnTuoi" msprop:Generator_ColumnPropNameInRow="Tuoi" msprop:Generator_ColumnPropNameInTable="TuoiColumn" msprop:Generator_UserColumnName="Tuoi" minOccurs="0">
@@ -566,7 +575,7 @@ ORDER BY MaxRow DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DiscreteInterval" msprop:Generator_TableClassName="DiscreteIntervalDataTable" msprop:Generator_TableVarName="tableDiscreteInterval" msprop:Generator_TablePropName="DiscreteInterval" msprop:Generator_RowDeletingName="DiscreteIntervalRowDeleting" msprop:Generator_RowChangingName="DiscreteIntervalRowChanging" msprop:Generator_RowEvHandlerName="DiscreteIntervalRowChangeEventHandler" msprop:Generator_RowDeletedName="DiscreteIntervalRowDeleted" msprop:Generator_UserTableName="DiscreteInterval" msprop:Generator_RowChangedName="DiscreteIntervalRowChanged" msprop:Generator_RowEvArgName="DiscreteIntervalRowChangeEvent" msprop:Generator_RowClassName="DiscreteIntervalRow">
+        <xs:element name="DiscreteInterval" msprop:Generator_TableClassName="DiscreteIntervalDataTable" msprop:Generator_TableVarName="tableDiscreteInterval" msprop:Generator_RowChangedName="DiscreteIntervalRowChanged" msprop:Generator_TablePropName="DiscreteInterval" msprop:Generator_RowDeletingName="DiscreteIntervalRowDeleting" msprop:Generator_RowChangingName="DiscreteIntervalRowChanging" msprop:Generator_RowEvHandlerName="DiscreteIntervalRowChangeEventHandler" msprop:Generator_RowDeletedName="DiscreteIntervalRowDeleted" msprop:Generator_RowClassName="DiscreteIntervalRow" msprop:Generator_UserTableName="DiscreteInterval" msprop:Generator_RowEvArgName="DiscreteIntervalRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="TenThuocTinh" msprop:Generator_ColumnVarNameInTable="columnTenThuocTinh" msprop:Generator_ColumnPropNameInRow="TenThuocTinh" msprop:Generator_ColumnPropNameInTable="TenThuocTinhColumn" msprop:Generator_UserColumnName="TenThuocTinh" minOccurs="0">
@@ -586,7 +595,7 @@ ORDER BY MaxRow DESC</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ContinuousData" msprop:Generator_TableClassName="ContinuousDataDataTable" msprop:Generator_TableVarName="tableContinuousData" msprop:Generator_RowChangedName="ContinuousDataRowChanged" msprop:Generator_TablePropName="ContinuousData" msprop:Generator_RowDeletingName="ContinuousDataRowDeleting" msprop:Generator_RowChangingName="ContinuousDataRowChanging" msprop:Generator_RowEvHandlerName="ContinuousDataRowChangeEventHandler" msprop:Generator_RowDeletedName="ContinuousDataRowDeleted" msprop:Generator_RowClassName="ContinuousDataRow" msprop:Generator_UserTableName="ContinuousData" msprop:Generator_RowEvArgName="ContinuousDataRowChangeEvent">
+        <xs:element name="ContinuousData" msprop:Generator_TableClassName="ContinuousDataDataTable" msprop:Generator_TableVarName="tableContinuousData" msprop:Generator_TablePropName="ContinuousData" msprop:Generator_RowDeletingName="ContinuousDataRowDeleting" msprop:Generator_RowChangingName="ContinuousDataRowChanging" msprop:Generator_RowEvHandlerName="ContinuousDataRowChangeEventHandler" msprop:Generator_RowDeletedName="ContinuousDataRowDeleted" msprop:Generator_UserTableName="ContinuousData" msprop:Generator_RowChangedName="ContinuousDataRowChanged" msprop:Generator_RowEvArgName="ContinuousDataRowChangeEvent" msprop:Generator_RowClassName="ContinuousDataRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:decimal" />

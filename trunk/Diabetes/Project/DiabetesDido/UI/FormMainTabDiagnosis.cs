@@ -31,7 +31,8 @@ namespace DiabetesDido.UI
             {
                 if (this.isDiscreteTabDianosis == false)
                 {
-                    this.dataGridViewXDiagnosis.DataSource = DataDiscretization(this.dataGridViewXDiagnosis.DataSource as DataTable);
+                    this.dataGridViewXDiagnosis.DataSource = DiscretizationData
+                        .DataDiscretization(this.dataGridViewXDiagnosis.DataSource as DataTable, bayesObjectTA);
                     this.isDiscreteTabDianosis = true;
                 }
             }
@@ -41,8 +42,8 @@ namespace DiabetesDido.UI
             }
 
 
-            DataTable diagnosisDataTable = (this.dataGridViewXDiagnosis.DataSource as DataTable).DefaultView.ToTable(false,
-                getAllColumnNames());
+            DataTable diagnosisDataTable = (this.dataGridViewXDiagnosis.DataSource as DataTable)
+                .DefaultView.ToTable(false, getColumnNames());
             this.trainningDataTabDianosis = new TrainningData(diagnosisDataTable, this.codification);
             
             DataTable resultTable = new DataTable();
@@ -68,7 +69,8 @@ namespace DiabetesDido.UI
                 columnIndex = 0;
                 foreach (DataColumn column in resultTable.Columns)
                 {
-                    row[column] = this.trainningDataTabDianosis.CodificationData.Translate(classColumnName, modelResults[columnIndex++][rowIndex]);                    
+                    row[column] = this.trainningDataTabDianosis.CodificationData
+                        .Translate(classColumnName, modelResults[columnIndex++][rowIndex]);                    
                 }
                 resultTable.Rows.Add(row);
             }
@@ -116,9 +118,11 @@ namespace DiabetesDido.UI
         // View rule at selected row
         private void buttonXGetRule_Click(object sender, EventArgs e)
         {
-            if (this.dataGridViewXDiagnosis.DataSource == null || this.dataGridViewXDiagnosisResult.DataSource == null)
+            if (this.dataGridViewXDiagnosis.DataSource == null 
+                || this.dataGridViewXDiagnosisResult.DataSource == null)
             {
-                MessageBox.Show("Chưa có dữ liệu hoặc dữ liệu chưa rời rạc", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Chưa có dữ liệu hoặc dữ liệu chưa rời rạc",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -135,7 +139,8 @@ namespace DiabetesDido.UI
                 return;
             }
 
-            textBoxXDiagnosis.Text = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex], (treeModel as C45Model).Tree);
+            textBoxXDiagnosis.Text = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex]
+                , (treeModel as C45Model).Tree);
             
         }
 
@@ -157,32 +162,28 @@ namespace DiabetesDido.UI
                 // Check if this is a leaf
                 if (current.IsLeaf)
                 {
-                    // This is a leaf node. The decision
-                    // proccess thus should stop here.                    
+                    // This is a leaf node. The decision proccess thus should stop here.                    
                     return rule;
                 }
 
-                // This node is not a leaf. Continue the
-                // decisioning proccess following the childs
-
+                // This node is not a leaf. Continue the decisioning proccess following the childs
                 // Get the next attribute to guide reasoning
                 int attribute = current.Branches.AttributeIndex;
 
-                // Check which child is responsible for dealing
-                // which the particular value of the attribute
+                // Check which child is responsible for dealing which the particular value of the attribute
                 DecisionNode nextNode = null;                
 
                 foreach (DecisionNode branch in current.Branches)
                 {
                     if (branch.Compute(input[attribute]))
                     {
-                        // This is the child node responsible for dealing
-                        // which this particular attribute value. Choose it
+                        // This is the child node responsible for dealing which this particular attribute value. Choose it
                         // to continue reasoning.
 
                         nextNode = branch;
                         attributeName = nextNode.Owner.Attributes[nextNode.Parent.Branches.AttributeIndex].Name;
-                        attributeValue = this.trainningDataTabDianosis.CodificationData.Translate(attributeName, Convert.ToInt32(nextNode.Value));
+                        attributeValue = this.trainningDataTabDianosis.CodificationData.Translate(attributeName,
+                            Convert.ToInt32(nextNode.Value));
                         rule += attributeName + " = " + attributeValue + " ";                        
                         break;
                     }
@@ -193,6 +194,11 @@ namespace DiabetesDido.UI
 
             // Normal execution should not reach here.
             throw new InvalidOperationException("The tree is degenerated.");
+        }
+
+        private void buttonXViewTreeRule_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void buttonXImportData_Click(object sender, EventArgs e)
@@ -221,7 +227,8 @@ namespace DiabetesDido.UI
         //Hàm dùng để đọc file excel ** Lưu ý: Chỉ đọc file .xls
         private DataTable ReadDataFromExcelFile(String filePath)
         {
-            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath.Trim() + ";Extended Properties=Excel 8.0";
+            string connectionString = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + filePath.Trim() 
+                + ";Extended Properties=Excel 8.0";
             // Tạo đối tượng kết nối
             OleDbConnection oledbConn = new OleDbConnection(connectionString);
             DataTable data = null;
@@ -248,7 +255,8 @@ namespace DiabetesDido.UI
             }
             catch(Exception)
             {
-                MessageBox.Show("Chương trình không đọc được dữ liệu!! Yêu cầu kiểm tra tập tin đã chọn!!","Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Chương trình không đọc được dữ liệu!! Yêu cầu kiểm tra tập tin đã chọn!!"
+                    ,"Thông báo",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 //MessageBox.Show(ex.ToString());
             }
             finally
@@ -319,9 +327,7 @@ namespace DiabetesDido.UI
             {
                 MessageBox.Show(ex.ToString());
             }
-
-            
-
+           
             return trainningDataTable;
         }
     }
