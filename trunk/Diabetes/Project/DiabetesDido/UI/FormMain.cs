@@ -54,16 +54,16 @@ namespace DiabetesDido.UI
             InitializeTabPreprocessingData();
             InitializeTabCreateModel();
             InitializeTabDiagnosis();
-
-            getCodification();
+            
         }
 
         private void superTabControlMain_SelectedTabChanged(object sender, SuperTabStripSelectedTabChangedEventArgs e)
-        {
-            DataTable codificationDatatable = getCodification();
+        {            
             switch ((sender as SuperTabControl).SelectedTabIndex)
             { 
                 case 1:
+                    DataTable codificationDatatable = getCodification();
+
                     if (this.isDiscreteTabProcessingData)
                     {
                         refreshTabCreateModel();
