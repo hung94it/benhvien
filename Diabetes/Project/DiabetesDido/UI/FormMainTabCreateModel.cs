@@ -125,8 +125,8 @@ namespace DiabetesDido.UI
             TrainningData data = new TrainningData(testTable, this.codification);
             // Show test result
             dataGridViewXTrainningResult.DataSource = this.modelList[activeLearningAlgorithm].TestModel(data);
-            
-            List<int> hideColumns = new List<int>(new int[] {});
+
+            List<int> hideColumns = new List<int>(new int[] { 9, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21 });
 
             for (int indexColum = 0; indexColum < this.dataGridViewXTrainningResult.Columns.Count; indexColum++)
             {
@@ -259,10 +259,7 @@ namespace DiabetesDido.UI
                             {
                                 this.isDiscreteTabProcessingData = false;
                                 return null;
-                            }
-                            else {
-                                this.isDiscreteTabProcessingData = true;
-                            }
+                            }                            
 
                             newRow[column] = attributeInterval.Rows[0][1].ToString();
                         }                        
@@ -274,6 +271,8 @@ namespace DiabetesDido.UI
             }
 
             codificationTable.Rows[0][indexLastColumn] = Properties.Settings.Default.negativeString;
+
+            this.isDiscreteTabProcessingData = true;
 
             return codificationTable;
         }
