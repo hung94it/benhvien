@@ -59,7 +59,8 @@ namespace DiabetesDido.UI
                 {                    
                     continue;                    
                 }
-
+                /*
+                // Fill database by average value
                 // Get average of True value
                 var averageTrue = this.continuousDataTable.AsEnumerable()
                     .Where(x => x.Field<decimal>(column.ColumnName) != 0 
@@ -88,7 +89,53 @@ namespace DiabetesDido.UI
                             row[column] = averageFalse;
                         } 
                     }
-                }                 
+                }
+                */
+                //Filling data by random value
+                //Get min of True value
+                var minTrue = this.continuousDataTable.AsEnumerable()
+                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
+                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
+                        .Equals(Properties.Settings.Default.positiveString))
+                    .Min(x => x.Field<decimal>(column.ColumnName));
+                //Get max of True value
+                var maxTrue = this.continuousDataTable.AsEnumerable()
+                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
+                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
+                        .Equals(Properties.Settings.Default.positiveString))
+                    .Max(x => x.Field<decimal>(column.ColumnName));
+                //Get min for False value
+                var minFalse = this.continuousDataTable.AsEnumerable()
+                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
+                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
+                        .Equals(Properties.Settings.Default.negativeString))
+                    .Min(x => x.Field<decimal>(column.ColumnName));
+                //Get max of False value
+                var maxFalse = this.continuousDataTable.AsEnumerable()
+                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
+                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
+                        .Equals(Properties.Settings.Default.negativeString))
+                    .Max(x => x.Field<decimal>(column.ColumnName));
+                foreach (DataRow row in this.continuousDataTable.Rows)
+                {
+                    if ((decimal)row[column] == 0)
+                    {
+                        Random rD=new Random();
+                        if (row["TieuDuong"].ToString().Equals(Properties.Settings.Default.positiveString))
+                        {
+                            decimal newValue = Convert.ToDecimal(rD.NextDouble()) * Math.Abs(maxTrue - minTrue) + minTrue;
+                            newValue = Math.Round(newValue, 3);
+                            row[column] = newValue;
+                                
+                        }
+                        else
+                        {
+                            decimal newValue = Convert.ToDecimal(rD.NextDouble()) * Math.Abs(maxFalse - minFalse) + minFalse;
+                            newValue = Math.Round(newValue, 3);
+                            row[column] = newValue;
+                        }
+                    }
+                }
             }
             this.continuousDataTableAdapter.Update(this.continuousDataTable);            
         }
