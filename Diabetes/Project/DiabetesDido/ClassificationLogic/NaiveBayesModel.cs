@@ -20,7 +20,7 @@ namespace DiabetesDido.ClassificationLogic
         {
             Codification codification = trainningData.CodificationData;            
             int[][] inputs = trainningData.TrainningAttributes.ToInt32();
-            int[] outputs = trainningData.ClassifierAttribute;
+            int[] outputs = trainningData.ClassificationAttribute;
 
             int lastIndex = codification.Columns.Count - 1;            
 

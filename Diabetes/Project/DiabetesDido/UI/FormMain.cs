@@ -26,7 +26,6 @@ namespace DiabetesDido.UI
 
         // Tab Dianosis's variables
         private TrainningData trainningDataTabDianosis;
-        private bool isDiscreteTabDianosis;
 
         // Tab Create Model's variables               
         private LearningAlgorithm activeLearningAlgorithm;                

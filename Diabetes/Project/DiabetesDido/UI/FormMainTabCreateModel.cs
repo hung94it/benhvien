@@ -126,7 +126,7 @@ namespace DiabetesDido.UI
             // Show test result
             dataGridViewXTrainningResult.DataSource = this.modelList[activeLearningAlgorithm].TestModel(data);
 
-            List<int> hideColumns = new List<int>(new int[] { 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 });
+            List<int> hideColumns = new List<int>(new int[] { 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 });
 
             for (int indexColum = 0; indexColum < this.dataGridViewXTrainningResult.Columns.Count; indexColum++)
             {
@@ -135,8 +135,6 @@ namespace DiabetesDido.UI
                     this.dataGridViewXTrainningResult.Columns[indexColum].Visible = false;
                 }
             }
-
-            //this.dataGridViewXTrainningResult.Columns[23].Name = "F-Measure";
         }
 
 
@@ -145,7 +143,7 @@ namespace DiabetesDido.UI
         {
             if (this.modelList.ContainsKey(LearningAlgorithm.C45))
             {
-                new FormTreeView((this.GetModel() as DecisionTreeModel).Tree, this.codification).Show();
+                new FormTreeView((this.GetModel() as C45Model).Tree, this.codification).Show();
             }
             else
             {

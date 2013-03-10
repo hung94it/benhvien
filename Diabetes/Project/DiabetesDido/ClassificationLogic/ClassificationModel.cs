@@ -24,7 +24,7 @@ namespace DiabetesDido.ClassificationLogic
             switch (learningAlgorithm)
             { 
                 case LearningAlgorithm.C45:
-                    //return new C45Model();
+                    return new C45Model();
                     
                 case LearningAlgorithm.NaiveBayesS:
                     return new NaiveBayesSModel();
@@ -43,7 +43,7 @@ namespace DiabetesDido.ClassificationLogic
 
         public virtual List<ConfusionMatrix> TestModel(TrainningData trainningData)
         {
-            int[] expected = trainningData.ClassifierAttribute;
+            int[] expected = trainningData.ClassificationAttribute;
             int[] predicted = ComputeModel(trainningData.TrainningAttributes);
             int positiveValue = trainningData.PositiveValue;
             int negativeValue = trainningData.NegativeValue;
