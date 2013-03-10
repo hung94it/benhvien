@@ -27,7 +27,7 @@ namespace DiabetesDido.ClassificationLogic
             //double[][] inputs = trainningData.DiscreteValueDatatable.ToArray();
             //inputs = inputs.RemoveColumn(
             double[][] inputs = trainningData.TrainningAttributes;
-            int[] outputs = (int[])trainningData.ClassifierAttribute.Clone();
+            int[] outputs = (int[])trainningData.ClassificationAttribute.Clone();
 
             // Create output for SVM (-1 or 1)
             for (int index = 0; index < outputs.Length; index++)

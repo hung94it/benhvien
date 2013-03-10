@@ -15,7 +15,7 @@ namespace DiabetesDido.UI
     {        
         public void InitializeTabDiagnosis()
         {
-            this.isDiscreteTabDianosis = false;
+            
         }
 
         // View diagnosis result
@@ -29,11 +29,10 @@ namespace DiabetesDido.UI
 
             if (this.dataGridViewXDiagnosis.DataSource != null)
             {
-                if (this.isDiscreteTabDianosis == false)
+                if (this.trainningDataTabDianosis == null)                
                 {
                     this.dataGridViewXDiagnosis.DataSource = DiscretizationData
-                        .DataDiscretization(this.dataGridViewXDiagnosis.DataSource as DataTable, bayesObjectTA);
-                    this.isDiscreteTabDianosis = true;
+                        .DataDiscretization(this.dataGridViewXDiagnosis.DataSource as DataTable, bayesObjectTA);                    
                 }
             }
             else {
@@ -118,10 +117,16 @@ namespace DiabetesDido.UI
         // View rule at selected row
         private void buttonXGetRule_Click(object sender, EventArgs e)
         {
-            if (this.dataGridViewXDiagnosis.DataSource == null 
-                || this.dataGridViewXDiagnosisResult.DataSource == null)
+            if (this.dataGridViewXDiagnosis.DataSource == null)
             {
-                MessageBox.Show("Chưa có dữ liệu hoặc dữ liệu chưa rời rạc",
+                MessageBox.Show("Chưa có dữ liệu",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (this.dataGridViewXDiagnosisResult.DataSource == null)
+            {
+                MessageBox.Show("Dữ liệu chưa rời rạc",
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -138,10 +143,9 @@ namespace DiabetesDido.UI
                 MessageBox.Show("Chưa có mô hình C45!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-            textBoxXDiagnosis.Text = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex]
-                , (treeModel as C45Model).Tree);
             
+            textBoxXDiagnosis.Text = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex]
+                , (treeModel as C45Model).Tree);            
         }
 
         public string Compute(double[] input, DecisionTree tree)
@@ -188,7 +192,6 @@ namespace DiabetesDido.UI
                         break;
                     }
                 }                
-
                 current = nextNode;
             }
 
@@ -221,7 +224,7 @@ namespace DiabetesDido.UI
             dataGridViewXDiagnosis.Columns["Ca"].Visible = false;
             dataGridViewXDiagnosis.Columns["Cl"].Visible = false;
 
-            this.isDiscreteTabDianosis = false;
+            this.trainningDataTabDianosis = null;            
         }
 
         //Hàm dùng để đọc file excel ** Lưu ý: Chỉ đọc file .xls
