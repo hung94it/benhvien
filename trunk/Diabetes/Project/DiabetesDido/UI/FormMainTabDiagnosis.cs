@@ -117,35 +117,39 @@ namespace DiabetesDido.UI
         // View rule at selected row
         private void buttonXGetRule_Click(object sender, EventArgs e)
         {
+            if (!canGetRule())
+            {
+                return;
+            }
+
+            int rowIndex = this.dataGridViewXDiagnosis.CurrentCell.RowIndex;
+            ClassificationModel treeModel = this.modelList[LearningAlgorithm.C45];
+            textBoxXDiagnosis.Text = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex]
+                , (treeModel as C45Model).Tree);            
+        }
+
+        private bool canGetRule()
+        {
             if (this.dataGridViewXDiagnosis.DataSource == null)
             {
                 MessageBox.Show("Chưa có dữ liệu",
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
             if (this.dataGridViewXDiagnosisResult.DataSource == null)
             {
                 MessageBox.Show("Dữ liệu chưa rời rạc",
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
 
-            int rowIndex = this.dataGridViewXDiagnosis.CurrentCell.RowIndex;
-            ClassificationModel treeModel;
-
-            if (this.modelList.ContainsKey(LearningAlgorithm.C45))
-            {
-                treeModel = this.modelList[LearningAlgorithm.C45];
-            }
-            else
+            if (!this.modelList.ContainsKey(LearningAlgorithm.C45))
             {
                 MessageBox.Show("Chưa có mô hình C45!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
-            
-            textBoxXDiagnosis.Text = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex]
-                , (treeModel as C45Model).Tree);            
+            return true;
         }
 
         public string Compute(double[] input, DecisionTree tree)
@@ -201,6 +205,16 @@ namespace DiabetesDido.UI
 
         private void buttonXViewTreeRule_Click(object sender, EventArgs e)
         {
+            if (!canGetRule())
+            {
+                return;
+            }
+
+            int rowIndex = this.dataGridViewXDiagnosis.CurrentCell.RowIndex;
+            ClassificationModel treeModel = this.modelList[LearningAlgorithm.C45];
+            string rule = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex]
+                , (treeModel as C45Model).Tree);
+            (new FormTreeRule((treeModel as C45Model).Tree, this.trainningDataTabDianosis.CodificationData, rule)).Show();
 
         }
 
@@ -210,12 +224,16 @@ namespace DiabetesDido.UI
             this.dataGridViewXDiagnosisResult.DataSource = null;
 
             this.openFileDialogMain.Filter = "Excel file (*.xls)|*.xls";
-            this.textBoxXFilePathDiagnosis.Text = this.openFileDialogMain.ShowDialog() == DialogResult.OK
-                ? this.openFileDialogMain.FileName : "";
-            if (this.textBoxXFilePathDiagnosis.Text.Equals(""))
-                return;
 
-            this.dataGridViewXDiagnosis.DataSource = ReadDataFromExcelFile(this.textBoxXFilePathDiagnosis.Text);            
+            if (this.openFileDialogMain.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            this.textBoxXFilePathDiagnosis.Text = this.openFileDialogMain.FileName;            
+
+            this.dataGridViewXDiagnosis.DataSource = ReadDataFromExcelFile(this.openFileDialogMain.FileName);
+                      
             //dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
             dataGridViewXDiagnosis.Columns["GRAN"].Visible = false;
             dataGridViewXDiagnosis.Columns["TyLeGRAN"].Visible = false;

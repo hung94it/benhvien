@@ -67,21 +67,6 @@ namespace DiabetesDido.UI
                         MessageBox.Show("Chưa có dữ liệu rời rạc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
-
-                    //DataTable codificationDatatable = getDataTableForCodification();
-
-                    //if (this.isDiscreteTabProcessingData)
-                    //{
-                    //    refreshTabCreateModel();
-                    //    this.codification = new Codification(codificationDatatable);
-                    //}
-                    //else 
-                    //{
-                    //    (sender as SuperTabControl).SelectedTabIndex = 0;
-                    //    MessageBox.Show("Chưa có dữ liệu rời rạc!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //    return;
-                    //}
                     break;
                 default:
                     break;

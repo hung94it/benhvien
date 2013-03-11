@@ -380,6 +380,14 @@ SELECT ID, MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholestero
               <Mapping SourceColumn="TieuDuong" DataSetColumn="TieuDuong" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CountRows" Modifier="Public" Name="CountRows" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="CountRows">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM DataSet</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteAllData" Modifier="Public" Name="DeleteAllData" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteAllData">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -544,6 +552,14 @@ SELECT ID, MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholestero
               <Mapping SourceColumn="Ca" DataSetColumn="Ca" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CountRows" Modifier="Public" Name="CountRows" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="CountRows">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM DataSetTemp</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteAllData" Modifier="Public" Name="DeleteAllData" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteAllData">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -926,6 +942,14 @@ SELECT ID, TenThuocTinh, KhoangRoiRac, GiaTri, TieuDuong FROM BayesObject WHERE 
               <Mapping SourceColumn="TieuDuong" DataSetColumn="TieuDuong" />
             </Mappings>
             <Sources>
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CountRows" Modifier="Public" Name="CountRows" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="CountRows">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM BayesObject</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
               <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="DeleteAll" Modifier="Public" Name="DeleteAll" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="DeleteAll">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -1098,7 +1122,16 @@ SELECT ID, MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL
               <Mapping SourceColumn="PCT" DataSetColumn="PCT" />
               <Mapping SourceColumn="TieuDuong" DataSetColumn="TieuDuong" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="testConnectionString (Settings)" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="CountRows" Modifier="Public" Name="CountRows" QueryType="Scalar" ScalarCallRetval="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="CountRows">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT COUNT(*) FROM DataSetTemp</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -1108,7 +1141,7 @@ SELECT ID, MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL
   <xs:element name="DiabetesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DiabetesDataSet" msprop:Generator_UserDSName="DiabetesDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="BenhNhan" msprop:Generator_TableClassName="BenhNhanDataTable" msprop:Generator_TableVarName="tableBenhNhan" msprop:Generator_TablePropName="BenhNhan" msprop:Generator_RowDeletingName="BenhNhanRowDeleting" msprop:Generator_UserTableName="BenhNhan" msprop:Generator_RowChangingName="BenhNhanRowChanging" msprop:Generator_RowEvHandlerName="BenhNhanRowChangeEventHandler" msprop:Generator_RowDeletedName="BenhNhanRowDeleted" msprop:Generator_RowEvArgName="BenhNhanRowChangeEvent" msprop:Generator_RowChangedName="BenhNhanRowChanged" msprop:Generator_RowClassName="BenhNhanRow">
+        <xs:element name="BenhNhan" msprop:Generator_TableClassName="BenhNhanDataTable" msprop:Generator_TableVarName="tableBenhNhan" msprop:Generator_RowChangedName="BenhNhanRowChanged" msprop:Generator_TablePropName="BenhNhan" msprop:Generator_RowDeletingName="BenhNhanRowDeleting" msprop:Generator_RowChangingName="BenhNhanRowChanging" msprop:Generator_RowEvHandlerName="BenhNhanRowChangeEventHandler" msprop:Generator_RowDeletedName="BenhNhanRowDeleted" msprop:Generator_RowClassName="BenhNhanRow" msprop:Generator_UserTableName="BenhNhan" msprop:Generator_RowEvArgName="BenhNhanRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IDKhamBenh" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIDKhamBenh" msprop:Generator_ColumnPropNameInRow="IDKhamBenh" msprop:Generator_ColumnPropNameInTable="IDKhamBenhColumn" msprop:Generator_UserColumnName="IDKhamBenh" type="xs:long" />
@@ -1175,7 +1208,7 @@ SELECT ID, MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataSet" msprop:Generator_TableClassName="DataSetDataTable" msprop:Generator_TableVarName="tableDataSet" msprop:Generator_TablePropName="DataSet" msprop:Generator_RowDeletingName="DataSetRowDeleting" msprop:Generator_UserTableName="DataSet" msprop:Generator_RowChangingName="DataSetRowChanging" msprop:Generator_RowEvHandlerName="DataSetRowChangeEventHandler" msprop:Generator_RowDeletedName="DataSetRowDeleted" msprop:Generator_RowEvArgName="DataSetRowChangeEvent" msprop:Generator_RowChangedName="DataSetRowChanged" msprop:Generator_RowClassName="DataSetRow">
+        <xs:element name="DataSet" msprop:Generator_TableClassName="DataSetDataTable" msprop:Generator_TableVarName="tableDataSet" msprop:Generator_RowChangedName="DataSetRowChanged" msprop:Generator_TablePropName="DataSet" msprop:Generator_RowDeletingName="DataSetRowDeleting" msprop:Generator_RowChangingName="DataSetRowChanging" msprop:Generator_RowEvHandlerName="DataSetRowChangeEventHandler" msprop:Generator_RowDeletedName="DataSetRowDeleted" msprop:Generator_RowClassName="DataSetRow" msprop:Generator_UserTableName="DataSet" msprop:Generator_RowEvArgName="DataSetRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:decimal" />
@@ -1236,7 +1269,7 @@ SELECT ID, MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="DataSetTemp" msprop:Generator_TableClassName="DataSetTempDataTable" msprop:Generator_TableVarName="tableDataSetTemp" msprop:Generator_TablePropName="DataSetTemp" msprop:Generator_RowDeletingName="DataSetTempRowDeleting" msprop:Generator_UserTableName="DataSetTemp" msprop:Generator_RowChangingName="DataSetTempRowChanging" msprop:Generator_RowEvHandlerName="DataSetTempRowChangeEventHandler" msprop:Generator_RowDeletedName="DataSetTempRowDeleted" msprop:Generator_RowEvArgName="DataSetTempRowChangeEvent" msprop:Generator_RowChangedName="DataSetTempRowChanged" msprop:Generator_RowClassName="DataSetTempRow">
+        <xs:element name="DataSetTemp" msprop:Generator_TableClassName="DataSetTempDataTable" msprop:Generator_TableVarName="tableDataSetTemp" msprop:Generator_RowChangedName="DataSetTempRowChanged" msprop:Generator_TablePropName="DataSetTemp" msprop:Generator_RowDeletingName="DataSetTempRowDeleting" msprop:Generator_RowChangingName="DataSetTempRowChanging" msprop:Generator_RowEvHandlerName="DataSetTempRowChangeEventHandler" msprop:Generator_RowDeletedName="DataSetTempRowDeleted" msprop:Generator_RowClassName="DataSetTempRow" msprop:Generator_UserTableName="DataSetTemp" msprop:Generator_RowEvArgName="DataSetTempRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaBN" msprop:Generator_ColumnVarNameInTable="columnMaBN" msprop:Generator_ColumnPropNameInRow="MaBN" msprop:Generator_ColumnPropNameInTable="MaBNColumn" msprop:Generator_UserColumnName="MaBN" type="xs:decimal" minOccurs="0" />
@@ -1475,7 +1508,7 @@ SELECT ID, MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="XetNghiem" msprop:Generator_TableClassName="XetNghiemDataTable" msprop:Generator_TableVarName="tableXetNghiem" msprop:Generator_TablePropName="XetNghiem" msprop:Generator_RowDeletingName="XetNghiemRowDeleting" msprop:Generator_UserTableName="XetNghiem" msprop:Generator_RowChangingName="XetNghiemRowChanging" msprop:Generator_RowEvHandlerName="XetNghiemRowChangeEventHandler" msprop:Generator_RowDeletedName="XetNghiemRowDeleted" msprop:Generator_RowEvArgName="XetNghiemRowChangeEvent" msprop:Generator_RowChangedName="XetNghiemRowChanged" msprop:Generator_RowClassName="XetNghiemRow">
+        <xs:element name="XetNghiem" msprop:Generator_TableClassName="XetNghiemDataTable" msprop:Generator_TableVarName="tableXetNghiem" msprop:Generator_RowChangedName="XetNghiemRowChanged" msprop:Generator_TablePropName="XetNghiem" msprop:Generator_RowDeletingName="XetNghiemRowDeleting" msprop:Generator_RowChangingName="XetNghiemRowChanging" msprop:Generator_RowEvHandlerName="XetNghiemRowChangeEventHandler" msprop:Generator_RowDeletedName="XetNghiemRowDeleted" msprop:Generator_RowClassName="XetNghiemRow" msprop:Generator_UserTableName="XetNghiem" msprop:Generator_RowEvArgName="XetNghiemRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IDXetNghiem" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIDXetNghiem" msprop:Generator_ColumnPropNameInRow="IDXetNghiem" msprop:Generator_ColumnPropNameInTable="IDXetNghiemColumn" msprop:Generator_UserColumnName="IDXetNghiem" type="xs:long" />
@@ -1529,7 +1562,7 @@ SELECT ID, MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="BayesObject" msprop:Generator_TableClassName="BayesObjectDataTable" msprop:Generator_TableVarName="tableBayesObject" msprop:Generator_TablePropName="BayesObject" msprop:Generator_RowDeletingName="BayesObjectRowDeleting" msprop:Generator_UserTableName="BayesObject" msprop:Generator_RowChangingName="BayesObjectRowChanging" msprop:Generator_RowEvHandlerName="BayesObjectRowChangeEventHandler" msprop:Generator_RowDeletedName="BayesObjectRowDeleted" msprop:Generator_RowEvArgName="BayesObjectRowChangeEvent" msprop:Generator_RowChangedName="BayesObjectRowChanged" msprop:Generator_RowClassName="BayesObjectRow">
+        <xs:element name="BayesObject" msprop:Generator_TableClassName="BayesObjectDataTable" msprop:Generator_TableVarName="tableBayesObject" msprop:Generator_RowChangedName="BayesObjectRowChanged" msprop:Generator_TablePropName="BayesObject" msprop:Generator_RowDeletingName="BayesObjectRowDeleting" msprop:Generator_RowChangingName="BayesObjectRowChanging" msprop:Generator_RowEvHandlerName="BayesObjectRowChangeEventHandler" msprop:Generator_RowDeletedName="BayesObjectRowDeleted" msprop:Generator_RowClassName="BayesObjectRow" msprop:Generator_UserTableName="BayesObject" msprop:Generator_RowEvArgName="BayesObjectRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID" msprop:Generator_ColumnPropNameInRow="ID" msprop:Generator_ColumnPropNameInTable="IDColumn" msprop:Generator_UserColumnName="ID" type="xs:decimal" />
@@ -1558,7 +1591,7 @@ SELECT ID, MaBN, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride, LDL
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="NewDataSetTemp" msprop:Generator_TableClassName="NewDataSetTempDataTable" msprop:Generator_TableVarName="tableNewDataSetTemp" msprop:Generator_TablePropName="NewDataSetTemp" msprop:Generator_RowDeletingName="NewDataSetTempRowDeleting" msprop:Generator_UserTableName="NewDataSetTemp" msprop:Generator_RowChangingName="NewDataSetTempRowChanging" msprop:Generator_RowEvHandlerName="NewDataSetTempRowChangeEventHandler" msprop:Generator_RowDeletedName="NewDataSetTempRowDeleted" msprop:Generator_RowEvArgName="NewDataSetTempRowChangeEvent" msprop:Generator_RowChangedName="NewDataSetTempRowChanged" msprop:Generator_RowClassName="NewDataSetTempRow">
+        <xs:element name="NewDataSetTemp" msprop:Generator_TableClassName="NewDataSetTempDataTable" msprop:Generator_TableVarName="tableNewDataSetTemp" msprop:Generator_RowChangedName="NewDataSetTempRowChanged" msprop:Generator_TablePropName="NewDataSetTemp" msprop:Generator_RowDeletingName="NewDataSetTempRowDeleting" msprop:Generator_RowChangingName="NewDataSetTempRowChanging" msprop:Generator_RowEvHandlerName="NewDataSetTempRowChangeEventHandler" msprop:Generator_RowDeletedName="NewDataSetTempRowDeleted" msprop:Generator_RowClassName="NewDataSetTempRow" msprop:Generator_UserTableName="NewDataSetTemp" msprop:Generator_RowEvArgName="NewDataSetTempRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="MaBN" msprop:Generator_ColumnVarNameInTable="columnMaBN" msprop:Generator_ColumnPropNameInRow="MaBN" msprop:Generator_ColumnPropNameInTable="MaBNColumn" msprop:Generator_UserColumnName="MaBN" type="xs:decimal" minOccurs="0" />

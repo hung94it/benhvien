@@ -240,7 +240,7 @@ namespace DiabetesDido.UI
 
         private void buttonXDataDiscretizationDataView_Click(object sender, EventArgs e)
         {
-            if (datasetTempTA.GetData().Rows.Count == 0)
+            if ((datasetTempTA.CountRows() as int?) == 0)
             {
                 DataTable newDataSet = datasetTA.GetData();
                 foreach (DataRow dtRow in newDataSet.Rows)
@@ -250,11 +250,13 @@ namespace DiabetesDido.UI
             }
             dtDataSetTempForPreProcessing = newDataSetTempTA.GetData();
             this.bindingSourcePreprocessingData.DataSource = null;
-            this.bindingSourcePreprocessingData.DataSource = newDataSetTempTA.GetData();
+            this.bindingSourcePreprocessingData.DataSource = dtDataSetTempForPreProcessing;
 
             this.dataGridViewXDescriptiveData.DataSource = null;
+
             if (checkedListBoxColumnName.Items.Count > 0)
                 checkedListBoxColumnName.Items.Clear();
+
             for (int i = 1; i < dtDataSetTempForPreProcessing.Columns.Count - 1; i++)
             {
 
@@ -346,13 +348,17 @@ namespace DiabetesDido.UI
         private void buttonXImportDataSet_Click(object sender, EventArgs e)
         {
             this.openFileDialogMain.Filter = "Excel file (*.xls)|*.xls";
-            this.textBoxXFilePathPreprocessing.Text = this.openFileDialogMain.ShowDialog() == DialogResult.OK
-                ? this.openFileDialogMain.FileName : "";
-            if (this.textBoxXFilePathPreprocessing.Text.Equals(""))
-                return;
-            DataTable dtNewDataSet = ReadDataFromExcelFile(this.textBoxXFilePathPreprocessing.Text);
 
-            if (datasetTA.GetData().Rows.Count > 0)
+            if (this.openFileDialogMain.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+
+            this.textBoxXFilePathPreprocessing.Text = this.openFileDialogMain.FileName;
+
+            DataTable dtNewDataSet = ReadDataFromExcelFile(this.openFileDialogMain.FileName);
+
+            if ((datasetTA.CountRows() as int?) > 0)
             {
                 DialogResult dR = MessageBox.Show("Hiện đã có dữ liệu!! Bạn có muốn nạp mới dữ liệu??"
                     , "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -380,7 +386,7 @@ namespace DiabetesDido.UI
 
         }
 
-        public static void InsertDataSetTempRow(DataRow dt)
+        public void InsertDataSetTempRow(DataRow dt)
         {
             decimal MaBn = Convert.ToDecimal(dt["MaBn"]);
             decimal TuoiHienTai = DateTime.Now.Year - Convert.ToDecimal(dt["NamSinh"]);
@@ -423,7 +429,7 @@ namespace DiabetesDido.UI
                 , HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Na, TieuDuong);
         }
 
-        public static void InsertDataSetRow(DataRow dt)
+        public void InsertDataSetRow(DataRow dt)
         {
             decimal MaBn = Convert.ToDecimal(dt["MaBn"]);
             String HoTen = dt["HoTen"].ToString();
@@ -468,7 +474,7 @@ namespace DiabetesDido.UI
         }
 
         //Hàm để tạo các khoảng rời rạc của tuổi và giới tính. Sử dụng khi nạp 1 data set mới
-        public static void AgeDiscretization()
+        public void AgeDiscretization()
         {
             List<int> ListAge = new List<int>();
             for (int i = 0; i < 9; i++)
@@ -493,7 +499,7 @@ namespace DiabetesDido.UI
                 bayesObjectTA.Insert("Tuoi", intervalValue, 0, "False");
             }
         }
-        public static void GenderDiscretization()
+        public void GenderDiscretization()
         {
             bayesObjectTA.Insert("GioiTinh", "Nam", 0, "True");
             bayesObjectTA.Insert("GioiTInh", "Nam", 0, "False");
