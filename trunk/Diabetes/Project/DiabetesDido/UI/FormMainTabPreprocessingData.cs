@@ -116,11 +116,12 @@ namespace DiabetesDido.UI
                         && x.Field<string>(Properties.Settings.Default.ClassColumnName)
                         .Equals(Properties.Settings.Default.negativeString))
                     .Max(x => x.Field<decimal>(column.ColumnName));
+                Random rD = new Random();
                 foreach (DataRow row in this.continuousDataTable.Rows)
                 {
                     if ((decimal)row[column] == 0)
                     {
-                        Random rD = new Random();
+                        
                         if (row["TieuDuong"].ToString().Equals(Properties.Settings.Default.positiveString))
                         {
                             decimal newValue = Convert.ToDecimal(rD.NextDouble()) * Math.Abs(maxTrue - minTrue) + minTrue;
