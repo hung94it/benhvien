@@ -25,7 +25,7 @@ namespace DiabetesDido.UI
             refreshTabCreateModel();
 
             List<Percent> percent = new List<Percent>();
-            //percent.Add(new Percent("50%", 50));
+            percent.Add(new Percent("50%", 50));
             //percent.Add(new Percent("60%", 60));
             percent.Add(new Percent("70%", 70));
             percent.Add(new Percent("80%", 80));
