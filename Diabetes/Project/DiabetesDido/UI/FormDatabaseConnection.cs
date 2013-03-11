@@ -106,6 +106,7 @@ namespace DiabetesDido.UI
                 ConfigurationManager.RefreshSection("connectionStrings");
 
                 MessageBox.Show("Khởi động lại chương trình để có hiệu lực", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
             }
             catch (Exception)
             {

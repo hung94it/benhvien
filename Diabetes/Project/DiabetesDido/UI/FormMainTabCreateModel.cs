@@ -267,7 +267,6 @@ namespace DiabetesDido.UI
                     }                    
                 }
             }
-
             dataTable.Rows[0][indexLastColumn] = Properties.Settings.Default.negativeString;            
 
             return dataTable;

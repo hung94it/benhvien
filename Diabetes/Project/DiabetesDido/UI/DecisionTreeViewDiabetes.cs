@@ -74,6 +74,13 @@ namespace DiabetesDido.UI
 
             if (treeSource != null && treeSource.Root != null)
                 treeView1.Nodes.Add(convert(TreeSource.Root));
+            
+        }
+
+        public void viewRule(string rule)
+        {
+            TreeNode node = treeView1.Nodes[0];
+            //rule.s
         }
 
         // Regress tree
