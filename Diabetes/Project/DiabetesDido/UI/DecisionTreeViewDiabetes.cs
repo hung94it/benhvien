@@ -27,6 +27,7 @@ namespace DiabetesDido.UI
     using DiabetesDido.ClassificationLogic;
     using System;
     using Accord.Statistics.Filters;
+    using System.Drawing;
 
     /// <summary>
     ///   Decision Tree (DT) Viewer.
@@ -80,7 +81,24 @@ namespace DiabetesDido.UI
         public void viewRule(string rule)
         {
             TreeNode node = treeView1.Nodes[0];
-            //rule.s
+            node.Expand();
+            
+
+            string[] attribute = rule.Split(' ');
+
+            for (int i = 0; i < attribute.Length; i++)
+            {
+                foreach (TreeNode childNode in node.Nodes)
+                {
+                    if (childNode.Text.Equals(attribute[i]))
+                    {            
+                        node = node.Nodes[childNode.Index];
+                        node.Expand();
+                        node.ForeColor = Color.Blue;
+                        break;
+                    }
+                }
+            }
         }
 
         // Regress tree
@@ -102,7 +120,7 @@ namespace DiabetesDido.UI
                 attributeValue = this.codification.Translate(attributeName, Convert.ToInt32(node.Value));
 
                 // Create new treeNode to TreeView
-                treeNode = new TreeNode(attributeName + " = " + attributeValue);
+                treeNode = new TreeNode(attributeName + "=" + attributeValue);
             }
                                     
             // If node is leaf

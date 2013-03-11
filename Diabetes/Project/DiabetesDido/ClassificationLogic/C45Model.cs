@@ -60,7 +60,7 @@ namespace DiabetesDido.ClassificationLogic
             C45Learning c45 = new C45Learning(this.Tree);
 
             // Learn the decision tree
-            double error = c45.Run(inputs, outputs);
+            double error = c45.Run(inputs, outputs);        
         }
 
         // Create decision tree

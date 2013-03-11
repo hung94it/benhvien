@@ -171,7 +171,7 @@ namespace DiabetesDido.UI
                 if (current.IsLeaf)
                 {
                     // This is a leaf node. The decision proccess thus should stop here.                    
-                    return rule;
+                    return rule.Trim();
                 }
 
                 // This node is not a leaf. Continue the decisioning proccess following the childs
@@ -192,7 +192,7 @@ namespace DiabetesDido.UI
                         attributeName = nextNode.Owner.Attributes[nextNode.Parent.Branches.AttributeIndex].Name;
                         attributeValue = this.trainningDataTabDianosis.CodificationData.Translate(attributeName,
                             Convert.ToInt32(nextNode.Value));
-                        rule += attributeName + " = " + attributeValue + " ";                        
+                        rule += attributeName + "=" + attributeValue + " ";                        
                         break;
                     }
                 }                
@@ -212,9 +212,10 @@ namespace DiabetesDido.UI
 
             int rowIndex = this.dataGridViewXDiagnosis.CurrentCell.RowIndex;
             ClassificationModel treeModel = this.modelList[LearningAlgorithm.C45];
-            string rule = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex]
+            textBoxXDiagnosis.Text = Compute(this.trainningDataTabDianosis.TrainningAttributes[rowIndex]
                 , (treeModel as C45Model).Tree);
-            (new FormTreeRule((treeModel as C45Model).Tree, this.trainningDataTabDianosis.CodificationData, rule)).Show();
+            (new FormTreeRule((treeModel as C45Model).Tree, this.trainningDataTabDianosis.CodificationData,
+                textBoxXDiagnosis.Text)).Show();
 
         }
 
