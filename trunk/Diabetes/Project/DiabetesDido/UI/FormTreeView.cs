@@ -41,12 +41,12 @@ namespace DiabetesDido.UI
 
             if (node.IsLeaf)
             {
-                attributeName = Properties.Settings.Default.ClassColumnName;
+                attributeName = TableMetaData.ClassAttribute;
                 attributeValue = this.codification.Translate(attributeName, Convert.ToInt32(node.Output));
 
                 if (node.Output.HasValue)
                 {
-                    if (attributeValue.Equals(Properties.Settings.Default.positiveString))
+                    if (attributeValue.Equals(TableMetaData.PositiveString))
                     {
                         textBoxYesRules.Text += stringTemp + " ==> " + attributeValue + Environment.NewLine + Environment.NewLine;
                     }

@@ -25,6 +25,8 @@ namespace DiabetesDido.UI
             integerInputIntervalDiscretization.Enabled = false;
             checkBoxXDiscreteAllColumn.Enabled = false;
             checkedListBoxColumnName.Enabled = false;
+
+            comboBoxExDataCleanning.SelectedIndex = 0;
         }
 
         private void buttonXCleaningData_Click(object sender, EventArgs e)
@@ -50,7 +52,7 @@ namespace DiabetesDido.UI
             }
 
             // List of attribute column name
-            List<string> columnNames = new List<string>(this.getContinuosColumnNames());
+            List<string> columnNames = new List<string>(TableMetaData.TestingAttributes);
 
             foreach (DataColumn column in this.continuousDataTable.Columns)
             {
@@ -59,95 +61,103 @@ namespace DiabetesDido.UI
                 {
                     continue;
                 }
-                /*
-                // Fill database by average value
-                // Get average of True value
-                var averageTrue = this.continuousDataTable.AsEnumerable()
-                    .Where(x => x.Field<decimal>(column.ColumnName) != 0 
-                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
-                        .Equals(Properties.Settings.Default.positiveString))
-                    .Average(x => x.Field<decimal>(column.ColumnName));
-                averageTrue = Math.Round(averageTrue, 3);
 
-                // Get average of False value
-                var averageFalse = this.continuousDataTable.AsEnumerable()
-                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
-                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
-                        .Equals(Properties.Settings.Default.negativeString))
-                    .Average(x => x.Field<decimal>(column.ColumnName));
-                averageFalse = Math.Round(averageFalse, 3);
-
-                foreach (DataRow row in this.continuousDataTable.Rows)
+                switch (comboBoxExDataCleanning.SelectedItem.ToString())
                 {
-                    if ((decimal)row[column] == 0)
-                    {
-                        if (row["TieuDuong"].ToString().Equals(Properties.Settings.Default.positiveString))
-                        {
-                            row[column] = averageTrue;
-                        }
-                        else {
-                            row[column] = averageFalse;
-                        } 
-                    }
-                }
-                */
-                //Filling data by random value
-                //Get min of True value
-                var minTrue = this.continuousDataTable.AsEnumerable()
-                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
-                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
-                        .Equals(Properties.Settings.Default.positiveString))
-                    .Min(x => x.Field<decimal>(column.ColumnName));
-                //Get max of True value
-                var maxTrue = this.continuousDataTable.AsEnumerable()
-                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
-                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
-                        .Equals(Properties.Settings.Default.positiveString))
-                    .Max(x => x.Field<decimal>(column.ColumnName));
-                //Get min for False value
-                var minFalse = this.continuousDataTable.AsEnumerable()
-                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
-                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
-                        .Equals(Properties.Settings.Default.negativeString))
-                    .Min(x => x.Field<decimal>(column.ColumnName));
-                //Get max of False value
-                var maxFalse = this.continuousDataTable.AsEnumerable()
-                    .Where(x => x.Field<decimal>(column.ColumnName) != 0
-                        && x.Field<string>(Properties.Settings.Default.ClassColumnName)
-                        .Equals(Properties.Settings.Default.negativeString))
-                    .Max(x => x.Field<decimal>(column.ColumnName));
-                Random rD = new Random();
-                foreach (DataRow row in this.continuousDataTable.Rows)
-                {
-                    if ((decimal)row[column] == 0)
-                    {
-                        
-                        if (row["TieuDuong"].ToString().Equals(Properties.Settings.Default.positiveString))
-                        {
-                            decimal newValue = Convert.ToDecimal(rD.NextDouble()) * Math.Abs(maxTrue - minTrue) + minTrue;
-                            newValue = Math.Round(newValue, 3);
-                            row[column] = newValue;
+                    case "Trung bình":
 
-                        }
-                        else
+                        //Fill database by average value
+                        // Get average of True value
+                        var averageTrue = this.continuousDataTable.AsEnumerable()
+                            .Where(x => x.Field<decimal>(column.ColumnName) != 0
+                                && x.Field<string>(TableMetaData.ClassAttribute)
+                                .Equals(TableMetaData.PositiveString))
+                            .Average(x => x.Field<decimal>(column.ColumnName));
+                        averageTrue = Math.Round(averageTrue, 3);
+
+                        // Get average of False value
+                        var averageFalse = this.continuousDataTable.AsEnumerable()
+                            .Where(x => x.Field<decimal>(column.ColumnName) != 0
+                                && x.Field<string>(TableMetaData.ClassAttribute)
+                                .Equals(TableMetaData.NegativeString))
+                            .Average(x => x.Field<decimal>(column.ColumnName));
+                        averageFalse = Math.Round(averageFalse, 3);
+
+                        foreach (DataRow row in this.continuousDataTable.Rows)
                         {
-                            decimal newValue = Convert.ToDecimal(rD.NextDouble()) * Math.Abs(maxFalse - minFalse) + minFalse;
-                            newValue = Math.Round(newValue, 3);
-                            row[column] = newValue;
+                            if ((decimal)row[column] == 0)
+                            {
+                                if (row["TieuDuong"].ToString().Equals(TableMetaData.PositiveString))
+                                {
+                                    row[column] = averageTrue;
+                                }
+                                else
+                                {
+                                    row[column] = averageFalse;
+                                }
+                            }
                         }
-                    }
+                        break;
+                    case "Ngẫu nhiên":
+                        //Filling data by random value
+                        //Get min of True value
+                        var minTrue = this.continuousDataTable.AsEnumerable()
+                            .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>(TableMetaData.ClassAttribute)
+                                .Equals(TableMetaData.PositiveString)).Min(x => x.Field<decimal>(column.ColumnName));
+                        //Get max of True value
+                        var maxTrue = this.continuousDataTable.AsEnumerable()
+                            .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>(TableMetaData.ClassAttribute)
+                                .Equals(TableMetaData.PositiveString)).Max(x => x.Field<decimal>(column.ColumnName));
+                        //Get min for False value
+                        var minFalse = this.continuousDataTable.AsEnumerable()
+                            .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>(TableMetaData.ClassAttribute)
+                                .Equals(TableMetaData.NegativeString)).Min(x => x.Field<decimal>(column.ColumnName));
+                        //Get max of False value
+                        var maxFalse = this.continuousDataTable.AsEnumerable()
+                            .Where(x => x.Field<decimal>(column.ColumnName) != 0 && x.Field<string>(TableMetaData.ClassAttribute)
+                                .Equals(TableMetaData.NegativeString)).Max(x => x.Field<decimal>(column.ColumnName));
+                        Random random = new Random();
+                        foreach (DataRow row in this.continuousDataTable.Rows)
+                        {
+                            if ((decimal)row[column] == 0)
+                            {
+
+                                if (row["TieuDuong"].ToString().Equals(TableMetaData.PositiveString))
+                                {
+                                    decimal newValue = Convert.ToDecimal(random.NextDouble()) * Math.Abs(maxTrue - minTrue) + minTrue;
+                                    newValue = Math.Round(newValue, 3);
+                                    row[column] = newValue;
+
+                                }
+                                else
+                                {
+                                    decimal newValue = Convert.ToDecimal(random.NextDouble()) * Math.Abs(maxFalse - minFalse) + minFalse;
+                                    newValue = Math.Round(newValue, 3);
+                                    row[column] = newValue;
+                                }
+                            }
+                        }
+                        break;
                 }
+
             }
             this.continuousDataTableAdapter.Update(this.continuousDataTable);
+            ResetDataGridViewPreprocessingData();
         }
 
         private void buttonXViewContinousData_Click(object sender, EventArgs e)
         {
+            ResetDataGridViewPreprocessingData();
+        }
+
+        private void ResetDataGridViewPreprocessingData()
+        {
+            this.continuousDataTableAdapter.ClearBeforeFill = true;
             this.continuousDataTableAdapter.Fill(this.continuousDataTable);
             this.bindingSourcePreprocessingData.DataSource = null;
             this.bindingSourcePreprocessingData.DataSource = this.continuousDataTable;
 
-            string[] columnNames = getContinuosColumnNames();
+            string[] columnNames = TableMetaData.TestingAttributes;
 
             DataTable data = this.bindingSourcePreprocessingData.DataSource as DataTable;
             data = data.DefaultView.ToTable(false, columnNames);
@@ -155,12 +165,15 @@ namespace DiabetesDido.UI
             this.dataGridViewXDescriptiveData.DataSource = AnalysisData(data);
 
             buttonXImportDataSet.Enabled = true;
+            buttonXDataCleanning.Enabled = true ;
+            comboBoxExDataCleanning.Enabled = true;
 
             buttonXDiscretizationDataStatistics.Enabled = false;
             buttonXDataDiscretizationRun.Enabled = false;
             integerInputIntervalDiscretization.Enabled = false;
             checkBoxXDiscreteAllColumn.Enabled = false;
             checkedListBoxColumnName.Enabled = false;
+            buttonXCustomDataDiscretization.Enabled = false;
         }
 
         private ArrayDataView AnalysisData(DataTable dataTable)
@@ -266,12 +279,15 @@ namespace DiabetesDido.UI
             }
 
             buttonXImportDataSet.Enabled = false;
+            buttonXDataCleanning.Enabled = false;
+            comboBoxExDataCleanning.Enabled = false; ;
 
             buttonXDiscretizationDataStatistics.Enabled = true;
             buttonXDataDiscretizationRun.Enabled = true;
             integerInputIntervalDiscretization.Enabled = true;
             checkBoxXDiscreteAllColumn.Enabled = true;
             checkedListBoxColumnName.Enabled = true;
+            buttonXCustomDataDiscretization.Enabled = true;
         }
 
         private void checkBoxXDiscreteAllColumn_CheckedChanged(object sender, EventArgs e)
@@ -372,7 +388,7 @@ namespace DiabetesDido.UI
             datasetTA.DeleteAllData();
             datasetTempTA.DeleteAllData();
             bayesObjectTA.DeleteAll();
-            
+
             foreach (DataRow dtRow in dtNewDataSet.Rows)
             {
                 InsertDataSetRow(dtRow);
@@ -380,11 +396,12 @@ namespace DiabetesDido.UI
             AgeDiscretization();
             GenderDiscretization();
 
-            this.bindingSourcePreprocessingData.DataSource = null;
-            this.bindingSourcePreprocessingData.DataSource = dtNewDataSet;
+            //this.bindingSourcePreprocessingData.DataSource = null;
+            //this.bindingSourcePreprocessingData.DataSource = dtNewDataSet;
 
             this.codification = null;
 
+            ResetDataGridViewPreprocessingData();
         }
 
         public void InsertDataSetTempRow(DataRow dt)

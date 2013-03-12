@@ -42,12 +42,12 @@ namespace DiabetesDido.UI
 
 
             DataTable diagnosisDataTable = (this.dataGridViewXDiagnosis.DataSource as DataTable)
-                .DefaultView.ToTable(false, getColumnNames());
+                .DefaultView.ToTable(false, TableMetaData.AllAttributes);
             this.trainningDataTabDianosis = new TrainningData(diagnosisDataTable, this.codification);
             
             DataTable resultTable = new DataTable();
             List<int[]> modelResults = new List<int[]>();
-            string classColumnName = Properties.Settings.Default.ClassColumnName;
+            string classColumnName = TableMetaData.ClassAttribute;
             DataRow row;
 
             // Add column

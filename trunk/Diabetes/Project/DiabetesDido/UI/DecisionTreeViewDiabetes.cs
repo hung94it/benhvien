@@ -129,7 +129,7 @@ namespace DiabetesDido.UI
                 // If node has value add classifier value
                 if (node.Output.HasValue)
                 {
-                    attributeName = Properties.Settings.Default.ClassColumnName;
+                    attributeName = TableMetaData.ClassAttribute;
                     attributeValue = this.codification.Translate(attributeName, Convert.ToInt32(node.Output));
 
                     treeNode.Nodes.Add(new TreeNode(attributeValue));
