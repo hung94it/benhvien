@@ -25,30 +25,6 @@ namespace DiabetesDido.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public string positiveString {
-            get {
-                return ((string)(this["positiveString"]));
-            }
-            set {
-                this["positiveString"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public string negativeString {
-            get {
-                return ((string)(this["negativeString"]));
-            }
-            set {
-                this["negativeString"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int negativeValue {
             get {
@@ -56,31 +32,6 @@ namespace DiabetesDido.Properties {
             }
             set {
                 this["negativeValue"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("TieuDuong")]
-        public string ClassColumnName {
-            get {
-                return ((string)(this["ClassColumnName"]));
-            }
-            set {
-                this["ClassColumnName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Cholesterol,HDL_Cholesterol,Triglyceride,LDL_Cholesterol,Glucose,SGOT,SGPT,Urea,W" +
-            "BC,LYM,MONO,TyLeLYM,TyLeMONO,HGB,RBC,HTC,MCV,MCH,MCHC,RDW_CV,PLT,MPV,PDW,PCT")]
-        public string AttributeColumnNames {
-            get {
-                return ((string)(this["AttributeColumnNames"]));
-            }
-            set {
-                this["AttributeColumnNames"] = value;
             }
         }
         

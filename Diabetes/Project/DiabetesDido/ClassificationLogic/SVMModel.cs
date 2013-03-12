@@ -7,26 +7,32 @@ using Accord.Statistics.Filters;
 using Accord.MachineLearning.VectorMachines.Learning;
 using Accord.Statistics.Kernels;
 using Accord.Math;
+using System.Data;
+using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
+using Accord.Statistics.Analysis;
 
 namespace DiabetesDido.ClassificationLogic
 {
     [Serializable]
     class SVMModel : ClassificationModel
     {
-        private SupportVectorMachine svm;
-        //private KernelSupportVectorMachine machine;
+        //private SupportVectorMachine svm;
+        private KernelSupportVectorMachine svm;
 
-        public SupportVectorMachine SVM
-        {
-            get { return svm; }
-            private set { svm = value; }
-        }
+        //public SupportVectorMachine SVM
+        //{
+        //    get { return svm; }
+        //    private set { svm = value; }
+        //}
 
         public override void TrainningModel(TrainningData trainningData)
         {
-            //double[][] inputs = trainningData.DiscreteValueDatatable.ToArray();
-            //inputs = inputs.RemoveColumn(
-            double[][] inputs = trainningData.TrainningAttributes;
+            ContinuousDataTableAdapter continuousDataTableAdapter = new ContinuousDataTableAdapter();
+
+            DataTable continuousDataTable = continuousDataTableAdapter.GetData();
+            DataTable dataTable = continuousDataTable.DefaultView.ToTable(false, TableMetaData.TestingAttributes);
+            string[] columnNames;
+            double[][] inputs = dataTable.ToArray(out columnNames);
             int[] outputs = (int[])trainningData.ClassificationAttribute.Clone();
 
             // Create output for SVM (-1 or 1)
@@ -39,10 +45,10 @@ namespace DiabetesDido.ClassificationLogic
             }
 
             // Create a Support Vector Machine for the given inputs
-            this.svm = new SupportVectorMachine(inputs[0].Length);
+            //this.svm = new SupportVectorMachine(inputs[0].Length);
 
             //// Create a Kernel Support Vector Machine for the given inputs
-            //this.machine = new KernelSupportVectorMachine(new Gaussian(0.1), inputs[0].Length);
+            this.svm = new KernelSupportVectorMachine(new Gaussian(0.1), inputs[0].Length);
 
             // Instantiate a new learning algorithm for SVMs
             SequentialMinimalOptimization smo = new SequentialMinimalOptimization(svm, inputs, outputs);
@@ -52,7 +58,25 @@ namespace DiabetesDido.ClassificationLogic
 
             // Run the learning algorithm 
             double error = smo.Run();
-        } 
+        }
+
+        public override List<ConfusionMatrix> TestModel(TrainningData trainningData)
+        {
+            ContinuousDataTableAdapter continuousDataTableAdapter = new ContinuousDataTableAdapter();
+
+            DataTable continuousDataTable = continuousDataTableAdapter.GetData();
+            DataTable dataTable = continuousDataTable.DefaultView.ToTable(false, TableMetaData.TestingAttributes);
+            string[] columnNames;
+            double[][] inputs = dataTable.ToArray(out columnNames);
+
+            int[] expected = trainningData.ClassificationAttribute;
+            int[] predicted = ComputeModel(inputs);
+            int positiveValue = trainningData.PositiveValue;
+            int negativeValue = trainningData.NegativeValue;
+
+            ConfusionMatrix confusionMatrix = new ConfusionMatrix(predicted, expected, positiveValue, negativeValue);
+            return new List<ConfusionMatrix> { confusionMatrix };
+        }
 
         // Compute given input
         public override int[] ComputeModel(double[][] inputs)

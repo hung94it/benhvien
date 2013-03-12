@@ -52,7 +52,7 @@ namespace DiabetesDido.UI
             { 
                 case 1:
                     int totalAttributeFormDatabase = (int)discreteIntervalTableAdapter.TotalAttributes();
-                    int totalAttributeFromSetting = getColumnNames().Length;
+                    int totalAttributeFromSetting = TableMetaData.AllAttributes.Length;
 
                     if (totalAttributeFormDatabase + 1== totalAttributeFromSetting)
                     {
@@ -73,29 +73,7 @@ namespace DiabetesDido.UI
             }
         }
         
-        // Include only attributes in test
-        private string[] getContinuosColumnNames()
-        {
-            return Properties.Settings.Default.AttributeColumnNames.Split(',');
-        }
-
-        // Include other attributes for trainning
-        private string[] getTrainningColumnNames()
-        {
-            List<string> columnNamesList = new List<string>(new string[] { "Tuoi", "GioiTinh" });            
-            columnNamesList.AddRange(getContinuosColumnNames());            
-
-            return columnNamesList.ToArray();
-        }
-
-        // Include all attributes
-        private string[] getColumnNames()
-        {
-            List<string> columnNamesList = new List<string>(getTrainningColumnNames());
-            columnNamesList.Add(Properties.Settings.Default.ClassColumnName);
-
-            return columnNamesList.ToArray();
-        }
+        
 
     }
 }

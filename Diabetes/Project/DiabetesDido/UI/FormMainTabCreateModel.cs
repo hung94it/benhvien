@@ -241,7 +241,7 @@ namespace DiabetesDido.UI
             for (int i = 0; i < maxRow; i++)
             {
                 newRow = dataTable.NewRow();
-                newRow[indexLastColumn] = Properties.Settings.Default.positiveString;
+                newRow[indexLastColumn] = TableMetaData.PositiveString;
                 dataTable.Rows.Add(newRow);
             }
 
@@ -260,14 +260,14 @@ namespace DiabetesDido.UI
                     }
                     else
                     {
-                        if (!column.ColumnName.Equals(Properties.Settings.Default.ClassColumnName))
+                        if (!column.ColumnName.Equals(TableMetaData.ClassAttribute))
                         {                            
                             dataTable.Rows[rowIndex][column] = attributeInterval.Rows[0][1].ToString();
                         }
                     }                    
                 }
             }
-            dataTable.Rows[0][indexLastColumn] = Properties.Settings.Default.negativeString;            
+            dataTable.Rows[0][indexLastColumn] = TableMetaData.NegativeString;            
 
             return dataTable;
         }
