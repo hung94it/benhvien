@@ -235,7 +235,7 @@ namespace DiabetesDido.UI
 
             this.dataGridViewXDiagnosis.DataSource = ReadDataFromExcelFile(this.openFileDialogMain.FileName);
                       
-            //dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
+            dataGridViewXDiagnosis.Columns["TieuDuong"].Visible = false;
             dataGridViewXDiagnosis.Columns["GRAN"].Visible = false;
             dataGridViewXDiagnosis.Columns["TyLeGRAN"].Visible = false;
             dataGridViewXDiagnosis.Columns["Na"].Visible = false;
