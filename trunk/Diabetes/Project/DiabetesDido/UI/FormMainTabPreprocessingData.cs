@@ -393,11 +393,9 @@ namespace DiabetesDido.UI
             {
                 InsertDataSetRow(dtRow);
             }
+
             AgeDiscretization();
             GenderDiscretization();
-
-            //this.bindingSourcePreprocessingData.DataSource = null;
-            //this.bindingSourcePreprocessingData.DataSource = dtNewDataSet;
 
             this.codification = null;
 

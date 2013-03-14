@@ -18,7 +18,6 @@ namespace DiabetesDido.ClassificationLogic
             get { return tree; }
             private set { tree = value; }
         }
-
         
         //public static C45Model CreateC45Model(Codification codification)
         //{
