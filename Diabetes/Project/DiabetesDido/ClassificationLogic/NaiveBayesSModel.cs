@@ -5,6 +5,8 @@ using System.Text;
 using Accord.Statistics.Analysis;
 using System.Data;
 using Accord.Math;
+using DiabetesDido.DAL.DiabetesDataSetTableAdapters;
+using DiabetesDido.ClassificationLogic;
 
 namespace DiabetesDido.ClassificationLogic
 {
@@ -31,9 +33,9 @@ namespace DiabetesDido.ClassificationLogic
             DataTable predictData = NaiveBayes(testData);
             for (int i = 0; i < predictData.Rows.Count - 1; i++)
             {
-                String expectValue = testData.Rows[i]["TieuDuong"].ToString();
-                String predictValue = predictData.Rows[i]["TieuDuong"].ToString();
-                if (predictValue == "True")
+                String expectValue = testData.Rows[i][TableMetaData.ClassAttribute].ToString();
+                String predictValue = predictData.Rows[i][TableMetaData.ClassAttribute].ToString();
+                if (predictValue == TableMetaData.PositiveString)
                     predicted[i] = possiveValue;
                 else
                     predicted[i] = negativeValue;
@@ -49,8 +51,8 @@ namespace DiabetesDido.ClassificationLogic
         //Hàm dùng để huấn luyện dữ liệu dành cho thuật toán Naive Bayes
         public static void HuanLuyenBayes(int row)
         {
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter dtBayesAdapter = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dtSetTempTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            BayesObjectTableAdapter dtBayesAdapter = new BayesObjectTableAdapter();
+            DataSetTempTableAdapter dtSetTempTA = new DataSetTempTableAdapter();
 
             int rowCount = row;
             DataTable dataForTraining = dtSetTempTA.GetDataByNumber(rowCount);
@@ -74,10 +76,8 @@ namespace DiabetesDido.ClassificationLogic
         //Hàm dùng để tính kết quả của một bảng trong bộ thử nghiệm
         public static DataTable NaiveBayes(DataTable dtTestSet)
         {
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesTA =
-                new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter dataSetTempTA =
-                new DAL.DiabetesDataSetTableAdapters.DataSetTempTableAdapter();
+            BayesObjectTableAdapter bayesTA = new BayesObjectTableAdapter();
+            DataSetTempTableAdapter dataSetTempTA = new DataSetTempTableAdapter();
             int dataForTrainingRowsCount = dataSetTempTA.GetData().Rows.Count - dtTestSet.Rows.Count;
             DataTable dtBayes = bayesTA.GetData();
             int possiveNumber = dataSetTempTA.GetDataByNumber(dataForTrainingRowsCount).Select("TieuDuong='True'").Count();

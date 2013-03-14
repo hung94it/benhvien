@@ -32,16 +32,16 @@ namespace DiabetesDido.ClassificationLogic
                 return "[80,+)";
         }
         
-        //Hàm dùng để xác định khoảng rời rạc của một cột dữ liệu
-        public static int XacDinhKhoang(String colName)
-        {
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-            DataTable dtBayesObject = bayesObjectTA.GetData();
-            DataRow[] dtRow = dtBayesObject.Select("TenThuocTinh='" + colName + "'");
-            int khoang = 0;
-            khoang = dtRow.Count()/2;
-            return khoang;
-        }
+        ////Hàm dùng để xác định khoảng rời rạc của một cột dữ liệu
+        //public static int XacDinhKhoang(String colName)
+        //{
+        //    DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTA = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+        //    DataTable dtBayesObject = bayesObjectTA.GetData();
+        //    DataRow[] dtRow = dtBayesObject.Select("TenThuocTinh='" + colName + "'");
+        //    int khoang = 0;
+        //    khoang = dtRow.Count()/2;
+        //    return khoang;
+        //}
 
         //Hàm dùng để rời rạc giá trị của cột trong bảng dữ liệu chẩn đoán
         public static String DataDiscretizationForDiagnosis(decimal colValue, String colName)
@@ -58,7 +58,7 @@ namespace DiabetesDido.ClassificationLogic
             List<double> listIntervalValues = new List<double>();
             if (colName != "GioiTinh")
             {
-                DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter bayesObjectTableAdapter = new DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
+                BayesObjectTableAdapter bayesObjectTableAdapter = new BayesObjectTableAdapter();
                 DataRow[] dtIntervalValue = bayesObjectTableAdapter.GetData().Select("TenThuocTinh='" + colName + "'");
                 foreach (DataRow dtRow in dtIntervalValue)
                 {
@@ -82,7 +82,7 @@ namespace DiabetesDido.ClassificationLogic
         //Hàm dùng để rời rạc giá trị của cột trong bảng dữ liệu
         public static String DataDiscretization(decimal giaTri,String colName, int khoang)
         {
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
+            DataSetTableAdapter dataSetTA = new DataSetTableAdapter();
             DataTable dt = dataSetTA.GetData();
             decimal minValue = Convert.ToDecimal(dt.Compute("min(" + colName + ")", string.Empty));
             decimal maxValue = Convert.ToDecimal(dt.Compute("max(" + colName + ")", string.Empty));
@@ -110,8 +110,8 @@ namespace DiabetesDido.ClassificationLogic
         //Hàm dùng để tại ra các khoảng giá trị đã rời rạc
         public static void TaoBayesObject(String colName,int khoang)
         {
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter BayesObjectTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.BayesObjectTableAdapter();
-            DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter dataSetTA = new DiabetesDido.DAL.DiabetesDataSetTableAdapters.DataSetTableAdapter();
+            BayesObjectTableAdapter BayesObjectTA = new BayesObjectTableAdapter();
+            DataSetTableAdapter dataSetTA = new DataSetTableAdapter();
             DataTable dt = dataSetTA.GetData();
             decimal minValue = Convert.ToDecimal(dt.Compute("min(" + colName + ")", string.Empty));
             decimal maxValue = Convert.ToDecimal(dt.Compute("max(" + colName + ")", string.Empty));
@@ -209,9 +209,6 @@ namespace DiabetesDido.ClassificationLogic
             {
                 
             }
-
-
-
             return trainningDataTable;
         }
         
