@@ -113,6 +113,7 @@
             this.continuousDataTableAdapter = new DiabetesDido.DAL.DiabetesDataSetBTableAdapters.ContinuousDataTableAdapter();
             this.discreteIntervalTableAdapter = new DiabetesDido.DAL.DiabetesDataSetBTableAdapters.DiscreteIntervalTableAdapter();
             this.trainningTableAdapter = new DiabetesDido.DAL.DiabetesDataSetBTableAdapters.TrainningTableAdapter();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.superTabControlMain)).BeginInit();
             this.superTabControlMain.SuspendLayout();
             this.superTabControlPanelPreprocessingData.SuspendLayout();
@@ -442,7 +443,8 @@
             this.comboBoxExDataCleanning.ItemHeight = 19;
             this.comboBoxExDataCleanning.Items.AddRange(new object[] {
             this.comboItem1,
-            this.comboItem2});
+            this.comboItem2,
+            this.comboItem3});
             this.comboBoxExDataCleanning.Location = new System.Drawing.Point(102, 36);
             this.comboBoxExDataCleanning.Name = "comboBoxExDataCleanning";
             this.comboBoxExDataCleanning.Size = new System.Drawing.Size(121, 25);
@@ -1214,6 +1216,10 @@
             // 
             this.trainningTableAdapter.ClearBeforeFill = true;
             // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "Loại bỏ";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1319,5 +1325,6 @@
         private DAL.DiabetesDataSetBTableAdapters.ContinuousDataTableAdapter continuousDataTableAdapter;
         private DAL.DiabetesDataSetBTableAdapters.DiscreteIntervalTableAdapter discreteIntervalTableAdapter;
         private DAL.DiabetesDataSetBTableAdapters.TrainningTableAdapter trainningTableAdapter;
+        private DevComponents.Editors.ComboItem comboItem3;
     }
 }

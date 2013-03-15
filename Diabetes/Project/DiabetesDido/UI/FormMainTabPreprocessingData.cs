@@ -31,20 +31,6 @@ namespace DiabetesDido.UI
             comboBoxExDataCleanning.SelectedIndex = 0;
         }
 
-        private void buttonXCleaningData_Click(object sender, EventArgs e)
-        {
-            //DataTable orginalData = this.bindingSourcePreprocessingData.DataSource as DataTable;
-
-            //string[] columnNames = orginalData.Columns.Cast<DataColumn>().Select(column => column.ColumnName).ToArray();
-
-            //columnNames = columnNames.RemoveAt<string>(columnNames.Length - 1);
-
-            //// Remove rows which have null value
-            //Elimination elimination = new Elimination(columnNames);
-
-            //orginalData = elimination.Apply(orginalData);           
-        }
-
         private void buttonXDataCleanning_Click(object sender, EventArgs e)
         {
             if (this.continuousDataTable == null)
@@ -140,9 +126,33 @@ namespace DiabetesDido.UI
                             }
                         }
                         break;
+                    case "Loại bỏ":
+                        int rowIndex = 0;
+                        while (rowIndex < this.continuousDataTable.Rows.Count)
+                        {                            
+                            if ((decimal)this.continuousDataTable.Rows[rowIndex][column.ColumnName] == 0)
+                            {
+                                //this.continuousDataTable.Rows.Remove(this.continuousDataTable.Rows[rowIndex]);
+                                this.continuousDataTable.Rows[rowIndex].Delete();
+                                rowIndex++;
+                            }
+                            else
+                            {
+                                rowIndex++;
+                            }
+                        }
+                        this.continuousDataTableAdapter.Update(this.continuousDataTable);
+                        break;
                 }
-
             }
+            if (comboBoxExDataCleanning.SelectedItem.ToString().Equals("Loại bỏ"))
+            {
+                for (int i = 0; i < 19; i++)
+                {
+                    this.continuousDataTable.Rows[i].Delete();
+                }
+            }
+
             this.continuousDataTableAdapter.Update(this.continuousDataTable);
             ResetDataGridViewPreprocessingData();
         }
@@ -167,7 +177,7 @@ namespace DiabetesDido.UI
             this.dataGridViewXDescriptiveData.DataSource = AnalysisData(data);
 
             buttonXImportDataSet.Enabled = true;
-            buttonXDataCleanning.Enabled = true ;
+            buttonXDataCleanning.Enabled = true;
             comboBoxExDataCleanning.Enabled = true;
 
             buttonXDiscretizationDataStatistics.Enabled = false;
@@ -176,7 +186,7 @@ namespace DiabetesDido.UI
             integerInputIntervalDiscretization.Enabled = false;
             checkBoxXDiscreteAllColumn.Enabled = false;
             checkedListBoxColumnName.Enabled = false;
-            
+
         }
 
         private ArrayDataView AnalysisData(DataTable dataTable)
@@ -270,7 +280,7 @@ namespace DiabetesDido.UI
         private void buttonXDataDiscretizationDataView_Click(object sender, EventArgs e)
         {
             if ((datasetTempTA.CountRows() as int?) == 0)
-            {                
+            {
                 DataTable newDataSet = datasetTA.GetData();
                 DiabetesDataSet.DataSetTempDataTable dataSetTempDataTable = new DiabetesDataSet.DataSetTempDataTable();
                 foreach (DataRow dtRow in newDataSet.Rows)
