@@ -32,7 +32,7 @@ namespace DiabetesDido.UI
                 if (this.trainningDataTabDianosis == null)                
                 {
                     this.dataGridViewXDiagnosis.DataSource = DiscretizationData
-                        .DataDiscretization(this.dataGridViewXDiagnosis.DataSource as DataTable, bayesObjectTA);                    
+                        .DataDiscretizationForDiagnosis(this.dataGridViewXDiagnosis.DataSource as DataTable);                    
                 }
             }
             else {

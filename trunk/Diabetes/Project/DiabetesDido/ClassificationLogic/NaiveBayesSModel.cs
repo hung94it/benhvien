@@ -7,6 +7,7 @@ using System.Data;
 using Accord.Math;
 using DiabetesDido.DAL.DiabetesDataSetTableAdapters;
 using DiabetesDido.ClassificationLogic;
+using DiabetesDido.DAL;
 
 namespace DiabetesDido.ClassificationLogic
 {
@@ -56,7 +57,7 @@ namespace DiabetesDido.ClassificationLogic
 
             int rowCount = row;
             DataTable dataForTraining = dtSetTempTA.GetDataByNumber(rowCount);
-            DataTable dtBayes = dtBayesAdapter.GetData();
+            DiabetesDataSet.BayesObjectDataTable dtBayes = dtBayesAdapter.GetData();
             foreach (DataRow dtRow in dtBayes.Rows)
             {
                 String colName = dtRow[1].ToString();
@@ -66,10 +67,9 @@ namespace DiabetesDido.ClassificationLogic
                 int soLuong = dataForTraining.Select(iQuery).Count();
                 if (soLuong == 0)
                     soLuong = 1;
-                DataRow newRow = dtBayes.NewRow();
-                newRow = dtRow;
-                newRow[3] = soLuong;
-                dtBayesAdapter.Update(newRow);
+
+                dtRow[3] = soLuong;
+                dtBayesAdapter.Update((dtBayes));
             }
         }
 
@@ -78,10 +78,11 @@ namespace DiabetesDido.ClassificationLogic
         {
             BayesObjectTableAdapter bayesTA = new BayesObjectTableAdapter();
             DataSetTempTableAdapter dataSetTempTA = new DataSetTempTableAdapter();
-            int dataForTrainingRowsCount = dataSetTempTA.GetData().Rows.Count - dtTestSet.Rows.Count;
+            int dataForTrainingRowsCount = (int)dataSetTempTA.CountRows() - dtTestSet.Rows.Count;
             DataTable dtBayes = bayesTA.GetData();
-            int possiveNumber = dataSetTempTA.GetDataByNumber(dataForTrainingRowsCount).Select("TieuDuong='True'").Count();
-            int negativeNumber = dataSetTempTA.GetDataByNumber(dataForTrainingRowsCount).Select("TieuDuong='False'").Count();
+            DataTable dtdataSetTemp = dataSetTempTA.GetDataByNumber(dataForTrainingRowsCount);
+            int possiveNumber = dtdataSetTemp.Select("TieuDuong='True'").Count();
+            int negativeNumber = dtdataSetTemp.Select("TieuDuong='False'").Count();
             int allNumber = possiveNumber + negativeNumber;
             int indexLastColumn = dtTestSet.Columns.Count - 1;
 
