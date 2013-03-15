@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using DiabetesDido.DAL;
 using DiabetesDido.DAL.DiabetesDataSetTableAdapters;
+using DiabetesDido.ClassificationLogic;
 
 namespace DiabetesDido.UI
 {
@@ -64,7 +66,7 @@ namespace DiabetesDido.UI
             BayesObjectTableAdapter bayesObjectTableAdapter = new BayesObjectTableAdapter();
             DataSetTempTableAdapter dataSetTempTableAdapter = new DataSetTempTableAdapter();
             DataSetTableAdapter dataSetTableAdapter = new DataSetTableAdapter();
-            DataTable dtDataSetForPreProcessing = dataSetTableAdapter.GetData();
+
 
             for (int i = listIntervalValue.Count - 1; i > 0; i--)
             {
@@ -82,29 +84,25 @@ namespace DiabetesDido.UI
             else
             {
                 bayesObjectTableAdapter.DeleteByOne(this.ColName);
+                DataTable dtDataSetForPreProcessing = dataSetTableAdapter.GetData();
+                DiabetesDataSet.DataSetTempDataTable dtDataSetTemp = dataSetTempTableAdapter.GetData();
+
+                int rowIndex = 0;
                 foreach (DataRow dtRow in dtDataSetForPreProcessing.Rows)
                 {
                     decimal colValue = Convert.ToDecimal(dtRow[this.ColName]);
                     decimal maBn = Convert.ToDecimal(dtRow["MaBn"]);
                     String discretizationValue = DataDiscretization(colValue, this.listIntervalValue);
-                    UpdateDataSetTemp(maBn, this.ColName, discretizationValue);
+
+                    dtDataSetTemp.Rows[rowIndex][this.ColName] = discretizationValue;
+                    rowIndex++;
                 }
+                dataSetTempTableAdapter.Update(dtDataSetTemp);
                 CreateBayesObject(this.ColName, this.listIntervalValue);
             }
             this.Close();
         }
-        private void UpdateDataSetTemp(decimal maBn, String colName, String discretizationValue)
-        {
-            DataSetTempTableAdapter dataSetTempTableAdapter = new DataSetTempTableAdapter();
-            DataTable dtDataSetTemp = dataSetTempTableAdapter.GetDataByOne(maBn);
-            DataRow newRow = dtDataSetTemp.NewRow();
-            foreach (DataRow dtRow in dtDataSetTemp.Rows)
-            {
-                newRow = dtRow;
-            }
-            newRow[colName] = discretizationValue;
-            dataSetTempTableAdapter.Update(newRow);
-        }
+
         public static String DataDiscretization(decimal colValue, List<double> listInputIntervalValue)
         {
             String DiscretizationValue = "";
@@ -114,20 +112,21 @@ namespace DiabetesDido.UI
                 double nextValue = 0;
                 if (i == listInputIntervalValue.Count - 1 && Convert.ToDouble(colValue) >= currentValue)
                 {
-                    DiscretizationValue = "[" + currentValue.ToString() + ",+)";
+                    DiscretizationValue = "[" + currentValue.ToString("0.###") + ",+)";
                 }
                 else 
                 {
                     nextValue = listInputIntervalValue[i + 1];
                     if (Convert.ToDouble(colValue) >= currentValue && Convert.ToDouble(colValue) < nextValue)
                     {
-                        DiscretizationValue = "[" + currentValue.ToString() + "," + nextValue.ToString() + ")";
+                        DiscretizationValue = "[" + currentValue.ToString("0.###") + "," + nextValue.ToString("0.###") + ")";
                         break;
                     }
                 }
             }
             return DiscretizationValue;
         }
+
         private void CreateBayesObject(String colName, List<double> listInputIntervalValue)
         {
             BayesObjectTableAdapter bayesObjectTableAdapter = new BayesObjectTableAdapter();
@@ -137,14 +136,14 @@ namespace DiabetesDido.UI
                 double currentValue=listInputIntervalValue[i];
                 double nextValue = 0;
                 if (i == listInputIntervalValue.Count - 1)
-                    InputIntervalValue = "[" + currentValue.ToString() + ",+)";
+                    InputIntervalValue = "[" + currentValue.ToString("0.###") + ",+)";
                 else
                 {
                     nextValue = listInputIntervalValue[i + 1];
-                    InputIntervalValue = "[" + currentValue.ToString() + "," + nextValue.ToString() + ")";
+                    InputIntervalValue = "[" + currentValue.ToString("0.###") + "," + nextValue.ToString("0.###") + ")";
                 }
-                bayesObjectTableAdapter.Insert(colName, InputIntervalValue, 0, "True");
-                bayesObjectTableAdapter.Insert(colName, InputIntervalValue, 0, "False");
+                bayesObjectTableAdapter.Insert(colName, InputIntervalValue, 0, TableMetaData.PositiveString);
+                bayesObjectTableAdapter.Insert(colName, InputIntervalValue, 0, TableMetaData.NegativeString);
             }
         }
     }

@@ -10,6 +10,7 @@ using Accord.Statistics.Filters;
 using DiabetesDido.ClassificationLogic;
 using DiabetesDido.DAL.DiabetesDataSetBTableAdapters;
 using DiabetesDido.DAL.DiabetesDataSetTableAdapters;
+using DiabetesDido.DAL;
 
 namespace DiabetesDido.UI
 {
@@ -22,6 +23,7 @@ namespace DiabetesDido.UI
 
             buttonXDiscretizationDataStatistics.Enabled = false;
             buttonXDataDiscretizationRun.Enabled = false;
+            buttonXCustomDataDiscretization.Enabled = false;
             integerInputIntervalDiscretization.Enabled = false;
             checkBoxXDiscreteAllColumn.Enabled = false;
             checkedListBoxColumnName.Enabled = false;
@@ -170,10 +172,11 @@ namespace DiabetesDido.UI
 
             buttonXDiscretizationDataStatistics.Enabled = false;
             buttonXDataDiscretizationRun.Enabled = false;
+            buttonXCustomDataDiscretization.Enabled = false;
             integerInputIntervalDiscretization.Enabled = false;
             checkBoxXDiscreteAllColumn.Enabled = false;
             checkedListBoxColumnName.Enabled = false;
-            buttonXCustomDataDiscretization.Enabled = false;
+            
         }
 
         private ArrayDataView AnalysisData(DataTable dataTable)
@@ -222,45 +225,98 @@ namespace DiabetesDido.UI
                     else
                         Count++;
                 }
+
                 if (Count == checkedListBoxColumnName.CheckedItems.Count)
                     MessageBox.Show("Thuộc tính Tuoi và GioiTinh không cần thực hiện rời rạc", "Thông báo"
                         , MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                 {
+                    DiabetesDataSet.DataSetTempDataTable dataSetTempDataTable = datasetTempTA.GetData();
                     InputInterval = integerInputIntervalDiscretization.Value;
+
                     for (int i = 0; i < listBoxSelectedField.Items.Count; i++)
                     {
                         String colName = listBoxSelectedField.Items[i].ToString();
                         dataSetColIndex = dtDataSetForPreProcessing.Columns.IndexOf(colName);
                         bayesObjectTA.DeleteByOne(colName);
 
+                        int rowIndex = 0;
                         foreach (DataRow dtRow in dtDataSetForPreProcessing.Rows)
                         {
                             decimal currentValue = Convert.ToDecimal(dtRow[dataSetColIndex]);
-                            decimal id = Convert.ToDecimal(dtRow[0]);
-                            String discreteValue = DiscretizationData.DataDiscretization(currentValue, colName, InputInterval);
-                            decimal maBN = Convert.ToDecimal(dtRow[1]);
-                            String tieuDuong = dtRow[36].ToString();
-                            DiscretizationData.CapNhapDataSetTemp(datasetTempTA, maBN, colName, discreteValue);
+                            String discreteValue = DiscretizationData.DataDiscretization(currentValue, colName, InputInterval, dtDataSetForPreProcessing);
+                            //String discreteValue = DiscretizationData.DataDiscretization(currentValue, colName, InputInterval);
+                            //decimal id = Convert.ToDecimal(dtRow[0]);
+                            //decimal maBN = Convert.ToDecimal(dtRow[1]);
+                            //String tieuDuong = dtRow[36].ToString();
+                            //DiscretizationData.CapNhapDataSetTemp(datasetTempTA, maBN, colName, discreteValue);
+
+                            dataSetTempDataTable[rowIndex][colName] = discreteValue;
+                            rowIndex++;
                         }
-                        DiscretizationData.TaoBayesObject(colName, InputInterval);
+                        DiscretizationData.TaoBayesObject(colName, InputInterval, dtDataSetForPreProcessing);
                     }
+
+                    datasetTempTA.Update(dataSetTempDataTable);
                 }
                 dtDataSetTempForPreProcessing.Clear();
-                dtDataSetTempForPreProcessing = datasetTempTA.GetData();
+                dtDataSetTempForPreProcessing = newDataSetTempTA.GetData();
                 this.bindingSourcePreprocessingData.DataSource = this.dtDataSetTempForPreProcessing;
+
+                this.codification = null;
             }
         }
 
         private void buttonXDataDiscretizationDataView_Click(object sender, EventArgs e)
         {
             if ((datasetTempTA.CountRows() as int?) == 0)
-            {
+            {                
                 DataTable newDataSet = datasetTA.GetData();
+                DiabetesDataSet.DataSetTempDataTable dataSetTempDataTable = new DiabetesDataSet.DataSetTempDataTable();
                 foreach (DataRow dtRow in newDataSet.Rows)
                 {
-                    InsertDataSetTempRow(dtRow);
+                    var row = dataSetTempDataTable.NewDataSetTempRow();
+
+                    row["MaBn"] = Convert.ToDecimal(dtRow["MaBn"]);
+                    decimal TuoiHienTai = DateTime.Now.Year - Convert.ToDecimal(dtRow["NamSinh"]);
+                    row["Tuoi"] = DiscretizationData.RoiRacHoaTuoi(TuoiHienTai);
+                    row["GioiTinh"] = dtRow["GioiTinh"].ToString();
+                    row["Cholesterol"] = dtRow["Cholesterol"].ToString();
+                    row["HDL_Cholesterol"] = dtRow["HDL_Cholesterol"].ToString();
+                    row["Triglyceride"] = dtRow["Triglyceride"].ToString();
+                    row["LDL_Cholesterol"] = dtRow["LDL_Cholesterol"].ToString();
+                    row["Glucose"] = dtRow["Glucose"].ToString();
+                    row["SGOT"] = dtRow["SGOT"].ToString();
+                    row["SGPT"] = dtRow["SGPT"].ToString();
+                    row["Urea"] = dtRow["Urea"].ToString();
+                    row["WBC"] = dtRow["WBC"].ToString();
+                    row["LYM"] = dtRow["LYM"].ToString();
+                    row["MONO"] = dtRow["MONO"].ToString();
+                    row["GRAN"] = dtRow["GRAN"].ToString();
+                    row["TyLeLYM"] = dtRow["TyLeLYM"].ToString();
+                    row["TyLeMONO"] = dtRow["TyLeMONO"].ToString();
+                    row["TyLeGRAN"] = dtRow["TyLeGRAN"].ToString();
+                    row["HGB"] = dtRow["HGB"].ToString();
+                    row["RBC"] = dtRow["RBC"].ToString();
+                    row["HTC"] = dtRow["HTC"].ToString();
+                    row["MCV"] = dtRow["MCV"].ToString();
+                    row["MCH"] = dtRow["MCH"].ToString();
+                    row["MCHC"] = dtRow["MCHC"].ToString();
+                    row["RDW_CV"] = dtRow["RDW_CV"].ToString();
+                    row["PLT"] = dtRow["PLT"].ToString();
+                    row["MPV"] = dtRow["MPV"].ToString();
+                    row["PDW"] = dtRow["PDW"].ToString();
+                    row["PCT"] = dtRow["PCT"].ToString();
+                    row["Na"] = dtRow["Na"].ToString();
+                    row["K"] = dtRow["K"].ToString();
+                    row["Cl"] = dtRow["Cl"].ToString();
+                    row["Ca"] = dtRow["Ca"].ToString();
+                    row["TieuDuong"] = dtRow["TieuDuong"].ToString();
+
+                    dataSetTempDataTable.AddDataSetTempRow(row);
+                    //InsertDataSetTempRow(dtRow);
                 }
+                datasetTempTA.Update(dataSetTempDataTable);
             }
             dtDataSetTempForPreProcessing = newDataSetTempTA.GetData();
             this.bindingSourcePreprocessingData.DataSource = null;
@@ -271,7 +327,7 @@ namespace DiabetesDido.UI
             if (checkedListBoxColumnName.Items.Count > 0)
                 checkedListBoxColumnName.Items.Clear();
 
-            for (int i = 1; i < dtDataSetTempForPreProcessing.Columns.Count - 1; i++)
+            for (int i = 3; i < dtDataSetTempForPreProcessing.Columns.Count - 1; i++)
             {
 
                 String colName = dtDataSetTempForPreProcessing.Columns[i].ColumnName;
@@ -389,10 +445,53 @@ namespace DiabetesDido.UI
             datasetTempTA.DeleteAllData();
             bayesObjectTA.DeleteAll();
 
+            DiabetesDataSet.DataSetDataTable dataSetDataTable = new DiabetesDataSet.DataSetDataTable();
+
             foreach (DataRow dtRow in dtNewDataSet.Rows)
             {
-                InsertDataSetRow(dtRow);
+                var row = dataSetDataTable.NewDataSetRow();
+
+                row["MaBn"] = Convert.ToDecimal(dtRow["MaBn"]);
+                row["HoTen"] = dtRow["HoTen"].ToString();
+                row["NamSinh"] = Convert.ToDecimal(dtRow["NamSinh"]);
+                row["NgayKham"] = Convert.ToDateTime(dtRow["NgayKham"]);
+                row["GioiTinh"] = dtRow["GioiTinh"].ToString();
+                row["Cholesterol"] = Convert.ToDecimal(dtRow["Cholesterol"]);
+                row["HDL_Cholesterol"] = Convert.ToDecimal(dtRow["HDL_Cholesterol"]);
+                row["Triglyceride"] = Convert.ToDecimal(dtRow["Triglyceride"]);
+                row["LDL_Cholesterol"] = Convert.ToDecimal(dtRow["LDL_Cholesterol"]);
+                row["Glucose"] = Convert.ToDecimal(dtRow["Glucose"]);
+                row["SGOT"] = Convert.ToDecimal(dtRow["SGOT"]);
+                row["SGPT"] = Convert.ToDecimal(dtRow["SGPT"]);
+                row["Urea"] = Convert.ToDecimal(dtRow["Urea"]);
+                row["WBC"] = Convert.ToDecimal(dtRow["WBC"]);
+                row["LYM"] = Convert.ToDecimal(dtRow["LYM"]);
+                row["MONO"] = Convert.ToDecimal(dtRow["MONO"]);
+                row["GRAN"] = Convert.ToDecimal(dtRow["GRAN"]);
+                row["TyLeLYM"] = Convert.ToDecimal(dtRow["TyLeLYM"]);
+                row["TyLeMONO"] = Convert.ToDecimal(dtRow["TyLeMONO"]);
+                row["TyLeGRAN"] = Convert.ToDecimal(dtRow["TyLeGRAN"]);
+                row["HGB"] = Convert.ToDecimal(dtRow["HGB"]);
+                row["RBC"] = Convert.ToDecimal(dtRow["RBC"]);
+                row["HTC"] = Convert.ToDecimal(dtRow["HTC"]);
+                row["MCV"] = Convert.ToDecimal(dtRow["MCV"]);
+                row["MCH"] = Convert.ToDecimal(dtRow["MCH"]);
+                row["MCHC"] = Convert.ToDecimal(dtRow["MCHC"]);
+                row["RDW_CV"] = Convert.ToDecimal(dtRow["RDW_CV"]);
+                row["PLT"] = Convert.ToDecimal(dtRow["PLT"]);
+                row["MPV"] = Convert.ToDecimal(dtRow["MPV"]);
+                row["PDW"] = Convert.ToDecimal(dtRow["PDW"]);
+                row["PCT"] = Convert.ToDecimal(dtRow["PCT"]);
+                row["Na"] = Convert.ToDecimal(dtRow["Na"]);
+                row["K"] = Convert.ToDecimal(dtRow["K"]);
+                row["Cl"] = Convert.ToDecimal(dtRow["Cl"]);
+                row["Ca"] = Convert.ToDecimal(dtRow["Ca"]);
+                row["TieuDuong"] = dtRow["TieuDuong"].ToString();
+
+                dataSetDataTable.AddDataSetRow(row);
+                //InsertDataSetRow(dtRow);
             }
+            datasetTA.Update(dataSetDataTable);
 
             AgeDiscretization();
             GenderDiscretization();
@@ -402,92 +501,92 @@ namespace DiabetesDido.UI
             ResetDataGridViewPreprocessingData();
         }
 
-        public void InsertDataSetTempRow(DataRow dt)
-        {
-            decimal MaBn = Convert.ToDecimal(dt["MaBn"]);
-            decimal TuoiHienTai = DateTime.Now.Year - Convert.ToDecimal(dt["NamSinh"]);
-            String Tuoi = DiscretizationData.RoiRacHoaTuoi(TuoiHienTai);
-            String GioiTinh = dt["GioiTinh"].ToString();
-            String Cholesterol = dt["Cholesterol"].ToString();
-            String HDL_Cholesterol = dt["HDL_Cholesterol"].ToString();
-            String Triglyceride = dt["Triglyceride"].ToString();
-            String LDL_Cholesterol = dt["LDL_Cholesterol"].ToString();
-            String Glucose = dt["Glucose"].ToString();
-            String SGOT = dt["SGOT"].ToString();
-            String SGPT = dt["SGPT"].ToString();
-            String Urea = dt["Urea"].ToString();
-            String WBC = dt["WBC"].ToString();
-            String LYM = dt["LYM"].ToString();
-            String MONO = dt["MONO"].ToString();
-            String GRAN = dt["GRAN"].ToString();
-            String TyLeLYM = dt["TyLeLYM"].ToString();
-            String TyLeMONO = dt["TyLeMONO"].ToString();
-            String TyLeGRAN = dt["TyLeGRAN"].ToString();
-            String HGB = dt["HGB"].ToString();
-            String RBC = dt["RBC"].ToString();
-            String HTC = dt["HTC"].ToString();
-            String MCV = dt["MCV"].ToString();
-            String MCH = dt["MCH"].ToString();
-            String MCHC = dt["MCHC"].ToString();
-            String RDW_CV = dt["RDW_CV"].ToString();
-            String PLT = dt["PLT"].ToString();
-            String MPV = dt["MPV"].ToString();
-            String PDW = dt["PDW"].ToString();
-            String PCT = dt["PCT"].ToString();
-            String Na = dt["Na"].ToString();
-            String K = dt["K"].ToString();
-            String Cl = dt["Cl"].ToString();
-            String Ca = dt["Ca"].ToString();
-            String TieuDuong = dt["TieuDuong"].ToString();
+        //public void InsertDataSetTempRow(DataRow dtRow)
+        //{
+        //    decimal MaBn = Convert.ToDecimal(dtRow["MaBn"]);
+        //    decimal TuoiHienTai = DateTime.Now.Year - Convert.ToDecimal(dtRow["NamSinh"]);
+        //    String Tuoi = DiscretizationData.RoiRacHoaTuoi(TuoiHienTai);
+        //    String GioiTinh = dtRow["GioiTinh"].ToString();
+        //    String Cholesterol = dtRow["Cholesterol"].ToString();
+        //    String HDL_Cholesterol = dtRow["HDL_Cholesterol"].ToString();
+        //    String Triglyceride = dtRow["Triglyceride"].ToString();
+        //    String LDL_Cholesterol = dtRow["LDL_Cholesterol"].ToString();
+        //    String Glucose = dtRow["Glucose"].ToString();
+        //    String SGOT = dtRow["SGOT"].ToString();
+        //    String SGPT = dtRow["SGPT"].ToString();
+        //    String Urea = dtRow["Urea"].ToString();
+        //    String WBC = dtRow["WBC"].ToString();
+        //    String LYM = dtRow["LYM"].ToString();
+        //    String MONO = dtRow["MONO"].ToString();
+        //    String GRAN = dtRow["GRAN"].ToString();
+        //    String TyLeLYM = dtRow["TyLeLYM"].ToString();
+        //    String TyLeMONO = dtRow["TyLeMONO"].ToString();
+        //    String TyLeGRAN = dtRow["TyLeGRAN"].ToString();
+        //    String HGB = dtRow["HGB"].ToString();
+        //    String RBC = dtRow["RBC"].ToString();
+        //    String HTC = dtRow["HTC"].ToString();
+        //    String MCV = dtRow["MCV"].ToString();
+        //    String MCH = dtRow["MCH"].ToString();
+        //    String MCHC = dtRow["MCHC"].ToString();
+        //    String RDW_CV = dtRow["RDW_CV"].ToString();
+        //    String PLT = dtRow["PLT"].ToString();
+        //    String MPV = dtRow["MPV"].ToString();
+        //    String PDW = dtRow["PDW"].ToString();
+        //    String PCT = dtRow["PCT"].ToString();
+        //    String Na = dtRow["Na"].ToString();
+        //    String K = dtRow["K"].ToString();
+        //    String Cl = dtRow["Cl"].ToString();
+        //    String Ca = dtRow["Ca"].ToString();
+        //    String TieuDuong = dtRow["TieuDuong"].ToString();
 
-            datasetTempTA.Insert(MaBn, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride
-                , LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN
-                , HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Na, TieuDuong);
-        }
+        //    datasetTempTA.Insert(MaBn, Tuoi, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride
+        //        , LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN
+        //        , HGB, RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Na, TieuDuong);
+        //}
 
-        public void InsertDataSetRow(DataRow dt)
-        {
-            decimal MaBn = Convert.ToDecimal(dt["MaBn"]);
-            String HoTen = dt["HoTen"].ToString();
-            decimal NamSinh = Convert.ToDecimal(dt["NamSinh"]);
-            DateTime NgayKham = Convert.ToDateTime(dt["NgayKham"]);
-            String GioiTinh = dt["GioiTinh"].ToString();
-            decimal Cholesterol = Convert.ToDecimal(dt["Cholesterol"]);
-            decimal HDL_Cholesterol = Convert.ToDecimal(dt["HDL_Cholesterol"]);
-            decimal Triglyceride = Convert.ToDecimal(dt["Triglyceride"]);
-            decimal LDL_Cholesterol = Convert.ToDecimal(dt["LDL_Cholesterol"]);
-            decimal Glucose = Convert.ToDecimal(dt["Glucose"]);
-            decimal SGOT = Convert.ToDecimal(dt["SGOT"]);
-            decimal SGPT = Convert.ToDecimal(dt["SGPT"]);
-            decimal Urea = Convert.ToDecimal(dt["Urea"]);
-            decimal WBC = Convert.ToDecimal(dt["WBC"]);
-            decimal LYM = Convert.ToDecimal(dt["LYM"]);
-            decimal MONO = Convert.ToDecimal(dt["MONO"]);
-            decimal GRAN = Convert.ToDecimal(dt["GRAN"]);
-            decimal TyLeLYM = Convert.ToDecimal(dt["TyLeLYM"]);
-            decimal TyLeMONO = Convert.ToDecimal(dt["TyLeMONO"]);
-            decimal TyLeGRAN = Convert.ToDecimal(dt["TyLeGRAN"]);
-            decimal HGB = Convert.ToDecimal(dt["HGB"]);
-            decimal RBC = Convert.ToDecimal(dt["RBC"]);
-            decimal HTC = Convert.ToDecimal(dt["HTC"]);
-            decimal MCV = Convert.ToDecimal(dt["MCV"]);
-            decimal MCH = Convert.ToDecimal(dt["MCH"]);
-            decimal MCHC = Convert.ToDecimal(dt["MCHC"]);
-            decimal RDW_CV = Convert.ToDecimal(dt["RDW_CV"]);
-            decimal PLT = Convert.ToDecimal(dt["PLT"]);
-            decimal MPV = Convert.ToDecimal(dt["MPV"]);
-            decimal PDW = Convert.ToDecimal(dt["PDW"]);
-            decimal PCT = Convert.ToDecimal(dt["PCT"]);
-            decimal Na = Convert.ToDecimal(dt["Na"]);
-            decimal K = Convert.ToDecimal(dt["K"]);
-            decimal Cl = Convert.ToDecimal(dt["Cl"]);
-            decimal Ca = Convert.ToDecimal(dt["Ca"]);
-            String TieuDuong = dt["TieuDuong"].ToString();
+        //public void InsertDataSetRow(DataRow dtRow)
+        //{
+        //    decimal MaBn = Convert.ToDecimal(dtRow["MaBn"]);
+        //    String HoTen = dtRow["HoTen"].ToString();
+        //    decimal NamSinh = Convert.ToDecimal(dtRow["NamSinh"]);
+        //    DateTime NgayKham = Convert.ToDateTime(dtRow["NgayKham"]);
+        //    String GioiTinh = dtRow["GioiTinh"].ToString();
+        //    decimal Cholesterol = Convert.ToDecimal(dtRow["Cholesterol"]);
+        //    decimal HDL_Cholesterol = Convert.ToDecimal(dtRow["HDL_Cholesterol"]);
+        //    decimal Triglyceride = Convert.ToDecimal(dtRow["Triglyceride"]);
+        //    decimal LDL_Cholesterol = Convert.ToDecimal(dtRow["LDL_Cholesterol"]);
+        //    decimal Glucose = Convert.ToDecimal(dtRow["Glucose"]);
+        //    decimal SGOT = Convert.ToDecimal(dtRow["SGOT"]);
+        //    decimal SGPT = Convert.ToDecimal(dtRow["SGPT"]);
+        //    decimal Urea = Convert.ToDecimal(dtRow["Urea"]);
+        //    decimal WBC = Convert.ToDecimal(dtRow["WBC"]);
+        //    decimal LYM = Convert.ToDecimal(dtRow["LYM"]);
+        //    decimal MONO = Convert.ToDecimal(dtRow["MONO"]);
+        //    decimal GRAN = Convert.ToDecimal(dtRow["GRAN"]);
+        //    decimal TyLeLYM = Convert.ToDecimal(dtRow["TyLeLYM"]);
+        //    decimal TyLeMONO = Convert.ToDecimal(dtRow["TyLeMONO"]);
+        //    decimal TyLeGRAN = Convert.ToDecimal(dtRow["TyLeGRAN"]);
+        //    decimal HGB = Convert.ToDecimal(dtRow["HGB"]);
+        //    decimal RBC = Convert.ToDecimal(dtRow["RBC"]);
+        //    decimal HTC = Convert.ToDecimal(dtRow["HTC"]);
+        //    decimal MCV = Convert.ToDecimal(dtRow["MCV"]);
+        //    decimal MCH = Convert.ToDecimal(dtRow["MCH"]);
+        //    decimal MCHC = Convert.ToDecimal(dtRow["MCHC"]);
+        //    decimal RDW_CV = Convert.ToDecimal(dtRow["RDW_CV"]);
+        //    decimal PLT = Convert.ToDecimal(dtRow["PLT"]);
+        //    decimal MPV = Convert.ToDecimal(dtRow["MPV"]);
+        //    decimal PDW = Convert.ToDecimal(dtRow["PDW"]);
+        //    decimal PCT = Convert.ToDecimal(dtRow["PCT"]);
+        //    decimal Na = Convert.ToDecimal(dtRow["Na"]);
+        //    decimal K = Convert.ToDecimal(dtRow["K"]);
+        //    decimal Cl = Convert.ToDecimal(dtRow["Cl"]);
+        //    decimal Ca = Convert.ToDecimal(dtRow["Ca"]);
+        //    String TieuDuong = dtRow["TieuDuong"].ToString();
 
-            datasetTA.Insert(MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride
-                , LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB
-                , RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Na, TieuDuong);
-        }
+        //    datasetTA.Insert(MaBn, HoTen, NamSinh, NgayKham, GioiTinh, Cholesterol, HDL_Cholesterol, Triglyceride
+        //        , LDL_Cholesterol, Glucose, SGOT, SGPT, Urea, WBC, LYM, MONO, GRAN, TyLeLYM, TyLeMONO, TyLeGRAN, HGB
+        //        , RBC, HTC, MCV, MCH, MCHC, RDW_CV, PLT, MPV, PDW, PCT, Na, K, Cl, Na, TieuDuong);
+        //}
 
         //Hàm để tạo các khoảng rời rạc của tuổi và giới tính. Sử dụng khi nạp 1 data set mới
         public void AgeDiscretization()
