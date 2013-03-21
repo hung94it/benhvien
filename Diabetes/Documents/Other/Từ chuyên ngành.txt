@@ -1,6 +1,0 @@
-﻿
-Median : Trung vị
-Mean : Giá trị trung bình
-Standard deviation : Độ lệch chuẩn
-Variance : Phương sai
-Weighted average : Trung bình có trọng số

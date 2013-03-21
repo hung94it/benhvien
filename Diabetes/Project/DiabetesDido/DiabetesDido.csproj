@@ -55,30 +55,31 @@
     <ApplicationIcon>microscope.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accord.Controls, Version=2.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Accord.NET\Framework\Release\Accord.Controls.dll</HintPath>
+    <Reference Include="Accord">
+      <HintPath>library\Accord.dll</HintPath>
     </Reference>
     <Reference Include="Accord.MachineLearning, Version=2.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Accord.NET\Framework\Release\Accord.MachineLearning.dll</HintPath>
+      <HintPath>library\Accord.MachineLearning.dll</HintPath>
     </Reference>
     <Reference Include="Accord.Math, Version=2.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Accord.NET\Framework\Release\Accord.Math.dll</HintPath>
+      <HintPath>library\Accord.Math.dll</HintPath>
     </Reference>
     <Reference Include="Accord.Statistics, Version=2.8.0.0, Culture=neutral, PublicKeyToken=fa1a88e29555ccf7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Accord.NET\Framework\Release\Accord.Statistics.dll</HintPath>
+      <HintPath>library\Accord.Statistics.dll</HintPath>
     </Reference>
     <Reference Include="AForge, Version=2.2.4.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\Accord.NET\Framework\Externals\AForge.NET\AForge.dll</HintPath>
+      <HintPath>library\AForge.dll</HintPath>
     </Reference>
-    <Reference Include="DevComponents.DotNetBar.Schedule, Version=10.9.0.10, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
-    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=10.9.0.10, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
-    <Reference Include="DevComponents.DotNetBar2, Version=10.9.0.10, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
-    <Reference Include="DevComponents.Instrumentation, Version=10.9.0.10, Culture=neutral, PublicKeyToken=f90dc37c26666a67" />
+    <Reference Include="DevComponents.DotNetBar.SuperGrid, Version=10.9.0.10, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <HintPath>library\DevComponents.DotNetBar.SuperGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=10.9.0.10, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <HintPath>library\DevComponents.DotNetBar2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
