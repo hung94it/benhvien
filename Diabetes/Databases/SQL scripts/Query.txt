@@ -1,8 +1,0 @@
--- Du lieu noi tu 2 bang benhnhan, xet nghiem da kham va xet nghiem cung ngay
-SELECT     BenhNhan.MaBN, BenhNhan.HoTen, BenhNhan.NamSinh, BenhNhan.NgayKham, XetNghiem.GioiTinh, XetNghiem.Cholesterol, XetNghiem.HDL_Cholesterol, XetNghiem.Triglyceride, 
-                      XetNghiem.LDL_Cholesterol, XetNghiem.Glucose, XetNghiem.SGOT, XetNghiem.SGPT, XetNghiem.Urea, XetNghiem.WBC, XetNghiem.LYM, XetNghiem.MONO, XetNghiem.GRAN, 
-                      XetNghiem.TyLeLYM, XetNghiem.TyLeMONO, XetNghiem.TyLeGRAN, XetNghiem.HGB, XetNghiem.RBC, XetNghiem.HTC, XetNghiem.MCV, XetNghiem.MCH, XetNghiem.MCHC, XetNghiem.RDW_CV, 
-                      XetNghiem.PLT, XetNghiem.MPV, XetNghiem.PDW, XetNghiem.PCT, XetNghiem.Na, XetNghiem.K, XetNghiem.Cl, XetNghiem.Ca, BenhNhan.TieuDuong
-FROM         BenhNhan INNER JOIN
-                      XetNghiem ON BenhNhan.MaBN = XetNghiem.MaBn
-                      and CAST(ngaykham as DATE) = CAST(ngaylaymau as DATE)
